@@ -13,23 +13,23 @@ import fsys.file
 import string.crypt;
 import sqlite;
 /*DSG{{*/
-var winform = ..win.form( bottom=300;parent=...;right=450;text="网盘自动签到 by chenall http://chenall.net";scroll=1 )
+var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
 winform.add( 
-checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;cls="checkbox";hide=1 };
-button2={ bottom=296;text="签到记录";left=5;top=263;z=13;right=63;cls="button" };
-sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" };
-static2={ bottom=77;right=49;left=6;text="用户名:";top=60;z=6;transparent=1;cls="static" };
-disk_type={ bottom=46;right=140;left=41;
-items={  };text="请选择网盘";z=3;top=26;mode="dropdownlist";edge=1;cls="combobox" };
-password={ bottom=103;right=142;left=53;top=84;tabstop=1;z=9;edge=1;cls="edit" };
-username={ bottom=74;right=143;left=54;top=54;tabstop=1;z=8;edge=1;cls="edit" };
-static3={ bottom=103;right=53;left=8;text="密码:";top=86;z=7;transparent=1;cls="static" };
-button={ bottom=297;right=145;left=71;top=264;z=5;text="开始签到";cls="button" };
-add_site={ bottom=133;right=143;left=97;text="添加";top=106;tabstop=1;z=10;cls="button" };
-accounts={ bgcolor=16777215;vscroll=1;right=146;left=7;fullRow=1;top=139;bottom=257;aw=1;gridLines=1;z=11;edge=1;cls="listview" };
-listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;left=151;border=1;
-items={  };msel=1;aw=1;top=6;hscroll=1;z=1;cls="listbox" };
-static={ bottom=47;right=41;left=9;text="网盘:";top=28;z=4;transparent=1;cls="static" }
+checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;hide=1;cls="checkbox" };
+button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
+static={ bottom=47;text="网盘:";left=9;right=41;top=28;z=4;transparent=1;cls="static" };
+static2={ bottom=77;text="用户名:";left=6;right=49;top=60;z=6;transparent=1;cls="static" };
+disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
+items={  };mode="dropdownlist";edge=1;cls="combobox" };
+password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
+username={ bottom=74;right=143;left=54;top=54;z=8;tabstop=1;edge=1;cls="edit" };
+static3={ bottom=103;text="密码:";left=8;right=53;top=86;z=7;transparent=1;cls="static" };
+button={ bottom=297;text="开始签到";left=71;top=264;z=5;right=145;cls="button" };
+add_site={ bottom=133;text="添加";left=97;right=143;top=106;tabstop=1;z=10;cls="button" };
+accounts={ bgcolor=16777215;bottom=257;right=146;left=7;cls="listview";top=139;vscroll=1;aw=1;gridLines=1;z=11;edge=1;fullRow=1 };
+listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;border=1;left=151;top=6;msel=1;z=1;
+items={  };hscroll=1;aw=1;cls="listbox" };
+sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" }
 )
 /*}}*/
 
@@ -150,7 +150,7 @@ sign_log = function(item){
 	}
 	else {
 		string = "签到记录"
-		logs += ",disk_type where did=(select id from config where tid=type) order by did,date";
+		logs += ",disk_type where did=(select id from config where tid=type) order by date";
 	}
 	logs = sql.getTable(logs);
 	sql.close();
@@ -323,12 +323,13 @@ get_dbank = function(su,sp,flags=0){
 		res = string.sub(res,2,-2);
 		res = string.replace(res,"\\/","/");
 		wb.go(res);
+		wb.wait();
 	}
 	else {
-		mht.go("http://login.dbank.com/loginauth.php?nsp_app=48049");
-		var nonce = mht.getEle("nonce").value
-		var nsp_cid = mht.getEle("nsp_cid").value
-		//if (flags == -1)
+		res = http.get("http://login.dbank.com/loginauth.php?nsp_app=48049")
+		var nonce = string.match( res,'nonce[^>]*value=\"([^"]*)\"');
+		var nsp_cid = string.match(res,'nsp_cid[^>]*value=\"([^"]*)\"')
+		if (flags == -1)
 		{
 			sp = su + ":NSP Passport:" + sp;
 			sp = string.lower(string.crypt.md5(sp));
@@ -345,70 +346,62 @@ get_dbank = function(su,sp,flags=0){
 		lstbox_add("华为网盘登录成功!");
 		if (flags == -1)
 		{
-			wb.go("http://login.dbank.com/accounts/logout");//退出;
+			http.get("http://login.dbank.com/accounts/logout");//退出;
 			return {1;sp};
 		}
 		sp = res['k'];
-		wb.go("http://login.dbank.com/loginauth.php?k="+sp);
 		http.get("http://login.dbank.com/loginauth.php?k="+sp);
 		//{"retcode":"0000","retdesc":"用户签到成功","type":2,"space":37}
 		//{"retcode":"0001","retdesc":"用户已签到"}
 	}
-	wb.wait();
+	//36f2f83c44c3a29b98d64417dbf75fd3nsp_cb_jqjspnsp_fmtJSnsp_sid9uuu1w7uCr8hkua.WjouavD4xYuIsGMH2ZO4BnY-N.7VXSUfnsp_svcnsp.user.getAccountsnsp_ts1340702904908type1
+	var Cookie = inet.getCookie("http://www.dbank.com");
+	var nsp_sid = string.match(Cookie,"session=([^;]*)");
+	var secret = string.match(Cookie,"secret=([^;]*)");
+	var nsp_ts = tonumber(time());
+	var nsp_key;
 	if (flags == -1)
 	{
-		lstbox_add("获取用户名");
-		if (wb.waitEle("dbknickname"))
-		{
-			win.delay(2000);
-			res = wb.getEle("dbknickname").innerText;
-			lstbox_add("用户名: " + res);
+		try{
+			lstbox_add("获取用户帐号:")
+			nsp_key = secret + "nsp_cb_jqjspnsp_fmtJSnsp_sid"+nsp_sid+"nsp_svcnsp.user.getAccountsnsp_ts"+nsp_ts+"type1";
+			nsp_key = string.crypt.md5(nsp_key)
+			//获取用户帐号信息
+			res = http.get("http://api.dbank.com/rest.php?nsp_svc=nsp.user.getAccounts&type=1&nsp_sid="+ nsp_sid + "&nsp_ts="+nsp_ts+"&nsp_key="+nsp_key+"&nsp_fmt=JS&nsp_cb=_jqjsp");
+			res = string.match(res,'"account":"(.*)"');
+			lstbox_add(res);
 		}
+		catch(e){
+			lstbox_add("出错了:"+Cookie);
+			res = null;
+		}
+		if (res == null)
+			return null;
 		wb.go("http://login.dbank.com/accounts/logout");//退出;
 		return {2;res};
 	}
-	var Cookie = inet.getCookie("http://www.dbank.com");
-	var nsp_sid = string.match(Cookie,"session=([^;]*)");
-	var nsp_key = string.match(Cookie,"secret=([^;]*)");
-	var nsp_ts = tonumber(time());
-	nsp_key += "anticache205nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.signinnsp_ts"+nsp_ts;
+	nsp_key = secret + "anticache205nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.signinnsp_ts"+nsp_ts;
 	nsp_key = string.crypt.md5(nsp_key);
-	var result = http.get("http://api.dbank.com/rest.php?anticache=205&nsp_svc=com.dbank.signin.signin"+"&nsp_ts="+nsp_ts+"&nsp_sid="+nsp_sid+"&nsp_key="+nsp_key);
-	winform.msgbox(result)
-	result = web.json.parse(result);
-	winform.msgbox(string.fromto(result['retdesc']))
-	return;
-	var a = null;
-	var j = 0;
-	while(a = null)
-	{
-		j = j + 1;
-		if (j > 10)
-		{
-			lstbox_add("出现未知错误!");
-			return null;
+	nsp_key = "http://api.dbank.com/rest.php?anticache=205&nsp_svc=com.dbank.signin.signin"+"&nsp_ts="+nsp_ts+"&nsp_sid="+nsp_sid+"&nsp_key="+nsp_key;
+	lstbox_add("自动签到URL:"+nsp_key);
+	var result = http.get(nsp_key);
+	var ret = null
+	try{
+		res = web.json.parse(result);
+		if (res['retcode'] == "0000"){
+			ret = res['space'] + "MB"
+			lstbox_add("签到成功获得空间"+ret);
 		}
-		win.delay(2000);
-		a = wb.getEle("signbtn");
+		elseif(res['retcode'] == "0001"){
+			ret = "已签到"
+			lstbox_add(string.fromto(res['retdesc']))
+		}
 	}
-	a = a.title;
-	if (string.find(a,"已领取"))
-	{
-		lstbox_add(a);
-		wb.go("http://login.dbank.com/accounts/logout");//退出;
-		return a;
+	catch(e){
+		lstbox_add("出现错误以下是相关数据：")
+		lstbox_add(result);
 	}
-	//签到
-   	wb.doScript("getSpaceActivity()");
-   	wb.wait();
-   	win.delay(2000);
-   	var ret = null;
-   	try{
-   		lstbox_add(wb.waitEle("tips_title").innerText);   		
-   		ret = wb.getEle("tipsCapacity").innerText;
-   	}
-   	wb.go("http://login.dbank.com/accounts/logout");//退出;
-   	wb.wait();
+
   	return ret;
 }
 
@@ -567,7 +560,7 @@ sina_login = function(account,passwd,flags = 0){
 	{
 		if (ret == null)
 			return null
-		return {1;passwd};
+		return passwd;
 	}
 	if (flags == 1)
 		wb.go(ret);
@@ -587,11 +580,15 @@ get_vdisk = function(account,passwd,flags=0){
 	}
 	var ret = null;
 	var res = http.get("http://vdisk.weibo.com/index/vidskCpacity");
+	//{"quota_used":"3.7M","quota_total":"21.0G","quota_left":"21.0G","quota_percent":1,"quota_percent_format":0}
 	if (string.find(res,"errcode"))
 	{
-		lstbox_add("出错：可能是登录失败");
+		lstbox_add("出错：可能是登录失败:" + res);
 		return null;
 	}
+	res = web.json.parse(res);
+	var total = res['quota_total'];
+	lstbox_add("总共空间:"+res['quota_total']+" 已用:"+res['quota_used']+"可用:"+res['quota_left']);
 	res = http.post("http://vdisk.weibo.com/task/checkIn","");
 	res = web.json.parse(res);
 	if (res['errcode'] > 1)
@@ -611,7 +608,7 @@ get_vdisk = function(account,passwd,flags=0){
 		res = res['data']['sent_weibo_size'];
 		if (res != 0)//已签到，也已经发送微搏
 		{
-			ret = "已签到:" + ret + "MB,发微搏:" + tostring(res) + "MB";
+			ret = "已签到:" + ret + "MB,发微搏:" + tostring(res) + "MB" + " 总:"+total;
 			lstbox_add(ret);
 			return ret;
 		}
@@ -620,7 +617,7 @@ get_vdisk = function(account,passwd,flags=0){
 		ret = res['data'][1];
 		res = res['data'][2];
 	}
-	res = string.fromto("msg=微盘签到获得空间"+tostring(ret)+"MB,好运指数"+res+"颗星,更多信息请访问 http://chenall.net/post/netdisk-autosign/",0,65001);
+	res = string.fromto("msg=微盘签到获得空间"+tostring(ret)+"MB,好运指数"+res+"颗星,目前已有空间:"+total+", 更多信息请访问 http://chenall.net/post/netdisk-autosign/",0,65001);
 	res = http.post("http://vdisk.weibo.com/task/checkInSendWeibo",res,"","http://vdisk.weibo.com")
 	res = web.json.parse(res);
 	if (res['errcode'] != 0)
@@ -628,7 +625,7 @@ get_vdisk = function(account,passwd,flags=0){
 		lstbox_add("微盘签到并发送微搏失败");
 		res['data'] = 0;
 	}
-	ret = "签到:"+tostring(ret)+"MB,发微搏:"+tostring(res['data'])+"MB"
+	ret = "签到:"+tostring(ret)+"MB,发微搏:"+tostring(res['data'])+"MB"+" 总:"+total
 	lstbox_add(ret);
 	//http.get("http://weibo.com/logout.php");
 	return ret;
@@ -802,11 +799,13 @@ for (k,v in tab)
 }
 
 sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi};
-get_dbank("test@chenall.tk","5cH2PdpwY9");
+
+
 inet.clearCookie();
 inet.clearSesseion();
 if (_CMDLINE = "auto")
 {
+	win.delay(3000)
 	auto_sign();
 	win.delay(3000);
 	winform.close();
