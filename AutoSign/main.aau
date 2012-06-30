@@ -13,23 +13,23 @@ import fsys.file
 import string.crypt;
 import sqlite;
 /*DSG{{*/
-var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
+var winform = ..win.form( bottom=300;parent=...;right=450;text="网盘自动签到 by chenall http://chenall.net";scroll=1 )
 winform.add( 
-checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;cls="checkbox" };
-button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
-static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=4;cls="static" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
-disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
-items={  };mode="dropdownlist";edge=1;cls="combobox" };
-password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
-username={ bottom=74;right=143;left=54;top=54;z=8;tabstop=1;edge=1;cls="edit" };
-static3={ bottom=103;text="密码:";left=8;right=53;top=86;transparent=1;z=7;cls="static" };
-button={ bottom=297;text="开始签到";left=71;top=264;z=5;right=145;cls="button" };
-add_site={ bottom=133;text="添加";left=97;right=143;top=106;z=10;tabstop=1;cls="button" };
-accounts={ bgcolor=16777215;bottom=257;right=146;left=7;cls="listview";top=139;vscroll=1;aw=1;gridLines=1;z=11;edge=1;fullRow=1 };
-listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;border=1;left=151;top=6;msel=1;z=1;
-items={  };hscroll=1;aw=1;cls="listbox" };
-sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" }
+checkbox={ bottom=22;right=138;left=50;top=5;z=2;text="显示WEB窗口";cls="checkbox" };
+button2={ bottom=296;text="签到记录";left=5;top=263;z=13;right=63;cls="button" };
+sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" };
+static2={ bottom=77;right=49;left=6;text="用户名:";top=60;z=6;transparent=1;cls="static" };
+disk_type={ bottom=46;right=140;left=41;
+items={  };text="请选择网盘";z=3;top=26;mode="dropdownlist";edge=1;cls="combobox" };
+password={ bottom=103;right=142;left=53;top=84;tabstop=1;z=9;edge=1;cls="edit" };
+username={ bottom=74;right=143;left=54;top=54;tabstop=1;z=8;edge=1;cls="edit" };
+static3={ bottom=103;right=53;left=8;text="密码:";top=86;z=7;transparent=1;cls="static" };
+button={ bottom=297;right=145;left=71;top=264;z=5;text="开始签到";cls="button" };
+add_site={ bottom=133;right=143;left=97;text="添加";top=106;tabstop=1;z=10;cls="button" };
+accounts={ bgcolor=16777215;vscroll=1;right=146;left=7;fullRow=1;top=139;bottom=257;aw=1;gridLines=1;z=11;edge=1;cls="listview" };
+listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;left=151;border=1;
+items={  };msel=1;aw=1;top=6;hscroll=1;z=1;cls="listbox" };
+static={ bottom=47;right=41;left=9;text="网盘:";top=28;z=4;transparent=1;cls="static" }
 )
 /*}}*/
 
@@ -386,6 +386,16 @@ get_dbank = function(su,sp,flags=0){
 	}
 	else {
 		res = http.get("http://login.dbank.com/loginauth.php?nsp_app=48049")
+		if (res == null)
+		{
+			lstbox_add("网络错误，正在重试");
+			res = http.get("http://login.dbank.com/loginauth.php?nsp_app=48049")
+			if (res == null)
+			{
+				lstbox_add("网络错误");
+				return  null;
+			}
+		}
 		var nonce = string.match( res,'nonce[^>]*value=\"([^"]*)\"');
 		var nsp_cid = string.match(res,'nsp_cid[^>]*value=\"([^"]*)\"')
 		if (flags == -1)
@@ -413,21 +423,20 @@ get_dbank = function(su,sp,flags=0){
 		//{"retcode":"0000","retdesc":"用户签到成功","type":2,"space":37}
 		//{"retcode":"0001","retdesc":"用户已签到"}
 	}
-	//36f2f83c44c3a29b98d64417dbf75fd3nsp_cb_jqjspnsp_fmtJSnsp_sid9uuu1w7uCr8hkua.WjouavD4xYuIsGMH2ZO4BnY-N.7VXSUfnsp_svcnsp.user.getAccountsnsp_ts1340702904908type1
 	var Cookie = inet.getCookie("http://www.dbank.com");
 	var nsp_sid = string.match(Cookie,"session=([^;]*)");
 	var secret = string.match(Cookie,"secret=([^;]*)");
-	var nsp_ts = tonumber(time());
 	var nsp_key;
 	if (flags == -1)
 	{
 		try{
 			lstbox_add("获取用户帐号:")
-			nsp_key = secret + "nsp_cb_jqjspnsp_fmtJSnsp_sid"+nsp_sid+"nsp_svcnsp.user.getAccountsnsp_ts"+nsp_ts+"type1";
+			nsp_key = secret + "nsp_sid"+nsp_sid+"nsp_svcnsp.user.getAccountsnsp_tstype1"
 			nsp_key = string.crypt.md5(nsp_key)
 			//获取用户帐号信息
-			res = http.get("http://api.dbank.com/rest.php?nsp_svc=nsp.user.getAccounts&type=1&nsp_sid="+ nsp_sid + "&nsp_ts="+nsp_ts+"&nsp_key="+nsp_key+"&nsp_fmt=JS&nsp_cb=_jqjsp");
-			res = string.match(res,'"account":"(.*)"');
+			nsp_key = "http://api.dbank.com/rest.php?type=1&nsp_svc=nsp.user.getAccounts&nsp_ts=&nsp_sid="+ nsp_sid + "&nsp_key="+nsp_key
+			res = http.get(nsp_key);
+			res = string.match(res,'([^"]*)<"}>');
 			lstbox_add(res);
 		}
 		catch(e){
@@ -439,9 +448,9 @@ get_dbank = function(su,sp,flags=0){
 		wb.go("http://login.dbank.com/accounts/logout");//退出;
 		return {2;res};
 	}
-	nsp_key = secret + "anticache205nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.signinnsp_ts"+nsp_ts;
+	nsp_key = secret + "nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.signinnsp_ts"
 	nsp_key = string.crypt.md5(nsp_key);
-	nsp_key = "http://api.dbank.com/rest.php?anticache=205&nsp_svc=com.dbank.signin.signin"+"&nsp_ts="+nsp_ts+"&nsp_sid="+nsp_sid+"&nsp_key="+nsp_key;
+	nsp_key = "http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&nsp_ts=&nsp_sid="+nsp_sid+"&nsp_key="+nsp_key;
 	lstbox_add("自动签到URL:"+nsp_key);
 	var result = http.get(nsp_key);
 	var ret = null
@@ -583,6 +592,7 @@ get_189 = function(account,passwd,flags=0){
 		return {2;ret}
 	return ret;
 }
+
 //http://cloud.189.cn/getLoginUser.action 获取用户信息
 //{"account":"xxxx","lastActiveTime":"2012年06月28日","lastLoginTime":"2012-06-28T12:10:58","regPhase":"1","roleQuota":209213980672,"sessionKey":"ff808081382a6db001383148ea1505c6","usedSize":693108736,"userId":3373}
 
@@ -960,5 +970,4 @@ if (_CMDLINE = "auto")
 	win.delay(3000);
 	winform.close();
 }
-
 win.loopMessage();
