@@ -4,7 +4,7 @@ import web.form;
 import web.json;
 import inet;
 import inet.http;
-import web.mshtml;
+//import web.mshtml;
 import key;
 import mouse;
 import fsys.ini;
@@ -15,17 +15,17 @@ import sqlite;
 /*DSG{{*/
 var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
 winform.add( 
-checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;hide=1;cls="checkbox" };
+checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;cls="checkbox" };
 button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
-static={ bottom=47;text="网盘:";left=9;right=41;top=28;z=4;transparent=1;cls="static" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;z=6;transparent=1;cls="static" };
+static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=4;cls="static" };
+static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
 disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
 items={  };mode="dropdownlist";edge=1;cls="combobox" };
 password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
 username={ bottom=74;right=143;left=54;top=54;z=8;tabstop=1;edge=1;cls="edit" };
-static3={ bottom=103;text="密码:";left=8;right=53;top=86;z=7;transparent=1;cls="static" };
+static3={ bottom=103;text="密码:";left=8;right=53;top=86;transparent=1;z=7;cls="static" };
 button={ bottom=297;text="开始签到";left=71;top=264;z=5;right=145;cls="button" };
-add_site={ bottom=133;text="添加";left=97;right=143;top=106;tabstop=1;z=10;cls="button" };
+add_site={ bottom=133;text="添加";left=97;right=143;top=106;z=10;tabstop=1;cls="button" };
 accounts={ bgcolor=16777215;bottom=257;right=146;left=7;cls="listview";top=139;vscroll=1;aw=1;gridLines=1;z=11;edge=1;fullRow=1 };
 listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;border=1;left=151;top=6;msel=1;z=1;
 items={  };hscroll=1;aw=1;cls="listbox" };
@@ -47,7 +47,7 @@ var wb = web.form( webform,
 	);
 var sql = null;
 var http = inet.http();
-var mht = web.mshtml();
+//var mht = web.mshtml();
 var main_exit = false; //主窗口已经关闭?如果关闭了就退出程序.
 var acc_sel = 0;
 var sina_user="";
@@ -64,6 +64,12 @@ webform.onClose = function(hwnd,message,wParam,lParam){
 	winform.checkbox.checked = false;
     return false;//禁止关闭此窗口
 }
+
+winform.checkbox.oncommand = function(id,event){
+	//winform.msgbox( winform.checkbox.text );
+	webform.show(winform.checkbox.checked);
+}
+
 
 winform.onClose = function(hwnd,message,wParam,lParam){
 	main_exit = true;
@@ -139,18 +145,37 @@ ins_sql = function(t,s,p,k="null"){
 	return id;
 }
 
-sign_log = function(item){
+wb.external = { 
+	del_log = function(item,did,date){
+		sql = sqlite("\config.db")
+		sql.exec("delete from sign where did="+did + " and date='"+date+"'" )
+		sql.close()
+		sign_log(item);
+		return true;
+	}
+}
+
+sign_log = function(item,flags = 0){
 	sql = sqlite("\config.db")
+	if (flags == -1)
+	{
+		item = winform.accounts.items[item];
+		sql.exec("delete from sign where did="+item)
+		sql.close();
+		return;
+	}
+
 	var logs = "SELECT * FROM sign";
 	var string = "签到记录";
-	if (item != null)
+	if (item != null && item > 0)
 	{
 		logs +=  " where did="+winform.accounts.items[item];
 		string += "--"+winform.accounts.getItemText(item,2);
 	}
 	else {
+		item = 0;
 		string = "签到记录"
-		logs += ",disk_type where did=(select id from config where tid=type) order by date";
+		logs = "SELECT did,date,name,user,msg,key FROM sign,disk_type,config where tid=type and did=ID order by date";
 	}
 	logs = sql.getTable(logs);
 	sql.close();
@@ -158,9 +183,22 @@ sign_log = function(item){
 	for (k,v in logs)
 	{
 		string += "<tr>"
-		if (item == null)
+		if (item == 0)
+		{
 			string += "<td>"+v['name']+"</td>"
-		string += "<td>"+v['date']+"</td><td>"+v['msg']+"</td></tr>";
+			if (v['user'] == "oauth")
+			{
+				string += "<td>"+v['key']+"</td>"
+			}
+			else {
+				string += "<td>"+v['user']+"</td>"
+			}
+			
+		}
+		string += "<td>"+v['date']+"</td><td>"+v['msg']+"</td>"
+		string += "<td><button onclick=external.del_log("+item+","+v['did']+",'"+v['date']+"')>删</button></td>"
+		string += "</tr>";
+		
 	}
 	string += "</table>"
 	wb.write(string);
@@ -191,6 +229,10 @@ winform.popmenu.add('签到记录',function(id){
 	var id = winform.accounts.selIndex;
 	sign_log(id);
 });
+winform.popmenu.add('删除签到记录',function(id){
+	var id = winform.accounts.selIndex;
+	sign_log(id,-1);
+});
 
 
 winform.accounts.onnotify = function(id,code,ptr){ 
@@ -220,7 +262,7 @@ code_c = /****
    			++p;
    		}
 		return msg+1; 
-	} 
+	}
 ****/
 
 vm = tcc( ); 
@@ -254,6 +296,23 @@ GetLink = function(title,iframe = null){
         }
     }
     return null;
+}
+
+//字节转换
+function ByteToMB(size){
+	if (size>>30)//大于1GB
+	{
+		return string.format("%.2fGB",size/(1<<30));
+	}
+	if (size>>20)//大于1MB
+	{
+		return string.format("%.2fMB",size/(1<<20));
+	}
+	if (size>>10)//大于1KB
+	{
+		return string.format("%.2fKB",size/(1<<10));
+	}
+	
 }
 
 //115网盘自动签到
@@ -298,8 +357,8 @@ get_115 = function(account,passwd,flags=0){
 		var tab = web.json.parse(str);
 		if (tab['state'])
 		{
-			lstbox_add("签到成功:+"+tab['picked']+"共:" + tab['total_size']);
-			ret =  tab['picked'];
+			ret =  "签到:+" + tab['picked'] + " 总:" + tab['total_size'];
+			lstbox_add(ret);
 		}
 		else
 			lstbox_add("签到失败!");
@@ -407,7 +466,6 @@ get_dbank = function(su,sp,flags=0){
 
 
 //快盘自动签到.
-
 get_kuaipan = function(account,passwd,flags=0){
 	lstbox_add("登录快盘:" + account);
 	var str;
@@ -446,15 +504,25 @@ get_kuaipan = function(account,passwd,flags=0){
 	}
 	//自动签到
 	var tab = web.json.parse(http.get("http://www.kuaipan.cn/index.php?ac=common&op=usersign"));
-	http.get("http://www.kuaipan.cn/account_logout.htm");//注销
+	var ret = null;
 	if (tab['state'] == -102)
 	{
 	//{"status": {"grade": 0, "maxsize": 100, "points": 18, "period": 0}, "rewardsize": 14, "monthtask": {"M900": 18, "invite": 0, "maxnormal": 900, "normal": 18}, "todaytask": {"count": {"sign": 1}}, "userid": "12842259", "increase": 9, "state": 1}
-		lstbox_add("已签到");
-		return "已签到";
+		ret = "已签到";
 	}
-	lstbox_add("签到获得空间: "+tab['rewardsize']+" 积分: "+tab['status']['points']);
-	return tab['rewardsize']+'MB';
+	else {
+		ret = "签到: +"+tab['rewardsize']+"MB 积分: "+tab['status']['points'];
+	}
+	
+	try{
+		str = http.get("http://www.kuaipan.cn/index.php?ac=home&op=space");
+		tab = web.json.parse(str);
+		ret += " 总:"+ByteToMB(tab['xLive']['total']);
+	}
+	http.get("http://www.kuaipan.cn/account_logout.htm");//注销
+	lstbox_add(ret);
+	//http://www.kuaipan.cn/index.php?ac=home&op=space 获取空间信息
+	return ret;
 }
 
 
@@ -468,48 +536,55 @@ get_189 = function(account,passwd,flags=0){
 	var ret = null;
 	lstbox_add("登录天翼云存储:" + account);
 	http.get("http://cloud.189.cn/logout.action");
-	str = http.get("http://cloud.189.cn/udb/udb_login.jsp");
+	var str = http.get("http://cloud.189.cn/udb/udb_login.jsp");
 	if (str == null)
 	{
 		lstbox_add("网络错误!目前无法访问");
 		return null;
 	}
-	wb.write(string.fromto(str));
 	try{
-		var str = 'txtUserID='+account+ '&txtPwd='+passwd+'&ibtn_Login=&__VIEWSTATE='+inet.url.encode(wb.getEle("__VIEWSTATE").value)+'&__EVENTVALIDATION='+inet.url.encode(wb.getEle("__EVENTVALIDATION").value);
+		var VIEWSTATE = string.match(str,'__VIEWSTATE[^>]*value=\"([^"]*)\"');
+		var EVENTVALIDATION = string.match(str,'__EVENTVALIDATION[^>]*value=\"([^"]*)\"');
+		str = 'txtUserID='+account+ '&txtPwd='+passwd+'&ibtn_Login=&__VIEWSTATE='+inet.url.encode(VIEWSTATE)+'&__EVENTVALIDATION='+inet.url.encode(EVENTVALIDATION);
+		var tab;
 		http.post("http://sersh.passport.189.cn/Logon/UDBCommon/S/PassportLogin.aspx",str);
 		if (flags == -1)
 		{
 			lstbox_add("获取用户信息:")
 			str = http.post("http://cloud.189.cn/userInfoJson.action","")
-			str = web.json.parse(str)
-			lstbox_add("帐号: " + str['account'])
-			lstbox_add("昵称: " + str['nickName'])
-			ret = str['account'];
+			tab = web.json.parse(str)
+			lstbox_add("帐号: " + tab['account'])
+			lstbox_add("昵称: " + tab['nickName'])
+			ret = tab['account'];
 			return;
 		}
-		str = http.get("http://cloud.189.cn/userSign.action");//获取空间;
-		var tab = web.json.parse(str);
+		str = http.get("http://cloud.189.cn/userSign.action");//签到获取空间;
+		tab = web.json.parse(str);
 		if (tab['isSign'])
 		{
-			ret = "已签到";
-			lstbox_add(ret);
+			ret = "已签:";
 		}
 		else 
 		{
-			ret = tab['netdiskBonus']+"MB";
-			lstbox_add("签到获得空间:" + ret);
+			ret = "签到: +";
 		}
+		ret += tab['netdiskBonus']+"MB";
+		str = http.get("http://cloud.189.cn/getLoginUser.action");
+		tab = web.json.parse(str);
+		ret += " 总:" + ByteToMB（tab['roleQuota'])
+		lstbox_add(ret);
 	}
 	catch(e){
-		wb.write(string.fromto(str));
 		lstbox_add("出现未知错误，请到以下网站留言 http://chenall.net");
+		lstbox_add(str);
 	}
 	http.get("http://cloud.189.cn/logout.action");//注销
 	if (flags == -1)
 		return {2;ret}
 	return ret;
 }
+//http://cloud.189.cn/getLoginUser.action 获取用户信息
+//{"account":"xxxx","lastActiveTime":"2012年06月28日","lastLoginTime":"2012-06-28T12:10:58","regPhase":"1","roleQuota":209213980672,"sessionKey":"ff808081382a6db001383148ea1505c6","usedSize":693108736,"userId":3373}
 
 //新浪POST登录方法来源:　http://www.sad-pig.com/?p=278
 sina_login_http = function(su,sp="",flags = 0){
@@ -548,7 +623,7 @@ sina_login_http = function(su,sp="",flags = 0){
 	return tab;
 }
 
-sina_login = function(account,passwd,flags = 0){
+sina_login = function(account,passwd,flags = 0,http_func = null){
 	sina_logined ＝ false;
 	if (flags == -1)
 	{
@@ -561,6 +636,11 @@ sina_login = function(account,passwd,flags = 0){
 		if (ret == null)
 			return null
 		return passwd;
+	}
+	if (http_func != null)
+	{
+		http_func.get(ret);
+		return true;
 	}
 	if (flags == 1)
 		wb.go(ret);
@@ -578,6 +658,7 @@ get_vdisk = function(account,passwd,flags=0){
 			return {2;sina_user};
 		return sina_login(account,passwd,flags);
 	}
+	var vdisk = http;
 	var ret = null;
 	var res = http.get("http://vdisk.weibo.com/index/vidskCpacity");
 	//{"quota_used":"3.7M","quota_total":"21.0G","quota_left":"21.0G","quota_percent":1,"quota_percent_format":0}
@@ -631,7 +712,6 @@ get_vdisk = function(account,passwd,flags=0){
 	return ret;
 }
 
-
 get_taojinbi = function(account,passwd,flags=0){
 	if (flags == 1 || account == "oauth")
 	{
@@ -675,6 +755,66 @@ get_taojinbi = function(account,passwd,flags=0){
 	//{"code":2,"coinOld":2674,"coinNew":2674,"daysTomorrow":1,"coinTomorrow":"10","auth":true,"isTake":"","takeAmount":"","friendNum":"0","switcher":"true"}
 }
 
+get_360 = function(su,sp,flags = 0){
+	lstbox_add("登录360云盘:" + su)
+	su = inet.url.encode(su);//用户名URL编码
+	if (flags == -1)//为了安全只在添加帐号时计算，不保存原始密码，以后直接使用计算后的结果。
+		sp = string.lower(string.crypt.md5(sp));//密码进行MD5计算.
+	//获取登录令牌 Token
+	//返回的信息类似如下
+	//login.setSigCallback({"errno":0,"errmsg":"","token":"c14a7bbd7616af6d"})
+	var str = http.get("https://login.360.cn/?o=sso&m=getToken&func=login.setSigCallback&userName="+su);
+	var token = string.match(str,"[a-f0-9]{16}");
+	if (token == null)
+	{
+		lstbox_add("获取登录令牌失败!");
+		return null;
+	}	
+	//获取用户信息并进行预登录
+	str = http.get("https://login.360.cn/?o=sso&isKeepAlive=0&m=login&from=i360&rtype=data&userName="+su+"&password="+sp+"&token="+token);
+	str = string.match(str,"\((.*)\)");
+	var tab = web.json.parse(str);
+	var userinfo = tab['userinfo']
+	//正式登录
+	http.get("http://yunpan.360.cn/user/yplogin")
+	if (flags == -1)
+	{
+		lstbox_add("获取用户信息:")
+		lstbox_add("userName:"+userinfo['userName'])
+		lstbox_add("realName:"+userinfo['realName'])
+		lstbox_add("loginEmail:"+userinfo['loginEmail']);
+		return {1;sp}//返回加密后的密码作为以后登录使用.
+	}
+	//签到
+	str = http.post("http://c5.yunpan.360.cn/user/signin/","method=signin&qid="+userinfo['qid']);
+	tab = web.json.parse(str);
+	var ret = null;
+	if (tab['errno'] == 27002)
+	{
+		ret = "已签: +"
+	}
+	else if (tab['errno'] == 0) {
+		ret = "签到: +"
+	}
+	else {
+		lstbox_add(tab['errmsg'])
+		return null;
+	}
+	ret += ByteToMB(tab['data']['total']);
+	str = http.get("http://c5.yunpan.360.cn/my/getsize/");
+	tab = web.json.parse(str);
+	ret += " 总:" +  ByteToMB(tab['total_size']);
+	lstbox_add(ret);
+	return ret;
+	//已签过
+	//{"errno":"27002","errmsg":"\u5f53\u524d\u8bbe\u5907\u5df2\u7ecf\u7b7e\u5230","data":{"total":5242880}}
+	//签到成功
+	//{"errno":0,"errmsg":"\u64cd\u4f5c\u6210\u529f","data":{"reward":5242880,"total":5242880}}
+	//当前空间情况
+	//http://c5.yunpan.360.cn/my/getsize/
+	//{"total_size":19354615808,"used_size":"532319"}
+}
+
 
 auto_sign = function(){
 	var ret = "0";
@@ -705,6 +845,7 @@ auto_sign = function(){
 		if (ret != null)
 		{
 			sign_log_add(v["ID"],ret);
+			winform.accounts.setItemText("√",v["ID"],3);
 		}
 	}
 	lstbox_add("自动签到结束" + tostring(time()));
@@ -715,14 +856,14 @@ winform.button.oncommand = function(id,event){
 	return auto_sign();
 }
 
-
-//winform.msgbox(tonumber(time()));
 wb.go("http://2345.com/?k200321")
 wb.noScriptErr=true;
 winform.disk_type.selIndex = 1;
 winform.accounts.insertColumn("ID",25);
 winform.accounts.insertColumn("帐号",-1);
 winform.accounts.insertColumn("签到",30);
+disk_type = { "华为网盘";"金山快盘";"新浪微盘";"115 网盘";"天翼网盘";"淘宝淘金币";"360云盘" }
+winform.disk_type.clear();
 winform.show();
 
 sql = sqlite("\config.db");
@@ -750,6 +891,7 @@ if (!sql.existsTable("sign"))
 	)
 }
 
+
 if (!sql.existsTable("disk_type"))
 {
 	sql.exec("CREATE TABLE disk_type(
@@ -757,23 +899,33 @@ if (!sql.existsTable("disk_type"))
 		name TEXT NOT NULL
 		);"
 	)
-	sql.exec("insert into disk_type values (1,'华为网盘')");
-	sql.exec("insert into disk_type values (2,'金山快盘')");
-	sql.exec("insert into disk_type values (3,'新浪微盘')");
-	sql.exec("insert into disk_type values (4,'115 网盘')");
-	sql.exec("insert into disk_type values (5,'天翼网盘')");
-	sql.exec("insert into disk_type values (6,'淘宝淘金币')");
+	for (k,v in disk_type)
+	{
+		sql.exec("insert into disk_type values ("+k+",'"+v+"')");
+	}
+}
+
+tab = sql.getTable("SELECT name FROM disk_type order by tid");
+
+var j = 0;
+for (k,v in disk_type)
+{
+	winform.disk_type.add(v);
+	if (tab[k+j] == null)
+	{
+		sql.exec("insert into disk_type values ("+k+",'"+v+"')");
+		continue;
+	}
+	if (tab[k+j]['name'] != v)
+	{
+		j -= 1;
+		sql.exec("insert into disk_type values ("+k+",'"+v+"')");
+	}
 }
 
 tab = sql.getTable("select config.*,ifnull(did,0)>0 as st from config left join sign on did=id and date=date('now','localtime') group by id")
-disk_type = sql.getTable("SELECT name FROM disk_type order by tid");
 sql.close();
-for (k,v in disk_type)
-{
-	winform.disk_type.add(v['name']);
-}
 
-disk_type = winform.disk_type.items;
 winform.disk_type.selIndex = 1;
 
 for (k,v in tab)
@@ -797,12 +949,10 @@ for (k,v in tab)
 	}
 	winform.accounts.addItem({tostring(v['ID']);su+"(" + disk_type[v['type']] + ")";st})
 }
-
-sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi};
-
-
 inet.clearCookie();
 inet.clearSesseion();
+sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360};
+
 if (_CMDLINE = "auto")
 {
 	win.delay(3000)
