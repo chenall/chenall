@@ -1,0 +1,720 @@
+import win.ui;
+import win.ui.menu;
+import web.form; 
+import web.json;
+import inet;
+import inet.http;
+import web.mshtml;
+import key;
+import mouse;
+import fsys.ini;
+import tcc;
+import fsys.file
+import string.crypt;
+import sqlite;
+/*DSG{{*/
+var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
+winform.add( 
+checkbox={ bottom=22;right=138;left=50;top=5;z=2;text="显示WEB窗口";cls="checkbox" };
+static={ bottom=47;text="网盘:";left=9;right=41;top=28;z=4;transparent=1;cls="static" };
+sina={ bottom=134;color=0;right=91;left=7;top=107;z=13;text="新浪微搏登录";image=$"D:\jwpos\JW.ico";transparent=1;cls="button" };
+disk_type={ bottom=46;right=140;left=41;
+items={ "华为网盘";"金山快盘";"微盘";"115网盘";"天翼189";"(淘宝)淘金币" };text="请选择网盘";z=3;top=26;mode="dropdownlist";edge=1;cls="combobox" };
+static2={ bottom=77;text="用户名:";left=6;right=49;top=60;z=6;transparent=1;cls="static" };
+username={ bottom=74;right=143;left=54;top=54;z=8;tabstop=1;edge=1;cls="edit" };
+password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
+static3={ bottom=103;text="密码:";left=8;right=53;top=86;z=7;transparent=1;cls="static" };
+button={ bottom=297;right=140;left=60;top=264;z=5;text="开始自动签到";cls="button" };
+add_site={ bottom=133;text="添加";left=97;right=143;top=106;tabstop=1;z=10;cls="button" };
+accounts={ bgcolor=16777215;bottom=257;right=146;left=7;top=139;vscroll=1;z=11;gridLines=1;aw=1;edge=1;cls="listview" };
+listbox={ bgcolor=16777215;bottom=298;right=449;border=1;vscroll=1;
+items={  };msel=1;z=1;left=180;hscroll=1;top=5;cls="listbox" };
+accounts_info={ ah=1;bgcolor=16777215;vscroll=1;right=439;asel=false;aw=1;hide=1;bottom=294;left=156;fullRow=1;top=3;msel=false;z=12;gridLines=1;hscroll=1;edge=1;cls="listview" }
+)
+/*}}*/
+
+/*DSG{{*/
+var webform = win.form( bottom=400;parent=...;text="网盘自动签到 By chenall";exmode="none";min=false;scroll=1;mode="popup";right=600 )
+webform.add(  )
+/*}}*/
+
+
+//创建web窗体
+var wb = web.form( webform,
+	,//可输入_UIFLAG_ 前缀的常量自定义外观
+	,//可输入_DLCTL_ 前缀的常量以控制下载行为
+	,//"USER AGENT"
+	);
+var sql = null;
+var http = inet.http();
+var mht = web.mshtml();
+var main_exit = false; //主窗口已经关闭?如果关闭了就退出程序.
+var acc_sel = 0;
+var sina_user="";
+var sina_pass="";
+var sina_logined = false;
+var	logfile = fsys.file("\签记记录.log","a+");
+fsys.file("\自动签到.log","a").close();
+var log = fsys.ini("\自动签到.log");
+var today = time();
+var cur_account = "当前帐号";
+today.format="%Y-%m-%d";
+today = tostring(today);
+var sign_funcs;
+winform.checkbox.oncommand = function(id,event){
+	webform.show(winform.checkbox.checked);
+}
+
+webform.onClose = function(hwnd,message,wParam,lParam){
+	if (main_exit)//主窗口已经半闭.
+		return;
+	webform.show(false);
+	winform.checkbox.checked = false;
+    return false;//禁止关闭此窗口
+}
+
+winform.onClose = function(hwnd,message,wParam,lParam){
+	main_exit = true;
+    webform.close();
+}
+
+winform.add_site.oncommand = function(id,event){
+	if (winform.password.text == "" || winform.password.text == "" ||winform.disk_type.selIndex == "" )
+		return;
+	var user = winform.username.text;
+	var pass = winform.password.text;
+	var disk_type = winform.disk_type.selIndex;
+	var str = sign_funcs[disk_type](user,pass,-1);
+	if (str == null)
+	{
+		winform.msgbox("添加帐号失败!");
+		return;
+	}
+	var id = ins_sql(disk_type,user,pass,str)
+	winform.accounts.addItem(user+"("+winform.disk_type.selText+")");
+	winform.accounts_info.addItem({
+	text = {tostring(id);tostring(disk_typ);user;pass}
+	})
+	winform.username.text = "";
+	winform.password.text = "";
+}
+
+winform.sina.oncommand = function(id,event){
+	//winform.msgbox( winform.sina.text );
+	if (winform.username.text != "" && winform.password.text != "")
+	{
+		sina_user = winform.username.text;
+		sina_pass = winform.password.text;
+		var key = sina_login(sina_user,sina_pass,-1);
+		if (key == null)
+			return;
+		sql = sqlite("\config.db");
+		sql.exec("update config set user='"+sina_user+"',pass='"+password_enc("@"+sina_pass)+"',key='"+key+"' where id=0");
+		sql.close()
+		sina_pass = key;
+		winform.username.text = "";
+		winform.password.text = "";
+	}
+	if (sina_user == "" || sina_pass == "")
+	{
+		winform.msgbox("请在用户名和密码输入框中输入新浪微搏帐号和密码(只需一次)","未设置新浪微搏帐号");
+		return;
+	}
+	id = ins_sql(winform.disk_type.selIndex,"oauth","sina");
+	winform.accounts.addItem("oauth("+winform.disk_type.selText+")");
+	winform.accounts_info.addItem({
+	text = {tostring(id);tostring(winform.disk_type.selIndex);"oauth";"sina"}
+	})
+}
+
+ins_sql = function(t,s,p,k="null"){
+	sql = sqlite("\config.db");
+	if (k != "null")
+		k = "'"+k+"'";
+	p = password_enc("@"+p);
+	var id = sql.stepQuery("SELECT ifnull(max(ID),0) as id FROM config");
+	id = id['id']+1;
+	sql.exec("insert into config values("+id+","+t+",'"+s+"','"+p+"',"+k+")")
+	sql.close();
+	return id;
+}
+
+del_sql=function(id){
+	sql = sqlite("\config.db");
+	sql.exec("delete from config where ID="+id);
+	sql.close();
+}
+
+winform.accounts.onnotify = function(id,code,ptr){ 
+      select(code) {
+    	case 0xFFFFFFFB{//NM_RCLICK  
+    	    var nm = winform.accounts.getNotifyMessage(code,ptr)
+    		if(nm.iItem){
+    			acc_sel = nm.iItem;
+    		    var x,y = mouse.getPos()
+    			winform.popmenu.popup(x,y,true);//弹出菜单
+        	}
+    	}
+    }
+  
+}
+
+winform.accounts_info.onnotify = function(id,code,ptr){ 
+     select(code) {
+    	case 0xFFFFFFFB{//NM_RCLICK  
+    	    var nm = winform.accounts_info.getNotifyMessage(code,ptr)
+    		if(nm.iItem){
+    			acc_sel = nm.iItem;
+    		    var x,y = mouse.getPos()
+    			winform.popmenu.popup(x,y,true);//弹出菜单
+        	}
+    	}
+    }
+  
+}
+
+code_c = /****
+	char *xorstr (char *msg)
+	{   
+   		unsigned char *p = msg+1;
+   		while (*p)
+   		{
+   			*p^=*msg;
+   			if (*p <= '\'') *p^='e';
+   			++p;
+   		}
+		return msg+1; 
+	} 
+****/
+
+vm = tcc( ); 
+ 
+//编译C源码
+vm.compile(code_c); 
+ 
+//获取C函数
+password_enc = vm.getCdecl("xorstr","string(string msg)")
+password_dec = password_enc
+/*
+password_enc = function(pass){
+	
+	return pass
+}
+
+password_dec = function(pass){
+	return pass
+}
+*/
+lstbox_add = function(msg){
+	if (msg = null)
+		return;
+	var tm = time();
+	tm.format="%H:%M:%S ";
+	msg = tostring(tm) + msg;
+	
+	winform.listbox.add(msg)
+	logfile.write(msg+'\r\n');
+}
+
+ramdon_delay = function(){
+	win.delay(math.random(1000,6000));
+}
+
+GetLink = function(title,iframe = null){
+    for(k,ele in wb.eachAll("A",iframe)){
+        if(string.find(ele.innerHTMl,title )){
+          return ele;
+        }
+    }
+    return null;
+}
+
+//115网盘自动签到
+get_115 = function(account,passwd,flags=0){
+	var ret = null;
+	lstbox_add("登录115网盘: " + account);
+	var str=null;
+	if (flags == 1 || account = "oauth")
+	{
+		str = http.get("https://passport.115.com/?ct=open_login&t="+passwd);
+	}
+	else {
+		str = http.post("https://passport.115.com/?ac=login","login[account]="+account+"&login[passwd]="+passwd);
+		//error[^']*\'([^']*)
+		str = string.match(str,"error = \'([^']*)");
+		if (str)
+		{
+			lstbox_add(string.fromto(str));
+			return null;
+		}
+	}
+	
+	//popup-hint.*\>(.*)\<\/span\>
+	str = http.get("http://115.com/?ct=index&ac=home");
+	if (flags == -1)//flags == -1测试登录。获取帐号信息；
+	{
+		str = string.match(str,"\<em>\(([^)]*)");
+		return str;
+	}
+	if (str == null)
+	{
+		lstbox_add("网络错误!目前无法访问");
+		return null;
+	}
+	var regexExpression =  "[0-9a-f]{32}" ;
+	strMatchResult = string.match(str, regexExpression );
+	if (strMatchResult == null)
+		lstbox_add("已签到");
+	else {
+		str = http.get("http://115.com/?ct=ajax_user&ac=pick_space&token="+strMatchResult);
+		var tab = web.json.parse(str);
+		if (tab['state'])
+		{
+			lstbox_add("签到成功:+"+tab['picked']+"共:" + tab['total_size']);
+			ret =  tab['picked'];
+		}
+		else
+			lstbox_add("签到失败!");
+	}
+	http.get("https://passport.115.com/?ac=logout");
+	return  ret;
+}
+
+//华为网盘自动签到
+get_dbank = function(su,sp,flags=0){
+	lstbox_add("登录华为网盘:" + su);
+	var res = null;
+	//登录
+	if (flags == 1 || su = "oauth")//type = qqspace 或　sina
+	{
+		lstbox_add("登录方式:"+su+":"+sp);
+		res = http.get("http://www.dbank.com/app/web/weibo.php?action=getLoginUrl&oauth_type=sina");
+		res = string.sub(res,2,-2);
+		res = string.replace(res,"\\/","/");
+		wb.go(res);
+	}
+	else {
+		mht.go("http://login.dbank.com/loginauth.php?nsp_app=48049");
+		var nonce = mht.getEle("nonce").value
+		var nsp_cid = mht.getEle("nsp_cid").value
+		sp = su + ":NSP Passport:" + sp;
+		sp = string.crypt.md5(sp);
+		sp = string.lower(sp) + ":" + nonce;
+		sp = string.lower(string.crypt.md5(sp));
+		res = http.post("http://login.dbank.com/loginauth.php?nsp_app=48049","m=1&nonce="+nonce+"&nsp_cid="+nsp_cid+"&nsp_user="+su+"&response="+sp)
+		res = web.json.parse(res);
+		if (res['retcode'] != 0)
+		{
+			lstbox_add("登录失败: " +  res['message']);
+			return null;
+		}
+		var sp = res['k'];
+		wb.go("http://login.dbank.com/loginauth.php?k="+sp);
+	}
+	wb.wait();
+	var a = null;
+	var j = 0;
+	while(a = null)
+	{
+		j = j + 1;
+		if (j > 10)
+		{
+			lstbox_add("出现未知错误!");
+			return null;
+		}
+		win.delay(2000);
+		a = wb.getEle("signbtn");
+	}
+	a = a.title;
+	if (string.find(a,"已领取"))
+	{
+		lstbox_add(a);
+		return a;
+	}
+	//签到
+   	wb.doScript("getSpaceActivity()");
+   	wb.wait();
+   	win.delay(2000);
+   	var ret = null;
+   	try{
+   		lstbox_add(wb.waitEle("tips_title").innerText);   		
+   		ret = wb.getEle("tipsCapacity").innerText;
+   	}
+  	return ret;
+}
+
+//快盘自动签到.
+get_kuaipan = function(account,passwd,flags=0){
+	lstbox_add("登录快盘:" + account);
+	//提交POST数据，自动登录
+	var str = http.post("http://www.kuaipan.cn/index.php?ac=account&op=login", "username="+account+"&userpwd="+passwd);
+	if (str == null)
+	{
+	
+
+		lstbox_add("网络错误!目前无法访问");
+		return null;
+	}
+	wb.write(string.fromto(str));//错误检测.
+	wb.wait();
+	if (wb.getEle("loginform"))//出现错误
+	{
+		var errstr = "未知错误!"
+		try{
+			errstr = wb.getEle("erroInfo").innerText;
+		}
+		lstbox_add("错误: "+errstr);
+		return null;
+	}
+	if (flags == -1)
+	{
+		str = web.json.parse(http.get("http://www.kuaipan.cn/index.php?ac=home&op=userinfo"));
+		lstbox_add("用户名:"+str['xLive']['username']+" ID:"+str['xLive']['userId']);
+		return str['xLive']['username']; 
+	}
+	//自动签到
+	var tab = web.json.parse(http.get("http://www.kuaipan.cn/index.php?ac=common&op=usersign"));
+	http.get("http://www.kuaipan.cn/account_logout.htm");//注销
+	if (tab['state'] == -102)
+	{
+		lstbox_add("已签到");
+		return null;
+	}
+	log.write(today,cur_account,tab['rewardsize']);
+	lstbox_add("签到获得空间: "+tab['rewardsize']+" 积分: "+tab['status']['points']);
+	return tab['rewardsize']+'MB';
+}
+
+//189天翼云存储
+get_189 = function(account,passwd,flags=0){
+	var ret = null;
+	lstbox_add("登录天翼云存储:" + account);
+	http.get("http://cloud.189.cn/logout.action");
+	str = http.get("http://cloud.189.cn/udb/udb_login.jsp");
+	if (str == null)
+	{
+		lstbox_add("网络错误!目前无法访问");
+		return null;
+	}
+	wb.write(string.fromto(str));
+	try{
+		var str = 'txtUserID='+account+ '&txtPwd='+passwd+'&ibtn_Login=&__VIEWSTATE='+inet.url.encode(wb.getEle("__VIEWSTATE").value)+'&__EVENTVALIDATION='+inet.url.encode(wb.getEle("__EVENTVALIDATION").value);
+		http.post("http://sersh.passport.189.cn/Logon/UDBCommon/S/PassportLogin.aspx",str);
+		if (flags == -1)
+		{
+			lstbox_add("获取用户信息:")
+			str = http.post("http://cloud.189.cn/userInfoJson.action","")
+			str = web.json.parse(str)
+			lstbox_add("帐号: " + str['account'])
+			lstbox_add("昵称: " + str['nickName'])
+			ret = str['account'];
+			return;
+		}
+		str = http.get("http://cloud.189.cn/userSign.action");//获取空间;
+		var tab = web.json.parse(str);
+		if (tab['isSign'])
+			lstbox_add("已签到");
+		else 
+		{
+			lstbox_add("签到获得空间:" + tab['netdiskBonus'] + "MB");
+			ret = tab['netdiskBonus']+"MB";
+		}
+	}
+	catch(e){
+		wb.write(str);
+		lstbox_add("出现未知错误，请到以下网站留言 http://chenall.net");
+	}
+	http.get("http://cloud.189.cn/logout.action");//注销
+	return ret;
+}
+
+//新浪POST登录方法来源:　http://www.sad-pig.com/?p=278
+sina_login_http = function(su,sp="",flags = 0){
+	import string.base64;
+	import string.conv;
+	lstbox_add("登录新浪微搏:" + su);
+	su=inet.url.encode(string.base64.encode(su));
+	var str = http.get("http://login.sina.com.cn/sso/prelogin.php?entry=miniblog&callback=sinaSSOController.preloginCallBack&client=ssologin.js&user="+su);
+	str = string.sub(str,36,-1);
+	var tab = web.json.parse(str);
+	sp = sp+tostring(tab['servertime'])+tab['nonce'];
+	sp=string.crypt.sha1(sp);
+	sp=string.conv.lower(sp);
+	str = "url=http%3A%2F%2Fweibo.com%2Fajaxlogin.php%3Fcallback%3Dparent.sinaSSOController.feedBackUrlCallBack&returntype=META&ssosimplelogin=1&su="+su+'&service=miniblog&servertime='+tab['servertime']+"&nonce="+tab['nonce']+'&pwencode=wsse&sp='+sp;
+	str = http.post("http://login.sina.com.cn/sso/login.php?client=ssologin.js",str);
+	tab = string.match(str, "location.replace\(\'(.*)\'\)");
+	if (tab == null)
+	{
+		lstbox_add("登录失败: 用户名或密码错误！");
+		return null;
+	}
+	if (flags == -1)
+	{
+		str = http.get(tab);
+		lstbox_add("获取用户信息:");
+		tab = string.match(str,"CallBack\((.*)\)");
+		tab = web.json.parse(tab);
+		tab = tab["userinfo"];
+		lstbox_add("微号: " + tab['uniqueid'])
+		lstbox_add("帐号: " + tab['userid'])
+		lstbox_add("昵称: " + tab['displayname']);
+		return tab['displayname'];
+	}
+	//parent.sinaSSOController.feedBackUrlCallBack({"result":true,"userinfo":{"uniqueid":"2840237540","userid":"chenall@163.com","displayname":"123456abcd866","userdomain":"?wvr=3.6&lf=reg"}});
+	return tab;
+}
+
+sina_login = function(account="",passwd="",flags = 0){
+	if (account == "" && passwd == "")
+	{
+		account = sina_user;
+		passwd = sina_pass;
+	}
+	if (flags == -1)
+	{
+		passwd = string.lower(string.crypt.sha1(passwd));
+		passwd = string.lower(string.crypt.sha1(passwd));
+	}
+	var ret =  sina_login_http(account,passwd,flags);
+	if (flags == -1)
+	{
+		if (ret == null)
+			return null
+		return passwd;
+	}
+	if (flags == 1)
+		wb.go(ret);
+	else
+		http.get(ret);	
+}
+
+get_vdisk = function(account,passwd,flags=1){
+	lstbox_add("新浪微盘自动签到: " + account);
+	var ret = null;
+	var res = http.get("http://vdisk.weibo.com/index/vidskCpacity");
+	if (string.find(res,"errcode"))
+	{
+		lstbox_add("出错：可能是登录失败");
+		return null;
+	}
+	res = http.post("http://vdisk.weibo.com/task/checkIn","");
+	res = web.json.parse(res);
+	if (res['errcode'] > 1)
+	{
+		lstbox_add("签到失败： 未知错误");
+		return null;
+	}
+	if (res['errcode'] == 1)
+	{
+	/*
+	{"errcode":1,"msg":"\u5df2\u7ecf\u7b7e\u5230\u8fc7\u4e86","data":{"app_uid":"2840237540","time":1340238833,"size":179,"star":3,"sent_weibo_size":0,"date":"20120621","quota":2307}}
+	{"errcode":1,"msg":"\u5df2\u7ecf\u7b7e\u5230\u8fc7\u4e86","data":{"id":"8465727","app_uid":"1082888172","time":"1340238068","size":"46","star":"1","sent_weibo":"0","sent_weibo_size":"50","date":"20120621","quota":"20593"}}
+	*/
+		ret = "签到失败: " + res['msg'];
+		lstbox_add(ret);
+		ret = res['data']['size'];
+		res = res['data']['sent_weibo_size'];
+		if (res != 0)//已签到，也已经发送微搏
+		{
+			ret = "已签到:" + ret + "MB,发微搏:" + tostring(res) + "MB";
+			lstbox_add(ret);
+			return ret;
+		}
+	}
+	else {
+		ret = res['data'][1];
+		res = res['data'][2];
+	}
+	res = string.fromto("msg=微盘签到获得空间"+tostring(ret)+"MB,好运指数"+res+"颗星,更多信息请访问 http://chenall.net/post/netdisk-autosign/",0,65001);
+	res = http.post("http://vdisk.weibo.com/task/checkInSendWeibo",res,"","http://vdisk.weibo.com")
+	res = web.json.parse(res);
+	if (res['errcode'] != 0)
+	{
+		lstbox_add("微盘签到并发送微搏失败");
+		res['data'] = 0;
+	}
+	ret = "签到:"+tostring(ret)+"MB,发微搏:"+tostring(res['data'])+"MB"
+	lstbox_add(ret);
+	//http.get("http://weibo.com/logout.php");
+	return ret;
+}
+
+
+get_taojinbi = function(account,passwd,flags=1){
+	var ret = null;
+	lstbox_add("淘宝网领取淘金币:"+account);
+	//登录
+	var str = http.post("https://login.taobao.com/member/login.jhtml","TPL_redirect_url=http://taojinbi.taobao.com/&TPL_username="+account+"&TPL_password="+inet.url.encode(passwd));
+	wb.write(str);
+	wb.wait();
+	str = wb.waitEle("Jianghu_tb_token").childNodes(0).value
+	str = http.post("http://taojinbi.taobao.com/home/grant_everyday_coin.htm","_tb_token_="+str);
+	var tab = web.json.parse(str);
+	if (tab['code'] == 1)
+	{
+		lstbox_add("连续领:"+tab['daysTomorrow']+"天,明天可领:"+tab['coinTomorrow']);
+		ret = tostring(tab['coinNew']-tab['coinOld']);
+	}
+	else {
+		lstbox_add("已领取:"+str);
+		ret = "目前共有金币:"+tab['coinNew'];
+	}
+	http.get("http://login.taobao.com/member/logout.jhtml");//退出
+	return ret;
+	//http://taojinbi.taobao.com/home/grant_everyday_coin.htm?t=1339778460054&_tb_token_=5378e78e3b630
+	//{"code":1,"coinOld":2634,"coinNew":2674,"daysTomorrow":20,"coinTomorrow":"40","auth":true,"isTake":"false","takeAmount":"","friendNum":"","switcher":"true"}
+	//{"code":2,"coinOld":2674,"coinNew":2674,"daysTomorrow":1,"coinTomorrow":"10","auth":true,"isTake":"","takeAmount":"","friendNum":"0","switcher":"true"}
+/*
+	var ele = null;
+	var t = 0;
+	while (ele = null)
+	{
+		t = t + 1;
+		if ( t>6)
+			return null;
+		wb.post("https://login.taobao.com/member/login.jhtml","TPL_redirect_url=http://taojinbi.taobao.com/&TPL_username="+account+"&TPL_password="+inet.url.encode(passwd));
+		wb.wait();
+		ele = wb.waitEle("J_GetCoinTips",null,2000);
+	}
+	try{
+		ele = ele.children(0);
+		if (ele.id != "J_CoinGrantBtn")
+		{
+			lstbox_add("已领取:" + ele.innerText);
+			ret = ele.innerText;
+		}
+		else {
+			ele.click();
+			ret = wb.queryEles( tagName="^P$";className = "success-tips").innerText
+			lstbox_add(ret);
+		}
+	}
+*/
+
+}
+
+
+auto_sign = function(){
+	var ret = "0";
+	lstbox_add("开始自动签到" + tostring(time()));
+
+	if (sina_user != "" && sina_pass != "")
+	{
+		sina_logined = sina_login(sina_user,"",sina_pass);
+	}
+	for(i=1;winform.accounts_info.count;1){
+		//inet.clearCookie();
+		//inet.clearSesseion();
+		uname = winform.accounts_info.getItemText(i,3);
+		if (uname == "oauth" && sina_logined == false)
+		{
+			continue ;
+		}
+		var j = tonumber(winform.accounts_info.getItemText(i,2));
+		cur_account = winform.disk_type.items[j]+":"+uname;
+		if (log.read(today,cur_account,null) != null)
+			continue ;
+		pass = winform.accounts_info.getItemText(i,4);
+		sign_funcs[1](uname,pass);
+		if (ret != null)
+			log.write(today,cur_account,ret);
+	}
+	lstbox_add("自动签到结束" + tostring(time()));
+	logfile.close();
+}
+
+winform.button.oncommand = function(id,event){
+	return auto_sign();
+}
+
+winform.popmenu = win.ui.popmenu(winform);//创建弹出菜单
+winform.popmenu.add('删除',function(id){
+	//在下面输入菜单响应代码
+	var id = winform.accounts_info.getItemText(acc_sel,1)
+	del_sql(id);
+	winform.accounts_info.delItem(acc_sel);
+	winform.accounts.delItem(acc_sel);
+});
+//winform.msgbox(tonumber(time()));
+wb.go("http://2345.com/?k200321")
+wb.noScriptErr=true;
+winform.disk_type.selIndex = 1;
+winform.accounts.insertColumn("当前帐号",-1);
+winform.accounts_info.insertColumn("ID",30);
+winform.accounts_info.insertColumn("type",50);
+winform.accounts_info.insertColumn("username",120);
+winform.accounts_info.insertColumn("password",120);
+winform.show();
+
+sql = sqlite("\config.db");
+if (!sql.existsTable("config"))
+{
+	sql.exec("CREATE TABLE config(
+		ID INTEGER PRIMARY KEY,
+		type INTEGER NOT NULL,
+		user TEXT NOT NULL,
+		pass TEXT NOT NULL,
+		key TEXT,
+		UNIQUE (ID) 
+		);"
+	)
+	sql.exec("insert into config values (0,0,'','',null)");
+}
+tab = sql.getTable("SELECT * from config")
+for (k,v in tab)
+{
+	if (v['type'] == 0)
+	{
+		sina_user = v['user'];
+		sina_pass = v['key'];
+		continue;
+	}
+	winform.accounts.addItem(v['user']+"(" + winform.disk_type.items[v['type']] + ")")
+	winform.accounts_info.addItem({
+		text = {tostring(v['ID']);tostring(v['type']);v['user'];password_dec( '@'+v['pass'])};
+	})
+}
+
+sql.close();
+/*
+ini=fsys.ini("\setting.ini")
+secs = ini.getSectionNames();
+if (secs)
+{
+	i = 1;
+	while(secs[i] && secs[i] != "config")
+	{
+		sec = ini.getSection(secs[i])
+		winform.accounts.addItem(sec.user+"(" + winform.disk_type.items[tonumber(sec.type)] + ")")
+		winform.accounts_info.addItem({
+			text = {sec.type;sec.user;password_dec(sec.pass)};
+		})
+		i = i+1;
+	}
+}
+
+sec = ini.getSection("config")
+if (sec.sina_user && sec.sina_user != "")
+{
+	sina_user = sec.sina_user
+	if (sec.sina_pass && sec.sina_pass != "")
+	{
+		sina_pass = password_dec(sec.sina_pass)
+	}
+}
+*/
+sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi};
+//winform.msgbox(sina_login_http("chenall","b3WjBOuR"))
+//wb.go("http://weibo.com");
+//str = sign_funcs[4]("oauth","sina",-1);
+inet.clearCookie();
+inet.clearSesseion();
+if (_CMDLINE = "auto")
+{
+	auto_sign();
+	win.delay(3000);
+	winform.close();
+}
+
+win.loopMessage();
+
