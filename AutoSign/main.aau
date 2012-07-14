@@ -12,13 +12,14 @@ import tcc;
 import fsys.file
 import string.crypt;
 import sqlite;
+import inet.downBox;
 /*DSG{{*/
 var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
 winform.add( 
 checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;hide=1;cls="checkbox" };
+static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
 button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
 static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=4;cls="static" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
 disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
 items={  };mode="dropdownlist";edge=1;cls="combobox" };
 password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
@@ -896,6 +897,7 @@ sign_all = function(){
 
 
 auto_sign = function(){
+	winform.button.disabled = true;
 	lstbox_add("开始自动签到" + tostring(time()));
 	var i = 1;
 	while(sign_all() == false){
@@ -909,6 +911,7 @@ auto_sign = function(){
 		i += 1;
 	}
 	lstbox_add("自动签到结束" + tostring(time()));
+	winform.button.disabled = false;
 	return;
 }
 
@@ -1011,7 +1014,6 @@ for (k,v in tab)
 inet.clearCookie();
 inet.clearSesseion();
 sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360};
-
 if (_CMDLINE = "auto")
 {
 	win.delay(3000)
@@ -1019,4 +1021,24 @@ if (_CMDLINE = "auto")
 	win.delay(3000);
 	winform.close();
 }
+//检测更新
+/*
+check_update = function(cur){
+	var id = "c08k4wpqad";
+	wb.go("http://chenall.net/dbank.php?id="+id);
+	wb.wait();
+	var a = web.json.parse(wb.body.innerText);
+	var n = string.left(a.modify_time,10);
+	if (n != cur and winform.msgboxTest('检测到有新的版本，更新时间: '+n+'\n是否要下载更新?',"检测更新"))
+	{
+		http.referer = "http://dl.dbank.com/"+id;
+		//str = http.get(a.url);
+		wb.go(a.url);
+		//ff = io.open("/test.rar","w+b")
+		//ff.write(str);
+		//ff.close();
+	}
+}
+check_update("2012-07-13");
+*/
 win.loopMessage();
