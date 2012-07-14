@@ -55,7 +55,7 @@ var sina_pass="";
 var	logfile = fsys.file("\签记记录.log","a+");
 var sign_funcs;
 var disk_type;
-
+http.setTimeouts(5000,5000,10000);
 webform.onClose = function(hwnd,message,wParam,lParam){
 	if (main_exit)//主窗口已经半闭.
 		return;
@@ -99,6 +99,7 @@ winform.add_site.oncommand = function(id,event){
 	winform.accounts.addItem({tostring(id);user+"("+winform.disk_type.selText+")"});
 	winform.username.text = "";
 	winform.password.text = "";
+	lstbox_add("添加成功");
 }
 
 winform.sina.oncommand = function(id,event){
@@ -346,7 +347,7 @@ get_115 = function(account,passwd,flags=0){
 	strMatchResult = string.match(str, regexExpression );
 	if (strMatchResult == null)
 	{
-		ret = "已签到"
+		ret = "已签到";
 		lstbox_add(ret);
 	}
 	else {
@@ -796,9 +797,14 @@ get_360 = function(su,sp,flags = 0){
 	{
 		lstbox_add("获取登录令牌失败!");
 		return null;
-	}	
+	}
 	//获取用户信息并进行预登录
 	str = http.get("https://login.360.cn/?o=sso&isKeepAlive=0&m=login&from=i360&rtype=data&userName="+su+"&password="+sp+"&token="+token);
+	if (str == null)
+	{
+		lstbox_add("登录失败，可能是网络问题，没有获取到任何数据")
+		return null;
+	}
 	str = string.match(str,"\((.*)\)");
 	var tab = web.json.parse(str);
 	var userinfo = tab['userinfo']
@@ -815,6 +821,11 @@ get_360 = function(su,sp,flags = 0){
 	}
 	//签到
 	str = http.post("http://c5.yunpan.360.cn/user/signin/","method=signin&qid="+userinfo['qid']);
+	if (str == null)
+	{
+		lstbox_add("签到失败，网络有问题，未获取到所需数据！");
+		return null;
+	}
 	tab = web.json.parse(str);
 	var ret = null;
 	if (tab['errno'] == 27002)
@@ -849,7 +860,7 @@ sign_all = function(){
 	var ret = "0";
 	var su,sp,key,st,flag
 	sql = sqlite("\config.db")
-	tab = sql.getTable("SELECT * from config where type > 0 and id not in (select did from sign where date=date('now','localtime'))");
+	tab = sql.getTable("SELECT * from config where type = 4 or (type > 0 and id not in (select did from sign where date=date('now','localtime')))");
 	sql.close();
 	for (k,v in tab)
 	{
@@ -889,7 +900,10 @@ auto_sign = function(){
 	var i = 1;
 	while(sign_all() == false){
 		if (i > 3)
+		{
 			lstbox_add("部份签到失败，请检查记录.");
+			break;
+		}
 		else 
 			lstbox_add("部份签到失败，正在重试第"+i+"次.");
 		i += 1;
