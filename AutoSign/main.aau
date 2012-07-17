@@ -12,14 +12,14 @@ import tcc;
 import fsys.file
 import string.crypt;
 import sqlite;
-import inet.downBox;
+//import inet.downBox;
 /*DSG{{*/
 var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
 winform.add( 
 checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;hide=1;cls="checkbox" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
 button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
 static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=4;cls="static" };
+static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
 disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
 items={  };mode="dropdownlist";edge=1;cls="combobox" };
 password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
@@ -56,7 +56,7 @@ var sina_pass="";
 var	logfile = fsys.file("\签记记录.log","a+");
 var sign_funcs;
 var disk_type;
-http.setTimeouts(5000,5000,10000);
+http.setTimeouts(10000,5000,10000);
 webform.onClose = function(hwnd,message,wParam,lParam){
 	if (main_exit)//主窗口已经半闭.
 		return;
@@ -301,6 +301,17 @@ GetLink = function(title,iframe = null){
     return null;
 }
 
+//读取网页信息http.Get
+function http_get(url,errinfo)
+{
+	var res = http.get(url);
+	if (res == null)
+	{
+		lstbox_add("网络错误: " + errinfo);
+	}
+	return res;
+}
+
 //字节转换
 function ByteToMB(size){
 	var dw = {"KB";"MB";"GB";"TB";"PB":"EB"}
@@ -321,10 +332,13 @@ get_115 = function(account,passwd,flags=0){
 	var str=null;
 	if (flags == 1 || account = "oauth")
 	{
-		str = http.get("https://passport.115.com/?ct=open_login&t="+passwd);
+		str =  http_get("https://passport.115.com/?ct=open_login&t="+passwd,"oauth自动登录");
+		if (str == null)
+			return null;
+		
 	}
 	else {
-		str = http.post("https://passport.115.com/?ac=login","login[account]="+account+"&login[passwd]="+passwd);
+		str = http.post("https://passport.115.com/?ac=login","login[account]="+inet.url.encode(account)+"&login[passwd]="+inet.url.encode(passwd));
 		str = string.match(str,"error = \'([^']*)");
 		if (str)
 		{
@@ -333,7 +347,9 @@ get_115 = function(account,passwd,flags=0){
 		}
 	}
 	
-	str = http.get("http://115.com/?ct=index&ac=home");
+	str = http_get("http://115.com/?ct=index&ac=home","获取帐号信息");
+	if (str == null)
+		return null;
 	if (flags == -1)//flags == -1测试登录。获取帐号信息；
 	{
 		str = string.match(str,"\<em>\(([^)]*)");
@@ -377,14 +393,22 @@ get_dbank = function(su,sp,flags=0){
 		{
 			return null; 
 		}
-		res = http.get("http://www.dbank.com/app/web/weibo.php?action=getLoginUrl&oauth_type=sina");
+		res = http_get("http://www.dbank.com/app/web/weibo.php?action=getLoginUrl&oauth_type=sina","oauth登录");
+		if (res == null)
+		{
+			return null;
+		}
 		res = string.sub(res,2,-2);
 		res = string.replace(res,"\\/","/");
-		wb.go(res);
-		wb.wait();
+		res = http_get(res,"oauth登录");
+		if (res == null)
+		{
+			return null;
+		}
+		
 	}
 	else {
-		res = http.get("http://login.dbank.com/loginauth.php")
+		res = http_get("http://login.dbank.com/loginauth.php","获取登录信息")
 		if (res == null)
 		{
 			lstbox_add("网络错误，正在重试");
@@ -502,7 +526,7 @@ get_kuaipan = function(account,passwd,flags=0){
 	}
 	else {
 		//提交POST数据，自动登录
-		str = http.post("http://www.kuaipan.cn/index.php?ac=account&op=login", "username="+account+"&userpwd="+passwd);
+		str = http.post("http://www.kuaipan.cn/index.php?ac=account&op=login", "username="+inet.url.encode(account)+"&userpwd="+inet.url.encode(passwd));
 	}
 	if (str == null)
 	{
@@ -571,7 +595,7 @@ get_189 = function(account,passwd,flags=0){
 	try{
 		var VIEWSTATE = string.match(str,'__VIEWSTATE[^>]*value=\"([^"]*)\"');
 		var EVENTVALIDATION = string.match(str,'__EVENTVALIDATION[^>]*value=\"([^"]*)\"');
-		str = 'txtUserID='+account+ '&txtPwd='+passwd+'&ibtn_Login=&__VIEWSTATE='+inet.url.encode(VIEWSTATE)+'&__EVENTVALIDATION='+inet.url.encode(EVENTVALIDATION);
+		str = 'txtUserID='+inet.url.encode(account)+ '&txtPwd='+inet.url.encode(passwd)+'&ibtn_Login=&__VIEWSTATE='+inet.url.encode(VIEWSTATE)+'&__EVENTVALIDATION='+inet.url.encode(EVENTVALIDATION);
 		var tab;
 		http.post("http://sersh.passport.189.cn/Logon/UDBCommon/S/PassportLogin.aspx",str);
 		if (flags == -1)
@@ -792,7 +816,9 @@ get_360 = function(su,sp,flags = 0){
 	//获取登录令牌 Token
 	//返回的信息类似如下
 	//login.setSigCallback({"errno":0,"errmsg":"","token":"c14a7bbd7616af6d"})
-	var str = http.get("https://login.360.cn/?o=sso&m=getToken&func=login.setSigCallback&userName="+su);
+	var str = http_get("https://login.360.cn/?o=sso&m=getToken&func=login.setSigCallback&userName="+su,"获取登录令牌");
+	if (str == null)
+		return null;
 	var token = string.match(str,"[a-f0-9]{16}");
 	if (token == null)
 	{
@@ -800,18 +826,17 @@ get_360 = function(su,sp,flags = 0){
 		return null;
 	}
 	//获取用户信息并进行预登录
-	str = http.get("https://login.360.cn/?o=sso&isKeepAlive=0&m=login&from=i360&rtype=data&userName="+su+"&password="+sp+"&token="+token);
+	str = http_get("https://login.360.cn/?o=sso&isKeepAlive=0&m=login&from=i360&rtype=data&userName="+su+"&password="+sp+"&token="+token,"自动登录");
 	if (str == null)
 	{
-		lstbox_add("登录失败，可能是网络问题，没有获取到任何数据")
 		return null;
 	}
 	str = string.match(str,"\((.*)\)");
 	var tab = web.json.parse(str);
 	var userinfo = tab['userinfo']
 	//正式登录
-	lstbox_add("正在登录360网盘...");
-	http.get("http://yunpan.360.cn/user/yplogin")
+	if (http_get("http://yunpan.360.cn/user/yplogin","登录360网盘") == null)
+		return null;
 	if (flags == -1)
 	{
 		lstbox_add("获取用户信息:")
