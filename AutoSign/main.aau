@@ -11,26 +11,27 @@ import fsys.ini;
 import tcc;
 import fsys.file
 import string.crypt;
+import string.base64;
 import sqlite;
 //import inet.downBox;
 /*DSG{{*/
-var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net";parent=...)
+var winform = ..win.form( bottom=300;parent=...;right=450;text="网盘自动签到 by chenall http://chenall.net";scroll=1 )
 winform.add( 
-checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;hide=1;cls="checkbox" };
-button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
-static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=4;cls="static" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
-disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
-items={  };mode="dropdownlist";edge=1;cls="combobox" };
-password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
-username={ bottom=74;right=143;left=54;top=54;z=8;tabstop=1;edge=1;cls="edit" };
-static3={ bottom=103;text="密码:";left=8;right=53;top=86;transparent=1;z=7;cls="static" };
-button={ bottom=297;text="开始签到";left=71;top=264;z=5;right=145;cls="button" };
-add_site={ bottom=133;text="添加";left=97;right=143;top=106;z=10;tabstop=1;cls="button" };
-accounts={ bgcolor=16777215;bottom=257;right=146;left=7;cls="listview";top=139;vscroll=1;aw=1;gridLines=1;z=11;edge=1;fullRow=1 };
-listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;border=1;left=151;top=6;msel=1;z=1;
-items={  };hscroll=1;aw=1;cls="listbox" };
-sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" }
+checkbox={ bottom=22;right=138;left=50;top=5;z=2;text="显示WEB窗口";cls="checkbox";hide=1 };
+button2={ bottom=296;text="签到记录";left=5;top=263;z=13;right=63;cls="button" };
+sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" };
+static2={ bottom=77;right=49;left=6;text="用户名:";top=60;z=6;transparent=1;cls="static" };
+disk_type={ bottom=46;right=140;left=41;
+items={  };text="请选择网盘";z=3;top=26;mode="dropdownlist";edge=1;cls="combobox" };
+password={ bottom=103;right=142;left=53;top=84;tabstop=1;z=9;edge=1;cls="edit" };
+username={ bottom=74;right=143;left=54;top=54;tabstop=1;z=8;edge=1;cls="edit" };
+static3={ bottom=103;right=53;left=8;text="密码:";top=86;z=7;transparent=1;cls="static" };
+button={ bottom=297;right=145;left=71;top=264;z=5;text="开始签到";cls="button" };
+add_site={ bottom=133;right=143;left=97;text="添加";top=106;tabstop=1;z=10;cls="button" };
+accounts={ bgcolor=16777215;vscroll=1;right=146;left=7;fullRow=1;top=139;bottom=257;aw=1;gridLines=1;z=11;edge=1;cls="listview" };
+listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;left=151;border=1;
+items={  };msel=1;aw=1;top=6;hscroll=1;z=1;cls="listbox" };
+static={ bottom=47;right=41;left=9;text="网盘:";top=28;z=4;transparent=1;cls="static" }
 )
 /*}}*/
 
@@ -56,6 +57,7 @@ var sina_pass="";
 var	logfile = fsys.file("\签记记录.log","a+");
 var sign_funcs;
 var disk_type;
+var version = "2012-07-20-14:24";
 http.setTimeouts(10000,5000,10000);
 webform.onClose = function(hwnd,message,wParam,lParam){
 	if (main_exit)//主窗口已经半闭.
@@ -114,7 +116,7 @@ winform.sina.oncommand = function(id,event){
 			return;
 		key = key[2];
 		sql = sqlite("\config.db");
-		sql.exec("update config set user='"+sina_user+"',pass='"+password_enc("@"+sina_pass)+"',key='"+key+"' where id=0");
+		sql.exec("update config set user='"+sina_user+"',pass='"+password_enc(sina_pass)+"',key='"+key+"' where id=0");
 		sql.close()
 		sina_pass = key;
 		winform.username.text = "";
@@ -140,7 +142,7 @@ ins_sql = function(t,s,p,k="null"){
 	sql = sqlite("\config.db");
 	if (k != "null")
 		k = "'"+k+"'";
-	p = password_enc("@"+p);
+	p = password_enc(p);
 	var id = sql.stepQuery("select id+1 as id from config a where not exists(select 1 from config where id=a.id+1) order by id limit 1")
 	id = id['id']
 	sql.exec("insert into config values("+id+","+t+",'"+s+"','"+p+"',"+k+")")
@@ -261,7 +263,17 @@ code_c = /****
    		while (*p)
    		{
    			*p^=*msg;
-   			if (*p <= '\'') *p^='e';
+   			++p;
+   		}
+		return msg+1; 
+	}
+	char *_xorstr (char *msg)
+	{   
+   		unsigned char *p = msg+1;
+   		while (*p)
+   		{
+   			*p^=*msg;
+   			if (*p <= '\'') *p ^= 'e';
    			++p;
    		}
 		return msg+1; 
@@ -274,8 +286,19 @@ vm = tcc( );
 vm.compile(code_c); 
  
 //获取C函数
-password_enc = vm.getCdecl("xorstr","string(string msg)")
-password_dec = password_enc
+xorstr = vm.getCdecl("xorstr","string(string msg)")
+password_enc = function(str,key='\x1B'){
+	str = xorstr(key + str);
+	str = string.base64.encode(str);
+	return str;
+}
+password_dec = function(str,key='\x1B'){
+	var dec = string.base64.decode(str);
+	if (dec == null)
+		return xorstr(key + str);
+	return xorstr(key + dec);;
+}
+
 
 lstbox_add = function(msg){
 	if (msg = null)
@@ -408,46 +431,45 @@ get_dbank = function(su,sp,flags=0){
 		
 	}
 	else {
-		res = http_get("http://login.dbank.com/loginauth.php","获取登录信息")
-		if (res == null)
+		if (flags < 0)
 		{
-			lstbox_add("网络错误，正在重试");
-			res = http.get("http://login.dbank.com/loginauth.php")
+			res = http_get("http://login.dbank.com/loginauth.php","获取登录信息")
 			if (res == null)
 			{
-				lstbox_add("网络错误");
-				return  null;
+				lstbox_add("网络错误，正在重试");
+				res = http.get("http://login.dbank.com/loginauth.php")
+				if (res == null)
+				{
+					lstbox_add("网络错误");
+					return  null;
+				}
 			}
-		}
-		var nonce = string.match( res,'nonce[^>]*value=["|\']?([0-9a-f.]*)["|\']?');
-		var nsp_cid = string.match(res,'nsp_cid[^>]*value=["|\']?([a-f0-9A-F]{32})');
-		if (nonce == null || nsp_cid == null)
-		{
-			lstbox_add("出现未知错误:" + res);
-			return null;
-		}
-		if (flags == -1)
-		{
-			sp = su + ":NSP Passport:" + sp;
-			sp = string.lower(string.crypt.md5(sp));
-		}
-		res = sp + ":" + nonce;
-		res = string.lower(string.crypt.md5(res));
-		res = http.post("http://login.dbank.com/loginauth.php?nsp_app=48049","m=1&nonce="+nonce+"&nsp_cid="+nsp_cid+"&nsp_user="+su+"&response="+res)
-		res = web.json.parse(res);
-		if (res['retcode'] != 0)
-		{
-			lstbox_add("登录失败: " +  res['message']);
-			return null;
-		}
-		if (flags == -1)
-		{
-
+			var nonce = string.match( res,'nonce[^>]*value=["|\']?([0-9a-f.]*)["|\']?');
+			var nsp_cid = string.match(res,'nsp_cid[^>]*value=["|\']?([a-f0-9A-F]{32})');
+			if (nonce == null || nsp_cid == null)
+			{
+				lstbox_add("出现未知错误:" + res);
+				return null;
+			}
+			if (flags == -1)
+			{
+				sp = su + ":NSP Passport:" + sp;
+				sp = string.lower(string.crypt.md5(sp));
+			}
+			res = sp + ":" + nonce;
+			res = string.lower(string.crypt.md5(res));
+			res = http.post("http://login.dbank.com/loginauth.php?nsp_app=48049","m=1&nonce="+nonce+"&nsp_cid="+nsp_cid+"&nsp_user="+su+"&response="+res)
+			res = web.json.parse(res);
+			if (res['retcode'] != 0)
+			{
+				lstbox_add("登录失败: " +  res['message']);
+				return null;
+			}
+			sp = res['k'];
 			http.get("http://login.dbank.com/accounts/logout");//退出;
 			inet.clearCookie();
 			return {1;sp};
 		}
-		sp = res['k'];
 		http.get("http://login.dbank.com/loginauth.php?k="+sp);
 		//{"retcode":"0000","retdesc":"用户签到成功","type":2,"space":37}
 		//{"retcode":"0001","retdesc":"用户已签到"}
@@ -639,7 +661,6 @@ get_189 = function(account,passwd,flags=0){
 
 //新浪POST登录方法来源:　http://www.sad-pig.com/?p=278
 sina_login_http = function(su,sp,flags = 0){
-	import string.base64;
 	import string.conv;
 	//lstbox_add("登录新浪微搏:" + su);
 	su=inet.url.encode(string.base64.encode(su));
@@ -845,8 +866,8 @@ get_360 = function(su,sp,flags = 0){
 		lstbox_add("loginEmail:"+userinfo['loginEmail']);
 		return {1;sp}//返回加密后的密码作为以后登录使用.
 	}
-	//签到
-	str = http.post("http://c5.yunpan.360.cn/user/signin/","method=signin&qid="+userinfo['qid']);
+	//签到//ethod=check//signin
+	str = http.post("http://c5.yunpan.360.cn/user/signin/","method=check&qid="+userinfo['qid']);
 	if (str == null)
 	{
 		lstbox_add("签到失败，网络有问题，未获取到所需数据！");
@@ -891,7 +912,7 @@ sign_all = function(){
 	for (k,v in tab)
 	{
 		su = v['user'];
-		sp = password_dec( '@' + v['pass']);
+		sp = password_dec(v['pass']);
 		key = v['key'];
 		st = v['type'];
 		flag = 0;
@@ -950,9 +971,9 @@ winform.accounts.insertColumn("ID",25);
 winform.accounts.insertColumn("帐号",-1);
 winform.accounts.insertColumn("签到",30);
 disk_type = { "华为网盘";"金山快盘";"新浪微盘";"115 网盘";"天翼网盘";"淘宝淘金币";"360云盘" }
+sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360};
 winform.disk_type.clear();
 winform.show();
-
 sql = sqlite("\config.db");
 if (!sql.existsTable("config"))
 {
@@ -978,6 +999,38 @@ if (!sql.existsTable("sign"))
 	)
 }
 
+if (!sql.existsTable("setting"))
+{
+	sql.exec("CREATE TABLE setting(
+		key TEXT NOT NULL,
+		value TEXT
+		);"
+	)
+	strxor = vm.getCdecl("_xorstr","string(string msg)")
+	tab = sql.getTable("select * from config where type>0")
+	win.msgboxTimeout("将会自动升级数据库,完成之后请退出重新启动程序","升级数据库",5);
+	for (k,v in tab)
+	{
+		if (v['user'] == 'oauth')
+		{
+			pass = "sina";
+		}
+		else if (v['type'] == 1) //华为网盘转换
+		{
+			pass = strxor("@"+v['pass']);
+			pass = sign_funcs[1](v['user'],pass,-2);
+			if (pass != null)
+				pass = pass[2];
+		}
+		else {
+			pass = strxor("@"+v['pass']);
+		}
+		pass = password_enc(pass);
+		sql.exec('update config set pass="'+pass+'" where ID='+v['ID']);
+	}
+	sql.exec('insert into setting values ("version","'+version+'")');
+	win.msgboxTimeout("升级完成,请重启应用程序","升级完成",5);
+}
 
 if (!sql.existsTable("disk_type"))
 {
@@ -1024,7 +1077,7 @@ for (k,v in tab)
 		continue;
 	}
 	var su = v['user'];
-	var sp = password_dec('@'+ v['pass']);
+	var sp = password_dec(v['pass']);
 	var st = null;
 	if (su == "oauth")
 	{
@@ -1038,7 +1091,7 @@ for (k,v in tab)
 }
 inet.clearCookie();
 inet.clearSesseion();
-sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360};
+
 if (_CMDLINE = "auto")
 {
 	win.delay(3000)
