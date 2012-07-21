@@ -556,7 +556,7 @@ get_kuaipan = function(account,passwd,flags=0){
 		return null;
 	}
 	wb.write(string.fromto(str));//错误检测.
-	wb.wait();
+	wb.wait('',20000)
 	if (wb.getEle("loginform"))//出现错误
 	{
 		var errstr = "未知错误!"
@@ -858,8 +858,6 @@ get_360 = function(su,sp,flags = 0){
 	//正式登录
 	if (http_get("http://yunpan.360.cn/user/login","登录360网盘") == null)
 		return null;
-	//if (http_get("http://yunpan.360.cn/user/yplogin","登录360网盘") == null)
-	//	return null;
 	if (flags == -1)
 	{
 		lstbox_add("获取用户信息:")
