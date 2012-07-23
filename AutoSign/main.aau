@@ -54,7 +54,7 @@ var main_exit = false; //主窗口已经关闭?如果关闭了就退出程序.
 var acc_sel = 0;
 var sina_user="";
 var sina_pass="";
-var	logfile = fsys.file("\签记记录.log","a+");
+var	logfile = fsys.file("\签到记录.log","a+");
 var sign_funcs;
 var disk_type;
 var version = "2012-07-20-14:24";
@@ -438,45 +438,45 @@ get_dbank = function(su,sp,flags=0){
 		
 	}
 	else {
-		if (flags < 0)
+		res = http_get("http://login.dbank.com/loginauth.php","获取登录信息")
+		if (res == null)
 		{
-			res = http_get("http://login.dbank.com/loginauth.php","获取登录信息")
+			lstbox_add("网络错误，正在重试");
+			res = http.get("http://login.dbank.com/loginauth.php")
 			if (res == null)
 			{
-				lstbox_add("网络错误，正在重试");
-				res = http.get("http://login.dbank.com/loginauth.php")
-				if (res == null)
-				{
-					lstbox_add("网络错误");
-					return  null;
-				}
+				lstbox_add("网络错误");
+				return  null;
 			}
-			var nonce = string.match( res,'nonce[^>]*value=["|\']?([0-9a-f.]*)["|\']?');
-			var nsp_cid = string.match(res,'nsp_cid[^>]*value=["|\']?([a-f0-9A-F]{32})');
-			if (nonce == null || nsp_cid == null)
-			{
-				lstbox_add("出现未知错误:" + res);
-				return null;
-			}
-			if (flags == -1)
-			{
-				sp = su + ":NSP Passport:" + sp;
-				sp = string.lower(string.crypt.md5(sp));
-			}
-			res = sp + ":" + nonce;
-			res = string.lower(string.crypt.md5(res));
-			res = http.post("http://login.dbank.com/loginauth.php?nsp_app=48049","m=1&nonce="+nonce+"&nsp_cid="+nsp_cid+"&nsp_user="+su+"&response="+res)
-			res = web.json.parse(res);
-			if (res['retcode'] != 0)
-			{
-				lstbox_add("登录失败: " +  res['message']);
-				return null;
-			}
-			sp = res['k'];
+		}
+		var nonce = string.match( res,'nonce[^>]*value=["|\']?([0-9a-f.]*)["|\']?');
+		var nsp_cid = string.match(res,'nsp_cid[^>]*value=["|\']?([a-f0-9A-F]{32})');
+		if (nonce == null || nsp_cid == null)
+		{
+			lstbox_add("出现未知错误:" + res);
+			return null;
+		}
+		if (flags == -1)
+		{
+			sp = su + ":NSP Passport:" + sp;
+			sp = string.lower(string.crypt.md5(sp));
+		}
+		res = sp + ":" + nonce;
+		res = string.lower(string.crypt.md5(res));
+		res = http.post("http://login.dbank.com/loginauth.php?nsp_app=48049","m=1&nonce="+nonce+"&nsp_cid="+nsp_cid+"&nsp_user="+su+"&response="+res)
+		res = web.json.parse(res);
+		if (res['retcode'] != 0)
+		{
+			lstbox_add("登录失败: " +  res['message']);
+			return null;
+		}
+		if (flags < 0)
+		{
 			http.get("http://login.dbank.com/accounts/logout");//退出;
 			inet.clearCookie();
 			return {1;sp};
 		}
+		sp = res['k'];
 		http.get("http://login.dbank.com/loginauth.php?k="+sp);
 		//{"retcode":"0000","retdesc":"用户签到成功","type":2,"space":37}
 		//{"retcode":"0001","retdesc":"用户已签到"}
