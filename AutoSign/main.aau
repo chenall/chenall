@@ -514,7 +514,7 @@ get_dbank = function(su,sp,flags=0){
 		}
 		if (res == null)
 			return null;
-		wb.go("http://login.dbank.com/accounts/logout");//退出;
+		http.get("http://login.dbank.com/accounts/logout");//退出;
 		return {2;res};
 	}
 	nsp_key = secret + "nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.signinnsp_ts"
@@ -532,6 +532,14 @@ get_dbank = function(su,sp,flags=0){
 			ret = "已签到"
 			lstbox_add(string.fromto(res['retdesc']))
 		}
+		nsp_key = secret + "nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.forwordsignnsp_tssigntype8"
+		nsp_key = string.crypt.md5(nsp_key);
+		nsp_key = "http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.forwordsign&signtype=8&nsp_ts=&nsp_sid="+nsp_sid+"&nsp_key="+nsp_key;
+		nsp_key = http.get(nsp_key);
+		nsp_key = secret + "nsp_sid"+nsp_sid+"nsp_svccom.dbank.signin.forwordsignnsp_tssigntype9"
+		nsp_key = string.crypt.md5(nsp_key);
+		nsp_key = "http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.forwordsign&signtype=9&nsp_ts=&nsp_sid="+nsp_sid+"&nsp_key="+nsp_key;		
+		nsp_key = http.get(nsp_key);
 		ret += ",空间:" + ByteToMB(userinfo['product.spacecapacity'])+" + "+ByteToMB(userinfo['profile.spaceextcapacity'])+" - " + ByteToMB(userinfo['profile.usedspacecapacity']);
 		lstbox_add(ret);
 	}
@@ -539,7 +547,7 @@ get_dbank = function(su,sp,flags=0){
 		lstbox_add("出现错误以下是相关数据：")
 		lstbox_add(result);
 	}
-
+	http.get("http://login.dbank.com/accounts/logout");//退出;
   	return ret;
 }
 
