@@ -15,23 +15,22 @@ import string.base64;
 import sqlite;
 //import inet.downBox;
 /*DSG{{*/
-var winform = ..win.form( bottom=300;scroll=1;right=450;text="网盘自动签到 by chenall http://chenall.net  2012-07-25";parent=...)
+var winform = ..win.form( bottom=300;max=false;right=450;border="dialog frame";parent=...;scroll=1;cp=1;text="网盘自动签到 by chenall http://chenall.net  2012-07-25" )
 winform.add( 
-checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=2;right=138;hide=1;cls="checkbox" };
-button2={ bottom=296;right=63;left=5;top=263;z=13;text="签到记录";cls="button" };
-static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=4;cls="static" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=6;cls="static" };
-disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=3;
-items={  };mode="dropdownlist";edge=1;cls="combobox" };
-password={ bottom=103;right=142;left=53;top=84;z=9;tabstop=1;edge=1;cls="edit" };
-username={ bottom=74;right=143;left=54;top=54;z=8;tabstop=1;edge=1;cls="edit" };
-static3={ bottom=103;text="密码:";left=8;right=53;top=86;transparent=1;z=7;cls="static" };
-button={ bottom=297;text="开始签到";left=71;top=264;z=5;right=145;cls="button" };
-add_site={ bottom=133;text="添加";left=97;right=143;top=106;z=10;tabstop=1;cls="button" };
-accounts={ bgcolor=16777215;bottom=257;right=146;left=7;cls="listview";top=139;vscroll=1;aw=1;gridLines=1;z=11;edge=1;fullRow=1 };
-listbox={ ah=1;bgcolor=16777215;bottom=299;vscroll=1;right=450;border=1;left=151;top=6;msel=1;z=1;
-items={  };hscroll=1;aw=1;cls="listbox" };
-sina={ bottom=134;color=0;text="新浪微搏登录";left=7;top=107;transparent=1;right=91;z=12;cls="button" }
+checkbox={ bottom=22;right=138;left=50;text="显示WEB窗口";top=5;z=1;hide=1;cls="checkbox" };
+button2={ bottom=297;text="签到记录";left=8;top=264;z=12;right=73;cls="button" };
+sina={ bottom=134;color=0;right=91;left=7;top=107;transparent=1;text="新浪微搏登录";z=11;cls="button" };
+static={ bottom=47;text="网盘:";left=9;top=28;z=3;transparent=1;right=41;cls="static" };
+static2={ bottom=77;text="用户名:";left=6;top=60;z=5;transparent=1;right=49;cls="static" };
+password={ bottom=103;right=142;left=53;top=84;tabstop=1;z=8;edge=1;cls="edit" };
+username={ bottom=74;right=143;left=54;top=54;tabstop=1;z=7;edge=1;cls="edit" };
+static3={ bottom=103;text="密码:";left=8;top=86;z=6;transparent=1;right=53;cls="static" };
+button={ bottom=297;text="开始签到";left=80;top=264;z=4;right=145;cls="button" };
+add_site={ bottom=133;right=143;left=97;top=106;z=9;tabstop=1;text="添加";cls="button" };
+accounts={ ah=1;bgcolor=16777215;bottom=297;z=10;right=448;left=147;vscroll=1;top=2;aw=1;gridLines=1;fullRow=1;edge=1;cls="listview" };
+info={ bottom=258;right=144;left=5;top=134;transparent=1;z=13;cls="static" };
+disk_type={ bottom=46;right=140;left=41;
+items={  };text="请选择网盘";z=2;top=26;mode="dropdownlist";edge=1;cls="combobox" }
 )
 /*}}*/
 
@@ -58,6 +57,10 @@ var	logfile = fsys.file("\签到记录.log","a+");
 var sign_funcs;
 var disk_type;
 var version = "2012-07-20-14:24";
+
+//var info = web.form(winform.info,0x200004);
+//info.go("http://chenall.net");
+
 http.setTimeouts(10000,5000,10000);
 webform.onClose = function(hwnd,message,wParam,lParam){
 	if (main_exit)//主窗口已经半闭.
@@ -307,7 +310,7 @@ lstbox_add = function(msg){
 	tm.format="%H:%M:%S ";
 	msg = tostring(tm) + msg;
 	
-	winform.listbox.add(msg)
+//	winform.listbox.add(msg)
 	logfile.write(msg+'\r\n');
 }
 
@@ -556,7 +559,7 @@ get_dbank = function(su,sp,flags=0){
 //快盘自动签到.
 get_kuaipan = function(account,passwd,flags=0){
 	lstbox_add("登录快盘:" + account);
-	var str;
+	var str,tab,ret = null;
 	if (flags == 1 || account = "oauth")
 	{
 		lstbox_add("使用新浪微搏登录");
@@ -585,27 +588,43 @@ get_kuaipan = function(account,passwd,flags=0){
 	//http://www.kuaipan.cn/index.php?ac=home&op=userinfo 获取用户信息
 	if (flags == -1)
 	{
-		str = web.json.parse(http.get("http://www.kuaipan.cn/index.php?ac=home&op=userinfo"));
-		lstbox_add("用户名:"+str['xLive']['username'])
-		lstbox_add("用户ID:"+str['xLive']['userId'])
-		return {2;str['xLive']['username']}; 
+		try{
+			str = http_get("http://www.kuaipan.cn/index.php?ac=home&op=userinfo","获取用户信息");
+			tab = web.json.parse(str);
+			lstbox_add("用户名:"+tab['xLive']['username'])
+			lstbox_add("用户ID:"+tab['xLive']['userId'])
+			ret = {2;tab['xLive']['username']}; 
+		}
+		catch(e){
+			lstbox_add("获取用户信息时出错:" + str);
+		}
+		return ret;
+
 	}
 	//自动签到
-	var tab = web.json.parse(http.get("http://www.kuaipan.cn/index.php?ac=common&op=usersign"));
-	var ret = null;
-	if (tab['state'] == -102)
-	{
-	//{"status": {"grade": 0, "maxsize": 100, "points": 18, "period": 0}, "rewardsize": 14, "monthtask": {"M900": 18, "invite": 0, "maxnormal": 900, "normal": 18}, "todaytask": {"count": {"sign": 1}}, "userid": "12842259", "increase": 9, "state": 1}
-		ret = "已签到";
-	}
-	else {
-		ret = "签到: +"+tab['rewardsize']+"MB 积分: "+tab['status']['points'];
-	}
-	
 	try{
-		str = http.get("http://www.kuaipan.cn/index.php?ac=home&op=space");
+		str =http_get("http://www.kuaipan.cn/index.php?ac=common&op=usersign","获取签到信息");
+		tab =  web.json.parse(str);
+		if (tab['state'] == -102)
+		{
+		//{"status": {"grade": 0, "maxsize": 100, "points": 18, "period": 0}, "rewardsize": 14, "monthtask": {"M900": 18, "invite": 0, "maxnormal": 900, "normal": 18}, "todaytask": {"count": {"sign": 1}}, "userid": "12842259", "increase": 9, "state": 1}
+			ret = "已签到";
+		}
+		else {
+			ret = "签到: +"+tab['rewardsize']+"MB 积分: "+tab['status']['points'];
+		}			
+	}
+	catch(e){
+		lstbox_add("获取签到信息出错:" + str);
+	}
+		
+	try{
+		str = http_get("http://www.kuaipan.cn/index.php?ac=home&op=space","获取空间信息");
 		tab = web.json.parse(str);
 		ret += " 总:"+ByteToMB(tab['xLive']['total']);
+	}
+	catch(e){
+		lstbox_add("获取空间信息出错:" + str);
 	}
 	http.get("http://www.kuaipan.cn/account_logout.htm");//注销
 	lstbox_add(ret);
@@ -992,9 +1011,9 @@ winform.button.oncommand = function(id,event){
 
 wb.noScriptErr=true;
 winform.disk_type.selIndex = 1;
-winform.accounts.insertColumn("ID",25);
-winform.accounts.insertColumn("帐号",-1);
-winform.accounts.insertColumn("签到",30);
+winform.accounts.insertColumn("ID",30);
+winform.accounts.insertColumn("帐号",225);
+winform.accounts.insertColumn("签到",40);
 disk_type = { "华为网盘";"金山快盘";"新浪微盘";"115 网盘";"天翼网盘";"淘宝淘金币";"360云盘" }
 sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360};
 winform.disk_type.clear();
