@@ -15,22 +15,22 @@ import string.base64;
 import sqlite;
 //import inet.downBox;
 /*DSG{{*/
-var winform = ..win.form( max=false;bottom=300;parent=...;text="网盘自动签到 by chenall http://chenall.net  2012-07-26";border="dialog frame";scroll=1;right=450;cp=1 )
+var winform = ..win.form( parent=...;bottom=300;max=false;right=450;border="dialog frame";scroll=1;text="网盘自动签到 by chenall http://chenall.net  2012-08-01";cp=1 )
 winform.add( 
-checkbox={ bottom=22;right=138;left=50;top=5;z=1;text="显示WEB窗口";hide=1;cls="checkbox" };
-button2={ bottom=297;right=73;left=8;top=264;z=12;text="签到记录";cls="button" };
+checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=1;right=138;cls="checkbox";hide=1 };
+button2={ bottom=297;text="签到记录";left=8;top=264;z=12;right=73;cls="button" };
 sina={ bottom=134;color=0;right=91;left=7;top=107;transparent=1;text="新浪微搏登录";z=11;cls="button" };
-static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=3;cls="static" };
-static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=5;cls="static" };
-password={ bottom=103;right=142;left=53;top=84;tabstop=1;z=8;edge=1;cls="edit" };
-username={ bottom=74;right=143;left=54;top=54;tabstop=1;z=7;edge=1;cls="edit" };
-info={ bottom=258;right=144;left=5;top=134;z=13;transparent=1;cls="static" };
-button={ bottom=297;right=145;left=80;top=264;z=4;text="开始签到";cls="button" };
-add_site={ bottom=133;right=143;left=97;text="添加";top=106;tabstop=1;z=9;cls="button" };
-accounts={ ah=1;bgcolor=16777215;vscroll=1;aw=1;right=448;left=147;bottom=297;top=2;z=10;gridLines=1;fullRow=1;edge=1;cls="listview" };
-static3={ bottom=103;text="密码:";left=8;right=53;top=86;transparent=1;z=6;cls="static" };
-disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=2;
-items={  };mode="dropdownlist";edge=1;cls="combobox" }
+static={ bottom=47;right=41;left=9;text="网盘:";top=28;z=3;transparent=1;cls="static" };
+disk_type={ bottom=46;right=140;left=41;
+items={  };text="请选择网盘";z=2;top=26;mode="dropdownlist";edge=1;cls="combobox" };
+password={ bottom=103;right=142;left=53;top=84;z=8;tabstop=1;edge=1;cls="edit" };
+static3={ bottom=103;right=53;left=8;text="密码:";top=86;z=6;transparent=1;cls="static" };
+info={ bottom=258;right=144;left=5;top=134;transparent=1;z=13;cls="static" };
+button={ bottom=297;text="开始签到";left=80;top=264;z=4;right=145;cls="button" };
+add_site={ bottom=133;text="添加";left=97;right=143;top=106;z=9;tabstop=1;cls="button" };
+accounts={ ah=1;bgcolor=16777215;vscroll=1;z=10;right=448;left=147;bottom=297;top=2;aw=1;gridLines=1;cls="listview";edge=1;fullRow=1 };
+username={ bottom=74;right=143;left=54;top=54;z=7;tabstop=1;edge=1;cls="edit" };
+static2={ bottom=77;right=49;left=6;text="用户名:";top=60;z=5;transparent=1;cls="static" }
 )
 /*}}*/
 
@@ -1167,7 +1167,6 @@ for (k,v in tab)
 	}
 	winform.accounts.addItem({tostring(v['ID']);su+"(" + disk_type[v['type']] + ")";st})
 }
-inet.clearCookie();
 inet.clearSesseion();
 
 if (_CMDLINE = "auto")
