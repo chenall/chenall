@@ -15,22 +15,22 @@ import string.base64;
 import sqlite;
 //import inet.downBox;
 /*DSG{{*/
-var winform = ..win.form( parent=...;bottom=300;max=false;right=450;border="dialog frame";scroll=1;text="网盘自动签到 by chenall http://chenall.net  2012-08-01";cp=1 )
+var winform = ..win.form( max=false;bottom=300;parent=...;text="网盘自动签到 by chenall http://chenall.net  2012-08-07";border="dialog frame";scroll=1;right=450;cp=1 )
 winform.add( 
-checkbox={ bottom=22;text="显示WEB窗口";left=50;top=5;z=1;right=138;cls="checkbox";hide=1 };
-button2={ bottom=297;text="签到记录";left=8;top=264;z=12;right=73;cls="button" };
+checkbox={ bottom=22;right=138;left=50;top=5;z=1;text="显示WEB窗口";cls="checkbox" };
+button2={ bottom=297;right=73;left=8;top=264;z=12;text="签到记录";cls="button" };
 sina={ bottom=134;color=0;right=91;left=7;top=107;transparent=1;text="新浪微搏登录";z=11;cls="button" };
-static={ bottom=47;right=41;left=9;text="网盘:";top=28;z=3;transparent=1;cls="static" };
-disk_type={ bottom=46;right=140;left=41;
-items={  };text="请选择网盘";z=2;top=26;mode="dropdownlist";edge=1;cls="combobox" };
-password={ bottom=103;right=142;left=53;top=84;z=8;tabstop=1;edge=1;cls="edit" };
-static3={ bottom=103;right=53;left=8;text="密码:";top=86;z=6;transparent=1;cls="static" };
-info={ bottom=258;right=144;left=5;top=134;transparent=1;z=13;cls="static" };
-button={ bottom=297;text="开始签到";left=80;top=264;z=4;right=145;cls="button" };
-add_site={ bottom=133;text="添加";left=97;right=143;top=106;z=9;tabstop=1;cls="button" };
-accounts={ ah=1;bgcolor=16777215;vscroll=1;z=10;right=448;left=147;bottom=297;top=2;aw=1;gridLines=1;cls="listview";edge=1;fullRow=1 };
-username={ bottom=74;right=143;left=54;top=54;z=7;tabstop=1;edge=1;cls="edit" };
-static2={ bottom=77;right=49;left=6;text="用户名:";top=60;z=5;transparent=1;cls="static" }
+static={ bottom=47;text="网盘:";left=9;right=41;top=28;transparent=1;z=3;cls="static" };
+static2={ bottom=77;text="用户名:";left=6;right=49;top=60;transparent=1;z=5;cls="static" };
+password={ bottom=103;right=142;left=53;top=84;tabstop=1;z=8;edge=1;cls="edit" };
+username={ bottom=74;right=143;left=54;top=54;tabstop=1;z=7;edge=1;cls="edit" };
+info={ bottom=258;right=144;left=5;top=134;z=13;transparent=1;cls="static" };
+button={ bottom=297;right=145;left=80;top=264;z=4;text="开始签到";cls="button" };
+add_site={ bottom=133;right=143;left=97;text="添加";top=106;tabstop=1;z=9;cls="button" };
+accounts={ ah=1;bgcolor=16777215;vscroll=1;aw=1;right=448;left=147;bottom=297;top=2;z=10;gridLines=1;fullRow=1;edge=1;cls="listview" };
+static3={ bottom=103;text="密码:";left=8;right=53;top=86;transparent=1;z=6;cls="static" };
+disk_type={ bottom=46;text="请选择网盘";left=41;top=26;right=140;z=2;
+items={  };mode="dropdownlist";edge=1;cls="combobox" }
 )
 /*}}*/
 
@@ -70,7 +70,7 @@ var sina_pass="";
 var	logfile = fsys.file("\签到记录.log","a+");
 var sign_funcs;
 var disk_type;
-var version = "2012-07-20-14:24";
+var version = "2012-08-07-09:20";
 var info = web.form(winform.info,0x4 | 0x2 | 0x20/*_UIFLAG_OPENNEWWIN*//*_UIFLAG_DISABLE_HELP_MENU*//*_UIFLAG_NO3DBORDER*/)
 info.go("http://g.chenall.net/AutoSign.html");
 
@@ -461,11 +461,11 @@ get_dbank = function(su,sp,flags=0){
 		
 	}
 	else {
-		res = http_get("http://login.dbank.com/loginauth.php","获取登录信息")
+		res = http_get("http://login.dbank.com/loginauth.php?nsp_app=48049","获取登录信息")
 		if (res == null)
 		{
 			lstbox_add("网络错误，正在重试");
-			res = http.get("http://login.dbank.com/loginauth.php")
+			res = http.get("http://login.dbank.com/loginauth.php?nsp_app=48049")
 			if (res == null)
 			{
 				lstbox_add("网络错误");
@@ -899,6 +899,33 @@ get_taojinbi = function(account,passwd,flags=0){
 	//{"code":2,"coinOld":2674,"coinNew":2674,"daysTomorrow":1,"coinTomorrow":"10","auth":true,"isTake":"","takeAmount":"","friendNum":"0","switcher":"true"}
 }
 
+
+bengbeng = function(su,sp,flags =0){
+	lstbox_add("登录蹦蹦家园:" + su)
+	if (flags == -1)
+	{
+		var str = http_get("http://chenall.net/AutoSign/?ac=chk&type=bengbeng&su="+su+"&sp="+sp,"蹦蹦家园帐户登录测试");
+		if (str == null)
+			return null;
+		str = web.json.parse(str);
+		if (str["errno"] == 0)
+		{
+			return {2;sp};
+		}
+		lstbox_add(str["msg"]);
+		return null;
+	}
+	var str = http_get("http://chenall.net/AutoSign/?type=bengbeng&su="+su+"&sp="+sp,"蹦蹦家园自动签到");
+	if (str == null)
+		return null;
+	str = web.json.parse(str);
+	lstbox_add(str["msg"]);
+	if (str["errno"] < 2)
+		return str["msg"];
+	return null;
+}
+
+
 get_360 = function(su,sp,flags = 0){
 	lstbox_add("登录360云盘:" + su)
 	su = inet.url.encode(su);//用户名URL编码
@@ -1048,8 +1075,8 @@ winform.disk_type.selIndex = 1;
 winform.accounts.insertColumn("ID",30);
 winform.accounts.insertColumn("帐号",225);
 winform.accounts.insertColumn("签到",40);
-disk_type = { "华为网盘";"金山快盘";"新浪微盘";"115 网盘";"天翼网盘";"淘宝淘金币";"360云盘" }
-sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360};
+disk_type = { "华为网盘";"金山快盘";"新浪微盘";"115 网盘";"天翼网盘";"淘宝淘金币";"360云盘";"蹦蹦家园" }
+sign_funcs = {get_dbank;get_kuaipan;get_vdisk;get_115;get_189;get_taojinbi;get_360;bengbeng};
 winform.disk_type.clear();
 winform.show();
 sql = sqlite("\config.db");
@@ -1196,5 +1223,6 @@ check_update = function(cur){
 }
 check_update("2012-07-13");
 */
+
 
 win.loopMessage();
