@@ -1,0 +1,4 @@
+简易的PHP SMTP邮件发送类
+可以发送带附件的邮件。
+
+详情 http://chenall.net/post/cs_smtp/
