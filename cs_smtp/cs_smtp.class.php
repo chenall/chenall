@@ -1,30 +1,33 @@
 <?php
-/*
-	¼òÒ×µÄSMTP·¢ËÍÓÊ¼þÀà£¬´úÂë±È½ÏÉÙ£¬ÓÐÖúÓÚÑ§Ï°SMTPÐ­Òé£¬
-	¿ÉÒÔ´ø¸½¼þ£¬Ö§³ÖÐèÒªÑéÖ¤µÄSMTP·þÎñÆ÷£¨Ä¿Ç°µÄSMTP»ù±¾¶¼ÐèÒªÑéÖ¤£©
-	±àÐ´: chenall
-	Ê±¼ä: 2012-12-04
-	ÍøÖ·: http://chenall.net/post/cs_smtp/
-	ÐÞ¶©¼ÇÂ¼:
-		2012-12-04
-		   µÚÒ»¸ö°æ±¾
 
-	Ê¹ÓÃ·½·¨:
+/*
+	ç®€æ˜“çš„SMTPå‘é€é‚®ä»¶ç±»ï¼Œä»£ç æ¯”è¾ƒå°‘ï¼Œæœ‰åŠ©äºŽå­¦ä¹ SMTPåè®®ï¼Œ
+	å¯ä»¥å¸¦é™„ä»¶ï¼Œæ”¯æŒéœ€è¦éªŒè¯çš„SMTPæœåŠ¡å™¨ï¼ˆç›®å‰çš„SMTPåŸºæœ¬éƒ½éœ€è¦éªŒè¯ï¼‰
+	ç¼–å†™: chenall
+	æ—¶é—´: 2012-12-04
+	ç½‘å€: http://chenall.net/post/cs_smtp/
+	ä¿®è®¢è®°å½•:
+		2012-12-05
+		   å‘é€é™„ä»¶çš„ä»£ç æ•´åˆåˆ°sendå‡½æ•°ä¸­ï¼Œå‡å°‘å˜é‡çš„ä½¿ç”¨ï¼Œå¿«é€Ÿè¾“å‡ºï¼ŒèŠ‚çœå†…å­˜å ç”¨;
+		2012-12-04
+		   ç¬¬ä¸€ä¸ªç‰ˆæœ¬
+
+	ä½¿ç”¨æ–¹æ³•:
 		
-		1. ³õÊ¼»¯£ºÁ¬½Óµ½·þÎñÆ÷£¨Ä¬ÈÏÊÇQQÓÊÏä£©
+		1. åˆå§‹åŒ–ï¼šè¿žæŽ¥åˆ°æœåŠ¡å™¨ï¼ˆé»˜è®¤æ˜¯QQé‚®ç®±ï¼‰
 		   $mail = new cs_smtp('smtp.qq.com',25)
-		   if ($mail->errstr) //Èç¹ûÁ¬½Ó³ö´í
+		   if ($mail->errstr) //å¦‚æžœè¿žæŽ¥å‡ºé”™
 			   die($mail->errstr;
-		2. µÇÂ¼µ½·þÎñÆ÷ÑéÖ¤,Èç¹ûÊ§°Ü·µ»ØFALSE;
+		2. ç™»å½•åˆ°æœåŠ¡å™¨éªŒè¯,å¦‚æžœå¤±è´¥è¿”å›žFALSE;
 		   if (!$mail->login('USERNAME','PASSWORD'))
 				die($mail->errstr;
-		3. Ìí¼Ó¸½¼þÈç¹û²»Ö¸¶¨name×Ô¶¯´ÓÖ¸¶¨µÄÎÄ¼þÖÐÈ¡ÎÄ¼þÃû
-		   $mail->AddFile($file,$name) //·þÎñÆ÷ÉÏµÄÎÄ¼þ£¬¿ÉÒÔÖ¸¶¨ÎÄ¼þÃû;
-		4. ·¢ËÍÓÊ¼þ
+		3. æ·»åŠ é™„ä»¶å¦‚æžœä¸æŒ‡å®šnameè‡ªåŠ¨ä»ŽæŒ‡å®šçš„æ–‡ä»¶ä¸­å–æ–‡ä»¶å
+		   $mail->AddFile($file,$name) //æœåŠ¡å™¨ä¸Šçš„æ–‡ä»¶ï¼Œå¯ä»¥æŒ‡å®šæ–‡ä»¶å;
+		4. å‘é€é‚®ä»¶
 			$mail->send($to,$subject,$body)
-			$to ÊÕ¼þÈË£¬¶à¸öÊ¹ÓÃ','·Ö¸ô
-			$subject ÓÊ¼þÖ÷Ìâ£¬¿ÉÑ¡¡£
-			$body  ÓÊ¼þÖ÷ÌåÄÚÈÝ£¬¿ÉÑ¡
+			$to æ”¶ä»¶äººï¼Œå¤šä¸ªä½¿ç”¨','åˆ†éš”
+			$subject é‚®ä»¶ä¸»é¢˜ï¼Œå¯é€‰ã€‚
+			$body  é‚®ä»¶ä¸»ä½“å†…å®¹ï¼Œå¯é€‰
 */
 class cs_smtp
 {
@@ -32,30 +35,31 @@ class cs_smtp
 	private $from;
 	private $smtp = null;
 	private $attach = array();
-	public $debug = false;
+	public $debug = true;
 	public $errstr = '';
 
 	function __construct($host='smtp.qq.com',$port = 25) {
 		if (empty($host))
-			die('SMTP·þÎñÆ÷Î´Ö¸¶¨!');
+			die('SMTPæœåŠ¡å™¨æœªæŒ‡å®š!');
 		$this->smtp = fsockopen($host,$port,$errno,$errstr,5);
 		if (empty($this->smtp))
 		{
-			$this->errstr = '´íÎó'.$errno.':'.$errstr;
+			$this->errstr = 'é”™è¯¯'.$errno.':'.$errstr;
 			return;
 		}
 		$this->smtp_log(fread($this->smtp, 515));
 		if (intval($this->smtp_cmd('EHLO LOCALHOST')) != 250 && intval($this->smtp_cmd('HELO LOCALHOST')))
-			$this->errstr = '·þÎñÆ÷²»Ö§³Ö£¡';
+			return $this->errstr = 'æœåŠ¡å™¨ä¸æ”¯æŒï¼';
+		$this->errstr = '';
 	}
 
 	function __destruct()
 	{
 		if ($this->smtp)
-			$this->smtp_cmd('QUIT');//·¢ËÍÍË³öÃüÁî
+			$this->smtp_cmd('QUIT');//å‘é€é€€å‡ºå‘½ä»¤
 	}
 
-	private function smtp_log($msg)//¼´Ê±Êä³öµ÷ÊÔÊ¹ÓÃ
+	private function smtp_log($msg)//å³æ—¶è¾“å‡ºè°ƒè¯•ä½¿ç”¨
 	{
 		if ($this->debug == false)
 			return;
@@ -64,16 +68,17 @@ class cs_smtp
 		flush();
 	}
 
-	function smtp_cmd($msg)//SMTPÃüÁî·¢ËÍºÍÊÕÊÕ
+	function smtp_cmd($msg)//SMTPå‘½ä»¤å‘é€å’Œæ”¶æ”¶
 	{
 		fputs($this->smtp,$msg.$this->CRLF);
 		$this->smtp_log('SEND:'. substr($msg,0,80));
 		$res = fread($this->smtp, 515);
 		$this->smtp_log($res);
+		$this->errstr = $res;
 		return $res;
 	}
 
-	function AddFile($file,$name = '')//Ìí¼ÓÎÄ¼þ¸½¼þ
+	function AddFile($file,$name = '')//æ·»åŠ æ–‡ä»¶é™„ä»¶
 	{
 		if (file_exists($file))
 		{
@@ -85,37 +90,37 @@ class cs_smtp
 		return false;
 	}
 
-	private function attachment($file,$name)
-	{
-		$msg = "Content-Type: application/octet-stream; name=".$name."\n";
-		$msg .= "Content-Disposition: attachment; filename=".$name."\n";
-		$msg .= "Content-transfer-encoding: base64\n\n";
-		$msg .= chunk_split(base64_encode(file_get_contents($file)));//Ê¹ÓÃBASE64±àÂë£¬ÔÙÓÃchunk_split´óÐ¶°Ë¿é£¨Ã¿ÐÐ76¸ö×Ö·û£©
-		return $msg;
-	}
-
 	function send($to,$subject='',$body = '')
 	{
 		$this->smtp_cmd("MAIL FROM: ".$this->from);
 		$mailto = explode(',',$to);
 		foreach($mailto as $email_to)
 			$this->smtp_cmd("RCPT TO: $email_to");
-		$boundary = '--BY_CHENALL_'.uniqid("");
+		if (intval($this->smtp_cmd("DATA")) != 354)//æ­£ç¡®çš„è¿”å›žå¿…é¡»æ˜¯354
+			return false;
+		fwrite($this->smtp,"To:$to\nFrom: ".$this->from."\nSubject: $subject\n");
+
+		$boundary = uniqid("--BY_CHENALL_",true);
 		$headers = "MIME-Version: 1.0".$this->CRLF;
 		$headers .= "From: <".$this->from.">".$this->CRLF;
-		$headers .= "Content-type: multipart/mixed; boundary= $boundary".$this->CRLF;
-		$message = "--$boundary\nContent-Type: text/html;charset=\"ISO-8859-1\"\nContent-Transfer-Encoding: base64\n\n";
-		$message .= chunk_split(base64_encode($body));
+		$headers .= "Content-type: multipart/mixed; boundary= $boundary\n\n".$this->CRLF;//headersç»“æŸè¦è‡³å°‘ä¸¤ä¸ªæ¢è¡Œ
+		fwrite($this->smtp,$headers);
+
+		$msg = "--$boundary\nContent-Type: text/html;charset=\"ISO-8859-1\"\nContent-Transfer-Encoding: base64\n\n";
+		$msg .= chunk_split(base64_encode($body));
+		fwrite($this->smtp,$msg);
 		$files = '';
 		foreach($this->attach as $name=>$file)
 		{
 			$files .= $name;
-			$message .= "--$boundary\n--$boundary\n".$this->attachment($file,$name);
+			$msg = "--$boundary\n--$boundary\n";
+			$msg .= "Content-Type: application/octet-stream; name=".$name."\n";
+			$msg .= "Content-Disposition: attachment; filename=".$name."\n";
+			$msg .= "Content-transfer-encoding: base64\n\n";
+			fwrite($this->smtp,$msg);
+			fwrite($this->smtp,chunk_split(base64_encode(file_get_contents($file))));//ä½¿ç”¨BASE64ç¼–ç ï¼Œå†ç”¨chunk_splitå¤§å¸å…«å—ï¼ˆæ¯è¡Œ76ä¸ªå­—ç¬¦ï¼‰
 		}
-		empty($subject) && $subject = $files;
-		$message .= "--$boundary--\n";
-		$this->smtp_cmd("DATA");
-		$this->smtp_cmd("To:$to\nFrom: ".$this->from."\nSubject: $subject\n$headers\n\n$message\r\n.");
+		return intval($this->smtp_cmd("--$boundary--\n\r\n.")) == 250;//ç»“æŸDATAå‘é€ï¼ŒæœåŠ¡å™¨ä¼šè¿”å›žæ‰§è¡Œç»“æžœï¼Œå¦‚æžœä»£ç ä¸æ˜¯250åˆ™å‡ºé”™ã€‚
 	}
 
 	function login($su,$sp)
@@ -135,4 +140,3 @@ class cs_smtp
 		return true;
 	}
 }
-?>
