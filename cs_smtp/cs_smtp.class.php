@@ -7,6 +7,8 @@
 	时间: 2012-12-04
 	网址: http://chenall.net/post/cs_smtp/
 	修订记录:
+		2012-12-06
+			添加reset函数，重置连接，这样可以发送多个邮件。
 		2012-12-05
 		   发送附件的代码整合到send函数中，减少变量的使用，快速输出，节省内存占用;
 		2012-12-04
@@ -48,7 +50,7 @@ class cs_smtp
 			return;
 		}
 		$this->smtp_log(fread($this->smtp, 515));
-		if (intval($this->smtp_cmd('EHLO LOCALHOST')) != 250 && intval($this->smtp_cmd('HELO LOCALHOST')))
+		if (intval($this->smtp_cmd('EHLO '.$host)) != 250 && intval($this->smtp_cmd('HELO '.$host)))
 			return $this->errstr = '服务器不支持！';
 		$this->errstr = '';
 	}
@@ -66,6 +68,12 @@ class cs_smtp
 		echo $msg."\r\n";
 		ob_flush();
 		flush();
+	}
+
+	function reset()
+	{
+		$this->attach = null;
+		$this->smtp_cmd('RSET');
 	}
 
 	function smtp_cmd($msg)//SMTP命令发送和收收
