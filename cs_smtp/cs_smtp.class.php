@@ -7,6 +7,9 @@
 	时间: 2012-12-04
 	网址: http://chenall.net/post/cs_smtp/
 	修订记录:
+		2012-12-08
+			添加AddURL函数，可以直接从某个网址上下载文件并作为附件发送。
+			修正由于发送人的接收人邮件地址没有使用"<>"126邮箱SMTP无法使用的问题。
 		2012-12-06
 			添加reset函数，重置连接，这样可以发送多个邮件。
 		2012-12-05
@@ -55,6 +58,48 @@ class cs_smtp
 		$this->errstr = '';
 	}
 
+	private function AttachURL($url,$name)
+	{
+		$info = parse_url($url);
+		isset($info['port']) || $info['port'] = 80;
+		isset($info['path']) || $info['path'] = '/';
+		isset($info['query']) || $info['query'] = '';
+		$down = fsockopen($info['host'],$info['port'],$errno,$errstr,5);
+		if (!$down)
+			return false;
+		$out = "GET ".$info['path'].'?'.$info['query']." HTTP/1.1\r\n";
+		$out .="Host: ".$info['host']."\r\n";
+		$out .= "Connection: Close\r\n\r\n";
+		fwrite($down, $out);
+		$filesize = 0;
+		while (!feof($down)) {
+			$a = fgets($down,515);
+			if ($a == "\r\n")
+				break;
+			$a = explode(':',$a);
+			if (strcasecmp($a[0],'Content-Length') == 0)
+				$filesize = intval($a[1]);
+		}
+		$sendsize = 0;
+		echo "TotalSize: ".$filesize."\r\n";
+		$i = 0;
+		while (!feof($down)) {
+			$data = fread($down,0x2000);
+			$sendsize += strlen($data);
+			if ($filesize)
+			{
+				echo "$i Send:".$sendsize."\r";
+				ob_flush();
+				flush();
+			}
+			++$i;
+			fwrite($this->smtp,chunk_split(base64_encode($data)));
+		}
+		echo "\r\n";
+		fclose($down);
+		return ($filesize>0)?$filesize==$sendsize:true;
+	}
+
 	function __destruct()
 	{
 		if ($this->smtp)
@@ -86,6 +131,11 @@ class cs_smtp
 		return $res;
 	}
 
+	function AddURL($url,$name)
+	{
+		$this->attach[$name] = $url;
+	}
+
 	function AddFile($file,$name = '')//添加文件附件
 	{
 		if (file_exists($file))
@@ -100,10 +150,10 @@ class cs_smtp
 
 	function send($to,$subject='',$body = '')
 	{
-		$this->smtp_cmd("MAIL FROM: ".$this->from);
+		$this->smtp_cmd("MAIL FROM: <".$this->from.'>');
 		$mailto = explode(',',$to);
 		foreach($mailto as $email_to)
-			$this->smtp_cmd("RCPT TO: $email_to");
+			$this->smtp_cmd("RCPT TO: <".$email_to.">");
 		if (intval($this->smtp_cmd("DATA")) != 354)//正确的返回必须是354
 			return false;
 		fwrite($this->smtp,"To:$to\nFrom: ".$this->from."\nSubject: $subject\n");
@@ -118,15 +168,31 @@ class cs_smtp
 		$msg .= chunk_split(base64_encode($body));
 		fwrite($this->smtp,$msg);
 		$files = '';
+		$errinfo = '';
 		foreach($this->attach as $name=>$file)
 		{
 			$files .= $name;
 			$msg = "--$boundary\n--$boundary\n";
-			$msg .= "Content-Type: application/octet-stream; name=".$name."\n";
-			$msg .= "Content-Disposition: attachment; filename=".$name."\n";
+			$msg .= "Content-Type: application/octet-stream; name=\"".$name."\"\n";
+			$msg .= "Content-Disposition: attachment; filename=\"".$name."\"\n";
 			$msg .= "Content-transfer-encoding: base64\n\n";
 			fwrite($this->smtp,$msg);
-			fwrite($this->smtp,chunk_split(base64_encode(file_get_contents($file))));//使用BASE64编码，再用chunk_split大卸八块（每行76个字符）
+			if (substr($file,4,1) == ':')//URL like http:///file://
+			{
+				if (!$this->AttachURL($file,$name))
+					$errinfo .= '文件下载错误:'.$name.",文件可能是错误的\r\n$file";
+			}
+			else
+				fwrite($this->smtp,chunk_split(base64_encode(file_get_contents($file))));//使用BASE64编码，再用chunk_split大卸八块（每行76个字符）
+		}
+		if (!empty($errinfo))
+		{
+			$msg = "--$boundary\n--$boundary\n";
+			$msg .= "Content-Type: application/octet-stream; name=Error.log\n";
+			$msg .= "Content-Disposition: attachment; filename=Error.log\n";
+			$msg .= "Content-transfer-encoding: base64\n\n";
+			fwrite($this->smtp,$msg);
+			fwrite($this->smtp,chunk_split(base64_encode($errinfo)));
 		}
 		return intval($this->smtp_cmd("--$boundary--\n\r\n.")) == 250;//结束DATA发送，服务器会返回执行结果，如果代码不是250则出错。
 	}
