@@ -9,7 +9,7 @@
 	修订记录:
 		2012-12-08
 			添加AddURL函数，可以直接从某个网址上下载文件并作为附件发送。
-			修正由于发送人的接收人邮件地址没有使用"<>"126邮箱SMTP无法使用的问题。
+			修正由于发送人和接收人邮件地址没有使用"<>"126邮箱SMTP无法使用的问题。
 		2012-12-06
 			添加reset函数，重置连接，这样可以发送多个邮件。
 		2012-12-05
@@ -28,6 +28,7 @@
 				die($mail->errstr;
 		3. 添加附件如果不指定name自动从指定的文件中取文件名
 		   $mail->AddFile($file,$name) //服务器上的文件，可以指定文件名;
+		   $mail->AddURL($url,$name) //从指定URL下载文件，并作为附件发送。只支持HTTP
 		4. 发送邮件
 			$mail->send($to,$subject,$body)
 			$to 收件人，多个使用','分隔
@@ -40,7 +41,7 @@ class cs_smtp
 	private $from;
 	private $smtp = null;
 	private $attach = array();
-	public $debug = true;
+	public $debug = true;//调试开关
 	public $errstr = '';
 
 	function __construct($host='smtp.qq.com',$port = 25) {
