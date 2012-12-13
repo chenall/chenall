@@ -8,6 +8,11 @@
    require_once('libs/kp.class.php');
    $kp = new kp(CONSUMER_KEY,CONSUMER_SECRET)
    $oauth = $kp->OAuth();
+   
+   更新记录：
+   2012-12-13
+    1.download改成默认直接下载，可以附加参数false取得下载地址。
+    2.upload修改，更简单。具体见README文件
 */
 require_once(dirname(__FILE__).'/kuaipan.class.php');
 session_start();
@@ -90,16 +95,35 @@ class kp extends kuaipan
 		return parent::delete($params);
 	}
 
-	function download($path)
+	function download($path,$download = true)
 	{
 		$params = array(
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		return parent::download_file($params);
+		$url = parent::download_file($params);
+		if (!empty($this->errstr))
+			return;
+		if ($download == false)
+			return $url;
+		header('Location: '.$url);
+		exit();
 	}
 
-	function upload($path,$data)
+	function upload($path,$file)
 	{
+		if (file_exists($file) === false)
+		{
+			$this->errstr = 'file not exist';
+			return false;
+		}
+		if (substr($path,-1,1) == '/')
+		{
+			$fn = pathinfo($file,PATHINFO_BASENAME);
+			$path .= $fn;
+		}
+		else
+			$fn = pathinfo($path,PATHINFO_BASENAME);
+		$data = array('file'=>'@'.$file.';filename='.$fn);
 		$params = array(
 			'overwrite'=>"true",
 			'root'=>$this->root,

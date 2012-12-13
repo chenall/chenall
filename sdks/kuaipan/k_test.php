@@ -24,7 +24,7 @@ else
 	printf("成功：%s\r\n",json_encode($ret));
 
 echo "上传文件测试:\r\n";//使用CURL上传文件
-$ret = $kp->upload('mytest/kuaipan.php',array('file'=>'@'.__FILE__.';filename=kuaipan.php'));
+$ret = $kp->upload('mytest/kuaipan.php',__FILE__);
 if ($kp->errstr)
 	printf("失败: %s\r\n",$kp->errstr);
 else
