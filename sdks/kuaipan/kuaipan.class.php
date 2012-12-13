@@ -4,6 +4,10 @@
   编写：chenall
   主页: http://chenall.net
   时间: 2012-12-12
+  2012-12-13 
+   FetchURL修改。
+   为了方便使用，$data参数可以是POST数据，也可以是CURLOPT参数。
+   如果$data['file']存在认为是POST数据，否则作为CURLOPT参数。
   使用方法：
    $kp = new KuaiPan(consumer_key,consumer_secret)
    $kp->api(参数）
@@ -162,15 +166,20 @@ class KuaiPan
 
 	/*
 		简单的取数据函数，正常的话返回一个object
+		$data必须是一个数组
+		如果存在$data['file']则把它作为POST数据。否则认为是CURLOPT参数，方便使用自定义的CURLOPT参数。
 	*/
-	function FetchURL($url,$postdata = null)
+	function FetchURL($url,$data = null)
 	{
 		$curl = curl_init($url);
 		curl_setopt_array($curl,$this->curl_opts);
-		if ($postdata !== null)
+		if (is_array($data))
 		{
 			curl_setopt($curl,CURLOPT_POST,true);
-			curl_setopt($curl,CURLOPT_POSTFIELDS,$postdata);
+			if (isset($data['file']))
+				curl_setopt($curl,CURLOPT_POSTFIELDS,$data);
+			else
+				curl_setopt_array($curl,$data);
 		}
 		$res = curl_exec($curl);
 		$http_code = curl_getinfo($curl,CURLINFO_HTTP_CODE);
