@@ -1,7 +1,8 @@
 金山快盘开放平台 PHP SDK
 编写：chenall
 主页: http://chenall.net
-时间: 2012-12-12
+来源: http://chenall.net/post/sdk_kp_php/
+时间: 2012-12-14
 使用方法：
 
 1.首先初化始一个类.
@@ -71,6 +72,8 @@ SDK简化版说明 kp.class.php
  $ret= $kp->upload(PATH,FILE);
  如果PATH路径最后字符是'/'，认为是一个目录，上传到该目录，上传后的文件名从FILE中提取。
  如果PATH路径最后字符不是'/'，认为是一个文件，上传后的文件名就是PATH指定的文件名。
+ 若需要显示上传进度可以使用以下方法。
+ $ret= $kp->upload(PATH,FILE,true);
 8.列出文件夹
  $ret= $kp->ls(PATH);
 9.判断操作是否成功可以使用变量errstr

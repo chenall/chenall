@@ -41,7 +41,7 @@ class cs_smtp
 	private $from;
 	private $smtp = null;
 	private $attach = array();
-	public $debug = true;//调试开关
+	public $debug = false;//调试开关
 	public $errstr = '';
 
 	function __construct($host='smtp.qq.com',$port = 25) {
@@ -53,12 +53,28 @@ class cs_smtp
 			$this->errstr = '错误'.$errno.':'.$errstr;
 			return;
 		}
-		$this->smtp_log(fread($this->smtp, 515));
-		if (intval($this->smtp_cmd('EHLO '.$host)) != 250 && intval($this->smtp_cmd('HELO '.$host)))
+		self::smtp_log(fread($this->smtp, 515));
+		if (intval(self::smtp_cmd('EHLO '.$host)) != 250 && intval(self::smtp_cmd('HELO '.$host)))
 			return $this->errstr = '服务器不支持！';
 		$this->errstr = '';
 	}
 
+	private function progress($fn,$filesize)
+	{
+		$sendsize = 0;
+		echo "\r\n";
+		while (!feof($fn)) {
+			$data = fread($fn,0x2000);
+			$sendsize += strlen($data);
+			if ($filesize)
+			{
+				echo (round($sendsize/$filesize,4)*100)."%\t\r";
+				ob_flush();
+				flush();
+			}
+			fwrite($this->smtp,chunk_split(base64_encode($data)));
+		}
+	}
 	private function AttachURL($url,$name)
 	{
 		$info = parse_url($url);
@@ -81,22 +97,8 @@ class cs_smtp
 			if (strcasecmp($a[0],'Content-Length') == 0)
 				$filesize = intval($a[1]);
 		}
-		$sendsize = 0;
 		echo "TotalSize: ".$filesize."\r\n";
-		$i = 0;
-		while (!feof($down)) {
-			$data = fread($down,0x2000);
-			$sendsize += strlen($data);
-			if ($filesize)
-			{
-				echo "$i Send:".$sendsize."\r";
-				ob_flush();
-				flush();
-			}
-			++$i;
-			fwrite($this->smtp,chunk_split(base64_encode($data)));
-		}
-		echo "\r\n";
+		self::progress($down,$filesize);
 		fclose($down);
 		return ($filesize>0)?$filesize==$sendsize:true;
 	}
@@ -104,7 +106,7 @@ class cs_smtp
 	function __destruct()
 	{
 		if ($this->smtp)
-			$this->smtp_cmd('QUIT');//发送退出命令
+			self::smtp_cmd('QUIT');//发送退出命令
 	}
 
 	private function smtp_log($msg)//即时输出调试使用
@@ -119,15 +121,15 @@ class cs_smtp
 	function reset()
 	{
 		$this->attach = null;
-		$this->smtp_cmd('RSET');
+		self::smtp_cmd('RSET');
 	}
 
 	function smtp_cmd($msg)//SMTP命令发送和收收
 	{
 		fputs($this->smtp,$msg.$this->CRLF);
-		$this->smtp_log('SEND:'. substr($msg,0,80));
+		self::smtp_log('SEND:'. substr($msg,0,80));
 		$res = fread($this->smtp, 515);
-		$this->smtp_log($res);
+		self::smtp_log($res);
 		$this->errstr = $res;
 		return $res;
 	}
@@ -151,11 +153,11 @@ class cs_smtp
 
 	function send($to,$subject='',$body = '')
 	{
-		$this->smtp_cmd("MAIL FROM: <".$this->from.'>');
+		self::smtp_cmd("MAIL FROM: <".$this->from.'>');
 		$mailto = explode(',',$to);
 		foreach($mailto as $email_to)
-			$this->smtp_cmd("RCPT TO: <".$email_to.">");
-		if (intval($this->smtp_cmd("DATA")) != 354)//正确的返回必须是354
+			self::smtp_cmd("RCPT TO: <".$email_to.">");
+		if (intval(self::smtp_cmd("DATA")) != 354)//正确的返回必须是354
 			return false;
 		fwrite($this->smtp,"To:$to\nFrom: ".$this->from."\nSubject: $subject\n");
 
@@ -180,11 +182,20 @@ class cs_smtp
 			fwrite($this->smtp,$msg);
 			if (substr($file,4,1) == ':')//URL like http:///file://
 			{
-				if (!$this->AttachURL($file,$name))
+				if (!self::AttachURL($file,$name))
 					$errinfo .= '文件下载错误:'.$name.",文件可能是错误的\r\n$file";
 			}
 			else
-				fwrite($this->smtp,chunk_split(base64_encode(file_get_contents($file))));//使用BASE64编码，再用chunk_split大卸八块（每行76个字符）
+			{
+				$fn = fopen($file,'r');
+				if ($fn)
+				{
+					$fi = fstat($fn);
+					self::progress($fn,$fi['size']);
+				}
+				else
+					return false;
+			}
 		}
 		if (!empty($errinfo))
 		{
@@ -195,20 +206,20 @@ class cs_smtp
 			fwrite($this->smtp,$msg);
 			fwrite($this->smtp,chunk_split(base64_encode($errinfo)));
 		}
-		return intval($this->smtp_cmd("--$boundary--\n\r\n.")) == 250;//结束DATA发送，服务器会返回执行结果，如果代码不是250则出错。
+		return intval(self::smtp_cmd("--$boundary--\n\r\n.")) == 250;//结束DATA发送，服务器会返回执行结果，如果代码不是250则出错。
 	}
 
 	function login($su,$sp)
 	{
 		if (empty($this->smtp))
 			return false;
-		$res = $this->smtp_cmd("AUTH LOGIN");
+		$res = self::smtp_cmd("AUTH LOGIN");
 		if (intval($res)>400)
 			return !$this->errstr = $res;
-		$res = $this->smtp_cmd(base64_encode($su));
+		$res = self::smtp_cmd(base64_encode($su));
 		if (intval($res)>400)
 			return !$this->errstr = $res;
-		$res = $this->smtp_cmd(base64_encode($sp));
+		$res = self::smtp_cmd(base64_encode($sp));
 		if (intval($res)>400)
 			return !$this->errstr = $res;
 		$this->from = $su;

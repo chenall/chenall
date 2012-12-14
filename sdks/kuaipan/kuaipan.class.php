@@ -3,7 +3,10 @@
   金山快盘开放平台 PHP SDK
   编写：chenall
   主页: http://chenall.net
+  来源: http://chenall.net/post/sdk_kp_php/
   时间: 2012-12-12
+  2012-12-14
+   默认CURL执行时间修改为0(无限制，用于上传大文件）。
   2012-12-13 
    FetchURL修改。
    为了方便使用，$data参数可以是POST数据，也可以是CURLOPT参数。
@@ -26,7 +29,8 @@
    $kp->root = 'kuanpan';
    其它的见README
 */
-
+if (!function_exists('curl_init'))
+	die('undefined function curl');
 class KuaiPan
 {
 	private $errstr = '';
@@ -35,8 +39,7 @@ class KuaiPan
 	private $oauth_token = '';
 	private $oauth_token_secret = '';
 	private $root = 'app_folder';//默认的根目录。只能是app_folder或kuanpan
-	private $path = '/';
-	private $upload_url;
+	private $path = '/';//默认路径。
 	protected $api_uri = array(//可以调用的API列表
 				'account_info'  =>'http://openapi.kuaipan.cn/1/account_info',
 				'metadata'      =>'http://openapi.kuaipan.cn/1/metadata',
@@ -59,7 +62,7 @@ class KuaiPan
 				);
 	protected $curl_opts = array(
 				CURLOPT_CONNECTTIMEOUT => 5,
-				CURLOPT_TIMEOUT => 10,
+				CURLOPT_TIMEOUT => 0,
 				CURLOPT_FOLLOWLOCATION => true,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_SSL_VERIFYPEER => false,
@@ -152,13 +155,17 @@ class KuaiPan
 		参考: http://www.kuaipan.cn/developers/document_signature.htm
 		*/
 		$base_string = $http_method."&".rawurlencode($uri)."&";
-		ksort($params);
+		ksort($params);//根据键值进行正向排序
 		$data = array();
+		//提取并连接所有参数
 		foreach ($params as $k=>$v)
 		{
+		  //本来$k也需要编码的，不过我看了一下发现这个参数其实没有必要编码，这里为了节省资源就不再编码了。
+		  //但不排除以后官方的API出了一些需要编码的参数。
 			$data[] = $k."=".rawurlencode($v);
 		}
 		$base_string .= rawurlencode(implode('&', $data));
+
 		$key = $this->consumer_secret."&".$this->oauth_token_secret;
 		$sign = rawurlencode(base64_encode(hash_hmac("sha1",$base_string , $key, true)));
 		return $uri."?".http_build_query($params)."&oauth_signature=".$sign;
@@ -186,7 +193,7 @@ class KuaiPan
 		curl_close($curl);
 		$ret = json_decode($res);
 		if ($http_code != 200)
-			$this->errstr = isset($ret->msg)?$ret->msg:$res;
+			$this->errstr = isset($ret->msg)?$ret->msg:'Err:'.$res;
 		else
 			$this->errstr = '';
 		return $ret;

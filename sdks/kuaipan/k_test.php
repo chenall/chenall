@@ -1,6 +1,6 @@
 <?php
 header("Content-Type:text/plain;charset=UTF-8");
-require_once('/libs/kp.class.php');
+require_once('kp.class.php');
 const CONSUMER_KEY = ''; //填入你申请的应用对应的CONSUMER_KEY
 const CONSUMER_SECRET = '';//同上
 $kp = new kp(CONSUMER_KEY,CONSUMER_SECRET);
