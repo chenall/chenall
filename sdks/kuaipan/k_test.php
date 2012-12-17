@@ -1,8 +1,8 @@
 <?php
 header("Content-Type:text/plain;charset=UTF-8");
 require_once('kp.class.php');
-const CONSUMER_KEY = ''; //填入你申请的应用对应的CONSUMER_KEY
-const CONSUMER_SECRET = '';//同上
+define('CONSUMER_KEY',''); //填入你申请的应用对应的CONSUMER_KEY
+define('CONSUMER_SECRET','');//同上
 $kp = new kp(CONSUMER_KEY,CONSUMER_SECRET);
 
 //如果已经通过了授权把授权对应信息写在这里就不用再次授权了。
