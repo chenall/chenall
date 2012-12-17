@@ -63,11 +63,7 @@ function proxy()
 			$header[] = 'CONTENT_TYPE: '.$_SERVER['CONTENT_TYPE']; 
 		}
 	}
-	$test = explode(':',substr($_SERVER['REQUEST_URI'],0,10));
-	if (count($test) > 1)
-		$url = $_SERVER['REQUEST_URI'];
-	else
-		$url = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'];
+	$url = $_SERVER['REQUEST_URI'];
 	$curl_opts = array(
 		CURLOPT_URL => $url,
 		CURLOPT_CONNECTTIMEOUT => 10,
@@ -98,6 +94,10 @@ function proxy()
 }
 $debug = 1;//设为1开启记录.
 if ($debug)
+{
 	$debug = fopen("debug/".$_SERVER['REMOTE_ADDR'].date('_ymdHis_',time()).'__'.$_SERVER['SERVER_NAME'].".log",'a');
+	fwrite($debug,print_r($_SERVER,true));
+	fwrite($debug,"===========php://input===========\r\n".@file_get_contents('php://input')."\r\n======================\r\n");
+}
 proxy();
 empty($debug) || fclose($debug);
