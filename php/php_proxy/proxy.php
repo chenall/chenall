@@ -95,6 +95,8 @@ function proxy()
 $debug = 1;//设为1开启记录.
 if ($debug)
 {
+	if (!file_exists('debug/'))
+		mkdir('debug');
 	$debug = fopen("debug/".$_SERVER['REMOTE_ADDR'].date('_ymdHis_',time()).'__'.$_SERVER['SERVER_NAME'].".log",'a');
 	fwrite($debug,print_r($_SERVER,true));
 	fwrite($debug,"===========php://input===========\r\n".@file_get_contents('php://input')."\r\n======================\r\n");
