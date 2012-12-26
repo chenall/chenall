@@ -11,6 +11,12 @@
    $oauth = $kp->OAuth();
    
    更新记录：
+   2012-12-26
+    1.改写了一下KP.CLASS.PHP
+      为了方便使用,修改了返回信息.具体看README
+      像
+      $ret = $kp->md('mytest');
+      如果成功就返回新创建文件夹的ID,否则返回false,
    2012-12-14
     1.对PATH路径进行转码，这个路径必须是UTF-8编码,适应能力更强。
     2.上传时可以选择显示进度。
@@ -72,9 +78,31 @@ class kp extends kuaipan
 		header('Location: https://www.kuaipan.cn/api.php?ac=open&op=authorise&oauth_token='.$data->oauth_token);//OAuth 第二步
 	}
 
-	function ls($path = '',$params = array())
+	function dir($path = '',$params = array())
 	{
-		return parent::metadata($params,self::realpath($path));
+		$data = parent::metadata($params,self::realpath($path));
+		if ($this->errstr)
+			return false;
+		$folders = array();
+		$files = array();
+		if (isset($data->files))
+			$data = $data->files;
+		else
+			$data = array($data);
+		foreach($data as $file)
+		{
+			$f = (object)array('name'=>$file->name,
+							'create_time'=>$file->create_time,
+							'modify_time'=>$file->modify_time,
+							'file_id'=>$file->file_id,
+							'size'=>$file->size,
+							'isfolder'=>($file->type == "folder"?1:0));
+			if ($file->type == "folder")
+				$folders[] = $f;
+			else
+				$files[] = $f;
+		}
+		return array_merge($folders,$files);
 	}
 
 	function cp($from_path,$to_path)
@@ -84,7 +112,10 @@ class kp extends kuaipan
 			'from_path' =>self::realpath($from_path),
 			'to_path'=>self::realpath($to_path)
 			);
-		return parent::copy($params);
+		$ret = parent::copy($params);
+		if (empty($ret->file_id))
+			return false;
+		return $ret->file_id;
 	}
 
 	function mv($from_path,$to_path)
@@ -94,7 +125,8 @@ class kp extends kuaipan
 			'from_path' =>self::realpath($from_path),
 			'to_path'=> self::realpath($to_path)
 			);
-		return parent::move($params);
+		parent::move($params);
+		return empty($this->errstr);
 	}
 
 	function md($path)
@@ -102,7 +134,10 @@ class kp extends kuaipan
 		$params = array(
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		return parent::create_folder($params);
+		$res = parent::create_folder($params);
+		if (isset($res->file_id))
+			return $res->file_id;
+		return false;
 	}
 
 	function rm($path,$to_recycle = "true")
@@ -111,24 +146,25 @@ class kp extends kuaipan
 			'to_recycle'=>$to_recycle,
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		return parent::delete($params);
+		parent::delete($params);
+		return empty($this->errstr);
 	}
 
-	function download($path,$download = true)
+	function download($path,$download = false)
 	{
 		$params = array(
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
 		$url = parent::download_file($params);
 		if (!empty($this->errstr))
-			return;
+			return false;
 		if ($download == false)
 			return $url;
 		header('Location: '.$url);
 		exit();
 	}
 
-	function upload($path,$file,$progress = 'false')
+	function upload($path,$file,$progress = false)
 	{
 		if (file_exists($file) === false)
 		{
@@ -157,7 +193,10 @@ class kp extends kuaipan
 			'overwrite'=>"true",
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		return parent::upload_file($params,$data);
+		$ret = parent::upload_file($params,$data);
+		if (empty($ret->file_id))
+			return false;
+		return $ret->file_id;
 	}
 
 	function gbk_to_utf8($string)
