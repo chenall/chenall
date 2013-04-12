@@ -1,6 +1,6 @@
 <?php
 /*
-  金山快盘开放平台 PHP SDK 简化版，必须和kuaipan.class.php同目录
+  KuaiPan开放平台 PHP SDK 简化版，必须和kuaipan.class.php同目录
   编写：chenall
   主页: http://chenall.net
   来源: http://chenall.net/post/sdk_kp_php/
@@ -40,7 +40,7 @@ function kp_upload_progress($download_size, $downloaded, $upload_size,$uploaded)
 	return 0;
 }
 
-class kp extends kuaipan
+class kp extends KuaiPan
 {
 
 	function __construct($consumer_key = '', $consumer_secret = '') {
@@ -61,7 +61,7 @@ class kp extends kuaipan
 			if (empty($_SESSION['oauth_authorise']))
 				return true;
 			$_SESSION['oauth_authorise'] = null;
-			$data = parent::accessToken();
+			$data = $this->accessToken();
 			if (!empty($this->errstr))
 				return false;
 			$_SESSION['oauth_token_secret'] = $this->oauth_token = $data->oauth_token;
@@ -69,7 +69,7 @@ class kp extends kuaipan
 			return $data;
 		}
 		empty($call_back) && $call_back = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].(empty($_SERVER['QUERY_STRING'])?'?':'&').'ac=oauth_authorize';
-		$data = parent::requestToken(array('oauth_callback'=>$call_back));//OAuth 第一步
+		$data = $this->requestToken(array('oauth_callback'=>$call_back));//OAuth 第一步
 		if (!empty($this->errstr))
 			return false;
 		$_SESSION['oauth_token'] = $data->oauth_token;
@@ -80,7 +80,7 @@ class kp extends kuaipan
 
 	function dir($path = '',$params = array())
 	{
-		$data = parent::metadata($params,self::realpath($path));
+		$data = $this->metadata($params,self::realpath($path));
 		if ($this->errstr)
 			return false;
 		$folders = array();
@@ -112,7 +112,7 @@ class kp extends kuaipan
 			'from_path' =>self::realpath($from_path),
 			'to_path'=>self::realpath($to_path)
 			);
-		$ret = parent::copy($params);
+		$ret = $this->copy($params);
 		if (empty($ret->file_id))
 			return false;
 		return $ret->file_id;
@@ -125,7 +125,7 @@ class kp extends kuaipan
 			'from_path' =>self::realpath($from_path),
 			'to_path'=> self::realpath($to_path)
 			);
-		parent::move($params);
+		$this->move($params);
 		return empty($this->errstr);
 	}
 
@@ -134,7 +134,7 @@ class kp extends kuaipan
 		$params = array(
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		$res = parent::create_folder($params);
+		$res = $this->create_folder($params);
 		if (isset($res->file_id))
 			return $res->file_id;
 		return false;
@@ -146,7 +146,7 @@ class kp extends kuaipan
 			'to_recycle'=>$to_recycle,
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		parent::delete($params);
+		$this->delete($params);
 		return empty($this->errstr);
 	}
 
@@ -155,7 +155,7 @@ class kp extends kuaipan
 		$params = array(
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		$url = parent::download_file($params);
+		$url = $this->download_file($params);
 		if (!empty($this->errstr))
 			return false;
 		if ($download == false)
@@ -193,7 +193,7 @@ class kp extends kuaipan
 			'overwrite'=>"true",
 			'root'=>$this->root,
 			'path'=>self::realpath($path));
-		$ret = parent::upload_file($params,$data);
+		$ret = $this->upload_file($params,$data);
 		if (empty($ret->file_id))
 			return false;
 		return $ret->file_id;

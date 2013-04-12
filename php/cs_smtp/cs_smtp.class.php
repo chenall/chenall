@@ -42,6 +42,7 @@ class cs_smtp
 	private $smtp = null;
 	private $attach = array();
 	public $debug = false;//调试开关
+	public $process = false;//是否显示发送进度条
 	public $errstr = '';
 
 	function __construct($host='smtp.qq.com',$port = 25) {
@@ -66,7 +67,7 @@ class cs_smtp
 		while (!feof($fn)) {
 			$data = fread($fn,0x2000);
 			$sendsize += strlen($data);
-			if ($filesize)
+			if ($this->process && $filesize)
 			{
 				echo (round($sendsize/$filesize,4)*100)."%\t\r";
 				ob_flush();

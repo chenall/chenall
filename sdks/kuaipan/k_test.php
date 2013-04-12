@@ -4,6 +4,7 @@ require_once('kp.class.php');
 define('CONSUMER_KEY',''); //换成你申请的应用对应的CONSUMER_KEY
 define('CONSUMER_SECRET','');//同上
 $kp = new kp(CONSUMER_KEY,CONSUMER_SECRET);
+if (file_exists('./kp_oauth'))
 $oauth = json_decode(file_get_contents('./kp_oauth'));//从文件中读取
 if (!empty($oauth))
 {
@@ -12,12 +13,11 @@ if (!empty($oauth))
 }
 else
 {
-	echo "OAuth测试:<br>";
 	$oauth = $kp->OAuth();
 	if ($kp->errstr)
 		die("OAuth授权失败:".$kp->errstr);
 	else
-		printf("成功：%s<br>",json_encode($oauth));
+		printf("OAuth授权成功：%s<br>",json_encode($oauth));
 	file_put_contents('./kp_oauth',json_encode($oauth));
 }
 
