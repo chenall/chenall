@@ -1,5 +1,4 @@
 <?php
-
 /*
 	简易的SMTP发送邮件类，代码比较少，有助于学习SMTP协议，
 	可以带附件，支持需要验证的SMTP服务器（目前的SMTP基本都需要验证）
@@ -35,7 +34,7 @@
 			$subject 邮件主题，可选。
 			$body  邮件主体内容，可选
 */
-class cs_smtp
+class smtp
 {
 	private $CRLF = "\r\n";
 	private $from;

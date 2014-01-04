@@ -21,45 +21,45 @@ else
 	file_put_contents('./kp_oauth',json_encode($oauth));
 }
 
-echo "<br>创建文件夹测试: /mytest===>";
-$ret = $kp->md('mytest');
+echo "<br>创建文件夹测试: /中文===>";
+$ret = $kp->md('中文');
 if ($ret == false)
 	echo "失败:".$kp->errstr."<br>";
 else
 	printf("成功: 文件夹ID:%s<br>",$ret);
 
-echo "<br>上传文件测试:<br>".__FILE__."==>mytest/test.php=>";
-$ret = $kp->upload('mytest/test.php',__FILE__);
+echo "<br>上传文件测试:<br>".__FILE__."==>中文/test.php=>";
+$ret = $kp->upload('中文/test.php',__FILE__);
 if ($ret==false)
 	echo "失败:".$kp->errstr;
 else
 	echo "成功: 文件ID:".$ret; 
-echo "<br>".__FILE__."==>mytest/中文测试.php=>";
-$ret = $kp->upload('mytest/中文测试.php',__FILE__);
+echo "<br>".__FILE__."==>中文/中文测试.php=>";
+$ret = $kp->upload('中文/中文测试.php',__FILE__);
 if ($ret==false)
 	echo "失败:".$kp->errstr;
 else
 	echo "成功: 文件ID:".$ret; 
 
 echo "<br>复制文件测试:<br>";
-echo "/mytest/test.php==>/mytest/test_copy.php==>";
-$ret = $kp->cp('/mytest/test.php','/mytest/test_copy.php');
+echo "/中文/test.php==>/中文/test_copy.php==>";
+$ret = $kp->cp('/中文/test.php','/中文/test_copy.php');
 if ($ret==false)
 	echo "失败:".$kp->errstr;
 else
 	echo "成功"; 
 
 echo "<br>复制文件夹测试:<br>";
-echo "/mytest==>/copy_of_mytest==>";
-$ret = $kp->cp('/mytest','/copy_of_mytest');
+echo "/中文==>/copy_of_中文==>";
+$ret = $kp->cp('/中文','/copy_of_中文');
 if ($ret==false)
 	echo "失败:".$kp->errstr;
 else
 	echo "成功"; 
 
 echo "<br>改名测试:<br>";
-echo "/mytest/test.php=>/mytest/test_mv.php==>";
-$ret = $kp->mv('/mytest/test.php','/mytest/test_mv.php');
+echo "/中文/test.php=>/中文/test_mv.php==>";
+$ret = $kp->mv('/中文/test.php','/中文/test_mv.php');
 if ($ret==false)
 	echo "失败:".$kp->errstr;
 else
@@ -73,8 +73,8 @@ else if (empty($ret))
 	echo '该目录下没有任何文件';
 else
 	echo print_dir($ret);
-echo "<br>列表mytest目录内容:<br>";
-$ret = $kp->dir('/mytest');
+echo "<br>列表中文目录内容:<br>";
+$ret = $kp->dir('/中文');
 if ($kp->errstr)
 	printf("失败: %s<br>",$kp->errstr);
 else if (empty($ret))
@@ -82,13 +82,13 @@ else if (empty($ret))
 else
 	echo print_dir($ret);
 
-echo "<br>删除文件测试,删除文件/mytest/test_mv.php==>";
-$ret = $kp->rm('/mytest/test_mv.php');
+echo "<br>删除文件测试,删除文件/中文/test_mv.php==>";
+$ret = $kp->rm('/中文/test_mv.php');
 if ($ret == false)
 	echo '删除失败'.$kp->errstr;
 else
 	echo "成功";
-$ret = $kp->dir('/mytest');
+$ret = $kp->dir('/中文');
 if ($kp->errstr)
 	printf("失败: %s<br>",$kp->errstr);
 else if (empty($ret))
@@ -96,8 +96,8 @@ else if (empty($ret))
 else
 	echo print_dir($ret);
 
-echo "<br>删除目录测试,删除目录/copy_of_mytest==>";
-$ret = $kp->rm('/copy_of_mytest');
+echo "<br>删除目录测试,删除目录/copy_of_中文==>";
+$ret = $kp->rm('/copy_of_中文');
 if ($ret == false)
 	echo '删除失败'.$kp->errstr;
 else
@@ -112,8 +112,8 @@ else if (empty($ret))
 else
 	echo print_dir($ret);
 
-echo "<br>下载测试: 以下是文件 mytest/中文测试.php的下载地址<br>";
-$ret = $kp->download('mytest/中文测试.php');
+echo "<br>下载测试: 以下是文件 中文/中文测试.php的下载地址<br>";
+$ret = $kp->download('中文/中文测试.php');
 if ($ret == false)
 	echo "获取下载地址出错!".$kp->errstr;
 else

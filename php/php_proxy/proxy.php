@@ -35,9 +35,9 @@ function write_function($ch, $body){
     }
 	if ($debug)
 	{
-		//if ($GLOBALS['gziped'])
-		//	fwrite($debug,gzinflate(substr($body,10,-4)));
-		//else
+		if ($GLOBALS['gziped'])
+			fwrite($debug,gzinflate(substr($body,10,-4)));
+		else
 			fwrite($debug,$body);
 	}
 	return strlen($body);
@@ -77,7 +77,14 @@ function proxy()
 			$header[] = 'CONTENT_TYPE: '.$_SERVER['CONTENT_TYPE']; 
 		}
 	}
-	$url = $_SERVER['REQUEST_URI'];
+	if ($_SERVER['SERVER_PORT'] == 443)
+	    $url = "https://".$_SERVER['SERVER_NAME'];
+	else
+	    $url = $_SERVER['REQUEST_URI'];
+	$header[] = 'X_FORWARDED_FOR: 127.0.0.1';
+	$header[] = 'CLIENT_IP: 127.0.0.1';
+	$header[] = 'connection: close';
+
 	$curl_opts = array(
 		CURLOPT_URL => $url,
 		CURLOPT_CONNECTTIMEOUT => 10,
@@ -90,17 +97,38 @@ function proxy()
 		CURLOPT_WRITEFUNCTION => 'write_function',
 		CURLOPT_CUSTOMREQUEST =>$_SERVER['REQUEST_METHOD'],
 		CURLOPT_SSL_VERIFYPEER => false,
+		CURLOPT_SSL_VERIFYHOST => false,
 		CURLOPT_HTTPHEADER => $header,
+//		CURLOPT_PROXY => '127.0.0.1:8086',
 		CURLOPT_SSL_VERIFYHOST => false
 	);
 
-	if ($_SERVER['REQUEST_METHOD']=='POST')//如果是POST就读取POST信息,不支持
-	{
-		$curl_opts[CURLOPT_POST] = true; 
-		$curl_opts[CURLOPT_POSTFIELDS] = file_get_contents('php://input'); 
+	switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
+	    case 'HEAD':
+		$curl_opts[CURLOPT_NOBODY] = true;
+		break;
+	    case 'GET':
+		break;
+	    case 'POST':
+		$curl_opts[CURLOPT_POST] = true;
+		$curl_opts[CURLOPT_POSTFIELDS] = file_get_contents('php://input');
+		break;
+	    case 'PUT':
+		break;
+	    case 'DELETE':
+		$curl_opts[CURLOPT_CUSTOMREQUEST] = $method;
+		$curl_opts[CURLOPT_POSTFIELDS] = file_get_contents('php://input');
+		break;
+	    case 'CONNECT':
+		exit;
+	    default:
+		echo 'Invalid Method: '. $method;
+		exit(-1);
 	}
+
 	$curl = curl_init();
 	curl_setopt_array ($curl, $curl_opts);
+    
 	empty($debug) || fwrite($debug,"\r\n".date('Y-m-d H:i:s',time())." URL: ".$curl_opts[CURLOPT_URL]."\r\n".$curl_opts[CURLOPT_POSTFIELDS]."\r\n".implode("\r\n",$header)."\r\n\r\n");
 	$ret = curl_exec ($curl);
 	if ($GLOBALS['chunked']){
@@ -114,7 +142,7 @@ if ($debug)
 {
 	if (!file_exists('debug/'))
 		mkdir('debug');
-	$debug = fopen("debug/".$_SERVER['REMOTE_ADDR'].date('_ymdHis_',time()).'__'.$_SERVER['SERVER_NAME'].".log",'a');
+	$debug = fopen("debug/".$_SERVER['SERVER_NAME'].'__'.date('_ymdHis_',time()).'__'.$_SERVER['REMOTE_ADDR'].".log",'a');
 	fwrite($debug,print_r($_SERVER,true));
 	fwrite($debug,"===========php://input===========\r\n".@file_get_contents('php://input')."\r\n======================\r\n");
 }
