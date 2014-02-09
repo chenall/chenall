@@ -1,0 +1,6 @@
+<table class="table">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+<td><%- list_posts({count: 6,ulClass: "list-group",liClass:"list-group-item",orderby: 'random',query:{operator: 'or',tags: item.tags,categories: item.categories}}) -%></td>
+<td><%- list_posts({count: 6,ulClass: "list-group",liClass:"list-group-item",orderby: 'random'}) -%></td>
+</tr></table>

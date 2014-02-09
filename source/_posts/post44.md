@@ -1,0 +1,27 @@
+title: "[分享]超级解霸V9精简版(用来播放光蝶)"
+id: 44
+date: 2009-02-26 09:25:02
+tags: 
+- 超级解霸
+- 软件
+categories: 
+- 软件推荐/影音播放
+---
+
+
+豪杰超级解霸V9 Vsita 增强版<http://www.haojie.cn/>
+*****
+精简版功能.(压缩后只有2.5MB)
+1. 保留视频功能.
+2. 保留自动播放司服器
+3. 修正原版自动播放司服器不能正常使用的问题.
+4. 添加了V8版和3500版的皮肤(已修改过).(使用V9版皮肤可以点右下角的超级解霸字样进行切换皮肤).
+
+精简版下载 [新浪共享](http://ishare.iask.sina.com.cn/cgi-bin/fileid.cgi?fileid=4855424)
+
+附,皮肤截图
+
+![](http://d.chenall.net/upload/2009/2/20090226093206625.jpg)  
+![](http://d.chenall.net/upload/2009/2/20090226093219781.jpg)  
+![](http://d.chenall.net/upload/2009/2/20090226093233109.jpg)  
+![](http://d.chenall.net/upload/2009/2/20090226093510687.jpg)  

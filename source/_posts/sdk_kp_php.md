@@ -1,0 +1,143 @@
+title: "金山快盘PHP SDK(普通版+简化版)[2013-04-12]"
+id: 890
+date: 2012-12-12 14:02:22
+tags: 
+- php
+- SDK
+- 优化
+- 快盘
+categories: 
+- 程序设计/PHP
+---
+
+金山快盘开放平台 PHP SDK
+
+来源: {% ilink id:890 %}
+时间: 2013-04-12
+使用方法：
+
+有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php
+
+可以根据自己的需要选择使用。
+
+1.  首先初化始一个类.
+```
+kp = new KuaiPan(CONSUMER_KEY,CONSUMER_SECRET);
+```
+2.  通用API调用方法
+```
+$kp->APINAME($params,$path)
+```
+
+其中`$params`是参数列表，可以使用字符串方式也可以使用组数的方式。不需要参数可以留空。  
+`$path`，路径，部份API需要带路径信息，可以加上，该参数可以省略。  
+如果不需要参数直接留空就行了。  
+例子:
+
+```
+$kp->metadata()
+$kp->metadata('','/mytest');
+$kp->upload_file(array('overwrite'=>"true",'root'=>'app_folder','path'=>'/test.txt'),array('file'=>'@/test.php;filename=test.txt'));
+```
+
+调用API正常的话返回一个**JSON OBJECT**数据，否则会设置变量**$kp->errstr**.  
+只要判断**$kp->errstr**是否为空就可以知道调用是否成功了。
+
+目前可使用API，按官方SDK的命名方式
+
+* account_info
+* metadata
+* history
+* shares
+* create_folder
+* delete
+* move
+* copy
+* copy_ref
+* upload_locate
+* download_file
+* download_file_by_id
+* upload_file
+* upload_file_by_id
+* thumbnail
+* documentView
+* requestToken
+* accessToken
+
+关于params参数可以自己上官网查看
+
+[http://www.kuaipan.cn/developers/document.htm](http://www.kuaipan.cn/developers/document.htm)
+
+
+### SDK简化版说明 kp.class.php
+
+1.  授权
+	```
+	$oauth = $kp->OAuth();
+	```
+	打开一个窗口供用户信息授权信息，然后返回。
+	授权成功后自己请保存以下OAUTH信息，下次可以直接使用。
+	```
+	$oauth->oauth_token
+	$oauth->oauth_token_secret
+	```
+	以后可以直接使用下面的方法不需要再次授权。
+	```
+	$kp->oauth_token = $oauth->oauth_token
+	$kp->oauth_token_secret = $oauth->oauth_token_secret
+	```
+2.  创建文件夹
+	```
+	$ret = $kp->md(PATH)
+	```
+3.  删除文件（夹）  
+	彻底删除
+	```
+	$ret = $kp->rm(PATH)
+	```
+	删除到回收站
+	```
+	$ret = $kp->rm(PATH,"false")
+	```
+4.  复制文件（夹）
+	```
+	$ret = $kp->cp(FROM_PATH,TO_PATH);
+	```
+5.  移动文件（夹）
+	```
+	$ret = $kp->mv(FROM_PATH,TO_PATH);
+	```
+6.  下载文件
+	直接下载  
+	```
+	$ret= $kp->download(PATH);
+	```
+	手动下载，返回一个地址
+	```
+	$ret= $kp->download(PATH,false);
+	```
+7.  上传文件
+	```
+	$ret= $kp->upload(PATH,FILE);
+	```
+	如果`PATH`路径最后字符是'/'，认为是一个目录，上传到该目录，上传后的文件名从`FILE`中提取。如果`PATH`路径最后字符不是'/'，认为是一个文件，上传后的文件名就是`PATH`指定的文件名。
+	```
+	$ret= $kp->upload(PATH,FILE,true);//显示上传进度百分比
+	```
+8.  列出文件夹内容
+	```
+	$ret= $kp->ls(PATH);
+	```
+9.  判断操作是否成功可以使用变量**errstr**
+	```
+	if (empty($kp->errstr))
+		echo '成功';
+	else
+		echo '失败'.$kp->errstr;
+	```
+
+可以看一下k_test.php里面的测试实例。
+
+最新SDK源码下载地址:
+
+[https://github.com/chenall/chenall/tree/master/sdks/kuaipan](https://github.com/chenall/chenall/tree/master/sdks/kuaipan)
