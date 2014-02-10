@@ -14,11 +14,11 @@ categories:
 
 可以点击链接直接下载，或者进入网络硬盘下载。共享密码是:chenall
 
-[外置驱动使用说明.txt](http://d.chenall.net/upload/2009/1/外置驱动说明.txt)
+[外置驱动使用说明.txt]([CDN_URL]:/upload/2009/1/外置驱动说明.txt)
 
-[请先读我.txt](http://d.chenall.net/upload/2009/1/请先读我.txt)
+[请先读我.txt]([CDN_URL]:/upload/2009/1/请先读我.txt)
 
-[更新历史.txt](http://d.chenall.net/upload/2009/1/更新历史.txt)
+[更新历史.txt]([CDN_URL]:/upload/2009/1/更新历史.txt)
 
 2009-05-01 修正版ISO下载[2009-05-03]
 

@@ -56,11 +56,11 @@ unsigned long eflags; // as input and output
    说明：chkpci就是主要使用`outl`和`inl`获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）
    结果自己看，后面使用bios调用得到的是第一条PCI的记录。。
 
-   ![](http://d.chenall.net/upload/grub4dos_bios_int_01.png)
+   ![]([CDN_URL]:/upload/grub4dos_bios_int_01.png)
 
 2. 调用BIOS中断演示
 
-  ![这是未执行前的界面](http://d.chenall.net/upload/grub4dos_bios_int_02.png)
+  ![这是未执行前的界面]([CDN_URL]:/upload/grub4dos_bios_int_02.png)
 
   ```
 	  这是调用了`INT 10`后的界面，这里稍微介绍一下这个语句的作用
@@ -77,7 +77,7 @@ unsigned long eflags; // as input and output
 	          (DH、DL)＝窗口的右下角位置(Y坐标，X坐标)
 	  出口参数： 无
   ```
-  ![调用结果](http://d.chenall.net/upload/grub4dos_bios_int_03.png)
+  ![调用结果]([CDN_URL]:/upload/grub4dos_bios_int_03.png)
 
 
 这个程序只是为了方便测试而编写,使用者需自己注意。

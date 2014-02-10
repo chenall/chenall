@@ -32,33 +32,33 @@ categories:
  
     只有在需要把本机作为服务端（中转站）时需要选中【安装 Softether 虚拟 HUB 组件】，其它的不需要安装。这个选项只要选一台安装.后面的HUB设置也是在安装了这个组件的电脑上设置  
 
-    ![](http://d.chenall.net/upload/2009/10/200910312017414216.png)
+    ![]([CDN_URL]:/upload/2009/10/200910312017414216.png)
 
  2. 配置HUB：点击开始菜单--程序，找到以下程序。（在服务器上配置就好）
 
- ![](http://d.chenall.net/upload/2009/10/200910311954365563.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311954365563.jpg)
  
- ![](http://d.chenall.net/upload/2009/10/200910311919372702.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919372702.jpg)
 
- ![](http://d.chenall.net/upload/2009/10/200910311919371805.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919371805.jpg)
 
- ![](http://d.chenall.net/upload/2009/10/200910311919385385.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919385385.jpg)
 
- ![](http://d.chenall.net/upload/2009/10/200910311919387348.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919387348.jpg)
 
  3. 客户机安装虚拟网卡，配置虚拟网卡连接：（所有客户机都需要设置，建议使用不同的用户名进行连接）
  
- ![](http://d.chenall.net/upload/2009/10/200910311919384538.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919384538.jpg)
  
- ![](http://d.chenall.net/upload/2009/10/200910311919380161.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919380161.jpg)
  
- ![](http://d.chenall.net/upload/2009/10/200910311919380424.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919380424.jpg)
 
- ![](http://d.chenall.net/upload/2009/10/200910311919392442.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919392442.jpg)
  
  4. 配置ip地址：
 
- ![](http://d.chenall.net/upload/2009/10/200910311919395073.jpg)
+ ![]([CDN_URL]:/upload/2009/10/200910311919395073.jpg)
 
 **OK，介绍到此完，欢迎一起来讨论。**
 

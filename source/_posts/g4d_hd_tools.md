@@ -200,11 +200,11 @@ BOOTICE 下载地址: [http://bbs.wuyou.com/viewthread.php?tid=57675](http://bbs
 
 用BOOTICE进行第二步的安装方法
 
-![](http://d.chenall.net/upload/2011/05/31AAE4E9668FEC052E0BF3DB7B4FD8FD4A46CA6A.png)
+![]([CDN_URL]:/upload/2011/05/31AAE4E9668FEC052E0BF3DB7B4FD8FD4A46CA6A.png)
 
-![](http://d.chenall.net/upload/2011/05/8112D8AD5D88D0D09C2F16C21C5C6A8EDDDC6301.png)
+![]([CDN_URL]:/upload/2011/05/8112D8AD5D88D0D09C2F16C21C5C6A8EDDDC6301.png)
 
-![](http://d.chenall.net/upload/2011/05/57DFB415C94B3DCBFB4DFB69843744865EB8742A.png)
+![]([CDN_URL]:/upload/2011/05/57DFB415C94B3DCBFB4DFB69843744865EB8742A.png)
 
 基本模块 ： 直接解压到任意磁盘的根目录下，然后运行BOOT\BIN\setup_hd0.cmd就可以了（也可以自己使用BOOTICE安装WEE引导，使用WEE的默认菜单就行）
 

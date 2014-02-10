@@ -74,15 +74,15 @@ https://code.google.com/p/name5566-merry/
 
 截图
 
-![软件界面截图](http://d.chenall.net/img/ALMRunMain.png "软件界面截图")
+![软件界面截图]([CDN_URL]:/img/ALMRunMain.png "软件界面截图")
 
 选定命令之后按TAB键可以添加参数
 
-![直接输入参数](http://d.chenall.net/img/merry_args.png "可以直接输入参数")
+![直接输入参数]([CDN_URL]:/img/merry_args.png "可以直接输入参数")
 
 在命令列表按Insert键添加新命令
 
-![按Insert键添加新命令](http://d.chenall.net/img/ALMRun_AddCmd.png "按Insert键添加新命令")
+![按Insert键添加新命令]([CDN_URL]:/img/ALMRun_AddCmd.png "按Insert键添加新命令")
 
 支持拼音首字母识别,比如:列表中有"宽带连接",可以输入 "`kdlj`"  
 这是根据区位表匹配的,比较节省代码,只支持GB2312字符,也没有处理多音字,碰到多音字,一个不行可以换另一个.如果有兴趣帮助我一起开发的可以联系我,或者直接提交补丁文件给我.

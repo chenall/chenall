@@ -28,7 +28,7 @@ categories:
 
 附上测试效果图.使用VMSARE测试.
 
-![](http://d.chenall.net/upload/2008/12/0.JPG)![](http://d.chenall.net/upload/2008/12/1.JPG)![](http://d.chenall.net/upload/2008/12/2.JPG)
+![]([CDN_URL]:/upload/2008/12/0.JPG)![]([CDN_URL]:/upload/2008/12/1.JPG)![]([CDN_URL]:/upload/2008/12/2.JPG)
 
 附件为下面批处理脚本,可用在PE下
 
@@ -57,4 +57,4 @@ if not errorlevel 1 (echo. %~nX1驱动安装成功 ! & pecmd serv %~n1 & pause) 
 del  /f  /q "%temp%\scsi_serv.inf"
 ```
 
-[PE_SCSI.rar](http://d.chenall.net/upload/2008/12/PE_SCSI.rar)
+[PE_SCSI.rar]([CDN_URL]:/upload/2008/12/PE_SCSI.rar)

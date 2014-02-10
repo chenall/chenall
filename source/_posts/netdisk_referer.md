@@ -45,7 +45,7 @@ if (preg_match('/Location: (.*)/',$r, $matches))//获取Location地址即最终�
     ![](http://d.chenall.net/0/c05l7vhroi/左右脑冲突.jpg)  
 
 *   MP3音乐在线播放(使用的是HTML5的代码,需要浏览器支持)  
-	<audio autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/0/c05l7vhroi/05我的快乐.mp3" type="audio/mpeg"/><source src="http://d.chenall.net/0/c05l7vhroi/爱情总在幻灭时最美.mp3" type="audio/mpeg"/> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
+    <audio autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/0/c05l7vhroi/05我的快乐.mp3" type="audio/mpeg"/><source src="http://d.chenall.net/0/c05l7vhroi/爱情总在幻灭时最美.mp3" type="audio/mpeg"/> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
 
 *   文件直链下载
 

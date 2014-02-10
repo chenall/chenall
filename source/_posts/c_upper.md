@@ -77,4 +77,4 @@ categories:
 两种不同的方式的汇编代码比较，用经典的方法执行效率可能会高一点儿。  
  用新的方法生成的文件小一点（少几个字节，在程序空间比较紧张的情况下可以用）.
 
-![](http://d.chenall.net/upload/2010/10/1EEC7B5D67C99ACAD6F65CEB18DAD7A607AAAB5D.png)
+![]([CDN_URL]:/upload/2010/10/1EEC7B5D67C99ACAD6F65CEB18DAD7A607AAAB5D.png)

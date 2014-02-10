@@ -133,6 +133,9 @@ tag_minium: 3
 ## GoogleTagManagerID: GTM-ABCDEF
 GTM_ID: GTM-TVFS32
 
+## 设置一个CDN_URL地址,在文章中使用'[CDN_URL]:'字符串会自动替换
+CDN_URL: http://c-dl.qiniudn.com
+
 twitter_id: chenall
 facebook_id:
 linkedin_id:

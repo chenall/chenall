@@ -55,15 +55,15 @@ fb文件系统可能会无法正常使用。若是pxe启动则你需要每个目
 
 首先是主界面（注：所有内容都是自动生成的）
 
-![](http://d.chenall.net/post/modboot/main.png)
+![]([CDN_URL]:/post/modboot/main.png)
 
 自定义启动界面。
 
-![](http://d.chenall.net/post/modboot/custom.png)
+![]([CDN_URL]:/post/modboot/custom.png)
 
 DOS启动菜单
 
-![](http://d.chenall.net/post/modboot/dos.png)
+![]([CDN_URL]:/post/modboot/dos.png)
 
 注：使用LEVEL3里面的模块直接启动时，默认不显示这个菜单，可以在启动时快速按F8显示。
 

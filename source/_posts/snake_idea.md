@@ -78,4 +78,4 @@ categories:
 
  WIN下可玩,用DOS效果会比较好(可以试试DOSBOX)
 
- ![](http://d.chenall.net/upload/2010/09/CB80560132AD3CF62ADB81CF831F1D88BC096E3D.png)
+ ![]([CDN_URL]:/upload/2010/09/CB80560132AD3CF62ADB81CF831F1D88BC096E3D.png)

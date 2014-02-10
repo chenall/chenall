@@ -17,7 +17,7 @@ categories:
 
 ## [用法]
 
-直接在GRUB4DOS下运行,可以加一个PCI信息库文件参数.[PCI信息库文件](http://d.chenall.net/upload/PCIDEVS.gz)
+直接在GRUB4DOS下运行,可以加一个PCI信息库文件参数.[PCI信息库文件]([CDN_URL]:/upload/PCIDEVS.gz)
 
 另: 因为GRUB4DOS是支持自动解压的.所以这个信息库文件可以使用GZIP压缩再调用(加快读取速度).
 
@@ -93,12 +93,12 @@ http://code.google.com/p/grubutils/downloads/list
 
 [截图]
 
-![首先是帮助信息](http://d.chenall.net/upload/2010/08/158B5714E04F16AD5C39EF2BE35C76E70E0FAEA1.png)
+![首先是帮助信息]([CDN_URL]:/upload/2010/08/158B5714E04F16AD5C39EF2BE35C76E70E0FAEA1.png)
 
-![不加参数,只列出PCI设备信息.](http://d.chenall.net/upload/2010/08/AE12A9F981EA2C70F956A931B6A3108D5FCA6710.png)
+![不加参数,只列出PCI设备信息.]([CDN_URL]:/upload/2010/08/AE12A9F981EA2C70F956A931B6A3108D5FCA6710.png)
 
-![指定PCI信息库文件,按这个库文件显示详细的信息(呵呵,也不是很详细).](http://d.chenall.net/upload/2010/08/C73AE3560675211E38BA59F2CFEA75033D8569D3.png)
+![指定PCI信息库文件,按这个库文件显示详细的信息(呵呵,也不是很详细).]([CDN_URL]:/upload/2010/08/C73AE3560675211E38BA59F2CFEA75033D8569D3.png)
 
-![只显示指定类型设备.](http://d.chenall.net/upload/2010/08/7CD00677B3EE4AEB967363AC49674B066C62F6E0.png)
+![只显示指定类型设备.]([CDN_URL]:/upload/2010/08/7CD00677B3EE4AEB967363AC49674B066C62F6E0.png)
 
-![新的PCI格式截图](http://d.chenall.net/upload/2010/09/299DAA5B941BF396391CF607F2FFD92B58E5891B.png)
+![新的PCI格式截图]([CDN_URL]:/upload/2010/09/299DAA5B941BF396391CF607F2FFD92B58E5891B.png)

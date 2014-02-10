@@ -17,7 +17,7 @@ categories:
 
 具体效果看图片．．．．
 
-![](http://d.chenall.net/upload/2010/06/BD825164772A2EE4EDE97353B2A955423D61BC96.png)
+![]([CDN_URL]:/upload/2010/06/BD825164772A2EE4EDE97353B2A955423D61BC96.png)
 
 启动时使用的是192.168.0.253服务器．
 

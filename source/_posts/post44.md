@@ -21,7 +21,7 @@ categories:
 
 附,皮肤截图
 
-![](http://d.chenall.net/upload/2009/2/20090226093206625.jpg)  
-![](http://d.chenall.net/upload/2009/2/20090226093219781.jpg)  
-![](http://d.chenall.net/upload/2009/2/20090226093233109.jpg)  
-![](http://d.chenall.net/upload/2009/2/20090226093510687.jpg)  
+![]([CDN_URL]:/upload/2009/2/20090226093206625.jpg)  
+![]([CDN_URL]:/upload/2009/2/20090226093219781.jpg)  
+![]([CDN_URL]:/upload/2009/2/20090226093233109.jpg)  
+![]([CDN_URL]:/upload/2009/2/20090226093510687.jpg)  

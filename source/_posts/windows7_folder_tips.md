@@ -21,7 +21,7 @@ PS: 从WINDOWS XP开始就有这种特性了，不过从VISTA开始又有变动�
 
 首先看看如下图片，有没有发现一些比较特殊的地方？
 
-![](http://d.chenall.net/upload/2009/10/6F82F0AE06F64B8A257E871C7EC8E7EE73606F6C.png)
+![]([CDN_URL]:/upload/2009/10/6F82F0AE06F64B8A257E871C7EC8E7EE73606F6C.png)
 
 想知道上面的文件夹是如何来的吗？
 

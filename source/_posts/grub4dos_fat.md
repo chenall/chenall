@@ -21,7 +21,7 @@ categories:
 
 ## [命令参数]
 
-![](http://d.chenall.net/upload/2010/01/fat_help.png)
+![]([CDN_URL]:/upload/2010/01/fat_help.png)
 
 
 FAT命令的目标对象必须是FAT12/16/32分区的目录和文件,目前只支持8.3格式

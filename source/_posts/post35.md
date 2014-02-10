@@ -142,4 +142,4 @@ str  1.exe 0x100  0 /e /asc:1234  将文件偏移位置256开始的4个字节修
 #define STRING_NOT_FOUND 12 
 ```
 
-[200812192314097256.rar](http://d.chenall.net/upload/2008/12/200812192314097256.rar)
+[200812192314097256.rar]([CDN_URL]:/upload/2008/12/200812192314097256.rar)

@@ -53,6 +53,6 @@ CMD2EXE - V2.8.6.1版
  2. 避杀测试，看看会不会被杀毒工具查杀。
 
 {% endblockquote %}
-![](http://d.chenall.net/upload/2008/6/cmd2exe.JPG)
+![]([CDN_URL]:/upload/2008/6/cmd2exe.JPG)
 
-[cmd2exe.gz](http://d.chenall.net/upload/2008/6/cmd2exe.gz)
+[cmd2exe.gz]([CDN_URL]:/upload/2008/6/cmd2exe.gz)

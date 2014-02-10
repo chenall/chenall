@@ -50,7 +50,7 @@ auto   自动开始签到，完成自动退出，可以放在计划任务中自
 
 最新版本界面．
 
-![](http://d.chenall.net/img/20120831094046333.png)
+![]([CDN_URL]:/img/20120831094046333.png)
 
 ### 2012-03-23
 
@@ -286,7 +286,7 @@ WEB免客户端版地址: [http://ausign.chenall.net](http://ausign.chenall.net 
 
 下载地址：
 
-[旧版单机版](http://d.chenall.net/1/辅助工具/网盘自动签到2012-08-16.rar)
+[旧版单机版]([CDN_URL]:/1/辅助工具/网盘自动签到2012-08-16.rar)
 
-[新版C/S版](http://d.chenall.net/1/辅助工具/网盘自动签到CS-2012-09-15.rar)
+[新版C/S版]([CDN_URL]:/1/辅助工具/网盘自动签到CS-2012-09-15.rar)
 
