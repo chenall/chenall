@@ -65,7 +65,7 @@ categories:
 ###【截图&介绍】
 
 * 帮助信息(见后面详细介绍)  
-  {% imgL ntboot_help.png %}
+  ![]([CDN_URL]:/post/ntboot_help.png)
   1.  NT5|NT6=root|file 
       启动`NT5`或`NT6`系统.可以指定系统分区`root`,如果没有指定则自动查找.  
       `file` 指定一个文件来启动.  
@@ -84,7 +84,7 @@ categories:
   5. 如果你的内存足够大则在安装系统时可以使用@cdrom代替cdrom,这时会把镜像加载到内存,默认是直接映射,加载到内存安装的速度会比较快.  
       若是使用#cdrom可以把镜像加载到高位内存。一些参数用法可以看NTBOOT.LST里面的菜单演示.
   6. 启动菜单演示
-      {% imgL ntboot_menu.png %}
+      ![]([CDN_URL]:/post/ntboot_menu.png)
 * 合盘调用方法
   1. 直接把NTBOOT整个目录放到某个位置,比如放到BOOT目录下.
   2. 在你的菜单中直接调用NTBOOT例子:  

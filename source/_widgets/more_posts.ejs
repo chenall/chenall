@@ -1,6 +1,15 @@
-<table class="table">
+<table class="table table-striped" style="table-layout:fixed">
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
-<td><%- list_posts({count: 6,ulClass: "list-group",liClass:"list-group-item",orderby: 'random',query:{operator: 'or',tags: item.tags,categories: item.categories}}) -%></td>
+<%var Related_posts=get_posts({count: '',query:{operator: 'or',tags: item.tags,categories: item.categories}});
+  var tags_posts=get_posts({posts: Related_posts,count: '',query:{tags: item.tags}});
+  if (tags_posts.length > 6){
+    var posts=tags_posts;
+  } else {
+    var posts=Related_posts;
+  }
+  
+%>
+<td><%- list_posts({posts: posts,count: 6,ulClass: "list-group",liClass:"list-group-item",orderby: 'random'}) -%></td>
 <td><%- list_posts({count: 6,ulClass: "list-group",liClass:"list-group-item",orderby: 'random'}) -%></td>
 </tr></table>

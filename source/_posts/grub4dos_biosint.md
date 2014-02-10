@@ -2,6 +2,7 @@ title: "可以在GRUB4DOS下调用BIOS中断的外部命令"
 id: 785
 date: 2011-10-17 23:36:28
 tags: 
+- chkpci
 - GRUB4DOS
 - 原创
 categories: 
@@ -52,32 +53,34 @@ unsigned long eflags; // as input and output
 
 效果图在这里(之前的图片放在盛大的服务器上,已经失效)
 
-1. 直接读写端口演示，分别使用`outl`和`inl`
+1. 直接读写端口演示，分别使用`outl`和`inl`  
+
    说明：chkpci就是主要使用`outl`和`inl`获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）
    结果自己看，后面使用bios调用得到的是第一条PCI的记录。。
 
-   ![]([CDN_URL]:/upload/grub4dos_bios_int_01.png)
+  ![获取pci信息]([CDN_URL]:/post/grub4dos_biosint_01.png)
 
 2. 调用BIOS中断演示
 
-  ![这是未执行前的界面]([CDN_URL]:/upload/grub4dos_bios_int_02.png)
+  ![未执行前的界面]([CDN_URL]:/post/grub4dos_biosint_02.png)
 
   ```
-	  这是调用了`INT 10`后的界面，这里稍微介绍一下这个语句的作用
-	  调用`BIOS`的`int10`中断第6号功能。`AX=0X0601` 即AH=06H,AL=01
-	  CX=0x050d 即CH=5,CL=0xD(13)
-	  DX=0X0E20 CH=0xe(14),cl=0x20(32)
-	  意思就是把屏幕从第5行第13个字符开始到第14行第32个字符结尾的柜形上移一行。
-	  功能号：06H和07H
-	  功能：初始化屏幕或滚屏
-	  入口参数：AH＝06H—向上滚屏，07H—向下滚屏
-	           AL＝滚动行数(0—清窗口)
-	           BH＝空白区域的缺省属性
-	          (CH、CL)＝窗口的左上角位置(Y坐标，X坐标)
-	          (DH、DL)＝窗口的右下角位置(Y坐标，X坐标)
-	  出口参数： 无
+    这是调用了`INT 10`后的界面，这里稍微介绍一下这个语句的作用
+    调用`BIOS`的`int10`中断第6号功能。`AX=0X0601` 即AH=06H,AL=01
+    CX=0x050d 即CH=5,CL=0xD(13)
+    DX=0X0E20 CH=0xe(14),cl=0x20(32)
+    意思就是把屏幕从第5行第13个字符开始到第14行第32个字符结尾的柜形上移一行。
+    功能号：06H和07H
+    功能：初始化屏幕或滚屏
+    入口参数：AH＝06H—向上滚屏，07H—向下滚屏
+             AL＝滚动行数(0—清窗口)
+             BH＝空白区域的缺省属性
+            (CH、CL)＝窗口的左上角位置(Y坐标，X坐标)
+            (DH、DL)＝窗口的右下角位置(Y坐标，X坐标)
+    出口参数： 无
   ```
-  ![调用结果]([CDN_URL]:/upload/grub4dos_bios_int_03.png)
+
+  ![调用结果]([CDN_URL]:/post/grub4dos_biosint_03.png)
 
 
 这个程序只是为了方便测试而编写,使用者需自己注意。

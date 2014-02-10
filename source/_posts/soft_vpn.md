@@ -53,7 +53,7 @@ categories:
 
 附简易连接图示（画得不好，别拍砖,,,,,)：
 
-{%imgL soft_vpn.png%}
+![]([CDN_URL]:/post/soft_vpn.png)
 
 如果实在不懂得RIP路由配置，可以使用另一个方法，比较简单。也不需要设置网关。
 
