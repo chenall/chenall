@@ -1,0 +1,450 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[转载] 从网络启动安装Windows | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="Windows网络安装简介作者：Rinrin
+
+顾名思义，Windows网络安装表示从局域网内部引导Windows安装，核心技术基于微软的RIS(Remote Installation Services)。RIS有一个缺点，即需要在域环境下才能配置运行RIS。不过这个限制已经被国外的高手破解了，现在可以从任何一台Windows（甚至是Linux）机器上配置网络安装所需要的服务。本文将简单说明实现Windows网络安装的技术要点。">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[转载] 从网络启动安装Windows"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[转载] 从网络启动安装Windows</h1>
+      
+        <span>发表于<time datetime="2008-05-05T14:57:29.000Z"> <a href="/post/pxe_ris/">2008-05-05</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <h3 id="windows-">Windows网络安装简介</h3>
+<p>作者：Rinrin</p>
+<p>顾名思义，Windows网络安装表示从局域网内部引导Windows安装，核心技术基于微软的RIS(Remote Installation Services)。RIS有一个缺点，即需要在域环境下才能配置运行RIS。不过这个限制已经被国外的高手破解了，现在可以从任何一台Windows（甚至是Linux）机器上配置网络安装所需要的服务。本文将简单说明实现Windows网络安装的技术要点。</p>
+<p>实现Windows网络安装需要四个服务：BOOTP,TFTP,BINL,Windows Share. 其中BOOTP和TFTP是实现PXE启动的基础，关于PXE启动的详细信息，可以参考本文后的引用2。</p>
+<p>BINL服务，微软称之为启动信息协商层(Boot Information Negotiation Layer)，其作用是网卡查询、身份验证、启动镜像选择等功能。实现Windows网络安装只需要其中一项功能，即网卡查询。Sherpya逆向分析了BINL协议，并写了一个开源的Binl服务程序。要了解详细信息，可以参考本文后的引用1。</p>
+<p>Windows共享服务提供了安装文件的来源，并且在文本模式安装阶段作为启动分区(Boot Partition)，因此也是必不可少的。</p>
+<p>Windows网络安装的大致步骤如下：</p>
+<ol>
+<li>目标计算机从网卡PXE Boot ROM启动（当然，你也可以用PXELinux或PXEGrub来实现类似的启动功能）。</li>
+<li>目标计算机从DHCP/BOOTP服务器获得网络地址，并获得TFTP服务器的IP地址和启动文件信息。</li>
+<li>目标计算机向TFTP服务器获得启动文件startrom.com/startrom.n12</li>
+<li>startrom.com获取ntldr(由setupldr.exe改名而来)，并将控制权传递给它。</li>
+<li>setupldr.exe获取ntdetect.com和winnt.sif，winnt.sif应该包含启动相关信息。
+从这个时候起，有两种启动方法，即ramdisk和网络启动，对于Ramdisk，启动分区为\Device\Ramdisk{xxxx...}，你可以参考本文后的引用2。对于网络启动，你需要在winnt.sif中设定SetupSourceDevice参数。</li>
+<li>setupldr.exe通过ntdetect.com获得网卡的Vendor ID和Device ID, 并将它发送到Binl服务端口(4011)。</li>
+<li>Binl服务查找&ldquo;数据库&rdquo;，获得需要加载的驱动名称和服务名，返回给setupldr.exe</li>
+<li>Setupldr.exe按照正常顺序加载驱动，不过在最后，它会试着去加载前面给出网卡驱动和网络设备相关驱动，你可以从TFTP服务器的log里看到这些。有意思的是，txtsetup.sif并没有网络设备相关驱动的信息，我想可能是直接写在setupldr.exe里了。</li>
+<li>控制权移交给kernel，kernel会试着去mount启动分区，要注意的是，你建好的共享必须提供匿名访问，否则会停住不动。</li>
+<li>开始文本模式安装，setupdd复制文件到硬盘。完成后重新启动。</li>
+<li>开始GUI阶段安装，要注意的是，之前应该在Winnt.sif中指定OriSrc和OriTyp，至于是不是必须的，我不好说，因为并没有试验过。</li>
+<li>安装结束。实际上，你可以在winnt.sif中加入相关信息，以便实现无人值守安装。</li>
+</ol>
+<p>接下来，看一个实际的例子：</p>
+<ol>
+<li>准备好DHCP/TFTP服务器，可以用tftpd32，也可以用性能较好的haneWin，看你的选择了。</li>
+<li>设定好DHCP/TFTP服务器，指定TFTP根目录和启动文件名(startrom.n12或其他)。</li>
+<li><p>TFTP目录结构如下：</p>
+<pre><code>TFTP
+│ntdetect.com
+│ntldr
+│startrom.n12
+│winnt.sif
+│
+└─boot
+ └─I386
+</code></pre><p>其中ntldr由setupldr.exe改名而来，I386目录可以直接从安装光盘中复制。</p>
+</li>
+<li><p>winnt.sif内容如下：</p>
+<pre><code>[Data]
+floppyless = &quot;1&quot;
+msdosinitiated = &quot;1&quot;
+OriSrc = &quot;\\Angel\TFTP\boot\i386&quot;
+OriTyp = &quot;4&quot;
+LocalSourceOnCD = 1
+DisableAdminAccountOnDomainJoin = 1
+
+[SetupData]
+OsLoadOptions = &quot;/fastdetect&quot;
+SetupSourceDevice = &quot;\Device\LanmanRedirector\Angel\TFTP\boot&quot;
+
+[UserData]
+ComputerName = *
+</code></pre><p>Angel为当前计算机主机名，TFTP为共享名。</p>
+</li>
+<li><p>编译Binl服务程序binlsrv.c，可以在本文后的引用1找到。如果你装了VC，可以用cl binlsrv.c ws2_32.lib来编译。</p>
+</li>
+<li><p>编写文件nics.txt，和binlsrv.exe放在同一目录下：</p>
+<pre><code>1022 2000 vmxnet.sys vmxnet
+1186 1300 RTL8139.sys rtl8139
+</code></pre><p>从左到右分别为<strong>PCI Vendor ID</strong>, <strong>Device ID</strong>, <strong>驱动名</strong>, <strong>服务名</strong></p>
+</li>
+<li><p>把网卡驱动（如<strong>vmxnet.sys,RTL8139.sys</strong>）放到<strong>TFTP\boot\I386</strong>目录下</p>
+</li>
+<li>将TFTP目录共享，注意匿名访问。如何设置就不说了，网络上有很多文章，重点是启用Guest、允许网络访问、允许空会话、NTFS权限等等，完了别忘了重启一下Server服务。</li>
+<li>启动目标计算机，开始网络安装！</li>
+</ol>
+<h3 id="-">后记：</h3>
+<p>  Windows网络安装并不复杂，国外的高手几年前就开始研究了。希望大家能多到Boot land, 911CD这样的论坛逛一逛，开阔眼界吧。</p>
+<p>  引用：</p>
+<ol>
+<li>Sherpya. RIS for Linux, <a href="http://oss.netfarm.it/guides/" target="_blank">http://oss.netfarm.it/guides/</a></li>
+<li>Climbing. PXE服务器架设指南及PXE启动WinPE（含PE2.0）解决方案总结, <a href="http://www.znpc.net/bbs/viewthread.php?tid=3662&amp;extra=page%3D1" target="_blank">http://www.znpc.net/bbs/viewthread.php?tid=3662&amp;extra=page%3D1</a></li>
+</ol>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/转载文章/">转载文章</a></li></span></span> | <span class="tags">标签 <a href="/tags/PXE/" class="label label-primary">PXE</a><a href="/tags/网络/" class="label label-success">网络</a><a href="/tags/RIS/" class="label label-info">RIS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/pxe_ris/#comments" class="ds-thread-count comment-link" data-thread-key="5" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/minipe/" title="[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE">&larr; [原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li>
+  
+  
+  <li class="next"><a href="/post/ntldr_unsupporteddebug/" title="[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/cameyo_2-0-873/">单文件程序制作利器Cameyo更新</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="5"  data-url="http://chenall.net/post/pxe_ris/" data-title="[转载] 从网络启动安装Windows"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/pxe_ris/";
+    var wumiiTitle = "[转载] 从网络启动安装Windows";
+    var wumiiTags = "PXE,网络,RIS";
+    var wumiiCategories = ["系统相关","综合","转载文章"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

@@ -1,0 +1,482 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[grub4dos] 全新的fat命令 [2010-06-24] | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="抽空重新改写了GRUB4DOS外命令FAT，完全重写代码。 直接使用了开源的FAT File System Module
+    　　上次写的FAT命令是为了学习FAT文件系统的原理，花去了好多时间。本来想继续在原来的基础上改进添加一些其它功能，想想还是算了，我自己写代码很乱并不比别人的好，还不如直接利用现有的代码。">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[grub4dos] 全新的fat命令 [2010-06-24]"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="page" class="page well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[grub4dos] 全新的fat命令 [2010-06-24]</h1>
+      
+    </header>
+    
+    <section id='before_content_widget'></section>
+    <div class="entry">
+      
+        <div id="PublishedByWebStory-[5]1_F1F744D8A03348989C1DC4AFB4ACC797_AC7FFF65BF144803A039CA10D7CEB6F0">
+    <div>　　抽空重新改写了GRUB4DOS外命令FAT，完全重写代码。 直接使用了开源的<a href="http://elm-chan.org/fsw/ff/00index_e.html" target="_blank">FAT File System Module</a></div>
+    <div>　　上次写的FAT命令是为了学习FAT文件系统的原理，花去了好多时间。本来想继续在原来的基础上改进添加一些其它功能，想想还是算了，我自己写代码很乱并不比别人的好，还不如直接利用现有的代码。
+
+        所以这次就利用了上面的开源FAT模块，只需要编写磁盘读写函数给这个模块，就可以直接使用了。&nbsp;</div>
+    <div>　　而且这个模块支持许多功能，包括，文件/目录，读写、删除、改名，还可以格式化磁盘等。唯一的代价是因为功能多了所以编译出来的程序文件当然会比较大，目前的版本大小是20KB，比以前的版本多了10KB,当然了可以用GZ压缩一下就只有7KB左右了。</div>
+    <div>&nbsp;</div>
+    <div>废话不多说了，直接先上个图。截图使用到的功能 复制文件/改名/删除</div>
+    <div><img src="http://chenall.net/wp-content/uploads/2010/06/165B2520FAD14BF74839EB396E8EE30F8C727BD1.jpg" alt=""></div>
+    <div>FAT帮助信息。</div>
+    <div><img src="http://chenall.net/wp-content/uploads/2010/06/C5CB8FCB914502D31D42862E39AF68F3EEFC808C.png" alt=""></div>
+    <div>&nbsp;</div>
+    <div><font color="#ff00ff">2010-06-24</font></div>
+
+<ol>
+<li>添加获取当前时间代码.</li>
+<li>修正dir显示时间日期错误.</li>
+<li><p>copy时按原文件复制禁用GRUB4DOS的自动解压功能&nbsp;</p>
+<div><font color="#ff00ff">2010-06-11 正式版</font></div>
+</li>
+<li><p>添加mkfs命令用于创建一个FAT分区（相当于format）</p>
+<pre><code>        命令格式
+
+        &lt;span style=&quot;color: #f00&quot;&gt;FAT mkfs [/A:UNIT-SIZE] DRIVE&lt;/span&gt;
+
+        注：&lt;span style=&quot;color: #f00&quot;&gt;DRIVE&lt;/span&gt;必须是一个GRUB4DOS可用的磁盘号，比如(fd0) (hd0,1)。不要直接使用(hd0)，否则可能会把整个磁盘都格成FAT格式。
+
+        这个命令建议用于虚拟内存盘，除非必要，尽量不要用于真实硬盘。
+</code></pre></li>
+<li>copy命令添加一个/o参数，复制时覆盖已有文件。</li>
+<li>dir命令添加参数/a显示指定属性的目录或文件（和dos的dir命令一样）.</li>
+<li><p>由于带有完整功能的版本文件比较大，所以发布时同时带了一个mini版本，只带copy mkfile 和del三个命令。
+<div><font color="#ff00ff">2010-06-06 测试版</font></div></p>
+<div>
+</li>
+<li><p>添加dir命令.</p>
+<pre><code>            ![](http://chenall.net/wp-content/uploads/2010/06/E3609D9E30AF342B74F3887103E94AF8C35D6956.jpg)
+</code></pre></li>
+<li>修改create_file命令参数为mkfile.
+</div></li>
+</ol>
+<p>注：接下来就是主要进行测试了，最近不会有更新的版本。</p>
+<pre><code>&lt;div&gt;&lt;font color=&quot;#ff00ff&quot;&gt;2010-06-05　预览版a3&lt;/font&gt;&lt;/div&gt;
+</code></pre><ol>
+<li><font color="#000000">添加帮助信息，没有加任何参数，或参数有误时显示帮助信息。</font></li>
+<li>修改0604版fat info显示信息。</li>
+<li><p>添加<font color="#ff0000"><strike>create_file</strike></font>子命令(已经改成<font color="#ff0000">mkfile</font>)，可以创建一个指定大小的空白文件（只进行空间分配）</p>
+<div><font color="#ff00ff">2010-06-04 预览版a2</font></div>
+</li>
+<li><font color="#000000">copy命令改进，允许不指定目标文件名，自动使用源文件名。
+
+            <img src="http://chenall.net/wp-content/uploads/2010/06/02C5C48F7C045FA170D3DB4209C77AF8EECFAEC8.jpg" alt="">&nbsp;
+
+            另外，新版版在复制前增加了检测，如果磁盘空间不够就不复制。</font></li>
+<li><p>为了调试方便，增加了一个info命令用于查看当前可用空间（正式版可能会删除这个命令）</p>
+<pre><code>        &lt;font color=&quot;#ff00ff&quot;&gt;![](http://chenall.net/wp-content/uploads/2010/06/0AB87A4EFF706CD4EC4C6C4FD56C8A9785129047.jpg)&lt;/font&gt;
+</code></pre></li>
+</ol>
+<font color="#ff00ff">2010-06-03 预览版</font>
+
+<ol>
+<li><font color="#000000">修改了几个可能导致出错的代码。</font></li>
+<li><font color="#000000">精简FAT模块部份没有用到的函数。</font>
+
+</li>
+</ol>
+<font color="#ff00ff">2010-06-02 预览版</font>
+
+<pre><code>    目前可使用功能列表 ：
+</code></pre><ol>
+<li><div style="background-color: #ffffff"><font color="#ff00ff">mkdir</font> 创建一个目录 fat mkdir 目标目录&nbsp;&nbsp;
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例子：<font color="#ff00ff">fat mkdir</font> (hd1,0)/abcd
+
+                <font color="#ff0000">注：只能一级一级建立，不可以同时建立多级目录（以后也许会考虑改进）</font></div></li>
+<li><div style="background-color: #ffffff"><font color="#ff00ff">copy</font>&nbsp;&nbsp; 复制文件&nbsp; <font color="#ff00ff">fat copy</font> [/o] 来源 目标&nbsp;&nbsp;
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例子: <font color="#ff00ff">fat copy</font> (hd0,0)/file.ext (hd1,0)/file.ext
+
+                <font color="#ff0000">注：来源文件可以是任意GRUB4DOS可以访问的路径.</font>
+
+                <strike><font color="#ff0000">目标文件必须是FAT分区，并且这个文件不存在（以后会考虑加一个参数，让它可以进行覆盖操作）</font></strike><font color="#ff0000">，新的版本已支持覆盖操作要加参数/o</font>
+
+                <font color="#ff0000">并且目标目录必须存在否则会提示错误（这个目前就不考虑改进了）。</font></div></li>
+<li><div style="background-color: #ffffff"><font color="#ff00ff">ren</font>&nbsp;&nbsp;&nbsp;&nbsp; 文件或目录更名/移动 fat ren 旧名 新名&nbsp;&nbsp;&nbsp;
+
+                &nbsp;例子：
+
+                修改当前ROOT分区下的abc.txt文件为abc.ini
+
+                <font color="#ff00ff">fat ren</font> /abc.txt abc.ini
+
+                移动文件，把abc.txt移到test目录下（test目录必须已经存在）
+
+                <font color="#ff00ff">fat ren</font> /abc.txt /test/abc.txt&nbsp;</div></li>
+<li><div style="background-color: #ffffff"><font color="#ff00ff">del</font>&nbsp;&nbsp;&nbsp; 删除文件或目录（只能删除空目录同DOS）
+
+                例子：
+
+                删除一个文件
+
+                <font color="#ff00ff">fat del</font> /abc.txt
+
+                <font color="#ff0000">删除一个目录同删除文件一样，但要求这个目录是空目录，你必须先删除这个目录下的文件才能删除这个目录</font>
+
+                <font color="#ff0000">注意：不要删除根目录</font></div></li>
+<li><div style="background-color: #ffffff"><font color="#ff00ff">create_file</font> 创建一个文件。
+
+                创建一个1M大小的文件。
+
+                <font color="#ff0000">FAT create_file size=1M (hd0,0)/1M.BIN</font>
+
+                创建一个文件，大小自动取前面的cat --length=0得到的文件大小值。
+
+                <font color="#ff0000">FAT create_file size=* (hd0,0)/NEW.BIN</font></div></li>
+<li><div style="background-color: #ffffff"><font color="#ff00ff">dir</font> 显示指定目录下面的文件列表。
+
+                FAT DIR
+
+                新的版本可以按属性来显示列表。
+
+                <span style="color: #f00">d</span> 　目录
+
+                <span style="color: #f00">s</span> 　系统属性
+
+                <span style="color: #f00">r</span> 　只性属性
+
+                <span style="color: #f00">h</span> 　隐藏属性
+
+                <span style="color: #f00">-</span> 　表示&ldquo;否&rdquo;的前辍
+
+                几个例子：
+
+                FAT dir /a-d 不显示目录
+
+                FAT dir /ad 只显示目录
+
+                FAT dir /a-dsh 只显示带有系统和隐藏属性的文件。
+
+                &nbsp;</div></li>
+<li><div style="background-color: #ffffff">mkfs 创建一个FAT分区
+
+                <span style="color: #f00">FAT mkfs </span><span style="color: #00f">[/A:UNIT-SIZE]</span><span style="color: #f00"> </span><span style="color: #00f">[DRIVE]</span>
+
+                把指定的DRIVE格式化成FAT格式。如果不指定DRIVE则使用当前的root分区。
+
+                UNIT-SIZE指定格式化时使用的族大小，具体请参考windows的format命令
+
+                例子
+
+                FAT mkfs&nbsp; 按默认参数格式化当前磁盘
+
+                FAT mkfs /A:1024 或　FAT mkfs /A:1k&nbsp; 指定每个簇大小为1Kb
+
+                FAT mkfs (fd0)
+
+                &nbsp;</div>
+
+</li>
+</ol>
+<p>下载测试地址：<a href="http://grub4dos-chenall.googlecode.com/" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/">http://grub4dos-chenall.googlecode.com/</a></a> 或 <a href="http://grub4dos.chenall.com/" target="_blank"><a href="http://grub4dos.chenall.com/">http://grub4dos.chenall.com/</a></a>（自动跳转）</p>
+<p>注：目前<strike>只是预览测试版</strike>的版本应该比较稳定了，请使用虚拟机测试。欢迎大家进行测试。有什么问题或建议，可以直接留言，也可以到时空或者无忧论坛相关贴子留言。&nbsp;</p>
+<pre><code>    &amp;nbsp;
+
+&amp;nbsp;&lt;/div&gt;
+</code></pre>
+      
+    </div>
+    <section id='after_content_widget'></section>
+    
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-url="http://chenall.net/grub4dos/fat/index.html" data-title="[grub4dos] 全新的fat命令 [2010-06-24]"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

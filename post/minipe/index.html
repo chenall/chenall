@@ -1,0 +1,461 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="不再想写说明了，以下就只供参考。 目前支持两种方式的外置驱动
+具体请点击以下地址查看.
+外置硬盘控制器驱动使用添加方法
+
+决定采用第二种方法。(利用无盘天使驱动）
+已经上传了测试版本=080303=XXXX.RAR（两个文件，一个内核一个驱动）使用方法内详">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</h1>
+      
+        <span>发表于<time datetime="2008-05-05T23:15:40.000Z"> <a href="/post/minipe/">2008-05-05</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>不再想写说明了，以下就只供参考。
+ 目前支持两种方式的外置驱动
+具体请点击以下地址查看.
+<a href="http://bbs.wuyou.com/viewthread.php?tid=121168&amp;page=14#pid1350015" target="_blank">外置硬盘控制器驱动</a>使用添加方法</p>
+<p>决定采用第二种方法。(利用无盘天使驱动）
+已经上传了测试版本=080303=XXXX.RAR（两个文件，一个内核一个驱动）使用方法内详</p>
+<p>这个内核除了具有
+<a href="http://bbs.wuyou.com/viewthread.php?tid=118886&amp;highlight=%2Bchenall" target="_blank">[原创&amp;分享]新型PE内核(无限扩展,无限可能).</a></p>
+<p>同样的功能外，另支持多种启动方式(首创)</p>
+<p>具体:  <a href="http://chenall.blog.163.com/blog/static/47400182200812735731923/" target="_blank">PE多功能内核</a>   ISO文件下载 <a href="http://www.bibidu.com/fileview-400319.html" target="_blank">=080303=多启PE演示.rar</a></p>
+<blockquote><p>PE内核多功能版演示</p>
+<p>若只需使用其中一种方式WINPE.IMG可以压缩成相应格式.第1,2可以压缩成CAB格式(目前压缩后14MB左右)</p>
+<p>第3,4可以压缩成GZIP格式(压缩后15.6MB).</p>
+<p>多功能:</p>
+<ol>
+<li><p>可以使用RAMDISK方式启动(第1个.2个菜单)
+winnt.sif内容(注此ISO里面是WINNT.XPE)</p>
+<pre><code>[SetupData]
+BootDevice=&quot;ramdisk(0)&quot;
+BootPath=&quot;\WXPE\SYSTEM32\&quot;
+OsLoadOptions=&quot;/minint /fastdetect /rdpath=WXPE\WinPE.IMG&quot;
+</code></pre><p>启动例子:</p>
+<pre><code>title 1. Micro Windows PE Without Sata/Raid/SCSI (ramdisk)
+chainloader ()/WXPE/SETUPLDR.BIN
+title 2. Micro Windows PE With Universal ATA driver (ramdisk)
+chainloader ()/WXPE/SETUPLDR.B2N
+</code></pre></li>
+<li><p>可以直接独立启动,不依赖WINNT.SIF(第3,4个,只需一个WINPE.IMG)</p>
+<p>只需要一个WINPE.IMG即可,不需要其它文件(WINNT.SIF,SETUPLDR.BIN等都不需要)</p>
+<p>启动例子:</p>
+<pre><code>title 3. Micro Windows PE Without Sata/Raid/SCSI (WDSYS)
+map --mem --unsafe-boot ()/WXPE/WINPE.IMG (hd0)
+map --hook
+chainloader (hd0,0)/setupldr.bin
+title 4. Micro Windows PE With Universal ATA driver (WDSYS)
+map --mem --unsafe-boot ()/WXPE/WINPE.IMG (hd0)
+map --hook&lt;/font&gt;
+</code></pre></li>
+<li><p>非RAMDISK方式启动,测试方法</p>
+<p>直接将里面的文件复制到系统盘根目录下(不需要改名)</p>
+<p>直接启动里面的<font color="#ff8c00">setupldr.bin</font><font color="#333333">即可</font></p>
+<p>注:这只是一个演示,更方便的用途在于使用PXE方式启动.可以有双重启动方式,一种不行就换另一种.而且不管使用哪种方式启动,使用的内存都是差不多的</p>
+</li>
+</ol>
+<p>所有使用RAMDISK启动的PE都可以改成这种方式</p>
+<footer><strong>chenall</strong></footer></blockquote>
+
+
+<p>以下的内容可以不用看了.只供参考</p>
+<h3 id="-1-">方式1.</h3>
+<p>缺点: DOS部份可以全自动,但后期需要按F6进行手工加载. 
+优点: 比较传统，可以保证正常加载 </p>
+<p>利用GRUB虚拟一个内存盘A:(1.44MB的镜像足够),360KB的也应该够用了(硬盘控制器的驱动不会很大)</p>
+<pre><code>map --mem .../scsi.gz (fd0)  # (用内存盘的模式加载镜像里面只有启动文件还有几个必要的文件)
+map .../scsi_ext.img (fd1)   #  (不使用内存盘加载这个镜像里面存放了硬盘控制器的驱动)(当然内存够大也可以内存加载)
+.....
+chainloader (fd0)+1
+</code></pre><ol>
+<li>首先启动到DOS模式 </li>
+<li>检测本机对应的硬盘控制器驱动.</li>
+<li>复制对应的TXTSETUP.OEM到A:根目录.</li>
+</ol>
+<p>用GRUB启动PE,再按F6直接加载驱动.</p>
+<p>当然了也可以将所有的驱动搞成一个TXTSETUP.OEM文件,启动时按F6选择相应的驱动(会有许多,需要选择正确的驱动不方便)</p>
+<h3 id="-2-">方式2:</h3>
+<p>缺点: 由于使用了全新的方式，可能会加载不了。测试中......
+优点： 可以做到全自动化。其它的等待发掘....</p>
+<p>利用无盘天使来启动.还是使用GRUB</p>
+<ol>
+<li><p>将PE做成无盘天使的镜像.再利用GRUB启动
+map --mem ..../winpe.dsk (hd0)
+map .../scsi_ext.img (fd0) 
+..
+启动到DOS.由于已经将PE的镜像加载到的(hd0)所以在DOS下可以直接通过访问C:就是PE镜像了(要求镜像要用FAT/FAT32格式的)</p>
+</li>
+<li><p>检测硬盘控制器驱动,将找到的驱动的.SYS文件复制到DRIVERS目录下.
+再用INIFILE修改TXTSETUP.SIF</p>
+</li>
+<li><p>启动GRUB加载SETUPLDR.BIN启动.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/原创分享/">原创分享</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB/" class="label label-primary">GRUB</a><a href="/tags/MINIPE/" class="label label-success">MINIPE</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/winpe/" class="label label-warning">winpe</a><a href="/tags/WXPE/" class="label label-primary">WXPE</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/minipe/#comments" class="ds-thread-count comment-link" data-thread-key="6" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/s6/" title="[健康知识]  睡眠与养生">&larr; [健康知识]  睡眠与养生</a></li>
+  
+  
+  <li class="next"><a href="/post/pxe_ris/" title="[转载] 从网络启动安装Windows">[转载] 从网络启动安装Windows &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/post44/">[分享]超级解霸V9精简版(用来播放光蝶)</a></li><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li><li class="list-group-item"><a href="/post/iconshex/">让你的任意文件显示个性图标</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/jwpos/">佳为后台程序单文件版本 有使用佳为软件的朋友别错过了</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="6"  data-url="http://chenall.net/post/minipe/" data-title="[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/minipe/";
+    var wumiiTitle = "[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE";
+    var wumiiTags = "GRUB,MINIPE,SCSI,winpe,WXPE";
+    var wumiiCategories = ["软件推荐","原创分享"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

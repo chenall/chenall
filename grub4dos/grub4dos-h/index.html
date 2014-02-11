@@ -1,0 +1,1163 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>grub4dos .h | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="整理了一些，方便使用。目前最新版整理于2010-03-01。
+使用方法。
+直接
+include &quot;grub4dos.h&quot;
+例子 :
+C语言: echo.c
+#include &quot;grub4dos.h&quot;">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="grub4dos .h"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="page" class="page well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">grub4dos .h</h1>
+      
+    </header>
+    
+    <section id='before_content_widget'></section>
+    <div class="entry">
+      
+        <p>整理了一些，方便使用。目前最新版整理于2010-03-01。</p>
+<p>使用方法。</p>
+<p>直接</p>
+<h1 id="include-quot-grub4dos-h-quot-">include &quot;grub4dos.h&quot;</h1>
+<p>例子 :</p>
+<div style="background: #fdfdfd; color: black"><u>C语言</u>: echo.c</div>
+<div style="background: #fdfdfd; color: black"><span style="color: #4c8317">#include &quot;grub4dos.h&quot;</span>
+
+    <span style="color: #00aaaa">int</span> <span style="color: #000000">i</span> <span style="color: #000000">=</span> <span style="color: #009999">0x66666666</span>;
+
+    <span style="color: #000000">asm</span>(<span style="color: #aa5500">&quot;.long 0x03051805&quot;</span>);
+
+    <span style="color: #000000">asm</span>(<span style="color: #aa5500">&quot;.long 0xBCBAA7BA&quot;</span>);
+
+    <span style="color: #00aaaa">int</span>
+
+    <span style="color: #00aa00">main</span>()
+
+    <span style="color: #000000">{</span>
+
+    &nbsp;&nbsp; <span style="color: #00aaaa">void</span> <span style="color: #000000"><em></span>p <span style="color: #000000">=</span> <span style="color: #000000">&amp;</span><span style="color: #000000">main</span>;
+
+    &nbsp;&nbsp; <span style="color: #00aaaa">char</span> <span style="color: #000000"></em></span><span style="color: #000000">arg</span><span style="color: #000000">=</span>p <span style="color: #000000">-</span> (<span style="color: #000000"><em></span>(<span style="color: #00aaaa">int</span> <span style="color: #000000"></em></span>)(p <span style="color: #000000">-</span> <span style="color: #009999">8</span>));
+
+    &nbsp;&nbsp; <span style="color: #000000">printf</span>(<span style="color: #000000">arg</span>);</div>
+<div style="background: #fdfdfd; color: black">}</div>
+<div style="background: #fdfdfd; color: black">
+    <div style="background: #fdfdfd; color: black"><u>C语言</u>: <a href="http://fayaa.com/code/view/8714/" target="_blank">grub4dos.h</a></div>
+    <div class="source" jquery1274926702555="15" style="background-color: #f9f7ed; font-family: 'courier new', 'consolas', 'lucida console'; color: #000000"><span style="color: #008000">/<em></span>
+
+        <span style="color: #008000"></em> The C code for a grub4dos executable may have defines as follows:</span>
+
+        <span style="color: #008000"><em> 用于编写外部命令的函数定义。</span>
+
+        <span style="color: #008000"></em>/</span>
+
+        <span style="color: #0000ff">#ifndef GRUB4DOS<em>2010<em>03<em>01</span>
+
+        <span style="color: #0000ff">#define GRUB4DOS<em>2010<em>03<em>01</span>
+
+        <span style="color: #2b91af">int</span> <span style="color: #000000">grub<em>main</span> (<span style="color: #2b91af">char</span> <span style="color: #000000"><em></span><span style="color: #000000">arg</span><span style="color: #000000">,</span><span style="color: #2b91af">int</span> <span style="color: #000000">flags</span>);
+
+        <span style="color: #0000ff">#undef NULL</span>
+
+        <span style="color: #0000ff">#define NULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((void </em>) 0)</span>
+
+        <span style="color: #008000">/<em> Error codes (descriptions are in common.c) </em>/</span>
+
+        <span style="color: #0000ff">typedef</span> <span style="color: #0000ff">enum</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>NONE</span> <span style="color: #000000">=</span> <span style="color: #000000">0</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BAD<em>FILENAME</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BAD<em>FILETYPE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BAD<em>GZIP<em>DATA</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BAD<em>GZIP<em>HEADER</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BAD<em>PART<em>TABLE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BAD<em>VERSION</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BELOW<em>1MB</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BOOT<em>COMMAND</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BOOT<em>FAILURE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>BOOT<em>FEATURES</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>DEV<em>FORMAT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>DEV<em>VALUES</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>EXEC<em>FORMAT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>FILELENGTH</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>FILE<em>NOT<em>FOUND</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>FSYS<em>CORRUPT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>FSYS<em>MOUNT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>GEOM</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>NEED<em>LX<em>KERNEL</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>NEED<em>MB<em>KERNEL</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>NO<em>DISK</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>NO<em>PART</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>NUMBER<em>PARSING</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>OUTSIDE<em>PART</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>READ</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>SYMLINK<em>LOOP</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>UNRECOGNIZED</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR<em>WONT<em>FIT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_WRITE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_BAD_ARGUMENT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_UNALIGNED</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_PRIVILEGED</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_DEV_NEED_INIT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_NO_DISK_SPACE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_NUMBER_OVERFLOW</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_DEFAULT_FILE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_DEL_MEM_DRIVE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_DISABLE_A20</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_DOS_BACKUP</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_ENABLE_A20</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_EXTENDED_PARTITION</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_FILENAME_FORMAT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_HD_VOL_START_0</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INT13_ON_HOOK</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INT13_OFF_HOOK</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_BOOT_CS</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_BOOT_IP</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_FLOPPIES</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_HARDDRIVES</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_HEADS</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_LOAD_LENGTH</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_LOAD_OFFSET</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_LOAD_SEGMENT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_SECTORS</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_SKIP_LENGTH</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INVALID_RAM_DRIVE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_IN_SITU_FLOPPY</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_IN_SITU_MEM</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_MD_BASE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_NON_CONTIGUOUS</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_NO_DRIVE_MAPPED</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_NO_HEADS</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_NO_SECTORS</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_PARTITION_TABLE_FULL</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_RD_BASE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_SPECIFY_GEOM</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_SPECIFY_MEM</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_SPECIFY_RESTRICTION</span><span style="color: #000000">,</span>
+
+        <span style="color: #008000">//&nbsp; ERR_INVALID_RD_BASE,</span>
+
+        <span style="color: #008000">//&nbsp; ERR_INVALID_RD_SIZE,</span>
+
+        &nbsp; <span style="color: #000000">ERR_MD5_FORMAT</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_WRITE_GZIP_FILE</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">ERR_FUNC_CALL</span><span style="color: #000000">,</span>
+
+        <span style="color: #008000">//&nbsp; ERR_WRITE_TO_NON_MEM_DRIVE,</span>
+
+        &nbsp; <span style="color: #000000">ERR_INTERNAL_CHECK</span><span style="color: #000000">,</span>
+
+        &nbsp; <span style="color: #000000">MAX_ERR_NUM</span>
+
+        <span style="color: #000000">}</span> <span style="color: #000000">grub_error_t</span>;
+
+        <span style="color: #0000ff">#define install_partition (<em>(unsigned long </em>)0x8208)</span>
+
+        <span style="color: #0000ff">#define boot_drive (<em>(unsigned long </em>)0x8280)</span>
+
+        <span style="color: #0000ff">#define pxe_yip (<em>(unsigned long </em>)0x8284)</span>
+
+        <span style="color: #0000ff">#define pxe_sip (<em>(unsigned long </em>)0x8288)</span>
+
+        <span style="color: #0000ff">#define pxe_gip (<em>(unsigned long </em>)0x828C)</span>
+
+        <span style="color: #0000ff">#define filesize (<em>(unsigned long long </em>)0x8290)</span>
+
+        <span style="color: #0000ff">#define saved_mem_upper (<em>(unsigned long </em>)0x8298)</span>
+
+        <span style="color: #0000ff">#define saved_partition (<em>(unsigned long </em>)0x829C)</span>
+
+        <span style="color: #0000ff">#define saved_drive (<em>(unsigned long </em>)0x82A0)</span>
+
+        <span style="color: #0000ff">#define no_decompression (<em>(unsigned long </em>)0x82A4)</span>
+
+        <span style="color: #0000ff">#define part_start (<em>(unsigned long long </em>)0x82A8)</span>
+
+        <span style="color: #0000ff">#define part_length (<em>(unsigned long long </em>)0x82B0)</span>
+
+        <span style="color: #0000ff">#define fb_status (<em>(unsigned long </em>)0x82B8)</span>
+
+        <span style="color: #0000ff">#define is64bit (<em>(unsigned long </em>)0x82BC)</span>
+
+        <span style="color: #0000ff">#define saved_mem_higher (<em>(unsigned long long </em>)0x82C0)</span>
+
+        <span style="color: #0000ff">#define cdrom_drive (<em>(unsigned long </em>)0x82C8)</span>
+
+        <span style="color: #0000ff">#define ram_drive (<em>(unsigned long </em>)0x82CC)</span>
+
+        <span style="color: #0000ff">#define rd_base (<em>(unsigned long long </em>)0x82D0)</span>
+
+        <span style="color: #0000ff">#define rd_size (<em>(unsigned long long </em>)0x82D8)</span>
+
+        <span style="color: #0000ff">#define addr_system_functions (<em>(unsigned long </em>)0x8300)</span>
+
+        <span style="color: #0000ff">#define next_partition_drive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **)0x8304)[0])</span>
+
+        <span style="color: #0000ff">#define next_partition_dest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((</em>(unsigned long <strong>)0x8304)[1])</span>
+
+        <span style="color: #0000ff">#define next_partition_partition&nbsp;&nbsp;&nbsp; ((<em>(unsigned long </em></strong>)0x8304)[2])</span>
+
+        <span style="color: #0000ff">#define next_partition_type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **</em>)0x8304)[3])</span>
+
+        <span style="color: #0000ff">#define next_partition_start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **</em>)0x8304)[4])</span>
+
+        <span style="color: #0000ff">#define next_partition_len&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **</em>)0x8304)[5])</span>
+
+        <span style="color: #0000ff">#define next_partition_offset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **</em>)0x8304)[6])</span>
+
+        <span style="color: #0000ff">#define next_partition_entry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **</em>)0x8304)[7])</span>
+
+        <span style="color: #0000ff">#define next_partition_ext_offset&nbsp;&nbsp;&nbsp; ((<em>(unsigned long **</em>)0x8304)[8])</span>
+
+        <span style="color: #0000ff">#define next_partition_buf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(char **</em>)0x8304)[9])</span>
+
+        <span style="color: #0000ff">#define quit_print&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((<em>(int **)0x8304)[10])</span>
+
+        <span style="color: #008000">//#define buf_drive&nbsp;&nbsp;&nbsp; ((</em>(int <strong>)0x8304)[11])</span>
+
+        <span style="color: #008000">//#define buf_track&nbsp;&nbsp;&nbsp; ((*(int </strong>)0x8304)[12])</span>
+
+        <span style="color: #0000ff">#define filesystem_type ((<em>(int **)0x8304)[13])</span>
+
+        <span style="color: #008000">//#define query_block_entries ((</em>(long <strong>)0x8304)[14])</span>
+
+        <span style="color: #008000">//#define map_start_sector ((*(unsigned long </strong>)0x8304)[15])</span>
+
+        <span style="color: #0000ff">#define buf_geom ((<em>(struct geometry **</em>)0x8304)[16])</span>
+
+        <span style="color: #0000ff">#define tmp_geom ((<em>(struct geometry **</em>)0x8304)[17])</span>
+
+        <span style="color: #0000ff">#define term_table ((<em>(struct term_entry **</em>)0x8304)[18])</span>
+
+        <span style="color: #0000ff">#define current_term ((<em>(struct term_entry **</em>)0x8304)[19])</span>
+
+        <span style="color: #0000ff">#define fsys_table ((<em>(struct fsys_entry **</em>)0x8304)[20])</span>
+
+        <span style="color: #008000">//#define fsys_type ((<em>(int **)0x8304)[21])</span>
+
+        <span style="color: #008000">//#define NUM_FSYS ((</em>(const int <strong>)0x8304)[22])</span>
+
+        <span style="color: #0000ff">#define graphics_inited ((*(const int </strong>)0x8304)[23])</span>
+
+        <span style="color: #0000ff">#define VARIABLE_GRAPHICS ((char <em>)(</em>(int <strong><em>)0x8304)[24])</span>
+
+        <span style="color: #0000ff">#define font8x16 ((unsigned char </em>)(<em>(int </em></strong>)0x8304)[25])</span>
+
+        <span style="color: #0000ff">#define fontx ((<em>(int **)0x8304)[26])</span>
+
+        <span style="color: #0000ff">#define fonty ((</em>(int <strong>)0x8304)[27])</span>
+
+        <span style="color: #0000ff">#define graphics_CURSOR ((*(int </strong>)0x8304)[28])</span>
+
+        <span style="color: #0000ff">#define menu_broder ((<em>(struct broder **</em>)0x8304)[29])</span>
+
+        <span style="color: #0000ff">#define cursorX (<em>(short </em>)(VARIABLE_GRAPHICS))</span>
+
+        <span style="color: #0000ff">#define cursorY (<em>(short </em>)(VARIABLE_GRAPHICS + 2))</span>
+
+        <span style="color: #0000ff">#define cursorBuf ((char <em>)(VARIABLE_GRAPHICS + 6))</span>
+
+        <span style="color: #0000ff">#define free_mem_start (</em>(unsigned long <em>)0x82F0)</span>
+
+        <span style="color: #0000ff">#define free_mem_end (</em>(unsigned long <em>)0x82F4)</span>
+
+        <span style="color: #0000ff">#define saved_mmap_addr (</em>(unsigned long <em>)0x82F8)</span>
+
+        <span style="color: #0000ff">#define saved_mmap_length (</em>(unsigned long <em>)0x82FB)</span>
+
+        <span style="color: #0000ff">#define DRIVE_MAP_SIZE&nbsp;&nbsp;&nbsp; 8</span>
+
+        <span style="color: #0000ff">#define PXE_DRIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x21</span>
+
+        <span style="color: #0000ff">#define INITRD_DRIVE&nbsp;&nbsp;&nbsp; 0x22</span>
+
+        <span style="color: #0000ff">#define FB_DRIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x23</span>
+
+        <span style="color: #0000ff">#define SECTOR_SIZE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x200</span>
+
+        <span style="color: #0000ff">#define SECTOR_BITS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9</span>
+
+        <span style="color: #0000ff">#define BIOSDISK_FLAG_BIFURCATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x4</span>
+
+        <span style="color: #0000ff">#define MB_ARD_MEMORY&nbsp;&nbsp;&nbsp; 1</span>
+
+        <span style="color: #0000ff">#define MB_INFO_MEM_MAP&nbsp;&nbsp;&nbsp; 0x00000040</span>
+
+        <span style="color: #0000ff">#define errnum (</em>(grub_error_t <em>)0x8314)</span>
+
+        <span style="color: #0000ff">#define current_drive (</em>(unsigned long <em>)0x8318)</span>
+
+        <span style="color: #0000ff">#define current_partition (</em>(unsigned long <em>)0x831C)</span>
+
+        <span style="color: #0000ff">#define filemax (</em>(unsigned long long <em>)0x8320)</span>
+
+        <span style="color: #0000ff">#define filepos (</em>(unsigned long long <em>)0x8328)</span>
+
+        <span style="color: #0000ff">#define debug (</em>(int <em>)0x8330)</span>
+
+        <span style="color: #0000ff">#define current_slice (</em>(unsigned long <em>)0x8334)</span>
+
+        <span style="color: #0000ff">#define GRUB_READ 0xedde0d90</span>
+
+        <span style="color: #0000ff">#define GRUB_WRITE 0x900ddeed</span>
+
+        <span style="color: #0000ff">#define sprintf ((int (</em>)(char <em>, const char </em>, ...))((<em>(int *</em>)0x8300)[0]))</span>
+
+        <span style="color: #0000ff">#define printf(...) sprintf(NULL, __VA_ARGS</em></em>)</span>
+
+        <span style="color: #0000ff">#define putstr ((void (<em>)(const char </em>))((<em>(int **)0x8300)[1]))</span>
+
+        <span style="color: #0000ff">#define putchar ((void (</em>)(int))((<em>(int **)0x8300)[2]))</span>
+
+        <span style="color: #0000ff">#define get_cmdline ((int (</em>)(struct get_cmdline_arg))((<em>(int **)0x8300)[3]))</span>
+
+        <span style="color: #0000ff">#define getxy ((int (</em>)(void))((<em>(int **)0x8300)[4]))</span>
+
+        <span style="color: #0000ff">#define gotoxy ((void (</em>)(int, int))((<em>(int **)0x8300)[5]))</span>
+
+        <span style="color: #0000ff">#define cls ((void (</em>)(void))((<em>(int **)0x8300)[6]))</span>
+
+        <span style="color: #0000ff">#define setcursor ((int (</em>)(int))((<em>(int **)0x8300)[7]))</span>
+
+        <span style="color: #0000ff">#define nul_terminate ((int (</em>)(char <em>))((</em>(int <strong>)0x8300)[8]))</span>
+
+        <span style="color: #0000ff">#define safe_parse_maxint_with_suffix ((int (*)(char </strong>str_ptr, unsigned long long <em>myint_ptr, int unitshift))((</em>(int <strong>)0x8300)[9]))</span>
+
+        <span style="color: #0000ff">#define safe_parse_maxint(str_ptr, myint_ptr) safe_parse_maxint_with_suffix(str_ptr, myint_ptr, 0)</span>
+
+        <span style="color: #0000ff">#define substring ((int (<em>)(const char </em>s1, const char <em>s2, int case_insensitive))((</em>(int </strong>)0x8300)[10]))</span>
+
+        <span style="color: #0000ff">#define strstr ((char <em>(</em>)(const char <em>s1, const char </em>s2))((<em>(int **)0x8300)[11]))</span>
+
+        <span style="color: #0000ff">#define strlen ((int (</em>)(const char <em>str))((</em>(int <strong>)0x8300)[12]))</span>
+
+        <span style="color: #0000ff">#define strtok ((char <em>(</em>)(char <em>s, const char </em>delim))((*(int </strong>)0x8300)[13]))</span>
+
+        <span style="color: #0000ff">#define strncat ((int (<em>)(char </em>s1, const char <em>s2, int n))((</em>(int <strong>)0x8300)[14]))</span>
+
+        <span style="color: #0000ff">#define strcmp ((int (<em>)(const char </em>s1, const char <em>s2))((</em>(int </strong>)0x8300)[15]))</span>
+
+        <span style="color: #0000ff">#define strcpy ((char <em>(</em>)(char <em>dest, const char </em>src))((<em>(int **)0x8300)[16]))</span>
+
+        <span style="color: #0000ff">#define tolower ((int (</em>)(int))((<em>(int **)0x8300)[17]))</span>
+
+        <span style="color: #0000ff">#define isspace ((int (</em>)(int))((<em>(int **)0x8300)[18]))</span>
+
+        <span style="color: #0000ff">#define getkey ((int (</em>)(void))((<em>(int **)0x8300)[19]))</span>
+
+        <span style="color: #0000ff">#define checkkey ((int (</em>)(void))((<em>(int **)0x8300)[20]))</span>
+
+        <span style="color: #0000ff">#define sleep ((unsigned int (</em>)(unsigned int))((<em>(int **)0x8300)[21]))</span>
+
+        <span style="color: #0000ff">#define memcmp ((int (</em>)(const char <em>s1, const char </em>s2, int n))((<em>(int **)0x8300)[22]))</span>
+
+        <span style="color: #0000ff">#define memmove ((void </em>(<em>)(void </em>to, const void <em>from, int len))((</em>(int <strong>)0x8300)[23]))</span>
+
+        <span style="color: #0000ff">#define memset ((void <em>(</em>)(void <em>start, int c, int len))((</em>(int </strong>)0x8300)[24]))</span>
+
+        <span style="color: #0000ff">#define mem64 ((int (<em>)(int, unsigned long long, unsigned long long, unsigned long long))((</em>(int <strong>)0x8300)[25]))</span>
+
+        <span style="color: #0000ff">#define open ((int (<em>)(char </em>))((*(int </strong>)0x8300)[26]))</span>
+
+        <span style="color: #0000ff">#define read ((unsigned long long (<em>)(unsigned long long, unsigned long long, unsigned long))((</em>(int <strong>)0x8300)[27]))</span>
+
+        <span style="color: #0000ff">#define close ((void (<em>)(void))((</em>(int </strong>)0x8300)[28]))</span>
+
+        <span style="color: #0000ff">#define unicode_to_utf8 ((void (<em>)(unsigned short </em>, unsigned char <em>, unsigned long))((</em>(int <strong>)0x8300)[29]))</span>
+
+        <span style="color: #008000">/<em></span>
+
+        <span style="color: #008000">int</span>
+
+        <span style="color: #008000">rawread (unsigned long drive, unsigned long sector, unsigned long byte_offset, unsigned long byte_len, unsigned long long buf, unsigned long write)</span>
+
+        <span style="color: #008000"></em>/</span>
+
+        <span style="color: #0000ff">#define rawread ((int (<em>)(unsigned long, unsigned long, unsigned long, unsigned long long, unsigned long long, unsigned long))((</em>(int </strong>)0x8300)[30]))</span>
+
+        <span style="color: #008000">/<em></span>
+
+        <span style="color: #008000">int</span>
+
+        <span style="color: #008000">rawwrite (unsigned long drive, unsigned long sector, char </em>buf)</span>
+
+        <span style="color: #008000"><em>/</span>
+
+        <span style="color: #0000ff">#define rawwrite ((int (</em>)(unsigned long, unsigned long, char <em>))((</em>(int <strong>)0x8300)[31]))</span>
+
+        <span style="color: #008000">/<em></span>
+
+        <span style="color: #008000">int</span>
+
+        <span style="color: #008000">devread (unsigned long drive, unsigned long sector, unsigned long byte_offset, unsigned long long byte_len, unsigned long long buf, unsigned long write)</span>
+
+        <span style="color: #008000"></em>/</span>
+
+        <span style="color: #0000ff">#define devread ((int (<em>)(unsigned long sector, unsigned long byte_offset, unsigned long long byte_len, unsigned long long buf, unsigned long write))((</em>(int </strong>)0x8300)[32]))</span>
+
+        <span style="color: #008000">/<em></span>
+
+        <span style="color: #008000"></em> int</span>
+
+        <span style="color: #008000"><em> devwrite (unsigned long sector, unsigned long sector_count, char </em>buf)</span>
+
+        <span style="color: #008000"><em>/</span>
+
+        <span style="color: #0000ff">#define devwrite ((int (</em>)(unsigned long, unsigned long, char <em>))((</em>(int <strong>)0x8300)[33]))</span>
+
+        <span style="color: #0000ff">#define next_partition ((int (<em>)(void))((</em>(int </strong>)0x8300)[34]))</span>
+
+        <span style="color: #0000ff">#define open_device ((int (<em>)(void))((</em>(int <strong>)0x8300)[35]))</span>
+
+        <span style="color: #0000ff">#define real_open_partition ((int (<em>)(int))((</em>(int </strong>)0x8300)[36]))</span>
+
+        <span style="color: #0000ff">#define set_device ((char <em>(</em>)(char <em>))((</em>(int <strong>)0x8300)[37]))</span>
+
+        <span style="color: #0000ff">#define dir ((int (<em>)(char </em>))((*(int </strong>)0x8300)[38]))</span>
+
+        <span style="color: #0000ff">#define print_a_completion ((void (<em>)(char </em>))((<em>(int **)0x8300)[39]))</span>
+
+        <span style="color: #0000ff">#define print_completions ((int (</em>)(int, int))((<em>(int **)0x8300)[40]))</span>
+
+        <span style="color: #0000ff">#define parse_string ((int (</em>)(char <em>))((</em>(int <strong>)0x8300)[41]))</span>
+
+        <span style="color: #0000ff">#define hexdump ((void (<em>)(unsigned long, char </em>, int))((*(int </strong>)0x8300)[42]))</span>
+
+        <span style="color: #0000ff">#define skip_to ((char <em>(</em>)(int after_equal, char <em>cmdline))((</em>(int <strong>)0x8300)[43]))</span>
+
+        <span style="color: #0000ff">#define builtin_cmd ((int (<em>)(char </em>cmd, char <em>arg, int flags))((</em>(int </strong>)0x8300)[44]))</span>
+
+        <span style="color: #0000ff">#define get_datetime ((void (<em>)(unsigned long </em>date, unsigned long <em>time))((</em>(int <strong>)0x8300)[45]))</span>
+
+        <span style="color: #0000ff">#define lba_to_chs ((void (<em>)(unsigned long lba, unsigned long </em>cl, unsigned long <em>ch, unsigned long </em>dh))((*(int </strong>)0x8300)[46]))</span>
+
+        <span style="color: #0000ff">#define probe_bpb ((int (<em>)(struct master_and_dos_boot_sector </em>BS))((<em>(int **)0x8300)[47]))</span>
+
+        <span style="color: #0000ff">#define probe_mbr ((int (</em>)(struct master_and_dos_boot_sector <em>BS, unsigned long start_sector1, unsigned long sector_count1, unsigned long part_start1))((</em>(int <strong>)0x8300)[48]))</span>
+
+        <span style="color: #0000ff">#define graphics_get_font ((unsigned char <em>(</em>)(void))((*(int </strong>)0x8300)[51]))</span>
+
+        <span style="color: #0000ff">#define RAW_ADDR(x) (x)</span>
+
+        <span style="color: #0000ff">#define SCRATCHADDR&nbsp; RAW_ADDR (0x37e00)</span>
+
+        <span style="color: #0000ff">#define MBR ((char <em>)0x8000)</span>
+
+        <span style="color: #008000">//#define grub_memcmp memcmp</span>
+
+        <span style="color: #0000ff">struct</span> <span style="color: #000000">get_cmdline_arg</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">char</span> <span style="color: #000000"></em></span><span style="color: #000000">cmdline</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">char</span> <span style="color: #000000">*</span><span style="color: #000000">prompt</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">int</span> <span style="color: #000000">maxlen</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">int</span> <span style="color: #000000">echo_char</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">int</span> <span style="color: #000000">readline</span>;
+
+        <span style="color: #000000">}</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));
+
+        <span style="color: #0000ff">struct</span> <span style="color: #000000">geometry</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp; <span style="color: #008000">/<em> The number of cylinders </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">cylinders</span>;
+
+        &nbsp; <span style="color: #008000">/<em> The number of heads </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">heads</span>;
+
+        &nbsp; <span style="color: #008000">/<em> The number of sectors </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">sectors</span>;
+
+        &nbsp; <span style="color: #008000">/<em> The total number of sectors </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #000000">total_sectors</span>;
+
+        &nbsp; <span style="color: #008000">/<em> Device sector size </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">sector_size</span>;
+
+        &nbsp; <span style="color: #008000">/<em> Flags </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">flags</span>;
+
+        <span style="color: #000000">};</span>
+
+        <span style="color: #008000">/<em> fsys.h </em>/</span>
+
+        <span style="color: #0000ff">struct</span> <span style="color: #000000">fsys_entry</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp; <span style="color: #2b91af">char</span> <span style="color: #000000"><em></span><span style="color: #000000">name</span>;
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"></em></span><span style="color: #000000">mount_func</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> (<span style="color: #000000"><em></span><span style="color: #000000">read_func</span>) (<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #000000">buf</span><span style="color: #000000">,</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #000000">len</span><span style="color: #000000">,</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">write</span>);
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"></em></span><span style="color: #000000">dir_func</span>) (<span style="color: #2b91af">char</span> <span style="color: #000000"><em></span><span style="color: #000000">dirname</span>);
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000"></em></span><span style="color: #000000">close_func</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> (<span style="color: #000000"><em></span><span style="color: #000000">embed_func</span>) (<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000"></em></span><span style="color: #000000">start_sector</span><span style="color: #000000">,</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">needed_sectors</span>);
+
+        <span style="color: #000000">};</span>
+
+        <span style="color: #008000">/<em> fsys.h </em>/</span>
+
+        <span style="color: #008000">/<em> shared.h </em>/</span>
+
+        <span style="color: #0000ff">struct</span> <span style="color: #000000">master_and_dos_boot_sector</span> <span style="color: #000000">{</span>
+
+        <span style="color: #008000">/<em> 00 </em>/</span> <span style="color: #2b91af">char</span> <span style="color: #000000">dummy1</span><span style="color: #000000">[</span><span style="color: #000000">0x0b</span><span style="color: #000000">];</span> <span style="color: #008000">/<em> at offset 0, normally there is a short JMP instuction(opcode is 0xEB) </em>/</span>
+
+        <span style="color: #008000">/<em> 0B </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">bytes_per_sector</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> seems always to be 512, so we just use 512 </em>/</span>
+
+        <span style="color: #008000">/<em> 0D </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">sectors_per_cluster</span>;<span style="color: #008000">/<em> non-zero, the power of 2, i.e., 2^n </em>/</span>
+
+        <span style="color: #008000">/<em> 0E </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">reserved_sectors</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> FAT=non-zero, NTFS=0? </em>/</span>
+
+        <span style="color: #008000">/<em> 10 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">number_of_fats</span>;<span style="color: #008000">/<em> NTFS=0; FAT=1 or 2&nbsp; </em>/</span>
+
+        <span style="color: #008000">/<em> 11 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">root_dir_entries</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> FAT32=0, NTFS=0, FAT12/16=non-zero </em>/</span>
+
+        <span style="color: #008000">/<em> 13 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">total_sectors_short</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> FAT32=0, NTFS=0, FAT12/16=any </em>/</span>
+
+        <span style="color: #008000">/<em> 15 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">media_descriptor</span>;<span style="color: #008000">/<em> range from 0xf0 to 0xff </em>/</span>
+
+        <span style="color: #008000">/<em> 16 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">sectors_per_fat</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> FAT32=0, NTFS=0, FAT12/16=non-zero </em>/</span>
+
+        <span style="color: #008000">/<em> 18 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">sectors_per_track</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> range from 1 to 63 </em>/</span>
+
+        <span style="color: #008000">/<em> 1A </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">total_heads</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> range from 1 to 256 </em>/</span>
+
+        <span style="color: #008000">/<em> 1C </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">hidden_sectors</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> any value </em>/</span>
+
+        <span style="color: #008000">/<em> 20 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">total_sectors_long</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> FAT32=non-zero, NTFS=0, FAT12/16=any </em>/</span>
+
+        <span style="color: #008000">/<em> 24 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">sectors_per_fat32</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> FAT32=non-zero, NTFS=any, FAT12/16=any </em>/</span>
+
+        <span style="color: #008000">/<em> 28 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #000000">total_sectors_long_long</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> NTFS=non-zero, FAT12/16/32=any </em>/</span>
+
+        <span style="color: #008000">/<em> 30 </em>/</span> <span style="color: #2b91af">char</span> <span style="color: #000000">dummy2</span><span style="color: #000000">[</span><span style="color: #000000">0x18e</span><span style="color: #000000">];</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> Partition Table, starting at offset 0x1BE </em>/</span>
+
+        <span style="color: #008000">/<em> 1BE </em>/</span> <span style="color: #0000ff">struct</span> <span style="color: #000000">{</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +00 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">boot_indicator</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +01 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">start_head</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +02 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">start_sector_cylinder</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +04 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">system_indicator</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +05 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">end_head</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +06 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">end_sector_cylinder</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +08 </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">start_lba</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +0C </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">total_sectors</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> +10 </em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #000000">}</span> P<span style="color: #000000">[</span><span style="color: #000000">4</span><span style="color: #000000">];</span>
+
+        <span style="color: #008000">/<em> 1FE </em>/</span> <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">boot_signature</span> <span style="color: #000000">__attribute</em></em></span> ((<span style="color: #000000">packed</span>));<span style="color: #008000">/<em> 0xAA55 </em>/</span>
+
+        <span style="color: #0000ff">#if 0</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; /<em> This starts at offset 0x200 </em>/</span>
+
+        <span style="color: #008000">/<em> 200 </em>/ unsigned long probed_total_sectors __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 204 </em>/ unsigned long probed_heads __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 208 </em>/ unsigned long probed_sectors_per_track __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 20C </em>/ unsigned long probed_cylinders __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 210 </em>/ unsigned long sectors_per_cylinder __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 214 </em>/ char dummy3[0x0c] __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp; /<em> matrix of coefficients of linear equations</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; </em></span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; <em>&nbsp;&nbsp; C[n] </em> (H_count <em> S_count) + H[n] </em> S_count = LBA[n] - S[n] + 1</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; <em></span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; </em> where n = 1, 2, 3, 4, 5, 6, 7, 8</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; <em>/</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; /</em> This starts at offset 0x130 <em>/</span>
+
+        <span style="color: #008000">/</em> 220 */ long long L[9] __attribute</em></em> ((packed)); /<em> L[n] == LBA[n] - S[n] + 1 </em>/</span>
+
+        <span style="color: #008000">/<em> 268 </em>/ long H[9] __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 28C </em>/ short C[9] __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 29E </em>/ short X __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 2A0 </em>/ short Y __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 2A2 </em>/ short Cmax __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 2A4 </em>/ long Hmax __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 2A8 </em>/ unsigned long Z __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 2AC </em>/ short Smax __attribute</em></em> ((packed));</span>
+
+        <span style="color: #008000">/<em> 2AE </em>/</span>
+
+        <span style="color: #0000ff">#endif</span>
+
+        &nbsp; <span style="color: #000000">};</span>
+
+        <span style="color: #0000ff">struct</span> <span style="color: #000000">drive_map_slot</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/<em> Remember to update DRIVE_MAP_SLOT_SIZE once this is modified.</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; </em> The struct size must be a multiple of 4.</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> X=max_sector bit 7: read only or fake write <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> Y=to_sector&nbsp; bit 6: safe boot or fake write <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> ------------------------------------------- <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> X Y: meaning of restrictions imposed on map <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> ------------------------------------------- <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> 1 1: read only=0, fake write=1, safe boot=0 <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> 1 0: read only=1, fake write=0, safe boot=0 <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> 0 1: read only=0, fake write=0, safe boot=1 <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> 0 0: read only=0, fake write=0, safe boot=0 <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">from_drive</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">to_drive</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> 0xFF indicates a memdrive <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">max_head</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">max_sector</span>;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 7: read only <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 6: disable lba <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">to_cylinder</span>;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> max cylinder of the TO drive <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 15:&nbsp; TO&nbsp; drive support LBA <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 14:&nbsp; TO&nbsp; drive is CDROM(with big 2048-byte sector) <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 13: FROM drive is CDROM(with big 2048-byte sector) <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">to_head</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> max head of the TO drive <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">char</span> <span style="color: #000000">to_sector</span>;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> max sector of the TO drive <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 7: in-situ <em>/</span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> bit 6: fake-write or safe-boot <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #000000">start_sector</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">//unsigned long start_sector_hi;&nbsp;&nbsp;&nbsp; /</em> hi dword of the 64-bit value <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #000000">sector_count</span>;
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">//unsigned long sector_count_hi;&nbsp;&nbsp;&nbsp; /</em> hi dword of the 64-bit value <em>/</span>
+
+        <span style="color: #000000">};</span>
+
+        <span style="color: #008000">/</em> shared.h <em>/</span>
+
+        <span style="color: #0000ff">typedef</span> <span style="color: #0000ff">enum</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #000000">COLOR_STATE_STANDARD</span><span style="color: #000000">,</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> represents the user defined colors for normal text <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #000000">COLOR_STATE_NORMAL</span><span style="color: #000000">,</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> represents the user defined colors for highlighted text <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #000000">COLOR_STATE_HIGHLIGHT</span><span style="color: #000000">,</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> represents the user defined colors for help text <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #000000">COLOR_STATE_HELPTEXT</span><span style="color: #000000">,</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #008000">/</em> represents the user defined colors for heading line <em>/</span>
+
+        &nbsp;&nbsp;&nbsp; <span style="color: #000000">COLOR_STATE_HEADING</span>
+
+        <span style="color: #000000">}</span> <span style="color: #000000">color_state</span>;
+
+        <span style="color: #0000ff">struct</span> <span style="color: #000000">term_entry</span>
+
+        <span style="color: #000000">{</span>
+
+        &nbsp; <span style="color: #008000">/</em> The name of a terminal.&nbsp; <em>/</span>
+
+        &nbsp; <span style="color: #0000ff">const</span> <span style="color: #2b91af">char</span> <span style="color: #000000"></em></span><span style="color: #000000">name</span>;
+
+        &nbsp; <span style="color: #008000">/<em> The feature flags defined above.&nbsp; </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #000000">flags</span>;
+
+        &nbsp; <span style="color: #008000">/<em> Default for maximum number of lines if not specified </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> <span style="color: #000000">max_lines</span>;
+
+        &nbsp; <span style="color: #008000">/<em> Put a character.&nbsp; </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000"><em></span><span style="color: #000000">PUTCHAR</span>) (<span style="color: #2b91af">int</span> <span style="color: #000000">c</span>);
+
+        &nbsp; <span style="color: #008000">/</em> Check if any input character is available.&nbsp; <em>/</span>
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"></em></span><span style="color: #000000">CHECKKEY</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #008000">/<em> Get a character.&nbsp; </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"><em></span><span style="color: #000000">GETKEY</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #008000">/</em> Get the cursor position. The return value is ((X &lt;&lt; 8) | Y).&nbsp; <em>/</span>
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"></em></span><span style="color: #000000">GETXY</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #008000">/<em> Go to the position (X, Y).&nbsp; </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000"><em></span><span style="color: #000000">GOTOXY</span>) (<span style="color: #2b91af">int</span> <span style="color: #000000">x</span><span style="color: #000000">,</span> <span style="color: #2b91af">int</span> <span style="color: #000000">y</span>);
+
+        &nbsp; <span style="color: #008000">/</em> Clear the screen.&nbsp; <em>/</span>
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000"></em></span><span style="color: #000000">CLS</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #008000">/<em> Set the current color to be used </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000"><em></span><span style="color: #000000">SETCOLORSTATE</span>) (<span style="color: #000000">color_state</span> <span style="color: #000000">state</span>);
+
+        &nbsp; <span style="color: #008000">/</em> Set the normal color and the highlight color. The format of each</span>
+
+        <span style="color: #008000">&nbsp;&nbsp;&nbsp;&nbsp; color is VGA&#39;s.&nbsp; <em>/</span>
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000"></em></span><span style="color: #000000">SETCOLOR</span>) (<span style="color: #2b91af">int</span> <span style="color: #000000">normal_color</span><span style="color: #000000">,</span> <span style="color: #2b91af">int</span> <span style="color: #000000">highlight_color</span><span style="color: #000000">,</span> <span style="color: #2b91af">int</span> <span style="color: #000000">helptext_color</span><span style="color: #000000">,</span> <span style="color: #2b91af">int</span> <span style="color: #000000">heading_color</span>);
+
+        &nbsp; <span style="color: #008000">/<em> Turn on/off the cursor.&nbsp; </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"><em></span><span style="color: #000000">SETCURSOR</span>) (<span style="color: #2b91af">int</span> <span style="color: #000000">on</span>);
+
+        &nbsp; <span style="color: #008000">/</em> function to start a terminal <em>/</span>
+
+        &nbsp; <span style="color: #2b91af">int</span> (<span style="color: #000000"></em></span><span style="color: #000000">STARTUP</span>) (<span style="color: #2b91af">void</span>);
+
+        &nbsp; <span style="color: #008000">/<em> function to use to shutdown a terminal </em>/</span>
+
+        &nbsp; <span style="color: #2b91af">void</span> (<span style="color: #000000">*</span><span style="color: #000000">SHUTDOWN</span>) (<span style="color: #2b91af">void</span>);
+
+        <span style="color: #000000">};</span>
+
+        <span style="color: #0000ff">#endif</span></div>
+</div>
+      
+    </div>
+    <section id='after_content_widget'></section>
+    
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-url="http://chenall.net/grub4dos/grub4dos-h/index.html" data-title="grub4dos .h"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

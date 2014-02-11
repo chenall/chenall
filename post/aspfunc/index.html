@@ -1,0 +1,813 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASP函数语法速查表 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="ASP函数语法速查表
+
+
+
+Abs(数值)
+绝对值。一个数字的绝对值是它的正值。空字符串 (null)   的绝对值，也是空字符串。未初始化的变数，其绝对为 0
+例子：ABS(-2000) 
+  结果：2000">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="ASP函数语法速查表"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">ASP函数语法速查表</h1>
+      
+        <span>发表于<time datetime="2009-04-01T00:05:30.000Z"> <a href="/post/aspfunc/">2009-04-01</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>ASP函数语法速查表</p>
+<TABLE class="table table-bordered">
+<TBODY>
+<tr class="success">
+<td>Abs(数值)</TD>
+<td>绝对值。一个数字的绝对值是它的正值。空字符串 (null)   的绝对值，也是空字符串。未初始化的变数，其绝对为 0</TD>
+<td>例子：ABS(-2000) <BR>
+  结果：2000</TD>
+</TR>
+<tr class="danger">
+<td>Array(以逗点分隔的数组元素)</TD>
+<td>Array 函数传回数组元素的值。</TD>
+<td>例子： <BR>
+  A=Array(1,2,3)<BR>
+  B=A(2)<BR>
+  结果： 2<BR>
+  说明：变量B为A数组的第二个元素的值。 </TD>
+</TR>
+<TR class="success">
+<td>Asc(字符串)</TD>
+<td>将字符串的第一字母转换成 ANSI(美国国家标准符号)字码。</TD>
+<td>例子：Asc(＂Internet＂)<BR>
+  结果：73<BR>
+  说明：显示第一字母 I 的 ANSI 字码。 </TD>
+</TR>
+<tr class="danger">
+<td>CBool(表达式)</TD>
+<td>转换成布尔逻辑值变量型态(True 或False)</TD>
+<td>例子：CBool(1+2)<BR>
+  结果：True </TD>
+</TR>
+<TR class="success">
+<td>CDate(日期表达式)</TD>
+<td>换成日期变量型态。可先使用 IsDate 函数判断是否可以转换成日 期。</TD>
+<td>例子： CDate (now( )+2) <BR>
+  结果：2000/5/28 10:30:59 </TD>
+</TR>
+<tr class="danger">
+<td>CDbl(表达式)</TD>
+<td>转换成DOUBLE变量型态。</TD>
+<td></TD>
+</TR>
+<TR class="success">
+<td>Chr(ANSI 字码)</TD>
+<td>将ASCII 字码转换成字符。</TD>
+<td>例子： Chr(72)<BR>
+  结果： H </TD>
+</TR>
+<tr class="danger">
+<td>CInt(表达式)</TD>
+<td>转换成整数变量型态。</TD>
+<td>例子： CInt (&quot;3.12&quot;) <BR>
+  结果： 3 </TD>
+</TR>
+<TR class="success">
+<td>CLng(表达式)</TD>
+<td>转换成LONG 变量型态。</TD>
+<td></TD>
+</TR>
+<tr class="danger">
+<td>CSng(表达式)</TD>
+<td>转换成SINGLE 变量型态。</TD>
+<td></TD>
+</TR>
+<TR class="success">
+<td>CStr(表达式)</TD>
+<td>转换成字符串变量型态。</TD>
+<td></TD>
+</TR>
+<tr class="danger">
+<td>Date()</TD>
+<td>传回系统的日期。</TD>
+<td>例子： Date <BR>
+  结果： 2000/5/13</TD>
+</TR>
+<TR class="success">
+<td>DateAdd(I , N , D)</TD>
+<td>将一个日期加上一段期间后的日期。 I ：设定一个日期( Date)所加上的一段期间的单位。譬如 interval=&quot;d&quot; 表示   N的单位为日。 I的设定值如下： <BR>
+  yyyy Year 年 <BR>
+  q Quarter 季 <BR>
+  m Month 月 <BR>
+  d Day 日 <BR>
+  w   Weekday 星期 <BR>
+  h Hour 时 <BR>
+  n Minute 分 <BR>
+  s Second 秒 <BR>
+  N   ：数值表达式，设定一个日期所加上的一段期间，可为正值或负值，正值表示加(结果为 &gt;date 以后的日期)，负值表示减(结果为 &gt;date   以前的日期)。 <BR>
+  D ：待加减的日期。</TD>
+<td>例子： DateAdd(&quot;m&quot; , 1 , &quot;31-Jan-98&quot;) <BR>
+  结果： 28-Feb-98 <BR>
+  说明：将日期   31-Jan-98 加上一个月，结果为 28-Feb-98 而非 31-Fe-98 。 <BR>
+  例子： DateAdd(&quot;d&quot; , 20 ,   &quot;30-Jan-99&quot;) <BR>
+  结果： 1999/2/9 <BR>
+  说明：将一个日期 30-Jan-99 加上 20 天后的日期。</TD>
+</TR>
+<tr class="danger">
+<td>DateDiff (I , D1 , D2[,FW[,FY]])</TD>
+<td>计算两个日期之间的期间。 <BR>
+  I ：设定两个日期之间的期间计算之单位。譬如 &gt;I=&quot;m&quot; 表示计算的单位为月。   &gt;I 的设定值如： <BR>
+  yyyy &gt; Year 年 <BR>
+  q Quarter 季 <BR>
+  m Month 月 <BR>
+  d Day 日 <BR>
+  w Weekday 星期 <BR>
+  h Hour 时 <BR>
+  m Minute 分 <BR>
+  s Second 秒 <BR>
+  D1   ,D2：计算期间的两个日期表达式，若 &gt;date1 较早，则两个日期之间的期间结果为正值；若 &gt;date2 较早， 则结果为负值。 <BR>
+  FW   ：设定每周第一天为星期几， 若未设定表示为星期天。 &gt;FW 的设定值如下： <BR>
+  0 使用 &gt;API 的设定值。 <BR>
+  1 星期天 <BR>
+  2   星期一 <BR>
+  3 星期二 <BR>
+  4 星期三 <BR>
+  5 星期四 <BR>
+  6 星期五 <BR>
+  7 星期六 <BR>
+  FY ：设定一年的第一周，   若未设定则表示一月一日那一周为一年的第一周。 &gt;FY 的设定值如下： <BR>
+  0 使用 &gt;API 的设定值。 <BR>
+  1   一月一日那一周为一年的第一周 <BR>
+  2 至少包括四天的第一周为一年的第一周 <BR>
+  3 包括七天的第一周为一年的第一周</TD>
+<td>例子： DateDiff (&quot;d&quot;,&quot;25-Mar-99 &quot;,&quot;30-Jun-99 &quot;) <BR>
+  结果： 97 <BR>
+  说明：显示两个日期之间的期间为 97 天。</TD>
+</TR>
+<TR class="success">
+<td>DatePart (I,D,[,FW[,FY]])</TD>
+<td>传回一个日期的之部份。 <BR>
+  &gt;I ：设定传回那一部份。譬如 &gt;I=&quot;d&quot; 表示传回 部份为日。 &gt;I   的设定值如下： <BR>
+  yyyy Year 年 <BR>
+  q Quarter 季 <BR>
+  m Month 月 <BR>
+  d Day 日 <BR>
+  w Weekday   星期 <BR>
+  h Hour 时 <BR>
+  m Minute 分 <BR>
+  s Second 秒 <BR>
+  D ：待计算的日期。 <BR>
+  &gt;FW   ：设定每周第一天为星期几， 若未设定则表示为星期天。 &gt;FW 的设定值如下： <BR>
+  0 使用 &gt;API 的设定值。 <BR>
+  1 星期天 <BR>
+  2   星期一&gt;3 星期二 <BR>
+  4 星期三 <BR>
+  5 星期四 <BR>
+  6 星期五 <BR>
+  7 星期六 <BR>
+  FY ：设定一年的第一周，   若未设定则表示一月一日那一周为一年的第一周。 &gt;FY 的设定值如下： <BR>
+  0 使用 &gt;API 的设定值。 <BR>
+  1   一月一日那一周为一年的第一周 <BR>
+  2 至少包括四天的第一周为一年的第一周 <BR>
+  3 包括七天的第一周为一年的第一周</TD>
+<td>例子： DatePart (&quot;m&quot;,&quot;25-Mar-99 &quot;) <BR>
+  结果： 3 <BR>
+  说明：显示传回一个日期   的月部份。</TD>
+</TR>
+<tr class="danger">
+<td>Dateserial (year,month,day)</TD>
+<td>转换(year,month,day) 成日期变量型态。</TD>
+<td>例子： DateSerial (99,10,1) <BR>
+  结果： 1999/10/1</TD>
+</TR>
+<TR class="success">
+<td>DateValue ( 日期的字符串或表达式 )</TD>
+<td>转换成日期变量型态，日期从 January 1,100 到 December 31,9999 。格式为 month,day,and   year 或 month/day/year 。譬如： December 30,1999 、 Dec 30,1999 、 12/30/1999 、   12/30/99</TD>
+<td>例子： DateValue (&quot;January 1,2002 &quot;) <BR>
+  结果： 2002/1/1</TD>
+</TR>
+<tr class="danger">
+<td>Day( 日期的字符串或表达式 )</TD>
+<td>传回日期的「日」部份。</TD>
+<td>例子： Day(&quot; 12/1/1999 &quot;) <BR>
+  结果： 1</TD>
+</TR>
+<TR class="success">
+<td>Fix( 表达式 )</TD>
+<td>转换字符串成整数数字型态。与 Int 函数相同。若为 null 时传回 null 。 <BR>
+  Int (number) 与   Fix(number) 的差别在负数。如 Int (-5.6)=-6 ， Fix(-5.6)=-5 。</TD>
+<td>例子： Fix(5.6) <BR>
+  结果： 5</TD>
+</TR>
+<tr class="danger">
+<td>Hex( 表达式 )</TD>
+<td>传回数值的十六进制值。若表达式为 null 时 Hex( 表达式 )=null ，若表达式 =Empty 时 Hex( 表达式   )=0 。 16 进位可以加「 &amp;H 」表示，譬如 16 进位 &amp;H10 表示十进制的 16 。</TD>
+<td>例子： Hex(30) <BR>
+  结果： 1E</TD>
+</TR>
+<TR class="success">
+<td>Hour( 时间的字符串或表达式 )</TD>
+<td>传回时间的「小时」部份。</TD>
+<td>例子： Hour(&quot;12:30:54 &quot;) <BR>
+  结果： 12</TD>
+</TR>
+<tr class="danger">
+<td>InStr   ([start,]string1,string2[,compare]) </TD>
+<td>将一 个 字符串由左 而右与另一个比较，传回第一个相同的位置。 <BR>
+  start 为从第几个字比较起，若省略 start   则从第一个字比较起， string1 为待寻找的字符串表达式， string2 为 待比较的字符串表达式， compare 为比较的方法， compare=0   表二进制比较法， compare=1 表文字比较法，若省略 compare 则为预设的二进制比较法。</TD>
+<td>例子： InStr(&quot;abc123def123&quot;,&quot;12&quot;) <BR>
+  结果： 4</TD>
+</TR>
+<TR class="success">
+<td>InstrRev   ([start,]string1,string2[,compare])</TD>
+<td>将一 个 字符串 由右而左与另一个比较，传回第一个相同的位置。 <BR>
+  start 为从第几个字比较起，若省略 start   则从第一个字比较起， string1 为待寻找的字符串表达式， string2 为 待比较的字符串表达式， compare 为比较的方法， compare=0   表二进制比较法， compare=1 表文字比较法，若省略 compare 则为预设的二进制比较法。</TD>
+<td>例子： InstrRev (&quot;abc123def123&quot;,&quot;12&quot;) <BR>
+  结果： 10</TD>
+</TR>
+<tr class="danger">
+<td>Int ( 表达式 )</TD>
+<td>传回一个数值的整数部份。与 Fix 函数相同。</TD>
+<td>例子： Int (5.6) <BR>
+  结果： 5</TD>
+</TR>
+<TR class="success">
+<td>IsArray ( 变数 )</TD>
+<td>测试变量是 (True) 否 (False) 是一个数组。</TD>
+<td>例子： IsArray (3) <BR>
+  结果： False <BR>
+  说明：不是一个数组。</TD>
+</TR>
+<tr class="danger">
+<td>IsDate ( 日期或字符串的表达式 )</TD>
+<td>是否可以转换成日期。日期从 January 1,100 A.D. 到 December 31,9999 A.D 。</TD>
+<td>例子： IsDate (&quot;December 31,1999 &quot;) <BR>
+  结果： True <BR>
+  说明：可以转换成日期。</TD>
+</TR>
+<TR class="success">
+<td>IsEmpty ( 变数 )</TD>
+<td>测试变量是 (True) 否 (False) 已经被初始化</TD>
+<td>例子： IsEmpty (a) <BR>
+  结果： True</TD>
+</TR>
+<tr class="danger">
+<td>IsNull ( 变数 )</TD>
+<td>测试变数是 (True) 否 (False) 不是有效的数据。</TD>
+<td>例子： IsNull (&quot;&quot;) <BR>
+  结果： False <BR>
+  说明：是有效的数据。</TD>
+</TR>
+<TR class="success">
+<td>IsNumeric ( 表达式 )</TD>
+<td>是 (True) 否 (False) 是数字。</TD>
+<td>例子： IsNumeric (&quot;abc123&quot;) <BR>
+  结果： False <BR>
+  说明：不是数字。</TD>
+</TR>
+<tr class="danger">
+<td>LCase ( 字符串表达式 )<A href="#top" target="_blank"> top</A></TD>
+<td>转换字符串成小写。将大写字母的部份转换成小写。字符串其余的部份不变。</TD>
+<td>例子： LCase (&quot;ABC123&quot;) <BR>
+  结果： abc123</TD>
+</TR>
+<TR class="success">
+<td>Left( 字符串表达式 ,length)</TD>
+<td>取字符串左边的几个字。 length 为取个字。 Len 函数可得知字符串的长度。</TD>
+<td>例子： Left(&quot;ABC123&quot;,3) <BR>
+  结果： ABC</TD>
+</TR>
+<tr class="danger">
+<td>Len( 字符串表达式 变量 )</TD>
+<td>取得字符串的长度。</TD>
+<td>例子： Len(&quot;ABC123&quot;) <BR>
+  结果： 6</TD>
+</TR>
+<TR class="success">
+<td>LTrim ( 字符串表达式 )</TD>
+<td>除去字符串左边的空白字。 RTrim 除去字符串右边的空白字， Trim 函数除去字符串左右两边的空白字。</TD>
+<td>例子： LTrim (&quot;456+&quot; abc &quot;) <BR>
+  结果： 456abc123</TD>
+</TR>
+<tr class="danger">
+<td>Mid( 字符串表达式 ,start[,length]) </TD>
+<td>取字符串中的几个字。 start 为从第几个 字取起， length 为取几个字， 若略 length 则从 start   取到最右底。由Len 函数可得知字符串的长度。</TD>
+<td>例子： Mid(&quot;abc123&quot;,2,3) <BR>
+  结果： c12</TD>
+</TR>
+<TR class="success">
+<td>Minute( 日期的字符串或表达式 )</TD>
+<td>传回时间的「分钟」部份。</TD>
+<td>例子： Minute(&quot;12:30:54&quot;) <BR>
+  结果：30</TD>
+</TR>
+<tr class="danger">
+<td>Month(日期的字符串或表达式)</TD>
+<td>传回日期的「月」部份。</TD>
+<td>例子：Month(&quot;12/1/2001&quot;) <BR>
+  结果：12</TD>
+</TR>
+<TR class="success">
+<td>MonthName(month[,abbreviate])</TD>
+<td>传回月的名称。 <BR>
+  month ：待传回月名称的数字 1~12 。譬如， 1 代表一月， 7 代表七月。 <BR>
+  abbreviate: 是 (True) 否 (False) 为缩写，譬如 March ，缩写为 Mar 。默认值为 False   。中文的月名称无缩写。</TD>
+<td>例子： MonthName (7) <BR>
+  结果：七月</TD>
+</TR>
+<tr class="danger">
+<td>Now()</TD>
+<td>传回系统的日期时间。</TD>
+<td>例子： Now() <BR>
+  结果： 2001/12/30 10:35:59 AM</TD>
+</TR>
+<TR class="success">
+<td>Oct()</TD>
+<td>传回数值的八进位值。八进位可以加「 &amp;O 」表示，譬如八进位 &amp;O10 表示十进制的 8 。</TD>
+<td>例子： Oct(10) <BR>
+  结果： 12</TD>
+</TR>
+<tr class="danger">
+<td>Replace(   字符串表达式,findnreplacewith[,start[,count[,compare]]]) </TD>
+<td>将一个字符串取代 部份字。寻找待取代的原字符串 (find) ， 若找到则被取代为新字符串 (replacewith) 。 <BR>
+  find ：待寻找取代的原字符串。 <BR>
+  replacewith ：取代后的字。 <BR>
+  start ：从第几个字开始寻找取代，   若未设定则由第一个字开始寻找。 <BR>
+  count ：取代的次数。 若未设定则所有寻找到的字符串取代字符 串全部被取代。 <BR>
+  compare   ：寻找比较的方法， compare=0 表示二进制比较法， compare=1 表文字比较法， compare =2 表根据比较的 数据型态而定，若省略   compare 则为预设的二进制比较法。</TD>
+<td>例子： Replace(&quot;ABCD123ABC&quot;,&quot;AB&quot;,&quot;ab&quot;) <BR>
+  结果： abCD123abC</TD>
+</TR>
+<TR class="success">
+<td>Right( 字符串表达式 ,length)</TD>
+<td>取字符串右边的几个字， length 为取几个字。 Len 函数可得知字符串的长度。</TD>
+<td>例子： Right(&quot;ABC123&quot;,3) <BR>
+  结果： 123</TD>
+</TR>
+<tr class="danger">
+<td>Rnd [(number)]</TD>
+<td>0~1 的 随机随机数值。 number 是任何有效的数值表达式。若 number 小于 0 表示每次得到相同的 随机随机数值。   number 大于 0 或未提供时表示依序得到下一个 随机随机数值。 &gt;number=0 表示得到最近产生的   随机随机数值。为了避免得到相同的随机随机数顺序，可以于 Rnd 函数前加 Randomize 。</TD>
+<td>例子： Rnd <BR>
+  结果： 0.498498</TD>
+</TR>
+<TR class="success">
+<td>Round( 数值表达式 [,D])</TD>
+<td>四舍五入。 <BR>
+  D ：为四舍五入到第几位小数，若省略则四舍五入到整数。</TD>
+<td>例子： Round(30635,1) <BR>
+  结果： 3.6</TD>
+</TR>
+<tr class="danger">
+<td>RTrim ( 字符串表达式 )</TD>
+<td>除去字符串右边的空白字。 LTrim 除去字符串左边的空白字， Trim 函数除去字符串左右两边的空白字。</TD>
+<td>例子： RTrim (&quot;abc123 &quot;)+&quot;456&quot; <BR>
+  结果： abc123456</TD>
+</TR>
+<TR class="success">
+<td>Second( 时间的字符串或表达式 )</TD>
+<td>传回时间的「秒」部份。</TD>
+<td>例子：Second(&quot;12:30:54&quot;) <BR>
+  结果：54</TD>
+</TR>
+<tr class="danger">
+<td>Space( 重复次数 )</TD>
+<td>得到重复相同的空白字符串。</TD>
+<td>例子： A&quot;+Space (5)+&quot;B <BR>
+  结果： A B <BR>
+  说明： A 和 B   中间加入五个空白字。</TD>
+</TR>
+<TR class="success">
+<td>String( 重复次数，待重复的字 )</TD>
+<td>得到重复相同的字符串。</TD>
+<td>例子： String(5,71) <BR>
+  结果： GGGGG</TD>
+</TR>
+<tr class="danger">
+<td>StrReverse (String(10,71))</TD>
+<td>将一个字符串顺序颠倒。</TD>
+<td>例子： StrReverse (&quot;ABC&quot;) <BR>
+  结果： CBA</TD>
+</TR>
+<TR class="success">
+<td>Time()</TD>
+<td>传回系统的时间。</TD>
+<td>例子： Time <BR>
+  结果： 10:35:59 PM</TD>
+</TR>
+<tr class="danger">
+<td>TimeSerial (hour,minute,second)</TD>
+<td>转换指定的 ( hour,minute,second) 成时间 变量型态。</TD>
+<td>例子： TimeSerial (10,31,59) <BR>
+  结果： 10:31:59</TD>
+</TR>
+<TR class="success">
+<td>TimeValue ( 日期的字符串或表达式 )</TD>
+<td>转换 成时间变量型态。日期的字符串或表达式从 0:00:00(12:00:00 A.M.) 到 23:59:59(11:59:59   P.M.) 。</TD>
+<td>例子： TimeValue (&quot; 11:59:59 &quot;) <BR>
+  结果： 11:59:59</TD>
+</TR>
+<tr class="danger">
+<td>Trim( 字符串表达式 )</TD>
+<td>除去字符串左右两边的空白字。</TD>
+<td>例子： Trim(&quot; abc123 &quot;) <BR>
+  结果： abc123</TD>
+</TR>
+<TR class="success">
+<td>UCase ()</TD>
+<td>转换字符串成大写。将小写字母的部份转换成大写，字符串其余部份不变。</TD>
+<td>例子： UCase (&quot;abc123&quot;) <BR>
+  结果： ABC123</TD>
+</TR>
+<tr class="danger">
+<td>VarType ( 变数 )</TD>
+<td>传回一个变量类型。与 TypeName 函数相同， VarType 传回变量类型的代码， TypeName 传回变量类型的名称。</TD>
+<td>例子： VarType ( &quot;I love you!&quot;) <BR>
+  结果： 8</TD>
+</TR>
+<TR class="success">
+<td>Weekday( 日期表达式 ,[FW]) </TD>
+<td>传回星期几的数字。 <BR>
+  FW ：设定一周的第一天是星期几。若 省略则表 1( 星期日 ) 。 <BR>
+  Firstdayfweek 设定值为： 1( 星期日 ),2( 星期一 ),3( 星期二 ),4( 星期三 ),5( 星期四 ),6( 星期五 ),7(   星期六 ) 。</TD>
+<td>例子： Weekday(&quot; 1/1/2000&quot;) <BR>
+  结果： 7</TD>
+</TR>
+<tr class="danger">
+<td>WeekDayName (W,A,FW)</TD>
+<td>传回星期几的名称。 <BR>
+  W ：是 (True) 否 (False) 为缩写。譬如 March ，缩写为 Mar 。预设为   False 。中文的星期几名称无缩写。 <BR>
+  FW ：设定一周的第一天是星期几。 若省略表 1( 星期日 ) 。设定待传回星期几的名称，为一周中的第几天。 <BR>
+  A ： 1( 星期日 ),2( 星期一 ),3( 星期二 ),4( 星期三 ),5( 星期四 ),6( 星期五 ),7( 星期六 ) 。</TD>
+<td>例子： WeekDayName (&quot;1/1/2000&quot;) <BR>
+  结果：星期六</TD>
+</TR>
+<TR class="success">
+<td>Year()</TD>
+<td>传回日期的「年」部份。</TD>
+<td>例子： Year(&quot; 12/1/2000 &quot;) <BR>
+  结果：   2000</TD>
+</TR>
+</TBODY>
+</TABLE>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/aspfunc/">ASP函数语法速查表</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/ASP/">ASP</a></li></span></span> | <span class="tags">标签 <a href="/tags/ASP/" class="label label-primary">ASP</a><a href="/tags/函数/" class="label label-success">函数</a><a href="/tags/编程/" class="label label-info">编程</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/aspfunc/#comments" class="ds-thread-count comment-link" data-thread-key="51" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/post52/" title="[快递] GRUB4DOS-0.4.4正式版发布">&larr; [快递] GRUB4DOS-0.4.4正式版发布</a></li>
+  
+  
+  <li class="next"><a href="/post/minipe_update/" title="[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="51"  data-url="http://chenall.net/post/aspfunc/" data-title="ASP函数语法速查表"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/aspfunc/";
+    var wumiiTitle = "ASP函数语法速查表";
+    var wumiiTags = "ASP,函数,编程";
+    var wumiiCategories = ["程序设计","ASP"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

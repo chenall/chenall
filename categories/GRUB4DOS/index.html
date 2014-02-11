@@ -1,0 +1,403 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GRUB4DOS | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="chenall 的搏客,技术,分享,开源.">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><h2 class="archive-title category">GRUB4DOS<small><a href="/categories/GRUB4DOS/介绍/"><span class="label label-primary">介绍<span class="badge">2</span></span></a> <a href="/categories/GRUB4DOS/实用/"><span class="label label-info">实用<span class="badge">2</span></span></a> <a href="/categories/GRUB4DOS/扩展/"><span class="label label-success">扩展<span class="badge">12</span></span></a> <a href="/categories/GRUB4DOS/批处理/"><span class="label label-warning">批处理<span class="badge">5</span></span></a> <a href="/categories/GRUB4DOS/技巧/"><span class="label label-success">技巧<span class="badge">1</span></span></a> <a href="/categories/GRUB4DOS/综合/"><span class="label label-warning">综合<span class="badge">2</span></span></a> <a href="/categories/GRUB4DOS/编程/"><span class="label label-primary">编程<span class="badge">1</span></span></a> <a href="/categories/GRUB4DOS/资料/"><span class="label label-primary">资料<span class="badge">1</span></span></a></small></h2>
+
+
+<div class="archive">
+
+<!-- Nav tabs -->
+<ul class="nav nav-pills">
+<li class=" active"><a href="#year_2009" data-toggle="pill">2009</a></li><li class=""><a href="#year_2010" data-toggle="pill">2010</a></li><li class=""><a href="#year_2011" data-toggle="pill">2011</a></li><li class=""><a href="#year_2012" data-toggle="pill">2012</a></li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+<div class="tab-pane fade in active" id="year_2009"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T15:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
+
+ root中文解释就是“根”的意思。
+  例子：
+  一个磁盘文件列表如下
+  其中一开始X:\就是默认root
+  现在要访问boot\file3 就可以使用 /boot/file3 来访问</p><li class="list-group-item"><h3><time datetime="2009-11-15T20:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
+
+启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
+ 有时候系统的启动文件被删了就会出现如下提示</p><li class="list-group-item"><h3><time datetime="2009-11-12T00:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
+有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。
+2014-01-21  注: 这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了</p><li class="list-group-item"><h3><time datetime="2009-04-01T00:20:57.000Z">2009-04-01</time>  <a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></h3><p class="list-group-item-text">等了好长时间GRUB4DOS-0.4.4正式版终于发布.
+下载地址:
+http://nufans.net/grub4dos/grub4dos-0.4.4.zip
+http://nufans.net/grub4dos/grub4dos-0.4.4-src.zip</p><li class="list-group-item"><h3><time datetime="2009-03-08T17:14:21.000Z">2009-03-08</time>  <a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></h3><p class="list-group-item-text">大家都知道GRLDR中的内置菜单不能超过4KB,如果超过就会被截断.
+如果超过4KB的菜单想要内置怎么办呢?
+之前有想过使用GZ压缩,可是内置菜单不支持GZ压缩的格式.
+后来得知启动后内置菜单的位置在内存中是固定的0X800处.</p><li class="list-group-item"><h3><time datetime="2009-03-02T13:43:03.000Z">2009-03-02</time>  <a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></h3><p class="list-group-item-text">熟悉GRUB4DOS的都知道.
+write 可以在内存中写入一个数值使用如下命令就可以了
+在内存地址0x60000中写入1.
+如果想写入的是一个字符串呢?用上面的方法肯定行不通.
+因为需要我想在内存固定位置中写入一个字符串,在另一个菜单中读取.之前考虑了使用dd命令,虽可以实现但不太方便.</p><li class="list-group-item"><h3><time datetime="2009-01-16T22:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。
+在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。</p><li class="list-group-item"><h3><time datetime="2009-01-15T12:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 例子:  
+
+说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.GRUB4DOS会把这个文件的内容作为一个磁盘分区(hd1,0).</p></div><div class="tab-pane fade" id="year_2010"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2010-12-31T09:09:35.000Z">2010-12-31</time>  <a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></h3><p class="list-group-item-text">wee是由不点基于grub4dos开发的嵌入微型 grub,可以安装到硬盘MBR上代替原来的引导代码.
+有什么用途呢?
+得益于GRUB4DOS的灵活性,wee同样很灵活,可以启动任意支持的分区上的可启动文件.</p><li class="list-group-item"><h3><time datetime="2010-12-14T23:46:26.000Z">2010-12-14</time>  <a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></h3><p class="list-group-item-text">GRUB4DOS是什么东西,我这里就不解释了.
+本脚本可以简化GRUB4DOS菜单编写的难度.
+适用在合盘或需要选择启动多种镜像的情况.
+使用方法非常简单. 具体见里面的例子:
+附上两个增强的版本：
+zxw版： 自动列表.数字启动</p><li class="list-group-item"><h3><time datetime="2010-11-22T13:03:39.000Z">2010-11-22</time>  <a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></h3><p class="list-group-item-text">这个在配合使用U盘安装系统碰到SCSI/RAID硬盘时特别有用,不需要在安装光盘上集成那个驱动了.
+2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-13T00:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.
+在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
+可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
+目前已经增加了许多的强大功能.具体见后面的介绍.</p><li class="list-group-item"><h3><time datetime="2010-09-23T21:29:54.000Z">2010-09-23</time>  <a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h3><p class="list-group-item-text">经典的游戏贪吃蛇,GRUB4DOS版.比较简单的一个游戏.
+嘻嘻,界面不是很好看,没有使用图形模式,只是一个试验品.抛砖引玉.^_^
+关于这个游戏的相关信息请看搏客贴子:
+ http://chenall.net/post/snake_idea/</p><li class="list-group-item"><h3><time datetime="2010-09-17T18:19:51.000Z">2010-09-17</time>  <a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></h3><p class="list-group-item-text">搞了一个增强版的ECHO命令,看看效用还有反应如何.可以在屏幕任意位置显示字符并且可以指定颜色.
+颜色设置只支持console模式(文本模式).
+使用方法(具体请下载附件研究)
+注: 最新版本的GRUB4DOS已经内置此功能,并且功能得到了增强,想要编写GRUB4DOS扩展的可以下载源码研究一下</p><li class="list-group-item"><h3><time datetime="2010-09-04T08:49:00.000Z">2010-09-04</time>  <a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></h3><p class="list-group-item-text">[用途]
+在GRUB4DOS下直接检测PCI设备信息.
+
+
+待定.......
+
+
+[用法]
+直接在GRUB4DOS下运行,可以加一个PCI信息库文件参数.PCI信息库文件
+另: 因为GRUB4DOS是支持自动解压的.所以这个信息库文件可以使用GZIP压缩再调用(加快读取速度).</p><li class="list-group-item"><h3><time datetime="2010-06-21T17:32:01.000Z">2010-06-21</time>  <a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></h3><p class="list-group-item-text">由于最近在测试GRUB4DOS的网络启动,因为要测试不同TFTP服务器的情况.所以需要来回切换两个TFTP服务器.刚开始时还是使用比较保守的方法，即修改DHCP服务器的配置，指定TFTP服务器地址，然后重启PXE客户端．</p><li class="list-group-item"><h3><time datetime="2010-03-18T10:42:19.000Z">2010-03-18</time>  <a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></h3><p class="list-group-item-text">[功能]GRUB4DOS 显示多国语言菜单.
+
+注: 新的版本GRUB4DOS已经支持多国语言菜单,所以本程序也已经不再更新维护，也不建议使用．本文只保留作为记录.
+[说明]
+  2010-04-20更新</p><li class="list-group-item"><h3><time datetime="2010-03-04T00:31:57.000Z">2010-03-04</time>  <a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></h3><p class="list-group-item-text">[功能说明]  加载一个点阵字库用于显示中文。
+
+  可以直接使用完整的点阵字库，或从以下软件生成的小字库
+  http://www.cn-dos.net/forum/viewthread.php?tid=47921</p><li class="list-group-item"><h3><time datetime="2010-02-01T21:37:56.000Z">2010-02-01</time>  <a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></h3><p class="list-group-item-text">[程序说明]   GRUB4DOS 下运行的简单双目计算器.
+
+注: 最新版GRUB4DOS已经内置本功能
+[下载地址]
+   程序下载: http://grub4dos-chenall.googlecode.com/files/calc.zip</p><li class="list-group-item"><h3><time datetime="2010-01-30T14:15:53.000Z">2010-01-30</time>  <a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></h3><p class="list-group-item-text">[功能说明]用于菜单中，可以直接跳到另一个菜单项执行.
+
+注：因为是调用fallback命令的功能
+所以如果有使用fallback则使用这个命令之后之前的fallback设置就失效。
+注: 这个只是演示一下GRUB4DOS外部命令的编写,在新版GRUB4DOS中已经直接支持</p><li class="list-group-item"><h3><time datetime="2010-01-29T20:23:05.000Z">2010-01-29</time>  <a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></h3><p class="list-group-item-text">[使用方法]下载后解压得到FAT文件复制到GRUB4DOS启动盘的/BOOT/GRUB目录下。
+
+或直接使用全路径比如这个文件放在(hd0,1)/boot目录下。
+则(hd0,1)/boot/fat xxxx</p><li class="list-group-item"><h3><time datetime="2010-01-05T20:53:46.000Z">2010-01-05</time>  <a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></h3><p class="list-group-item-text">grub4dos外部命令测试 简单的 read 命令</p><li class="list-group-item"><h3><time datetime="2010-01-05T20:42:02.000Z">2010-01-05</time>  <a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></h3><p class="list-group-item-text">grub4dos从0.4.5版开始可以运行用户自己写的外部命令了。
+以下是例子是echo命令也就是相当于c语言的printf函数。
+
+
+0x8300 是 grub4dos 系统函数(API)的入口点. 你可以在 asm.S 源码中找到它的定义.</p></ul></div><div class="tab-pane fade" id="year_2011"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2011-10-17T23:36:28.000Z">2011-10-17</time>  <a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></h3><p class="list-group-item-text">本程序可以在GRUB4DOS中直接调用BIOS中断和读写指定端口，从而获取一些功能和需要的数据。
+可以方便开发人员临时调试某个功能时使用。
+当然你对中断资料比较熟悉的话，就可以利用GRUB4DOS配合本程序作出非常酷的效果（比如移动的文字）</p><li class="list-group-item"><h3><time datetime="2011-10-08T17:12:07.000Z">2011-10-08</time>  <a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></h3><p class="list-group-item-text">修改系统日期有很多种方法，比如直接进入BIOS修改，或者进入系统后修改。
+如果我想每次开机都改成一个固定的时间，进入系统后自动更新为正确的时间（一般用于过期软件破解）
+现在可以直接使用GRUB4DOS来实现自动修改了。</p><li class="list-group-item"><h3><time datetime="2011-08-22T13:16:17.000Z">2011-08-22</time>  <a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></h3><p class="list-group-item-text">本模块是一个GRUB4DOS的批处理
+可用于搜索N级目录下的指定类型文件,并显示于菜单上
+这是一个通用模块,可以通过参数直接调用或者通过预先设置变量的方法再调用,
+使用方法请参考本站另一贴子
+[原创] GRUB4DOS 通用模块之分区选择</p><li class="list-group-item"><h3><time datetime="2011-08-17T13:12:30.000Z">2011-08-17</time>  <a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></h3><p class="list-group-item-text">本程序使用GRUB4DOS批处理编写.
+实现了以下功能.
+
+替换某个变量中指定的字符串.
+删除某个变量中指定的字符串.
+
+使用方法:
+把脚本另存为REPLACE
+然后直接调用
+replace 变量名 字符串1 字符串2 [起始位置]</p><li class="list-group-item"><h3><time datetime="2011-08-09T16:07:36.000Z">2011-08-09</time>  <a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></h3><p class="list-group-item-text">通用Grub4dos硬盘分区选择接口模块,
+供有需要的朋友使用.
+可以在你的菜单中简单的加入一个分区选择模块.
+要求:  必须使用2011-08-09以后发布的GRUB4DOS
+使用方法:
+首先复制代码另存为hd_part.lst</p><li class="list-group-item"><h3><time datetime="2011-05-04T01:04:59.000Z">2011-05-04</time>  <a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></h3><p class="list-group-item-text">MODBOOT是何物？
+MODBOOT是一个模块化的DOS启动控制中心。
+基于以下网站的MODBOOT改进而成的，配合GRUB4DOS启动，实现真正的模块化
+http://nu2.nu/bootdisk/modboot/</p><li class="list-group-item"><h3><time datetime="2011-01-28T13:55:38.000Z">2011-01-28</time>  <a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></h3><p class="list-group-item-text">wee 是一个微型的grub4dos用于安装到硬盘mbr上，可以用来代替之前的grldr.mbr方案。
+支持的文件系统： FAT12/16/32/NTFS EXT2/3/4
+weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。</p></ul></div><div class="tab-pane fade" id="year_2012"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2012-02-13T16:00:55.000Z">2012-02-13</time>  <a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></h3><p class="list-group-item-text">自用的硬盘工具箱，可以方便进行系统维护工作。
+引导程序WEE+GRUB4DOS。
+自带基于MODBOOT的一键恢复程序QGHO，可以随时进行备份恢复系统。
+可以方便的进行功能扩展，一切皆有可能。
+说明：</p></ul></div>
+</div>
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-11 15:03:34</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

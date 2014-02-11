@@ -1,0 +1,941 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>第 3 页 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="chenall 的搏客,技术,分享,开源.">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></h1>
+      
+        <span>发表于<time datetime="2012-08-26T15:40:06.000Z"> <a href="/post/189_dl/">2012-08-26</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>最近在学习PHP,随手做几个基于网盘的直链,,嘿嘿以后不用担心没有地方放文件了.</p>
+<p>初步测试,挺稳定的说,放一段时间看一下.</p>
+<p>没有什么好说的.直接上效果,</p>
+<p>图片直链</p>
+<p><a href="http://d.chenall.net/2/9lightning9.jpg" target="_blank"><img src="http://d.chenall.net/2/9lightning9.jpg" alt=""></a></p>
+<p><a href="http://d.chenall.net/2/8lightning8.jpg" target="_blank"><img src="http://d.chenall.net/2/8lightning8.jpg" alt=""></a></p>
+<p>MP3在线播放</p>
+<audio controls="controls" loop="loop" src="http://d.chenall.net/2/詹雅雯 - 今年一定会好过.mp3">你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。</audio>
+
+<p>文件下载直链测试: <a href="http://d.chenall.net/2/詹雅雯 - 今年一定会好过.mp3" title="189天翼云直链下载测试" target="_blank">詹雅雯 - 今年一定会好过.mp3</a></p>
+<p>目前正在整理天翼网盘的API,有兴趣的朋友请继续关注本文.</p>
+<p>目前已经完成的API功能如下.基本可用,但是还没有完善,提示信息比较少,出错不好定位.</p>
+<blockquote>
+<p>del/ren/move/mkdir/upload/download/login/logout</p>
+</blockquote>
+<p>到时再看情况,根据需求放出API下载.天翼网盘直链,你也可以.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/天翼云/" class="label label-primary">天翼云</a><a href="/tags/直链/" class="label label-success">直链</a><a href="/tags/原创分享/" class="label label-info">原创分享</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/189_dl/#comments" class="ds-thread-count comment-link" data-thread-key="857" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></h1>
+      
+        <span>发表于<time datetime="2012-08-13T15:20:14.000Z"> <a href="/post/sina_curl_login/">2012-08-13</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>有时候我们获取一些新浪微博的数据,但又不想使用API,只好使用模拟登录了.</p>
+<p>发现以前可以使用的CURL模拟登录代码失效了,Google一下,发现有很多人碰到这个问题.但是没有找到解决方法,所以就自己研究了一下,发现了原因.</p>
+<p>可能是因为新浪限制了不允许模拟登录,同样的登录参数,用网页登录一切正常,用CURL登录,返回的<span style="color:#800000;">COOKIES</span>竟然是<span style="color:#ff0000;">临时</span>的.</p>
+<p>所以看起来是登录成功了,并且获取到了用户信息,但是再次访问还是未登录状态.我的解决方法比较简单,直接修改COOKIES的时效这样就行了.</p>
+<p>附上我自己测试通过的PHP代码如下,希望有对有同样问题的朋友有用,如果你有更好的方案欢迎分享一下.</p>
+<p>2012-08-18 更新: 发现只要不设置CURLOPT_COOKIESESSION参数就行了,不需要修改COOKIE_FILE.</p>
+<pre><code>&lt;?php
+class sina
+{
+/*
+    一个简单的新浪微搏curl模拟登录类. 来源: http://chenall.net/post/sina_curl_login/
+    使用方法:
+
+    http函数是一个简单的curl封装函数,需要自己去实现,
+    http函数原型如下:
+        http($url,$post_data = null)
+        返回网页内容.
+    第一个参数$url,就是要访问的url地址,$post_data是post数据,如果为空,则代表GET访问.
+
+    1.使用加密后密码登录 加密方法: sha1(sha1($pass))
+        $sina = new sina($username,$sha1pass)
+    2.直接使用原始密码登录
+        $sina = new sina($username,$sha1pass,0)
+    执行之后如果$sina-&gt;status非空,则登录成功,否则登录失败.
+    登录成功之后,你就可以直接继续使用http函数来访问其它内容.
+    使用 unset($sina) 会自动注销登录.
+*/
+    public $status;
+    function __construct($su,$sp,$flags = 1) {
+        $this-&gt;status = $this-&gt;login($su,$sp,$flags);
+    }
+
+    function __destruct()
+    {
+        //注销登录
+        $this-&gt;logout();
+    }
+
+    function logout()
+    {
+        http(&quot;http://weibo.com/logout.php&quot;);
+        unset($this-&gt;status);
+    }
+    /*不需要了,只要不设置HTTP函数中不设置CURLOPT_COOKIESESSION参数就行了,要设可以设为false.
+    function ResetCookie()//重置相关cookie
+    {
+        global $cookie_file;
+        $str = file_get_contents($cookie_file);
+        $t = time()+3600;//设置cookie有效时间一个小时
+        $str = preg_replace(&quot;/\t0\t/&quot;, &quot;\t&quot;.$t.&quot;\t&quot;, $str);
+        $f = fopen($cookie_file,&quot;w&quot;);
+        fwrite($f,$str);
+        fclose($f);
+    }
+    */
+
+    function login($su,$sp,$flags = 0)
+    {
+        $su = urlencode(base64_encode($su));
+        $data = http(&quot;http://login.sina.com.cn/sso/prelogin.php?entry=miniblog&amp;client=ssologin.js&amp;user=&quot;.$su);
+        if (empty($data))
+            return null;
+        //$data = substr($data,35,-1);
+        $data = json_decode($data);
+        if ($data-&gt;retcode != 0)
+            return null;
+        if ($flags == 0)
+            $sp = sha1(sha1($sp));
+        $sp .= strval($data-&gt;servertime).$data-&gt;nonce;
+        $sp = sha1($sp);
+        $data = &quot;url=http%3A%2F%2Fweibo.com%2Fajaxlogin.php%3F&amp;returntype=META&amp;ssosimplelogin=1&amp;su=&quot;.$su.&#39;&amp;service=miniblog&amp;servertime=&#39;.$data-&gt;servertime.&quot;&amp;nonce=&quot;.$data-&gt;nonce.&#39;&amp;pwencode=wsse&amp;sp=&#39;.$sp;
+        $data = http(&quot;http://login.sina.com.cn/sso/login.php?client=ssologin.js&quot;,$data);
+        //$this-&gt;ResetCookie();
+        if (preg_match(&quot;/location\.replace\(&#39;(.*)&#39;\)/&quot;,$data,$url))
+        {
+            $data = http($url[1]);
+            //$this-&gt;ResetCookie();
+            $data = json_decode(substr($data,1,-2));
+            if ($data-&gt;result == true)
+                return $data-&gt;userinfo;
+        }
+        return null;
+    }
+}
+?&gt;
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/curl/" class="label label-primary">curl</a><a href="/tags/新浪/" class="label label-success">新浪</a><a href="/tags/登录/" class="label label-info">登录</a><a href="/tags/php/" class="label label-warning">php</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/sina_curl_login/#comments" class="ds-thread-count comment-link" data-thread-key="854" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></h1>
+      
+        <span>发表于<time datetime="2012-08-11T08:00:30.000Z"> <a href="/post/onlinedown_no_check/">2012-08-11</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>以前经常去华军软件园下载软件,后来很少上了,最近发现下载需要输入验证码才能下载.</p>
+<p>这个验证码是带广告类型的,需要输入中文,很是麻烦,对于我等懒人来说当然是能不用输入就不用输入了.</p>
+<p>查了一下网页源码,发现可以直接饶过验证下载.原理有兴趣的自己Google一下.^_^这里就不再啰嗦了.直接进入主题.</p>
+<p>方法如下有很多种.
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/onlinedown_no_check/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/破解/" class="label label-primary">破解</a><a href="/tags/华军/" class="label label-success">华军</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/onlinedown_no_check/#comments" class="ds-thread-count comment-link" data-thread-key="853" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></h1>
+      
+        <span>发表于<time datetime="2012-07-28T23:36:56.000Z"> <a href="/post/dbank_dl/">2012-07-28</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>最近学习了一下PHP,这个其实比金山快盘的直链更早写的,</p>
+<p>相比官方的版本,更简单,这个没有限制目录的哦,不需要流量费的,可能会被封锁,不过这个是利用官方提供的API写的,应该不会,关键是华为网盘的速度够快.若是被封锁了就有些可惜.</p>
+<p>快盘的那个就明确不会.</p>
+<p>嘻嘻,以后就可以把文件上传到网盘上,然后用直链提供下载了.</p>
+<p>会PHP的朋友很容易写出来.废话不多说直接进主题.</p>
+<p>测试的效果如下.</p>
+<p>1.图片直链</p>
+<p><img src="http://d.chenall.net/1/Lighthouse.jpg" alt="华为网盘直链效果测试"></p>
+<p>子目录测试</p>
+<p><img src="http://d.chenall.net/1/照片/Hydrangeas.jpg" alt="直链测试,支持子目录的哦."></p>
+<p>2.文件下载链接</p>
+<p><a href="http://d.chenall.net/1/网盘自动签到2012-07-27.rar" target="_blank">网盘自动签到2012-07-27</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/华为网盘/" class="label label-primary">华为网盘</a><a href="/tags/直链/" class="label label-success">直链</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/dbank_dl/#comments" class="ds-thread-count comment-link" data-thread-key="850" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/kuaipan_dl/">金山快盘直链</a></h1>
+      
+        <span>发表于<time datetime="2012-07-25T14:42:04.000Z"> <a href="/post/kuaipan_dl/">2012-07-25</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>使用快盘API写了一个直链的应用测试.. 以后可以把文件或图片直接上传到快盘中,然后直链. API有调用限制,好像是一天5000次,对于我等小站来说足够用了,</p>
+<p>另外好像快盘的文件下载速度没有华为网盘的给力啊.速度相对比较慢,可以对比一下我的另一个文章关于华为网盘直链的测试,显示图片的速度更快.</p>
+<p>2012-12-28:  因为快盘官方可能不太喜欢此类应用或其它原因,经常隔一段时间需要重审,所以这个目前只能自己使用.</p>
+<p>2012-08-16:  发现昨天快盘服务器维护过后,稳定多了,速度也比较给力.</p>
+<p>2012-08-29 更新<br>现在的授权可以直接用于子域名.<br>例: 授权域名 chenall.net<br>则a.chenall.net或www.a.chenall.net等都可以直接使用.<br>当然了也可以直接单独对a.chenall.net授权.  </p>
+<p>有兴趣的话可以申请使用,申请比较简单,只要通过认证就可以了.根据域名进行认证的.方法</p>
+<p>打开以下网址,把chenall.net换成你的域名,然后会跳出一个快盘的授权,确认了之后就可以使用了.</p>
+<p><a href="http://chenall.net/kuaipan/?ru=`chenall.net`">http://chenall.net/kuaipan/?ru=`chenall.net`</a></p>
+<p>把你要直链的文件传到快盘的&lt;我的应用\直链&gt;目录下,然后在你的网站上就可以直接使用了</p>
+<p><a href="http://chenall.net/kuaipan/?path=`FILEPATH`">http://chenall.net/kuaipan/?path=`FILEPATH`</a></p>
+<p>比如:以下会直接下载你的帐号直链应用目录下的test.txt 文件.</p>
+<p><a href="http://chenall.net/kuaipan/?path=`test.txt`">http://chenall.net/kuaipan/?path=`test.txt`</a></p>
+<p>注,网站域名要和你授权的域名一致,否则无法使用,如果需要访问中文的文件,需要用UTF-8编码.</p>
+<p>因为这个应用未通过申核,目前只能自用.</p>
+<p>今天去看了一下,发现已经通过了,只要你有快盘帐号,现在就可以开始使用了.</p>
+<p>快盘直链效果测试</p>
+<ul>
+<li><p>图片直链
+<img src="http://d.chenall.net/kuaipan/3lightning3.jpg" alt=""></p>
+<p>子目录图片显示测试</p>
+<p><img src="http://d.chenall.net/kuaipan/imgs/Img222951204.jpg" alt=""></p>
+</li>
+<li><p>音乐直链播放</p>
+<audio width="300" height="32" autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/kuaipan/爱情总在幻灭时最美.mp3" type="audio/mpeg" /> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
+</li>
+<li><p>文件直链下载</p>
+<p><a href="http://d.chenall.net/kuaipan/网盘自动签到2012-07-25.rar" target="_blank">网盘自动签到2012-07-25</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary">直链</a><a href="/tags/金山快盘/" class="label label-success">金山快盘</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/kuaipan_dl/#comments" class="ds-thread-count comment-link" data-thread-key="848" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></h1>
+      
+        <span>发表于<time datetime="2012-07-21T15:44:03.000Z"> <a href="/post/netdisk_referer/">2012-07-21</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>目前国内有许多网盘,大都是禁止外链的,即使支持也需要钱的.</p>
+<p>一般网盘的下载链接只能从网盘所属域上链接下载,或直接输入地址下载.如果你把这个链接放到你的网站上是不可以用的.</p>
+<p>像这种一般情况下<span style="line-height: 16px;">是根据来源地址(Referer)判断的,如果来源地址是合法的域则可以下载,否则提示错误.</span></p>
+<p>这种只要伪造一个来源地址就可以突破了.伪造的方法有很多,从Google上找了一下有很多种.</p>
+<p>这里介绍一种相对比较简单的,一般的PHP服务器都有支持.相关代码如下.伪造一个referer地址发送过去,请求下载,获取返回的头信息,里面包含了真正的地址.</p>
+<pre><code>$curl = curl_init();//curl模块初始化
+curl_setopt ($curl, CURLOPT_URL, $url);//$url 目标地址
+curl_setopt ($curl, CURLOPT_REFERER, $referer_url);//$referer_url 要伪造的地址
+curl_setopt($curl,CURLOPT_HEADER,1);//只获取http头信息,如果不使用这个设置,则相当在服务器上下载该文件了.这样会占用服务器的资源.
+curl_setopt($curl,CURLOPT_NOBODY,1);//不返回html的body信息  
+curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);//返回数据流，不直接输出  
+curl_setopt($curl,CURLOPT_TIMEOUT,30); //超时时长，单位秒
+$r = curl_exec ($curl);
+curl_close ($curl);
+if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址即最终的地址,发送给客户端,由客户端去下载.
+{
+    header(&quot;Location: &quot;.$matches[1]);
+}
+</code></pre><p>注: 需要注意的是尽量不要通过服务器下载再中转,这样很浪费服务器资源.目前网上有很多方法都是直接通过服务器下载再发送给客户端的.这个方法只有通过服务器获取一下头信息,然后直接返回给客户端浏览器了.</p>
+<p>附: 利用以上方法实现的直链效果,以下全部是使用网盘的直链,因为我做了封装,看起来就像是本站上的文件.</p>
+<ul>
+<li><p>图片直链(如果图片不显示可能是失效了)<br>经典视觉欺骗,以下图片有几个黑点?<br><img src="http://d.chenall.net/0/c05l7vhroi/几个黑点.jpg" alt=""><br><img src="http://d.chenall.net/0/c05l7vhroi/左右脑冲突.jpg" alt="">  </p>
+</li>
+<li><p>MP3音乐在线播放(使用的是HTML5的代码,需要浏览器支持)  </p>
+<audio autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/0/c05l7vhroi/05我的快乐.mp3" type="audio/mpeg"/><source src="http://d.chenall.net/0/c05l7vhroi/爱情总在幻灭时最美.mp3" type="audio/mpeg"/> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
+</li>
+<li><p>文件直链下载</p>
+<p><a href="http://d.chenall.net/0/c08k4wpqad/1/" target="_blank">Chrome Dev 22.0.1201.0</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary">直链</a><a href="/tags/破解/" class="label label-success">破解</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/netdisk_referer/#comments" class="ds-thread-count comment-link" data-thread-key="846" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></h1>
+      
+        <span>发表于<time datetime="2012-07-05T16:40:04.000Z"> <a href="/post/dbankdown/">2012-07-05</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>华为网盘其实挺好的，上下载速度都很快。只是下载的时候可以说十之八九会跳出注册登录的窗口，也就是需要登录才能下载。这个本来没有什么，只是我的密码都是随机的，记不住啊，每每下载都要登录太麻烦了。所以就想看看有没有什么办法可以不用登录直接下载的。查看了一下网页源码，发现其实很简单。</p>
+<p>如果有关注我微搏的话，应该很早就知道了，当然了网络上也有很多工具可以免登录下载，比如<a href="https://www.google.com/search?q=Dbank+linker&amp;qscrl=1" target="_blank">Dbank linker</a>.只是用起来不太方便。</p>
+<p>这里分享两个相对比较简单的方法可以直接解除限制，原理是一样的。</p>
+<ol>
+<li><p>使用书签的方案，优点快速简单，把以下链接保存为书签，以后打开网盘下载页，点击一下该书签就可以直接下载了。</p>
+<p><a href="javascript:globallinkdata.data[&#39;profile.productid&#39;]=30;adsShow=0;alert(&#39;%E5%B7%B2%E8%A7%A3%E9%99%A4%E4%B8%8B%E8%BD%BD%E9%99%90%E5%88%B6%EF%BC%8Cchenall%E7%A5%9D%E4%BD%A0%E5%A5%BD%E8%BF%90!&#39;">解除华为网盘下载限制</a></p>
+</li>
+<li><p>使用去广告过滤工具比如admucher（这个更强，连广告都没有了），使用替换工具查找<code>&quot;profile.productid&quot;:&quot;*&quot;</code>替换为<code>&quot;profile.productid&quot;:30</code></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/免登录/" class="label label-primary">免登录</a><a href="/tags/华为网盘/" class="label label-success">华为网盘</a><a href="/tags/破解/" class="label label-info">破解</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/dbankdown/#comments" class="ds-thread-count comment-link" data-thread-key="842" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></h1>
+      
+        <span>发表于<time datetime="2012-07-04T16:51:34.000Z"> <a href="/post/freenas_tftp_case/">2012-07-04</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>如题，因为默认情况下创建的卷都是有区分大小写的，这样一来使用TFTP服务就不太方便。而Windows下的TFTP服务器就没有这样的问题，因为WINDOWS都是不区分大小写的，为了方便需要想办法TFTP服务不区分大小写。</p>
+<p>查一了些资料，刚开始本来以为TFTP服务有什么参数还是什么的可以不区分大小写的，找了挺久了，没有发现任何有用的信息。</p>
+<p>后来仔细看了一下ZFS文件系统部份，发现ZFS上面是可以创建不区分大小写的卷的。相关资料链接如下：</p>
+<p><a href="http://docs.oracle.com/cd/E26926_01/html/E25826/gazss.html" target="_blank">http://docs.oracle.com/cd/E26926_01/html/E25826/gazss.html</a></p>
+<p>以下就是所需要的信息：</p>
+<blockquote>
+<p><code>casesensitivity</code>  字符串  <em>mixed</em></p>
+<p>此属性指示文件系统使用的文件名匹配算法应当是<code>casesensitive</code>、<code>caseinsensitive</code>，还是允许这两种匹配风格的组合 (mixed)。传统上，UNIX 和 POSIX 文件系统的文件名区分大小写。
+此属性的值为 mixed 时表示文件系统对区分大小写和不区分大小写的匹配行为要求均可支持。当前，在支持混合行为的文件系统上，不区分大小写的匹配行为仅限于 Oracle Solaris SMB 服务器产品。有关使用 mixed 值的更多信息，请参见casesensitivity 属性。
+不管 casesensitivity 属性设置如何，在创建文件时，文件系统都会保留指定的名称的大小写。在创建文件系统后无法更改此属性。</p>
+</blockquote>
+<p>试着直接<code>zfs set</code> 来改变该属性发现是只读的，不可修改。所以只能重新创建一个卷了。</p>
+<p>因为使用WEB图形界面创建的ZFS卷不能设置这个属性，所以必须到SHELL下创建，命令举例：</p>
+<pre><code>zfs create -o casesensitivity=insensitive zfs0/tftproot
+</code></pre><p>在zfs0上创建一个新的卷tftproot不区分大小写。我们简单一点只需要上面的命令就可以了，其它的容量限制什么的可以直接在图形界面下修改。</p>
+<p>然后只要把TFTP服务的根目录设为上面新创建的卷就行了。不区分大小写用着就是比较方便。</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/FreeNas/">FreeNas</a></li></span></span> | <span class="tags">标签 <a href="/tags/case/" class="label label-primary">case</a><a href="/tags/freenas/" class="label label-success">freenas</a><a href="/tags/TFTP/" class="label label-info">TFTP</a><a href="/tags/zfs/" class="label label-warning">zfs</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/freenas_tftp_case/#comments" class="ds-thread-count comment-link" data-thread-key="840" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></h1>
+      
+        <span>发表于<time datetime="2012-06-18T19:09:55.000Z"> <a href="/post/dbank_login/">2012-06-18</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>因为最近在折腾的自动签到程序，之前使用模拟的方法登录，速度慢，而且很容易出错。</p>
+<p>所以就想使用post的方法快速登录。</p>
+<p>经过抓包分析终于搞定了，以下是原理。</p>
+<p>post 的地址是 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a></p>
+<p>参数如下:</p>
+<ul>
+<li>response 最关键的参数，经过一系列计算得到</li>
+</ul>
+<ol>
+<li>用户名+&quot;:NSP Passport:&quot;+密码 进行32位md5计算。（小写）
+测试时可以利用以下地址的在线工具进行计算
+<a href="http://app.baidu.com/yiten_md5?keyword=MD5" target="_blank">http://app.baidu.com/yiten_md5?keyword=MD5</a></li>
+<li>上面的结果再 + &quot;:&quot; + nonce 进行32位md5计算.(小写)，得到的就是response的值。</li>
+</ol>
+<ul>
+<li>nsp_user 用户名</li>
+<li>nsp_cid 从表单中提取</li>
+<li>nonce  从表单中提取</li>
+<li>m=1 固定值。</li>
+</ul>
+<p>提交以上参数之后如果参数正确的话返回json数据里面包含了一个k的数据。</p>
+<p>最终再提交一下以下地址就行了。k的值从上面的返回中获取，如果没有看到k的值肯定是你前面提交的参数错了。</p>
+<p><a href="http://login.dbank.com/loginauth.php?k=K的参数" target="_blank">http://login.dbank.com/loginauth.php?k=K的参数</a></p>
+<p>附，测试登录过程。</p>
+<p>测试帐号 test@chenall.tk 密码： wMtA8HscF6G0Zv6V</p>
+<p>打开 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a>
+提取到需要的数据</p>
+<pre><code>&lt;input type=&quot;hidden&quot; id=&quot;nonce&quot; name=&quot;nonce&quot; value=&quot;4fdf0b700b0052.91924864&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;nsp_cid&quot; name=&quot;nsp_cid&quot; value=&quot;802fdd1049992984cf49a1cd0fc7545c&quot;&gt;
+</code></pre><p>2012-08-21 更新: 发现上面这一步可以省略,nonce是一个随机值,你可以自己随便生成一个随机数就行了.nsp_cid参数可以省略,不需要.</p>
+<p>首先计算response的值:</p>
+<p><span style="color:#ff0000;">test@chenall.tk</span><span style="color:#ff00ff;">:NSP Passport:</span><span style="color:#ff0000;">wMtA8HscF6G0Zv6V</span></p>
+<p>经过md5计算后得到</p>
+<p><span style="color:#ff00ff;">aead43fd1435a2087a12c4ac9d21e56c</span></p>
+<p>再进行一次md5计算</p>
+<p><span style="color:#ff00ff;">aead43fd1435a2087a12c4ac9d21e56c</span><span style="color:#ff0000;">:4fdf0b700b0052.91924864</span></p>
+<p>得到</p>
+<p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
+<p>现在参数全部有了直接提交（用get或post都可以）</p>
+<p><a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#104;&#116;&#116;&#112;&#58;&#x2f;&#x2f;&#108;&#x6f;&#x67;&#105;&#x6e;&#x2e;&#100;&#98;&#x61;&#110;&#107;&#46;&#x63;&#x6f;&#x6d;&#47;&#x6c;&#x6f;&#103;&#105;&#110;&#97;&#117;&#x74;&#104;&#x2e;&#112;&#x68;&#112;&#63;&#x6e;&#x73;&#112;&#x5f;&#97;&#112;&#112;&#x3d;&#52;&#x38;&#x30;&#52;&#57;&#x26;&#x6d;&#61;&#x31;&#x26;&#110;&#x6f;&#x6e;&#x63;&#x65;&#x3d;&#52;&#102;&#100;&#102;&#48;&#98;&#55;&#x30;&#48;&#98;&#48;&#48;&#x35;&#50;&#x2e;&#x39;&#49;&#x39;&#50;&#52;&#56;&#54;&#x34;&#38;&#110;&#x73;&#112;&#x5f;&#x63;&#105;&#100;&#61;&#56;&#x30;&#x32;&#x66;&#x64;&#x64;&#49;&#x30;&#x34;&#x39;&#57;&#57;&#50;&#57;&#x38;&#52;&#x63;&#102;&#x34;&#57;&#97;&#49;&#x63;&#x64;&#48;&#102;&#x63;&#x37;&#53;&#x34;&#53;&#99;&#x26;&#x6e;&#x73;&#x70;&#95;&#x75;&#x73;&#101;&#x72;&#61;&#116;&#101;&#115;&#x74;&#64;&#99;&#x68;&#x65;&#x6e;&#x61;&#x6c;&#x6c;&#x2e;&#116;&#x6b;&#x26;&#x72;&#101;&#x73;&#x70;&#x6f;&#x6e;&#x73;&#x65;&#x3d;&#57;&#99;&#100;&#x38;&#52;&#x63;&#x32;&#53;&#48;&#48;&#x61;&#54;&#48;&#49;&#x33;&#x65;&#102;&#x33;&#x62;&#100;&#x31;&#52;&#52;&#x31;&#x39;&#x31;&#x39;&#49;&#51;&#x32;&#x62;&#x36;">&#104;&#116;&#116;&#112;&#58;&#x2f;&#x2f;&#108;&#x6f;&#x67;&#105;&#x6e;&#x2e;&#100;&#98;&#x61;&#110;&#107;&#46;&#x63;&#x6f;&#x6d;&#47;&#x6c;&#x6f;&#103;&#105;&#110;&#97;&#117;&#x74;&#104;&#x2e;&#112;&#x68;&#112;&#63;&#x6e;&#x73;&#112;&#x5f;&#97;&#112;&#112;&#x3d;&#52;&#x38;&#x30;&#52;&#57;&#x26;&#x6d;&#61;&#x31;&#x26;&#110;&#x6f;&#x6e;&#x63;&#x65;&#x3d;&#52;&#102;&#100;&#102;&#48;&#98;&#55;&#x30;&#48;&#98;&#48;&#48;&#x35;&#50;&#x2e;&#x39;&#49;&#x39;&#50;&#52;&#56;&#54;&#x34;&#38;&#110;&#x73;&#112;&#x5f;&#x63;&#105;&#100;&#61;&#56;&#x30;&#x32;&#x66;&#x64;&#x64;&#49;&#x30;&#x34;&#x39;&#57;&#57;&#50;&#57;&#x38;&#52;&#x63;&#102;&#x34;&#57;&#97;&#49;&#x63;&#x64;&#48;&#102;&#x63;&#x37;&#53;&#x34;&#53;&#99;&#x26;&#x6e;&#x73;&#x70;&#95;&#x75;&#x73;&#101;&#x72;&#61;&#116;&#101;&#115;&#x74;&#64;&#99;&#x68;&#x65;&#x6e;&#x61;&#x6c;&#x6c;&#x2e;&#116;&#x6b;&#x26;&#x72;&#101;&#x73;&#x70;&#x6f;&#x6e;&#x73;&#x65;&#x3d;&#57;&#99;&#100;&#x38;&#52;&#x63;&#x32;&#53;&#48;&#48;&#x61;&#54;&#48;&#49;&#x33;&#x65;&#102;&#x33;&#x62;&#100;&#x31;&#52;&#52;&#x31;&#x39;&#x31;&#x39;&#49;&#51;&#x32;&#x62;&#x36;</a></p>
+<p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
+<pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
+</code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
+<p>另外要说一点，看起来挺安全的，因为没有传输密码。但是好像有一个问题。最终的登录地址目前没有任何的限制。只要得到这个地址，你换一台电脑直接提交这个地址就可以登录了，这也是一个安全隐患。不知有没有时间限制，我试了昨天生成的地址，今天还能用。
+大家可以试试点击上面的链接，看看是不是还能正常登录。
+2012-06-21  经测试修改了密码之后，上面的自动登录链接依然有效。
+2012-06-25  一个星期过去了，依旧。
+2012-06-26  发现其它的也是一样，只要获取到最终的API参数，无需登录或密码都可以操作。比如签到不需要登录就行了。
+2012-08-21  登录的第一步获取nonce等值的过程可以省略了.具本看前面的介绍
+            题外话，本来想把网盘签到的post方法也找出来，里面最重要的参数是nsp<em>key，这个是把很多的数据整在一起进行MD5计算，看了好久还没有找全所有的需要的数据。无奈只能放弃，如果您有已经研究出了计算的方法，不妨分享一下。
+2012-06-26 已经找出计算方法，现在可以直接快速签到了。^</em>^，chrome真是强大，调试一下很快就找出来了，以前还傻傻的慢慢看JS源码。。</p>
+<h3 id="_-_-"><em>快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录</em>,</h3>
+<p>本文测试帐号的自动签到链接如下:
+<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp</a>
+如何获取到上面的链接呢？最简单的方法直接抓包就行了，用chrome就可以直接抓包了。
+当然可以手工打造一个链接，要生成这个链接首先要知道各个参数是如何得来的。
+上面的链接参数解释(其中不重要的参数可以不要)</p>
+<ul>
+<li>nsp_svc是固定的，表示要进行签到 <code>nsp_svc=com.dbank.signin.signin</code></li>
+<li>anticache 是一个随机数字，不重要</li>
+<li>nsp_sid 身份标志信息，这个就是cookie里面的session的值</li>
+<li>nsp_sid=kuTubNkuCQi19uaOXxiuu4FjMYp18kTozF5VnBk1HnAkFwEv</li>
+<li>nsp_ts  这个不需要解释了，是一个时间串，<del>不是很重要，同样可以固定</del></li>
+<li>nsp_key 验证信息，通过多种参数进行组合再进行MD5加密的结果 nsp_key=9AC41E0B0DD240F97361F87483131667</li>
+<li>nsp_fmt=JS&amp;nsp_cb=_jqjsp 这个参数也不重要,可以省略
+看了上面的参数列表，基本上都是现成的，只有nsp_key需要额外获取。
+这个nsp_key的获取方法:</li>
+</ul>
+<ol>
+<li><p>把上面除了nsp_key之外的参数按字母正向排序一下,得到如下结果。</p>
+<pre><code>anticache=383
+nsp_cb=_jqjsp
+nsp_fmt=JS
+nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED
+nsp_svc=com.dbank.signin.signin
+nsp_ts=1341032380236
+</code></pre></li>
+<li><p>去掉参数中间的<code>=</code>合成一串得到<em>anticache383nsp_cb_jqjspnsp_fmtJSnsp_sidwuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwEDnsp_svccom.dbank.signin.signinnsp_ts1341032380236</em></p>
+</li>
+<li>获取cookie里面的secret的值接在上一步的前面比如是<code>325c8b0ee26aa42cd4a4c20326a97a98</code>那最终得到的字符串如下<div><span style="color:#ff0000;">325c8b0ee26aa42cd4a4c20326a97a98</span><span style="color:#b22222;">anticache383nsp_cb_jqjspnsp_fmtJSnsp_sid</span><span style="color:#ff0000;">wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED</span><span style="color:#b22222;">nsp_svccom.dbank.signin.signinnsp_ts1341032380236</span></div></li>
+<li>把上一步的字符串进行MD5计算就得到了nsp_key的值了<code>9AC41E0B0DD240F97361F87483131667</code></li>
+<li>现在所有参数都有了，组合成前面的链接就行了，<strong>这个链接经过我测试就像前面的自动登录链接一下一直有效。</strong> 需要自动签到很简单，只需要定时打开该链接就行了，根据返回的结果还可以获取签到的结果。</li>
+</ol>
+<p>PS: 请继续看本文尾部，有更新的方法哦。</p>
+<p>整理一下本文的自动登录和签到链接</p>
+<p><a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">自动登录测试</a>
+<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">自动签到测试</a></p>
+<p>大家有兴趣可以试试点击以上这两个链接，看看可以用多久，，目前自动登录的链接在本文发表日期6月18日获取的，目前6月30号，依然有效。
+EDIT: 发现现在的签到的链接是有限制的（前几天我测试时好像没有限制），所以。。。只好每次都重新生成了,也简单，只需要获取登录之后cookie里面的<code>secret</code>和<code>session</code>的值替换进去就行了，其它的都不需要变。
+我算是知道为什么华为网盘的页面打开速度反应偏慢了。你想啊，每打开一个页面，都需要调用10个以上的API，每个都需要经过一系列的MD5计算能不慢吗。而且经过这么复杂的计算个人认为没有增加什么安全性可言，只是人为增加客户端和服务端的计算量。
+建议参考一下其它的网盘，登录后可以直接调用API，而不需要这么麻烦。像天翼网盘，登录之后直接
+<a href="http://cloud.189.cn/userInfoJson.action" target="_blank">http://cloud.189.cn/userInfoJson.action</a> 就可以获取用户信息
+<a href="http://cloud.189.cn/userSign.action" target="_blank">http://cloud.189.cn/userSign.action</a>  签到
+看起来又直观，又简单，真搞不明白华为为什么要搞得这么复杂，我猜测可能是为了和其它API的调用保持一致吧。</p>
+<p>EDIT2: 经测试，那些参数中有一些是可以不要的。重新整理一下必备参数如下.只有需要两个参数了。</p>
+<pre><code>nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED
+nsp_svc=com.dbank.signin.signin
+nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
+</code></pre><p>最终的链接地址为因为参数少了，链接里面的参数也要相应的减少.
+<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348</a></p>
+<p>EDIT3: 2014-01-15 由于搏客转移到HEXO,文章重新整理了下,新的API有改变 nsp_ts是必须的而且不能和服务器的时间差太多,在php中可以用time()获取.
+由于API有了一些变化,另外华为网盘已经有相关的API文档了,上面的计算方法大部份都可以从API文档中找到,估计上面的链接应该都失效了,懒得重新获取了.留本文作为研究记录,</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/一键签到/" class="label label-primary">一键签到</a><a href="/tags/免密码/" class="label label-success">免密码</a><a href="/tags/华为网盘/" class="label label-info">华为网盘</a><a href="/tags/自动登录/" class="label label-warning">自动登录</a><a href="/tags/自动签到/" class="label label-primary">自动签到</a><a href="/tags/原创/" class="label label-success">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/dbank_login/#comments" class="ds-thread-count comment-link" data-thread-key="835" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></h1>
+      
+        <span>发表于<time datetime="2012-03-29T17:21:48.000Z"> <a href="/post/netdisk-autosign/">2012-03-29</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>鉴于目前的许多网络硬盘，一般初始空间比较小，要获取更多免费的空间除了邀请好友加入以外，就是签到功能了，目前国内的网盘都有类似的功能。</p>
+<p>一些人可能同时拥有N个网盘，每天打开然后签到，有点浪费时间，但是为了这一些免费空间还是会有人乐此不疲的。</p>
+<p>对于我等懒人来说，最好是有一个工具可以让它帮我们来完成这些事情。</p>
+<p>我就打算实现这样的一个功能……</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/netdisk-autosign/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/签到/" class="label label-primary">签到</a><a href="/tags/自动/" class="label label-success">自动</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/netdisk-autosign/#comments" class="ds-thread-count comment-link" data-thread-key="827" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+
+
+<ul id="pagination" class="pagination pagination-lg">
+  <li><a class="extend prev" href="/page/2/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/2/">2</a></li><li class="active"><li><span class="page-number current">3</span></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/4/">&raquo;</a></li>
+  <div class="clearfix"></div>
+</ul></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-11 15:03:34</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

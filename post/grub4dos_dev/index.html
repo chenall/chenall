@@ -1,0 +1,619 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03] | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="因为经常使用WINDOWS系统，为了方便直接在WINDOWS下搭建。
+使用Colinux可以很方便的在WINDOWS中运行一直真实的Linux环境。
+好了，废话不多说了，直接开始了。如果想偷懒的话，有提供了可以直接使用的成品下载。">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</h1>
+      
+        <span>发表于<time datetime="2012-01-19T08:00:35.000Z"> <a href="/post/grub4dos_dev/">2012-01-19</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>因为经常使用WINDOWS系统，为了方便直接在WINDOWS下搭建。</p>
+<p>使用Colinux可以很方便的在WINDOWS中运行一直真实的Linux环境。</p>
+<p>好了，废话不多说了，直接开始了。如果想偷懒的话，有提供了可以直接使用的成品下载。</p>
+<p>说明: <strong>内容比较乱,只是记录一下整这个的过程(从文件大小也从最初的几个G到整最后的<code>50MB</code>,偷懒的直接下载最新版本就行了,想自己折腾的可以继续看下去(按日期顺序从后往前看)</strong></p>
+<p>===========2013-03-02=============</p>
+<p>由于gcc4.7编译出来的和版本启动memtest86有问题,
+gcc换成4.8版.
+git 换成1.6版.
+下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-02-03.zip" target="_blank">grub4dos_dev-gcc-4.8</a></p>
+<p>===========2013-01-14=============
+更新了一下,使用最新的tinycolinux内核 4.7.3
+svn 1.7.5
+git 1.8.0
+gcc 4.7.2</p>
+<p>下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-01-14.zip" target="_blank">grub4dos_dev</a>
+MD5: F41AF644B3DA6C133A35C45278047C24
+===========2012-02-27 ====================
+今天roy修正了gcc4.6下编译的问题 ，重新做了一个gcc4.6的版本。
+linux核心tinycore4.3
+gcc4.6+git1.6+svn1.6+7z+grub4dos-dev
+<a href="http://www.ctdisk.com/file/4946481" target="_blank">Colinux_TinyCoreLinux_grub4dos_dev.7z</a>
+MD5: FA11D60B45FEF4282DD9E0B640F39CF0</p>
+<h2 id="-2012-02-13-">===========2012-02-13 ====================</h2>
+<p>With the new version, you only need three steps to get started.
+(1) Download file <a href="http://www.ctdisk.com/file/4551969" target="_blank">Colinux_tinyslat_grub4dos_Dev.7z</a>
+(2) use 7-ZIP  extract to the location you want to install.
+(3) after decompression files run quick start.cmd in TinyDev directory</p>
+<p>Node: /mnt/cofs ----&gt; e:\colinux</p>
+<ol>
+<li><p>Default cofs directory is e:\colinux so you must create this directory first for use cofs.</p>
+<p>To use a different location you can modifying the file TinyDev\tinyslat\tinyslat.ini and then restart <code>quick start.cmd</code></p>
+</li>
+<li><p>You can add a virtual disk for colinux use below steps</p>
+<pre><code>::create new file sda_1g.fs with 1Gb
+
+fsutil file createnew sda_1g.fs 1073741824
+
+modify tinyslat.ini file add line
+
+sda=tinyslat\sda_1g.fs
+
+and change home=ram0 to home=sda
+</code></pre><p>Restart Colinux and enter</p>
+<p> mke2fs -j /dev/sda</p>
+<p>Restart Colinux again</p>
+<p>Now
+ /mnt/sda --&gt; sda_1g.fs</p>
+</li>
+</ol>
+<p>==================2012-02-07==================
+结合Tinycore和slatiz优点的版本。使用了tinycore的核心+slatiz软件包管理器。相对完美版本，有以下优点</p>
+<ul>
+<li>小巧（解开后才70MB不到，使用MSYS/CYGWIN等至少也得100MB以上吧）。</li>
+<li>方便，移动性，直接解压到电脑上就可以运行了（不要放在中文目录下）。</li>
+<li>默认开启多终端支持（可以按Alt+Fn切换）。</li>
+<li>可以自由添加安装软件（基于tinycore的软件包可自动保存）。使用slatiz的软件包目前不能保存。但是有提供了一个工具可以把tazpkg转为tcz。</li>
+<li>可选保存用户配置（默认不保存）</li>
+<li>自带的软件包gcc 4.5+svn1.6+git1.7+7z+……。总之下载后就可以直接编译GRUB4DOS相关程序。当然了也可以作为一个桌面linux来使用。</li>
+</ul>
+<p>使用方法：</p>
+<p>只要三步就可以开始启动 下载－〉解压-&gt;执行。
+  下载 
+  2012-02-08更新cofs权限问题
+  2012-02-09因为git新的版本不可以在COFS上用git下载源码,所以GIT换成1.6版.
+  <a href="http://www.ctdisk.com/file/4551969" target="_blank">Colinux_tinyslat_grub4dos_Dev.7z</a>
+  增加软件方法：</p>
+<ol>
+<li>tinycore方案（推荐）
+  tce-load -wi packname
+  默认使用了163的镜像，可以通过修改opt目录下的tcemirror文件改成使用其它镜像。</li>
+<li>slatiz方案（备用）
+  tczpkg get-install packname
+  这个只是作为备用。下载安装的软件不会被保存。</li>
+<li><p>slatiz方案+tinycore
+为了解决有时tinycore的软件源没有提供相应软件，而slatiz有提供时，可以使用该方法。
+首先通过taz2tcz下载slatiz软件并转换为tcz格式。
+taz2tcz packname
+软件安装
+tce-load -i packname
+注意：</p>
+<ol>
+<li>你需要自己处理软件包的依赖关系（depends），可以使用tazpkg depends packname 查看。然后依次下载并转换所有包。</li>
+<li>执行tce-load 时请注意查看上一步最终的软件包名。比如以下是下载xz程序的输出,注意看我们要安装的是xz，最终的名字是xz-4.999.9beta</li>
+</ol>
+<pre><code>tc@box:~$ taz2tcz xz
+xz-4.999.9beta
+Connecting to mirror.slitaz.org (94.23.209.91:80)
+xz-4.999.9beta.tazpk 100% |*******************************| 21096   0:00:00 ETA
+tazpkg(slatiz) to tcz (tinycorelinux) packages convert by chenall
+Please wait....
+42 blocks
+91 blocks
+xz-4.999.9beta converted. you can type tce-load -i xz-4.999.9beta to install.
+tc@box:~$ tce-load -i xz-4.999.9beta
+/etc/sysconfig/tcedir/optional/xz-4.999.9beta.tcz: OK
+</code></pre></li>
+</ol>
+<p>==================2012-02-05==================
+因为目前用GCC4.6编译出来的GRLDR无法启动，所以重新整了一个GCC4.4的。</p>
+<p>相关下载：</p>
+<p>Colinux 主程序 ：<a href="http://www.ctdisk.com/file/4499842" target="_blank">colinux_mini.7z</a></p>
+<p>系统镜像包： <a href="http://www.ctdisk.com/file/4499927" target="_blank">tinycore_colinux_60M_GCC4.4.7z</a></p>
+<h2 id="-2012-02-04-">==================2012-02-04==================</h2>
+<p>整合了02-03版tinycore的两个版本优点，完善了一下。新的版本有以下优点</p>
+<ul>
+<li>占用空间小。</li>
+<li>需要的内存也小。</li>
+<li><p>配置灵活，可以选择保存数据。</p>
+<p>目前提供了以下配置文件</p>
+</li>
+</ul>
+<ol>
+<li>tinydev.ini  相当于之前的60M版本，不保存数据。</li>
+<li><p>tinydev_tce_cofs.ini  用户数据保存到tinycore.gz同目录的home目录下使用该配置文件需要先把grubdev.iso解开到同目录下。把配置文件名改为tinydev.ini 之后再启动，会自动建立HOME目录。需要的文件列表如下：tce 目录</p>
+<p>tinycore.gz 文件</p>
+<p>tinydev.ini 配置文件</p>
+<p>启动之后可以使用tce-load命令下载新的软件并且可以保存。如果你对tinycore比较了解，直接添加软件到TCE目录就行了。
+下载地址： tinycore_colinux_60M.7z</p>
+</li>
+</ol>
+<p>==================2012-02-03==================</p>
+<p>之前的版本使用了比较完整的Linux来搭建，占用空间比较大，我用<a href="http://distro.ibiblio.org" target="_blank">tinycorelinux</a>重新定制了一个比较小巧的版本，有兴趣的可以下载试用</p>
+<p>使用方法：</p>
+<ol>
+<li><p>先下载Colinux主程序和系统包。</p>
+</li>
+<li><p>在E:新建一个Colinux目录，用于和Linux共享，或方便存放文件。</p>
+</li>
+<li><p>Colinux解压到非中文目录下，系统包直接解压到Colinux目录中。</p>
+</li>
+<li><p>使用Colinux目录下的“快速启动.cmd”来直接启动。</p>
+</li>
+<li><p>你也可以安装为服务使用“安装服务.cmd”就行了。</p>
+</li>
+</ol>
+<h1 id="-">相关文件下载：</h1>
+<ol>
+<li>Colinux 主程序  <a href="http://code.google.com/p/grubutils/downloads/detail?name=colinux_mini.7z&amp;can=1&amp;q=" target="_blank">colinux_mini</a>直接解压到非中文的目录即可使用</li>
+<li><p>定制好的系统包（选择其中一个就行了），解压到Colinux安装目录下。1.最小巧只需要60MB空间，缺点：不可保存用户配置完全在内存中运行。tinycore_colinux_dev.7z2.中等，需要160MB，缺点：占用空间比较大，但是可以保存用户配置。</p>
+<p>tinycore_colinux_fs.7z</p>
+<p>3.之前的版本重新打包的文件需要2G+128MB空间</p>
+<p><a href="http://code.google.com/p/grubutils/downloads/detail?name=Debian_colinux.7z&amp;can=1&amp;q=" target="_blank">Debian_colinux.7</a></p>
+<p>基于tinycore的两个版本所安装的程序都是一样的包含以下主要和相关联的程序。</p>
+<p>GCC 4.6 + GIT + SVN</p>
+<p>区别是，一个是RAM版本，一个非RAM版本。</p>
+<p>建议使用非RAM版本，这样可以保存你的配置文件。默认的COFS目录是E:\COLINUX，你需要先在WINDOWS中建立以上目录。然后就开始操作了</p>
+<p>在linux中使用以下命令就可以编译一个GRUB4DOS</p>
+<pre><code>cd /mnt/cofs
+
+svn co http://grub4dos-chenall.googlecode.com/svn/trunk grub4dos-src
+
+cd grub4dos-src
+
+make
+</code></pre><p>如果你习惯用git也可以用git来下载源码
+``
+git clone git://github.com/chenall/GRUB4DOS.git
+cd GRUB4DOS
+make
+```
+其它说明：tinycore默认是超级用户，可以用exit命令退出。用sudo su进入超级用户模式。要增加软件可以使用tce-load命令比如以下命令就可以下载并安装xterm</p>
+</li>
+</ol>
+<p>tce-load -wi xterm</p>
+<p>另外已经重定向X的显示到主机。只要主机有安装X SERVER在LINUX下启动X程序就会在主机上显示。</p>
+<h2 id="2012-01-19">2012-01-19</h2>
+<p>首先要准备的文件列表</p>
+<p>以下软件都在这里<a href="http://sourceforge.net/projects/colinux/files/" target="_blank"><a href="http://sourceforge.net/projects/colinux/files/">http://sourceforge.net/projects/colinux/files/</a></a> 可以自己选择其它版本下载</p>
+<ol>
+<li>Colinux我选用最新的版本  <a href="http://sourceforge.net/projects/colinux/files/Snapshots/devel-20110807-Snapshot/devel-coLinux-20110807.exe/download" target="_blank">devel-coLinux-20110807.exe</a></li>
+<li>用于colinux的linux镜像     <a href="http://sourceforge.net/projects/colinux/files/Images%202.6.x%20Debian/Debian%206.0%20Squeeze/Debian-6.0.1-squeeze.7z/download" target="_blank">Debian-6.0.1-squeeze</a>
+安装Colinux，直接默认安装就行了。</li>
+</ol>
+<p>安装完之后，解压Debian-6.0.1的压缩包到Colinux安装目录下。会多出几个文件。</p>
+<p>直接运行解压出来的squeeze.bat就可以启动一个debian了。</p>
+<p>启动后直接输入用户名root登录</p>
+<p>wee需要在gcc 4.5的环境中编译，否则生成的文件太大超过了32KB。如果你不需要编译wee可以略过以下内容。</p>
+<p>目前debian的gcc 4.5软件包需要用测试版才能直接安装。所以需要修改软件源，增加一个测试版的源。</p>
+<p>============分隔线，增加debian软件源开始======================</p>
+<p>修改源列表文件</p>
+<p>vi /etc/apt/sources.list</p>
+<p>看看里面有没有包含 testing的行，如果有就不用改了。</p>
+<p>像这个只有一行</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank"><a href="http://ftp.debian.org/debian">http://ftp.debian.org/debian</a></a> squeeze main</p>
+<p>要增加一个testing的源。</p>
+<p>懂得VI的可以略过以下内容.开始修改。</p>
+<p>首先复制当前行（直输入&#39;yy&#39;即连按两次&#39;y&#39;）</p>
+<p>然后直接粘贴（直接按&#39;p&#39;键）现在有两行了</p>
+<p>修改其中一行的&quot;squeeze&quot;为&quot;testing&quot;（光标移到&#39;s&#39;处输入&#39;dw&#39;，再按&#39;I&#39;输入&quot;testing &quot;。)</p>
+<p>最终就是</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank"><a href="http://ftp.debian.org/debian">http://ftp.debian.org/debian</a></a> squeeze main</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank"><a href="http://ftp.debian.org/debian">http://ftp.debian.org/debian</a></a> testing main</p>
+<p>保存并退出（先按一下&quot;Esc&quot;键再输入&quot;:x&quot;回车即可）</p>
+<p>好了现在更新一下源信息。</p>
+<p>apt-get update</p>
+<p>============分隔线，增加debian软件源完成======================</p>
+<p>安装GRUB4DOS编译需要的软件包。</p>
+<p>注：如果不需要编译wee可以安装gcc-4.3或gcc-4.4会比较稳定。</p>
+<p>apt-get install gcc-4.5 autoconf automake make patch git subversion</p>
+<p>注：git和subversion是源码管理工具，用于下载源码的，可以安装其中一个就行了。</p>
+<p>所有的提示直接按&#39;Y&#39;或回车确认。坐着泡一杯茶再过来，差不多装好了。</p>
+<p>如果网络环境很给力的话，几分钟就行了。否则可能得等上半个小时吧。</p>
+<p>电脑：俺正在努力下载安装软件，没空陪你了，你自己玩去吧。</p>
+<p>...............................................</p>
+<p>半个小时后。</p>
+<p>好像差不多了。。继续工作。</p>
+<p>等等，还少了压缩软件，如果你只是玩玩，不要也罢。</p>
+<p>apt-get install p7zip-full zip</p>
+<p>现在已经万事具备，只欠东风了。</p>
+<p>只要下载源码然后就可以编译了。新手请最好看完后面内容再下载编译测试。</p>
+<p>下载源码方法:</p>
+<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/svn/trunk">http://grub4dos-chenall.googlecode.com/svn/trunk</a></a> grub4dos-src</p>
+<p>或</p>
+<p>git clone git://github.com/chenall/grub4dos.git grub4dos-src</p>
+<p>编译：</p>
+<p>cd grub4dos-src</p>
+<p>make</p>
+<p>如果你对linux的操作不熟悉，你可以在WINDOWS中修改源码，改完之后再进入LINUX去编译。</p>
+<p>colinux支持cofs文件系统，可以和WINDOWS进行文件夹共享。</p>
+<p>添加cofs文件系统方法.</p>
+<p>在d:新建一个文件夹名字就叫做cofs,用记事本打开squeeze.conf</p>
+<p>添加一行</p>
+<p>cofs0=d:\cofs</p>
+<p>先关闭linux，输入halt就行了。</p>
+<p>再次双击squeeze.bat启动debian，登录</p>
+<p>输入以下命令挂载cofs</p>
+<p>mkdir /mnt/cofs</p>
+<p>mount -t cofs cofs0 /mnt/cofs</p>
+<p>cd /mnt/cofs</p>
+<p>mkdir test</p>
+<p>要让它启动时自动挂载可以添加一行内容到/etc/fstab文件中</p>
+<p>/dev/cofs0 /mnt/cofs cofs</p>
+<p>直接用echo添加就行了，也可以用VI修改</p>
+<p>echo /dev/cofs0 /mnt/cofs cofs &gt;&gt; /etc/fstab</p>
+<p>如果电脑d:\cofs目录下有生成一个test文件夹，则证明成功挂载</p>
+<p>cd /mnt/cofs</p>
+<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/svn/trunk">http://grub4dos-chenall.googlecode.com/svn/trunk</a></a> grub4dos-src</p>
+<p>cd grub4dos-src</p>
+<p>make</p>
+<p>以后你就可以在WINDOWS中打开d:\cofs这个目录，修改里面的源码，然后再到linux里面去编译就行了。</p>
+<p>懒人可以直接下载绿色包，解压后就可以直接使用。</p>
+<p><a href="http://grubutils.googlecode.com/files/grub4dos_colinux_debian.7z" target="_blank">grub4dos_colinux_debian.7z</a></p>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/colinux/" class="label label-primary">colinux</a><a href="/tags/debian/" class="label label-success">debian</a><a href="/tags/GRUB4DOS/" class="label label-info">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_dev/#comments" class="ds-thread-count comment-link" data-thread-key="804" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/ntboot/" title="[分享] Windows NT 系列通用启动盘[2012-02-13]">&larr; [分享] Windows NT 系列通用启动盘[2012-02-13]</a></li>
+  
+  
+  <li class="next"><a href="/post/newext/" title="[分享]电脑防毒小技巧一则">[分享]电脑防毒小技巧一则 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/alrun-merry/">[分享] ALMRun–小巧的快速启动工具</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/dropbox_cn/">[转载] Dropbox无法访问</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="804"  data-url="http://chenall.net/post/grub4dos_dev/" data-title="[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/grub4dos_dev/";
+    var wumiiTitle = "[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]";
+    var wumiiTags = "colinux,debian,GRUB4DOS";
+    var wumiiCategories = ["程序设计","综合"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

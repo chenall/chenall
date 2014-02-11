@@ -1,0 +1,721 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[转] Lua简明教程 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="Lua脚本是一个很轻量级的脚本，也是号称性能最高的脚本，用在很多需要性能的地方，比如：游戏脚本，nginx，wireshark的脚本。这只是一篇非常简单的语言学习文章，希望能让你在入厕或是上班公车途中一口气很流畅地读完，从而对Lua这个脚本语言有一个比较大致的了解。">
+
+<meta name="keywords" content="c++,javascript,lua,杂项资源,编程工具,编程语言">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[转] Lua简明教程"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[转] Lua简明教程</h1>
+      
+        <span>发表于<time datetime="2013-12-13T15:07:18.000Z"> <a href="/post/lua_easy/">2013-12-13</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p><strong>本文章作者和出处:  <a href="http://coolshell.cn/" target="_blank">酷壳 – CoolShell.cn</a> ，请勿用于任何商业用途</strong></p>
+<p>这几天系统地学习了一下<a href="http://www.lua.org/" target="_blank">Lua这个脚本语言</a>，Lua脚本是一个很轻量级的脚本，也是号称性能最高的脚本，用在很多需要性能的地方，比如：游戏脚本，nginx，wireshark的脚本，当你把他的源码下下来编译后，你会发现解释器居然不到200k，这是多么地变态啊（/bin/sh都要1M，MacOS平台），而且能和C语言非常好的互动。我很好奇得浏览了一下Lua解释器的源码，这可能是我看过最干净的C的源码了。</p>
+<p>我不想写一篇大而全的语言手册，一方面是因为已经有了（见本文后面的链接），重要的原因是，因为大篇幅的文章会挫败人的学习热情，我始终觉得好的文章读起来就像拉大便一样，能一口气很流畅地搞完，才会让人爽（这也是我为什么不想写书的原因）。所以，这必然又是一篇&quot;入厕文章&quot;，还是那句话，我希望本文能够让大家利用上下班，上厕所大便的时间学习一个技术。呵呵。</p>
+<p>相信你现在已经在厕所里脱掉裤子露出屁股已经准备好大便了，那就让我们畅快地排泄吧……</p>
+<a id="more"></a>
+
+<h3 id="-">运行</h3>
+<p>首先，我们需要知道，Lua是类C的，所以，他是大小写字符敏感的。</p>
+<p>下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和<a href="http://coolshell.cn/articles/8460.html" title="Go 语言简介（上）— 语法" target="_blank">GO语言很类似</a>。</p>
+<pre><code>print(&quot;Hello World&quot;)
+</code></pre><p>你可以像python一样，在命令行上运行lua命令后进入lua的shell中执行语句。</p>
+<pre><code>chenhao-air:lua chenhao$ lua
+Lua 5.2.2  Copyright (C) 1994-2013 Lua.org, PUC-Rio
+&gt; print(&quot;Hello, World&quot;)
+Hello, World
+&gt;
+</code></pre><p>也可以把脚本存成一个文件，用如下命令行来运行。</p>
+<pre><code>&gt;lua file.lua
+</code></pre><p>或是像shell一样运行：</p>
+<pre><code>chenhao-air:lua chenhao$ cat hello.lua
+#!/usr/local/bin/lua
+print(&quot;Hello, World&quot;)
+chenhao-air:lua chenhao$ chmod +x hello.lua
+chenhao-air:test chenhao$ ./hello.lua
+Hello, World
+</code></pre><h3 id="-">语法</h3>
+<h4 id="-">注释</h4>
+<pre><code class="lang-lua">-- 两个减号是行注释
+</code></pre>
+<pre><code class="lang-lua">--[[
+ 这是块注释
+ 这是块注释
+ --]]
+</code></pre>
+<h4 id="-">变量</h4>
+<p>Lua的数字只有double型，64bits，你不必担心Lua处理浮点数会慢（除非大于100,000,000,000,000），或是会有精度问题。</p>
+<p>你可以以如下的方式表示数字，0x开头的16进制和C是很像的。</p>
+<pre><code class="lang-lua">num = 1024
+num = 3.0
+num = 3.1416
+num = 314.16e-2
+num = 0.31416E1
+num = 0xff
+num = 0x56
+</code></pre>
+<p>字符串你可以用单引号，也可以用双引号，还支持C类型的转义，比如： &#39;\a&#39; （响铃）， &#39;\b&#39; （退格）， &#39;\f&#39; （表单）， &#39;\n&#39; （换行）， &#39;\r&#39; （回车）， &#39;\t&#39; （横向制表）， &#39;\v&#39; （纵向制表）， &#39;\\&#39; （反斜杠）， &#39;\&quot;&#39; （双引号）， 以及 &#39;\&quot; （单引号)</p>
+<p>下面的四种方式定义了完全相同的字符串（其中的两个中括号可以用于定义有换行的字符串）</p>
+<pre><code class="lang-lua">a = &#39;alo\n123&quot;&#39;
+a = &quot;alo\n123\&quot;&quot;
+a = &#39;\97lo\10\04923&quot;&#39;
+a = [[alo
+123&quot;]]
+</code></pre>
+<p>C语言中的NULL在Lua中是nil，比如你访问一个没有声明过的变量，就是nil，比如下面的v的值就是nil</p>
+<pre><code class="lang-lua">v = UndefinedVariable
+</code></pre>
+<p>布尔类型只有nil和false是 false，数字0啊，&#39;&#39;空字符串（&#39;\0&#39;）都是true！</p>
+<p>另外，需要注意的是：lua中的变量如果没有特殊说明，全是全局变量，那怕是语句块或是函数里。变量前加local关键字的是局部变量。</p>
+<pre><code class="lang-lua">theGlobalVar = 50
+local theLocalVar = &quot;local variable&quot;
+</code></pre>
+<h3 id="-">控制语句</h3>
+<p>不多说了，直接看代码吧（注意：Lua没有++或是+=这样的操作）</p>
+<h4 id="while-">while循环</h4>
+<pre><code class="lang-lua">sum = 0
+num = 1
+while num &lt;= 100 do
+    sum = sum + num
+    num = num + 1
+end
+print(&quot;sum =&quot;,sum)
+</code></pre>
+<h4 id="if-else-">if-else分支</h4>
+<pre><code class="lang-lua">if age == 40 and sex ==&quot;Male&quot; then
+    print(&quot;男人四十一枝花&quot;)
+elseif age &gt; 60 and sex ~=&quot;Female&quot; then
+    print(&quot;old man without country!&quot;)
+elseif age &lt; 20 then
+    io.write(&quot;too young, too naive!\n&quot;)
+else
+    local age = io.read()
+    print(&quot;Your age is &quot;..age)
+end
+</code></pre>
+<p>上面的语句不但展示了if-else语句，也展示了
+1）<strong>&quot;～=&quot;</strong>是不等于，而不是<strong>!=</strong>
+2）io库的分别从<strong>stdin</strong>和<strong>stdout</strong>读写的<strong>read</strong>和<strong>write</strong>函数
+3）字符串的拼接操作符<strong>&quot;..&quot;</strong></p>
+<p>另外，条件表达式中的与或非为分是：and, or, not关键字。</p>
+<h4 id="for-">for 循环</h4>
+<p>从1加到100</p>
+<pre><code class="lang-lua">sum = 0
+for i = 1, 100 do
+    sum = sum + i
+end
+</code></pre>
+<p>从1到100的奇数和</p>
+<pre><code class="lang-lua">sum = 0
+for i = 1, 100, 2 do
+    sum = sum + i
+end
+</code></pre>
+<p>从100到1的偶数和</p>
+<pre><code class="lang-lua">sum = 0
+for i = 100, 1, -2 do
+    sum = sum + i
+end
+</code></pre>
+<h4 id="until-">until循环</h4>
+<pre><code class="lang-lua">sum = 2
+repeat
+   sum = sum ^ 2 --幂操作
+   print(sum)
+until sum &gt;1000
+</code></pre>
+<h3 id="-">函数</h3>
+<p>Lua的函数和<strong>Javascript</strong>的很像</p>
+<h4 id="-">递归</h4>
+<pre><code class="lang-lua">function fib(n)
+  if n &lt; 2 then return 1 end
+  return fib(n - 2) + fib(n - 1)
+end
+</code></pre>
+<h4 id="-">闭包</h4>
+<p>同样，Javascript附体！</p>
+<pre><code class="lang-lua">function newCounter()
+    local i = 0
+    return function()     -- anonymous function
+       i = i + 1
+        return i
+    end
+end
+
+c1 = newCounter()
+print(c1())  --&gt; 1
+print(c1())  --&gt; 2
+</code></pre>
+<p>示例二</p>
+<pre><code class="lang-lua">function myPower(x)
+    return function(y) return y^x end
+end
+
+power2 = myPower(2)
+power3 = myPower(3)
+
+print(power2(4)) --4的2次方
+print(power3(5)) --5的3次方
+</code></pre>
+<h4 id="-">函数的返回值</h4>
+<p>和<a href="http://coolshell.cn/articles/8460.html" title="Go 语言简介（上）— 语法" target="_blank">Go语言一样</a>，可以一条语句上赋多个值，如：</p>
+<pre><code class="lang-lua">name, age, bGay = &quot;haoel&quot;, 37, false, &quot;haoel@hotmail.com&quot;
+</code></pre>
+<p>上面的代码中，因为只有3个变量，所以第四个值被丢弃。</p>
+<p>函数也可以返回多个值：</p>
+<pre><code class="lang-lua">function getUserInfo(id)
+    print(id)
+    return &quot;haoel&quot;, 37, &quot;haoel@hotmail.com&quot;, &quot;http://coolshell.cn&quot;
+end
+
+name, age, email, website, bGay = getUserInfo()
+</code></pre>
+<p>注意：上面的示例中，因为没有传id，所以函数中的id输出为nil，因为没有返回bGay，所以bGay也是nil。</p>
+<h4 id="-">局部函数</h4>
+<p>函数前面加上local就是局部函数，其实，Lua中的函数和<strong>Javascript</strong>中的一个德行。</p>
+<p>比如：下面的两个函数是一样的：</p>
+<pre><code class="lang-lua">function foo(x) return x^2 end
+foo = function(x) return x^2 end
+</code></pre>
+<h3 id="table">Table</h3>
+<p>所谓Table其实就是一个Key Value的数据结构，它很像Javascript中的Object，或是PHP中的数组，在别的语言里叫Dict或Map，Table长成这个样子：</p>
+<pre><code class="lang-lua">haoel = {name=&quot;ChenHao&quot;, age=37, handsome=True}
+</code></pre>
+<p>下面是table的CRUD操作：</p>
+<pre><code class="lang-lua">haoel.website=&quot;http://coolshell.cn/&quot;
+local age = haoel.age
+haoel.handsome = false
+haoel.name=nil
+</code></pre>
+<p>上面看上去像C/C++中的结构体，但是name,age, handsome, website都是key。你还可以像下面这样写义Table：</p>
+<pre><code class="lang-lua">t = {[20]=100, [&#39;name&#39;]=&quot;ChenHao&quot;, [3.14]=&quot;PI&quot;}
+</code></pre>
+<p>这样就更像Key Value了。于是你可以这样访问：t[20]，t[&quot;name&quot;], t[3.14]。</p>
+<p>我们再来看看数组：</p>
+<pre><code class="lang-lua">arr = {10,20,30,40,50}
+</code></pre>
+<p>这样看上去就像数组了。但其实其等价于：</p>
+<pre><code class="lang-lua">arr = {[1]=10, [2]=20, [3]=30, [4]=40, [5]=50}
+</code></pre>
+<p>所以，你也可以定义成不同的类型的数组，比如：</p>
+<pre><code class="lang-lua">arr = {&quot;string&quot;, 100, &quot;haoel&quot;, function() print(&quot;coolshell.cn&quot;) end}
+</code></pre>
+<p>注：其中的函数可以这样调用：arr<a href="">4</a>。</p>
+<p>我们可以看到Lua的下标不是从0开始的，是从1开始的。</p>
+<pre><code class="lang-lua">for i=1, #arr do
+    print(arr[i])
+end
+</code></pre>
+<p>注：上面的程序中：#arr的意思就是arr的长度。</p>
+<p>注：前面说过，Lua中的变量，如果没有local关键字，全都是全局变量，Lua也是用Table来管理全局变量的，Lua把这些全局变量放在了一个叫&quot;_G&quot;的Table里。</p>
+<p>我们可以用如下的方式来访问一个全局变量（假设我们这个全局变量名叫globalVar）：</p>
+<pre><code class="lang-lua">_G.globalVar
+_G[&quot;globalVar&quot;]
+</code></pre>
+<p>我们可以通过下面的方式来遍历一个Table。</p>
+<pre><code class="lang-lua">for k, v in pairs(t) do
+    print(k, v)
+end
+</code></pre>
+<h3 id="metatable-metamethod">MetaTable 和 MetaMethod</h3>
+<p>MetaTable和MetaMethod是Lua中的重要的语法，MetaTable主要是用来做一些类似于C++重载操作符式的功能。</p>
+<p>比如，我们有两个分数：</p>
+<pre><code class="lang-lua">fraction_a = {numerator=2, denominator=3}
+fraction_b = {numerator=4, denominator=7}
+</code></pre>
+<p>我们想实现分数间的相加：2/3 + 4/7，我们如果要执行： fraction_a + fraction_b，会报错的。</p>
+<p>所以，我们可以动用MetaTable，如下所示：</p>
+<pre><code class="lang-lua">fraction_op={}
+function fraction_op.__add(f1, f2)
+    ret = {}
+    ret.numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator
+    ret.denominator = f1.denominator * f2.denominator
+    return ret
+end
+</code></pre>
+<p>为之前定义的两个table设置MetaTable：（其中的setmetatble是库函数）</p>
+<pre><code class="lang-lua">setmetatable(fraction_a, fraction_op)
+setmetatable(fraction_b, fraction_op)
+</code></pre>
+<p>于是你就可以这样干了：（调用的是fraction_op.__add()函数）</p>
+<pre><code class="lang-lua">fraction_s = fraction_a + fraction_b
+</code></pre>
+<p>至于__add这是MetaMethod，这是Lua内建约定的，其它的还有如下的MetaMethod：</p>
+<pre><code>__add(a, b)                     对应表达式 a + b
+__sub(a, b)                     对应表达式 a - b
+__mul(a, b)                     对应表达式 a * b
+__div(a, b)                     对应表达式 a / b
+__mod(a, b)                     对应表达式 a % b
+__pow(a, b)                     对应表达式 a ^ b
+__unm(a)                        对应表达式 -a
+__concat(a, b)                  对应表达式 a .. b
+__len(a)                        对应表达式 #a
+__eq(a, b)                      对应表达式 a == b
+__lt(a, b)                      对应表达式 a &lt; b
+__le(a, b)                      对应表达式 a &lt;= b
+__index(a, b)                   对应表达式 a.b
+__newindex(a, b, c)             对应表达式 a.b = c
+__call(a, ...)                  对应表达式 a(...)
+</code></pre><h3 id="-">&quot;面向对象&quot;</h3>
+<p>上面我们看到有__index这个重载，这个东西主要是重载了find key的操作。这操作可以让Lua变得有点面向对象的感觉，让其有点像Javascript的prototype。（关于Javascrip的面向对象，你可以参看我之前写的<a href="http://coolshell.cn/articles/6441.html" title="Javascript 面向对象编程" target="_blank">Javascript的面向对象</a>）</p>
+<p>所谓__index，说得明确一点，如果我们有两个对象a和b，我们想让b作为a的prototype只需要：</p>
+<pre><code class="lang-lua">setmetatable(a, {__index = b})
+</code></pre>
+<p>例如下面的示例：你可以用一个Window_Prototype的模板加上__index的MetaMethod来创建另一个实例：</p>
+<pre><code class="lang-lua">Window_Prototype = {x=0, y=0, width=100, height=100}
+MyWin = {title=&quot;Hello&quot;}
+setmetatable(MyWin, {__index = Window_Prototype})
+</code></pre>
+<p>于是：MyWin中就可以访问x, y, width, height的东东了。（注：当表要索引一个值时如table[key], Lua会首先在table本身中查找key的值, 如果没有并且这个table存在一个带有<strong>index属性的Metatable, 则Lua会按照</strong>index所定义的函数逻辑查找）</p>
+<p>有了以上的基础，我们可以来说说所谓的Lua的面向对象。</p>
+<pre><code class="lang-lua">Person={}
+
+function Person:new(p)
+    local obj = p
+    if (obj == nil) then
+        obj = {name=&quot;ChenHao&quot;, age=37, handsome=true}
+    end
+    self.__index = self
+    return setmetatable(obj, self)
+end
+
+function Person:toString()
+    return self.name ..&quot; : &quot;.. self.age ..&quot; : &quot;.. (self.handsome and &quot;handsome&quot; or &quot;ugly&quot;)
+end
+</code></pre>
+<p>上面我们可以看到有一个new方法和一个toString的方法。其中：</p>
+<p>1）self 就是 Person，Person:new(p)，相当于Person.new(self, p)
+2）new方法的self.__index = self 的意图是怕self被扩展后改写，所以，让其保持原样
+3）setmetatable这个函数返回的是第一个参数的值。</p>
+<p>于是：我们可以这样调用：</p>
+<pre><code class="lang-lua">me = Person:new()
+print(me:toString())
+
+kf = Person:new{name=&quot;King&#39;s fucking&quot;, age=70, handsome=false}
+print(kf:toString())
+</code></pre>
+<p>继承如下，我就不多说了，Lua和Javascript很相似，都是在Prototype的实例上改过来改过去的。</p>
+<pre><code class="lang-lua">Student = Person:new()
+
+function Student:new()
+    newObj = {year = 2013}
+    self.__index = self
+    return setmetatable(newObj, self)
+end
+
+function Student:toString()
+    return &quot;Student : &quot;.. self.year..&quot; : &quot; .. self.name
+end
+</code></pre>
+<h3 id="-">模块</h3>
+<p>我们可以直接使用require(&quot;model_name&quot;)来载入别的lua文件，文件的后缀是.lua。载入的时候就直接执行那个文件了。比如：</p>
+<p>我们有一个hello.lua的文件：</p>
+<pre><code class="lang-lua">print(&quot;Hello, World!&quot;)
+</code></pre>
+<p>如果我们：require(&quot;hello&quot;)，那么就直接输出Hello, World！了。</p>
+<p>注意：
+1）require函数，载入同样的lua文件时，只有第一次的时候会去执行，后面的相同的都不执行了。
+2）如果你要让每一次文件都会执行的话，你可以使用dofile(&quot;hello&quot;)函数
+3）如果你要玩载入后不执行，等你需要的时候执行时，你可以使用 loadfile()函数，如下所示：</p>
+<pre><code class="lang-lua">local hello = loadfile(&quot;hello&quot;)
+... ...
+... ...
+hello()
+</code></pre>
+<p>loadfile(&quot;hello&quot;)后，文件并不执行，我们把文件赋给一个变量hello，当hello()时，才真的执行。（我们多希望JavaScript也有这样的功能（参看《<a href="http://coolshell.cn/articles/9749.html" title="Javascript 装载和执行" target="_blank">Javascript 装载和执行</a>》））</p>
+<p>当然，更为标准的玩法如下所示。</p>
+<p>假设我们有一个文件叫mymod.lua，内容如下：</p>
+<pre><code class="lang-lua">local HaosModel = {}
+
+local function getname()
+    return &quot;Hao Chen&quot;
+end
+
+function HaosModel.Greeting()
+    print(&quot;Hello, My name is &quot;..getname())
+end
+
+return HaosModel
+</code></pre>
+<p>于是我们可以这样使用：</p>
+<pre><code class="lang-lua">local hao_model = require(&quot;mymod&quot;)
+hao_model.Greeting()
+</code></pre>
+<p>其实，require干的事就如下：（所以你知道为什么我们的模块文件要写成那样了）</p>
+<pre><code class="lang-lua">local hao_model = (function ()
+  --mymod.lua文件的内容--
+end)()
+</code></pre>
+<h3 id="-">参考</h3>
+<p>我估计你差不多到擦屁股的时间了，所以，如果你还比较喜欢Lua的话，下面是几个在线文章你可以继续学习之：</p>
+<ul>
+<li><a href="http://manual.luaer.cn/" target="_blank">manual.luaer.cn</a> lua在线手册</li>
+<li><a href="http://book.luaer.cn/" target="_blank">book.luaer.cn</a> lua在线lua学习教程</li>
+<li><a href="http://www.codingnow.com/2000/download/lua_manual.html" target="_blank">lua参考手册</a>Lua参考手册的中文翻译（云风翻译版本）</li>
+</ul>
+<p>关于Lua的标库，你可以看看官方文档：<a href="http://lua-users.org/wiki/StringLibraryTutorial" target="_blank">string</a>，  <a href="http://lua-users.org/wiki/TableLibraryTutorial" target="_blank">table</a>， <a href="http://lua-users.org/wiki/MathLibraryTutorial" target="_blank">math</a>， <a href="http://lua-users.org/wiki/IoLibraryTutorial" target="_blank">io</a>， <a href="http://lua-users.org/wiki/OsLibraryTutorial" target="_blank">os</a>。</p>
+<p><strong>本文章作者和出处:  <a href="http://coolshell.cn/" target="_blank">酷壳 – CoolShell.cn</a> ，请勿用于任何商业用途</strong></p>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/lua_easy/">[转] Lua简明教程</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span><span class="breadcrumb"><li><a href="/categories/转载文章/">转载文章</a></li></span></span> | <span class="tags">标签 <a href="/tags/LUA/" class="label label-primary">LUA</a><a href="/tags/转载/" class="label label-success">转载</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/lua_easy/#comments" class="ds-thread-count comment-link" data-thread-key="938" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/luajit_ffi/" title="[分享] LuaJIT的FFI调用WINDOWS API功能示例">&larr; [分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li>
+  
+  
+  <li class="next"><a href="/post/jekyll_or_hexo/" title="静态搏客 jekyll & Hexo">静态搏客 jekyll & Hexo &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="938"  data-url="http://chenall.net/post/lua_easy/" data-title="[转] Lua简明教程"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/lua_easy/";
+    var wumiiTitle = "[转] Lua简明教程";
+    var wumiiTags = "LUA,转载";
+    var wumiiCategories = ["程序设计","LUA","转载文章"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

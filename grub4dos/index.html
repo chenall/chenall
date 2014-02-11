@@ -1,0 +1,604 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>grub4dos | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="项目主页: http://grub4dos-chenall.googlecode.com/
+
+ 下载最新编译版版本: http://code.google.com/p/grub4dos-chenall/downloads/list">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="grub4dos"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="page" class="page well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">grub4dos</h1>
+      
+    </header>
+    
+    <section id='before_content_widget'></section>
+    <div class="entry">
+      
+        <div id="PublishedByWebStory-[5]1_B782C41738364310B646B652B7AC5B52_F25617A519B14EB59957A5BFA15C5335">
+ <div>
+</div> 
+
+<p>项目主页: <a href="http://grub4dos-chenall.googlecode.com/" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/">http://grub4dos-chenall.googlecode.com/</a></a></p>
+<p> 下载最新编译版版本: <a href="http://code.google.com/p/grub4dos-chenall/downloads/list" target="_blank"><a href="http://code.google.com/p/grub4dos-chenall/downloads/list">http://code.google.com/p/grub4dos-chenall/downloads/list</a></a></p>
+<p> 下载最新版源码:</p>
+<p> 参考: &nbsp;<a href="http://code.google.com/p/grub4dos-chenall/source/checkout" target="_blank"><a href="http://code.google.com/p/grub4dos-chenall/source/checkout">http://code.google.com/p/grub4dos-chenall/source/checkout</a></a></p>
+<p> <span style="FONT-FAMILY: nsimsun">svn checkout <strong><em>http</em></strong>://grub4dos-chenall.googlecode.com/svn/trunk/ grub4dos-chenall</span></p>
+<p> <span style="COLOR: #ff00ff"><span style="COLOR: #ff00ff">[更新历史]</span></span>
+ <div><font color="#FF00FF">懒得更新，最新的更新历史请直接点以下链接查看。</font></div> <div><a href="http://code.google.com/p/grub4dos-chenall/source/browse/trunk/ChangeLog_chenall.txt" target="_blank"><font color="#FF00FF"><a href="http://code.google.com/p/grub4dos-chenall/source/browse/trunk/ChangeLog_chenall.txt">http://code.google.com/p/grub4dos-chenall/source/browse/trunk/ChangeLog_chenall.txt</a></font></a></div> <div><a href="http://code.google.com/p/grub4dos-chenall/source/browse/trunk/ChangeLog_GRUB4DOS.txt" target="_blank"><a href="http://code.google.com/p/grub4dos-chenall/source/browse/trunk/ChangeLog_GRUB4DOS.txt">http://code.google.com/p/grub4dos-chenall/source/browse/trunk/ChangeLog_GRUB4DOS.txt</a></a>
+</div> <div><span style="COLOR: #000000">2010-08-10
+ &nbsp;1.fixed a bug in disk_io.c,it may return error 25 when set root to a cd drive.
+ &nbsp;&nbsp; 修正一个BUG,当设置root为cd设备时可能会提示Error 25的错误.
+ &nbsp;2.加快colinux下源码在cofs设备时编译的速度.</span></div> <div><span style="COLOR: #000000">2010-08-09 improved CHS probing code of map command on ISO9660 images.
+ 2010-08-04 finally find out the missing-extended-partition problem is caused by a gcc bug, and workarounds are created.
+ 2010-07-25 re-enabled the extended partition with logical partitions in disorder.
+ 2010-07-24 patch by chenall: cat --length=0 will return the size of the compressed file if it is gzipped; fix memory-not-enough problem when mapping a gzipped memory-file with a high compression ratio.
+ 2010-07-23 improved next_pc_slice() to cope with the partition-loop problem.
+ 2010-07-22 try to solve the problem of missing Linux extended partitions in Tab-completion.
+ 2010-07-21 improved next_pc_slice() to cope with the partition-loop problem.
+ 2010-07-20 changed code about pxe_basemem to solve the problem that pxe_unload fail to release memory.
+ 2010-07-12 fixed a bug in guess_dos_versions(for DOS executable grub.exe).
+ 2010-06-21 applied bean&#39;s patch(supported new (ud) device created with fbinst1.6).
+ 2010-06-09 applied karyonix&#39;s patch(fixes on grub_read and blocklist).
+ 2010-06-07 adjusted probe_int(dosstart.S) to deal with HP DV3-2309TX on its garbage int76 vector.
+ 2010-06-03 adjusted restore_BDA_EBDA(dosstart.S) to deal with HP on its garbage EBDA size byte.
+ 2010-05-31 unhook int13 before hooking it in load_initrd() to avoid duplicate hooking.
+ 2010-05-29 resolved conflict between drives_addr and mmap_addr for multiboot kernels.
+ 2010-05-27 adjusted probe_int(dosstart.S) to deal with DELL on its garbage int05 vector.</span></div> <div><span style="COLOR: #000000">2010-05-23 change /main.lst back to /menu.lst, and the original /menu.lst dir to /menu for pxe booting.</span></p>
+<p> <span style="COLOR: #000000">&nbsp;pxe启动默认加载的菜单修改。</p>
+<p> PXE启动使用的菜单文件有修改，具体如下</span></div> <div>
+</div> <div><span style="COLOR: #000000">优先尝试/MENU.LST文件，如果没有找到则使用以前的方式，但menu.lst目录修改为menu</span></div> <div>
+</div> </p>
+<h1 id="-span-style-color-000000-a-name-pxe-menu-lst-font-color-ff0000-size-4-pxe-menu-lst-menu-font-a-span-"><span style="COLOR: #000000"><a name="注意：如果PXE启动有使用menu.lst目录的使用新版??"><font color="#FF0000" size="4">注意：如果PXE启动有使用menu.lst目录的使用新版需要修改为MENU，否则可能会死机.</font></a></span></h1>
+ <div>
+</div> 
+
+<p><span style="COLOR: #000000"><strike>2010-05-21 changed initial config filename from /menu.lst to /main.lst for pxe booting.</strike></p>
+<p> 2010-05-19 fixed problem of mapping small file(&lt;512B) to (rd).</p>
+<p> 2010-05-15 added --keep-pxe option for grub.exe running under DOS.</p>
+<p> 2010-05-14 (chenall)fixed ntfs small file(&lt;4KB) access problem.</p>
+<p> 2010-05-13 added --off option for hiddenmenu. added nokeep subcommand for pxe. let halt return on failure.</span>
+ <div>
+</div> <div></p>
+<p> 2010-05-04 （来自官网） <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos-0.4.5b-2010-05-03.zip&amp;can=2&amp;q=" target="_blank"><font color="#000000">hopefully non-linux kernels could get loaded now. version number changed to 0.4.5b.</font></a></div> <div>
+</div> <div> </p>
+<p>1.2.  尝试解决 非Linux 内核加载代码 与 3M 处的系统代码的冲突问题（希望成功，但因没有测试环境，所以，不知道结果如何）。
+3.4.  版本号升级为 0.4.5b。</p>
+<ol>
+<li></div> </li>
+</ol>
+<p>2010-05-02</p>
+<p> PXE启动时首先尝试加载/menu.lst。</p>
+ <div>
+
+ <span style="COLOR: #000000">2010-04-17
+
+ &nbsp;1.命令行自动完成调整.现在可以直接输入/+TAB显示当前目录下的文件或(hd0,0)/+TAB显示(hd0,0)/下面的文件列表
+
+ &nbsp;以前的版本必需要像以下命令才可以。
+
+ &nbsp;&nbsp;root /+TAB
+
+ &nbsp;2.get_cmdline函数调整，以方便外部命令直接调用。</span>
+
+ <span style="COLOR: #000000">2010-03-29
+
+ &nbsp;1.外部命令执行过程调整。</span>
+
+ <span style="COLOR: #000000">&nbsp;例子:默认path (bd)/grub/
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo abcd&nbsp; ## 优先使用(bd)/grub/echo 文件，如果没有再找 /echo 文件
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /echo abcd ## 只查找/echo 文件。
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (fd0)/echo abcd ## 只找 (fd0)/echo abcd 文件。
+
+ &nbsp;2.find 命令添加一个 --ignore-oem 参数。
+
+ &nbsp;<a href="http://code.google.com/p/grub4dos-ireneuszp/" target="_blank"><a href="http://code.google.com/p/grub4dos-ireneuszp/">http://code.google.com/p/grub4dos-ireneuszp/</a></a></span>
+
+ <span style="COLOR: #000000">2010-03-26
+
+ 1.添加外部命令loadslic。
+
+ 用途嘛，呵呵，自己想去吧。
+
+ 原始的源码来源于:</span>
+
+ &nbsp;</div> 
+ <div>&nbsp;</div> 
+ <div><span style="COLOR: #000000"><a href="http://code.google.com/p/grub4dos-ireneuszp/downloads/list" target="_blank"><a href="http://code.google.com/p/grub4dos-ireneuszp/downloads/list">http://code.google.com/p/grub4dos-ireneuszp/downloads/list</a></a></span></div> 
+ <div>
+
+ <span style="COLOR: #000000">其它的就不多做介绍了，使用很简单
+
+ loadslic SLIC文件。
+
+ 注：已经删除下载。
+
+ <span style="COLOR: #000000">2010-03-21
+
+ 1.WENV命令更新.
+
+ Input自动加一个换行符.</span></span>
+
+ &nbsp;</div> 
+
+ <div>
+
+ <span style="COLOR: #000000">2010-03-20
+
+ 1.WENV命令更新具体
+
+ <a href="http://www.chenall.com/blog/2010/02/grub4dos_WENV.html" target="_blank"><a href="http://www.chenall.com/blog/2010/02/grub4dos_WENV.html">http://www.chenall.com/blog/2010/02/grub4dos_WENV.html</a></a></span>
+
+ 2010-03-14
+
+ 1.同步到官方2010-03-14版.
+
+ <span style="COLOR: #000000">2010-03-10
+
+ &nbsp;1.菜单边框位置自动调整。</span>
+
+ <span style="COLOR: #000000">2010-03-09
+
+ &nbsp;1.注释掉karyonix 4G GZIP MAP的部份代码。
+
+ &nbsp;2.添加UNIFONT外部命令，可以加载UNIFONT字库。当菜单文件是UTF8格式时可以显示多国语言。
+
+ &nbsp;Support multi-language menu with UNIFONT.</span>
+
+ <span style="COLOR: #000000">2010-03-03
+
+ 1.新的FONTFILE 外部命令，支持小字库。 support small hz lib
+
+ <a href="http://bbs.znpc.net/viewthread.php?tid=5854&amp;extra=page%3D1" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5854&amp;extra=page%3D1">http://bbs.znpc.net/viewthread.php?tid=5854&amp;extra=page%3D1</a></a>
+
+ <a href="http://www.cn-dos.net/forum/viewthread.php?tid=47921" target="_blank"><a href="http://www.cn-dos.net/forum/viewthread.php?tid=47921">http://www.cn-dos.net/forum/viewthread.php?tid=47921</a></a></span>
+
+ <span style="COLOR: #000000">2010-03-01</span>
+
+ &nbsp;1.打上了karyonix的4G map 补丁
+
+ &nbsp;<a href="http://bbs.znpc.net/viewthread.php?tid=5844" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5844">http://bbs.znpc.net/viewthread.php?tid=5844</a></a>
+
+ &nbsp;<a href="http://www.boot-land.net/forums/index.php?s=&amp;showtopic=10096&amp;view=findpost&amp;p=91378" target="_blank"><a href="http://www.boot-land.net/forums/index.php?s=&amp;showtopic=10096&amp;view=findpost&amp;p=91378">http://www.boot-land.net/forums/index.php?s=&amp;showtopic=10096&amp;view=findpost&amp;p=91378</a></a>
+
+ &nbsp;
+
+ &nbsp;2.添加fontfile外部命令.
+
+ &nbsp;3.添加menuset外部命令.
+
+ 2010-02-09
+
+ &nbsp;1.重写cmp部份代码(注:比较时可能会比较慢,因为只使用了1MB的缓存,之前的版本是完全缓存).
+
+ &nbsp;顺便添加了新参数 --skip=
+
+ &nbsp;可以指定在比较时跳过几个字节,用于cmp --hex时方便查看差异.
+
+ &nbsp;
+
+ 2010-02-05
+
+ &nbsp;1.添加calc简单计算器功能.
+
+ &nbsp;calc [<em>INTEGER=] [</em>]INTEGER OPERATOR [[<em>]INTEGER]
+
+ &nbsp;
+
+ &nbsp;具体使用方法参考这里的外部命令calc的用法,是一样的,只是内置了.
+
+ &nbsp;<a href="http://www.chenall.com/blog/2010/02/grub4dos_calc.html" target="_blank"><a href="http://www.chenall.com/blog/2010/02/grub4dos_calc.html">http://www.chenall.com/blog/2010/02/grub4dos_calc.html</a></a>
+
+ &nbsp;
+
+ &nbsp;
+
+ 2010-01-13
+
+ &nbsp;修改设置默认可执行文件搜索路径参数为
+
+ &nbsp;--set-path=PATH
+
+ &nbsp;例子
+
+ &nbsp;command --set-path=(bd)/grub/
+
+ &nbsp;
+
+ 2010-01-09
+
+ &nbsp;1.为command参数添加一个参数--set-root用于设置默认可执行文件的搜索路径。
+
+ &nbsp;add option --set-root for command
+
+ &nbsp;sets a search PATH for executable files,default is (bd)/grub
+
+ 2009-12-03 <a href="mailto:g@chenall.cn">g@chenall.cn</a>
+
+ &nbsp;1.修改了cat --hex代码，现在cat --hex会显示ascii&gt;127的字符。
+
+ &nbsp;2.修改了cmp --hex代码，现在cmp --hex后面显示的字符同样可以显示中文。
+
+ &nbsp;&nbsp; 并且添加了颜色控制，不同的地方使用了菜单的高亮色显示。
+
+ 2009-12-01 <a href="mailto:g@chenall.cn">g@chenall.cn</a>
+
+ &nbsp;1.同步源码到2009-12-01版（修正了NTFS上DD或WRITE的问题）
+
+ &nbsp;2.修改调整了cat --replace，当使用--replace=</em>addr时允许使用--hex来指定读取长度。具体
+
+ &nbsp;<a href="http://bbs.znpc.net/viewthread.php?tid=5784&amp;page=10&amp;fromuid=29#pid42939" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5784&amp;page=10&amp;fromuid=29#pid42939">http://bbs.znpc.net/viewthread.php?tid=5784&amp;page=10&amp;fromuid=29#pid42939</a></a>
+
+ 2009-11-29 <a href="mailto:g@chenall.cn">g@chenall.cn</a>
+
+ &nbsp;1.调整了chainloader功能，如果chainloader (rd)+1，并且没有指定edx设备，那将把当前设备设为EDX。
+
+ &nbsp;&nbsp; Changed chainloader_func,if use chainloader (rd)+1 then will set current_root to EDX
+
+ &nbsp;从光盘上的BOOTMGR启动硬盘上的VISTA/WIN7系统。
+
+ &nbsp;&nbsp;Boot VISTA/WIN7 from cdrom or any other device
+
+ &nbsp;&nbsp;chainloader (cd)/BOOTMGR
+
+ &nbsp;&nbsp;rootnoverify (hd0,0)
+
+ &nbsp;&nbsp;dd if=(hd0,0)+1 of=(md)0x3E+1
+
+ &nbsp;现在可以直接使用以下方法来启动;&nbsp;You can now use the following commands..
+
+ &nbsp;&nbsp;map --mem=0xF000 /BOOTMGR
+
+ &nbsp;&nbsp;find --set-root --ignore-cd --ignore-floppies /BOOT/BCD
+
+ &nbsp;&nbsp;chainloader (rd)+1
+
+ &nbsp;<a href="http://bbs.znpc.net/viewthread.php?tid=5784&amp;page=7&amp;fromuid=29#pid42684" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5784&amp;page=7&amp;fromuid=29#pid42684">http://bbs.znpc.net/viewthread.php?tid=5784&amp;page=7&amp;fromuid=29#pid42684</a></a>
+
+ &nbsp;Tips:about EDX,please read README_GRUB4DOS.txt
+
+ &nbsp;2.源码同步到官方2009-11-29版。
+
+ 2009-11-28 <a href="mailto:g@chenall.cn">g@chenall.cn</a>
+
+ &nbsp;&nbsp;&nbsp; 1.修正了当内存&gt;2G时访问可能会出错的问题.
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fixed a bug when access memory&gt;2G problems.
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eg.
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cat --hex (md)0x40002F+1
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; map --mem (md)0x600000+0x19020
+
+ 2009-11-26 <a href="mailto:g@chenall.cn">g@chenall.cn</a>
+
+ &nbsp;1.修改cmp_func代码，使用之使用十六进制显示差异偏移（为了方便对比使用）。
+
+ &nbsp;&nbsp; change cmp_func to show Differ at the offset with HEX
+
+ &nbsp;2.为cmp添加了一个参数--hex（直接显示十六进制）
+
+ &nbsp;&nbsp; add --hex option for cmp&nbsp;
+
+ 2009-11-24 <a href="mailto:g@chenall.cn">g@chenall.cn</a>
+
+ &nbsp;1.添加(bd)设备，即启动设备，注：使用configfile命令会改变启动设备。
+
+ &nbsp;added (bd) support.(bd):the boot drive. note:use configfile to change boot drive
+
+ &nbsp;eg. boot from (hd0,0)
+
+ &nbsp;&nbsp;&nbsp; now boot drive is (hd0,0)
+
+ &nbsp;&nbsp;&nbsp; configfile (hd0,1)/menu.lst
+
+ &nbsp;&nbsp;&nbsp; now boot drive is (hd0,1)
+
+ &nbsp;</div> 
+
+<p></div> </p>
+
+      
+    </div>
+    <section id='after_content_widget'></section>
+    
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-url="http://chenall.net/grub4dos/index.html" data-title="grub4dos"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

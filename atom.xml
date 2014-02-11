@@ -1,0 +1,1791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[chenall's Blog]]></title>
+  <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://chenall.net/"/>
+  <updated>2014-02-11T15:03:13.343Z</updated>
+  <id>http://chenall.net/</id>
+  
+  <author>
+    <name><![CDATA[chenall]]></name>
+    
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[搏客转移到hexo]]></title>
+    <link href="http://chenall.net/post/blog_to_hexo/"/>
+    <id>http://chenall.net/post/blog_to_hexo/</id>
+    <published>2014-01-26T23:50:48.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>经过一段时间的处理转换,大量的手工活,总体来说搬家还是挺顺利,整个转换过程使用了差不多1个月的时间.终算把搏客搬到<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>上了.</p>
+<p>前段时间在尝试静态搏客<!--[iLink[slug:jekyll_or_hexo]iLink]-->
+,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
+<p>在这期间,学习到了很多新的知识.</p>
+<ul>
+<li>首次接触CSS/HTML</li>
+<li>首次接触<a href="http://nodejs.org/" target="_blank">Node.js</a></li>
+<li>首次使用用<a href="https://github.com/" target="_blank">github</a>的Pull Request功能.</li>
+<li>首次自己设计主页界面.</li>
+<li>还有很多很多.</li>
+</ul>
+<p><a href="https://github.com/chenall/hexo-theme-chenall" target="_blank">本主题</a>是自己设计的高度模块化hexo主题.加入了很多独特的功能,也是我学习过程中的经验累积.</p>
+<p>目前暂时没有发现什么太大的问题.以后还会慢慢完善<br>有兴趣你也可以试试,^_^,有什么疑问可以在本站留言</p>
+<p>对于本主题有问题如果你有 <a href="https://github.com/" target="_blank">github</a> 帐号的话还是使用 <a href="https://github.com/chenall/hexo-theme-chenall/issues" target="_blank"><strong>issue</strong></a>会比较好.</p>
+]]></content>
+    
+    
+      <category term="hexo" scheme="http://chenall.net/tags/hexo/"/>
+    
+      <category term="搏客" scheme="http://chenall.net/tags/%E6%90%8F%E5%AE%A2/"/>
+    
+      <category term="转移" scheme="http://chenall.net/tags/%E8%BD%AC%E7%A7%BB/"/>
+    
+      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[原创] pretty自动加载语言代码]]></title>
+    <link href="http://chenall.net/post/pretty_auto/"/>
+    <id>http://chenall.net/post/pretty_auto/</id>
+    <published>2014-01-20T17:00:00.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>pretty是一个Javascript模块和CSS文件，可以实现文章中代码的高亮显示.<br>在网上找到的使用方法都是差不多的,</p>
+<p>首先就是加载css和js文件<br><a id="more"></a></p>
+<pre><code class="lang-html">&lt;script src=&quot;https://google-code-prettify.googlecode.com/svn/loader/prettify.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://google-code-prettify.googlecode.com/svn/loader/prettify.css&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>然后在文章尾部添加代码实现自动高亮显示</p>
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot;&gt;
+$(window).load(function(){
+     $(&quot;pre&quot;).addClass(&quot;prettyprint&quot;);
+     prettyPrint();
+})
+&lt;script type=&quot;text/javascript&quot;&gt;
+</code></pre>
+<p>或使用run_prettify来自动加载</p>
+<pre><code class="lang-html">&lt;script src=&quot;https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&amp;skin=sunburst&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>但是上面都是有缺点的:</p>
+<ul>
+<li>第一种方法,虽然也可以高亮显示,但看起来并不美观,因为还需要额外加载对应语言的js文件(像lang-html.js).</li>
+<li>第二种方法,是自动加载了,不过它依赖google-code-prettify.googlecode.com上的代码文件,由于众所周知的原因,这个是经常不能正常访问的.并且由于run_prettify把加载代码的路径写死了,只能加载google-code上的代码.如果使用CDN的话它还是要加载google-code上的.不方便.</li>
+</ul>
+<p>所以这里就给一个变通的方法,实现了根据需要自动加载对应语言的通用JS代码.不受路径限制,自动获取prettify文件的路径,自动加载需要的代码高亮文件.
+需要jquery的支持.</p>
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot;&gt;
+   var lang=[];
+   var pretty_base=&#39;&#39;;
+   $(&#39;script&#39;).each(function(){
+    var c = $(this).attr(&#39;src&#39;);
+    if (!c)
+        return;
+    if (c.match(/(\/)?prettify(\.min)?\.js/i))
+    {
+        var index = c.lastIndexOf(&#39;/&#39;);
+        if (index != -1)
+        pretty_base = c.substr(0,index + 1);
+        return false;
+    }
+   })
+   $(&#39;pre code&#39;).each(function(){
+    var c = $(this).attr(&#39;class&#39;)
+    if (!c)
+        return;
+    c = c.match(/\s?(lang\-\w+)/i);
+    if (c &amp;&amp; lang.indexOf(c[1]) == -1)
+    {
+        lang.push(c[1]);
+        $.getScript(pretty_base + c[1] + &#39;.min.js&#39;);
+    }
+   })
+
+    $(window).load(function(){
+       $(&quot;pre&quot;).addClass(&quot;prettyprint&quot;);
+       prettyPrint();
+    })
+&lt;/script&gt;
+</code></pre>
+]]></content>
+    <summary type="html"><![CDATA[<p>pretty是一个Javascript模块和CSS文件，可以实现文章中代码的高亮显示.<br>在网上找到的使用方法都是差不多的,</p>
+<p>首先就是加载css和js文件<br>]]></summary>
+    
+      <category term="pretty" scheme="http://chenall.net/tags/pretty/"/>
+    
+      <category term="原创代码" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="html" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[推荐] 免费的云计算Koding]]></title>
+    <link href="http://chenall.net/post/koging/"/>
+    <id>http://chenall.net/post/koging/</id>
+    <published>2014-01-18T10:10:19.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>Koding其实是就一个免费的VPS(只是没有独立IP),使用了LINUX UBUNTU操作系统.</p>
+<p>支持一键安装各种程序,像WORDPRESS之类的,很简单.</p>
+<p>支持在线编写代码,编译等..支持主流环境PHP,PYTHON,PERL,RUBY</p>
+<p>例子: <a href="http://chenall.kd.io/" target="_blank">http://chenall.kd.io/</a></p>
+<p>以上是建站的功能，上说说过了它是一个linux虚拟机，可以进入linux命令行，使用一些linux的功能．</p>
+<p>你完全可以用这个熟悉下linux的操作，还有更多功能等着你自己去发现．</p>
+<p>全英文的，自己翻译下，不懂可以上Google搜一下．</p>
+<p>其它的不多说了(因为国情原因，不能说太多)，懂行的赶紧注册收藏一个吧．</p>
+<p>附上注册地址：<a href="https://koding.com/R/chenall" target="_blank">Koding注册地址</a></p>
+]]></content>
+    
+    
+      <category term="koding" scheme="http://chenall.net/tags/koding/"/>
+    
+      <category term="云计算" scheme="http://chenall.net/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="杂七杂八" scheme="http://chenall.net/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[分享] LuaJIT的FFI调用WINDOWS API功能示例]]></title>
+    <link href="http://chenall.net/post/luajit_ffi/"/>
+    <id>http://chenall.net/post/luajit_ffi/</id>
+    <published>2013-12-15T18:12:05.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="-luajit-">关于LuaJIT,以下是官网的介绍.</h1>
+<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
+<p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
+<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
+<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
+<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">比如以下来自官网最简单的应用代码</span></span></p>
+<pre><code class="lang-lua">--Load the FFI library.
+local ffi = require(&quot;ffi&quot;)
+
+--Add a C declaration for the function. The part inside the double-brackets (in green) is just standard C syntax.
+ffi.cdef[[
+    int printf(const char *fmt, ...);
+]]
+
+--Call the named C function — Yes, it&#39;s that simple!
+ffi.C.printf(&quot;Hello %s!&quot;, &quot;world&quot;)
+</code></pre>
+<pre><code class="lang-lua">local ffi = require(&quot;ffi&quot;)
+ffi.cdef[[
+    int MessageBoxA(void *w, const char *txt, const char *cap, int type);
+]]
+ffi.C.MessageBoxA(nil, &quot;Hello world!&quot;, &quot;Test&quot;, 0)
+</code></pre>
+<p>看起来很简单不是吗?</p>
+<p>这里给一个稍微复杂一些的例子,这是我在是学习过程中碰到的一些问题的总结,里面包括了一些常用的操作,像ffi.new 创建一个C的类型,ffi.cast数据类型转换,等.有兴趣的可以通过这个例子来学习一下如何应用.少走一些弯路.希望对大家有用.</p>
+<p>本代码要保存为ANSI格式才可以正常运行</p>
+<pre><code class="lang-lua">local ffi = require(&quot;ffi&quot;)
+ffi.cdef[[
+    typedef char TCHAR;
+    typedef unsigned int UINT;
+    typedef TCHAR _LPTSTR;
+    typedef const TCHAR *LPCTSTR;
+    typedef LPCTSTR LPCSTR;
+    typedef UINT WPARAM;
+    typedef unsigned long LPARAM;
+    typedef UINT HWND;
+    typedef struct {
+        long x;
+        long y;
+    } POINT,_PPOINT;
+    void* malloc(size_t size);
+    void* free(void* memblock);
+    bool GetCursorPos(PPOINT lpPoint);
+    HWND WindowFromPoint(POINT Point);
+    int GetWindowTextA(HWND hWnd, LPTSTR lpString, int nMaxCount);
+    bool SetWindowTextA(HWND hWnd, LPCTSTR lpString);
+    int SendMessageA(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+    int MessageBoxA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType);
+]]
+local user32 = ffi.load(&quot;User32.dll&quot;)--WINDOWS API函数所在DLL文件
+local win32 = ffi.load(&#39;msvcrt.dll&#39;)--malloc和free函数
+local pos=ffi.new(&quot;POINT&quot;);
+local oks = user32.GetCursorPos(pos)--获取当前鼠标位置
+local IDYES = 6
+local IDNO = 7
+local WM_SETTEXT = 0x000C
+local WM_GETTEXT = 0x000D
+if oks then
+local hwnd = user32.WindowFromPoint(pos)--获取指定位置下窗体的句柄
+local lpString = ffi.new(&quot;char*&quot;,win32.malloc(1024))--分配内存
+local test = user32.GetWindowTextA(hwnd,lpString,1023)--获取文本
+local str1 = ffi.string(lpString);
+local strtest =&quot;FFI 调用SetWindowText功能测试&quot;
+local t = user32.MessageBoxA(0,&quot;是否把以下窗体\n&lt;&quot;..str1..&quot;&gt;\n的标题修改为以下内容:\n&quot;..strtest,&quot;LUAJIT FFI 调用WINAPI测试&quot;,0x44)--MB_ICONINFORMATION || 0x00000004L
+if t == IDYES then
+    if user32.SetWindowTextA(hwnd,strtest) == true then
+        user32.MessageBoxA(0,&quot;修改成功&quot;,&quot;测试&quot;,0x40)
+    end
+end
+--[[注: Windows API 的SendMessage就是SendMessageA或SendMessageW
+    像MessageBox也是类型的MessageBoxA和MessageBoxW
+    本文例子使用了ffi.cast进行了数据类型的转换,如果不想转换可以修改一下SendMessageA的定义改为如下(我最早就是不知道有ffi.cast所以用的修改定义的方法)
+    int SendMessageA(HWND hwnd, UINT msg, WPARAM wParam, LPCTSTR lParam);
+    就可以直接使用了,例:
+    user32.SendMessageA(hwnd,WM_SETTEXT,1024,&quot;用SendMessage和WM_SETTEXT功能改写目标字符串&quot;)
+    这个SendMessage是WINDOWS一个很重要的API,后面的两个参数很灵活,根据不同的功能需求,可以是这符串/数字或指针,数组之类的.--]]
+user32.MessageBoxA(0,&quot;测试使用SendMessage来实现同样的功能&quot;,&quot;测试2&quot;,0x40)
+user32.SendMessageA(hwnd,WM_GETTEXT,1024,ffi.cast(&quot;LPARAM&quot;,lpString))--通过ffi.cast功能进行类型转换
+user32.MessageBoxA(0,&quot;用SendMessage和WM_GETTEXT功能获取到的窗体标题为\n&quot;..ffi.string(lpString),&quot;测试2&quot;,0x40);
+user32.SendMessageA(hwnd,WM_SETTEXT,1024,ffi.cast(&quot;LPARAM&quot;,&quot;用SendMessage和WM_SETTEXT功能改写目标字符串&quot;))
+user32.MessageBoxA(0,&quot;目标标题已改变&quot;,&quot;测式2&quot;,0x40)
+win32.free(lpString)--释放内存
+end
+</code></pre>
+]]></content>
+    
+    
+      <category term="FFI" scheme="http://chenall.net/tags/FFI/"/>
+    
+      <category term="LUA" scheme="http://chenall.net/tags/LUA/"/>
+    
+      <category term="WINDOWS" scheme="http://chenall.net/tags/WINDOWS/"/>
+    
+      <category term="API" scheme="http://chenall.net/tags/API/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="LUA" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/LUA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[转] Lua简明教程]]></title>
+    <link href="http://chenall.net/post/lua_easy/"/>
+    <id>http://chenall.net/post/lua_easy/</id>
+    <published>2013-12-13T15:07:18.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p><strong>本文章作者和出处:  <a href="http://coolshell.cn/" target="_blank">酷壳 – CoolShell.cn</a> ，请勿用于任何商业用途</strong></p>
+<p>这几天系统地学习了一下<a href="http://www.lua.org/" target="_blank">Lua这个脚本语言</a>，Lua脚本是一个很轻量级的脚本，也是号称性能最高的脚本，用在很多需要性能的地方，比如：游戏脚本，nginx，wireshark的脚本，当你把他的源码下下来编译后，你会发现解释器居然不到200k，这是多么地变态啊（/bin/sh都要1M，MacOS平台），而且能和C语言非常好的互动。我很好奇得浏览了一下Lua解释器的源码，这可能是我看过最干净的C的源码了。</p>
+<p>我不想写一篇大而全的语言手册，一方面是因为已经有了（见本文后面的链接），重要的原因是，因为大篇幅的文章会挫败人的学习热情，我始终觉得好的文章读起来就像拉大便一样，能一口气很流畅地搞完，才会让人爽（这也是我为什么不想写书的原因）。所以，这必然又是一篇&quot;入厕文章&quot;，还是那句话，我希望本文能够让大家利用上下班，上厕所大便的时间学习一个技术。呵呵。</p>
+<p>相信你现在已经在厕所里脱掉裤子露出屁股已经准备好大便了，那就让我们畅快地排泄吧……</p>
+<a id="more"></a>
+
+<h3 id="-">运行</h3>
+<p>首先，我们需要知道，Lua是类C的，所以，他是大小写字符敏感的。</p>
+<p>下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和<a href="http://coolshell.cn/articles/8460.html" title="Go 语言简介（上）— 语法" target="_blank">GO语言很类似</a>。</p>
+<pre><code>print(&quot;Hello World&quot;)
+</code></pre><p>你可以像python一样，在命令行上运行lua命令后进入lua的shell中执行语句。</p>
+<pre><code>chenhao-air:lua chenhao$ lua
+Lua 5.2.2  Copyright (C) 1994-2013 Lua.org, PUC-Rio
+&gt; print(&quot;Hello, World&quot;)
+Hello, World
+&gt;
+</code></pre><p>也可以把脚本存成一个文件，用如下命令行来运行。</p>
+<pre><code>&gt;lua file.lua
+</code></pre><p>或是像shell一样运行：</p>
+<pre><code>chenhao-air:lua chenhao$ cat hello.lua
+#!/usr/local/bin/lua
+print(&quot;Hello, World&quot;)
+chenhao-air:lua chenhao$ chmod +x hello.lua
+chenhao-air:test chenhao$ ./hello.lua
+Hello, World
+</code></pre><h3 id="-">语法</h3>
+<h4 id="-">注释</h4>
+<pre><code class="lang-lua">-- 两个减号是行注释
+</code></pre>
+<pre><code class="lang-lua">--[[
+ 这是块注释
+ 这是块注释
+ --]]
+</code></pre>
+<h4 id="-">变量</h4>
+<p>Lua的数字只有double型，64bits，你不必担心Lua处理浮点数会慢（除非大于100,000,000,000,000），或是会有精度问题。</p>
+<p>你可以以如下的方式表示数字，0x开头的16进制和C是很像的。</p>
+<pre><code class="lang-lua">num = 1024
+num = 3.0
+num = 3.1416
+num = 314.16e-2
+num = 0.31416E1
+num = 0xff
+num = 0x56
+</code></pre>
+<p>字符串你可以用单引号，也可以用双引号，还支持C类型的转义，比如： &#39;\a&#39; （响铃）， &#39;\b&#39; （退格）， &#39;\f&#39; （表单）， &#39;\n&#39; （换行）， &#39;\r&#39; （回车）， &#39;\t&#39; （横向制表）， &#39;\v&#39; （纵向制表）， &#39;\\&#39; （反斜杠）， &#39;\&quot;&#39; （双引号）， 以及 &#39;\&quot; （单引号)</p>
+<p>下面的四种方式定义了完全相同的字符串（其中的两个中括号可以用于定义有换行的字符串）</p>
+<pre><code class="lang-lua">a = &#39;alo\n123&quot;&#39;
+a = &quot;alo\n123\&quot;&quot;
+a = &#39;\97lo\10\04923&quot;&#39;
+a = [[alo
+123&quot;]]
+</code></pre>
+<p>C语言中的NULL在Lua中是nil，比如你访问一个没有声明过的变量，就是nil，比如下面的v的值就是nil</p>
+<pre><code class="lang-lua">v = UndefinedVariable
+</code></pre>
+<p>布尔类型只有nil和false是 false，数字0啊，&#39;&#39;空字符串（&#39;\0&#39;）都是true！</p>
+<p>另外，需要注意的是：lua中的变量如果没有特殊说明，全是全局变量，那怕是语句块或是函数里。变量前加local关键字的是局部变量。</p>
+<pre><code class="lang-lua">theGlobalVar = 50
+local theLocalVar = &quot;local variable&quot;
+</code></pre>
+<h3 id="-">控制语句</h3>
+<p>不多说了，直接看代码吧（注意：Lua没有++或是+=这样的操作）</p>
+<h4 id="while-">while循环</h4>
+<pre><code class="lang-lua">sum = 0
+num = 1
+while num &lt;= 100 do
+    sum = sum + num
+    num = num + 1
+end
+print(&quot;sum =&quot;,sum)
+</code></pre>
+<h4 id="if-else-">if-else分支</h4>
+<pre><code class="lang-lua">if age == 40 and sex ==&quot;Male&quot; then
+    print(&quot;男人四十一枝花&quot;)
+elseif age &gt; 60 and sex ~=&quot;Female&quot; then
+    print(&quot;old man without country!&quot;)
+elseif age &lt; 20 then
+    io.write(&quot;too young, too naive!\n&quot;)
+else
+    local age = io.read()
+    print(&quot;Your age is &quot;..age)
+end
+</code></pre>
+<p>上面的语句不但展示了if-else语句，也展示了
+1）<strong>&quot;～=&quot;</strong>是不等于，而不是<strong>!=</strong>
+2）io库的分别从<strong>stdin</strong>和<strong>stdout</strong>读写的<strong>read</strong>和<strong>write</strong>函数
+3）字符串的拼接操作符<strong>&quot;..&quot;</strong></p>
+<p>另外，条件表达式中的与或非为分是：and, or, not关键字。</p>
+<h4 id="for-">for 循环</h4>
+<p>从1加到100</p>
+<pre><code class="lang-lua">sum = 0
+for i = 1, 100 do
+    sum = sum + i
+end
+</code></pre>
+<p>从1到100的奇数和</p>
+<pre><code class="lang-lua">sum = 0
+for i = 1, 100, 2 do
+    sum = sum + i
+end
+</code></pre>
+<p>从100到1的偶数和</p>
+<pre><code class="lang-lua">sum = 0
+for i = 100, 1, -2 do
+    sum = sum + i
+end
+</code></pre>
+<h4 id="until-">until循环</h4>
+<pre><code class="lang-lua">sum = 2
+repeat
+   sum = sum ^ 2 --幂操作
+   print(sum)
+until sum &gt;1000
+</code></pre>
+<h3 id="-">函数</h3>
+<p>Lua的函数和<strong>Javascript</strong>的很像</p>
+<h4 id="-">递归</h4>
+<pre><code class="lang-lua">function fib(n)
+  if n &lt; 2 then return 1 end
+  return fib(n - 2) + fib(n - 1)
+end
+</code></pre>
+<h4 id="-">闭包</h4>
+<p>同样，Javascript附体！</p>
+<pre><code class="lang-lua">function newCounter()
+    local i = 0
+    return function()     -- anonymous function
+       i = i + 1
+        return i
+    end
+end
+
+c1 = newCounter()
+print(c1())  --&gt; 1
+print(c1())  --&gt; 2
+</code></pre>
+<p>示例二</p>
+<pre><code class="lang-lua">function myPower(x)
+    return function(y) return y^x end
+end
+
+power2 = myPower(2)
+power3 = myPower(3)
+
+print(power2(4)) --4的2次方
+print(power3(5)) --5的3次方
+</code></pre>
+<h4 id="-">函数的返回值</h4>
+<p>和<a href="http://coolshell.cn/articles/8460.html" title="Go 语言简介（上）— 语法" target="_blank">Go语言一样</a>，可以一条语句上赋多个值，如：</p>
+<pre><code class="lang-lua">name, age, bGay = &quot;haoel&quot;, 37, false, &quot;haoel@hotmail.com&quot;
+</code></pre>
+<p>上面的代码中，因为只有3个变量，所以第四个值被丢弃。</p>
+<p>函数也可以返回多个值：</p>
+<pre><code class="lang-lua">function getUserInfo(id)
+    print(id)
+    return &quot;haoel&quot;, 37, &quot;haoel@hotmail.com&quot;, &quot;http://coolshell.cn&quot;
+end
+
+name, age, email, website, bGay = getUserInfo()
+</code></pre>
+<p>注意：上面的示例中，因为没有传id，所以函数中的id输出为nil，因为没有返回bGay，所以bGay也是nil。</p>
+<h4 id="-">局部函数</h4>
+<p>函数前面加上local就是局部函数，其实，Lua中的函数和<strong>Javascript</strong>中的一个德行。</p>
+<p>比如：下面的两个函数是一样的：</p>
+<pre><code class="lang-lua">function foo(x) return x^2 end
+foo = function(x) return x^2 end
+</code></pre>
+<h3 id="table">Table</h3>
+<p>所谓Table其实就是一个Key Value的数据结构，它很像Javascript中的Object，或是PHP中的数组，在别的语言里叫Dict或Map，Table长成这个样子：</p>
+<pre><code class="lang-lua">haoel = {name=&quot;ChenHao&quot;, age=37, handsome=True}
+</code></pre>
+<p>下面是table的CRUD操作：</p>
+<pre><code class="lang-lua">haoel.website=&quot;http://coolshell.cn/&quot;
+local age = haoel.age
+haoel.handsome = false
+haoel.name=nil
+</code></pre>
+<p>上面看上去像C/C++中的结构体，但是name,age, handsome, website都是key。你还可以像下面这样写义Table：</p>
+<pre><code class="lang-lua">t = {[20]=100, [&#39;name&#39;]=&quot;ChenHao&quot;, [3.14]=&quot;PI&quot;}
+</code></pre>
+<p>这样就更像Key Value了。于是你可以这样访问：t[20]，t[&quot;name&quot;], t[3.14]。</p>
+<p>我们再来看看数组：</p>
+<pre><code class="lang-lua">arr = {10,20,30,40,50}
+</code></pre>
+<p>这样看上去就像数组了。但其实其等价于：</p>
+<pre><code class="lang-lua">arr = {[1]=10, [2]=20, [3]=30, [4]=40, [5]=50}
+</code></pre>
+<p>所以，你也可以定义成不同的类型的数组，比如：</p>
+<pre><code class="lang-lua">arr = {&quot;string&quot;, 100, &quot;haoel&quot;, function() print(&quot;coolshell.cn&quot;) end}
+</code></pre>
+<p>注：其中的函数可以这样调用：arr<a href="">4</a>。</p>
+<p>我们可以看到Lua的下标不是从0开始的，是从1开始的。</p>
+<pre><code class="lang-lua">for i=1, #arr do
+    print(arr[i])
+end
+</code></pre>
+<p>注：上面的程序中：#arr的意思就是arr的长度。</p>
+<p>注：前面说过，Lua中的变量，如果没有local关键字，全都是全局变量，Lua也是用Table来管理全局变量的，Lua把这些全局变量放在了一个叫&quot;_G&quot;的Table里。</p>
+<p>我们可以用如下的方式来访问一个全局变量（假设我们这个全局变量名叫globalVar）：</p>
+<pre><code class="lang-lua">_G.globalVar
+_G[&quot;globalVar&quot;]
+</code></pre>
+<p>我们可以通过下面的方式来遍历一个Table。</p>
+<pre><code class="lang-lua">for k, v in pairs(t) do
+    print(k, v)
+end
+</code></pre>
+<h3 id="metatable-metamethod">MetaTable 和 MetaMethod</h3>
+<p>MetaTable和MetaMethod是Lua中的重要的语法，MetaTable主要是用来做一些类似于C++重载操作符式的功能。</p>
+<p>比如，我们有两个分数：</p>
+<pre><code class="lang-lua">fraction_a = {numerator=2, denominator=3}
+fraction_b = {numerator=4, denominator=7}
+</code></pre>
+<p>我们想实现分数间的相加：2/3 + 4/7，我们如果要执行： fraction_a + fraction_b，会报错的。</p>
+<p>所以，我们可以动用MetaTable，如下所示：</p>
+<pre><code class="lang-lua">fraction_op={}
+function fraction_op.__add(f1, f2)
+    ret = {}
+    ret.numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator
+    ret.denominator = f1.denominator * f2.denominator
+    return ret
+end
+</code></pre>
+<p>为之前定义的两个table设置MetaTable：（其中的setmetatble是库函数）</p>
+<pre><code class="lang-lua">setmetatable(fraction_a, fraction_op)
+setmetatable(fraction_b, fraction_op)
+</code></pre>
+<p>于是你就可以这样干了：（调用的是fraction_op.__add()函数）</p>
+<pre><code class="lang-lua">fraction_s = fraction_a + fraction_b
+</code></pre>
+<p>至于__add这是MetaMethod，这是Lua内建约定的，其它的还有如下的MetaMethod：</p>
+<pre><code>__add(a, b)                     对应表达式 a + b
+__sub(a, b)                     对应表达式 a - b
+__mul(a, b)                     对应表达式 a * b
+__div(a, b)                     对应表达式 a / b
+__mod(a, b)                     对应表达式 a % b
+__pow(a, b)                     对应表达式 a ^ b
+__unm(a)                        对应表达式 -a
+__concat(a, b)                  对应表达式 a .. b
+__len(a)                        对应表达式 #a
+__eq(a, b)                      对应表达式 a == b
+__lt(a, b)                      对应表达式 a &lt; b
+__le(a, b)                      对应表达式 a &lt;= b
+__index(a, b)                   对应表达式 a.b
+__newindex(a, b, c)             对应表达式 a.b = c
+__call(a, ...)                  对应表达式 a(...)
+</code></pre><h3 id="-">&quot;面向对象&quot;</h3>
+<p>上面我们看到有__index这个重载，这个东西主要是重载了find key的操作。这操作可以让Lua变得有点面向对象的感觉，让其有点像Javascript的prototype。（关于Javascrip的面向对象，你可以参看我之前写的<a href="http://coolshell.cn/articles/6441.html" title="Javascript 面向对象编程" target="_blank">Javascript的面向对象</a>）</p>
+<p>所谓__index，说得明确一点，如果我们有两个对象a和b，我们想让b作为a的prototype只需要：</p>
+<pre><code class="lang-lua">setmetatable(a, {__index = b})
+</code></pre>
+<p>例如下面的示例：你可以用一个Window_Prototype的模板加上__index的MetaMethod来创建另一个实例：</p>
+<pre><code class="lang-lua">Window_Prototype = {x=0, y=0, width=100, height=100}
+MyWin = {title=&quot;Hello&quot;}
+setmetatable(MyWin, {__index = Window_Prototype})
+</code></pre>
+<p>于是：MyWin中就可以访问x, y, width, height的东东了。（注：当表要索引一个值时如table[key], Lua会首先在table本身中查找key的值, 如果没有并且这个table存在一个带有<strong>index属性的Metatable, 则Lua会按照</strong>index所定义的函数逻辑查找）</p>
+<p>有了以上的基础，我们可以来说说所谓的Lua的面向对象。</p>
+<pre><code class="lang-lua">Person={}
+
+function Person:new(p)
+    local obj = p
+    if (obj == nil) then
+        obj = {name=&quot;ChenHao&quot;, age=37, handsome=true}
+    end
+    self.__index = self
+    return setmetatable(obj, self)
+end
+
+function Person:toString()
+    return self.name ..&quot; : &quot;.. self.age ..&quot; : &quot;.. (self.handsome and &quot;handsome&quot; or &quot;ugly&quot;)
+end
+</code></pre>
+<p>上面我们可以看到有一个new方法和一个toString的方法。其中：</p>
+<p>1）self 就是 Person，Person:new(p)，相当于Person.new(self, p)
+2）new方法的self.__index = self 的意图是怕self被扩展后改写，所以，让其保持原样
+3）setmetatable这个函数返回的是第一个参数的值。</p>
+<p>于是：我们可以这样调用：</p>
+<pre><code class="lang-lua">me = Person:new()
+print(me:toString())
+
+kf = Person:new{name=&quot;King&#39;s fucking&quot;, age=70, handsome=false}
+print(kf:toString())
+</code></pre>
+<p>继承如下，我就不多说了，Lua和Javascript很相似，都是在Prototype的实例上改过来改过去的。</p>
+<pre><code class="lang-lua">Student = Person:new()
+
+function Student:new()
+    newObj = {year = 2013}
+    self.__index = self
+    return setmetatable(newObj, self)
+end
+
+function Student:toString()
+    return &quot;Student : &quot;.. self.year..&quot; : &quot; .. self.name
+end
+</code></pre>
+<h3 id="-">模块</h3>
+<p>我们可以直接使用require(&quot;model_name&quot;)来载入别的lua文件，文件的后缀是.lua。载入的时候就直接执行那个文件了。比如：</p>
+<p>我们有一个hello.lua的文件：</p>
+<pre><code class="lang-lua">print(&quot;Hello, World!&quot;)
+</code></pre>
+<p>如果我们：require(&quot;hello&quot;)，那么就直接输出Hello, World！了。</p>
+<p>注意：
+1）require函数，载入同样的lua文件时，只有第一次的时候会去执行，后面的相同的都不执行了。
+2）如果你要让每一次文件都会执行的话，你可以使用dofile(&quot;hello&quot;)函数
+3）如果你要玩载入后不执行，等你需要的时候执行时，你可以使用 loadfile()函数，如下所示：</p>
+<pre><code class="lang-lua">local hello = loadfile(&quot;hello&quot;)
+... ...
+... ...
+hello()
+</code></pre>
+<p>loadfile(&quot;hello&quot;)后，文件并不执行，我们把文件赋给一个变量hello，当hello()时，才真的执行。（我们多希望JavaScript也有这样的功能（参看《<a href="http://coolshell.cn/articles/9749.html" title="Javascript 装载和执行" target="_blank">Javascript 装载和执行</a>》））</p>
+<p>当然，更为标准的玩法如下所示。</p>
+<p>假设我们有一个文件叫mymod.lua，内容如下：</p>
+<pre><code class="lang-lua">local HaosModel = {}
+
+local function getname()
+    return &quot;Hao Chen&quot;
+end
+
+function HaosModel.Greeting()
+    print(&quot;Hello, My name is &quot;..getname())
+end
+
+return HaosModel
+</code></pre>
+<p>于是我们可以这样使用：</p>
+<pre><code class="lang-lua">local hao_model = require(&quot;mymod&quot;)
+hao_model.Greeting()
+</code></pre>
+<p>其实，require干的事就如下：（所以你知道为什么我们的模块文件要写成那样了）</p>
+<pre><code class="lang-lua">local hao_model = (function ()
+  --mymod.lua文件的内容--
+end)()
+</code></pre>
+<h3 id="-">参考</h3>
+<p>我估计你差不多到擦屁股的时间了，所以，如果你还比较喜欢Lua的话，下面是几个在线文章你可以继续学习之：</p>
+<ul>
+<li><a href="http://manual.luaer.cn/" target="_blank">manual.luaer.cn</a> lua在线手册</li>
+<li><a href="http://book.luaer.cn/" target="_blank">book.luaer.cn</a> lua在线lua学习教程</li>
+<li><a href="http://www.codingnow.com/2000/download/lua_manual.html" target="_blank">lua参考手册</a>Lua参考手册的中文翻译（云风翻译版本）</li>
+</ul>
+<p>关于Lua的标库，你可以看看官方文档：<a href="http://lua-users.org/wiki/StringLibraryTutorial" target="_blank">string</a>，  <a href="http://lua-users.org/wiki/TableLibraryTutorial" target="_blank">table</a>， <a href="http://lua-users.org/wiki/MathLibraryTutorial" target="_blank">math</a>， <a href="http://lua-users.org/wiki/IoLibraryTutorial" target="_blank">io</a>， <a href="http://lua-users.org/wiki/OsLibraryTutorial" target="_blank">os</a>。</p>
+<p><strong>本文章作者和出处:  <a href="http://coolshell.cn/" target="_blank">酷壳 – CoolShell.cn</a> ，请勿用于任何商业用途</strong></p>
+]]></content>
+    <summary type="html"><![CDATA[<p><strong>本文章作者和出处:  <a href="http://coolshell.cn/" target="_blank">酷壳 – CoolShell.cn</a> ，请勿用于任何商业用途</strong></p>
+<p>这几天系统地学习了一下<a href="http://www.lua.org/" target="_blank">Lua这个脚本语言</a>，Lua脚本是一个很轻量级的脚本，也是号称性能最高的脚本，用在很多需要性能的地方，比如：游戏脚本，nginx，wireshark的脚本，当你把他的源码下下来编译后，你会发现解释器居然不到200k，这是多么地变态啊（/bin/sh都要1M，MacOS平台），而且能和C语言非常好的互动。我很好奇得浏览了一下Lua解释器的源码，这可能是我看过最干净的C的源码了。</p>
+<p>我不想写一篇大而全的语言手册，一方面是因为已经有了（见本文后面的链接），重要的原因是，因为大篇幅的文章会挫败人的学习热情，我始终觉得好的文章读起来就像拉大便一样，能一口气很流畅地搞完，才会让人爽（这也是我为什么不想写书的原因）。所以，这必然又是一篇&quot;入厕文章&quot;，还是那句话，我希望本文能够让大家利用上下班，上厕所大便的时间学习一个技术。呵呵。</p>
+<p>相信你现在已经在厕所里脱掉裤子露出屁股已经准备好大便了，那就让我们畅快地排泄吧……</p>
+]]></summary>
+    
+      <category term="LUA" scheme="http://chenall.net/tags/LUA/"/>
+    
+      <category term="转载" scheme="http://chenall.net/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="LUA" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/LUA/"/>
+    
+      <category term="转载文章" scheme="http://chenall.net/categories/%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[静态搏客 jekyll & Hexo]]></title>
+    <link href="http://chenall.net/post/jekyll_or_hexo/"/>
+    <id>http://chenall.net/post/jekyll_or_hexo/</id>
+    <published>2013-10-30T21:41:00.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>Hexo 和 <em>jekyll</em> 都是简单的免费的Blog生成工具，只生成静态网页，不需要数据库支持，评论可以使用第三方服务像Disqus还有国内的多说。特别是由于github直接支持<em>jekyll</em>很多人已经使用<em>jekyll</em>写搏客了。</p>
+<p>我看了一下觉得真的很不错，真是太适合像我这样的懒人了，直接使用MarkDown语法写博客，使用一些简单的标记就可以实现一些排版等。</p>
+<p>比如 <a href="http://www.yonsm.net" target="_blank">Yonsm</a> 这个就是使用<em>jekyll</em>的，我也打算使用<em>jekyll</em>来写搏客，不过由于对这个还不太熟悉所以就先了解下情况，后来又发现了Hexo，它使用node.js 速度更快，不知用哪个好，所以就两个都试了。</p>
+<p>首先就是测试平台的搭建，想要在Windows上搭建还是有些麻烦的，虽然网上有很多教程，但是你一步一步下来还是会发现许多问题，我就碰到了好几个问题（主要还是程序版本问题嘿）。</p>
+<p>像Python要用2.x的，pygments插件要用0.5.0的。</p>
+<p>还有中文编码问题 </p>
+<p><code>... invalid byte sequence in GBK ..</code></p>
+<p>在网上找了一下，大多是说要修改<em>jekyll</em>程序的文件，本来我也想改，不过看了一下发现原来新版的已经不需要这样修改了</p>
+<p>直接在配置文件_config.yam中添加一行&#39;encoding: UTF-8&#39;就行了。</p>
+<p>经过各种折腾总算把测试平台建好了，我比较喜欢绿色化，所以顺便绿色化了一下，有需要的可以留言，我再上传（7z压缩后100MB左右，解压后400MB左右python27+ruyb193+nodejs+svn+git+XXX需要的基本都有了）</p>
+<p>再来说下经过我试用后的比较，个人比较喜欢Hexo，因为它的功能还有扩展性都比较强，速度也快。</p>
+<p><em>jekyll</em> 更新比较快，调试信息比较清楚，而且Github原生支持，只是产生的速度慢一些。</p>
+<p>另外<em>jekyll</em> 受限于<em>Liquid</em>语法对于修改模板来说真的很不方便，如果可以用其它语法就好了，当然如果你不需要修改模板就没有什么问题了。</p>
+<p>分别用<em>jekyll</em>和<em>Hexo</em>生成了两个网站，有兴趣可以去观赏下。</p>
+<p><em>jekyll</em> 托管在<em>github</em>上(作为ALMRUN程序的主页)  <a href="http://almrun.chenall.net" target="_blank"><a href="http://almrun.chenall.net">http://almrun.chenall.net</a></a></p>
+<p>hexo 托管在BAE上  <a href="http://hexo.chenall.net" target="_blank"><a href="http://hexo.chenall.net">http://hexo.chenall.net</a></a></p>
+<p>2014-01-10 经过测试比较后,最后我决定采用<a href="https://github.com/tommy351/hexo" target="_blank">Hexo</a></p>
+]]></content>
+    
+    
+      <category term="github" scheme="http://chenall.net/tags/github/"/>
+    
+      <category term="hexo" scheme="http://chenall.net/tags/hexo/"/>
+    
+      <category term="jekyll" scheme="http://chenall.net/tags/jekyll/"/>
+    
+      <category term="静态搏客" scheme="http://chenall.net/tags/%E9%9D%99%E6%80%81%E6%90%8F%E5%AE%A2/"/>
+    
+      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[分享] 手贱再次入手一个便宜的VPS $9.99/年]]></title>
+    <link href="http://chenall.net/post/bandwagonhost/"/>
+    <id>http://chenall.net/post/bandwagonhost/</id>
+    <published>2013-08-16T08:50:30.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>主机商采用的是自己的KiwiVM管理面板,Bandwagonhost好像只能PayPal付款，并有一个30天的退款保证.</p>
+<p>目前该主机商给LEB读者发布了一个优惠码，只要在付款时在<code>Promotional Code</code>用中输入&quot;LEB&quot;优惠码价格就会变成原价的%50.01.</p>
+<p>我入手的这一款配置信息,很实惠有木有啊..月付$1.99,年付$9.99,当然是选择年付了.</p>
+<blockquote>
+<p>CPU：2 cores<br>内存：512MB<br>vSWAP：512MB<br>硬盘：5 GB<br>月流量：500GB<br>1 IP/KiwiVM  </p>
+</blockquote>
+<p><a href="http://bandwagonhost.com/aff.php?aff=228&amp;cart.php?a=add&amp;pid=5" target="_blank">VPS 5G订购链接</a> 晚了可能就没有了,</p>
+<p><a href="http://bandwagonhost.com/aff.php?aff=228" target="_blank">前往主机商网站选购</a></p>
+<p>由于是在国外的在国内的访问速度肯定没有那么如意,偶尔还会抽风,拿来练手倒是不错,才几十块钱,..</p>
+<p>有需要的话可以自己去选购,需要使用PayPal或支持美元的信用卡支付,也可以联系我代购.</p>
+<p>其它配置信息,当然了也可以选择季度付款,或半年付款.年付价格都会比较便宜,</p>
+<p><a href="http://bandwagonhost.com/aff.php?aff=228&amp;cart.php?a=add&amp;pid=6" target="_blank">VPS3G</a>  1CPU/256MB/3G/50G流量 $2.99/月</p>
+<p><a href="http://bandwagonhost.com/aff.php?aff=228&amp;cart.php?a=add&amp;pid=7" target="_blank">VPS10G</a> 1CPU/512MB/10G/200G $4.99/月或$39.99/年 折后只需要$19.99/年</p>
+<p><a href="http://bandwagonhost.com/aff.php?aff=228&amp;cart.php?a=add&amp;pid=8" target="_blank">VPS50G</a> 1CPU/1024MB/50G/500G $9.99/月</p>
+]]></content>
+    
+    
+      <category term="Bandwagonhost" scheme="http://chenall.net/tags/Bandwagonhost/"/>
+    
+      <category term="KiwiVM" scheme="http://chenall.net/tags/KiwiVM/"/>
+    
+      <category term="OpenVZ" scheme="http://chenall.net/tags/OpenVZ/"/>
+    
+      <category term="vps" scheme="http://chenall.net/tags/vps/"/>
+    
+      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[PHP] 中文转拼音首字母简易实现方案]]></title>
+    <link href="http://chenall.net/post/php_gb2312_2_pinyin/"/>
+    <id>http://chenall.net/post/php_gb2312_2_pinyin/</id>
+    <published>2013-04-20T15:21:35.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>在某些情况下,为了简化查询,我们需要提取中文的拼音首字母,</p>
+<p>比如&quot;中华人民共和国&quot; 是ZHRMGHG</p>
+<p>最近在<a href="http://chenall.net/post/alrun-merry/" title="[分享] ALMRun–小巧的快速启动工具 ">ALMRun</a>程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,</p>
+<p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
+<p>源码: <a href="https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php" target="_blank"><a href="https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php">https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php</a></a></p>
+<pre><code>&lt;?php
+/*
+    中文汉字转拼音首字母的PHP简易实现方法.
+    要求: 只能是GB2312码表里面中文字符
+    转换得到字符串对应的拼音首字母大写.
+    来源: http://chenall.net/
+    用法:
+    echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
+    或
+    $py = new zh2py;
+    echo $py-&gt;conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
+*/
+class zh2py
+{
+    //根据汉字区位表,(http://www.mytju.com/classcode/tools/QuWeiMa_FullList.asp)
+    //我们可以看到从16-55区之间是按拼音字母排序的,所以我们只需要判断某个汉字的区位码就可以得知它的拼音首字母.
+    //区位表第一部份,按拼音字母排序的.
+    //16区-55区
+    /*
+        &#39;A&#39;=&gt;0xB0A1, &#39;B&#39;=&gt;0xB0C5, &#39;C&#39;=&gt;0xB2C1, &#39;D&#39;=&gt;0xB4EE, &#39;E&#39;=&gt;0xB6EA, &#39;F&#39;=&gt;0xB7A2, &#39;G&#39;=&gt;0xB8C1,&#39;H&#39;=&gt;0xB9FE,
+    &#39;J&#39;=&gt;0xBBF7, &#39;K&#39;=&gt;0xBFA6, &#39;L&#39;=&gt;0xC0AC, &#39;M&#39;=&gt;0xC2E8, &#39;N&#39;=&gt;0xC4C3, &#39;O&#39;=&gt;0xC5B6, &#39;P&#39;=&gt;0xC5BE,&#39;Q&#39;=&gt;0xC6DA,
+    &#39;R&#39;=&gt;0xC8BB, &#39;S&#39;=&gt;0xC8F6, &#39;T&#39;=&gt;0xCBFA, &#39;W&#39;=&gt;0xCDDA, &#39;X&#39;=&gt;0xCEF4, &#39;Y&#39;=&gt;0xD1B9, &#39;Z&#39;=&gt;0xD4D1
+    */
+    private static $FirstTable = array(
+    0xB0C5, 0xB2C1, 0xB4EE, 0xB6EA, 0xB7A2, 0xB8C1, 0xB9FE, 0xBBF7, 0xBFA6, 0xC0AC, 0xC2E8,
+    0xC4C3, 0xC5B6, 0xC5BE, 0xC6DA, 0xC8BB, 0xC8F6, 0xCBFA, 0xCDDA, 0xCEF4, 0xD1B9, 0xD4D1,0xD7FA
+    );
+    private static $FirstLetter = &quot;ABCDEFGHJKLMNOPQRSTWXYZ&quot;;
+    //区位表第二部份,不规则的,下面的字母是每个区里面对应字的拼音首字母.从网上查询整理出来的,可能会有部份错误.
+    //56区-87区
+    private static $SecondTable = array(
+        &quot;CJWGNSPGCGNEGYPBTYYZDXYKYGTZJNMJQMBSGZSCYJSYYFPGKBZGYDYWJKGKLJSWKPJQHYJWRDZLSYMRYPYWWCCKZNKYYG&quot;,
+        &quot;TTNGJEYKKZYTCJNMCYLQLYPYSFQRPZSLWBTGKJFYXJWZLTBNCXJJJJTXDTTSQZYCDXXHGCKBPHFFSSTYBGMXLPBYLLBHLX&quot;,
+        &quot;SMZMYJHSOJNGHDZQYKLGJHSGQZHXQGKXZZWYSCSCJXYEYXADZPMDSSMZJZQJYZCJJFWQJBDZBXGZNZCPWHWXHQKMWFBPBY&quot;,
+        &quot;DTJZZKXHYLYGXFPTYJYYZPSZLFCHMQSHGMXXSXJYQDCSBBQBEFSJYHWWGZKPYLQBGLDLCDTNMAYDDKSSNGYCSGXLYZAYPN&quot;,
+        &quot;PTSDKDYLHGYMYLCXPYCJNDQJWXQXFYYFJLEJPZRXCCQWQQSBZKYMGPLBMJRQCFLNYMYQMSQYRBCJTHZTQFRXQHXMQJCJLY&quot;,
+        &quot;QGJMSHZKBSWYEMYLTXFSYDXWLYCJQXSJNQBSCTYHBFTDCYZDJWYGHQFRXWCKQKXEBPTLPXJZSRMEBWHJLBJSLYYSMDXLCL&quot;,
+        &quot;QKXLHXJRZJMFQHXHWYWSBHTRXXGLHQHFNMGYKLDYXZPYLGGSMTCFBAJJZYLJTYANJGBJPLQGSZYQYAXBKYSECJSZNSLYZH&quot;,
+        &quot;ZXLZCGHPXZHZNYTDSBCJKDLZAYFFYDLEBBGQYZKXGLDNDNYSKJSHDLYXBCGHXYPKDJMMZNGMMCLGWZSZXZJFZNMLZZTHCS&quot;,
+        &quot;YDBDLLSCDDNLKJYKJSYCJLKWHQASDKNHCSGAGHDAASHTCPLCPQYBSZMPJLPCJOQLCDHJJYSPRCHNWJNLHLYYQYYWZPTCZG&quot;,
+        &quot;WWMZFFJQQQQYXACLBHKDJXDGMMYDJXZLLSYGXGKJRYWZWYCLZMSSJZLDBYDCFCXYHLXCHYZJQSQQAGMNYXPFRKSSBJLYXY&quot;,
+        &quot;SYGLNSCMHCWWMNZJJLXXHCHSYZSTTXRYCYXBYHCSMXJSZNPWGPXXTAYBGAJCXLYXDCCWZOCWKCCSBNHCPDYZNFCYYTYCKX&quot;,
+        &quot;KYBSQKKYTQQXFCMCHCYKELZQBSQYJQCCLMTHSYWHMKTLKJLYCXWHEQQHTQKZPQSQSCFYMMDMGBWHWLGSLLYSDLMLXPTHMJ&quot;,
+        &quot;HWLJZYHZJXKTXJLHXRSWLWZJCBXMHZQXSDZPSGFCSGLSXYMJSHXPJXWMYQKSMYPLRTHBXFTPMHYXLCHLHLZYLXGSSSSTCL&quot;,
+        &quot;SLDCLRPBHZHXYYFHBMGDMYCNQQWLQHJJCYWJZYEJJDHPBLQXTQKWHLCHQXAGTLXLJXMSLJHTZKZJECXJCJNMFBYCSFYWYB&quot;,
+        &quot;JZGNYSDZSQYRSLJPCLPWXSDWEJBJCBCNAYTWGMPAPCLYQPCLZXSBNMSGGFNZJJBZSFZYNTXHPLQKZCZWALSBCZJXSYZGWK&quot;,
+        &quot;YPSGXFZFCDKHJGXTLQFSGDSLQWZKXTMHSBGZMJZRGLYJBPMLMSXLZJQQHZYJCZYDJWFMJKLDDPMJEGXYHYLXHLQYQHKYCW&quot;,
+        &quot;CJMYYXNATJHYCCXZPCQLBZWWYTWBQCMLPMYRJCCCXFPZNZZLJPLXXYZTZLGDLTCKLYRZZGQTTJHHHJLJAXFGFJZSLCFDQZ&quot;,
+        &quot;LCLGJDJZSNZLLJPJQDCCLCJXMYZFTSXGCGSBRZXJQQCTZHGYQTJQQLZXJYLYLBCYAMCSTYLPDJBYREGKLZYZHLYSZQLZNW&quot;,
+        &quot;CZCLLWJQJJJKDGJZOLBBZPPGLGHTGZXYGHZMYCNQSYCYHBHGXKAMTXYXNBSKYZZGJZLQJTFCJXDYGJQJJPMGWGJJJPKQSB&quot;,
+        &quot;GBMMCJSSCLPQPDXCDYYKYPCJDDYYGYWRHJRTGZNYQLDKLJSZZGZQZJGDYKSHPZMTLCPWNJYFYZDJCNMWESCYGLBTZZGMSS&quot;,
+        &quot;LLYXYSXXBSJSBBSGGHFJLYPMZJNLYYWDQSHZXTYYWHMCYHYWDBXBTLMSYYYFSXJCBDXXLHJHFSSXZQHFZMZCZTQCXZXRTT&quot;,
+        &quot;DJHNRYZQQMTQDMMGNYDXMJGDXCDYZBFFALLZTDLTFXMXQZDNGWQDBDCZJDXBZGSQQDDJCMBKZFFXMKDMDSYYSZCMLJDSYN&quot;,
+        &quot;SPRSKMKMPCKLGTBQTFZSWTFGGLYPLLJZHGJJGYPZLTCSMCNBTJBQFKDHBYZGKPBBYMTDSSXTBNPDKLEYCJNYCDYKZTDHQH&quot;,
+        &quot;SYZSCTARLLTKZLGECLLKJLQJAQNBDKKGHPJTZQKSECSHALQFMMGJNLYJBBTMLYZXDXJPLDLPCQDHZYCBZSCZBZMSLJFLKR&quot;,
+        &quot;ZJSNFRGJHXPDHYJYBZGDLQCSEZGXLBLGYXTWMABCHECMWYJYZLLJJYHLGNDJLSLYGKDZPZXJYYZLWCXSZFGWYYDLYHCLJS&quot;,
+        &quot;CMBJHBLYZLYCBLYDPDQYSXQZBYTDKYXJYYCNRJMPDJGKLCLJBCTBJDDBBLBLCZQRPYXJCJLZCSHLTOLJNMDDDLNGKATHQH&quot;,
+        &quot;JHYKHEZNMSHRPHQQJCHGMFPRXHJGDYCHGHLYRZQLCYQJNZSQTKQJYMSZSWLCFQQQXYFGGYPTQWLMCRNFKKFSYYLQBMQAMM&quot;,
+        &quot;MYXCTPSHCPTXXZZSMPHPSHMCLMLDQFYQXSZYJDJJZZHQPDSZGLSTJBCKBXYQZJSGPSXQZQZRQTBDKYXZKHHGFLBCSMDLDG&quot;,
+        &quot;DZDBLZYYCXNNCSYBZBFGLZZXSWMSCCMQNJQSBDQSJTXXMBLTXZCLZSHZCXRQJGJYLXZFJPHYMZQQYDFQJJLZZNZJCDGZYG&quot;,
+        &quot;CTXMZYSCTLKPHTXHTLBJXJLXSCDQXCBBTJFQZFSLTJBTKQBXXJJLJCHCZDBZJDCZJDCPRNPQCJPFCZLCLZXZDMXMPHJSGZ&quot;,
+        &quot;GSZZQLYLWTJPFSYASMCJBTZYYCWMYTZSJJLJCQLWZMALBXYFBPNLSFHTGJWEJJXXGLLJSTGSHJQLZFKCGNNNSZFDEQFHBS&quot;,
+        &quot;AQTGYLBXMMYGSZLDYDQMJJRGBJTKGDHGKBLQKBDMBYLXWCXYTTYBKMRTJZXQJBHLMHMJJZMQASLDCYXYQDLQCAFYWYXQHZ&quot;,
+        );
+    function utf8_to_gbk($string)//编码转换,必须转换成GB2312字符,这里只是简单的判断并不是很准确,可以自己写一个.
+    {
+    if (mb_check_encoding($string,&#39;gb2312&#39;))
+        return $string;
+    if (function_exists(&#39;iconv&#39;))
+        return iconv(&quot;utf-8&quot;,&quot;gb2312//IGNORE&quot;,$string);
+    return mb_convert_encoding($string,&#39;gb2312&#39;,&#39;utf-8&#39;); 
+    }
+
+    function conv($str)
+    {
+    $str = self::utf8_to_gbk($str);
+    $len = strlen($str);
+    $newStr = &#39;&#39;;
+    for($i=0; $i&lt;$len ; ++$i)
+    {
+        $H = ord($str[$i]);
+        $L = ord($str[$i+1]);
+        //字符集非法
+        if ($H &lt; 0xB0 ||  $L &lt; 0xA1 || $H &gt; 0xF7 || $L == 0xFF)
+        {
+        $newStr .= $str[$i];
+        continue;
+        }
+        if ($H &lt; 0xD8)//($H &gt;= 0xB0 &amp;&amp; $H &lt;=0xD7)//查询文字在一级汉字区(16-55)
+        {
+        $W = ($H &lt;&lt; 8) | $L;
+        foreach(self::$FirstTable as $key=&gt;$value)
+        {
+            if ($W &lt; $value)
+            {
+            $newStr .= self::$FirstLetter[$key];
+            break;
+            }
+        }
+        }
+        else// if (H &gt;= 0xD8 &amp;&amp; H &lt;= 0xF7)//查询中文在二级汉字区(56-87)
+        $newStr .=self::$SecondTable[$H - 0xD8][$L-0xA1];
+        ++$i;
+    }
+    return $newStr;
+    }
+}
+
+echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
+</code></pre>]]></content>
+    
+    
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
+    
+      <category term="拼音" scheme="http://chenall.net/tags/%E6%8B%BC%E9%9F%B3/"/>
+    
+      <category term="转换" scheme="http://chenall.net/tags/%E8%BD%AC%E6%8D%A2/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[分享] ALMRun–小巧的快速启动工具]]></title>
+    <link href="http://chenall.net/post/alrun-merry/"/>
+    <id>http://chenall.net/post/alrun-merry/</id>
+    <published>2013-03-31T10:32:00.000Z</published>
+    <updated>2014-02-10T03:34:03.000Z</updated>
+    <content type="html"><![CDATA[<p>ALMRun 修改自<a href="http://code.google.com/p/name5566-merry/" target="_blank">Merry</a> 是一个软件便捷启动工具,类似于<a href="https://code.google.com/p/altrun/" target="_blank">ALTRUN</a>等软件,功能更强,也是我所经手的第一个VC程序,同样是开源的.感谢原作者<a href="http://name5566.com/" title="ALMRun 的前身Merry作者" target="_blank">Name5566</a></p>
+<p>之前一直在使用<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>,只是这个好久没有更新了,有一些问题无法实现,所以我就在找同类的软件,  </p>
+<p>使用过像Launchy,Executor,FindAndRunRobot等软件,但各有各的缺点都不太顺手,直到有一天在GoogleCode上无意中发现了这个软件Merry,看了软件介绍,基本上就是我理想中的样子,很感兴趣就下载来测试了.</p>
+<h1 id="-">以下文字来源于原版介绍.</h1>
+<blockquote>
+<p>Merry 是一个 Merry 命令执行工具。部分功能相似的软件有 Linux 下的<a href="http://directory.fsf.org/wiki/Gmrun" target="_blank">gmrun</a>，Windows 下的<a href="http://www.autohotkey.com/" target="_blank">AutoHotkey</a>或<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>等，跨平台软件<a href="http://www.launchy.net/" target="_blank">Launchy</a>（不过 Merry 和它们在定位上有差别）。</p>
+<h3 id="-merry">为什么开发 Merry</h3>
+<p>最初使用 Linux 系统非常喜欢 gmrun + openbox 的组合，gmrun 能够弹出一个命令输入窗口，输入程序的名称就可以执行对应的程序，而 openbox 则可以非常方便的进行快捷键的绑定。后来使用 Windows 系统时，一直没有找到类似的替代软件，从而萌发了自己开发一个的想法。简单的制作之后，我开始使用 Merry，经过长时间的使用发现确实带来了很多的便利，致使之后使用没有安装 Merry 的机器时感觉很不习惯，这时候我发现它应该是一个有用的软件，于是有了今天的开源软件 Merry。随着时间的流逝 Merry 已经越来越丰富，而不仅仅只有上述这么简单的功能而已，只要你有想法，Merry 能尽量帮助你实现。</p>
+<h3 id="merry-">Merry 的目标</h3>
+<p>在基于窗口的操作系统中，简化一切重复、繁琐的操作并提供一些实用的功能。</p>
+<h3 id="merry-">Merry 的特点和功能</h3>
+<ul>
+<li>跨平台的支持，让你在所有平台下保持一致的操作方式（目前仅仅实现了 Windows 版本，相信不久之后 Linux 和 MacOS 版就会完成）</li>
+<li>可以定义 Merry 命令（快捷键）来完成一些常用的操作，例如：打开目录、启动程序、打开网页等</li>
+<li>通过 Merry 命令可以模拟用户的输入，例如：模拟键盘和鼠标输入</li>
+<li>通过 Merry 可以轻松的管理窗口，例如：关闭窗口、最大化和还原窗口、移动窗口、隐藏窗口等</li>
+<li>通过 Merry 命令可以来进行自动化的操作，例如：打开某应用程序，自动输入用户密码进行登录等</li>
+<li>Merry 采用完全开放的体系，可以使用 <a href="http://www.lua.org/" target="_blank">Lua</a> 的扩展库或者外部程序来扩展 Merry 的功能</li>
+</ul>
+</blockquote>
+<p>其它介绍请移步下面的网址,我就偷懒不写了.</p>
+<p><a href="https://code.google.com/p/name5566-merry/" target="_blank">https://code.google.com/p/name5566-merry/</a></p>
+<p>由于原版的功能还不是很完善,而我之前也是习惯使用ALTRun的,所以就尝试修改了一下,之前使用ALTRUN的也可以快速转过来.</p>
+<p>修改增强版最主要特点(其它的请看软件目录下的<a href="https://github.com/chenall/Merry" target="_blank">README.MD</a>)</p>
+<ul>
+<li>支持调用ALTRUN的命令列表.</li>
+<li>支持自动扫描指定目录下指定扩展名的文件,并添加到列表中,并且可以指定子目录级别</li>
+<li>简化添加命令方法.</li>
+<li>像ALTRUN一样允许按ALT+N直接启动.</li>
+<li>选中命令之后可以按Ctrl+D定位程序位置(打开程序文件夹).</li>
+<li>支持命令排序功能.</li>
+<li>支持拼音首字母识别(当下比较流行的)</li>
+<li>新增易于维护的NI格式配置文件.</li>
+<li>支持右键发送到或拖放快速添加命令(支持批量添加)</li>
+<li>图形化命令管理器.</li>
+<li>许多实用性功能改进</li>
+</ul>
+<p>另外这个也是可以作为WIN+R来使用的,比如你并没有添加services.msc命令,这时输入services.msc列表当然是不会有任何显示的,不过按回车之后还是会执行到services.msc的,并且会自动添加到列表中,以后再输入就可以看到了.同样支持按TAB输入参数</p>
+<p>因为我是初次接触VC,对VC不熟,修改过程中遇到问题都是从Google找的答案,程序可能会有一些BUG.</p>
+<p>我目前已经使用这个替换了ALTRUN,因为ALTRUN能实现的,这个基本上实现了,没实现了我也会根据需求,尽量去实现.</p>
+<p>其它的不多说了,不管我觉得如何,<span style="color: #800000;">适合自己的</span>,<span style="color: #800000;">用得顺手的</span>才是最好的,各有所好.</p>
+<p>有兴趣的可以下载测试,有问题或建议同样欢迎反馈...</p>
+<p>截图</p>
+<p><img src="http://c-dl.qiniudn.com/img/ALMRunMain.png" alt="软件界面截图" title="软件界面截图"></p>
+<p>选定命令之后按TAB键可以添加参数</p>
+<p><img src="http://c-dl.qiniudn.com/img/merry_args.png" alt="直接输入参数" title="可以直接输入参数"></p>
+<p>在命令列表按Insert键添加新命令</p>
+<p><img src="http://c-dl.qiniudn.com/img/ALMRun_AddCmd.png" alt="按Insert键添加新命令" title="按Insert键添加新命令"></p>
+<p>支持拼音首字母识别,比如:列表中有&quot;宽带连接&quot;,可以输入 &quot;<code>kdlj</code>&quot;<br>这是根据区位表匹配的,比较节省代码,只支持GB2312字符,也没有处理多音字,碰到多音字,一个不行可以换另一个.如果有兴趣帮助我一起开发的可以联系我,或者直接提交补丁文件给我.</p>
+<p>主页地址： <a href="http://almrun.chenall.net" target="_blank"><a href="http://almrun.chenall.net">http://almrun.chenall.net</a></a><br>更新记录: <a href="http://almrun.chenall.net/update_log.html" target="_blank"><a href="http://almrun.chenall.net/update_log.html">http://almrun.chenall.net/update_log.html</a></a><br>修改版源码: <a href="https://github.com/chenall/ALMRun" target="_blank"><a href="https://github.com/chenall/ALMRun">https://github.com/chenall/ALMRun</a></a><br>更多功能介绍: <a href="http://almrun.chenall.net/" target="_blank"><a href="http://almrun.chenall.net/">http://almrun.chenall.net/</a></a><br>扩展功能介绍: <a href="https://github.com/chenall/ALMRun/blob/master/doc/config_api.md" target="_blank"><a href="https://github.com/chenall/ALMRun/blob/master/doc/config_api.md">https://github.com/chenall/ALMRun/blob/master/doc/config_api.md</a></a>  </p>
+<p><strong>注：ALMRun独立主页已经上线，以后请关注<a href="http://almrun.chenall.net" target="_blank">ALMRUN主页</a>获取更新。</strong></p>
+<p>软件下载:</p>
+<ul>
+<li><a href="https://github.com/chenall/ALMRun/archive/v1.2.0.55_BIN.zip" target="_blank">稳定版下载</a>  </li>
+<li><a href="https://github.com/chenall/ALMRun/archive/Build.zip" target="_blank">最新编译版本下载</a>  </li>
+<li><a href="http://almrun.chenall.net/update_log.html" target="_blank">历史版本下载</a>  </li>
+</ul>
+]]></content>
+    
+    
+      <category term="altrun" scheme="http://chenall.net/tags/altrun/"/>
+    
+      <category term="merry" scheme="http://chenall.net/tags/merry/"/>
+    
+      <category term="快速启动" scheme="http://chenall.net/tags/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8/"/>
+    
+      <category term="编程" scheme="http://chenall.net/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="C++" scheme="http://chenall.net/tags/C++/"/>
+    
+      <category term="wxWidgets" scheme="http://chenall.net/tags/wxWidgets/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="C++" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/C++/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[学习] LUA脚本学习1]]></title>
+    <link href="http://chenall.net/post/lua_base_1/"/>
+    <id>http://chenall.net/post/lua_base_1/</id>
+    <published>2013-03-27T17:58:18.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<ol>
+<li><p>获取WINDOWS文件的文件名/路径/扩展名
+例子:</p>
+<pre><code class="lang-lua"> file=&quot;c:\\Windows\\notepad.txt&quot;
+ FileName = file:match(&quot;([^\\]+)$&quot;) -- notepad.txt
+ FilePath = file:sub(1,-FileName:len()-1) -- c:\Windows\
+ FileExt = FileName:match(&quot;%.[^%.]*$&quot;) -- .txt
+</code></pre>
+</li>
+<li><p>WINDOWS下环境变量扩展</p>
+<p>例子:</p>
+<pre><code class="lang-lua">path = &quot;%WinDir%\\Notepad.exe&quot;
+path = path:gsub(&quot;%%(%S+)%%&quot;,os.getenv) -- C:\Windows\notepad.exe
+</code></pre>
+</li>
+<li><p>获取CMD命令输出结果</p>
+<p>例子:</p>
+<pre><code class="lang-lua">local f = io.popen(&#39;dir /b /s&#39;)
+print(f:read(&quot;*a&quot;) -- 读取所有内容
+</code></pre>
+<p>其中read参数可以如下</p>
+<ul>
+<li>*a 读取所有内容</li>
+<li>*n 读取为数据(当输出为数字时用,否则会得到空值)</li>
+<li>*l  读取一行 和 f:line() 一样(read不加参数时默认)</li>
+<li>数字 读取指定数量的字符. 比如输出 &quot;123456&quot; f:read(3) -- &quot;123&quot;</li>
+</ul>
+<p>使用以下命令可以循环读取每一行.</p>
+<pre><code class="lang-lua"> for line in f:lines() do
+ print(line)
+ end
+</code></pre>
+<p>f:lines()也可以用f:read(&quot;*l&quot;)
+或用下面语句读取每4个字节</p>
+<pre><code class="lang-lua">for line in f:read(4) do
+print(line)
+end
+</code></pre>
+</li>
+<li><p>字符串相关操作</p>
+<ul>
+<li>连接使用&quot;..&quot;<pre><code class="lang-lua">a=&quot;abcd&quot;
+b=3456
+print(a..b..&quot;test&quot;)  ---- abcd3456test
+</code></pre>
+</li>
+<li>string.len   计算字符串长度<pre><code>a = &quot;test&quot;
+a:len()   -- 4 或
+string.len(a) -- 4
+--也可以直接用 `#`
+print(#a) --- 4
+</code></pre></li>
+<li>string.sub  字符串提取<pre><code>a=&quot;123456&quot;
+a:sub(1,3)  或 string.sub(a,1,3)  下同 --- 123
+a:sub(-1) -- 6
+a:sub(1,-3) -- 1234
+</code></pre></li>
+<li>相关资料参考: <a href="http://www.lua.org/manual/5.1/manual.html" target="_blank">http://www.lua.org/manual/5.1/manual.html</a></li>
+</ul>
+</li>
+</ol>
+<p>代码在线调试器: <a href="http://www.lua.org/cgi-bin/demo" target="_blank">http://www.lua.org/cgi-bin/demo</a></p>
+]]></content>
+    
+    
+      <category term="LUA" scheme="http://chenall.net/tags/LUA/"/>
+    
+      <category term="学习" scheme="http://chenall.net/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="LUA" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/LUA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[最近通过了新浪云计算SAE高级开发者认证]]></title>
+    <link href="http://chenall.net/post/sae_devlevel/"/>
+    <id>http://chenall.net/post/sae_devlevel/</id>
+    <published>2013-03-18T10:41:08.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>从申请到拿到证书,完成认证,将近一个月的时间.</p>
+<p>通过高级认证之后每个月会自动把云豆补满到1.5万,也就是说我以后基本上可以完全免费使用SAE的资源了,嘿嘿.</p>
+<p>支持JAVA,PYTHON,PHP等语言,相当于一个免费的虚拟主机,但比虚拟主机更加强大.</p>
+<p>也可以绑米,可惜我的域名没有备案,绑定之后访问速度太慢,也许以后要想个法子去备个案.这样就方便多了.</p>
+<p>SAE的访问速度也很快,关键是稳定,安全.</p>
+<p>更多关于SAE的资料可以去官网查看一下,</p>
+<p><a href="http://sae.sina.com.cn/" target="_blank">http://sae.sina.com.cn/</a></p>
+<p>另外SAE是根据资源使用情况计费的,可以针对每个应用设置每天的限额.</p>
+<p>根据我的使用情况,访问量不大的个人主页,一个月大概300云豆就足够了.也就是3元.一年才36,顶多就50元.比虚拟主机靠普多了.</p>
+<p>我最早接触的是GAE,也就是Google的,大家都知道的,在国内想正常使用Google的服务是不太可能的而且很麻烦的,所以以前只是申请了没有怎么用.</p>
+<p>现在云计算是一个趋势,像百度云,阿里云,等,大家都在云上飘,我也要顺风而上,体验一下云.^_^</p>
+]]></content>
+    
+    
+      <category term="sae" scheme="http://chenall.net/tags/sae/"/>
+    
+      <category term="云计算" scheme="http://chenall.net/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[记录] VPS 初步接触]]></title>
+    <link href="http://chenall.net/post/pzea_xen_vps_try/"/>
+    <id>http://chenall.net/post/pzea_xen_vps_try/</id>
+    <published>2013-03-17T14:28:36.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>最近从PzEA入手一个xen VPS，从网上搜到的优惠链接（<a href="http://www.uuvps.com/vps/4919.html" target="_blank">PzEa给力特价VPS 256M Xen VPS 2.5美元 洛杉矶和圣何塞机房</a>）购买的，以下是购买时可以看到的配置信息。实际上硬盘是10G的。够用了</p>
+<ul>
+<li>CPU：单核</li>
+<li>内存：256M</li>
+<li>硬盘：10G</li>
+<li>流量：250G</li>
+<li>IPs：1IPv4</li>
+<li>架构：xen</li>
+<li>可选系统：linux</li>
+</ul>
+<p>用人民币购买1年是162.5元，用美元是$25,按照目前的汇率(太概是155人民币)用美元购买会便宜一些,如果有双币种信用卡可以用美元,否则还是老老实实用支付宝,这个价格比一般的虚拟主机还划算,付完款之后就立即开通了,</p>
+<p>开通之后只安装了一个系统,其它的都需要自己配置.</p>
+<p>为了方便先装一个管理面板,从网上搜了一下感觉<a href="http://amysql.com/AMH.htm" target="_blank">AMH</a>挺不错的就它了.很方便,装上之后基本就可以使用了.</p>
+<p>用SSH连接VPS的IP地址,然后按照<a href="http://amysql.com/AMH/doc.htm" target="_blank">官方的安装方法</a></p>
+<pre><code>wget http://amysql.com/file/AMH/3.1/amh.sh; chmod 775 amh.sh; ./amh.sh 2&gt;&amp;1 | tee amh.log;
+</code></pre><p>然后就是漫长的等待了.太概20分钟左右的样子.完成之后再用</p>
+<p><strong><a href="http://ip:8888" target="_blank">http://ip:8888</a></strong> 进入管理面板</p>
+<p>里面可以管理虚拟主机,FTP/MYSQL等.挺方便的.</p>
+<p>然后想怎么折腾就怎么折腾吧,别忘了VPS安全,使用iptables设置一下规则.(都可以从Google上找到)</p>
+<p>这个比较适合有一定LINUX基础的人练手,有独立IP可以做很多事情....</p>
+<p>申请了一个免费的tk域名先装一个typecho来测试一下.</p>
+<p><a href="http://xvps.tk/" target="_blank"><a href="http://xvps.tk/">http://xvps.tk/</a></a></p>
+<p>嘿嘿,有了这个就相当于有了一台属于自己的永不断电的电脑了.以后又有得折腾了.^_^</p>
+]]></content>
+    
+    
+      <category term="amh" scheme="http://chenall.net/tags/amh/"/>
+    
+      <category term="pzea" scheme="http://chenall.net/tags/pzea/"/>
+    
+      <category term="vps" scheme="http://chenall.net/tags/vps/"/>
+    
+      <category term="xen" scheme="http://chenall.net/tags/xen/"/>
+    
+      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[PHP] 打算整合多个网盘资源]]></title>
+    <link href="http://chenall.net/post/netdisk_sdk/"/>
+    <id>http://chenall.net/post/netdisk_sdk/</id>
+    <published>2013-02-07T11:22:28.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>目前有N多的网络硬盘,各有各的好处和优缺点.另外基本上都有开放API.只是API调用方法都不一样.若是可以让所有网盘的调用方法变得一致.这样一来如是要开发什么的都很方便了.一个网盘不行了就换一个,什么代码都不用改.</p>
+<p>HOHO~~~应该有搞头吧,</p>
+<p>这里的金山快盘SDK就是一个原型<a href="http://chenall.net/post/sdk_kp_php/">http://chenall.net/post/sdk_kp_php/</a></p>
+<p>最终我希望所有的网盘都可以这样子来调用</p>
+<pre><code>$disk = &#39;kuaipan&#39;;
+$fs = new $disk(CONSUMER_KEY,CONSUMER_SECRET);
+$fs-&gt;ls();
+</code></pre><p>这样一来,批量管理网盘就变得容易了.一个文件可以同时上传到N个网盘. 不知有没有支持的?</p>
+<p>以后有空再放个DEMO出来.</p>
+<p>EDIT: 由于时间还有个人精力有限,搁浅了...</p>
+]]></content>
+    
+    
+      <category term="API" scheme="http://chenall.net/tags/API/"/>
+    
+      <category term="网盘" scheme="http://chenall.net/tags/%E7%BD%91%E7%9B%98/"/>
+    
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[单文件程序制作利器Cameyo更新]]></title>
+    <link href="http://chenall.net/post/cameyo_2-0-873/"/>
+    <id>http://chenall.net/post/cameyo_2-0-873/</id>
+    <published>2013-02-05T16:33:52.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>本站的软件大部份是使用该软件制作的.</p>
+<h2 id="cameyo-news">Cameyo News</h2>
+<h3 id="version-2-0-873-is-out">Version 2.0.873 is out</h3>
+<ul>
+<li>Improved Windows 8 support</li>
+<li>Automatically notifies about new Cameyo versions</li>
+<li><p>New languages</p>
+<p>If you don&#39;t already have it, <a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ1/cameyo.com/download.aspx" target="_blank">download it now</a></p>
+</li>
+</ul>
+<h3 id="coming-soon-">Coming soon(看到以下内容了吗?太赞了.期待新的版本)</h3>
+<p> Our upcoming major version will:</p>
+<ul>
+<li>Be FAST</li>
+<li>Include execute-from-memory mode (no files pre-extraction)</li>
+<li>Store program files separately from data / modified files</li>
+<li>Support auto-updating for virtual applications</li>
+<li>Allow password protection against package editing</li>
+<li>Be Terminal Servers friendly</li>
+<li>Contain many more things we can&#39;t tell you just yet!</li>
+</ul>
+<h3 id="useful-links-to-remember-">Useful links to remember:</h3>
+<p><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ3/online.cameyo.com/library.aspx" target="_blank">Online App Library</a><br><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ4/online.cameyo.com/library.aspx" target="_blank">Access your personal Favorite apps, from anywhere</a><br><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ5/online.cameyo.com/submit.aspx" target="_blank">Our unique online packager</a>  </p>
+]]></content>
+    
+    
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+    
+      <category term="单文件" scheme="http://chenall.net/tags/%E5%8D%95%E6%96%87%E4%BB%B6/"/>
+    
+      <category term="软件推荐" scheme="http://chenall.net/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[金山快盘PHP SDK(普通版+简化版)[2013-04-12]]]></title>
+    <link href="http://chenall.net/post/sdk_kp_php/"/>
+    <id>http://chenall.net/post/sdk_kp_php/</id>
+    <published>2012-12-12T14:02:22.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>金山快盘开放平台 PHP SDK</p>
+<p>来源: <!--[iLink[id:890]iLink]--></p>
+<p>时间: 2013-04-12
+使用方法：</p>
+<p>有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php</p>
+<p>可以根据自己的需要选择使用。</p>
+<ol>
+<li>首先初化始一个类.<pre><code>kp = new KuaiPan(CONSUMER_KEY,CONSUMER_SECRET);
+</code></pre></li>
+<li>通用API调用方法<pre><code>$kp-&gt;APINAME($params,$path)
+</code></pre></li>
+</ol>
+<p>其中<code>$params</code>是参数列表，可以使用字符串方式也可以使用组数的方式。不需要参数可以留空。<br><code>$path</code>，路径，部份API需要带路径信息，可以加上，该参数可以省略。<br>如果不需要参数直接留空就行了。<br>例子:</p>
+<pre><code>$kp-&gt;metadata()
+$kp-&gt;metadata(&#39;&#39;,&#39;/mytest&#39;);
+$kp-&gt;upload_file(array(&#39;overwrite&#39;=&gt;&quot;true&quot;,&#39;root&#39;=&gt;&#39;app_folder&#39;,&#39;path&#39;=&gt;&#39;/test.txt&#39;),array(&#39;file&#39;=&gt;&#39;@/test.php;filename=test.txt&#39;));
+</code></pre><p>调用API正常的话返回一个<strong>JSON OBJECT</strong>数据，否则会设置变量<strong>$kp-&gt;errstr</strong>.<br>只要判断<strong>$kp-&gt;errstr</strong>是否为空就可以知道调用是否成功了。</p>
+<p>目前可使用API，按官方SDK的命名方式</p>
+<ul>
+<li>account_info</li>
+<li>metadata</li>
+<li>history</li>
+<li>shares</li>
+<li>create_folder</li>
+<li>delete</li>
+<li>move</li>
+<li>copy</li>
+<li>copy_ref</li>
+<li>upload_locate</li>
+<li>download_file</li>
+<li>download_file_by_id</li>
+<li>upload_file</li>
+<li>upload_file_by_id</li>
+<li>thumbnail</li>
+<li>documentView</li>
+<li>requestToken</li>
+<li>accessToken</li>
+</ul>
+<p>关于params参数可以自己上官网查看</p>
+<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank"><a href="http://www.kuaipan.cn/developers/document.htm">http://www.kuaipan.cn/developers/document.htm</a></a></p>
+<h3 id="sdk-kp-class-php">SDK简化版说明 kp.class.php</h3>
+<ol>
+<li>授权<pre><code>$oauth = $kp-&gt;OAuth();
+</code></pre>打开一个窗口供用户信息授权信息，然后返回。
+授权成功后自己请保存以下OAUTH信息，下次可以直接使用。<pre><code>$oauth-&gt;oauth_token
+$oauth-&gt;oauth_token_secret
+</code></pre>以后可以直接使用下面的方法不需要再次授权。<pre><code>$kp-&gt;oauth_token = $oauth-&gt;oauth_token
+$kp-&gt;oauth_token_secret = $oauth-&gt;oauth_token_secret
+</code></pre></li>
+<li>创建文件夹<pre><code>$ret = $kp-&gt;md(PATH)
+</code></pre></li>
+<li>删除文件（夹）<br>彻底删除<pre><code>$ret = $kp-&gt;rm(PATH)
+</code></pre>删除到回收站<pre><code>$ret = $kp-&gt;rm(PATH,&quot;false&quot;)
+</code></pre></li>
+<li>复制文件（夹）<pre><code>$ret = $kp-&gt;cp(FROM_PATH,TO_PATH);
+</code></pre></li>
+<li>移动文件（夹）<pre><code>$ret = $kp-&gt;mv(FROM_PATH,TO_PATH);
+</code></pre></li>
+<li>下载文件
+直接下载  <pre><code>$ret= $kp-&gt;download(PATH);
+</code></pre>手动下载，返回一个地址<pre><code>$ret= $kp-&gt;download(PATH,false);
+</code></pre></li>
+<li>上传文件<pre><code>$ret= $kp-&gt;upload(PATH,FILE);
+</code></pre>如果<code>PATH</code>路径最后字符是&#39;/&#39;，认为是一个目录，上传到该目录，上传后的文件名从<code>FILE</code>中提取。如果<code>PATH</code>路径最后字符不是&#39;/&#39;，认为是一个文件，上传后的文件名就是<code>PATH</code>指定的文件名。<pre><code>$ret= $kp-&gt;upload(PATH,FILE,true);//显示上传进度百分比
+</code></pre></li>
+<li>列出文件夹内容<pre><code>$ret= $kp-&gt;ls(PATH);
+</code></pre></li>
+<li>判断操作是否成功可以使用变量<strong>errstr</strong><pre><code>if (empty($kp-&gt;errstr))
+    echo &#39;成功&#39;;
+else
+    echo &#39;失败&#39;.$kp-&gt;errstr;
+</code></pre></li>
+</ol>
+<p>可以看一下k_test.php里面的测试实例。</p>
+<p>最新SDK源码下载地址:</p>
+<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank"><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></a></p>
+]]></content>
+    
+    
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
+    
+      <category term="SDK" scheme="http://chenall.net/tags/SDK/"/>
+    
+      <category term="优化" scheme="http://chenall.net/tags/%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="快盘" scheme="http://chenall.net/tags/%E5%BF%AB%E7%9B%98/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[PHP] 简易的SMTP邮件发送类]]></title>
+    <link href="http://chenall.net/post/cs_smtp/"/>
+    <id>http://chenall.net/post/cs_smtp/</id>
+    <published>2012-12-05T13:51:57.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>最近由于需要发送（带大附件）的邮件，上网找了一下，像PHPMailer等试了一下，虽然封装得很好，但是用起来都不太顺手。</p>
+<p>像PHPMailer发送大附件时就会提示类似如下的错误:
+    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)</p>
+<p>我分配了128MB的内存发送个20MB的附件都不行，把内存加到512可以了，说明这个PHPMailer太占用内存了。可能是和PHPMail的封装有关，因为数据要转来转去的，很占用内存。</p>
+<p>去看了一下SMTP协议，才发现原来用SMTP协议发送邮件是如此的简单。</p>
+<p>可以使用TELNET 命令验证
+以下是使用TELNET命令发送一个邮件的过程记录，红色是输入的内容，绿色是注释。</p>
+<p><span style="color: #ff0000;">TELNET SMTP.QQ.COM 25</span></p>
+<p><span style="color: #3366ff;">220 smtp.qq.com Esmtp QQ Mail Server</span></p>
+<p><span style="color: #ff0000;">HELO LOCALHOST  <span style="color: #00ff00;">首先需要发送HELO或EHLO命令</span></span></p>
+<p><span style="color: #3366ff;">250 smtp.qq.com</span></p>
+<p><span style="color: #ff0000;">AUTH LOGIN  <span style="color: #00ff00;"> SMTP用户验证</span></span></p>
+<p><span style="color: #3366ff;">334 VXNlcm5hbWU6 <span style="color: #00ff00;">BASE64解码后： Username:就是告诉你要输入使用BASE64编码的用户名</span></span></p>
+<p><span style="color: #ff0000;">经过BASE64编码的用户名</span></p>
+<p><span style="color: #3366ff;">334 UGFzc3dvcmQ6 <span style="color: #00ff00;">BASE64解码后： Password:</span></span></p>
+<p><span style="color: #ff0000;">经过BASE64编码的密码</span></p>
+<p><span style="color: #3366ff;">235 Authentication successful <span style="color: #00ff00;">验证通过</span></span></p>
+<p><span style="color: #ff0000;">MAIL FROM: 发送者邮件地址要和上面的用户名一样</span></p>
+<p><span style="color: #3366ff;">250 Ok</span></p>
+<p><span style="color: #ff0000;">RCPT TO: 接收者邮件地址</span></p>
+<p><span style="color: #3366ff;">250 Ok</span></p>
+<p><span style="color: #ff0000;">DATA   <span style="color: #00ff00;">告诉服务器我要开始发送邮件数据了</span></span></p>
+<p><span style="color: #3366ff;">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;  <span style="color: #00ff00;">告诉你要使用</span></span><span style="color: #00ff00;"> &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;即PHP的&quot;\r\n.\r\n&quot;来告之服务器已经完成了。这里只是简单的发送了一些字符信息，先输入一个回车，然后你要发送的内容，完成之后再按回车，接首输入&quot;.&quot;再回车完成数据发送。</span></p>
+<p><span style="color: #ff0000;">abcdtest</span></p>
+<p><span style="color: #ff0000;">aass</span></p>
+<p><span style="color: #ff0000;">.</span></p>
+<p><span style="color: #3366ff;">250 Ok: queued as</span></p>
+<p><span style="color: #ff0000;">QUIT</span></p>
+<p><span style="color: #00ff00;">退出</span></span></p>
+<p>然后就可以到你的邮箱中去看看有没有收到刚发送的邮件。
+明白了发送原理就可以去写代码来实现了。这里用的是<code>fsock</code>方式。使用PHP写了一个很简单的SMTP类，可以发送带附件的邮件。需要的可以拿去用。</p>
+<p>使用<code>github</code>托管源码，可以从以下地方下载最新版本源码。
+<a href="https://github.com/chenall/chenall/tree/master/cs_smtp" target="_blank">https://github.com/chenall/chenall/tree/master/cs_smtp</a></p>
+<pre><code class="lang-php">&lt;?php
+
+/*
+    简易的SMTP发送邮件类，代码比较少，有助于学习SMTP协议，
+    可以带附件，支持需要验证的SMTP服务器（目前的SMTP基本都需要验证）
+    编写: chenall
+    时间: 2012-12-04
+    网址: http://chenall.net/post/cs_smtp/
+    修订记录:
+        2012-12-08
+            添加AddURL函数，可以直接从某个网址上下载文件并作为附件发送。
+            修正由于发送人和接收人邮件地址没有使用&quot;&lt;&gt;&quot;126邮箱SMTP无法使用的问题。
+        2012-12-06
+            添加reset函数，重置连接，这样可以发送多个邮件。
+        2012-12-05
+           发送附件的代码整合到send函数中，减少变量的使用，快速输出，节省内存占用;
+        2012-12-04
+           第一个版本
+
+    使用方法:
+        1. 初始化：连接到服务器（默认是QQ邮箱）
+           $mail = new cs_smtp(&#39;smtp.qq.com&#39;,25)
+           if ($mail-&gt;errstr) //如果连接出错
+               die($mail-&gt;errstr;
+        2. 登录到服务器验证,如果失败返回FALSE;
+           if (!$mail-&gt;login(&#39;USERNAME&#39;,&#39;PASSWORD&#39;))
+                die($mail-&gt;errstr;
+        3. 添加附件如果不指定name自动从指定的文件中取文件名
+           $mail-&gt;AddFile($file,$name) //服务器上的文件，可以指定文件名;
+        4. 发送邮件
+            $mail-&gt;send($to,$subject,$body)
+            $to 收件人，多个使用&#39;,&#39;分隔
+            $subject 邮件主题，可选。
+            $body  邮件主体内容，可选
+*/
+class cs_smtp
+{
+    private $CRLF = &quot;\r\n&quot;;
+    private $from;
+    private $smtp = null;
+    private $attach = array();
+    public $debug = true;//调试开关
+    public $errstr = &#39;&#39;;
+
+    function __construct($host=&#39;smtp.qq.com&#39;,$port = 25) {
+        if (empty($host))
+            die(&#39;SMTP服务器未指定!&#39;);
+        $this-&gt;smtp = fsockopen($host,$port,$errno,$errstr,5);
+        if (empty($this-&gt;smtp))
+        {
+            $this-&gt;errstr = &#39;错误&#39;.$errno.&#39;:&#39;.$errstr;
+            return;
+        }
+        $this-&gt;smtp_log(fread($this-&gt;smtp, 515));
+        if (intval($this-&gt;smtp_cmd(&#39;EHLO &#39;.$host)) != 250 &amp;&amp; intval($this-&gt;smtp_cmd(&#39;HELO &#39;.$host)))
+            return $this-&gt;errstr = &#39;服务器不支持！&#39;;
+        $this-&gt;errstr = &#39;&#39;;
+    }
+
+    private function AttachURL($url,$name)
+    {
+        $info = parse_url($url);
+        isset($info[&#39;port&#39;]) || $info[&#39;port&#39;] = 80;
+        isset($info[&#39;path&#39;]) || $info[&#39;path&#39;] = &#39;/&#39;;
+        isset($info[&#39;query&#39;]) || $info[&#39;query&#39;] = &#39;&#39;;
+        $down = fsockopen($info[&#39;host&#39;],$info[&#39;port&#39;],$errno,$errstr,5);
+        if (!$down)
+            return false;
+        $out = &quot;GET &quot;.$info[&#39;path&#39;].&#39;?&#39;.$info[&#39;query&#39;].&quot; HTTP/1.1\r\n&quot;;
+        $out .=&quot;Host: &quot;.$info[&#39;host&#39;].&quot;\r\n&quot;;
+        $out .= &quot;Connection: Close\r\n\r\n&quot;;
+        fwrite($down, $out);
+        $filesize = 0;
+        while (!feof($down)) {
+            $a = fgets($down,515);
+            if ($a == &quot;\r\n&quot;)
+                break;
+            $a = explode(&#39;:&#39;,$a);
+            if (strcasecmp($a[0],&#39;Content-Length&#39;) == 0)
+                $filesize = intval($a[1]);
+        }
+        $sendsize = 0;
+        echo &quot;TotalSize: &quot;.$filesize.&quot;\r\n&quot;;
+        $i = 0;
+        while (!feof($down)) {
+            $data = fread($down,0x2000);
+            $sendsize += strlen($data);
+            if ($filesize)
+            {
+                echo &quot;$i Send:&quot;.$sendsize.&quot;\r&quot;;
+                ob_flush();
+                flush();
+            }
+            ++$i;
+            fwrite($this-&gt;smtp,chunk_split(base64_encode($data)));
+        }
+        echo &quot;\r\n&quot;;
+        fclose($down);
+        return ($filesize&gt;0)?$filesize==$sendsize:true;
+    }
+
+    function __destruct()
+    {
+        if ($this-&gt;smtp)
+            $this-&gt;smtp_cmd(&#39;QUIT&#39;);//发送退出命令
+    }
+
+    private function smtp_log($msg)//即时输出调试使用
+    {
+        if ($this-&gt;debug == false)
+            return;
+        echo $msg.&quot;\r\n&quot;;
+        ob_flush();
+        flush();
+    }
+
+    function reset()
+    {
+        $this-&gt;attach = null;
+        $this-&gt;smtp_cmd(&#39;RSET&#39;);
+    }
+
+    function smtp_cmd($msg)//SMTP命令发送和收收
+    {
+        fputs($this-&gt;smtp,$msg.$this-&gt;CRLF);
+        $this-&gt;smtp_log(&#39;SEND:&#39;. substr($msg,0,80));
+        $res = fread($this-&gt;smtp, 515);
+        $this-&gt;smtp_log($res);
+        $this-&gt;errstr = $res;
+        return $res;
+    }
+
+    function AddURL($url,$name)
+    {
+        $this-&gt;attach[$name] = $url;
+    }
+
+    function AddFile($file,$name = &#39;&#39;)//添加文件附件
+    {
+        if (file_exists($file))
+        {
+            if (!empty($name))
+                return $this-&gt;attach[$name] = $file;
+            $fn = pathinfo($file);
+            return $this-&gt;attach[$fn[&#39;basename&#39;]] = $file;
+        }
+        return false;
+    }
+
+    function send($to,$subject=&#39;&#39;,$body = &#39;&#39;)
+    {
+        $this-&gt;smtp_cmd(&quot;MAIL FROM: &lt;&quot;.$this-&gt;from.&#39;&gt;&#39;);
+        $mailto = explode(&#39;,&#39;,$to);
+        foreach($mailto as $email_to)
+            $this-&gt;smtp_cmd(&quot;RCPT TO: &lt;&quot;.$email_to.&quot;&gt;&quot;);
+        if (intval($this-&gt;smtp_cmd(&quot;DATA&quot;)) != 354)//正确的返回必须是354
+            return false;
+        fwrite($this-&gt;smtp,&quot;To:$to\nFrom: &quot;.$this-&gt;from.&quot;\nSubject: $subject\n&quot;);
+
+        $boundary = uniqid(&quot;--BY_CHENALL_&quot;,true);
+        $headers = &quot;MIME-Version: 1.0&quot;.$this-&gt;CRLF;
+        $headers .= &quot;From: &lt;&quot;.$this-&gt;from.&quot;&gt;&quot;.$this-&gt;CRLF;
+        $headers .= &quot;Content-type: multipart/mixed; boundary= $boundary\n\n&quot;.$this-&gt;CRLF;//headers结束要至少两个换行
+        fwrite($this-&gt;smtp,$headers);
+
+        $msg = &quot;--$boundary\nContent-Type: text/html;charset=\&quot;ISO-8859-1\&quot;\nContent-Transfer-Encoding: base64\n\n&quot;;
+        $msg .= chunk_split(base64_encode($body));
+        fwrite($this-&gt;smtp,$msg);
+        $files = &#39;&#39;;
+        $errinfo = &#39;&#39;;
+        foreach($this-&gt;attach as $name=&gt;$file)
+        {
+            $files .= $name;
+            $msg = &quot;--$boundary\n--$boundary\n&quot;;
+            $msg .= &quot;Content-Type: application/octet-stream; name=\&quot;&quot;.$name.&quot;\&quot;\n&quot;;
+            $msg .= &quot;Content-Disposition: attachment; filename=\&quot;&quot;.$name.&quot;\&quot;\n&quot;;
+            $msg .= &quot;Content-transfer-encoding: base64\n\n&quot;;
+            fwrite($this-&gt;smtp,$msg);
+            if (substr($file,4,1) == &#39;:&#39;)//URL like http:///file://
+            {
+                if (!$this-&gt;AttachURL($file,$name))
+                    $errinfo .= &#39;文件下载错误:&#39;.$name.&quot;,文件可能是错误的\r\n$file&quot;;
+            }
+            else
+                fwrite($this-&gt;smtp,chunk_split(base64_encode(file_get_contents($file))));//使用BASE64编码，再用chunk_split大卸八块（每行76个字符）
+        }
+        if (!empty($errinfo))
+        {
+            $msg = &quot;--$boundary\n--$boundary\n&quot;;
+            $msg .= &quot;Content-Type: application/octet-stream; name=Error.log\n&quot;;
+            $msg .= &quot;Content-Disposition: attachment; filename=Error.log\n&quot;;
+            $msg .= &quot;Content-transfer-encoding: base64\n\n&quot;;
+            fwrite($this-&gt;smtp,$msg);
+            fwrite($this-&gt;smtp,chunk_split(base64_encode($errinfo)));
+        }
+        return intval($this-&gt;smtp_cmd(&quot;--$boundary--\n\r\n.&quot;)) == 250;//结束DATA发送，服务器会返回执行结果，如果代码不是250则出错。
+    }
+
+    function login($su,$sp)
+    {
+        if (empty($this-&gt;smtp))
+            return false;
+        $res = $this-&gt;smtp_cmd(&quot;AUTH LOGIN&quot;);
+        if (intval($res)&gt;400)
+            return !$this-&gt;errstr = $res;
+        $res = $this-&gt;smtp_cmd(base64_encode($su));
+        if (intval($res)&gt;400)
+            return !$this-&gt;errstr = $res;
+        $res = $this-&gt;smtp_cmd(base64_encode($sp));
+        if (intval($res)&gt;400)
+            return !$this-&gt;errstr = $res;
+        $this-&gt;from = $su;
+        return true;
+    }
+}
+</code></pre>
+]]></content>
+    
+    
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
+    
+      <category term="PHPMailer" scheme="http://chenall.net/tags/PHPMailer/"/>
+    
+      <category term="SMTP" scheme="http://chenall.net/tags/SMTP/"/>
+    
+      <category term="原创" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用共享打印机的另一个方案]]></title>
+    <link href="http://chenall.net/post/all_print_to_lpt/"/>
+    <id>http://chenall.net/post/all_print_to_lpt/</id>
+    <published>2012-11-30T11:54:17.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>一直都懒得写文章,嘿嘿,抽空把一些日常工作中用到的实用功能分享一下,也许会有人需要.</p>
+<p>一般情况下使用共享打印机都是直接输入计算机名或IP然后双击那个共享的打印机进行安装,这个方法比较简单.</p>
+<p>但是有一些软件它必须使用<code>LPT</code>端口来打印,这时就没有办法用共享了,这里介绍另一种安装方法,可以解决这类问题.如果你早就知道了可以跳过,因为可能是一样的方法.</p>
+<p>例子: 有一个条码打印机 OS-214的,使用佳为软件的标签打印,如果是本机的打印一切正常,但是如果使用上面的共享打印就不行了,因为它是直接写<code>LPT</code>端口的.</p>
+<h3 id="-">解决方法:</h3>
+<ol>
+<li>在装有条码打印机的机子上把这个打印机设为共享比如名为<code>LABEL</code></li>
+<li>在需要使用的机子上映射并安装这个共享打印机<blockquote>
+<p>   例子,有装打印机的电脑IP是<code>192.168.0.5</code>,共享名为<code>LABEL</code>
+ 在需要使用的机子上直接输入以下命令先进行共享映射.</p>
+<pre><code class="lang-bat"> net use LPT1: \\192.168.0.5\LABEL /PERSISTENT:YES
+</code></pre>
+<p> 成功之后就可以把这个打印机当成本地的来使用了,只要再本地添加新打印机就行了,端口选择<code>LPT1</code>,驱动就是对应的驱动.</p>
+</blockquote>
+</li>
+<li>装完了可以打印一下测试页,如果正常的话就OK了,否则请查看是不是哪一步出错了.</li>
+<li>其它机子只要重复用2-3的方法依次安装就行了.</li>
+</ol>
+<p>再试试看,是不是可以了.</p>
+<p>用这个方法也可以把<code>USB</code>端口等的打印机转换成<code>LPT</code>端口(只要全部在同一机子上操作就行了),因为某些软件必须使用<code>LPT</code>端口.</p>
+]]></content>
+    
+    
+      <category term="共享" scheme="http://chenall.net/tags/%E5%85%B1%E4%BA%AB/"/>
+    
+      <category term="打印机" scheme="http://chenall.net/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
+    
+      <category term="系统相关" scheme="http://chenall.net/categories/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]]]></title>
+    <link href="http://chenall.net/post/php_http_proxy/"/>
+    <id>http://chenall.net/post/php_http_proxy/</id>
+    <published>2012-11-27T12:03:49.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>使用PHP做的一个简易HTTP代理服务端,没有多少技术含量.有时可以利用一下.嘿嘿.比如在公司内部可以用它来偷偷上网,当然了要求了内部网站,并且支持PHP而且该服务器可以上网,你还要有办法访问到这个电脑.</p>
+<p>最初我是利用它来抓取数据包用的,通过代理可以在代理服务器上抓取到所有发送和接收的数据包,所以使用别人的代理时需要注意,因为别人可以截获/修改你发送的数据包,</p>
+<p>要求: 有独立IP,支持PHP+CURL.</p>
+<p>使用方法,把代码直接上传到PHP服务器上,并设置好URL重写规则.就可以开始使用了,
+一个简单的URL重写规则(比较适用于服务端和客户端是网一网络的情况比如内网，只是简单的判断一下如果是通过代理访问就设为代理服务器)</p>
+<pre><code>RewriteCond %{HTTP_PROXY_CONNECTION} !^$
+RewriteRule !^proxy.php proxy.php [NE,NC,L]
+</code></pre><p>比如你的服务器IP是 192.168.0.88</p>
+<p>在浏览器客户端设置HTTP代理192.168.0.88 端口 80就可以开始上网了.</p>
+<p>注：最新版本源码请从以下地址查看、下载。
+<a href="https://github.com/chenall/chenall/tree/master/php/php_proxy" target="_blank"><a href="https://github.com/chenall/chenall/tree/master/php/php_proxy">https://github.com/chenall/chenall/tree/master/php/php_proxy</a></a></p>
+<pre><code class="lang-php">&lt;?php
+/*
+    使用PHP服务端来做简易的HTTP代理
+    不支持需要证书的网站或使用&quot;multipart/form-data&quot;加密的POST类型(一般上传文件或发贴使用这个加密).
+    用途: ......
+    编写: chenall
+    时间: 2012-11-27
+    版本: 1.1
+    网址: http://chenall.net/post/php_http_proxy/
+    修订:
+
+         2012-11-28 v1.1
+           1.添加write_function,分段输出(可以在线视频).
+           2.预置调试,可以开启记录模式,记录所有访问和返回的内容.
+*/
+$chunked = 0;
+$gziped = 0;
+function header_function($ch, $header){
+    global $debug;
+    if (stripos($header,&#39;chunked&#39;) !== false)//如果碰到分断好像会出错,所以过滤一下.若你有好的方案烦告之.
+        $GLOBALS[&#39;chunked&#39;] = 1;
+    if (stripos($header,&#39;Content-Encoding: gzip&#39;) === 0)
+        $GLOBALS[&#39;gziped&#39;] = 1;
+    header($header);
+    empty($debug) || fwrite($debug,$header);
+    return strlen($header);
+}
+
+function write_function($ch, $body){
+    global $debug;
+    if ($GLOBALS[&#39;chunked&#39;]){
+        printf(&quot;%x\r\n%s\r\n&quot;, strlen($body), $body);
+    }else{
+        echo $body;
+    }
+    if ($debug)
+    {
+        //if ($GLOBALS[&#39;gziped&#39;])
+        //    fwrite($debug,gzinflate(substr($body,10,-4)));
+        //else
+            fwrite($debug,$body);
+    }
+    return strlen($body);
+}
+
+function proxy()
+{
+    global $debug;
+    $hearer = array();
+    //获取HTTP相关的HEADER信息
+    if (function_exists(&#39;getallheaders&#39;))
+    {
+        $allheader = getallheaders();
+        foreach($allheader as $h=&gt;$key)
+        {
+            $header[] = $h.&#39;: &#39;.$key;
+        }
+    }
+    else
+    {
+        foreach($_SERVER as $key=&gt;$value)
+        {
+            if (strcasecmp(substr($key,0,4),&#39;HTTP&#39;) == 0)
+            {
+                $header[] = substr($key,5).&#39;: &#39;.$value;
+            }
+        }
+        if (isset($_SERVER[&#39;PHP_AUTH_DIGEST&#39;])) { 
+            $header[] = &#39;AUTHORIZATION: &#39;.$_SERVER[&#39;PHP_AUTH_DIGEST&#39;]; 
+        } else if (isset($_SERVER[&#39;PHP_AUTH_USER&#39;]) &amp;&amp; isset($_SERVER[&#39;PHP_AUTH_PW&#39;])) {
+            $header[] = &#39;AUTHORIZATION: &#39;.base64_encode($_SERVER[&#39;PHP_AUTH_USER&#39;] . &#39;:&#39; . $_SERVER[&#39;PHP_AUTH_PW&#39;]); 
+        }
+        if (isset($_SERVER[&#39;CONTENT_LENGTH&#39;])) { 
+            $header[] = &#39;CONTENT-LENGTH: &#39;.$_SERVER[&#39;CONTENT_LENGTH&#39;]; 
+        }
+        if (isset($_SERVER[&#39;CONTENT_TYPE&#39;])) { 
+            $header[] = &#39;CONTENT_TYPE: &#39;.$_SERVER[&#39;CONTENT_TYPE&#39;]; 
+        }
+    }
+    $url = $_SERVER[&#39;REQUEST_URI&#39;];
+    $curl_opts = array(
+        CURLOPT_URL =&gt; $url,
+        CURLOPT_CONNECTTIMEOUT =&gt; 10,
+        CURLOPT_TIMEOUT =&gt; 10,
+        CURLOPT_AUTOREFERER =&gt; true,
+        CURLOPT_FOLLOWLOCATION =&gt; true,
+        CURLOPT_RETURNTRANSFER =&gt; true,
+        CURLOPT_BINARYTRANSFER =&gt; true,
+        CURLOPT_HEADERFUNCTION =&gt; &#39;header_function&#39;,
+        CURLOPT_WRITEFUNCTION =&gt; &#39;write_function&#39;,
+        CURLOPT_CUSTOMREQUEST =&gt;$_SERVER[&#39;REQUEST_METHOD&#39;],
+        CURLOPT_SSL_VERIFYPEER =&gt; false,
+        CURLOPT_HTTPHEADER =&gt; $header,
+        CURLOPT_SSL_VERIFYHOST =&gt; false
+    );
+
+    if ($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;)//如果是POST就读取POST信息,不支持
+    {
+        $curl_opts[CURLOPT_POST] = true; 
+        $curl_opts[CURLOPT_POSTFIELDS] = file_get_contents(&#39;php://input&#39;); 
+    }
+    $curl = curl_init();
+    curl_setopt_array ($curl, $curl_opts);
+    empty($debug) || fwrite($debug,&quot;\r\n&quot;.date(&#39;Y-m-d H:i:s&#39;,time()).&quot; URL: &quot;.$curl_opts[CURLOPT_URL].&quot;\r\n&quot;.$curl_opts[CURLOPT_POSTFIELDS].&quot;\r\n&quot;.implode(&quot;\r\n&quot;,$header).&quot;\r\n\r\n&quot;);
+    $ret = curl_exec ($curl);
+    if ($GLOBALS[&#39;chunked&#39;]){
+        echo &quot;0\r\n\r\n&quot;;
+    }
+    curl_close($curl);
+    unset($curl);
+}
+$debug = 1;//设为1开启记录.
+if ($debug)
+{
+    if (!file_exists(&#39;debug/&#39;))
+        mkdir(&#39;debug&#39;);
+    $debug = fopen(&quot;debug/&quot;.$_SERVER[&#39;REMOTE_ADDR&#39;].date(&#39;_ymdHis_&#39;,time()).&#39;__&#39;.$_SERVER[&#39;SERVER_NAME&#39;].&quot;.log&quot;,&#39;a&#39;);
+    fwrite($debug,print_r($_SERVER,true));
+    fwrite($debug,&quot;===========php://input===========\r\n&quot;.@file_get_contents(&#39;php://input&#39;).&quot;\r\n======================\r\n&quot;);
+}
+proxy();
+empty($debug) || fclose($debug);
+</code></pre>
+]]></content>
+    
+    
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
+    
+      <category term="原创" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="代理" scheme="http://chenall.net/tags/%E4%BB%A3%E7%90%86/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[PHP相关记录]]></title>
+    <link href="http://chenall.net/post/php_manual/"/>
+    <id>http://chenall.net/post/php_manual/</id>
+    <published>2012-11-27T10:35:48.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<ol>
+<li>PHP Curl 417 Expectation Failed
+原因: 服务端使用lighttpd,而lighttp不支持返回&quot;Expect: 100-continue&quot;这样的header，就会以417 &quot;Expectation failed&quot; 来代替（lighttpd 1.5.0无此问题）。
+解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(&#39;Expect:&#39;);</li>
+<li>使用MYSQLI或PDO来代替MYSQL
+相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a>
+通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
+<li>MYSQL数据库查询语句优化
+如下例子第二句比第一句速度更快,当然了,两个命令显示的结果是不一样的,具体可以查一下相关资料,只是大部份情况下都可以用join命令来优化.<pre><code>select * from t1,t2 where t1.id=t2.id
+select * from t1 left join t2 using(id)
+</code></pre></li>
+<li>在线PHP手册国内镜像站点
+<a href="http://php.sinaapp.com/manual/zh/" target="_blank"><a href="http://php.sinaapp.com/manual/zh/">http://php.sinaapp.com/manual/zh/</a></a>
+或
+<a href="http://cn2.php.net" target="_blank"><a href="http://cn2.php.net">http://cn2.php.net</a></a></li>
+<li>PHP使用CURL时显示上下传进度的方法<pre><code>function curl_progress($download_size, $downloaded, $upload_size,$uploaded)
+{//PHP手册上的说明有误，其实应该是四个参数。如本例。
+    if ($download_size)
+        echo &quot;D:&quot;.(round(($downloaded100)/$download_size,2)).&quot;%\t\r&quot;;
+    else if ($upload_size)
+        echo &quot;U:&quot;.(round(($uploaded100)/$upload_size,2)).&quot;%\t\r&quot;;
+    return 0;
+}
+$curl_opts = array(CURLOPT_URL =&gt; $url,
+    CURLOPT_PROGRESSFUNCTION=&gt; ‘curl_progress’,
+    CURLOPT_NOPROGRESS =&gt; false);
+$curl = curl_init();
+curl_setopt_array ($curl, $curl_opts);
+$ret = curl_exec ($curl);
+curl_close($curl);
+</code></pre></li>
+</ol>
+]]></content>
+    
+    
+      <category term="curl" scheme="http://chenall.net/tags/curl/"/>
+    
+      <category term="CURLOPT" scheme="http://chenall.net/tags/CURLOPT/"/>
+    
+      <category term="mysql" scheme="http://chenall.net/tags/mysql/"/>
+    
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
+    
+      <category term="进度条" scheme="http://chenall.net/tags/%E8%BF%9B%E5%BA%A6%E6%9D%A1/"/>
+    
+      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[关于2345网址导航]]></title>
+    <link href="http://chenall.net/post/not_2345/"/>
+    <id>http://chenall.net/post/not_2345/</id>
+    <published>2012-10-16T11:57:33.000Z</published>
+    <updated>2014-02-10T03:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>关于2345网址导航,我最早是从无忧启动论坛的推广广告中看到的,据说只要设为主页就有工资拿,</p>
+<p>平时也不太理会它,只是帮人装机就顺手设置一下主页,应该有一年了吧,才2万左右积分.</p>
+<p>三个月前积分被冻结,说是推广数据异常,可是我实在查不出为什么异常,申诉了几次,一直到现在还是冻结状态.</p>
+<p>昨天的申诉结果是<code>你的数据从一开始就存在虚假数据。请采用合理的推广方式，待数据恢复正常，方可解冻！</code>好吧,即然你发现了一开始就存在虚拟数据,为什么不一开始就冻结,要等到积分上万了才冻结呢?</p>
+<p>根据它的比例太概是1000:1也就是说1000积分1元.我一天的数据在100左右不过是1毛钱,如果说我是刷号的我浪费那么多时间去刷1毛钱值得吗,真要刷的话怎么也得弄个几千吧.</p>
+<p>另外发现被冻结的也不只我一人,其中当然有部份是刷积分的.有很多像我这样的一天100左右的被冻结了,我猜测可能是因为推广的人数太少了,所以被冻结了,因为推广人数达不到它们的要求吧.</p>
+<p>我再申诉了一次,不管结果如何,也不再管了,接下去就是全面撤销该推广链接,碰到一台电脑就撤一台吧,</p>
+<p>建议朋友们慎用该推广,到头来很可能是白忙活一场,</p>
+]]></content>
+    
+    
+      <category term="2345" scheme="http://chenall.net/tags/2345/"/>
+    
+      <category term="骗子" scheme="http://chenall.net/tags/%E9%AA%97%E5%AD%90/"/>
+    
+      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+</feed>

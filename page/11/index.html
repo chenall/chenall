@@ -1,0 +1,951 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>第 11 页 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="chenall 的搏客,技术,分享,开源.">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></h1>
+      
+        <span>发表于<time datetime="2009-07-07T16:34:53.000Z"> <a href="/post/post68/">2009-07-07</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>利用WINDOWS自身的功能通过修改注册表实现</p>
+<ol>
+<li><p>隐藏或显示某个磁盘,隐藏盘符在资源管理器中看不到</p>
+</li>
+<li><p>限制某个磁盘不可访问(具体表现为双击这个盘符或直接运入中输入这个盘符时会出现如下提示)</p>
+</li>
+</ol>
+<p>
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/post68/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/限制/" class="label label-primary">限制</a><a href="/tags/隐藏/" class="label label-success">隐藏</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post68/#comments" class="ds-thread-count comment-link" data-thread-key="68" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></h1>
+      
+        <span>发表于<time datetime="2009-07-01T23:11:54.000Z"> <a href="/post/post67/">2009-07-01</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>把一个十进制转成2进制的常分规方法是,一直除2求余.</p>
+<p>这里介绍另一种方法,</p>
+<p>一个把数值转换成二进制数的批处理脚本.</p>
+<p>批处理加参数使用.支持把10,16,或8进制数转成二进制,其中16进制以0X开头,8进制以0开头.</p>
+<pre><code>@echo off
+::来源:        http://chenall.net
+SETLOCAL
+::初使化变量并检测输入的数字是否合法
+::VV最终结果保留值,N从0开始的值
+
+set/A VV=0x7fffffff-%1 || goto :eof
+IF %VV% lss 0 (echo.无效数字.目前只支持32位正整数的计算.&amp;goto :eof)
+set VV=
+SET N=0
+
+::生成二进制数的函数.
+:LOOP
+:: 原理很简单.通过位运算符&quot;或&quot;对比来确定某位的值.
+:: 例子:
+:: 9的二进制: 1001
+:: 分别和1,2,4,8进行&quot;或运算&quot;确定对应位的值.
+:: 其中1,2,4,8,分别对应二进制1,10,100,1000
+::
+set /a a=&quot;(%1|(1&lt;&lt;%N%))-%1&quot;
+if %a% GTR %1 goto :完成
+if %a% EQU 0 (set VV=1%VV%) ELSE (SET VV=0%VV%)
+SET /AN+=1
+GOTO :LOOP
+
+:完成
+echo.输入的数字:        %1
+echo.得到二进制:        %VV%
+ENDLOCAL
+goto :eof
+</code></pre><p>以上系原创脚本,如有雷同,纯属巧合..</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/进制转换/" class="label label-primary">进制转换</a><a href="/tags/批处理/" class="label label-success">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post67/#comments" class="ds-thread-count comment-link" data-thread-key="67" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></h1>
+      
+        <span>发表于<time datetime="2009-05-27T18:45:22.000Z"> <a href="/post/openvpn_userpw_author/">2009-05-27</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>OpenVpn使用用户名和密码验证方法.本例为了方便使用是的批处理.</p>
+<p>方法如下.</p>
+<h3 id="-">服务端</h3>
+<ol>
+<li>在配置文件中添加如下语句,(如果已经有就修改一下)<pre><code> #用于用户名和密码验证,使得可以在变量中取到密码.
+  script-security 3 system
+  #开启用户密码验证脚本,(脚本文件名author.cmd),使用环境变量的方式验证.
+  auth-user-pass-verify author.cmd via-env
+</code></pre></li>
+<li><p>产生一个author.cmd文件在配置文件同目录下.<br> 内容如下.把以下内容另存为author.cmd.</p>
+<pre><code> @echo off
+ ::初使化
+ set chk_pass=0&amp;set chk_user=0&amp;set chk_active=0
+ for /f “skip=2 usebackq tokens=1,2,3 delims=,“ %%i in (`find /i “%username%,“ users`) do (
+     if “%%i“==“%username%“ (
+         set chk_user=1
+         ::再进一步验证用户名和证书用户名,注释掉以下语句就可以了.
+         ::if /i not “%username%”==”%common_name%” set chk_user=0
+         if /i “%%k“==“1“ set chk_active=1
+         if /i “%%j“==“%password%“ set chk_pass=1
+     )
+ )
+
+ ::验证通过，直接返回一个值，0代表验证通过。
+ if “%chk_user%%chk_pass%%chk_active%“==“111“ exit /b 0
+
+ ::可选验证操作记录,如果不记录,直接删除或注释掉该代码就可以了
+ echo.%time%        用户名:%username%        证书用户名:%common_name%验证失败!::::错误代码:%chk_user%,%chk_pass%,%chk_active% &gt;&gt;用户登录.log
+
+ ::验证失败,让程序返回一个失败值1.
+ exit /b 1
+</code></pre></li>
+<li><p>脚本已经弄好了,接下来就是添加用户名和密码文件.上面的脚本指定的用户名和密码文件是存放在一个文件名为users的文件中.<br> 在配置文件同目录中新建一个USERS文件.内容按以下格式添加.<br>  使用&quot;,&quot;作为分隔符,格式:用户名,密码,是否启用(1,启用,0,禁用)  </p>
+<pre><code> 用户,密码,启用
+  user1,passowrd1,1
+  user2,password2,0
+</code></pre></li>
+</ol>
+<h3 id="-">客户端</h3>
+<p>只要在配置文件中添加如下语句开启用户和密码验证即可使用.</p>
+<pre><code>auth-user-pass
+#可选的语句,一般建议加上,用途,加上以后就不会在内存中保存用户密码.
+auth-nocache
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/auth-user-pass-verify/" class="label label-primary">auth-user-pass-verify</a><a href="/tags/openvpn/" class="label label-success">openvpn</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/openvpn_userpw_author/#comments" class="ds-thread-count comment-link" data-thread-key="64" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></h1>
+      
+        <span>发表于<time datetime="2009-05-19T09:29:43.000Z"> <a href="/post/openvpn_script_pre/">2009-05-19</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>经过几天的试用,发现OpenVPN的稳定性还是挺不错的,而且功能也很强大,可以丢掉<strong>SoftEther</strong>了.</p>
+<p>OpenVPN,可以在一些特定的情况下自动运行多种脚本,通过这些脚本,可以实现很多非常有用的功能.还可以提高安全性.</p>
+<p>例子.</p>
+<p>验证证书的时候,<em>tls-verify</em> </p>
+<p>用户和密码验证脚本.<em>auth-user-pass-verify </em></p>
+<p>使用好这些脚本,可以实现OpenVPN的统一管理,证书密码,权限之类的.</p>
+<p>例举几个比较实用的功能,</p>
+<ol>
+<li><p>可以通过这些脚本来管理证书.<br> 一般情况下证书如果丢失了需要吊销(使用<span style="background-color: yellow; color: #ee6600" id="Mark">REVOKE-full.bat</span>脚本来处理),这样子吊销可能比较麻烦.<br>其实通过一些自动运行的脚本同样可以达到这种目的,还可以通过数据库统一管理,在脚本里面自动连接数据库,根据数据库里面的内容来确定这个证书是否充许使用.<br><em>tls-verify</em> <strong>cmd</strong>  </p>
+<p>注:也可以在其它地方验证.(一般情况下还是使用这个来验证.因为这个是每一个小时自动验证一次的,验证通过就保持连接,否则就断开连接)</p>
+</li>
+<li><p>使用用户名和密码验证.<br> <em>auth-user-pass-verify</em> <strong>cmd [via_env|via-file]</strong></p>
+<p> 同样的可以通过脚本连接到数据库来管理用户. </p>
+</li>
+<li><p>禁止某个IP登录./只充许部份指定的IP进行登录.<br>在大部份自动运行的脚本中都可以应用.</p>
+</li>
+<li><p>在连接或断开时自动运行.
+<em>up</em> <strong>cmd</strong>(在连接上以后执行,可以用于处理路由等)<br><em>down-pre</em> <strong>cmd</strong> (在断开之时执行,)<br><em>down</em> <strong>cmd</strong>(在断开之后执行)  </p>
+</li>
+</ol>
+<p>要注意的是.
+在OpenVPN 2.1_rc9.以后的版本中配置文件中要使用如下语句</p>
+<p><em>script-security</em> 2 system(不保存密码在环境变量中)或<em>script-security</em> <strong>3</strong> system(保存密码在环境变量中)</p>
+<p>当使用</p>
+<p><em>auth-user-pass-verify</em> cmd via_env</p>
+<p>验证密码时,如果<em>script-security</em> <strong>2</strong>时就不能验证密码了,需要使用<em>script-security</em> <strong>3</strong></p>
+<p>后面SYSTEM参数的作用是,</p>
+<p>The <strong>method</strong> parameter indicates how OpenVPN should call external commands and scripts. Settings for <strong>method:</strong></p>
+<ul>
+<li><strong>execve</strong> -- (default) Use execve() function on Unix family OSes and CreateProcess() on Windows.   </li>
+<li><strong>system</strong> -- Use system() function (deprecated and less safe since the external program command line is subject to shell expansion).</li>
+</ul>
+<p>如果不加这个参数使用默认的(<strong>execve</strong>),那在执行脚本时一般情况下只能使用内置命令.</p>
+<p>(当然了这个环境也可以说比较安全).可以通过指定路径来运行外部程序,但不一定都是可以运行成功的.</p>
+<p>使用<strong>SYSTEM</strong>参数后,就可以得到一个比较完整的环境</p>
+<p>例子.脚本是一个批处理文件.</p>
+<pre><code>up test.cmd
+</code></pre><p>test.cmd内容就以下一句话  </p>
+<pre><code>@set&gt;test.log
+</code></pre><p>使用加SYSTEM参数前后对比生成文件的内容就可以发现其中的区别.
+```</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary">openvpn</a><a href="/tags/脚本/" class="label label-success">脚本</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/openvpn_script_pre/#comments" class="ds-thread-count comment-link" data-thread-key="63" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></h1>
+      
+        <span>发表于<time datetime="2009-05-17T17:47:03.000Z"> <a href="/post/openvpn_inlinefile/">2009-05-17</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <h3 id="-openvpn-openvpn-">[OpenVPN] OpenVPN 独立配置文件</h3>
+<p>前言: OpenVPN使用证书连接可以加强安全性但是如果客户端多了要分发证书很不方便,还有如果一个客户端需要连接多个不同的服务器,一般情况下证书文件都使用默认的文件名</p>
+<p>例子对于<strong>CA</strong>根证书一般使用如下语句:</p>
+<pre><code>ca ca.crt
+</code></pre><p>由于不同的服务器需要的证书是不一样的,所以只能改名这样一来也很麻烦</p>
+<p>OpenVPN 2.1 版新增功能,可以把证书文件等内置到配置文件中(Inline files)</p>
+<p>需要 OpenVPN 2.1-beta7 以上的版本才支持..!!!</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/openvpn_inlinefile/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/inline/" class="label label-primary">inline</a><a href="/tags/openvpn/" class="label label-success">openvpn</a><a href="/tags/tls-auth/" class="label label-info">tls-auth</a><a href="/tags/内置证书/" class="label label-warning">内置证书</a><a href="/tags/证书/" class="label label-primary">证书</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/openvpn_inlinefile/#comments" class="ds-thread-count comment-link" data-thread-key="62" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></h1>
+      
+        <span>发表于<time datetime="2009-05-15T16:20:09.000Z"> <a href="/post/openvpn/">2009-05-15</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>利用OpenVPN实现虚拟网实战.之前一直使用SOFTETHER,因为它配置简单,使用方便.而且它也支持RIP协议,方便自动配置路由.SOFTETHER可以从这里下载,</p>
+<p><a href="http://www.onlinedown.net/soft/34495.htm" target="_blank"><a href="http://www.onlinedown.net/soft/34495.htm">http://www.onlinedown.net/soft/34495.htm</a></a></p>
+<p>现在由于SOFTETHER 已经不支持VISTA之类的系统了,所以想寻找一个替代品.OpenVpn 之前也有尝试过,可能是当时还不懂配置或是什么其它的原因,发现它不支持RIP路由协议.而且配置也不方便所以就没有使用了.</p>
+<p>最近又尝试了一下,发现它支持RIP和OSPF路由协议了,这里记录一下安装过程,供有需要的人参考.</p>
+<p>需要准备的软件OpenVpn可以从它的主页下载.<a href="http://openvpn.net/index.php/downloads.html" target="_blank"><a href="http://openvpn.net/index.php/downloads.html">http://openvpn.net/index.php/downloads.html</a></a></p>
+<p>本文是使用2.1RC15版配置的.其它版本应该差不多.</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/openvpn/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary">openvpn</a><a href="/tags/WINDOWS/" class="label label-success">WINDOWS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/openvpn/#comments" class="ds-thread-count comment-link" data-thread-key="61" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></h1>
+      
+        <span>发表于<time datetime="2009-05-13T21:14:14.000Z"> <a href="/post/mail/">2009-05-13</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>网易邮箱自动登录批处理脚本.具体请看里面的使用说明.</p>
+<p>可以自动登录网易邮箱.批处理调用.</p>
+<h2 id="-">使用方法:</h2>
+<ul>
+<li>直接在批处理里面输入用户名和密码.</li>
+<li>使用命令行方加参数启动.第一个参数为用户名和邮箱名,第二个参数为密码</li>
+<li>直接在本批处理中使用call :登录网易邮箱　邮箱地址 密码
+具体见下面的例子
+例子: call mail.cmd &quot;mymail@163.com&quot; &quot;mypass&quot;
+用户名是mymail@163.com密码是mypass登录到163邮箱</li>
+</ul>
+<h2 id="-">代码</h2>
+<p>把以下代码另存为一个批处理文件比如mail.cmd就可以使用了．</p>
+<pre><code>@echo off 
+::网易邮箱自动登录批处理.===http://chenall.net=======chenall=================== 
+::        使用方法. 
+::                1,直接在批处理里面输入用户名和密码. 
+::                2.使用命令行方加参数启动.第一个参数为用户名和邮箱名,第二个参数为密码
+::                3.直接在本批处理中使用call :登录网易邮箱　邮箱地址 密码
+::                  具体见下面的例子
+::        例子: call mail.cmd &quot;mymail@163.com&quot; &quot;mypass&quot; 
+::                用户名是mymail@163.com密码是mypass登录到163邮箱 
+:: 
+::用户名后面需要加邮箱后辍。如mymail@126.com(登录126邮箱) 或mymail@163.com(登录163邮箱) 
+:: 
+::如转载请保留完整出处!  http://chenall.net/2009/05/mail/
+:: 最后修改日期　2010-05-23.
+
+if not &quot;%~2&quot;==&quot;&quot; goto :登录网易邮箱
+::直接在本批处理中使用call批量登录方法,按照下面的方法添加语句在本注释之后goto :eof之前就可以了
+::call :登录网易邮箱 mymail@163.com my163pass
+::call :登录网易邮箱 mymail@126.com my26pass
+
+goto :eof
+
+:登录网易邮箱
+set &quot;user=%1&quot; 
+set &quot;pass=%2&quot; 
+if not defined user goto :eof 
+if not defined pass goto :eof
+::过滤用户名密码中的引号 
+set user=%user:&quot;=%&amp;set pass=%pass:&quot;=% 
+setlocal enabledelayedexpansion 
+::修改密码中出现的#和&amp;,否则会登录不了 
+set &quot;pass=!pass:#=%%23!&quot;
+set &quot;pass=!pass:&amp;=%%26!&quot;
+endlocal&amp;set &quot;pass=%pass%&quot; 
+set user=%user: =% 
+set pass=%pass: =% 
+setlocal
+for /f &quot;tokens=1,2 delims=@&quot; %%i in (&quot;%user%&quot;) do ( 
+    if /i &quot;%%~nj&quot;==&quot;163&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;product=mail163&amp;url=http://entry.mail.163.com/coremail/fcg/ntesdoor2?lightweight%3D1%26verifycookie%3D1%26language%3D-1%26style%3D&quot; 
+    if /i &quot;%%~nj&quot;==&quot;126&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;product=mail126&amp;url=http://entry.mail.126.com/cgi/ntesdoor?hid%3D10010102%26lightweight%3D1%26verifycookie%3D1%26language%3D0%26style%3D&quot; 
+    if /i &quot;%%~nj&quot;==&quot;yeah&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;product=mailyeah&amp;url=http://entry.mail.yeah.net/cgi/ntesdoor?lightweight%3D1%26verifycookie%3D1%26style%3D&quot; 
+    if /i &quot;%%~nj&quot;==&quot;netease&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;url=http://entry.yeah.net/cgi/ntesdoor?lightweight%3D1%26verifycookie%3D1%26style%3D-1&quot; 
+    echo.正在自动登录%USER%的邮箱%%j……
+) 
+start &quot;正在自动登录中&quot; &quot;%login.action%&amp;username=%user%&amp;password=%pass%&quot; 
+endlocal
+goto :eof
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/邮箱/" class="label label-primary">邮箱</a><a href="/tags/自动登录/" class="label label-success">自动登录</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/mail/#comments" class="ds-thread-count comment-link" data-thread-key="60" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/dropbox_version/">[转] DropBox的版本控制功能</a></h1>
+      
+        <span>发表于<time datetime="2009-05-08T10:04:27.000Z"> <a href="/post/dropbox_version/">2009-05-08</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>经过一段时间的试用,喜欢上了dropbox(虽然速度有点慢).版本控制功能也很好用.可以无所顾忌的删除修改文件了.大不了就还原一下.
+ 由于是采用版本控制,所以同步时它并不是整个文件上传的而是diff方式,也就是只传不同的部份.这样上传快了很多.(不知会不会有什么后遗问题,^_^)</p>
+<p>在几台需要同步的电脑装上dropbox就可以后台自动实时同步,也不用担心版本问题.</p>
+<p>另外个人认为还是使用可移动版的dropbox比较方便..
+ 可移动版的dropbox可以在这里下到.(需要有dropbox帐户)或以下地址.</p>
+<p> <a href="http://dl.getdropbox.com/u/50461/DropboxPortable/DropboxPortable%200.6.507.zip" target="_blank"><a href="http://dl.getdropbox.com/u/50461/DropboxPortable/DropboxPortable%200.6.507.zip">http://dl.getdropbox.com/u/50461/DropboxPortable/DropboxPortable%200.6.507.zip</a></a>(Windows only)</p>
+<p>来源: <a href="http://www.netbusy.cn/roy/post/dropboxbb.html" target="_blank"><a href="http://www.netbusy.cn/roy/post/dropboxbb.html">http://www.netbusy.cn/roy/post/dropboxbb.html</a></a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/转载文章/">转载文章</a></li></span></span> | <span class="tags">标签 <a href="/tags/dropbox/" class="label label-primary">dropbox</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/dropbox_version/#comments" class="ds-thread-count comment-link" data-thread-key="58" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post55/">[分享]影子系统 POWERSHADOW 2.6免费版 精简版 for 2k,xp,2003</a></h1>
+      
+        <span>发表于<time datetime="2009-04-28T21:14:34.000Z"> <a href="/post/post55/">2009-04-28</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>软件主页: <a href="http://www.powershadow.com" target="_blank">http://www.powershadow.com</a></p>
+<h2 id="-">【软件介绍】:</h2>
+<blockquote>
+<hr>
+<p>好消息：
+PowerShadow目前免费发放给中国用户使用。</p>
+<hr>
+<p>PowerShadow构建现有操作系统的虚拟影像，即影子模式（shadow mode），它和真实的系统完全一样，用户可随时选择启用或者退出这个虚拟影像。用户进入影子模式（shadow mode）后，所有操作都是虚拟的，不会对真正的系统产生影响，一切改变将在退出Shadow模式后消失。因此所有的病毒、木马程序、流氓软件都无法侵害真正的操作系统，它们的所有操作都只是假象。</p>
+<p>PowerShadow目前免费发放给中国用户使用，注册信息：
+用户名：PowerShadow 序列号：VVR29E-R4WCK2-K4T111-V1YHTP-4JYJDD </p>
+</blockquote>
+<h3 id="-">精简版的内容.</h3>
+<p>只保留了主要的系统SYS文件.安装时只需要一个SYS文件就可以了.
+snpshot.2k对应2000系统.
+snpshot.xp对应XP和2003的系统.
+Install.cmd安装批处理脚本.(已经按上面的序列号自动注册,安装完成即可使用).</p>
+<p>喜欢的可以下载测试.(不带控制台).</p>
+<p><a href="http://chenall.ys168.com/note/fd.htm?http://ys-G.ys168.com/?shadow.rar_4s7bsm0e1e2bs7bsm0cqq0bt0c0btoq2bthp0bt0c0c1bt4bu14z97f14z" target="_blank"><a href="http://chenall.ys168.com">http://chenall.ys168.com</a> soft 目录下shadow.rar文件</a></p>
+<p>后注: 建议配合GRUB4DOS启动管理来获取更高的安全选项.使用GRUB4DOS可以让菜单上只显示保护模式,以防止他人随便进入正常模式.自己要使用时通过GRUB4DOS来转换.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/powershadow/" class="label label-primary">powershadow</a><a href="/tags/snpshot/" class="label label-success">snpshot</a><a href="/tags/影子系统/" class="label label-info">影子系统</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post55/#comments" class="ds-thread-count comment-link" data-thread-key="55" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post54/">vi 编辑器使用指南</a></h1>
+      
+        <span>发表于<time datetime="2009-04-15T16:56:09.000Z"> <a href="/post/post54/">2009-04-15</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>一、Unix编辑器概述</p>
+<p>编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。</p>
+<p>值得庆幸的是，Unix提供了全屏幕的Vi编辑器，这使我们的工作轻松不少。不少DOS用户抱怨Vi编辑器不象DOS下的编辑器如edit那么好用，这是因为Vi考虑到各种用户的需要，没有使用某些通用的编辑键（在各个不同的终端机上他们的定义是不同的，在某些终端机上甚至没有这些键）。而是采用状态切换的方法，但这只是习惯的问题，一旦你熟练的使用上了vi你就会觉得它其实也很好用。虽然 Vi采用了状态切换的方法，但电脑的硬件及操作系统多种多样，某些电脑的键盘上没有特定的几个功能键！那麽不就有某些功能不能用了？这个问题在 Unix 系统上也一样，几乎各大电脑厂商都有自己的Unix 系统，而 vi 的操作方法也会随之有点出入。这里我们采用 PC 的键盘来说明 vi 的操作，但在具体的环境中还要参考相应的资料，这一点是值得注意的。</p>
+<p>二、Vi入门</p>
+<p>（一）、进入vi</p>
+<p>在系统提示字符(如$、#)下敲入vi ＜档案名称＞，vi 可以自动帮你载入所要编辑的文件或是开启一个新文件（如果该文件不存在或缺少文件名）。进入 vi 后萤幕左方会出现波浪符号，凡是列首有该符号就代表此列目前是空的。</p>
+<p>(二）、两种模式</p>
+<p>如上所述，vi存在两种模式：指令模式和输入模式。在指令模式下输入的按键将做为指令来处理：如输入a，vi即认为是在当前位置插入字符。而在输入模式下，vi则把输入的按键当作插入的字符来处理。指令模式切换到输入模式只需键入相应的输入命令即可（如a,A），而要从输入模式切换到指令模式，则需在输入模式下键入ESC键，如果不晓得现在是处於什麽模式，可以多按几次 [ESC]，系统如发出哔哔声就表示已处于指令模式下了。</p>
+<p>付：有指令模式进入输入模式的指令：</p>
+<p>新增 (append)</p>
+<p>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。</p>
+<p>A： 从光标所在列最後面的地方开始新增资料。</p>
+<p>插入 (insert)</p>
+<p>i： 从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。</p>
+<p>I ：从光标所在列的第一个非空白字元前面开始插入资料。</p>
+<p>开始 (open)</p>
+<p>o ：在光标所在列下新增一列并进入输入模式。</p>
+<p>O: 在光标所在列上方新增一列并进入输入模式。</p>
+<p>（三）、退出vi</p>
+<p>在指令模式下键入:q,:q!,:wq或:x(注意:号），就会退出vi。其中:wq和:x是存盘退出，而:q是直接退出，如果文件已有新的变化，vi会提示你保存文件而:q命令也会失效，这时你可以用:w命令保存文件后再用:q退出，或用:wq或:x命令退出，如果你不想保存改变后的文件，你就需要用:q!命令，这个命令将不保存文件而直接退出vi。</p>
+<p>（四）、基本编辑</p>
+<p>配合一般键盘上的功能键，像是方向键、[Insert] 、[Delete] 等等，现在你应该已经可以利用 vi 来编辑文件了。当然 vi 还提供其他许许多多功能让文字的处理更为方便。</p>
+<p>何谓编辑？一般认为是文字的新增、修改以及删除，甚至包括文字区块的搬移、复制等等。先这里介绍 vi的如何做删除与修改。（注意：在 vi 的原始观念里，输入跟编辑是两码子事。编辑是在指令模式下操作的，先利用指令移动光标来定位要进行编辑的地方，然後才下指令做编辑。）</p>
+<p>删除与修改文件的命令：</p>
+<p>x： 删除光标所在字符。</p>
+<p>dd ：删除光标所在的列。</p>
+<p>r ：修改光标所在字元，r 後接著要修正的字符。</p>
+<p>R： 进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。</p>
+<p>s： 删除光标所在字元，并进入输入模式。</p>
+<p>S： 删除光标所在的列，并进入输入模式。</p>
+<p>其实呢，在PC上根本没有这麽麻烦！输入跟编辑都可以在输入模式下完成。例如要删除字元，直接按[Delete] 不就得了。而插入状态与取代状态可以直接用 [Insert] 切换，犯不著用什麽指令模式的编辑指令。不过就如前面所提到的，这些指令几乎是每台终端机都能用，而不是仅仅在 PC 上。
+在指令模式下移动光标的基本指令是 h, j, k, l 。想来各位现在也应该能猜到只要直接用 PC 的方向键就可以了，而且无论在指令模式或输入模式下都可以。多容易不是。
+当然 PC 键盘也有不足之处。有个很好用的指令 u 可以恢复被删除的文字，而 U 指令则可以恢复光标所在列的所有改变。这与某些电脑上的 [Undo] 按键功能相同。
+三、附件：vi详细指令表
+（一）、基本编辑指令：
+新增 (append)</p>
+<p>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。</p>
+<p>A： 从光标所在列最後面的地方开始新增资料。</p>
+<p>插入 (insert)</p>
+<p>i： 从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。</p>
+<p>I ：从光标所在列的第一个非空白字元前面开始插入资料。</p>
+<p>开始 (open)</p>
+<p>o ：在光标所在列下新增一列并进入输入模式。</p>
+<p>O: 在光标所在列上方新增一列并进入输入模式。</p>
+<p>x： 删除光标所在字符。</p>
+<p>dd ：删除光标所在的列。</p>
+<p>r ：修改光标所在字元，r 後接著要修正的字符。</p>
+<p>R： 进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。</p>
+<p>s： 删除光标所在字元，并进入输入模式。</p>
+<p>S： 删除光标所在的列，并进入输入模式。</p>
+<p>（二）、光标移动指令：
+由於许多编辑工作是藉由光标来定位，所以 vi 提供许多移动光标的方式，这个我们列
+几张简表来说明（这些当然是指令模式下的指令）：</p>
+<p>指令 说明  功能键 
+0 移动到光标所在列的最前面 [Home]
+$  移动到光标所在列的最後面 [End]
+[CTRL][d] 向下半页  [PageDown]
+[CTRL][f] 向下一页 
+[CTRL][u] 向上半页 
+[CTRL][b] 向上一页 [PageUp]</p>
+<p>指令 说明
+H 移动到视窗的第一列
+M 移动到视窗的中间列
+L 移动到视窗的最後列 
+b 移动到下个字的第一个字母
+w 移缴细鲎值牡谝桓鲎帜?nbsp; 
+e 移动到下个字的最後一个字母
+^ 移动到光标所在列的第一个非空白字元</p>
+<p>指令 说明 
+n- 减号移动到上一列的第一个非空白字元前面加上数字可以指定移动到以上 n 列 
+n+ 加号移动到下一列的第一个非空白字元前面加上数字可以指定移动到以下 n 列
+nG 直接用数字 n 加上大写 G 移动到第 n 列
+指令 说明
+fx
+往右移动到 x 字元上 
+Fx 往左移动到 x 字元上 
+tx 往右移动到 x 字元前
+Tx 往左移动到 x 字元前
+; 配合 f&amp;t 使用，重复一次
+, 配合 f&amp;t 使用，反方向重复一次
+/string 往右移动到有 string 的地方
+?string 往左移动到有 string 的地方
+n  配合 /&amp;? 使用，重复一次 
+N  配合 /&amp;? 使用，反方向重复一次</p>
+<p>指令 说明 备注
+n( 
+左括号移动到句子的</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/vi/" class="label label-primary">vi</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post54/#comments" class="ds-thread-count comment-link" data-thread-key="54" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+
+
+<ul id="pagination" class="pagination pagination-lg">
+  <li><a class="extend prev" href="/page/10/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li class="active"><li><span class="page-number current">11</span></li></li><li><a class="page-number" href="/page/12/">12</a></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/12/">&raquo;</a></li>
+  <div class="clearfix"></div>
+</ul></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-11 15:03:34</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

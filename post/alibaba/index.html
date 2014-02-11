@@ -1,0 +1,400 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[转载] 阿里巴巴的零知识证明 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="战争中你被俘了，敌人拷问你情报。你是这么想的：如果我把情报都告诉他们，他们就会认为我没有价值了，就会杀了我省粮食，但如果我死活不说，他们也会认为我没有价值而杀了我。怎样才能做到既让他们确信我知道情报，但又一丁点情报也不泄露呢？">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[转载] 阿里巴巴的零知识证明"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[转载] 阿里巴巴的零知识证明</h1>
+      
+        <span>发表于<time datetime="2010-05-04T13:04:32.000Z"> <a href="/post/alibaba/">2010-05-04</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>战争中你被俘了，敌人拷问你情报。你是这么想的：如果我把情报都告诉他们，他们就会认为我没有价值了，就会杀了我省粮食，但如果我死活不说，他们也会认为我没有价值而杀了我。怎样才能做到既让他们确信我知道情报，但又一丁点情报也不泄露呢？</p>
+<p>这的确是一个令人纠结的问题，但阿里巴巴想了一个好办法，当强盗向他拷问打开山洞石门的咒语时，他对强盗说：“你们离我一箭之地，用弓箭指着我，你们举起右手我就念咒语打开石门，举起左手我就念咒语关上石门，如果我做不到或逃跑，你们就用弓箭射死我。”</p>
+<p>强盗们当然会同意，因为这个方案不仅对他们没有任何损失，而且还能帮助他们搞清楚阿里巴巴到底是否知道咒语这个问题。阿里巴巴也没损失，因为处于一箭之地的强盗听不到他念的咒语，不必担心泄露了秘密，而且他确信自己的咒语有效，也不会发生被射死的杯具。</p>
+<p>强盗举起了右手，只见阿里巴巴的嘴动了几下，石门果真打开了，强盗举起了左手，阿里巴巴的嘴动了几下后石门又关上了。强盗还是有点不信，说不准这是巧合呢，他们不断地换着节奏举右手举左手，石门跟着他们的节奏开开关关，最后强盗们想，如果还认为这只是巧合，自己未免是个傻瓜，那还是相信了阿里巴巴吧。</p>
+<p>“零知识证明”说的是示证者向验证者表明他知道某种秘密，不仅能使验证者完全确信他的确知道这个秘密，同时还保证一丁点秘密也不泄露给验证者。阿里巴巴的这个方案，就是认证理论“零知识证明”的一个重要协议。</p>
+<p>除了被俘后如何靠情报保命这个问题，零知识证明在社会领域中还有着很多应用场合。例如你证明了一个世界级的数学难题，但在发表出来之前，总是要找个泰斗级的数学家审稿吧，于是你将证明过程发给了他，他看懂后却动了歪心思，他把你的稿子压住，把你的证明用自己的名义发表，他名利双收，你郁闷至死，你去告他也没用，因为学术界更相信的是这位泰斗，而不是你这个无名之辈。</p>
+<p>这并不是天方夜谭，而是学术界常见的难题，前些年有个博士生告他的泰斗级导师剽窃他的成果，但除了令师生关系恶化外没有任何效果，最后他使出了撒手锏，称他在给导师审阅的论文的关键公式中，故意标错了一个下标，而这会导致整个推导失败。学术委员会一查果真如此，但还是有倾向于泰斗的声音，有人说那是泰斗的笔误，只不过让你发现了而矣，并不能证明那公式就是你推导出来的。</p>
+<p>这个博士生故意标错下标，不能说他没有心眼，但他没有把“零知识证明”理论用好，以致于落到这种地步。“零知识证明”早在1986年就被A.Fiat和A.Shamir用数学的方法给出了解决方案，并在同年申请了美国专利，但由于该理论可能被用于军事领域，专利局被军方密令搁置，6个月后，军方命令：“该申请发表后会有害于国家安全......所有美国人的研究未经许可而泄露将会被判刑罚款”。看来军方认为作者肯定是美国人了，但作者实际上是在美国申请专利的以色列人，研究也是在以色列的大学里做的，军方这个命令摆了个大乌龙，虽然两天后撤消了，但已经成为了学术界的笑柄。</p>
+<p>这个笑柄也说明了一个问题，即“零知识证明”非常重要。基于数学的推理虽然非常复杂，但思路却很简单，上述的阿里巴巴方案就是其中之一。其它的一些方案，也都是像这样遵循着分割和选择（Cut and Chose）协议的。</p>
+<p>例如图论中有个哈米尔顿回路（Hamiltonian Cyclic）问题，说的是多个顶点的全连通图，若有一条通路通过了所有顶点，且每个顶点只通过一次，那这就是哈米尔顿回路。如果顶点较多的话，即使用计算机穷举计算很难找出这条回路，因为通路的可能性真在是太多了。</p>
+<p>如果松鼠会贴了一张全连通图（命名为A图）悬赏哈米尔顿回路，而且任命我（奥卡姆剃刀）作为评审官，你幸运的找到了一条，那该怎么办呢，将结果直接发给我吗？千万不要，因为保不齐我会将你的成果让给了我的亲信。那你该怎么办呢？应该这么办：</p>
+<ol>
+<li>你将A图的顶点搞乱了，并生成一张新图，只是顶点的位置变了，而新图顶点之间的连线关系与A图是完全一致的。这时，新图中每个顶点与A图中每个顶点的对应关系你是清楚的，而且新图中的哈米尔顿回路你也是知道的。</li>
+<li>你将这张新图发给我，没错，就是仅仅一张新图，上面并没有画着你发现的牛B回路。</li>
+<li>我收到后，对你提出两个问题中的一个：一是证明新图就是从A图变形过来的，所有顶点和连线的关系完全一致，二是画出新图中的哈米尔顿回路。</li>
+<li>如果你真的找到了A图的哈米尔顿回路，这两个问题当然都能轻松回答。需要注意的是：你只需要回答第3步的其中一个问题，千万不要两个问题一并回答，否则我就知道你关于A图的哈米尔顿回路了，你就SB了。</li>
+<li>我还是不相信你，因为有可能你只是将A图变了形，却根本不知道A图的哈米尔顿回路，而我在第3步时恰好要求你证明新图就是从A图变形过来的，你当然能证明。或者有可能你找了个你知道哈米尔顿回路的图，但这张图跟A图一点关系都没有，而我在第3步恰好要求你画出这张图的哈米尔顿回路。</li>
+<li>我要求你从第1步开始重复这个验证过程，随着次数的增加，第5步那种巧合的可能性就越来越低，如果你多次能回答对第3步中的问题，那我还不相信你已经找到了A图的哈米尔顿回路，那我就是一个傻瓜。</li>
+<li>为了表明我不是傻瓜，我在松鼠会群博里宣布你找到了A图的哈米尔顿回路，而这时我并没有看到你所画的A图的哈米尔顿回路。</li>
+</ol>
+<p>回到你证明了世界级的数学难题的问题，你可以用这种分割和选择协议来进行零知识证明，来保护你的权利。你公开声称你解决了这个数学难题后，验证者会给你出一个其它的题，而能做出这道题的前提条件是已经解决了那个数学难题，否则的话无解，而且这个条件是学术界所公认的，这个题就是所谓的平行问题。不出所料，你靠着已经解开数学难题的基础把这个平行问题做出来了，但验证者还是不信，他又出了一道平行问题，你又做出来了，多次较量后，验证者就确信了你已经解决了那个数学难题，虽然他并没有看到具体的解法。</p>
+<p>大家已经看出来了，零知识证明需要示证者和验证者的密切配合，但如果你只是一个数学界的无名之辈，即使你宣称你解决了数学难题，也不会有人跟你配合着玩零知识证明，那你该怎么办呢？</p>
+<p>我告诉你一个可以在法庭上都能当作有效证据的招数，你将证明打印好，选择一个最可靠最权威的邮政公司，把它寄给自己，当你收到这个扣着邮戳的包裹后，不要打开，把它放好，然后就可以把证明寄给数学泰斗。如果他用自己的名义发表了，不必着急，等他依靠其影响力把这个证明炒热后再出手，你上法庭控告他，他当然不承认，在法庭上你将那个没开封的包裹拿出来，上面清清楚楚地盖着时间戳，这就证明了你包裹里的证明是发生在那个时间戳之前的，加上之后的你邮给泰斗论文的邮件存根，和泰斗以自己名义发表论文的时间，三者就构成了一个完整的证据链，泰斗灰头土脸名声扫地，而你大获全胜名利双收。</p>
+<p>参考文献：《通信网的安全-理论与技术》，王育民等编著，西安电子科技大学出版社，2000.5</p>
+<p>本文章来源：<a href="http://songshuhui.net/" title="让我们剥开科学的坚果" target="_blank">科学松鼠会</a>　<a href="http://songshuhui.net/archives/36968.html" target="_blank"><a href="http://songshuhui.net/archives/36968.html">http://songshuhui.net/archives/36968.html</a></a></p>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/转载文章/">转载文章</a></li></span><span class="breadcrumb"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span></span> | <span class="tags">标签 <a href="/tags/科学/" class="label label-primary">科学</a><a href="/tags/松鼠会/" class="label label-success">松鼠会</a><a href="/tags/转载文章/" class="label label-info">转载文章</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/alibaba/#comments" class="ds-thread-count comment-link" data-thread-key="324" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/dropbox_cn/" title="[转载] Dropbox无法访问">&larr; [转载] Dropbox无法访问</a></li>
+  
+  
+  <li class="next"><a href="/post/grub4dos_unifont/" title="[GRUB4DOS] 多国语言菜单支持[2010-04-20]">[GRUB4DOS] 多国语言菜单支持[2010-04-20] &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></li><li class="list-group-item"><a href="/post/dropbox_cn/">[转载] Dropbox无法访问</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/s6/">[健康知识]  睡眠与养生</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/post23/">[原创]QQ自由幻想挂机过神医完美解决方案</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="324"  data-url="http://chenall.net/post/alibaba/" data-title="[转载] 阿里巴巴的零知识证明"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/alibaba/";
+    var wumiiTitle = "[转载] 阿里巴巴的零知识证明";
+    var wumiiTags = "科学,松鼠会,转载文章";
+    var wumiiCategories = ["转载文章","杂七杂八"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

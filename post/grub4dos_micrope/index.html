@@ -1,0 +1,681 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[Grub4dos] grub4dos高级应用菜单示范 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
+有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。
+2014-01-21  注: 这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[Grub4dos] grub4dos高级应用菜单示范"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[Grub4dos] grub4dos高级应用菜单示范</h1>
+      
+        <span>发表于<time datetime="2009-11-12T00:08:01.000Z"> <a href="/post/grub4dos_micrope/">2009-11-12</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.</p>
+<p>有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。</p>
+<p><strong>2014-01-21</strong>  <strong>注:</strong> <em>这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了</em></p>
+<a id="more"></a>
+
+<p>以下菜单文件来源 <a href="/post/MINIPE_UPDATE.html">无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></p>
+<pre><code>terminal console
+color white/blue blue/yellow light-red/blue light-green/black
+default 0
+timeout 3
+debug off
+# save darddrives_orig:当前磁盘数量保存到 0x6000B
+dd if=(md)2+1 of=(md)0x300+1 bs=1 count=1 skip=0x75 seek=0xb
+clear
+
+# 一些变量参数信息
+# 0x8280    boot_drive
+# 0x82A4    0:auto gunzip,1:no auto gunzip
+# 0x60100   0:local,1:PXE,2:ISCSI,3:ERROR
+# 0x60008   4:/OEM_SCSI.IMG,3:/MINIPE/OEM_SRS.ZIP,2:/OEM_SRS.ZIP
+# 0x60000   2,READ /SYSTEM.WIM
+# 0x60004   2,READ /NET.WIM
+# 0x60110   8bit,save root
+# 0x6000B   harddrives_orig
+# 0x603FB   MICROPE.ISO文件大小
+# 0x603FF   MICROPE.ISO所在分区号
+################################
+#一些常用语句介绍
+#   write 0x60100 3             写内存命令使得内存0x60100的值为3
+#   cat --length=0 (disk)/file  cat --length=0 用于获取文件大小，也可以用于检测文件是否存在
+#   fallback n  如果后面的语句中有一句执行失败就跳到菜单n
+#   kernel  未加参数的kernel,这样扫许会出错，配合fallback n来实现转菜单。
+#   fallback F同kernel也是一个固意出错的语句。
+#   pause --wait=0 显示后面的信息，不等待，如果wait=2就是等待2秒，如果没有--wait参数就是一直等待。
+#   checkrange xx command1 &amp;&amp; command2    检测command1执行返回的值是否xx，如是是就执行command2
+#   || 如果前面的命令返回了一个失败的值，就执行后面的语句。
+#0
+title [0] Micro Windows PE (autocheck)\n\r\n\t Micro Windows PE by chenall 2009.11.11 http://www.chenall.com
+###########################################################
+# GRUB4DOS 版本检测(通过一些新版的功能来检测),如果检测版本不符合就跳到第14个菜单。
+fallback 14
+# 关闭出错检测
+errorcheck off
+#(hd)是新版才有的功能，使用cat (hd)+1检测
+cat (hd)+1
+#如果返回值是23(Error while parsing number)就代表这个版本太低了，正常情况下应该返回21
+checkrange 23 errnum &amp;&amp; write 0x60100 3
+#恢复
+errorcheck on
+#检测上面的结果，如果内存0x60100位置的值是3就说明版本不符合
+#后面kernel不加参数，执行时会出错，配合前面的fall back（错误跳转）来实现菜单跳转
+checkrange 3 read 0x60100 &amp;&amp; kernel
+###########################################################
+
+###########################################################
+#PXE启动检测
+fallback 1
+#判断启动磁盘号，如果是0X21代表它是从PXE启动的就跳。
+checkrange 0x21 read 0x8280 &amp;&amp; kernel
+#
+#iSCSI启动检测,在内存512K-1024K之间查找iSCSI启动标志
+fallback 2
+#\x69BFT=iBFT iBFT是ISCSI启动标志（并且按16字节对齐的）具体可以参考ISCSI启动规范。
+cat --locate=\x69BFT --locate-align=16 (md)0x400+0x400 &amp;&amp; kernel
+#
+fallback 3
+#写一个值到内存位置0x60100
+write 0x60100 0
+pause --wait=0 Boot MicroPE From local by chenall 2009.11.11
+#文件定位##############################
+#检测当前root下是否有指定文件，有就跳到下一菜单
+cat --length=0 /WXPE/WINPE.IMG &amp;&amp; kernel
+#如果上面没有找到就全盘查找，并设置为ROOT
+find --set-root /WXPE/WINPE.IMG &amp;&amp; kernel
+#如果上面还是没有找到就找ISO文件
+find --set-root /boot/MicroPE.ISO
+#找到了ISO文件，加载这个ISO文件
+pause --wait=0 Boot MicroPE With /boot/MicroPE.iso......
+#先使用普通的方式映射（比较快），如果不行就加载到内存
+map /BOOT/MICROPE.ISO (hd32) || map --mem /BOOT/MICROPE.ISO (hd32)
+map --hook
+
+#可选语句，保存ISO文件所在分区号(用于进入PE后确定使用的ISO文件磁盘,因为有可能有多处存在)
+cat --length=0 /BOOT/MICROPE.ISO &amp;&amp; dd if=(md) of=(md) bs=1 count=4 skip=0x8290 seek=0x603FB
+root (hd32)
+cat --length=0 /MINIPE/EXT.ZIP
+dd if=(md) of=(md) bs=1 count=1 skip=0x829e seek=0x603FF
+kernel
+
+#1
+title
+pause --wait=0 Boot MicroPE From PXE by chenall 2009.11.11
+pause --wait=0 Loading WINPE.IMG ......
+#如果内存小于120MB，直接读取（需要读两次），否则只需要读一次
+checkrange 0x1E000:-1 read 0x8298 &amp;&amp; write 0x82a4 1
+map --mem=0xB000 /WXPE/WINPE.IMG (rd) || map --mem=0xB000 /MicroPE_PXE.ISO (rd)
+write 0x82a4 0
+write 0x60100 1
+map --mem (rd)/WINPE.IMG (hd0) || map --mem (rd)+1 (hd0)
+fallback 3
+fallback F
+
+#2
+title
+pause --wait=0 Bootting MicroPE From iSCSI ......
+write 0x60100 2
+fallback 3
+fallback F
+
+#3
+title
+pause --wait=0 Loading WINPE.IMG and EXT.ZIP ......
+checkrange 0,2 read 0x60100 &amp;&amp; map --mem /WXPE/WINPE.IMG (hd0)
+cat --length=0 /MINIPE/EXT.ZIP || map --unmap=0xa0
+map (hd0) (hd1) &amp;&amp; pause --wait=0
+map (hd1) (hd) &amp;&amp; pause --wait=0
+map --hook
+#定位外置程序路径/MINIPE/EXT.ZIP,如果没有找到就启动失败
+cat --length=0 /MINIPE/EXT.ZIP || find --set-root --ignore-floppies /MINIPE/EXT.ZIP
+#保存当前ROOT
+dd if=(md) of=(md) bs=1 count=8 skip=0x829c seek=0x60110
+#查找OEM_SCSI.IMG和OEM_SRS.ZIP
+errorcheck off
+find --set-root --ignore-floppies --ignore-cd /OEM_SRS.ZIP || find --set-root --ignore-floppies --ignore-cd /MINIPE/OEM_SRS.ZIP
+checkrange 0 errnum || find --set-root --ignore-floppies --ignore-cd /OEM_SCSI.IMG
+errorcheck on
+cat --length=0 /OEM_SCSI.IMG &amp;&amp; write 0x60008 4
+cat --length=0 /MINIPE/OEM_SRS.ZIP &amp;&amp; write 0x60008 3
+cat --length=0 /OEM_SRS.ZIP &amp;&amp; write 0x60008 2
+checkrange 2,3 read 0x60008 &amp;&amp; dd if=(md) of=(md) bs=1 count=4 skip=0x8290 seek=0x60010
+checkrange 2 read 0x60008 &amp;&amp; map --mem /OEM_SRS.ZIP (fd1)
+checkrange 3 read 0x60008 &amp;&amp; map --mem /MINIPE/OEM_SRS.ZIP (fd1)
+checkrange 4 read 0x60008 &amp;&amp; map --mem /OEM_SCSI.IMG (fd1)
+#还原ROOT
+dd if=(md) of=(md) bs=1 count=8 skip=0x60110 seek=0x829c &amp;&amp; root ()/MINIPE
+map --mem (hd0,0)/EXT.IMG (fd2)
+##如果外置程序所在磁盘的BIOS号是0-3或0x80-0x90,就把这个磁盘映射为(hd1)备用.
+##checkrange 0 read 0x82a0 &amp;&amp; map ()+1 (hd)
+##checkrange 2 read 0x60100 &amp;&amp; map ()+1 (hd1)
+map --hook
+#准备EXT.ZIP
+cat --length=0 /EXT.ZIP
+dd if=(md)0x41+1 of=(fd2)/_EXT.ZIP bs=1 count=4 skip=0x90
+map --mem=0xB000 /EXT.ZIP (rd)
+dd if=(rd)+1 of=(fd2)/_EXT.ZIP bs=1 seek=4
+pause --wait=0 Modify configuration information
+#以下语句用于修改CONFIG.SYS让它加载UNDI_DRV.EXE.默认不加载,使用PXE启动时通过修改特定字符让它加载.
+checkrange 1 read 0x60100 &amp;&amp; write (fd2)/config.sys devi
+
+#设置DOS变量(1.PXE;2.iSCSI;0.本地)
+checkrange 2 read 0x60100 &amp;&amp; write --offset=0x0 (hd0,0)/_SETENVI.BAT \r\nset boot=2\r\n
+checkrange 1 read 0x60100 &amp;&amp; write --offset=0x0 (hd0,0)/_SETENVI.BAT \r\nset boot=1\r\n
+checkrange 0 read 0x60100 &amp;&amp; write --offset=0x0 (hd0,0)/_SETENVI.BAT \r\nset boot=0\r\n
+
+checkrange 4 read 0x60008 &amp;&amp; write --offset=0x40 (hd0,0)/_SETENVI.BAT \r\nset srs=OEM1\r\n
+#如果DEBUG开启显示DOS的启动菜单以方便错误处理
+checkrange 2 debug &amp;&amp; write --offset=0x14 (fd2)/msdos.sys 1
+checkrange 2 debug &amp;&amp; write --offset=0x10 (hd0,0)/_SETENVI.BAT \r\nset debug=1\r\n
+checkrange 0 read 0x60100 &amp;&amp; fallback 4
+checkrange 0xa0:0xff read 0x82a0 &amp;&amp; fallback 15
+checkrange 0 read 0x60100 &amp;&amp; kernel
+#把PXE启动的IP地址信息传到DOS下
+dd if=(md)0x41+1 of=(fd2)/IP.BIN bs=1 count=12 skip=0x84
+cat --length=0 (hd0,0)/WXPE/SYSTEM/SYSTEM.WIM || write 0x60000 2
+cat --length=0 (hd0,0)/WXPE/NET/NET.WIM  || write 0x60004 2
+fallback 4
+fallback F
+
+
+#4 模块化跳转
+title
+fallback 5
+checkrange 2 read 0x60000 &amp;&amp; kernel
+fallback 6
+checkrange 2 read 0x60004 &amp;&amp; kernel
+fallback 13
+checkrange 4 read 0x60008 &amp;&amp; kernel
+fallback 12
+checkrange 2,3 read 0x60008 &amp;&amp; kernel
+fallback 7
+map --mem=0xB000 /SRS.ZIP (rd) &amp;&amp; kernel
+fallback 11
+map --mem=0xB000 /F6.ZIP (rd) &amp;&amp; kernel
+fallback 13
+fallback F
+
+#5 system.wim部份
+title
+write 0x60000 0
+pause --wait=0 Loading SYSTEM.WIM......
+map --mem=0xB000 /SYSTEM.WIM (rd)
+cat --length=0 (rd)+1
+pause --wait=0 Writing SYSTEM.WIM to (hd0,0)/system.bin ......
+#写system.wim的长度信息到(hd0,0)/system.bin
+dd if=(md)0x41+1 of=(hd0,0)/system.bin bs=1 count=4 skip=0x90
+#写SYSTEM.WIM文件内容到(hd0,0)/system.bin(从第4个字节开始写),如果写入成功就设置一个变量
+dd if=(rd)+1 of=(hd0,0)/system.bin bs=1 seek=4 &amp;&amp; write --offset=0x20 (hd0,0)/_SETENVI.BAT \r\nset system=1\r\n
+fallback 4
+fallback F
+
+#6 net.wim部份,语句功能请参考上面
+title
+write 0x60004 0
+pause --wait=0 Loading @0#net.wim......
+map --mem=0xB000 /AUTORUNS/@0#NET.WIM (rd)
+cat --length=0 (rd)+1
+pause --wait=0 Writing @0#net.wim to (hd0,0)/net.bin......
+dd if=(md)0x41+1 of=(hd0,0)/net.bin bs=1 count=4 skip=0x90
+dd if=(rd)+1 of=(hd0,0)/net.bin bs=1 seek=4 &amp;&amp; write --offset=0x30 (hd0,0)/_SETENVI.BAT \r\nset net=1\r\n
+fallback 4
+fallback F
+
+#7 检查是否存在外置驱动包,如果有的话自动加载.(SRS.ZIP)
+title
+fallback 8
+pause --wait=0 Loading SRS.ZIP......
+cat --length=0 (rd)+1
+dd if=(md)0x41+1 of=(fd2)/_SRS.ZIP bs=1 count=4 skip=0x90
+dd if=(rd)+1 of=(fd2)/_SRS.ZIP bs=1 seek=4
+write --offset=0x40 (hd0,0)/_SETENVI.BAT \r\nset srs=SRS\r\n
+fallback F
+
+#8
+title
+#如果内存大于500MB就设置一个变量(用于自动把镜像转到128MB).需开启高级功能才生效
+checkrange 512 read 0x60108 &amp;&amp; write --offset=0x50 (hd0,0)/_SETENVI.BAT \r\nset to128=1\r\n
+dd if=(md)0x300+2 of=(hd0,0)/_SETENVI.BAT bs=1 count=5 skip=0x3FB seek=0x7FB &amp;&amp; pause --wait=0
+map (fd2) (fd0)
+map --unmap=2
+map --rehook
+
+checkrange 2 debug &amp;&amp; pause Press any key to continue . . .
+pause --wait=0 Booting... &amp;&amp; chainloader (fd0)/io.sys
+
+#9
+title [9] SET DEBUG mode\n\r\n\tTrun on/off debug level
+write 0x60104 0
+checkrange 2 debug &amp;&amp; write 0x60104 2
+checkrange 2 read 0x60104 &amp;&amp; debug off
+checkrange 0 read 0x60104 &amp;&amp; debug on
+clear
+checkrange 2 debug &amp;&amp; pause Debug is now on ...
+checkrange 0 debug &amp;&amp; pause Debug is now off ...
+
+#10
+title [10] Enable advanced mode (test)
+write 0x6010c 888
+checkrange 0x7d000:-1 read 0x8298 &amp;&amp; write 0x60108 512
+pause Advanced Mode is enabled
+
+#11
+title
+fallback 8
+pause --wait=0 Loading F6.ZIP......
+cat --length=0 (rd)+1
+dd if=(md)0x41+1 of=(fd2)/_SRS.ZIP bs=1 count=4 skip=0x90
+dd if=(rd)+1 of=(fd2)/_SRS.ZIP bs=1 seek=4
+write --offset=0x40 (hd0,0)/_SETENVI.BAT \r\nset srs=F6\r\n
+map --mem (fd2)/bat/F6.gz (fd1)
+map --hook
+fallback F
+
+#12
+title
+fallback 8
+pause --wait=0 Loading OEM_SRS.ZIP......
+dd if=(md)0x300+2 of=(fd2)/_SRS.ZIP bs=1 count=4 skip=0x10
+dd if=(fd1) of=(fd2)/_SRS.ZIP bs=1 seek=4
+write --offset=0x40 (hd0,0)/_SETENVI.BAT \r\nset srs=OEM\r\n
+map --mem (fd2)/bat/F6.gz (fd1)
+map --hook
+fallback F
+
+#13
+title
+fallback 8
+checkrange 1,2 read 0x60100 &amp;&amp; kernel
+map (fd2) (fd0)
+map --unmap=2
+map --rehook &amp;&amp; configfile (fd0)/menu.lst
+fallback F
+
+#14
+title
+pause --wait=0 Error!
+pause GRUB4DOS Version mismatched!
+
+#15
+title
+#如果虚拟光驱中,设置一个变量,使得启动时优先使用光驱或ISO上的外置程序.
+fallback 4
+write --offset=0x60 (hd0,0)/_SETENVI.BAT \r\nset CDROMEX_=1\r\n
+read 0x603fb &amp;&amp; kernel
+#获取虚拟ISO文件的大小.
+map () (hd30)
+map --hook
+cat --length=0 (hd30)+1
+checkrange 0xfb0400 read 0x82b0 &amp;&amp; kernel
+dd if=(md) of=(md) bs=1 count=4 skip=0x82b0 seek=0x60110
+dd if=(md) of=(md) bs=1 count=4 skip=0x8290 seek=0x60114
+dd if=(md)0x300+2 of=(hd0,0)/_SETENVI.BAT bs=1 count=8 skip=0x110 seek=0x7F0
+map (hd30) (hd30)
+map --hook
+fallback F
+</code></pre>
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/菜单/" class="label label-success">菜单</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_micrope/#comments" class="ds-thread-count comment-link" data-thread-key="110" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/setupldr/" title="【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究">&larr; 【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li>
+  
+  
+  <li class="next"><a href="/post/batch_inifile/" title="【原创】批处理读取INI格式文件">【原创】批处理读取INI格式文件 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/not_2345/">关于2345网址导航</a></li><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="110"  data-url="http://chenall.net/post/grub4dos_micrope/" data-title="[Grub4dos] grub4dos高级应用菜单示范"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/grub4dos_micrope/";
+    var wumiiTitle = "[Grub4dos] grub4dos高级应用菜单示范";
+    var wumiiTags = "GRUB4DOS,菜单";
+    var wumiiCategories = ["个人日记","GRUB4DOS"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

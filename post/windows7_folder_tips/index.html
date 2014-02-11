@@ -1,0 +1,462 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="最近在试用Windows 7无意中发现了一个很有意思的特性，写出来分享下。可以不使用任何工具对一个文件夹/文件进行普通的保护
+
+不可改名
+可以改名但改名后对原来里面的程序没有任何影响（只是改的显示名称，实际上原来的名字并没有改变）">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</h1>
+      
+        <span>发表于<time datetime="2009-10-25T10:56:36.000Z"> <a href="/post/windows7_folder_tips/">2009-10-25</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>最近在试用Windows 7无意中发现了一个很有意思的特性，写出来分享下。可以不使用任何工具对一个文件夹/文件进行普通的保护</p>
+<ol>
+<li>不可改名</li>
+<li>可以改名但改名后对原来里面的程序没有任何影响（只是改的显示名称，实际上原来的名字并没有改变）</li>
+<li>对文件夹里面的文件重新指定名字（只是显示出来的名字，原名没有改变）</li>
+<li>处理以后文件夹实际上显示的是自定义的名称，改名也只是改这个名称，文件夹原来的名字并不会改变。</li>
+<li>只需要在DESKTOP.INI里面添加一些语句就可以对这个文件夹下的某些文件进行保护（可以防止某个文件被改名），这个文件被用户改名以后还可以使用原来的名字进行访问。</li>
+</ol>
+<p>PS: 从WINDOWS XP开始就有这种特性了，不过从VISTA开始又有变动，更加简单了。这里主要介绍WIN7下的方法，VISTA应该是一样的，XP/2003基本差不多</p>
+<p>首先看看如下图片，有没有发现一些比较特殊的地方？</p>
+<p><img src="http://c-dl.qiniudn.com/upload/2009/10/6F82F0AE06F64B8A257E871C7EC8E7EE73606F6C.png" alt=""></p>
+<p>想知道上面的文件夹是如何来的吗？</p>
+<p>首先大家都知道从WINDOWS 9X开始，在系统中经常可以看到desktop.ini的身影，通过它可以对一个文件夹进行自定义外观的操作。</p>
+<blockquote><p>以下内容来源于百度百科 <a href="http://baike.baidu.com/view/676737.html" target="_blank"><a href="http://baike.baidu.com/view/676737.html">http://baike.baidu.com/view/676737.html</a></a></p>
+<h3 id="-">一、文件夹图标</h3>
+<p>　　[.ShellClassInfo]</p>
+<p>　　InfoTip=注释</p>
+<p>　　IconFile=图标文件的路径</p>
+<p>　　IconIndex=选择要使用文件中的第几个图标</p>
+<p>　　自定义图标文件，其扩展名可以是.exe、.dll、.ico等。</p>
+<h3 id="-">二、文件夹</h3>
+<p>　　[ExtShellFolderViews]</p>
+<p>　　{BE098140-A513-11D0-A3A4-00C04FD706EC}={BE098140-A513-11D0-A3A4-00C04FD706EC}</p>
+<p>　　[{BE098140-A513-11D0-A3A4-00C04FD706EC}]</p>
+<p>　　Attributes=1</p>
+<p>　　IconArea_Image=11.jpg</p>
+<p>　　[.ShellClassInfo]</p>
+<p>　　ConfirmFileOp=50</p>
+<p>　　其中11.jpg是图片，把以上内容用记事本保存为desktop.ini ，和背景图片一起放在要改变背景的文件夹内。为了防止误删，可以把desktop.ini和图片设为隐藏属性。</p>
+<h3 id="-">三、标示特殊文件夹</h3>
+<p>　　系统中有一些特殊的文件夹，如回收站、我的电脑、我的文档、网上邻居等。这些文件夹的标示有两种方法：</p>
+<h4 id="1-clsid">1. 直接在文件夹名后续上一个<strong>.</strong>在加对应的CLSID</h4>
+<p>　　如：把一个文件夹取名为：新建文件夹.{20D04FE0-3AEA-1069-A2D8-08002B30309D}</p>
+<p>　　（注意：新建文件夹后面有一个半角的句号）</p>
+<p>　　那么这个文件夹的图标将变为我的电脑的图标，并且在双击该文件夹时将打开我的电脑。</p>
+<p>　　在下面查看CLSID</p>
+<p>　　在注册表中展开HKEY_CLASSES_ROOT\CLSID\，在CLSID分支下面就可以看到很多的ID，这些ID对应的都是系统里面不同的程序，文件，系统组件等</p>
+<p>　　常见组件类对应的CLSID:</p>
+<p>　　我的文档：450D8FBA-AD25-11D0-98A8-0800361B1103</p>
+<p>　　我的电脑：20D04FE0-3AEA-1069-A2D8-08002B30309D</p>
+<p>　　网上邻居：208D2C60-3AEA-1069-A2D7-08002B30309D</p>
+<p>　　回收站：645FF040-5081-101B-9F08-00AA002F954E</p>
+<p>　　Internet Explorer：871C5380-42A0-1069-A2EA-08002B30309D</p>
+<p>　　控制面板：21EC2020-3AEA-1069-A2DD-08002B30309D</p>
+<p>　　拨号网络/网络连接 :992CFFA0-F557-101A-88EC-00DD010CCC48</p>
+<p>　　任务计划 :D6277990-4C6A-11CF-8D87-00AA0060F5BF</p>
+<p>　　打印机(和传真):2227A280-3AEA-1069-A2DE-08002B30309D</p>
+<p>　　历史文件夹:7BD29E00-76C1-11CF-9DD0-00A0C9034933</p>
+<p>　　ActiveX缓存文件夹: 88C6C381-2E85-11D0-94DE-444553540000</p>
+<p>　　公文包: 85BBD920-42A0-1069-A2E4-08002B30309D</p>
+<h4 id="2-desktop-ini-">2. 第二种是通过一个desktop.ini文件</h4>
+<p>　　还以我的电脑为例:</p>
+<p>　　新建一个文件夹,名字随便,然后在其下边建立desktop.ini文件,内容如下:</p>
+<p>　　[.ShellClassInfo]</p>
+<p>　　CLSID={相应的ID}</p>
+<p>　　注:有部分病毒会建立这样的文件夹以达到隐藏自身的目的.另外这也是一种我们隐藏小秘密的方法.</p>
+<h3 id="-">四、标示文件夹所有者</h3>
+<p>　　这通常见于我的文档等如我的文档里就有这样一个文件，内容如下：</p>
+<p>　　[DeleteOnCopy]</p>
+<p>　　Owner=Administrator</p>
+<p>　　Personalized=5</p>
+<p>　　PersonalizedName=My Documents</p>
+<footer><strong>百度百科</strong><cite><a href="http://baike.baidu.com/view/676737.html" target="_blank">baike.baidu.com/view/&hellip;</a></cite></footer></blockquote>
+
+
+<p>好进入正题，其实上面的文件夹都是用到了一个参数<font style="background-color: transparent" color="#ff00ff" size="4">LocalizedResourceName</font><font color="#000000">（这个的意思自己翻译一下),通过它我们就可以为我们的文件夹重新定义名字。</font></p>
+<font style="background-color: transparent" color="#ff00ff" size="4"></font><font color="#000000">其它的我就不多说了，自己找下资料，上面的文件夹制作方法例子：</font>
+
+<ol>
+<li>新建一个文件夹名为<font color="#ff00ff">test</font><font color="#000000">(随意)</font></li>
+<li>在<font color="#ff00ff">test</font>文件夹中新建一个<font color="#ff00ff">desktop.ini</font>文件（注意一下扩展名）</li>
+<li>在desktop.ini中输入以下内容
+[.ShellClassInfo]
+LocalizedResourceName=自定义显示的名称</li>
+<li><p>最后一步也是很重要的一步，否则就不能显示。给<font color="#ff00ff">test</font>文件加个只读或者系统的属性</p>
+<p>使用ATTRIB命令（可以进入CMD，然后输入attrib+空格再把上面的文件夹拖放到CMD窗口获取这个文件夹路径）</p>
+<p>::+r只读属性;+s是系统属性，可以只加一个</p>
+<p>attrib [</font><font color="#800000">test文件夹路径</font>] +r +s</p>
+</li>
+<li><p>怎么样看到效果了吗？如果没有可能是系统还没有刷新，先关闭资源管理器，等一下再开就可以看到了。</p>
+</li>
+</ol>
+<p>知道了这些，上面的文件夹就很容易做出来了，只是改一下LocalizedResourceName的值而已。要实现上面第三个的效果（不能改名），只需要给这个文件夹只读属性，再把DESKTOP.INI也设成只读属性。就OK了。</p>
+<p>PS:上面的做好以后你可以试着对这个文件夹进行改名操作，然后再注意看一下地址栏上显示的文件夹名</p>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/desktop.ini/" class="label label-primary">desktop.ini</a><a href="/tags/文件夹/" class="label label-success">文件夹</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/windows7_folder_tips/#comments" class="ds-thread-count comment-link" data-thread-key="103" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/vmware-time/" title="解决虚拟机系统时间不准的问题">&larr; 解决虚拟机系统时间不准的问题</a></li>
+  
+  
+  <li class="next"><a href="/post/sandboxie/" title="善用SandBoxIE ,让你的系统更安全">善用SandBoxIE ,让你的系统更安全 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/not_2345/">关于2345网址导航</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="103"  data-url="http://chenall.net/post/windows7_folder_tips/" data-title="【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:34:03</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/windows7_folder_tips/";
+    var wumiiTitle = "【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。";
+    var wumiiTags = "desktop.ini,文件夹";
+    var wumiiCategories = ["系统相关"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>

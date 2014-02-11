@@ -1,0 +1,626 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[PHP] 简易的SMTP邮件发送类 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="最近由于需要发送（带大附件）的邮件，上网找了一下，像PHPMailer等试了一下，虽然封装得很好，但是用起来都不太顺手。
+像PHPMailer发送大附件时就会提示类似如下的错误:
+    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[PHP] 简易的SMTP邮件发送类"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css"><!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
+  <!-- End Google Tag Manager -->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li><a href="/about/" title="关于">关于</a></li>      
+        <li><a href="/archives/" title="归档">归档</a></li>      
+        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[PHP] 简易的SMTP邮件发送类</h1>
+      
+        <span>发表于<time datetime="2012-12-05T13:51:57.000Z"> <a href="/post/cs_smtp/">2012-12-05</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry">
+      
+        <p>最近由于需要发送（带大附件）的邮件，上网找了一下，像PHPMailer等试了一下，虽然封装得很好，但是用起来都不太顺手。</p>
+<p>像PHPMailer发送大附件时就会提示类似如下的错误:
+    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)</p>
+<p>我分配了128MB的内存发送个20MB的附件都不行，把内存加到512可以了，说明这个PHPMailer太占用内存了。可能是和PHPMail的封装有关，因为数据要转来转去的，很占用内存。</p>
+<p>去看了一下SMTP协议，才发现原来用SMTP协议发送邮件是如此的简单。</p>
+<p>可以使用TELNET 命令验证
+以下是使用TELNET命令发送一个邮件的过程记录，红色是输入的内容，绿色是注释。</p>
+<p><span style="color: #ff0000;">TELNET SMTP.QQ.COM 25</span></p>
+<p><span style="color: #3366ff;">220 smtp.qq.com Esmtp QQ Mail Server</span></p>
+<p><span style="color: #ff0000;">HELO LOCALHOST  <span style="color: #00ff00;">首先需要发送HELO或EHLO命令</span></span></p>
+<p><span style="color: #3366ff;">250 smtp.qq.com</span></p>
+<p><span style="color: #ff0000;">AUTH LOGIN  <span style="color: #00ff00;"> SMTP用户验证</span></span></p>
+<p><span style="color: #3366ff;">334 VXNlcm5hbWU6 <span style="color: #00ff00;">BASE64解码后： Username:就是告诉你要输入使用BASE64编码的用户名</span></span></p>
+<p><span style="color: #ff0000;">经过BASE64编码的用户名</span></p>
+<p><span style="color: #3366ff;">334 UGFzc3dvcmQ6 <span style="color: #00ff00;">BASE64解码后： Password:</span></span></p>
+<p><span style="color: #ff0000;">经过BASE64编码的密码</span></p>
+<p><span style="color: #3366ff;">235 Authentication successful <span style="color: #00ff00;">验证通过</span></span></p>
+<p><span style="color: #ff0000;">MAIL FROM: 发送者邮件地址要和上面的用户名一样</span></p>
+<p><span style="color: #3366ff;">250 Ok</span></p>
+<p><span style="color: #ff0000;">RCPT TO: 接收者邮件地址</span></p>
+<p><span style="color: #3366ff;">250 Ok</span></p>
+<p><span style="color: #ff0000;">DATA   <span style="color: #00ff00;">告诉服务器我要开始发送邮件数据了</span></span></p>
+<p><span style="color: #3366ff;">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;  <span style="color: #00ff00;">告诉你要使用</span></span><span style="color: #00ff00;"> &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;即PHP的&quot;\r\n.\r\n&quot;来告之服务器已经完成了。这里只是简单的发送了一些字符信息，先输入一个回车，然后你要发送的内容，完成之后再按回车，接首输入&quot;.&quot;再回车完成数据发送。</span></p>
+<p><span style="color: #ff0000;">abcdtest</span></p>
+<p><span style="color: #ff0000;">aass</span></p>
+<p><span style="color: #ff0000;">.</span></p>
+<p><span style="color: #3366ff;">250 Ok: queued as</span></p>
+<p><span style="color: #ff0000;">QUIT</span></p>
+<p><span style="color: #00ff00;">退出</span></span></p>
+<p>然后就可以到你的邮箱中去看看有没有收到刚发送的邮件。
+明白了发送原理就可以去写代码来实现了。这里用的是<code>fsock</code>方式。使用PHP写了一个很简单的SMTP类，可以发送带附件的邮件。需要的可以拿去用。</p>
+<p>使用<code>github</code>托管源码，可以从以下地方下载最新版本源码。
+<a href="https://github.com/chenall/chenall/tree/master/cs_smtp" target="_blank">https://github.com/chenall/chenall/tree/master/cs_smtp</a></p>
+<pre><code class="lang-php">&lt;?php
+
+/*
+    简易的SMTP发送邮件类，代码比较少，有助于学习SMTP协议，
+    可以带附件，支持需要验证的SMTP服务器（目前的SMTP基本都需要验证）
+    编写: chenall
+    时间: 2012-12-04
+    网址: http://chenall.net/post/cs_smtp/
+    修订记录:
+        2012-12-08
+            添加AddURL函数，可以直接从某个网址上下载文件并作为附件发送。
+            修正由于发送人和接收人邮件地址没有使用&quot;&lt;&gt;&quot;126邮箱SMTP无法使用的问题。
+        2012-12-06
+            添加reset函数，重置连接，这样可以发送多个邮件。
+        2012-12-05
+           发送附件的代码整合到send函数中，减少变量的使用，快速输出，节省内存占用;
+        2012-12-04
+           第一个版本
+
+    使用方法:
+        1. 初始化：连接到服务器（默认是QQ邮箱）
+           $mail = new cs_smtp(&#39;smtp.qq.com&#39;,25)
+           if ($mail-&gt;errstr) //如果连接出错
+               die($mail-&gt;errstr;
+        2. 登录到服务器验证,如果失败返回FALSE;
+           if (!$mail-&gt;login(&#39;USERNAME&#39;,&#39;PASSWORD&#39;))
+                die($mail-&gt;errstr;
+        3. 添加附件如果不指定name自动从指定的文件中取文件名
+           $mail-&gt;AddFile($file,$name) //服务器上的文件，可以指定文件名;
+        4. 发送邮件
+            $mail-&gt;send($to,$subject,$body)
+            $to 收件人，多个使用&#39;,&#39;分隔
+            $subject 邮件主题，可选。
+            $body  邮件主体内容，可选
+*/
+class cs_smtp
+{
+    private $CRLF = &quot;\r\n&quot;;
+    private $from;
+    private $smtp = null;
+    private $attach = array();
+    public $debug = true;//调试开关
+    public $errstr = &#39;&#39;;
+
+    function __construct($host=&#39;smtp.qq.com&#39;,$port = 25) {
+        if (empty($host))
+            die(&#39;SMTP服务器未指定!&#39;);
+        $this-&gt;smtp = fsockopen($host,$port,$errno,$errstr,5);
+        if (empty($this-&gt;smtp))
+        {
+            $this-&gt;errstr = &#39;错误&#39;.$errno.&#39;:&#39;.$errstr;
+            return;
+        }
+        $this-&gt;smtp_log(fread($this-&gt;smtp, 515));
+        if (intval($this-&gt;smtp_cmd(&#39;EHLO &#39;.$host)) != 250 &amp;&amp; intval($this-&gt;smtp_cmd(&#39;HELO &#39;.$host)))
+            return $this-&gt;errstr = &#39;服务器不支持！&#39;;
+        $this-&gt;errstr = &#39;&#39;;
+    }
+
+    private function AttachURL($url,$name)
+    {
+        $info = parse_url($url);
+        isset($info[&#39;port&#39;]) || $info[&#39;port&#39;] = 80;
+        isset($info[&#39;path&#39;]) || $info[&#39;path&#39;] = &#39;/&#39;;
+        isset($info[&#39;query&#39;]) || $info[&#39;query&#39;] = &#39;&#39;;
+        $down = fsockopen($info[&#39;host&#39;],$info[&#39;port&#39;],$errno,$errstr,5);
+        if (!$down)
+            return false;
+        $out = &quot;GET &quot;.$info[&#39;path&#39;].&#39;?&#39;.$info[&#39;query&#39;].&quot; HTTP/1.1\r\n&quot;;
+        $out .=&quot;Host: &quot;.$info[&#39;host&#39;].&quot;\r\n&quot;;
+        $out .= &quot;Connection: Close\r\n\r\n&quot;;
+        fwrite($down, $out);
+        $filesize = 0;
+        while (!feof($down)) {
+            $a = fgets($down,515);
+            if ($a == &quot;\r\n&quot;)
+                break;
+            $a = explode(&#39;:&#39;,$a);
+            if (strcasecmp($a[0],&#39;Content-Length&#39;) == 0)
+                $filesize = intval($a[1]);
+        }
+        $sendsize = 0;
+        echo &quot;TotalSize: &quot;.$filesize.&quot;\r\n&quot;;
+        $i = 0;
+        while (!feof($down)) {
+            $data = fread($down,0x2000);
+            $sendsize += strlen($data);
+            if ($filesize)
+            {
+                echo &quot;$i Send:&quot;.$sendsize.&quot;\r&quot;;
+                ob_flush();
+                flush();
+            }
+            ++$i;
+            fwrite($this-&gt;smtp,chunk_split(base64_encode($data)));
+        }
+        echo &quot;\r\n&quot;;
+        fclose($down);
+        return ($filesize&gt;0)?$filesize==$sendsize:true;
+    }
+
+    function __destruct()
+    {
+        if ($this-&gt;smtp)
+            $this-&gt;smtp_cmd(&#39;QUIT&#39;);//发送退出命令
+    }
+
+    private function smtp_log($msg)//即时输出调试使用
+    {
+        if ($this-&gt;debug == false)
+            return;
+        echo $msg.&quot;\r\n&quot;;
+        ob_flush();
+        flush();
+    }
+
+    function reset()
+    {
+        $this-&gt;attach = null;
+        $this-&gt;smtp_cmd(&#39;RSET&#39;);
+    }
+
+    function smtp_cmd($msg)//SMTP命令发送和收收
+    {
+        fputs($this-&gt;smtp,$msg.$this-&gt;CRLF);
+        $this-&gt;smtp_log(&#39;SEND:&#39;. substr($msg,0,80));
+        $res = fread($this-&gt;smtp, 515);
+        $this-&gt;smtp_log($res);
+        $this-&gt;errstr = $res;
+        return $res;
+    }
+
+    function AddURL($url,$name)
+    {
+        $this-&gt;attach[$name] = $url;
+    }
+
+    function AddFile($file,$name = &#39;&#39;)//添加文件附件
+    {
+        if (file_exists($file))
+        {
+            if (!empty($name))
+                return $this-&gt;attach[$name] = $file;
+            $fn = pathinfo($file);
+            return $this-&gt;attach[$fn[&#39;basename&#39;]] = $file;
+        }
+        return false;
+    }
+
+    function send($to,$subject=&#39;&#39;,$body = &#39;&#39;)
+    {
+        $this-&gt;smtp_cmd(&quot;MAIL FROM: &lt;&quot;.$this-&gt;from.&#39;&gt;&#39;);
+        $mailto = explode(&#39;,&#39;,$to);
+        foreach($mailto as $email_to)
+            $this-&gt;smtp_cmd(&quot;RCPT TO: &lt;&quot;.$email_to.&quot;&gt;&quot;);
+        if (intval($this-&gt;smtp_cmd(&quot;DATA&quot;)) != 354)//正确的返回必须是354
+            return false;
+        fwrite($this-&gt;smtp,&quot;To:$to\nFrom: &quot;.$this-&gt;from.&quot;\nSubject: $subject\n&quot;);
+
+        $boundary = uniqid(&quot;--BY_CHENALL_&quot;,true);
+        $headers = &quot;MIME-Version: 1.0&quot;.$this-&gt;CRLF;
+        $headers .= &quot;From: &lt;&quot;.$this-&gt;from.&quot;&gt;&quot;.$this-&gt;CRLF;
+        $headers .= &quot;Content-type: multipart/mixed; boundary= $boundary\n\n&quot;.$this-&gt;CRLF;//headers结束要至少两个换行
+        fwrite($this-&gt;smtp,$headers);
+
+        $msg = &quot;--$boundary\nContent-Type: text/html;charset=\&quot;ISO-8859-1\&quot;\nContent-Transfer-Encoding: base64\n\n&quot;;
+        $msg .= chunk_split(base64_encode($body));
+        fwrite($this-&gt;smtp,$msg);
+        $files = &#39;&#39;;
+        $errinfo = &#39;&#39;;
+        foreach($this-&gt;attach as $name=&gt;$file)
+        {
+            $files .= $name;
+            $msg = &quot;--$boundary\n--$boundary\n&quot;;
+            $msg .= &quot;Content-Type: application/octet-stream; name=\&quot;&quot;.$name.&quot;\&quot;\n&quot;;
+            $msg .= &quot;Content-Disposition: attachment; filename=\&quot;&quot;.$name.&quot;\&quot;\n&quot;;
+            $msg .= &quot;Content-transfer-encoding: base64\n\n&quot;;
+            fwrite($this-&gt;smtp,$msg);
+            if (substr($file,4,1) == &#39;:&#39;)//URL like http:///file://
+            {
+                if (!$this-&gt;AttachURL($file,$name))
+                    $errinfo .= &#39;文件下载错误:&#39;.$name.&quot;,文件可能是错误的\r\n$file&quot;;
+            }
+            else
+                fwrite($this-&gt;smtp,chunk_split(base64_encode(file_get_contents($file))));//使用BASE64编码，再用chunk_split大卸八块（每行76个字符）
+        }
+        if (!empty($errinfo))
+        {
+            $msg = &quot;--$boundary\n--$boundary\n&quot;;
+            $msg .= &quot;Content-Type: application/octet-stream; name=Error.log\n&quot;;
+            $msg .= &quot;Content-Disposition: attachment; filename=Error.log\n&quot;;
+            $msg .= &quot;Content-transfer-encoding: base64\n\n&quot;;
+            fwrite($this-&gt;smtp,$msg);
+            fwrite($this-&gt;smtp,chunk_split(base64_encode($errinfo)));
+        }
+        return intval($this-&gt;smtp_cmd(&quot;--$boundary--\n\r\n.&quot;)) == 250;//结束DATA发送，服务器会返回执行结果，如果代码不是250则出错。
+    }
+
+    function login($su,$sp)
+    {
+        if (empty($this-&gt;smtp))
+            return false;
+        $res = $this-&gt;smtp_cmd(&quot;AUTH LOGIN&quot;);
+        if (intval($res)&gt;400)
+            return !$this-&gt;errstr = $res;
+        $res = $this-&gt;smtp_cmd(base64_encode($su));
+        if (intval($res)&gt;400)
+            return !$this-&gt;errstr = $res;
+        $res = $this-&gt;smtp_cmd(base64_encode($sp));
+        if (intval($res)&gt;400)
+            return !$this-&gt;errstr = $res;
+        $this-&gt;from = $su;
+        return true;
+    }
+}
+</code></pre>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/php/" class="label label-primary">php</a><a href="/tags/PHPMailer/" class="label label-success">PHPMailer</a><a href="/tags/SMTP/" class="label label-info">SMTP</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/cs_smtp/#comments" class="ds-thread-count comment-link" data-thread-key="888" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  <li class="previous"><a href="/post/sdk_kp_php/" title="金山快盘PHP SDK(普通版+简化版)[2013-04-12]">&larr; 金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li>
+  
+  
+  <li class="next"><a href="/post/all_print_to_lpt/" title="使用共享打印机的另一个方案">使用共享打印机的另一个方案 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li></ul></td></tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="888"  data-url="http://chenall.net/post/cs_smtp/" data-title="[PHP] 简易的SMTP邮件发送类"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_recent_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近文章</div>  <div data-src='recent_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2014 chenall
+  
+    </span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></span>  </div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+</div>
+<div class="clearfix"></div>
+
+
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            
+<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/cs_smtp/";
+    var wumiiTitle = "[PHP] 简易的SMTP邮件发送类";
+    var wumiiTags = "php,PHPMailer,SMTP,原创";
+    var wumiiCategories = ["程序设计","PHP"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+</script>
+<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+            <script>
+  (function() {
+    var cx = '013748367689400048621:dmsqkhtcvbm';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=[];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      if (alt){
+        $(this).before('<span class="caption">' + alt + '</span>');
+      }
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script type="text/javascript">
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+</script>
+
+
+  <!--addons at end of body-->
+</body>
+</html>
