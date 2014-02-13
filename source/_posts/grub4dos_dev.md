@@ -7,6 +7,7 @@ tags:
 - GRUB4DOS
 categories: 
 - 程序设计/综合
+- GRUB4DOS/实用
 ---
 
 因为经常使用WINDOWS系统，为了方便直接在WINDOWS下搭建。
