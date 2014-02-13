@@ -33,7 +33,27 @@ description: hexo模块化主题,自由,强大,本主题还通过主题插件实
 - 允许在head或body的前面或尾部附加自定义内容.
 - 独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)
 
+<!--more-->
+
 注: 上面的$SOURCE是hexo配置文件中在`source_dir`,$THEME是hexo配置文件中的`theme`,即 **hexo.source_dir + '_'+ hexo.config.theme+ '.yml'**;
+
+其它: 本主题可以轻松支持多站点，每个站点的配置各自独立，互不影响（包括站点特定插件等）。
+
+效果见本站源码：<https://github.com/chenall/chenall>  
+还有demo源码: <https://github.com/chenall/hexo-theme-chenall>  
+
+site分支里面的文件就是文章源码，源码里面包括了对应的配置文件_config.yml和插件等。
+
+安装hexo之后，再安装本主题。 
+然后下载本站源码，就可以使用新版的hexo测试了
+
+例子:
+
+```
+svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
+svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
+hexo server --config chenall.net/_config.yml
+```
 
 ## **具体效果:** [demo] 或本站 [chenall.net]
 
@@ -395,6 +415,7 @@ widgets:
   tags: 标签
   tagcloud: 标签云
 ```
+
 [Hexo]: http://zespia.tw/hexo/
 [demo]: http://hexo.chenall.net
 [chenall.net]: http://chenall.net
