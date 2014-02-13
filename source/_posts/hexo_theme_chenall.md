@@ -364,7 +364,7 @@ tag_minium: 3
 ## GoogleTagManagerID: GTM-ABCDEF
 GTM_ID:
 
-## 在文章中使用'[CDN_URL]:'字符串自动替换为下面的地址,主要是为了方便使用.
+## 在文章中使用'[ CDN_URL]:'（注：CDN_URL两边无任格空格，这里是为了防止被替换）字符串自动替换为下面的地址,主要是为了方便使用.
 CDN_URL: http://your.cdn.url
 
 twitter_id: chenall
