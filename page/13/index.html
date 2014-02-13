@@ -114,6 +114,66 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></h1>
+      
+        <span>发表于<time datetime="2008-12-30T15:22:10.000Z"> <a href="/post/post38/">2008-12-30</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <h2 id="-http-bbs-znpc-net-viewthread-php-tid-3304-">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
+<p>   转到这里留个备份,以后再碰到这个问题比较好找.^_^</p>
+<h2 id="-">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
+<p>   此问题在远程系统是GHOST版的windowsxp时出现的比较普遍。</p>
+<h2 id="-"><strong> 现象描述：</strong></h2>
+<p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便
+弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
+<h2 id="-"><strong>解决方法：</strong></h2>
+<p>打开注册表
+找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\
+在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.
+再导入注册表:</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\0000]
+&quot;ClassGUID&quot;=&quot;{4D36E97D-E325-11CE-BFC1-08002BE10318}&quot;
+&quot;Class&quot;=&quot;System&quot;
+&quot;HardwareID&quot;=hex(7):52,00,4f,00,4f,00,54,00,5c,00,52,00,44,00,50,00,44,00,52,00,00,00,00,00
+&quot;Driver&quot;=&quot;{4D36E97D-E325-11CE-BFC1-08002BE10318}\0030&quot;
+&quot;Mfg&quot;=&quot;(标准系统设备)&quot;
+&quot;Service&quot;=&quot;rdpdr&quot;
+&quot;DeviceDesc&quot;=&quot;终端服务器设备重定向器&quot;
+&quot;ConfigFlags&quot;=dword:00000000
+&quot;Capabilities&quot;=dword:00000000
+</code></pre><p>最后，把控制面板－管理工具－服务中的 <strong>Remote Desktop Help Session Manager</strong> 和 <strong>Telnet</strong> 服务开启，
+将电脑重启，远程桌面管理就可以恢复正常了。</p>
+<p>注:可能是因为做GHOST系统时,为了省事在删除硬件时直接使用了devcon remove *,所以才会出现这个问题.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/远程桌面/" class="label label-primary">远程桌面</a><a href="/tags/转载/" class="label label-success">转载</a><a href="/tags/实用技术/" class="label label-info">实用技术</a><a href="/tags/解决/" class="label label-warning">解决</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post38/#comments" class="ds-thread-count comment-link" data-thread-key="38" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></h1>
       
         <span>发表于<time datetime="2008-12-23T16:32:23.000Z"> <a href="/post/post37/">2008-12-23</a></time></span>      
@@ -730,121 +790,10 @@ SS可以在野外不用验证神医,可以打怪也可以移动.^</em>^ 方法�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></h1>
-      
-        <span>发表于<time datetime="2008-07-22T17:01:15.000Z"> <a href="/post/post19/">2008-07-22</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>1994年, 以动漫相关游戏著称的 Banpresto 发布电神魔傀(街机版) 和 Ghost Chaser - 电精(超任版)。 </p>
-<p>街机版有角色：魔傀, 衣世(女主角), 机器人Belva, 黑骑士(二代女主角), Tulks(即Tarukusu, 超任版中是Boss之一, 后被收服), 还有一个怪物 J-11。超任版只能选前三个,其他人客窜。 </p>
-<p>1995年, Guardians / 电神魔傀II (Denjin Makai 2) 发布。拥有华丽的必杀技及连续技, 这是一部不可多得的佳作,大规模查封游戏厅前南京不少机铺都有。8个主角。</p>
-<p>大家注意, 那个男主角并不是原先大多数人认为的魔傀, 而是 ... </p>
-<p>一代的最终 Boss ギルリアン (Girulian)! 形象差别是有点过分, 不过 ... 仔细观察2代里他的必杀技, 很多都有1代的影子。另外, 增加了天使(一代用女主角爆机后客窜角色), 忍者和魔法师。 </p>
-<p>(这家伙和二代男主角(长得像&nbsp;&nbsp; Cotolo的 :P )是同一个人, 挺不可思议的 :P ) </p>
-<p>模拟器和其他</p>
-<p>超任的电精1代可以模拟, 编号SF16112, 推荐 OneMinuteLeft站 下载, checksum ok. 模拟器推荐用 SNes9X。</p>
-<p>街机版都没有被模拟,并且据国外的 UnEmulated 站点资料,也没有被 dump。说到街机模拟资料,如果你懂日文,AEL是个不错的站 <a href="http://www3.freeweb.ne.jp/misc/aeml/ael/index.htm" target="_blank">http://www3.freeweb.ne.jp/misc/aeml/ael/index.htm</a> 。已经模拟的有图片,没有模拟的也有资料。</p>
-<p>但是我想面包会有的,就像CPS2那样。我从来没有过一台游戏机,但模拟器让我梦想成真,很多人都有这样的幸福感吧。另一方面我是不折不扣的街机迷, Guardians 是我高三时唯一愿意为之放下书包的游戏。不过这游戏并不很出名,当时 ACT 开始没落,也许是生不逢时吧。我们普通人所能做的,用基督山伯爵的话,只有希望和等待。</p>
-<p>一代的街机我没有机会玩(只见过一面, 第二天想去玩就被撤了 -_-O</p>
-<p>一代有两种:</p>
-<p>一个可能是根据 SFC 的 Hack 来的, 运行在超任的街机互换板 Nintendo Super Sytem 上, 跟街机的 FinalFight3 一样。1996 年由一个什么别的公司发行。只能选三人。</p>
-<p>另一个是正宗的 Arc 版, 可选六人, 超杀更多。</p>
-<p>二代的街机有盗版的 (比如一开始就是最后一关), 所以一旦得到捐赠, 破解不会很难。Banpresto 的机板几乎清一色的使用标准 M68K CPU, 好像没有定制芯片。最近 Banpresto 在 1995 年左右出的一批街机游戏被 Guru dump下来, 并很快的被 MAMEDev 加入了 MAME 驱动。让人非常心动 .. </p>
-<p>最好用的人:Girulian。我可以一币爆机, 剩四条命 (Start 2, 第1关, 第3关各加一人); 打出 29 hits(后附指令),可在第1关加人)</p>
-<p>最喜欢用的人:黑骑士,太...养眼了 </p>
-<p>指令和秘技</p>
-<p>1代超任版指令 (A: 拳, B: 跳)</p>
-<p>全员共通技</p>
-<p>防御: 按住 A, 如果再按 &larr; 是快速防御</p>
-<p>击倒技: &larr; + A</p>
-<p>投技2: 捉住敌人, &larr; + B</p>
-<p>必杀: 按住A, &darr;&uarr; 或 &larr;&rarr;, 放开A (可蓄力)</p>
-<p>超必杀: 血红且气满, 按住A, &uarr;&darr;&rarr;&nbsp;&nbsp;</p>
-<p>合体超杀: 两人均气满,捉住另一人,方向键 + B </p>
-<p>合体投技: 一人捉住敌人, 另一人从正面接近按A</p>
-<p>版边适用连技: 面对墙壁捉住敌人, A &times; 3, 组合拳 A &times; 4(慢慢打出可全部命中), &darr;&uarr;A, &larr;&rarr;A, 倒地追加(B跳起后,&darr;+A)</p>
-<p>第二种服装: 中途续关,按住 L 和 R 键选人</p>
-<p>选同一人物: Option 选项: Battle(可对打), 按住 L 或 R 选人</p>
-<p>无限时:标题画面 L, R, 右, 右, 左, 左顺续输入, L 和 R 键按住后 Start </p>
-<p>无限续关:标题 Banpresto 画面时按住 1P 和 2P 的 Y 键, &uarr;&darr;&larr;, 放开 Y 键。(用模拟器把两个手柄按键设置在一起就能很方便的调出了。)</p>
-<p>跳关:选人后直至任务画面结束按住 2P 的 L R A B X Y + 方向键, 方向键右:第二关,下:三,左:四,上:五</p>
-<p>无赖技: 除巨型机器人, 对其他任何敌人都可以在墙边将他摔向墙, 然后一直按住方向键, 从空中落下的敌人就会再次被你捉住。如此反复。 </p>
-<p>魔傀超必杀(类似龙虎乱舞): 气满, &rarr;&rarr;A(击中),&darr;&uarr;(要掌握好时机,在输入&darr;&uarr;之后那一拳确定要能打中敌人.)</p>
-<p>魔傀特殊技(连环炮,连踢): 空中或跑动中, A + B 连打</p>
-<p>衣世特殊技(空投): 空中近敌, A 空中近敌(敌在地面), &darr; + A </p>
-<p>衣世特殊技(跳墙踢): 空中接近墙, &larr; + A</p>
-<p>机器人特殊技(大坐): 捉住敌人, B 连打, (电击): A + B</p>
-<p>机器人特殊技(有bug): 跑动中, (A + B) &times; 2, 机器人会挥出两拳, 之后立即静立一秒钟, 就可以无敌了, 只要不使大招就不会失效</p>
-<p>机器人连技: 捉住敌人, A &times; 2, A + B(电击), &rarr;&rarr;A, &darr;&uarr;A, &larr;&rarr;A, 倒地追加</p>
-<p>1代街机版指令 (A: 拳, B: 跳)</p>
-<p>暂无</p>
-<p>2代街机版指令 (A: 拳, B: 跳, C: 飞行道具)</p>
-<p>全员共通技 </p>
-<p>必杀:按住A,&darr;&uarr; 或 &larr;&rarr;</p>
-<p>防御: 按住A</p>
-<p>大保险(Sorry, 真的不知怎么称呼): A + C</p>
-<p>特殊技: &rarr;&rarr;, A + B, 有的人可空中 A + B</p>
-<p>选同一人物: 一个人进入游戏, 另一个人投币后按 C 键选人</p>
-<p>Girulian 超杀: 气满, 按住A, &uarr;&darr;&rarr;(威力超强,用来打机器人之类不会倒地的敌人可能一击必杀,费三条血)</p>
-<p>Girulian 特殊投技: &rarr;&rarr; (可跳起) A + B (敌近身)</p>
-<p>Girulian 特殊技: 按住A, &darr;&darr;&uarr;</p>
-<p>Girulian 浮空: 按住 B, 方向键 &times; 2 (可连续三次)</p>
-<p>暴走! Girulian 连技: 组合拳(&uarr; + A 连打, 7hits,敌晕,走去捉住), A 连打,(敌人从墙上弹回快落地时), 后摆 A (取消)&darr;&uarr;A (A松开要快), &rarr;&rarr;A, (按住A)&darr;&darr;&uarr;, 跳起 A + B 后连打 A (倒地追加), 超杀(按住 A, &uarr;&darr;&rarr;), 后摆 A (取消) &larr;&rarr;A。只在两边都有墙的场景完全成立。加分 30 万以上!</p>
-<p>连技规则: 其实没什么规则,只要浮空就能追打,但需用不同招式,自由发挥。由于引入破坏力修正, hits 越多破坏力越小,上面的 29hits 破坏力不及直接用一个超杀,但加分狂多。如果 2P 在 1P 后接续, 打个 30 几连是不成问题的。</p>
-<p>天使超杀: 同 Girulian</p>
-<p>天使飞行: 按住 B, 方向键 + B</p>
-<p>黑骑士, 魔法师超杀: 气满, &rarr;&rarr;按住 A (一直不放且击中敌), &larr;&rarr;</p>
-<p>黑骑士挑拨: Start + A</p>
-<p>Tulks(很壮的那个人)超杀: (敌近身)气满, 按住 A, &uarr;&larr;&darr;&rarr; (这招很摆哦,几乎没人知道的)</p>
-<p>Tulks超杀2: 气满,捉住敌人, A + B</p>
-<p>Tulks特殊技: 按住 A (一直不放), &rarr;&rarr;(敌近身), B</p>
-<p>Tulks特殊技(电): 按住 A &darr;&rarr;</p>
-<p>机器人,忍者和怪物超杀: 气满, 按住 A, &rarr;&rarr;&larr;&rarr;</p>
-<p>机器人特殊投技(大坐): 捉住敌人, B 连打</p>
-<p>机器人特殊投技: 捉住敌人(可以同时两个), A + B</p>
-<p>机器人特殊技: 按住 A, &darr;&uarr;&darr;</p>
-<p>怪物对地追加: 按住 A, &darr;&darr;</p>
-<p>SNes9X 里有一个 Cheat 菜单,想办法在选人的时候低阶跟踪一下,能选所有出场人物甚至道具#$@*? (比如选个手雷, 只有几秒钟的&quot;生命&quot;-_-O ) 但是,改出的人只能电脑控制,很无聊的.我选出来只是为了看看有没隐藏人物,事实证明没有.这个抓图是我用其他人快爆机时换人的.</p>
-<p>将 ghost chaser densei (j).cht 拷到SNes9X的存档目录, 须更名与 ROM 一致,如 S
-F16XXX.cht。</p>
-<p>读取ROM, 按 Alt + E, 在代码上打勾。血红(Red)是用来发超杀的。</p>
-<p>加入了血和力量槽的最大限制, 不会出现花屏。中文字体太小, 看不清楚, 采用英文</p>
-<p>换人项上打勾后, 在 Value 栏填以下数值, 按 Change 即可。除非中途续关, 否则下一场景换人生效。&nbsp;&nbsp;</p>
-<p>部分人物对照表, 18以上不能控制</p>
-<p>人物&nbsp;&nbsp; Makai&nbsp;&nbsp; Iyo&nbsp;&nbsp; Belva&nbsp;&nbsp; Tulks&nbsp;&nbsp; Kurokishi&nbsp;&nbsp; J-11 Bomb??? </p>
-<p>Value 8, 9 12, 13 16, 17 20 28 24 96 </p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/游戏人生/">游戏人生</a></li><li><a href="/categories/游戏人生/转载资料/">转载资料</a></li></span></span> | <span class="tags">标签 <a href="/tags/电神魔傀/" class="label label-primary">电神魔傀</a><a href="/tags/电精1/" class="label label-success">电精1</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post19/#comments" class="ds-thread-count comment-link" data-thread-key="19" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/12/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><a class="page-number" href="/page/12/">12</a></li><li class="active"><li><span class="page-number current">13</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/14/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/12/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><a class="page-number" href="/page/12/">12</a></li><li class="active"><li><span class="page-number current">13</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/14/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -920,7 +869,7 @@ F16XXX.cht。</p>
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-12 12:03:12</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:53</em></span></div>
 </div>
 <div class="clearfix"></div>
 

@@ -114,6 +114,66 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></h1>
+      
+        <span>发表于<time datetime="2010-03-04T00:31:57.000Z"> <a href="/post/grub4dos_fontfile/">2010-03-04</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <h3 id="-">[功能说明]</h3>
+<p>  加载一个点阵字库用于显示中文。</p>
+<p>  可以直接使用完整的点阵字库，或从以下软件生成的小字库
+  <a href="http://www.cn-dos.net/forum/viewthread.php?tid=47921" target="_blank">http://www.cn-dos.net/forum/viewthread.php?tid=47921</a></p>
+<p>  注: 最新的版本一般不需要这个命令,文章保留作为记录,或编写外部命令的参考</p>
+<h3 id="-">[使用方法]</h3>
+<ol>
+<li>把fontfile复制到GRUB目录下。</li>
+<li><p>使用以下命令调用</p>
+<p>FONTFILE PATH-TO-HZKFILE</p>
+<p>例子:</p>
+<p>FONTFILE /MENU.FON OR FONTFILE /HZK16</p>
+</li>
+</ol>
+<h3 id="-">[其它说明]</h3>
+<p> 必须使用以下网址，2010-03-01以后的版本才可以正常使用。(在最新版的GRUB4DOS上可能会显示不正常,本程序也不再维护更新)
+ <a href="http://grub4dos-chenall.googlecode.com/" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/">http://grub4dos-chenall.googlecode.com/</a></a>
+ 小字库生成的命令。
+ mkfon menu.lst
+ 执行后会生成menu.fon</p>
+<p> 具体mkfon的使用方法请看
+ <a href="http://www.cn-dos.net/forum/viewthread.php?tid=47921" target="_blank"><a href="http://www.cn-dos.net/forum/viewthread.php?tid=47921">http://www.cn-dos.net/forum/viewthread.php?tid=47921</a></a></p>
+<p> 注意：<code>mkfon目录下必须有字库 GBK16 或 HZK16。这些可以自己从网上下载，如果找不到上面的网址里面也有。</code></p>
+<h3 id="-">[截图]</h3>
+<p>截图使用的菜单可以从以下地址下载（包含了小字库）</p>
+<p> <a href="http://grub4dos-chenall.googlecode.com/files/sample_menu_with_chinese.zip" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/files/sample_menu_with_chinese.zip">http://grub4dos-chenall.googlecode.com/files/sample_menu_with_chinese.zip</a></a></p>
+<p> <img src="http://farm5.static.flickr.com/4047/4529473849_f18864c1e7_o.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/FONTFILE/" class="label label-primary">FONTFILE</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/字库/" class="label label-info">字库</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_fontfile/#comments" class="ds-thread-count comment-link" data-thread-key="130" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/vim/">[转] Vim入门图解说明.</a></h1>
       
         <span>发表于<time datetime="2010-03-01T10:41:11.000Z"> <a href="/post/vim/">2010-03-01</a></time></span>      
@@ -972,90 +1032,10 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h1>
-      
-        <span>发表于<time datetime="2009-11-15T20:46:08.000Z"> <a href="/post/grub4dos_sysapp/">2009-11-15</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>以下需要先设置好GRUB4DOS作为引导。</p>
-<ol>
-<li><p>启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示
- <em>BOOTMGR is missing</em>或者<em>NTLDR is missing</em>
- 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p>
-<p>先复制NTLDR(从XP系统中找）还有bootmgr（VISTA以上系统启动文件），到U盘上。</p>
-<pre><code> title 1.启动硬盘上的xp/2k3系统(NTLDR)
- chainloader /NTLDR
- find --set-root --ignore-floppies --ignore-cd /boot.ini
- dd if=()+1 of=(md)0x3E+1
-
- title 2.启动硬盘上的VISTA/WIN7系列系统(BOOTMGR)
- chainloader /BOOTMGR
- find --set-root --ignore-floppies --ignore-cd /boot/bcd
- dd if=()+1 of=(md)0x3e+1
-</code></pre></li>
-<li><p>备份恢复硬盘MBR（此功能不熟悉的最好不要用，否则后果自负）
-首先U盘上需要放一个文件比如MBR_BAK，（大小在512字节以上，内容可以随意）作为备份恢复的载体</p>
-<pre><code> title 1.备份硬盘MBR
- checkrange 0x80 read 0x8280 &amp;&amp; dd if=(hd1)+1 of=()/MBR_BAK
- checkrange 0x80 read 0x8280 || dd if=(hd0)+1 of=()/MBR_BAK
-
- title 2.恢复硬盘MBR
- checkrange 0x80 read 0x8280 || dd if=()/mbr_bak of=(hd0)+1 count=1
- checkrange 0x80 read 0x8280 &amp;&amp; dd if=()/mbr_bak of=(hd1)+1 count=1
-</code></pre></li>
-<li><p>加载启动一个IMG镜像，比如MAXDOS.IMG
-把MAXDOS.IMG放在U盘boot目录下</p>
-<pre><code> title MaxDos
- map --mem /boot/maxdos.img (fd0)
- map --hook
- chainloader (fd0)+1
- rootnoverify
-</code></pre></li>
-<li><p>从网络启动（PXE），代替网卡的PXE模块。
-首先从<a href="http://rom-o-matic.net/" target="_blank"><a href="http://rom-o-matic.net/">http://rom-o-matic.net/</a></a>下载GPXE或Etherboot的启动镜像
-选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的
-到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)
-比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
-<pre><code> title Gpxe 从网络启动
- kernel /boot/gpxe.zlilo
-
- title Etherboot 从网络启动
- kernel /boot/etherboot.zlilo
-</code></pre></li>
-</ol>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/GPXE/" class="label label-primary">GPXE</a><a href="/tags/GRUB/" class="label label-success">GRUB</a><a href="/tags/GRUB4DOS/" class="label label-info">GRUB4DOS</a><a href="/tags/maxdos/" class="label label-warning">maxdos</a><a href="/tags/系统维护/" class="label label-primary">系统维护</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_sysapp/#comments" class="ds-thread-count comment-link" data-thread-key="112" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/7/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li class="active"><li><span class="page-number current">8</span></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/9/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/7/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li class="active"><li><span class="page-number current">8</span></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/9/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1131,7 +1111,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-12 12:03:12</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:57</em></span></div>
 </div>
 <div class="clearfix"></div>
 

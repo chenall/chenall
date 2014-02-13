@@ -114,6 +114,329 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></h1>
+      
+        <span>发表于<time datetime="2014-02-13T22:25:00.000Z"> <a href="/post/hexo_theme_chenall/">2014-02-13</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <h3 id="-">主题简介</h3>
+<p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题 <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a> 修改而成,采用 <a href="http://getbootstrap.com/" target="_blank">bootstrap</a> 框架  </p>
+<p>在尽量保留原有主题功能的同时采用模块化设计支持实现组件模块化.完全自定义,通过widgets你可以添加许多实用功能.可以自定义组合各种组件,像评论系统,统计系统等.</p>
+<p>大部份的JS/CSS等静态文件都使用CDN加载,使用了 <a href="http://open.bootcss.com/" target="_blank">bootcss</a> 和 <a href="http://www.staticfile.org/" target="_blank">qiniu</a> 的CDN服务.</p>
+<p>以下是本主题的特色:</p>
+<ul>
+<li>支持单独启用或禁用小工具(像侧边栏之类的)</li>
+<li>支持单独启用或禁用评论</li>
+<li>可以单独指定加载小工具</li>
+<li>支持多个分类，支持子分类,分类名不区分大小写</li>
+<li>独特的用户配置文件(自动加载<code>$SOURCE\_$THEME.yml</code>[默认就是<strong>source\_chenall.yml</strong>]作为主题的配置文件,这样可以避免升级主题或其它原因导致的配置文件丢失).</li>
+<li><code>iLink</code> 文章内链功能</li>
+<li><code>ijs</code> 文章内嵌脚本或能</li>
+<li>允许在head或body的前面或尾部附加自定义内容.</li>
+<li>独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)</li>
+</ul>
+<p>注: 上面的$SOURCE是hexo配置文件中在<code>source_dir</code>,$THEME是hexo配置文件中的<code>theme</code>,即 <strong>hexo.source<em>dir + &#39;</em>&#39;+ hexo.config.theme+ &#39;.yml&#39;</strong>;</p>
+<h2 id="-demo-chenall-net-"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
+<h3 id="-">安装方法</h3>
+<p>通过以下命令下载主题到您的theme目录，然后修改blog的<code>_config.yml</code>中<em>theme</em>为<code>chenall</code>。</p>
+<pre><code>git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
+</code></pre><p>或</p>
+<pre><code>svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
+</code></pre><p>另外: 主题内置的<code>list_posts</code>插件还需要额外安装一个<code>lodash</code>组件,使用以下命令安装即可.</p>
+<pre><code>npm install lodash --save
+</code></pre><h3 id="-">更新</h3>
+<p>通过以下命令来保持更新:</p>
+<pre><code>cd themes/light
+git pull 或 svn up
+</code></pre><h3 id="-">分类说明</h3>
+<p>本主题分类方式是额外实现的,一行一个分类,每一行都是一个独立分类.</p>
+<p>同时支持多级分类,像下面的.就设置了两个分类,<code>编程开发</code>和<code>VBScript</code>,<code>VBScript</code>是一个子分类.具体效果请参考<a href="http://hexo.chenall.net" target="_blank">demo</a></p>
+<pre><code class="lang-yaml">categories: 
+- 程序设计/VB/VBScript
+- 编程开发
+</code></pre>
+<h3 id="ijs-">ijs 内嵌脚本</h3>
+<p><code>ijs</code> 是本主题的内置的<code>tag</code>插件,可以在文章中内嵌脚本,这样可以实现一些特殊功能.(因为是在主题中执行的,所以可以使用那些helper插件);</p>
+<p>一个简单的例子,在文章中插入以下内容.</p>
+<pre><code>{% ijs %}
+return link_to(&#39;http://chenall.net&#39;,&#39;我的搏客&#39;);
+{% endijs %}
+</code></pre><p>以上通过hexo内置的<em>helper</em>插件<strong>link_to</strong>实现在文章中插入一个链接指向<code>http://chenall.net</code>.</p>
+<h2 id="-notextile-0-notextile-">效果: <a href="http://chenall.net" title="我的搏客">我的搏客</a></h2>
+<p>复杂一些的例子,在文章中插入最新的5篇文章列表.</p>
+<pre><code>{% ijs %}
+var str = &#39;&#39;;
+if (site.posts.length){
+  str = &#39;&lt;ul class=&quot;list-group&quot;&gt;&#39;;
+  site.posts.sort(&#39;date&#39;, -1).limit(5).each(function(post){
+    str += &#39;&lt;li class=&quot;list-group-item&quot;&gt;&lt;a href=&quot;&#39; + config.root + post.path + &#39;&quot;&gt;&#39; + post.title + &#39;&lt;/a&gt;&lt;/li&gt;&#39;;
+  });
+  str += &#39;&lt;/ul&gt;&#39;;
+}
+return str;
+{% endijs %}
+</code></pre><h2 id="-">效果如下:</h2>
+<ul class="list-group"><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li></ul>
+<h3 id="ilink-">iLink 文章内链</h3>
+<p><code>iLink</code> 是本主题内置的的<code>tag</code>插件,通过<strong>iLink</strong>可以很方便的在文章中插入文章链接.</p>
+<p>iLink 使用格式</p>
+<pre><code>{% iLink TYPE:VALUE%}
+TYPE: 类型
+VALUE: 值
+</code></pre><p>其中TYPE可使用的值如下:</p>
+<ul>
+<li><p><code>tag</code>  链接到标签  </p>
+<pre><code> {% iLink tag:GRUB4DOS %}
+</code></pre><p> 例: <a href="/tags/GRUB4DOS/" target="_blank">GRUB4DOS</a></p>
+</li>
+<li><p><code>cat</code> 或 <code>category</code> 链接到分类<br> 例子: </p>
+<pre><code> {% iLink cat:程序设计 %}
+</code></pre><p> 例: <a href="/categories/程序设计/" target="_blank">程序设计</a></p>
+</li>
+<li><p>其它值会根据提供的信息自动链接到指定文章<br>例子:</p>
+<ol>
+<li><p>链接到源文件名 </p>
+<pre><code>{% iLink source:_posts/grub4dos_dev.md %}
+</code></pre><p>例: <a href="/post/grub4dos_dev/" target="_blank">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></p>
+</li>
+<li><p>链接到文章标题 </p>
+<pre><code>{% iLink title:[推荐] 免费的云计算Koding %}
+</code></pre><p>例: <a href="/post/koging/" target="_blank">[推荐] 免费的云计算Koding</a></p>
+</li>
+<li><p>若某个文章页有额外添加了一些信息比如<code>id: 596</code>  </p>
+<pre><code>{% iLink id:597 %}
+</code></pre><p>例: <a href="/post/c_upper/" target="_blank">C语言的基础函数大小写转换</a></p>
+</li>
+<li><p>通过文章的slug  </p>
+<pre><code>{% iLink slug:jekyll_or_hexo %}
+</code></pre><p>例: <a href="/post/jekyll_or_hexo/" target="_blank">静态搏客 jekyll & Hexo</a></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="-">附加自定义内容</h3>
+<p>如果你需要一些添加一些额外和主题无关的内容.这时就可以使用这个功能. 
+在<code>_modules</code>目录中(主题或source都可以)新建一个文件夹<code>partial</code>.</p>
+<p>然后就可以通过<code>partial</code>里面的特定文件添加额外内容.</p>
+<p>具体文件列表:</p>
+<ul>
+<li><code>body_start.ejs</code>   标签<code>&lt;body&gt;</code>后.</li>
+<li><code>body_end.ejs</code>     标签<code>&lt;/body&gt;</code>前.</li>
+<li><code>head_start.ejs</code>   标签<code>&lt;head&gt;</code>后</li>
+<li><code>head_end.ejs</code>     标签<code>&lt;/head&gt;</code>前</li>
+</ul>
+<p>例子: 想要在head中添加一行<code>meta</code>信息就可以在<code>head_start.ejs</code>中添加.</p>
+<h2 id="-">主题配置说明</h2>
+<p>注: 配置中如果需要访问到本地路径,除非特别指定否则应该用<code>css/theme.css</code>不要写成<code>/css/theme.css</code>,前者是相对路径会自动添加<strong>config.root</strong>路径.后者是绝对路径.</p>
+<p>本主题特色: <strong>把这个配置文件复制到<code>source</code>目录下并改名为<code>_chenall.yml</code>则会优先使用该配置,这样可以避免由于升级主题或其它原因导致的配置丢失.更方便使用.</strong></p>
+<h3 id="-">默认的配置</h3>
+<pre><code class="lang-yaml"># Site default meta keywords
+#keywords: site, wide, default, keywords
+
+#已加载的模块,按顺序加载,所以需要自己调整加载的顺序,比如jquery一般要加载在最前面
+loaded_modules:
+- jquery
+- bootstrap
+- fontawesome
+- prettify
+- fancybox
+- mathjax
+
+# 注: 模块是由css或js文件来实现的,部份需要附加js代码的模块在_modules目录下.
+# 如: prettify 如果加载了prettify则会同时加载_modules\_modules.ejs
+# 部份模块是自动按需加载的,在模板中添加如下代码加载多说的JS模块
+# &lt;% theme.add_module(&#39;duoshuo&#39;); %&gt;
+#
+#
+modules:
+  # respond 不要放到loaded_modules中,这个会自动加载
+  # proxy 指定respond的proxy地址
+  # 注: bootstrap的css文件和这个proxy需要在同一个域上
+  respond: ## A fast &amp; lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more).
+    js: http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js
+    proxy: http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html
+  jquery:
+    js: http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js
+  bootstrap: #强大的CSS框架，由Twitter的开发工程师推出
+    css: http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css
+    js: http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js
+  prettify: # Google Code Prettify 代码的高亮显示
+    css: http://cdn.bootcss.com/prettify/r298/prettify.min.css
+    js: http://cdn.bootcss.com/prettify/r298/prettify.min.js
+  highlightjs: # highlight.js 代码高亮显示插件
+    css: http://cdn.bootcss.com/highlight.js/7.4/styles/github.min.css
+    js:  http://cdn.bootcss.com/highlight.js/7.4/highlight.min.js
+  fancybox: # 一款基于jQuery开发的类Lightbox插件
+    css: http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css
+    js:  http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js
+  imagesloaded: #监测图片是否加载完毕的JavaScript库
+    #js: js/jquery.imagesloaded.min.js
+     js: http://cdn.bootcss.com/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js
+  Gallery:
+    css: http://cdn.bootcss.com/blueimp-gallery/2.11.2/css/blueimp-gallery.min.css
+    js: http://cdn.bootcss.com/blueimp-gallery/2.11.2/js/jquery.blueimp-gallery.min.js
+  fontawesome:
+    css: http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css
+  # MathJax is an open source JavaScript display engine for mathematics that works in all browsers.
+  mathjax: # 生成数学公式插件
+    css:
+    js: http://cdn.bootcss.com/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    #js: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  uyan: #有言评论系统
+    uid: 1880458
+  ujian: #友荐：为网站添加&#39;猜你喜欢&#39;功能
+    uid: 1880458
+
+##评论功能设置,目前支持disqus和duoshuo/uyan,需要在上面的modules中进行要应的设置
+# show_count 是否显示文章的评论数量
+# short_name 对应的short_name
+# 需要的其它参数也可以加在下面,然后自己修改模板来使用.theme.comments.xxxxxx来调用
+#
+# 
+comments:
+    provider: duoshuo
+    show_count: true
+    short_name: hexochenall
+
+## 站点分析统计代码功能组件
+# 加载在站点的footer位置
+analytics:
+  # provider 要加载的统计代码类型,可同时加载多少,使用&quot;,&quot;分隔. 如下就加载了51la和google的统计代码
+  # provider: 51la,google 
+  provider: 51la,google,cnzz
+  # google-analytics UA
+  google:
+  # 我要啦」免费统计 ID
+  51la:
+  # cnzz 免费统计
+  cnzz:
+    siteid: 5774006  #站点ID,在获取统计代码的页面的地址栏上可以看到siteid=xxxx或从代码中提取(一般是一串数字)
+    show: #显示样式  留空: 图片形式1; 1: 图片形式2; 2: 图片形式1; 其它值: 文字形式
+
+# 站点顶部菜单,支持子菜单
+menu:
+  Home: &#39;&#39;
+  About: about/
+  Archives: archives/
+  其它链接:
+    chenall: //chenall.net
+    gihtub: https://github.com/chenall/hexo-theme-chenall
+
+# ajax_widgets是否使用jquery.load动态加载widget的内容,
+# 注: 部份小工具,像标签,分类,最近文章等,这些工具的内容在所有页面都是一样的,这时它就支持动态加载
+# 所谓的动态加载,就是把这些内容从文章中分离出来独立存在,并采用ajax技术动态加载到指定位置.
+# 使用动态加载,更新文章时,就不会因为分类或标签等内容的更改,导致所有页面都需要更新.
+#
+ajax_widgets: true
+
+# 要加载的工具在这里添加
+widgets:
+  header: #顶部
+  footer: #底部
+  sidebar: #侧边栏
+    - search
+    - category
+    - recent_posts
+    - tagcloud
+    - latest_update_posts
+    - random_posts
+    - sina_weiboshow
+    - recent_comments
+  before_content: # 文章内容前
+  after_content:  # 文章内容后
+    - wumiiRelatedItems
+    - post_footer_info
+    - ujian
+
+  after_post:     # 文章框架之后
+    - post_pageNav
+    - related_posts
+
+# For use with tagcloud or tag widgets
+# - only tags &gt;= to tag_minium are shown
+tag_minium: 3
+
+## Google 跟踪代码管理器 设置
+## https://www.google.com/tagmanager/
+## ID 就是对应容器的ID
+## GoogleTagManagerID: GTM-ABCDEF
+GTM_ID:
+
+## 在文章中使用&#39;http://c-dl.qiniudn.com&#39;字符串自动替换为下面的地址,主要是为了方便使用.
+CDN_URL: http://your.cdn.url
+
+twitter_id: chenall
+facebook_id:
+linkedin_id:
+github_id: chenall/almrun
+
+rss: atom.xml
+</code></pre>
+<h3 id="-">其它语言支持</h3>
+<p>  本主题只设置了简体中文语言文件,要使用其它语言,可以自己翻译下.以下是简体中文的语言文件例子:</p>
+<pre><code class="lang-yaml">categories: 分类
+search: 搜索
+tags: 标签
+tagcloud: 标签云
+tweets: 推文
+prev: 上一页
+next: 下一页
+comment: 留言
+archive_a: 归档
+archive_b: 归档：%s
+page: 第 %d 页
+
+post:
+  updated: 最近更新
+  Tagged: 标签
+  Posted on: 发表于
+  Posted in: 归类
+  read more: 阅读全文
+
+menu:
+  Home: 主页
+  About: 关于
+  Archives: 归档
+  GuestBook: 留言板
+
+widgets:
+  category: 分类
+  recent_posts: 最近文章
+  latest_update_posts: 最近更新
+  recent_comments: 最近评论
+  sina_weiboshow: 新浪微搏秀
+  google_sidebar: 赞助商
+  tags: 标签
+  tagcloud: 标签云
+</code></pre>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-13 14:31:05"datetime="2014-02-13 14:31:05"> 2014-02-13</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/hexo_theme_chenall/#comments" class="ds-thread-count comment-link" data-thread-key="1402132138" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></h1>
       
         <span>发表于<time datetime="2014-01-26T23:50:48.000Z"> <a href="/post/blog_to_hexo/">2014-01-26</a></time></span>      
@@ -732,105 +1055,10 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></h1>
-      
-        <span>发表于<time datetime="2013-03-27T17:58:18.000Z"> <a href="/post/lua_base_1/">2013-03-27</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <ol>
-<li><p>获取WINDOWS文件的文件名/路径/扩展名
-例子:</p>
-<pre><code class="lang-lua"> file=&quot;c:\\Windows\\notepad.txt&quot;
- FileName = file:match(&quot;([^\\]+)$&quot;) -- notepad.txt
- FilePath = file:sub(1,-FileName:len()-1) -- c:\Windows\
- FileExt = FileName:match(&quot;%.[^%.]*$&quot;) -- .txt
-</code></pre>
-</li>
-<li><p>WINDOWS下环境变量扩展</p>
-<p>例子:</p>
-<pre><code class="lang-lua">path = &quot;%WinDir%\\Notepad.exe&quot;
-path = path:gsub(&quot;%%(%S+)%%&quot;,os.getenv) -- C:\Windows\notepad.exe
-</code></pre>
-</li>
-<li><p>获取CMD命令输出结果</p>
-<p>例子:</p>
-<pre><code class="lang-lua">local f = io.popen(&#39;dir /b /s&#39;)
-print(f:read(&quot;*a&quot;) -- 读取所有内容
-</code></pre>
-<p>其中read参数可以如下</p>
-<ul>
-<li>*a 读取所有内容</li>
-<li>*n 读取为数据(当输出为数字时用,否则会得到空值)</li>
-<li>*l  读取一行 和 f:line() 一样(read不加参数时默认)</li>
-<li>数字 读取指定数量的字符. 比如输出 &quot;123456&quot; f:read(3) -- &quot;123&quot;</li>
-</ul>
-<p>使用以下命令可以循环读取每一行.</p>
-<pre><code class="lang-lua"> for line in f:lines() do
- print(line)
- end
-</code></pre>
-<p>f:lines()也可以用f:read(&quot;*l&quot;)
-或用下面语句读取每4个字节</p>
-<pre><code class="lang-lua">for line in f:read(4) do
-print(line)
-end
-</code></pre>
-</li>
-<li><p>字符串相关操作</p>
-<ul>
-<li>连接使用&quot;..&quot;<pre><code class="lang-lua">a=&quot;abcd&quot;
-b=3456
-print(a..b..&quot;test&quot;)  ---- abcd3456test
-</code></pre>
-</li>
-<li>string.len   计算字符串长度<pre><code>a = &quot;test&quot;
-a:len()   -- 4 或
-string.len(a) -- 4
---也可以直接用 `#`
-print(#a) --- 4
-</code></pre></li>
-<li>string.sub  字符串提取<pre><code>a=&quot;123456&quot;
-a:sub(1,3)  或 string.sub(a,1,3)  下同 --- 123
-a:sub(-1) -- 6
-a:sub(1,-3) -- 1234
-</code></pre></li>
-<li>相关资料参考: <a href="http://www.lua.org/manual/5.1/manual.html" target="_blank">http://www.lua.org/manual/5.1/manual.html</a></li>
-</ul>
-</li>
-</ol>
-<p>代码在线调试器: <a href="http://www.lua.org/cgi-bin/demo" target="_blank">http://www.lua.org/cgi-bin/demo</a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span></span> | <span class="tags">标签 <a href="/tags/LUA/" class="label label-primary">LUA</a><a href="/tags/学习/" class="label label-success">学习</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/lua_base_1/#comments" class="ds-thread-count comment-link" data-thread-key="904" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li class="active"><li><span class="page-number current">1</span></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/2/">&raquo;</a></li>
+  <li class="active"><li><span class="page-number current">1</span></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/2/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -906,7 +1134,7 @@ a:sub(1,-3) -- 1234
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-12 12:03:12</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:53</em></span></div>
 </div>
 <div class="clearfix"></div>
 

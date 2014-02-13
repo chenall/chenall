@@ -114,6 +114,126 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post54/">vi 编辑器使用指南</a></h1>
+      
+        <span>发表于<time datetime="2009-04-15T16:56:09.000Z"> <a href="/post/post54/">2009-04-15</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>一、Unix编辑器概述</p>
+<p>编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。</p>
+<p>值得庆幸的是，Unix提供了全屏幕的Vi编辑器，这使我们的工作轻松不少。不少DOS用户抱怨Vi编辑器不象DOS下的编辑器如edit那么好用，这是因为Vi考虑到各种用户的需要，没有使用某些通用的编辑键（在各个不同的终端机上他们的定义是不同的，在某些终端机上甚至没有这些键）。而是采用状态切换的方法，但这只是习惯的问题，一旦你熟练的使用上了vi你就会觉得它其实也很好用。虽然 Vi采用了状态切换的方法，但电脑的硬件及操作系统多种多样，某些电脑的键盘上没有特定的几个功能键！那麽不就有某些功能不能用了？这个问题在 Unix 系统上也一样，几乎各大电脑厂商都有自己的Unix 系统，而 vi 的操作方法也会随之有点出入。这里我们采用 PC 的键盘来说明 vi 的操作，但在具体的环境中还要参考相应的资料，这一点是值得注意的。</p>
+<p>二、Vi入门</p>
+<p>（一）、进入vi</p>
+<p>在系统提示字符(如$、#)下敲入vi ＜档案名称＞，vi 可以自动帮你载入所要编辑的文件或是开启一个新文件（如果该文件不存在或缺少文件名）。进入 vi 后萤幕左方会出现波浪符号，凡是列首有该符号就代表此列目前是空的。</p>
+<p>(二）、两种模式</p>
+<p>如上所述，vi存在两种模式：指令模式和输入模式。在指令模式下输入的按键将做为指令来处理：如输入a，vi即认为是在当前位置插入字符。而在输入模式下，vi则把输入的按键当作插入的字符来处理。指令模式切换到输入模式只需键入相应的输入命令即可（如a,A），而要从输入模式切换到指令模式，则需在输入模式下键入ESC键，如果不晓得现在是处於什麽模式，可以多按几次 [ESC]，系统如发出哔哔声就表示已处于指令模式下了。</p>
+<p>付：有指令模式进入输入模式的指令：</p>
+<p>新增 (append)</p>
+<p>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。</p>
+<p>A： 从光标所在列最後面的地方开始新增资料。</p>
+<p>插入 (insert)</p>
+<p>i： 从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。</p>
+<p>I ：从光标所在列的第一个非空白字元前面开始插入资料。</p>
+<p>开始 (open)</p>
+<p>o ：在光标所在列下新增一列并进入输入模式。</p>
+<p>O: 在光标所在列上方新增一列并进入输入模式。</p>
+<p>（三）、退出vi</p>
+<p>在指令模式下键入:q,:q!,:wq或:x(注意:号），就会退出vi。其中:wq和:x是存盘退出，而:q是直接退出，如果文件已有新的变化，vi会提示你保存文件而:q命令也会失效，这时你可以用:w命令保存文件后再用:q退出，或用:wq或:x命令退出，如果你不想保存改变后的文件，你就需要用:q!命令，这个命令将不保存文件而直接退出vi。</p>
+<p>（四）、基本编辑</p>
+<p>配合一般键盘上的功能键，像是方向键、[Insert] 、[Delete] 等等，现在你应该已经可以利用 vi 来编辑文件了。当然 vi 还提供其他许许多多功能让文字的处理更为方便。</p>
+<p>何谓编辑？一般认为是文字的新增、修改以及删除，甚至包括文字区块的搬移、复制等等。先这里介绍 vi的如何做删除与修改。（注意：在 vi 的原始观念里，输入跟编辑是两码子事。编辑是在指令模式下操作的，先利用指令移动光标来定位要进行编辑的地方，然後才下指令做编辑。）</p>
+<p>删除与修改文件的命令：</p>
+<p>x： 删除光标所在字符。</p>
+<p>dd ：删除光标所在的列。</p>
+<p>r ：修改光标所在字元，r 後接著要修正的字符。</p>
+<p>R： 进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。</p>
+<p>s： 删除光标所在字元，并进入输入模式。</p>
+<p>S： 删除光标所在的列，并进入输入模式。</p>
+<p>其实呢，在PC上根本没有这麽麻烦！输入跟编辑都可以在输入模式下完成。例如要删除字元，直接按[Delete] 不就得了。而插入状态与取代状态可以直接用 [Insert] 切换，犯不著用什麽指令模式的编辑指令。不过就如前面所提到的，这些指令几乎是每台终端机都能用，而不是仅仅在 PC 上。
+在指令模式下移动光标的基本指令是 h, j, k, l 。想来各位现在也应该能猜到只要直接用 PC 的方向键就可以了，而且无论在指令模式或输入模式下都可以。多容易不是。
+当然 PC 键盘也有不足之处。有个很好用的指令 u 可以恢复被删除的文字，而 U 指令则可以恢复光标所在列的所有改变。这与某些电脑上的 [Undo] 按键功能相同。
+三、附件：vi详细指令表
+（一）、基本编辑指令：
+新增 (append)</p>
+<p>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。</p>
+<p>A： 从光标所在列最後面的地方开始新增资料。</p>
+<p>插入 (insert)</p>
+<p>i： 从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。</p>
+<p>I ：从光标所在列的第一个非空白字元前面开始插入资料。</p>
+<p>开始 (open)</p>
+<p>o ：在光标所在列下新增一列并进入输入模式。</p>
+<p>O: 在光标所在列上方新增一列并进入输入模式。</p>
+<p>x： 删除光标所在字符。</p>
+<p>dd ：删除光标所在的列。</p>
+<p>r ：修改光标所在字元，r 後接著要修正的字符。</p>
+<p>R： 进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。</p>
+<p>s： 删除光标所在字元，并进入输入模式。</p>
+<p>S： 删除光标所在的列，并进入输入模式。</p>
+<p>（二）、光标移动指令：
+由於许多编辑工作是藉由光标来定位，所以 vi 提供许多移动光标的方式，这个我们列
+几张简表来说明（这些当然是指令模式下的指令）：</p>
+<p>指令 说明  功能键 
+0 移动到光标所在列的最前面 [Home]
+$  移动到光标所在列的最後面 [End]
+[CTRL][d] 向下半页  [PageDown]
+[CTRL][f] 向下一页 
+[CTRL][u] 向上半页 
+[CTRL][b] 向上一页 [PageUp]</p>
+<p>指令 说明
+H 移动到视窗的第一列
+M 移动到视窗的中间列
+L 移动到视窗的最後列 
+b 移动到下个字的第一个字母
+w 移缴细鲎值牡谝桓鲎帜?nbsp; 
+e 移动到下个字的最後一个字母
+^ 移动到光标所在列的第一个非空白字元</p>
+<p>指令 说明 
+n- 减号移动到上一列的第一个非空白字元前面加上数字可以指定移动到以上 n 列 
+n+ 加号移动到下一列的第一个非空白字元前面加上数字可以指定移动到以下 n 列
+nG 直接用数字 n 加上大写 G 移动到第 n 列
+指令 说明
+fx
+往右移动到 x 字元上 
+Fx 往左移动到 x 字元上 
+tx 往右移动到 x 字元前
+Tx 往左移动到 x 字元前
+; 配合 f&amp;t 使用，重复一次
+, 配合 f&amp;t 使用，反方向重复一次
+/string 往右移动到有 string 的地方
+?string 往左移动到有 string 的地方
+n  配合 /&amp;? 使用，重复一次 
+N  配合 /&amp;? 使用，反方向重复一次</p>
+<p>指令 说明 备注
+n( 
+左括号移动到句子的</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/vi/" class="label label-primary">vi</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post54/#comments" class="ds-thread-count comment-link" data-thread-key="54" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></h1>
       
         <span>发表于<time datetime="2009-04-01T00:20:57.000Z"> <a href="/post/post52/">2009-04-01</a></time></span>      
@@ -1778,70 +1898,10 @@ map --hook
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></h1>
-      
-        <span>发表于<time datetime="2008-12-30T15:22:10.000Z"> <a href="/post/post38/">2008-12-30</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <h2 id="-http-bbs-znpc-net-viewthread-php-tid-3304-">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
-<p>   转到这里留个备份,以后再碰到这个问题比较好找.^_^</p>
-<h2 id="-">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
-<p>   此问题在远程系统是GHOST版的windowsxp时出现的比较普遍。</p>
-<h2 id="-"><strong> 现象描述：</strong></h2>
-<p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便
-弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
-<h2 id="-"><strong>解决方法：</strong></h2>
-<p>打开注册表
-找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\
-在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.
-再导入注册表:</p>
-<pre><code>Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\0000]
-&quot;ClassGUID&quot;=&quot;{4D36E97D-E325-11CE-BFC1-08002BE10318}&quot;
-&quot;Class&quot;=&quot;System&quot;
-&quot;HardwareID&quot;=hex(7):52,00,4f,00,4f,00,54,00,5c,00,52,00,44,00,50,00,44,00,52,00,00,00,00,00
-&quot;Driver&quot;=&quot;{4D36E97D-E325-11CE-BFC1-08002BE10318}\0030&quot;
-&quot;Mfg&quot;=&quot;(标准系统设备)&quot;
-&quot;Service&quot;=&quot;rdpdr&quot;
-&quot;DeviceDesc&quot;=&quot;终端服务器设备重定向器&quot;
-&quot;ConfigFlags&quot;=dword:00000000
-&quot;Capabilities&quot;=dword:00000000
-</code></pre><p>最后，把控制面板－管理工具－服务中的 <strong>Remote Desktop Help Session Manager</strong> 和 <strong>Telnet</strong> 服务开启，
-将电脑重启，远程桌面管理就可以恢复正常了。</p>
-<p>注:可能是因为做GHOST系统时,为了省事在删除硬件时直接使用了devcon remove *,所以才会出现这个问题.</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/远程桌面/" class="label label-primary">远程桌面</a><a href="/tags/转载/" class="label label-success">转载</a><a href="/tags/实用技术/" class="label label-info">实用技术</a><a href="/tags/解决/" class="label label-warning">解决</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post38/#comments" class="ds-thread-count comment-link" data-thread-key="38" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/11/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li class="active"><li><span class="page-number current">12</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/13/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/11/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li class="active"><li><span class="page-number current">12</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/13/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1917,7 +1977,7 @@ map --hook
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-12 12:03:12</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:53</em></span></div>
 </div>
 <div class="clearfix"></div>
 

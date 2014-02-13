@@ -114,6 +114,90 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></h1>
+      
+        <span>发表于<time datetime="2011-08-17T13:12:30.000Z"> <a href="/post/grub4dos_replace/">2011-08-17</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>本程序使用GRUB4DOS批处理编写.</p>
+<p>实现了以下功能.</p>
+<ol>
+<li>替换某个变量中指定的字符串.</li>
+<li>删除某个变量中指定的字符串.</li>
+</ol>
+<p>使用方法:</p>
+<p>把脚本另存为REPLACE</p>
+<p>然后直接调用</p>
+<p>replace 变量名 字符串1 字符串2 [起始位置]</p>
+<p>变量名是GRUB4DOS的一个变量,必须已经存在.因为替换的是这个变量的内容.</p>
+<p>字符串1 查找指定字符串</p>
+<p>字符串2 找到之后要替换的字符串.</p>
+<pre><code>    起始位置是可选的,可以选择从指定字符开始进行替换.起始位置之前的字符不会被改变.默认是0.
+</code></pre><p>如果需要的话可以直接集成到你的批处理中.只要把:replace标签(包含)之后的代码复制过去然后使用</p>
+<p>call :replace 来调用就行了.</p>
+<p>复制代码请点这里:</p>
+<pre><code>!BAT
+setlocal
+debug off
+if exist %1 goto :replace
+echo $[0101] Replace module for grub4dos by chenall 2011-08-17
+echo $[0101] replace the string $[0103]find $[0101]with string $[0103]replacewith$[0101] in VARIABLE name VAR
+echo $[0102] usage:
+echo $[0106]     replace VAR find replacewith [start]
+echo $[0106]             VAR           a valid VARIABLE name(must defined).
+echo $[0106]             find          the string that will be replaced.
+echo $[0106]             replacewith   The replacement substring
+echo $[0106]             start         Specifies the start. Default is 0.
+echo
+echo $[0104]  for more please visit $[0105]http://chenall.net/post/grub4dos_replace/
+exit
+
+:replace
+if not exist %1 exit
+echo %%%1%% &gt; (md)0x266+2
+set skip=%2
+set skip_l=%@retval%
+set /a skip=%4
+if %skip%==0 || cat (md)0x266+1,%skip% &gt;&gt; (md)0x267+1
+:replace_loop
+cat --locate=%2 --number=1 --skip=%skip% (md)0x266+1 | set n=
+if not exist n goto :replace_ok
+if %n%==0 || cat --skip=%skip% (md)0x266+1,%?% &gt;&gt; (md)0x267+1
+set /a skip=0x%n%+%skip_l%
+echo -n %~3 &gt;&gt; (md)0x267+1
+goto :replace_loop
+:replace_ok
+cat --skip=%skip% (md)0x266+1 &gt;&gt; (md)0x267+1
+cat (md)0x267+1 | set %1=
+endlocal &amp;&amp; set %1=%%%1%%
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/编程/">编程</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_replace/#comments" class="ds-thread-count comment-link" data-thread-key="767" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></h1>
       
         <span>发表于<time datetime="2011-08-09T16:07:36.000Z"> <a href="/post/grub4dos_hdpart/">2011-08-09</a></time></span>      
@@ -830,216 +914,10 @@ void case_convert(char *ch,char flag)
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></h1>
-      
-        <span>发表于<time datetime="2010-12-31T09:09:35.000Z"> <a href="/post/grub4dos_instwee/">2010-12-31</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>wee是由不点基于grub4dos开发的嵌入微型 grub,可以安装到硬盘MBR上代替原来的引导代码.</p>
-<p>有什么用途呢?</p>
-<p>得益于GRUB4DOS的灵活性,wee同样很灵活,可以启动任意支持的分区上的可启动文件.</p>
-<p>比如你的系统引导文件损坏了,如果是默认的MBR,则这时整个系统就挂掉了.有安装了wee就不一样了.</p>
-<p>可以利用它来启动备用的或其它的引导程序,然后进行修复工作.</p>
-<p>英文好的可以看一下软件的说明和readme</p>
-<blockquote>
-<p>  This software initially aims to install on the MBR track of the hard drive,
-   though also possible to write to ROM by someone who is interested.</p>
-<p>  WEE access disk sectors only using EBIOS(int13/AH=42h), and never using
-   CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS
-   on a drive, then WEE will not be able to access that drive.</p>
-<p>  WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are
-   supported.</p>
-<p>  WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/
-   BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable
-   because it is of a valid Linux kernel format.</p>
-<p>  Any single sector boot record file(with 55 AA at offset 0x1FE) can boot
-   as well.</p>
-<p>  Besides, WEE can run 32-bit programs written for it.</p>
-</blockquote>
-<p> <a href="https://grubutils.googlecode.com/svn/grubutils/wee/README.txt" target="_blank">wee readme</a></p>
-<p>相关贴子:</p>
-<p>无忧启动论坛:   <a href="http://bbs.wuyou.com/viewthread.php?tid=167593" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=167593">http://bbs.wuyou.com/viewthread.php?tid=167593</a></a>
-时空论坛:  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a></p>
-<p><code>本代码只是为了测试还有示范一下GRUB4DOS的批处理功能</code>
-安装会比较麻烦,可以参考无忧启动论坛的贴子进行图形界面安装.</p>
-<p>我利用最新版GRUB4DOS的功能写了一个脚本,用于安装wee到硬盘上.可以把脚本和wee63.mbr放在u盘或光盘上用grub4dos启动来进行安装修复.</p>
-<p>使用方法:</p>
-<ol>
-<li><p>instwee NUM
-NUM是0-9的数字,代表着要安装到哪个磁盘.</p>
-<p>比如安装到第一个硬盘</p>
-<p>instwee 0</p>
-</li>
-<li><p>instwee menu NUM
-显示指定硬盘已经安装wee的内置菜单</p>
-</li>
-<li><p>instwee menu NUm weemenufile
-导入菜单
-例子: 导入/boot/grub/menu.wee菜单文件到第一硬盘已经安装的wee中.
-instwee menu 0 /boot/grub/menu.wee</p>
-</li>
-</ol>
-<p>[2010-12-30更新下载] (<a href="http://dl.dbank.com/c0at23wlxf" target="_blank">http://dl.dbank.com/c0at23wlxf</a>)</p>
-<ol>
-<li>添加简易的GPT磁盘判断，如果是GPT磁盘，拒绝安装。</li>
-<li>其它小调整。 </li>
-</ol>
-<p><img src="https://www.sugarsync.com/pf/D601052_6893493_13501" alt=""></p>
-<p>安装界面截图: 按Y键确认安装,其它键退出.</p>
-<p><img src="https://www.sugarsync.com/pf/D601052_6893493_13560" alt=""></p>
-<p>如果之前已经安装过了,提示按R键重新安装.</p>
-<p><img src="https://www.sugarsync.com/pf/D601052_6893493_13562" alt=""></p>
-<p>安装成功,现在的MBR就是WEE引导代码了.</p>
-<p><img src="https://www.sugarsync.com/pf/D601052_6893493_13564" alt=""></p>
-<p>显示菜单截图.instwee menu 0</p>
-<p><img src="https://www.sugarsync.com/pf/D601052_6893493_13503" alt=""></p>
-<p>附上GRUB4DOS的批处理代码:</p>
-<pre><code>!BAT wee install script for grub4dos by chenall http://chenall.net/post/grub4dos_instwee/
-debug off
-checkrange 20101230:-1 read 0x8278 || goto :help
-::对临时变量所使用的内存0x60000进行初始化(置0操作)
-echo -n &gt; (md)0x300+2
-clear
-write (md)0x300+1 %1 || goto :help
-::检测第一个参数，如果是menu则跳到menu块执行．
-checkrange 0x756e656d read 0x60000 &amp;&amp; goto :menu
-:0x30:0x39 是 0-9的ASCII码
-checkrange 0x30:0x39 read 0x60000 || goto :help
-cat (md)0x300+1,1 | call :confirm hd
-exit
-
-:menu
-write (md)0x301+1 %2 || goto :Error
-checkrange 0x30:0x39 read 0x60200 || goto :help
-cat --locate=wee (hd%2)+1,0x1b0 || goto :failed
-map --mem=0xf000 (hd%2)50+13 (rd)
-:::自动检测菜单位置,注以下内容比较复杂,没有弄懂不要乱改,否则可能导致写盘出错.
-debug 1
-cat --locate=\xB0\x02\x1A\xCE --number=1 (rd)+1 &gt; (md)0x300+1,8
-debug off
-cat (md)0x300+1,8 | echo -n | calc *0x60010=16+0x
-calc *0x82d8=13&lt;&lt;9-*0x60010
-calc *0x82d0=0x1E00000+*0x60010
-::没有指定菜单文件参数显示当前菜单内容.
-cat --length=0 %3 || goto :show_menu
-echo Importing wee menu..
-calc *0x82d8=*0x8290+0x1f&amp;0xff0
-cat %3 &gt; (rd)+1
-calc *0x82d0=0x1E00000+*0x60010-16
-cat (md)0x300+1,5 | echo -n | dd if=(rd)+1 of=(hd%2)50+13 bs=1 seek=0x
-echo succeeded!
-exit
-
-:show_menu
-debug 1
-cat --locate=\0 --number=1 (rd)+1 &gt; (md)0x301+1,4
-debug off
-cat (md)0x301+1,4 | echo -n | calc *0x82d8=0x
-clear
-echo -P:0715 $[0104]wee menu export
-echo -e -P:0408 $[0104]wee $[0003]install script for $[0106]grub4dos $[0105]by chenall
-echo -P:0535 $[0003]http://chenall.net/post/grub4dos_instwee/
-cat (rd)+1
-exit
-
-:confirm
-checkrange 0xEE parttype (%1,0) &amp;&amp; call :Err_msg Not support GPT DISK!
-echo -e -P:0810 $[1104]Warning: $[0004]Will install wee63.mbr to %1 \n\n\n\t$[0003]Please press $[0002]&#39;Y&#39; $[0003]to confirm, any other keys to exit...
-echo -e -P:0408 $[0104]wee $[0003]install script for $[0106]grub4dos $[0105]by chenall
-echo -P:0535 $[0003]http://chenall.net/post/grub4dos_instwee/
-checkrange 0x59,0x79 pause || call :Err_msg Cancelled.
-:install
-echo checking...
-map --mem=0xF000 /boot/grub/wee63.mbr (rd) || call :Err_msg /boot/grub/wee63.mbr not found.
-cat --locate=wee (rd)+1,0x1b8 || call :Err_msg wee63.mbr file.
-::检测WEE63.MBR是否正确
-dd if=(rd)+1 of=(md)0x300+1 bs=1 count=4 skip=0x86
-checkrange 0xCE1A02B0 read 0x60000 || call :Err_msg wee63.mbr file.
-call :check_installed %1
-echo Installing...
-::备份原来的MBR到第二扇区如果已经安装则直接备份第二扇区
-checkrange 840202 read 0x60004 &amp;&amp; dd if=(%1)1+1 of=(rd)1+1 ! dd if=(%1)+1 of=(rd)1+1
-::复制分区表到第1扇区
-dd if=(%1)+1 of=(rd)+1 skip=0x1b8 seek=0x1b8 bs=1
-::检测是否有menu.wee文件
-cat --length=0 /BOOT/GRUB/MENU.WEE &amp;&amp; call :inst_menu
-::写入硬盘前63扇区
-dd if=(rd)+1 of=(%1) count=63
-echo Good luck! succeeded!
-exit
-
-:inst_menu
-::debug 1是必须的，因为我们要提取结果．
-debug 1
-::定位菜单开始位置
-cat --locate=\xB0\x02\x1A\xCE --number=1 (rd)50+10 &gt; (md)0x300+1,8
-debug off
-cat (md)0x300+1,5 | echo -n | calc *0x60010=50&lt;&lt;9+16+0x
-::设置rd-base在菜单开始位置这样可以就直接用(rd)+1的方式来访问菜单内容．
-calc *0x82D0=0x1E00000+*0x60010
-::菜单长度，menu.wee文件长度,16字节对齐．最长不超过4KB
-calc *0x82D8=*0x8290+0x1f&amp;0xff0
-::写入菜单
-cat /BOOT/GRUB/MENU.WEE &gt; (rd)+1
-::重新计算rd-base和rd-size.
-calc *0x82D8=*0x8290+0xf&amp;0xff0+*0x60010
-calc *0x82D0=0x1E00000
-exit
-
-:check_installed 
-cat --locate=wee (%1)+1,0x1b8 || exit
-echo wee already installed,Press &#39;R&#39; to reinstall.
-checkrange 0x52,0x72 pause || exit 5
-write 0x60004 840202
-exit
-
-:failed
-echo failed!
-exit 3
-
-:Err_msg
-echo
-echo Error: %1 %2 %3 %4 %5 %6 %7 %8 %9
-pause Press any key to continue . . .
-exit 1
-
-:Error
-:help
-echo -e Usage:\n Install wee\t instwee NUM\n show menu\t instwee menu NUM\n import menu\t instwee menu NUM weemenufile\ne.g.:\tinstall wee to (hd0)\n\tinstwee 0
-echo Notes: You must use grub4dos-0.4.5b-2010-12-30 or later!
-exit 1
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/wee/" class="label label-success">wee</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_instwee/#comments" class="ds-thread-count comment-link" data-thread-key="615" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/4/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><li><span class="page-number current">5</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/6/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/4/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><li><span class="page-number current">5</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/6/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1115,7 +993,7 @@ exit 1
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-12 12:03:12</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:53</em></span></div>
 </div>
 <div class="clearfix"></div>
 

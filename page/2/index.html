@@ -114,6 +114,101 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></h1>
+      
+        <span>发表于<time datetime="2013-03-27T17:58:18.000Z"> <a href="/post/lua_base_1/">2013-03-27</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <ol>
+<li><p>获取WINDOWS文件的文件名/路径/扩展名
+例子:</p>
+<pre><code class="lang-lua"> file=&quot;c:\\Windows\\notepad.txt&quot;
+ FileName = file:match(&quot;([^\\]+)$&quot;) -- notepad.txt
+ FilePath = file:sub(1,-FileName:len()-1) -- c:\Windows\
+ FileExt = FileName:match(&quot;%.[^%.]*$&quot;) -- .txt
+</code></pre>
+</li>
+<li><p>WINDOWS下环境变量扩展</p>
+<p>例子:</p>
+<pre><code class="lang-lua">path = &quot;%WinDir%\\Notepad.exe&quot;
+path = path:gsub(&quot;%%(%S+)%%&quot;,os.getenv) -- C:\Windows\notepad.exe
+</code></pre>
+</li>
+<li><p>获取CMD命令输出结果</p>
+<p>例子:</p>
+<pre><code class="lang-lua">local f = io.popen(&#39;dir /b /s&#39;)
+print(f:read(&quot;*a&quot;) -- 读取所有内容
+</code></pre>
+<p>其中read参数可以如下</p>
+<ul>
+<li>*a 读取所有内容</li>
+<li>*n 读取为数据(当输出为数字时用,否则会得到空值)</li>
+<li>*l  读取一行 和 f:line() 一样(read不加参数时默认)</li>
+<li>数字 读取指定数量的字符. 比如输出 &quot;123456&quot; f:read(3) -- &quot;123&quot;</li>
+</ul>
+<p>使用以下命令可以循环读取每一行.</p>
+<pre><code class="lang-lua"> for line in f:lines() do
+ print(line)
+ end
+</code></pre>
+<p>f:lines()也可以用f:read(&quot;*l&quot;)
+或用下面语句读取每4个字节</p>
+<pre><code class="lang-lua">for line in f:read(4) do
+print(line)
+end
+</code></pre>
+</li>
+<li><p>字符串相关操作</p>
+<ul>
+<li>连接使用&quot;..&quot;<pre><code class="lang-lua">a=&quot;abcd&quot;
+b=3456
+print(a..b..&quot;test&quot;)  ---- abcd3456test
+</code></pre>
+</li>
+<li>string.len   计算字符串长度<pre><code>a = &quot;test&quot;
+a:len()   -- 4 或
+string.len(a) -- 4
+--也可以直接用 `#`
+print(#a) --- 4
+</code></pre></li>
+<li>string.sub  字符串提取<pre><code>a=&quot;123456&quot;
+a:sub(1,3)  或 string.sub(a,1,3)  下同 --- 123
+a:sub(-1) -- 6
+a:sub(1,-3) -- 1234
+</code></pre></li>
+<li>相关资料参考: <a href="http://www.lua.org/manual/5.1/manual.html" target="_blank">http://www.lua.org/manual/5.1/manual.html</a></li>
+</ul>
+</li>
+</ol>
+<p>代码在线调试器: <a href="http://www.lua.org/cgi-bin/demo" target="_blank">http://www.lua.org/cgi-bin/demo</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span></span> | <span class="tags">标签 <a href="/tags/LUA/" class="label label-primary">LUA</a><a href="/tags/学习/" class="label label-success">学习</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/lua_base_1/#comments" class="ds-thread-count comment-link" data-thread-key="904" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></h1>
       
         <span>发表于<time datetime="2013-03-18T10:41:08.000Z"> <a href="/post/sae_devlevel/">2013-03-18</a></time></span>      
@@ -984,51 +1079,10 @@ curl_close($curl);
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/not_2345/">关于2345网址导航</a></h1>
-      
-        <span>发表于<time datetime="2012-10-16T11:57:33.000Z"> <a href="/post/not_2345/">2012-10-16</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>关于2345网址导航,我最早是从无忧启动论坛的推广广告中看到的,据说只要设为主页就有工资拿,</p>
-<p>平时也不太理会它,只是帮人装机就顺手设置一下主页,应该有一年了吧,才2万左右积分.</p>
-<p>三个月前积分被冻结,说是推广数据异常,可是我实在查不出为什么异常,申诉了几次,一直到现在还是冻结状态.</p>
-<p>昨天的申诉结果是<code>你的数据从一开始就存在虚假数据。请采用合理的推广方式，待数据恢复正常，方可解冻！</code>好吧,即然你发现了一开始就存在虚拟数据,为什么不一开始就冻结,要等到积分上万了才冻结呢?</p>
-<p>根据它的比例太概是1000:1也就是说1000积分1元.我一天的数据在100左右不过是1毛钱,如果说我是刷号的我浪费那么多时间去刷1毛钱值得吗,真要刷的话怎么也得弄个几千吧.</p>
-<p>另外发现被冻结的也不只我一人,其中当然有部份是刷积分的.有很多像我这样的一天100左右的被冻结了,我猜测可能是因为推广的人数太少了,所以被冻结了,因为推广人数达不到它们的要求吧.</p>
-<p>我再申诉了一次,不管结果如何,也不再管了,接下去就是全面撤销该推广链接,碰到一台电脑就撤一台吧,</p>
-<p>建议朋友们慎用该推广,到头来很可能是白忙活一场,</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span></span> | <span class="tags">标签 <a href="/tags/2345/" class="label label-primary">2345</a><a href="/tags/骗子/" class="label label-success">骗子</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/not_2345/#comments" class="ds-thread-count comment-link" data-thread-key="878" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li class="active"><li><span class="page-number current">2</span></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/13/">13</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="extend next" href="/page/3/">&raquo;</a></li>
+  <li><a class="extend prev" href="/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li class="active"><li><span class="page-number current">2</span></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/3/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1104,7 +1158,7 @@ curl_close($curl);
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-12 12:03:12</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:53</em></span></div>
 </div>
 <div class="clearfix"></div>
 
