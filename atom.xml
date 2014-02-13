@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-02-13T14:31:25.745Z</updated>
+  <updated>2014-02-13T14:46:31.374Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/hexo_theme_chenall/"/>
     <id>http://chenall.net/post/hexo_theme_chenall/</id>
     <published>2014-02-13T22:25:00.000Z</published>
-    <updated>2014-02-13T14:31:05.000Z</updated>
+    <updated>2014-02-13T14:46:18.000Z</updated>
     <content type="html"><![CDATA[<h3 id="-">主题简介</h3>
 <p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题 <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a> 修改而成,采用 <a href="http://getbootstrap.com/" target="_blank">bootstrap</a> 框架  </p>
 <p>在尽量保留原有主题功能的同时采用模块化设计支持实现组件模块化.完全自定义,通过widgets你可以添加许多实用功能.可以自定义组合各种组件,像评论系统,统计系统等.</p>
@@ -36,8 +36,19 @@
 <li>允许在head或body的前面或尾部附加自定义内容.</li>
 <li>独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)</li>
 </ul>
+<a id="more"></a>
+
 <p>注: 上面的$SOURCE是hexo配置文件中在<code>source_dir</code>,$THEME是hexo配置文件中的<code>theme</code>,即 <strong>hexo.source<em>dir + &#39;</em>&#39;+ hexo.config.theme+ &#39;.yml&#39;</strong>;</p>
-<h2 id="-demo-chenall-net-"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
+<p>其它: 本主题可以轻松支持多站点，每个站点的配置各自独立，互不影响（包括站点特定插件等）。</p>
+<p>效果见本站源码：<a href="https://github.com/chenall/chenall" target="_blank">https://github.com/chenall/chenall</a><br>还有demo源码: <a href="https://github.com/chenall/hexo-theme-chenall" target="_blank">https://github.com/chenall/hexo-theme-chenall</a>  </p>
+<p>site分支里面的文件就是文章源码，源码里面包括了对应的配置文件_config.yml和插件等。</p>
+<p>安装hexo之后，再安装本主题。 
+然后下载本站源码，就可以使用新版的hexo测试了</p>
+<p>例子:</p>
+<pre><code>svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
+svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
+hexo server --config chenall.net/_config.yml
+</code></pre><h2 id="-demo-chenall-net-"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
 <h3 id="-">安装方法</h3>
 <p>通过以下命令下载主题到您的theme目录，然后修改blog的<code>_config.yml</code>中<em>theme</em>为<code>chenall</code>。</p>
 <pre><code>git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
@@ -321,7 +332,23 @@ widgets:
   tagcloud: 标签云
 </code></pre>
 ]]></content>
-    
+    <summary type="html"><![CDATA[<h3 id="-">主题简介</h3>
+<p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题 <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a> 修改而成,采用 <a href="http://getbootstrap.com/" target="_blank">bootstrap</a> 框架  </p>
+<p>在尽量保留原有主题功能的同时采用模块化设计支持实现组件模块化.完全自定义,通过widgets你可以添加许多实用功能.可以自定义组合各种组件,像评论系统,统计系统等.</p>
+<p>大部份的JS/CSS等静态文件都使用CDN加载,使用了 <a href="http://open.bootcss.com/" target="_blank">bootcss</a> 和 <a href="http://www.staticfile.org/" target="_blank">qiniu</a> 的CDN服务.</p>
+<p>以下是本主题的特色:</p>
+<ul>
+<li>支持单独启用或禁用小工具(像侧边栏之类的)</li>
+<li>支持单独启用或禁用评论</li>
+<li>可以单独指定加载小工具</li>
+<li>支持多个分类，支持子分类,分类名不区分大小写</li>
+<li>独特的用户配置文件(自动加载<code>$SOURCE\_$THEME.yml</code>[默认就是<strong>source\_chenall.yml</strong>]作为主题的配置文件,这样可以避免升级主题或其它原因导致的配置文件丢失).</li>
+<li><code>iLink</code> 文章内链功能</li>
+<li><code>ijs</code> 文章内嵌脚本或能</li>
+<li>允许在head或body的前面或尾部附加自定义内容.</li>
+<li>独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)</li>
+</ul>
+]]></summary>
     
       <category term="hexo" scheme="http://chenall.net/tags/hexo/"/>
     

@@ -140,8 +140,19 @@
 <li>允许在head或body的前面或尾部附加自定义内容.</li>
 <li>独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)</li>
 </ul>
+<a id="more"></a>
+
 <p>注: 上面的$SOURCE是hexo配置文件中在<code>source_dir</code>,$THEME是hexo配置文件中的<code>theme</code>,即 <strong>hexo.source<em>dir + &#39;</em>&#39;+ hexo.config.theme+ &#39;.yml&#39;</strong>;</p>
-<h2 id="-demo-chenall-net-"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
+<p>其它: 本主题可以轻松支持多站点，每个站点的配置各自独立，互不影响（包括站点特定插件等）。</p>
+<p>效果见本站源码：<a href="https://github.com/chenall/chenall" target="_blank">https://github.com/chenall/chenall</a><br>还有demo源码: <a href="https://github.com/chenall/hexo-theme-chenall" target="_blank">https://github.com/chenall/hexo-theme-chenall</a>  </p>
+<p>site分支里面的文件就是文章源码，源码里面包括了对应的配置文件_config.yml和插件等。</p>
+<p>安装hexo之后，再安装本主题。 
+然后下载本站源码，就可以使用新版的hexo测试了</p>
+<p>例子:</p>
+<pre><code>svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
+svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
+hexo server --config chenall.net/_config.yml
+</code></pre><h2 id="-demo-chenall-net-"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
 <h3 id="-">安装方法</h3>
 <p>通过以下命令下载主题到您的theme目录，然后修改blog的<code>_config.yml</code>中<em>theme</em>为<code>chenall</code>。</p>
 <pre><code>git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
@@ -447,7 +458,7 @@ widgets:
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-13 14:31:05"datetime="2014-02-13 14:31:05"> 2014-02-13</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-13 14:46:18"datetime="2014-02-13 14:46:18"> 2014-02-13</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/hexo_theme_chenall/#comments" class="ds-thread-count comment-link" data-thread-key="1402132138" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -467,7 +478,7 @@ widgets:
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/alrun-merry/">[分享] ALMRun–小巧的快速启动工具</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/iconshex/">让你的任意文件显示个性图标</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/post55/">[分享]影子系统 POWERSHADOW 2.6免费版 精简版 for 2k,xp,2003</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="1402132138"  data-url="http://chenall.net/post/hexo_theme_chenall/" data-title="Hexo 模块化主题"></div>
@@ -547,7 +558,7 @@ widgets:
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:31:05</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:46:18</em></span></div>
 </div>
 <div class="clearfix"></div>
 
