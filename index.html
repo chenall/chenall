@@ -153,7 +153,7 @@
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-13 14:46:18"datetime="2014-02-13 14:46:18"> 2014-02-13</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-15 14:27:03"datetime="2014-02-15 14:27:03"> 2014-02-15</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/hexo_theme_chenall/#comments" class="ds-thread-count comment-link" data-thread-key="1402132138" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -310,96 +310,22 @@
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
 <p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
-<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
-<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">比如以下来自官网最简单的应用代码</span></span></p>
-<pre><code class="lang-lua">--Load the FFI library.
-local ffi = require(&quot;ffi&quot;)
-
---Add a C declaration for the function. The part inside the double-brackets (in green) is just standard C syntax.
-ffi.cdef[[
-    int printf(const char *fmt, ...);
-]]
-
---Call the named C function — Yes, it&#39;s that simple!
-ffi.C.printf(&quot;Hello %s!&quot;, &quot;world&quot;)
-</code></pre>
-<pre><code class="lang-lua">local ffi = require(&quot;ffi&quot;)
-ffi.cdef[[
-    int MessageBoxA(void *w, const char *txt, const char *cap, int type);
-]]
-ffi.C.MessageBoxA(nil, &quot;Hello world!&quot;, &quot;Test&quot;, 0)
-</code></pre>
-<p>看起来很简单不是吗?</p>
-<p>这里给一个稍微复杂一些的例子,这是我在是学习过程中碰到的一些问题的总结,里面包括了一些常用的操作,像ffi.new 创建一个C的类型,ffi.cast数据类型转换,等.有兴趣的可以通过这个例子来学习一下如何应用.少走一些弯路.希望对大家有用.</p>
-<p>本代码要保存为ANSI格式才可以正常运行</p>
-<pre><code class="lang-lua">local ffi = require(&quot;ffi&quot;)
-ffi.cdef[[
-    typedef char TCHAR;
-    typedef unsigned int UINT;
-    typedef TCHAR _LPTSTR;
-    typedef const TCHAR *LPCTSTR;
-    typedef LPCTSTR LPCSTR;
-    typedef UINT WPARAM;
-    typedef unsigned long LPARAM;
-    typedef UINT HWND;
-    typedef struct {
-        long x;
-        long y;
-    } POINT,_PPOINT;
-    void* malloc(size_t size);
-    void* free(void* memblock);
-    bool GetCursorPos(PPOINT lpPoint);
-    HWND WindowFromPoint(POINT Point);
-    int GetWindowTextA(HWND hWnd, LPTSTR lpString, int nMaxCount);
-    bool SetWindowTextA(HWND hWnd, LPCTSTR lpString);
-    int SendMessageA(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-    int MessageBoxA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType);
-]]
-local user32 = ffi.load(&quot;User32.dll&quot;)--WINDOWS API函数所在DLL文件
-local win32 = ffi.load(&#39;msvcrt.dll&#39;)--malloc和free函数
-local pos=ffi.new(&quot;POINT&quot;);
-local oks = user32.GetCursorPos(pos)--获取当前鼠标位置
-local IDYES = 6
-local IDNO = 7
-local WM_SETTEXT = 0x000C
-local WM_GETTEXT = 0x000D
-if oks then
-local hwnd = user32.WindowFromPoint(pos)--获取指定位置下窗体的句柄
-local lpString = ffi.new(&quot;char*&quot;,win32.malloc(1024))--分配内存
-local test = user32.GetWindowTextA(hwnd,lpString,1023)--获取文本
-local str1 = ffi.string(lpString);
-local strtest =&quot;FFI 调用SetWindowText功能测试&quot;
-local t = user32.MessageBoxA(0,&quot;是否把以下窗体\n&lt;&quot;..str1..&quot;&gt;\n的标题修改为以下内容:\n&quot;..strtest,&quot;LUAJIT FFI 调用WINAPI测试&quot;,0x44)--MB_ICONINFORMATION || 0x00000004L
-if t == IDYES then
-    if user32.SetWindowTextA(hwnd,strtest) == true then
-        user32.MessageBoxA(0,&quot;修改成功&quot;,&quot;测试&quot;,0x40)
-    end
-end
---[[注: Windows API 的SendMessage就是SendMessageA或SendMessageW
-    像MessageBox也是类型的MessageBoxA和MessageBoxW
-    本文例子使用了ffi.cast进行了数据类型的转换,如果不想转换可以修改一下SendMessageA的定义改为如下(我最早就是不知道有ffi.cast所以用的修改定义的方法)
-    int SendMessageA(HWND hwnd, UINT msg, WPARAM wParam, LPCTSTR lParam);
-    就可以直接使用了,例:
-    user32.SendMessageA(hwnd,WM_SETTEXT,1024,&quot;用SendMessage和WM_SETTEXT功能改写目标字符串&quot;)
-    这个SendMessage是WINDOWS一个很重要的API,后面的两个参数很灵活,根据不同的功能需求,可以是这符串/数字或指针,数组之类的.--]]
-user32.MessageBoxA(0,&quot;测试使用SendMessage来实现同样的功能&quot;,&quot;测试2&quot;,0x40)
-user32.SendMessageA(hwnd,WM_GETTEXT,1024,ffi.cast(&quot;LPARAM&quot;,lpString))--通过ffi.cast功能进行类型转换
-user32.MessageBoxA(0,&quot;用SendMessage和WM_GETTEXT功能获取到的窗体标题为\n&quot;..ffi.string(lpString),&quot;测试2&quot;,0x40);
-user32.SendMessageA(hwnd,WM_SETTEXT,1024,ffi.cast(&quot;LPARAM&quot;,&quot;用SendMessage和WM_SETTEXT功能改写目标字符串&quot;))
-user32.MessageBoxA(0,&quot;目标标题已改变&quot;,&quot;测式2&quot;,0x40)
-win32.free(lpString)--释放内存
-end
-</code></pre>
-
+<p>
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/luajit_ffi/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span></span> | <span class="tags">标签 <a href="/tags/FFI/" class="label label-primary">FFI</a><a href="/tags/LUA/" class="label label-success">LUA</a><a href="/tags/WINDOWS/" class="label label-info">WINDOWS</a><a href="/tags/API/" class="label label-warning">API</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span></span> | <span class="tags">标签 <a href="/tags/FFI/" class="label label-primary">FFI</a><a href="/tags/LUA/" class="label label-success">LUA</a><a href="/tags/WINDOWS/" class="label label-info">WINDOWS</a><a href="/tags/API/" class="label label-warning">API</a></span> | <span class="time">最近更新:<time title="2014-02-15 14:27:03"datetime="2014-02-15 14:27:03"> 2014-02-15</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/luajit_ffi/#comments" class="ds-thread-count comment-link" data-thread-key="939" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -567,126 +493,22 @@ end
 <p>比如&quot;中华人民共和国&quot; 是ZHRMGHG</p>
 <p>最近在<a href="http://chenall.net/post/alrun-merry/" title="[分享] ALMRun–小巧的快速启动工具 ">ALMRun</a>程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,</p>
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
-<p>源码: <a href="https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php" target="_blank"><a href="https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php">https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php</a></a></p>
-<pre><code>&lt;?php
-/*
-    中文汉字转拼音首字母的PHP简易实现方法.
-    要求: 只能是GB2312码表里面中文字符
-    转换得到字符串对应的拼音首字母大写.
-    来源: http://chenall.net/
-    用法:
-    echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
-    或
-    $py = new zh2py;
-    echo $py-&gt;conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
-*/
-class zh2py
-{
-    //根据汉字区位表,(http://www.mytju.com/classcode/tools/QuWeiMa_FullList.asp)
-    //我们可以看到从16-55区之间是按拼音字母排序的,所以我们只需要判断某个汉字的区位码就可以得知它的拼音首字母.
-    //区位表第一部份,按拼音字母排序的.
-    //16区-55区
-    /*
-        &#39;A&#39;=&gt;0xB0A1, &#39;B&#39;=&gt;0xB0C5, &#39;C&#39;=&gt;0xB2C1, &#39;D&#39;=&gt;0xB4EE, &#39;E&#39;=&gt;0xB6EA, &#39;F&#39;=&gt;0xB7A2, &#39;G&#39;=&gt;0xB8C1,&#39;H&#39;=&gt;0xB9FE,
-    &#39;J&#39;=&gt;0xBBF7, &#39;K&#39;=&gt;0xBFA6, &#39;L&#39;=&gt;0xC0AC, &#39;M&#39;=&gt;0xC2E8, &#39;N&#39;=&gt;0xC4C3, &#39;O&#39;=&gt;0xC5B6, &#39;P&#39;=&gt;0xC5BE,&#39;Q&#39;=&gt;0xC6DA,
-    &#39;R&#39;=&gt;0xC8BB, &#39;S&#39;=&gt;0xC8F6, &#39;T&#39;=&gt;0xCBFA, &#39;W&#39;=&gt;0xCDDA, &#39;X&#39;=&gt;0xCEF4, &#39;Y&#39;=&gt;0xD1B9, &#39;Z&#39;=&gt;0xD4D1
-    */
-    private static $FirstTable = array(
-    0xB0C5, 0xB2C1, 0xB4EE, 0xB6EA, 0xB7A2, 0xB8C1, 0xB9FE, 0xBBF7, 0xBFA6, 0xC0AC, 0xC2E8,
-    0xC4C3, 0xC5B6, 0xC5BE, 0xC6DA, 0xC8BB, 0xC8F6, 0xCBFA, 0xCDDA, 0xCEF4, 0xD1B9, 0xD4D1,0xD7FA
-    );
-    private static $FirstLetter = &quot;ABCDEFGHJKLMNOPQRSTWXYZ&quot;;
-    //区位表第二部份,不规则的,下面的字母是每个区里面对应字的拼音首字母.从网上查询整理出来的,可能会有部份错误.
-    //56区-87区
-    private static $SecondTable = array(
-        &quot;CJWGNSPGCGNEGYPBTYYZDXYKYGTZJNMJQMBSGZSCYJSYYFPGKBZGYDYWJKGKLJSWKPJQHYJWRDZLSYMRYPYWWCCKZNKYYG&quot;,
-        &quot;TTNGJEYKKZYTCJNMCYLQLYPYSFQRPZSLWBTGKJFYXJWZLTBNCXJJJJTXDTTSQZYCDXXHGCKBPHFFSSTYBGMXLPBYLLBHLX&quot;,
-        &quot;SMZMYJHSOJNGHDZQYKLGJHSGQZHXQGKXZZWYSCSCJXYEYXADZPMDSSMZJZQJYZCJJFWQJBDZBXGZNZCPWHWXHQKMWFBPBY&quot;,
-        &quot;DTJZZKXHYLYGXFPTYJYYZPSZLFCHMQSHGMXXSXJYQDCSBBQBEFSJYHWWGZKPYLQBGLDLCDTNMAYDDKSSNGYCSGXLYZAYPN&quot;,
-        &quot;PTSDKDYLHGYMYLCXPYCJNDQJWXQXFYYFJLEJPZRXCCQWQQSBZKYMGPLBMJRQCFLNYMYQMSQYRBCJTHZTQFRXQHXMQJCJLY&quot;,
-        &quot;QGJMSHZKBSWYEMYLTXFSYDXWLYCJQXSJNQBSCTYHBFTDCYZDJWYGHQFRXWCKQKXEBPTLPXJZSRMEBWHJLBJSLYYSMDXLCL&quot;,
-        &quot;QKXLHXJRZJMFQHXHWYWSBHTRXXGLHQHFNMGYKLDYXZPYLGGSMTCFBAJJZYLJTYANJGBJPLQGSZYQYAXBKYSECJSZNSLYZH&quot;,
-        &quot;ZXLZCGHPXZHZNYTDSBCJKDLZAYFFYDLEBBGQYZKXGLDNDNYSKJSHDLYXBCGHXYPKDJMMZNGMMCLGWZSZXZJFZNMLZZTHCS&quot;,
-        &quot;YDBDLLSCDDNLKJYKJSYCJLKWHQASDKNHCSGAGHDAASHTCPLCPQYBSZMPJLPCJOQLCDHJJYSPRCHNWJNLHLYYQYYWZPTCZG&quot;,
-        &quot;WWMZFFJQQQQYXACLBHKDJXDGMMYDJXZLLSYGXGKJRYWZWYCLZMSSJZLDBYDCFCXYHLXCHYZJQSQQAGMNYXPFRKSSBJLYXY&quot;,
-        &quot;SYGLNSCMHCWWMNZJJLXXHCHSYZSTTXRYCYXBYHCSMXJSZNPWGPXXTAYBGAJCXLYXDCCWZOCWKCCSBNHCPDYZNFCYYTYCKX&quot;,
-        &quot;KYBSQKKYTQQXFCMCHCYKELZQBSQYJQCCLMTHSYWHMKTLKJLYCXWHEQQHTQKZPQSQSCFYMMDMGBWHWLGSLLYSDLMLXPTHMJ&quot;,
-        &quot;HWLJZYHZJXKTXJLHXRSWLWZJCBXMHZQXSDZPSGFCSGLSXYMJSHXPJXWMYQKSMYPLRTHBXFTPMHYXLCHLHLZYLXGSSSSTCL&quot;,
-        &quot;SLDCLRPBHZHXYYFHBMGDMYCNQQWLQHJJCYWJZYEJJDHPBLQXTQKWHLCHQXAGTLXLJXMSLJHTZKZJECXJCJNMFBYCSFYWYB&quot;,
-        &quot;JZGNYSDZSQYRSLJPCLPWXSDWEJBJCBCNAYTWGMPAPCLYQPCLZXSBNMSGGFNZJJBZSFZYNTXHPLQKZCZWALSBCZJXSYZGWK&quot;,
-        &quot;YPSGXFZFCDKHJGXTLQFSGDSLQWZKXTMHSBGZMJZRGLYJBPMLMSXLZJQQHZYJCZYDJWFMJKLDDPMJEGXYHYLXHLQYQHKYCW&quot;,
-        &quot;CJMYYXNATJHYCCXZPCQLBZWWYTWBQCMLPMYRJCCCXFPZNZZLJPLXXYZTZLGDLTCKLYRZZGQTTJHHHJLJAXFGFJZSLCFDQZ&quot;,
-        &quot;LCLGJDJZSNZLLJPJQDCCLCJXMYZFTSXGCGSBRZXJQQCTZHGYQTJQQLZXJYLYLBCYAMCSTYLPDJBYREGKLZYZHLYSZQLZNW&quot;,
-        &quot;CZCLLWJQJJJKDGJZOLBBZPPGLGHTGZXYGHZMYCNQSYCYHBHGXKAMTXYXNBSKYZZGJZLQJTFCJXDYGJQJJPMGWGJJJPKQSB&quot;,
-        &quot;GBMMCJSSCLPQPDXCDYYKYPCJDDYYGYWRHJRTGZNYQLDKLJSZZGZQZJGDYKSHPZMTLCPWNJYFYZDJCNMWESCYGLBTZZGMSS&quot;,
-        &quot;LLYXYSXXBSJSBBSGGHFJLYPMZJNLYYWDQSHZXTYYWHMCYHYWDBXBTLMSYYYFSXJCBDXXLHJHFSSXZQHFZMZCZTQCXZXRTT&quot;,
-        &quot;DJHNRYZQQMTQDMMGNYDXMJGDXCDYZBFFALLZTDLTFXMXQZDNGWQDBDCZJDXBZGSQQDDJCMBKZFFXMKDMDSYYSZCMLJDSYN&quot;,
-        &quot;SPRSKMKMPCKLGTBQTFZSWTFGGLYPLLJZHGJJGYPZLTCSMCNBTJBQFKDHBYZGKPBBYMTDSSXTBNPDKLEYCJNYCDYKZTDHQH&quot;,
-        &quot;SYZSCTARLLTKZLGECLLKJLQJAQNBDKKGHPJTZQKSECSHALQFMMGJNLYJBBTMLYZXDXJPLDLPCQDHZYCBZSCZBZMSLJFLKR&quot;,
-        &quot;ZJSNFRGJHXPDHYJYBZGDLQCSEZGXLBLGYXTWMABCHECMWYJYZLLJJYHLGNDJLSLYGKDZPZXJYYZLWCXSZFGWYYDLYHCLJS&quot;,
-        &quot;CMBJHBLYZLYCBLYDPDQYSXQZBYTDKYXJYYCNRJMPDJGKLCLJBCTBJDDBBLBLCZQRPYXJCJLZCSHLTOLJNMDDDLNGKATHQH&quot;,
-        &quot;JHYKHEZNMSHRPHQQJCHGMFPRXHJGDYCHGHLYRZQLCYQJNZSQTKQJYMSZSWLCFQQQXYFGGYPTQWLMCRNFKKFSYYLQBMQAMM&quot;,
-        &quot;MYXCTPSHCPTXXZZSMPHPSHMCLMLDQFYQXSZYJDJJZZHQPDSZGLSTJBCKBXYQZJSGPSXQZQZRQTBDKYXZKHHGFLBCSMDLDG&quot;,
-        &quot;DZDBLZYYCXNNCSYBZBFGLZZXSWMSCCMQNJQSBDQSJTXXMBLTXZCLZSHZCXRQJGJYLXZFJPHYMZQQYDFQJJLZZNZJCDGZYG&quot;,
-        &quot;CTXMZYSCTLKPHTXHTLBJXJLXSCDQXCBBTJFQZFSLTJBTKQBXXJJLJCHCZDBZJDCZJDCPRNPQCJPFCZLCLZXZDMXMPHJSGZ&quot;,
-        &quot;GSZZQLYLWTJPFSYASMCJBTZYYCWMYTZSJJLJCQLWZMALBXYFBPNLSFHTGJWEJJXXGLLJSTGSHJQLZFKCGNNNSZFDEQFHBS&quot;,
-        &quot;AQTGYLBXMMYGSZLDYDQMJJRGBJTKGDHGKBLQKBDMBYLXWCXYTTYBKMRTJZXQJBHLMHMJJZMQASLDCYXYQDLQCAFYWYXQHZ&quot;,
-        );
-    function utf8_to_gbk($string)//编码转换,必须转换成GB2312字符,这里只是简单的判断并不是很准确,可以自己写一个.
-    {
-    if (mb_check_encoding($string,&#39;gb2312&#39;))
-        return $string;
-    if (function_exists(&#39;iconv&#39;))
-        return iconv(&quot;utf-8&quot;,&quot;gb2312//IGNORE&quot;,$string);
-    return mb_convert_encoding($string,&#39;gb2312&#39;,&#39;utf-8&#39;); 
-    }
 
-    function conv($str)
-    {
-    $str = self::utf8_to_gbk($str);
-    $len = strlen($str);
-    $newStr = &#39;&#39;;
-    for($i=0; $i&lt;$len ; ++$i)
-    {
-        $H = ord($str[$i]);
-        $L = ord($str[$i+1]);
-        //字符集非法
-        if ($H &lt; 0xB0 ||  $L &lt; 0xA1 || $H &gt; 0xF7 || $L == 0xFF)
-        {
-        $newStr .= $str[$i];
-        continue;
-        }
-        if ($H &lt; 0xD8)//($H &gt;= 0xB0 &amp;&amp; $H &lt;=0xD7)//查询文字在一级汉字区(16-55)
-        {
-        $W = ($H &lt;&lt; 8) | $L;
-        foreach(self::$FirstTable as $key=&gt;$value)
-        {
-            if ($W &lt; $value)
-            {
-            $newStr .= self::$FirstLetter[$key];
-            break;
-            }
-        }
-        }
-        else// if (H &gt;= 0xD8 &amp;&amp; H &lt;= 0xF7)//查询中文在二级汉字区(56-87)
-        $newStr .=self::$SecondTable[$H - 0xD8][$L-0xA1];
-        ++$i;
-    }
-    return $newStr;
-    }
-}
-
-echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
-</code></pre>
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/php_gb2312_2_pinyin/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/php/" class="label label-primary">php</a><a href="/tags/拼音/" class="label label-success">拼音</a><a href="/tags/转换/" class="label label-info">转换</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/php/" class="label label-primary">php</a><a href="/tags/拼音/" class="label label-success">拼音</a><a href="/tags/转换/" class="label label-info">转换</a></span> | <span class="time">最近更新:<time title="2014-02-15 14:27:03"datetime="2014-02-15 14:27:03"> 2014-02-15</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/php_gb2312_2_pinyin/#comments" class="ds-thread-count comment-link" data-thread-key="909" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -713,70 +535,22 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
         <p>ALMRun 修改自<a href="http://code.google.com/p/name5566-merry/" target="_blank">Merry</a> 是一个软件便捷启动工具,类似于<a href="https://code.google.com/p/altrun/" target="_blank">ALTRUN</a>等软件,功能更强,也是我所经手的第一个VC程序,同样是开源的.感谢原作者<a href="http://name5566.com/" title="ALMRun 的前身Merry作者" target="_blank">Name5566</a></p>
 <p>之前一直在使用<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>,只是这个好久没有更新了,有一些问题无法实现,所以我就在找同类的软件,  </p>
 <p>使用过像Launchy,Executor,FindAndRunRobot等软件,但各有各的缺点都不太顺手,直到有一天在GoogleCode上无意中发现了这个软件Merry,看了软件介绍,基本上就是我理想中的样子,很感兴趣就下载来测试了.</p>
-<h1 id="-">以下文字来源于原版介绍.</h1>
-<blockquote>
-<p>Merry 是一个 Merry 命令执行工具。部分功能相似的软件有 Linux 下的<a href="http://directory.fsf.org/wiki/Gmrun" target="_blank">gmrun</a>，Windows 下的<a href="http://www.autohotkey.com/" target="_blank">AutoHotkey</a>或<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>等，跨平台软件<a href="http://www.launchy.net/" target="_blank">Launchy</a>（不过 Merry 和它们在定位上有差别）。</p>
-<h3 id="-merry">为什么开发 Merry</h3>
-<p>最初使用 Linux 系统非常喜欢 gmrun + openbox 的组合，gmrun 能够弹出一个命令输入窗口，输入程序的名称就可以执行对应的程序，而 openbox 则可以非常方便的进行快捷键的绑定。后来使用 Windows 系统时，一直没有找到类似的替代软件，从而萌发了自己开发一个的想法。简单的制作之后，我开始使用 Merry，经过长时间的使用发现确实带来了很多的便利，致使之后使用没有安装 Merry 的机器时感觉很不习惯，这时候我发现它应该是一个有用的软件，于是有了今天的开源软件 Merry。随着时间的流逝 Merry 已经越来越丰富，而不仅仅只有上述这么简单的功能而已，只要你有想法，Merry 能尽量帮助你实现。</p>
-<h3 id="merry-">Merry 的目标</h3>
-<p>在基于窗口的操作系统中，简化一切重复、繁琐的操作并提供一些实用的功能。</p>
-<h3 id="merry-">Merry 的特点和功能</h3>
-<ul>
-<li>跨平台的支持，让你在所有平台下保持一致的操作方式（目前仅仅实现了 Windows 版本，相信不久之后 Linux 和 MacOS 版就会完成）</li>
-<li>可以定义 Merry 命令（快捷键）来完成一些常用的操作，例如：打开目录、启动程序、打开网页等</li>
-<li>通过 Merry 命令可以模拟用户的输入，例如：模拟键盘和鼠标输入</li>
-<li>通过 Merry 可以轻松的管理窗口，例如：关闭窗口、最大化和还原窗口、移动窗口、隐藏窗口等</li>
-<li>通过 Merry 命令可以来进行自动化的操作，例如：打开某应用程序，自动输入用户密码进行登录等</li>
-<li>Merry 采用完全开放的体系，可以使用 <a href="http://www.lua.org/" target="_blank">Lua</a> 的扩展库或者外部程序来扩展 Merry 的功能</li>
-</ul>
-</blockquote>
-<p>其它介绍请移步下面的网址,我就偷懒不写了.</p>
-<p><a href="https://code.google.com/p/name5566-merry/" target="_blank">https://code.google.com/p/name5566-merry/</a></p>
-<p>由于原版的功能还不是很完善,而我之前也是习惯使用ALTRun的,所以就尝试修改了一下,之前使用ALTRUN的也可以快速转过来.</p>
-<p>修改增强版最主要特点(其它的请看软件目录下的<a href="https://github.com/chenall/Merry" target="_blank">README.MD</a>)</p>
-<ul>
-<li>支持调用ALTRUN的命令列表.</li>
-<li>支持自动扫描指定目录下指定扩展名的文件,并添加到列表中,并且可以指定子目录级别</li>
-<li>简化添加命令方法.</li>
-<li>像ALTRUN一样允许按ALT+N直接启动.</li>
-<li>选中命令之后可以按Ctrl+D定位程序位置(打开程序文件夹).</li>
-<li>支持命令排序功能.</li>
-<li>支持拼音首字母识别(当下比较流行的)</li>
-<li>新增易于维护的NI格式配置文件.</li>
-<li>支持右键发送到或拖放快速添加命令(支持批量添加)</li>
-<li>图形化命令管理器.</li>
-<li>许多实用性功能改进</li>
-</ul>
-<p>另外这个也是可以作为WIN+R来使用的,比如你并没有添加services.msc命令,这时输入services.msc列表当然是不会有任何显示的,不过按回车之后还是会执行到services.msc的,并且会自动添加到列表中,以后再输入就可以看到了.同样支持按TAB输入参数</p>
-<p>因为我是初次接触VC,对VC不熟,修改过程中遇到问题都是从Google找的答案,程序可能会有一些BUG.</p>
-<p>我目前已经使用这个替换了ALTRUN,因为ALTRUN能实现的,这个基本上实现了,没实现了我也会根据需求,尽量去实现.</p>
-<p>其它的不多说了,不管我觉得如何,<span style="color: #800000;">适合自己的</span>,<span style="color: #800000;">用得顺手的</span>才是最好的,各有所好.</p>
-<p>有兴趣的可以下载测试,有问题或建议同样欢迎反馈...</p>
-<p>截图</p>
-<p><img src="http://c-dl.qiniudn.com/img/ALMRunMain.png" alt="软件界面截图" title="软件界面截图"></p>
-<p>选定命令之后按TAB键可以添加参数</p>
-<p><img src="http://c-dl.qiniudn.com/img/merry_args.png" alt="直接输入参数" title="可以直接输入参数"></p>
-<p>在命令列表按Insert键添加新命令</p>
-<p><img src="http://c-dl.qiniudn.com/img/ALMRun_AddCmd.png" alt="按Insert键添加新命令" title="按Insert键添加新命令"></p>
-<p>支持拼音首字母识别,比如:列表中有&quot;宽带连接&quot;,可以输入 &quot;<code>kdlj</code>&quot;<br>这是根据区位表匹配的,比较节省代码,只支持GB2312字符,也没有处理多音字,碰到多音字,一个不行可以换另一个.如果有兴趣帮助我一起开发的可以联系我,或者直接提交补丁文件给我.</p>
-<p>主页地址： <a href="http://almrun.chenall.net" target="_blank"><a href="http://almrun.chenall.net">http://almrun.chenall.net</a></a><br>更新记录: <a href="http://almrun.chenall.net/update_log.html" target="_blank"><a href="http://almrun.chenall.net/update_log.html">http://almrun.chenall.net/update_log.html</a></a><br>修改版源码: <a href="https://github.com/chenall/ALMRun" target="_blank"><a href="https://github.com/chenall/ALMRun">https://github.com/chenall/ALMRun</a></a><br>更多功能介绍: <a href="http://almrun.chenall.net/" target="_blank"><a href="http://almrun.chenall.net/">http://almrun.chenall.net/</a></a><br>扩展功能介绍: <a href="https://github.com/chenall/ALMRun/blob/master/doc/config_api.md" target="_blank"><a href="https://github.com/chenall/ALMRun/blob/master/doc/config_api.md">https://github.com/chenall/ALMRun/blob/master/doc/config_api.md</a></a>  </p>
-<p><strong>注：ALMRun独立主页已经上线，以后请关注<a href="http://almrun.chenall.net" target="_blank">ALMRUN主页</a>获取更新。</strong></p>
-<p>软件下载:</p>
-<ul>
-<li><a href="https://github.com/chenall/ALMRun/archive/v1.2.0.55_BIN.zip" target="_blank">稳定版下载</a>  </li>
-<li><a href="https://github.com/chenall/ALMRun/archive/Build.zip" target="_blank">最新编译版本下载</a>  </li>
-<li><a href="http://almrun.chenall.net/update_log.html" target="_blank">历史版本下载</a>  </li>
-</ul>
 
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/alrun-merry/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C++/">C++</a></li></span></span> | <span class="tags">标签 <a href="/tags/altrun/" class="label label-primary">altrun</a><a href="/tags/merry/" class="label label-success">merry</a><a href="/tags/快速启动/" class="label label-info">快速启动</a><a href="/tags/编程/" class="label label-warning">编程</a><a href="/tags/C++/" class="label label-primary">C++</a><a href="/tags/wxWidgets/" class="label label-success">wxWidgets</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C++/">C++</a></li></span></span> | <span class="tags">标签 <a href="/tags/altrun/" class="label label-primary">altrun</a><a href="/tags/merry/" class="label label-success">merry</a><a href="/tags/快速启动/" class="label label-info">快速启动</a><a href="/tags/编程/" class="label label-warning">编程</a><a href="/tags/C++/" class="label label-primary">C++</a><a href="/tags/wxWidgets/" class="label label-success">wxWidgets</a></span> | <span class="time">最近更新:<time title="2014-02-15 14:27:03"datetime="2014-02-15 14:27:03"> 2014-02-15</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/alrun-merry/#comments" class="ds-thread-count comment-link" data-thread-key="906" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -866,7 +640,7 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-13 14:46:55</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-15 14:27:51</em></span></div>
 </div>
 <div class="clearfix"></div>
 

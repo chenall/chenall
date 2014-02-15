@@ -10,7 +10,7 @@
 <title>[分享] LuaJIT的FFI调用WINDOWS API功能示例 | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="关于LuaJIT,以下是官网的介绍.LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.">
+<meta name="description" content="使用LuaJIT的FFI调用WINDOWS API来实现一些特别功能。比如网络访问，修改窗体，获取鼠标下的文本，获取鼠标位置等。">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -128,7 +128,8 @@
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
 <p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
-<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
+<p><a id="more"></a>
+<span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">比如以下来自官网最简单的应用代码</span></span></p>
 <pre><code class="lang-lua">--Load the FFI library.
 local ffi = require(&quot;ffi&quot;)
@@ -241,7 +242,7 @@ end
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span></span> | <span class="tags">标签 <a href="/tags/FFI/" class="label label-primary">FFI</a><a href="/tags/LUA/" class="label label-success">LUA</a><a href="/tags/WINDOWS/" class="label label-info">WINDOWS</a><a href="/tags/API/" class="label label-warning">API</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/LUA/">LUA</a></li></span></span> | <span class="tags">标签 <a href="/tags/FFI/" class="label label-primary">FFI</a><a href="/tags/LUA/" class="label label-success">LUA</a><a href="/tags/WINDOWS/" class="label label-info">WINDOWS</a><a href="/tags/API/" class="label label-warning">API</a></span> | <span class="time">最近更新:<time title="2014-02-15 14:27:03"datetime="2014-02-15 14:27:03"> 2014-02-15</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/luajit_ffi/#comments" class="ds-thread-count comment-link" data-thread-key="939" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -263,7 +264,7 @@ end
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/ff0_02/">FFO宠物技能[转]</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="939"  data-url="http://chenall.net/post/luajit_ffi/" data-title="[分享] LuaJIT的FFI调用WINDOWS API功能示例"></div>
@@ -343,7 +344,7 @@ end
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-15 14:27:03</em></span></div>
 </div>
 <div class="clearfix"></div>
 

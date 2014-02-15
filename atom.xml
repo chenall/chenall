@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-02-13T14:46:31.374Z</updated>
+  <updated>2014-02-15T14:27:24.400Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/hexo_theme_chenall/"/>
     <id>http://chenall.net/post/hexo_theme_chenall/</id>
     <published>2014-02-13T22:25:00.000Z</published>
-    <updated>2014-02-13T14:46:18.000Z</updated>
+    <updated>2014-02-15T14:27:03.000Z</updated>
     <content type="html"><![CDATA[<h3 id="-">主题简介</h3>
 <p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题 <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a> 修改而成,采用 <a href="http://getbootstrap.com/" target="_blank">bootstrap</a> 框架  </p>
 <p>在尽量保留原有主题功能的同时采用模块化设计支持实现组件模块化.完全自定义,通过widgets你可以添加许多实用功能.可以自定义组合各种组件,像评论系统,统计系统等.</p>
@@ -284,7 +284,7 @@ tag_minium: 3
 ## GoogleTagManagerID: GTM-ABCDEF
 GTM_ID:
 
-## 在文章中使用&#39;http://c-dl.qiniudn.com&#39;字符串自动替换为下面的地址,主要是为了方便使用.
+## 在文章中使用&#39;[ CDN_URL]:&#39;（注：CDN_URL两边无任格空格，这里是为了防止被替换）字符串自动替换为下面的地址,主要是为了方便使用.
 CDN_URL: http://your.cdn.url
 
 twitter_id: chenall
@@ -510,12 +510,13 @@ $(window).load(function(){
     <link href="http://chenall.net/post/luajit_ffi/"/>
     <id>http://chenall.net/post/luajit_ffi/</id>
     <published>2013-12-15T18:12:05.000Z</published>
-    <updated>2014-02-10T03:31:11.000Z</updated>
+    <updated>2014-02-15T14:27:03.000Z</updated>
     <content type="html"><![CDATA[<h1 id="-luajit-">关于LuaJIT,以下是官网的介绍.</h1>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
 <p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
-<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
+<p><a id="more"></a>
+<span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">比如以下来自官网最简单的应用代码</span></span></p>
 <pre><code class="lang-lua">--Load the FFI library.
 local ffi = require(&quot;ffi&quot;)
@@ -596,7 +597,11 @@ win32.free(lpString)--释放内存
 end
 </code></pre>
 ]]></content>
-    
+    <summary type="html"><![CDATA[<h1 id="-luajit-">关于LuaJIT,以下是官网的介绍.</h1>
+<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
+<p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
+<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
+<p>]]></summary>
     
       <category term="FFI" scheme="http://chenall.net/tags/FFI/"/>
     
@@ -1061,11 +1066,13 @@ end)()
     <link href="http://chenall.net/post/php_gb2312_2_pinyin/"/>
     <id>http://chenall.net/post/php_gb2312_2_pinyin/</id>
     <published>2013-04-20T15:21:35.000Z</published>
-    <updated>2014-02-10T03:31:11.000Z</updated>
+    <updated>2014-02-15T14:27:03.000Z</updated>
     <content type="html"><![CDATA[<p>在某些情况下,为了简化查询,我们需要提取中文的拼音首字母,</p>
 <p>比如&quot;中华人民共和国&quot; 是ZHRMGHG</p>
 <p>最近在<a href="http://chenall.net/post/alrun-merry/" title="[分享] ALMRun–小巧的快速启动工具 ">ALMRun</a>程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,</p>
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
+<a id="more"></a>
+
 <p>源码: <a href="https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php" target="_blank"><a href="https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php">https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php</a></a></p>
 <pre><code>&lt;?php
 /*
@@ -1177,7 +1184,11 @@ class zh2py
 
 echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 </code></pre>]]></content>
-    
+    <summary type="html"><![CDATA[<p>在某些情况下,为了简化查询,我们需要提取中文的拼音首字母,</p>
+<p>比如&quot;中华人民共和国&quot; 是ZHRMGHG</p>
+<p>最近在<a href="http://chenall.net/post/alrun-merry/" title="[分享] ALMRun–小巧的快速启动工具 ">ALMRun</a>程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,</p>
+<p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
+]]></summary>
     
       <category term="php" scheme="http://chenall.net/tags/php/"/>
     
@@ -1196,10 +1207,12 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
     <link href="http://chenall.net/post/alrun-merry/"/>
     <id>http://chenall.net/post/alrun-merry/</id>
     <published>2013-03-31T10:32:00.000Z</published>
-    <updated>2014-02-10T03:34:03.000Z</updated>
+    <updated>2014-02-15T14:27:03.000Z</updated>
     <content type="html"><![CDATA[<p>ALMRun 修改自<a href="http://code.google.com/p/name5566-merry/" target="_blank">Merry</a> 是一个软件便捷启动工具,类似于<a href="https://code.google.com/p/altrun/" target="_blank">ALTRUN</a>等软件,功能更强,也是我所经手的第一个VC程序,同样是开源的.感谢原作者<a href="http://name5566.com/" title="ALMRun 的前身Merry作者" target="_blank">Name5566</a></p>
 <p>之前一直在使用<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>,只是这个好久没有更新了,有一些问题无法实现,所以我就在找同类的软件,  </p>
 <p>使用过像Launchy,Executor,FindAndRunRobot等软件,但各有各的缺点都不太顺手,直到有一天在GoogleCode上无意中发现了这个软件Merry,看了软件介绍,基本上就是我理想中的样子,很感兴趣就下载来测试了.</p>
+<a id="more"></a>
+
 <h1 id="-">以下文字来源于原版介绍.</h1>
 <blockquote>
 <p>Merry 是一个 Merry 命令执行工具。部分功能相似的软件有 Linux 下的<a href="http://directory.fsf.org/wiki/Gmrun" target="_blank">gmrun</a>，Windows 下的<a href="http://www.autohotkey.com/" target="_blank">AutoHotkey</a>或<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>等，跨平台软件<a href="http://www.launchy.net/" target="_blank">Launchy</a>（不过 Merry 和它们在定位上有差别）。</p>
@@ -1255,7 +1268,10 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <li><a href="http://almrun.chenall.net/update_log.html" target="_blank">历史版本下载</a>  </li>
 </ul>
 ]]></content>
-    
+    <summary type="html"><![CDATA[<p>ALMRun 修改自<a href="http://code.google.com/p/name5566-merry/" target="_blank">Merry</a> 是一个软件便捷启动工具,类似于<a href="https://code.google.com/p/altrun/" target="_blank">ALTRUN</a>等软件,功能更强,也是我所经手的第一个VC程序,同样是开源的.感谢原作者<a href="http://name5566.com/" title="ALMRun 的前身Merry作者" target="_blank">Name5566</a></p>
+<p>之前一直在使用<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>,只是这个好久没有更新了,有一些问题无法实现,所以我就在找同类的软件,  </p>
+<p>使用过像Launchy,Executor,FindAndRunRobot等软件,但各有各的缺点都不太顺手,直到有一天在GoogleCode上无意中发现了这个软件Merry,看了软件介绍,基本上就是我理想中的样子,很感兴趣就下载来测试了.</p>
+]]></summary>
     
       <category term="altrun" scheme="http://chenall.net/tags/altrun/"/>
     
