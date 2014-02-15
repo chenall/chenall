@@ -17,6 +17,8 @@ categories:
 
 适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.
 
+<!--more-->
+
 源码: [https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php](https://github.com/chenall/chenall/blob/master/php/tools/ZH-cn_TO_pinyin.php)
 ```
 <?php

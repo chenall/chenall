@@ -8,6 +8,7 @@ tags:
 - API
 categories: 
 - 程序设计/LUA
+description: 使用LuaJIT的FFI调用WINDOWS API来实现一些特别功能。比如网络访问，修改窗体，获取鼠标下的文本，获取鼠标位置等。
 ---
 
 # 关于LuaJIT,以下是官网的介绍.
@@ -18,6 +19,7 @@ LuaJIT is Copyright © 2005-2013 Mike Pall, released under the [MIT open source
 
 <span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span>
 
+<!--more-->
 <span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span>
 
 <span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">比如以下来自官网最简单的应用代码</span></span>
