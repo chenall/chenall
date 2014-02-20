@@ -2,7 +2,7 @@ title: 泉州广播网在线直播
 date: 2010-04-18 00:53:23
 id: 198
 ---
-{% raw %
+{% raw %}
 <div>当前频道:</p> <select id="gbpd" name="qzgb" onchange="qzgb(this.value);"><option selected="selected" value="1">刺桐之声 FM 1059</option><option value="2">音乐之声 FM 881</option><option value="3">新闻频道 FM 889</option><option value="4">交通之声 FM 904</option><option value="5">体育频道 FM 914</option><option value="6">都市之声 FM 923</option><option value="7">音像直播(志明和春娇)</option><option value="8">泉广网络电视直播</option> </select><p>&nbsp;<a href="http://www.qzgb.com/881/" id="pdzy" target="_blank">频道主页</a>&nbsp;<a href="http://www.qzgb.com/881/index_time.shtml" id="play_list" target="_blank">节目时间表</a></p></div><div><a href="javascript:;" id="qz_1059" onclick="qzgb('1')">FM1059</a> <a href="javascript:;" id="qz_881" onclick="qzgb('2')">FM881</a> <a href="javascript:;" id="qz_889" onclick="qzgb('3')">FM889</a> <a href="javascript:;" id="qz_904" onclick="qzgb('4')">FM904</a> <a href="javascript:;" id="qz_914" onclick="qzgb('5')">FM914</a> <a href="javascript:;" id="qz_923" onclick="qzgb('6')">FM923</a> <a href="javascript:;" id="qz_914" onclick="qzgb('7')">音像直播</a> <a href="javascript:;" id="qz_914" onclick="qzgb('8')">视频直播</a></div><div id="VJMS">&nbsp;</div><p>
 <script type="text/javascript">
 function detectPlugin(CLSID,functionName)
@@ -82,4 +82,4 @@ function vjms_add()
 }
 vjms_add();
 </script>
-{% endraw %
+{% endraw %}
