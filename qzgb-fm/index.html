@@ -10,8 +10,7 @@
 <title>泉州广播网在线直播 | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="{% raw %
-当前频道: 刺桐之声 FM 1059音乐之声 FM 881新闻频道 FM 889交通之声 FM 904体育频道 FM 914都市之声 FM 923音像直播(志明和春娇)泉广网络电视直播 &nbsp;频道主页&nbsp;节目时间表FM1059 FM881 FM889 FM904 FM914 FM923 音像直播 视频直播&nbsp;">
+<meta name="description" content="当前频道: 刺桐之声 FM 1059音乐之声 FM 881新闻频道 FM 889交通之声 FM 904体育频道 FM 914都市之声 FM 923音像直播(志明和春娇)泉广网络电视直播 &nbsp;频道主页&nbsp;节目时间表FM1059 FM881 FM889 FM904 FM914 FM923 音像直播 视频直播&nbsp;">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -122,18 +121,17 @@
     <section id='before_content_widget'></section>
     <div class="entry">
       
-        <p>{% raw %</p>
-<p><div>当前频道:</p> <select id="gbpd" name="qzgb" onchange="qzgb(this.value);"><option selected="selected" value="1">刺桐之声 FM 1059</option><option value="2">音乐之声 FM 881</option><option value="3">新闻频道 FM 889</option><option value="4">交通之声 FM 904</option><option value="5">体育频道 FM 914</option><option value="6">都市之声 FM 923</option><option value="7">音像直播(志明和春娇)</option><option value="8">泉广网络电视直播</option> </select><p>&nbsp;<a href="http://www.qzgb.com/881/" id="pdzy" target="_blank">频道主页</a>&nbsp;<a href="http://www.qzgb.com/881/index_time.shtml" id="play_list" target="_blank">节目时间表</a></p></div><div><a href="javascript:;" id="qz_1059" onclick="qzgb('1')">FM1059</a> <a href="javascript:;" id="qz_881" onclick="qzgb('2')">FM881</a> <a href="javascript:;" id="qz_889" onclick="qzgb('3')">FM889</a> <a href="javascript:;" id="qz_904" onclick="qzgb('4')">FM904</a> <a href="javascript:;" id="qz_914" onclick="qzgb('5')">FM914</a> <a href="javascript:;" id="qz_923" onclick="qzgb('6')">FM923</a> <a href="javascript:;" id="qz_914" onclick="qzgb('7')">音像直播</a> <a href="javascript:;" id="qz_914" onclick="qzgb('8')">视频直播</a></div><div id="VJMS">&nbsp;</div><p></p>
-<p><script type="text/javascript">
+        <p><div>当前频道:</p> <select id="gbpd" name="qzgb" onchange="qzgb(this.value);"><option selected="selected" value="1">刺桐之声 FM 1059</option><option value="2">音乐之声 FM 881</option><option value="3">新闻频道 FM 889</option><option value="4">交通之声 FM 904</option><option value="5">体育频道 FM 914</option><option value="6">都市之声 FM 923</option><option value="7">音像直播(志明和春娇)</option><option value="8">泉广网络电视直播</option> </select><p>&nbsp;<a href="http://www.qzgb.com/881/" id="pdzy" target="_blank">频道主页</a>&nbsp;<a href="http://www.qzgb.com/881/index_time.shtml" id="play_list" target="_blank">节目时间表</a></p></div><div><a href="javascript:;" id="qz_1059" onclick="qzgb('1')">FM1059</a> <a href="javascript:;" id="qz_881" onclick="qzgb('2')">FM881</a> <a href="javascript:;" id="qz_889" onclick="qzgb('3')">FM889</a> <a href="javascript:;" id="qz_904" onclick="qzgb('4')">FM904</a> <a href="javascript:;" id="qz_914" onclick="qzgb('5')">FM914</a> <a href="javascript:;" id="qz_923" onclick="qzgb('6')">FM923</a> <a href="javascript:;" id="qz_914" onclick="qzgb('7')">音像直播</a> <a href="javascript:;" id="qz_914" onclick="qzgb('8')">视频直播</a></div><div id="VJMS">&nbsp;</div><p></p>
+<script type="text/javascript">
 function detectPlugin(CLSID,functionName)
 {
-    var pluginDiv = document.createElement(&quot;div&quot;);
-    pluginDiv.id = &quot;pluginDiv&quot;;
+    var pluginDiv = document.createElement("div");
+    pluginDiv.id = "pluginDiv";
     VJMS.appendChild(pluginDiv);
-    pluginDiv.innerHTML = &#39;<object id="objectForDetectPlugin" classid="CLSID:'+ CLSID +'"></object>&#39;;
+    pluginDiv.innerHTML = '<object id="objectForDetectPlugin" classid="CLSID:'+ CLSID +'"></object>';
     try
     {
-        if(eval(&quot;objectForDetectPlugin.&quot; + functionName) == undefined)
+        if(eval("objectForDetectPlugin." + functionName) == undefined)
         {
             pluginDiv.parentNode.removeChild(pluginDiv);
             return false;
@@ -151,35 +149,35 @@ function detectPlugin(CLSID,functionName)
 }
 function qzgb(id)
 {
-        Live.action=&quot;type=live&amp;cid=&quot;+id;
+        Live.action="type=live&amp;cid="+id;
         switch (id)
         {
-                case &quot;3&quot;:
-                        fm=&quot;889&quot;;
-                        play_list.href=&quot;<a href="http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml" target="_blank">http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml</a>&quot;;
+                case "3":
+                        fm="889";
+                        play_list.href="http://www.qzgb.com/"+fm+"/index_time.shtml";
                         break;
-                case &quot;6&quot;:
-                        fm=&quot;923&quot;;
-                        play_list.href=&quot;<a href="http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml" target="_blank">http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml</a>&quot;;
+                case "6":
+                        fm="923";
+                        play_list.href="http://www.qzgb.com/"+fm+"/index_time.shtml";
                         break;
-                case &quot;4&quot;:
-                        fm=&quot;904&quot;;
-                        play_list.href=&quot;<a href="http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml" target="_blank">http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml</a>&quot;;
+                case "4":
+                        fm="904";
+                        play_list.href="http://www.qzgb.com/"+fm+"/index_time.shtml";
                         break;
-                case &quot;1&quot;:
-                        fm=&quot;1059&quot;;
-                        play_list.href=&quot;<a href="http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml" target="_blank">http://www.qzgb.com/&quot;+fm+&quot;/index_time.shtml</a>&quot;;
+                case "1":
+                        fm="1059";
+                        play_list.href="http://www.qzgb.com/"+fm+"/index_time.shtml";
                         break;
-                case &quot;2&quot;:
-                        fm=&quot;881&quot;;
-                        play_list.href=&quot;<a href="http://www.qzgb.com/881/5628.shtml" target="_blank">http://www.qzgb.com/881/5628.shtml</a>&quot;;
+                case "2":
+                        fm="881";
+                        play_list.href="http://www.qzgb.com/881/5628.shtml";
                         break;
-                case &quot;5&quot;:
-                        fm=&quot;914&quot;;
-                        play_list.href=&quot;<a href="http://www.qzgb.com/914/5638.shtml" target="_blank">http://www.qzgb.com/914/5638.shtml</a>&quot;;
+                case "5":
+                        fm="914";
+                        play_list.href="http://www.qzgb.com/914/5638.shtml";
                         break;
         }
-        pdzy.href=&quot;<a href="http://www.qzgb.com/&quot;+fm" target="_blank">http://www.qzgb.com/&quot;+fm</a>;
+        pdzy.href="http://www.qzgb.com/"+fm;
         gbpd.value = id;
         try{
             Live.Close();
@@ -187,21 +185,21 @@ function qzgb(id)
         }
         catch (e){
         }
-}</p>
-<p>function vjms_add()
+}
+
+function vjms_add()
 {
-    var defobj = &#39;<object id="Live" classid="CLSID:D4003189-95B1-4A2F-9A87-F2B03665960D" codeBase="http://www.nagasoft.cn/download/VJMS/vjocx-ch-black.cab">&#39;;
-    if (!detectPlugin(&quot;D4003189-95B1-4A2F-9A87-F2B03665960D&quot;,&quot;PlayState&quot;) &amp;&amp; detectPlugin(&quot;174012D5-4141-44D6-8F44-729BB97C56EB&quot;,&quot;PlayState&quot;))
+    var defobj = '<object id="Live" classid="CLSID:D4003189-95B1-4A2F-9A87-F2B03665960D" codeBase="http://www.nagasoft.cn/download/VJMS/vjocx-ch-black.cab">';
+    if (!detectPlugin("D4003189-95B1-4A2F-9A87-F2B03665960D","PlayState") && detectPlugin("174012D5-4141-44D6-8F44-729BB97C56EB","PlayState"))
     {
-        defobj = &#39;<object id="Live" classid="CLSID:174012D5-4141-44D6-8F44-729BB97C56EB" codebase="http://www.nagasoft.cn/download/vjocx3/vjocx-ch.cab#version=3,0,101,0">&#39;;
+        defobj = '<object id="Live" classid="CLSID:174012D5-4141-44D6-8F44-729BB97C56EB" codebase="http://www.nagasoft.cn/download/vjocx3/vjocx-ch.cab#version=3,0,101,0">';
     }
-    defobj += &#39;<param name="Nat" value="tv.qzgb.com:3502" /><param name="Stun" value="larry.gloo.net" /><param name="Cgi" value="http://tv.qzgb.com:20010/cgi-bin/live.fcgi" /><param name="PlayMode" value="full" /><param name="Volume" value=100 /><param name="FullScreen" value="false" /></object>&#39;;
+    defobj += '<param name="Nat" value="tv.qzgb.com:3502" /><param name="Stun" value="larry.gloo.net" /><param name="Cgi" value="http://tv.qzgb.com:20010/cgi-bin/live.fcgi" /><param name="PlayMode" value="full" /><param name="Volume" value=100 /><param name="FullScreen" value="false" /></object>';
     VJMS.innerHTML = defobj;
     qzgb(gbpd.value);
 }
 vjms_add();
 </script>
-{% endraw %</p>
 
       
     </div>
@@ -294,7 +292,7 @@ vjms_add();
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-10 03:31:11</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-20 07:38:01</em></span></div>
 </div>
 <div class="clearfix"></div>
 
@@ -304,8 +302,7 @@ vjms_add();
   
         <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
-            
-<script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",/*推广单元ID，用于区分不同的推广渠道*/ appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/ unid: ""/*自定义统计字*/ }; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+            <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
             <script type="text/javascript">
 var duoshuoQuery = {short_name:"chenall"};
