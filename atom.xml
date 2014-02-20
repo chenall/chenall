@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-02-20T07:38:48.427Z</updated>
+  <updated>2014-02-20T14:16:42.658Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -408,7 +408,7 @@ widgets:
     <link href="http://chenall.net/post/pretty_auto/"/>
     <id>http://chenall.net/post/pretty_auto/</id>
     <published>2014-01-20T17:00:00.000Z</published>
-    <updated>2014-02-10T03:31:11.000Z</updated>
+    <updated>2014-02-20T14:16:20.000Z</updated>
     <content type="html"><![CDATA[<p>pretty是一个Javascript模块和CSS文件，可以实现文章中代码的高亮显示.<br>在网上找到的使用方法都是差不多的,</p>
 <p>首先就是加载css和js文件<br><a id="more"></a></p>
 <pre><code class="lang-html">&lt;script src=&quot;https://google-code-prettify.googlecode.com/svn/loader/prettify.js&quot;&gt;&lt;/script&gt;
@@ -471,7 +471,9 @@ $(window).load(function(){
     
       <category term="pretty" scheme="http://chenall.net/tags/pretty/"/>
     
-      <category term="原创代码" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B%E4%BB%A3%E7%A0%81/"/>
+      <category term="原创" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="代码" scheme="http://chenall.net/tags/%E4%BB%A3%E7%A0%81/"/>
     
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
@@ -1190,7 +1192,7 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
 ]]></summary>
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="拼音" scheme="http://chenall.net/tags/%E6%8B%BC%E9%9F%B3/"/>
     
@@ -1467,7 +1469,7 @@ $fs-&gt;ls();
     
       <category term="网盘" scheme="http://chenall.net/tags/%E7%BD%91%E7%9B%98/"/>
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
@@ -1600,7 +1602,7 @@ else
 ]]></content>
     
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="SDK" scheme="http://chenall.net/tags/SDK/"/>
     
@@ -1872,7 +1874,7 @@ class cs_smtp
 ]]></content>
     
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="PHPMailer" scheme="http://chenall.net/tags/PHPMailer/"/>
     
@@ -2066,7 +2068,7 @@ empty($debug) || fclose($debug);
 ]]></content>
     
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="原创" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B/"/>
     
@@ -2125,7 +2127,7 @@ curl_close($curl);
     
       <category term="mysql" scheme="http://chenall.net/tags/mysql/"/>
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="进度条" scheme="http://chenall.net/tags/%E8%BF%9B%E5%BA%A6%E6%9D%A1/"/>
     
