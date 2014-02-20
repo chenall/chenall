@@ -2,7 +2,8 @@ title: "[原创] pretty自动加载语言代码"
 date: 2014-01-20 17:00
 tags: 
 - pretty
-- 原创代码
+- 原创
+- 代码
 categories: 
 - 程序设计/html
 description: 使用jquery代码实现 pretty 根据需要自动加载对应语言的.不受路径/CDN限制,自动获取prettify文件的路径,自动加载需要的代码高亮文件.

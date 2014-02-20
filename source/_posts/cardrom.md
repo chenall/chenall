@@ -51,6 +51,7 @@ categories:
  3. 以后可能还支持在一张SD卡上写入多个ISO文件。
  4. 虽然是虚拟的，但是对于系统来说这是真实存在的设备，不需要其它设置就可以直接使用。
 
-<a data-type="0" biz-itemid="14191084868" data-tmpl="470x190" data-tmplid="635" data-rd="2" data-style="2" data-border="1" href="http://item.taobao.com/item.htm?id=14191084868">http://item.taobao.com/item.htm?id=14191084868</a>
+{%tdj http://item.taobao.com/item.htm?id=14191084868%}
+
 
 
