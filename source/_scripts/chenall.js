@@ -22,7 +22,7 @@ extend.tag.register('tdj',function(args){
   } else {
     var itemstr = /^([a-z]+:)?\/{1,2}.+?id=(\d+)/.exec(args);
     if (itemstr){
-      var itemid = itemstr[1];
+      var itemid = itemstr[2];
       itemtext = args;
       var href = args;
     } else {
