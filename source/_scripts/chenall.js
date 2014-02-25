@@ -32,8 +32,8 @@ extend.tag.register('tdj',function(args){
 
   var attrs = {
     'data-type': "0",
-    'data-tmpl': "470x190",
-    'data-tmplid': "635",
+    'data-tmpl': "628x100",
+    'data-tmplid': "7",
     'data-rd':    "2",
     'data-border': "1",
     'data-style': "2",
