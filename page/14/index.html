@@ -114,6 +114,121 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post23/">[原创]QQ自由幻想挂机过神医完美解决方案</a></h1>
+      
+        <span>发表于<time datetime="2008-10-26T16:58:28.000Z"> <a href="/post/post23/">2008-10-26</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>目前网上找到的大多是使用随机或固定的答案,选错2次就小退再进,这样虽然可行,但并不完美,至少不通过就小退那个经验就没了,嘿嘿</p>
+<p><span style="color: #ff00ff">一个小秘密:两个号组队挂经验或宠物,只要验证一个号就可以了.方法,卖个关子先不说了.说下另一个秘密.<em>:)
+SS可以在野外不用验证神医,可以打怪也可以移动.^</em>^ 方法在本文最后面</span></p>
+<p><span style="font-size: medium">注：这里所说的方案,请自己去想办法实现.不提供成品</span></p>
+<ol>
+<li>首先读取验证码图片识别里面可以识别的字符,一般只要可以识别出一个就可以了.当然了可识别的字符越多成功率就越高.</li>
+<li><p>然后根据上面识别到的字符在从三个选项中查找对应的字符,找到就是正确答案了</p>
+<p>当然了不排除以下情况,三个选项中有两个或以上都有要识别的字符的,所以说上面可以识别到的字符越多越好了.</p>
+</li>
+<li><p>出现了上面的情况,又只有一个识别符时怎么办?如下
+验证码图片字符:EF9  可识别的字符9<br>答案选项:<br>1.A9Y 2.EF9 3.ZYK<br>只要再获取对应字符的位置就好了.验证码读取后不可识别的就设为?,<br>那上面的图片字符读取后就是??9<br>然后只要查找选项中第三个字符是9的就可以了,成功率又上升(因为不排除刚好同一位置的字符一样的情况,虽然很少)  </p>
+</li>
+<li><p>通过以上的步骤,基本可以确定要使用哪一个答案了.可以说是目前最完美的方法.  </p>
+<p>使用这个方法,可以自动检测到正确的答案选项,然后就验证通过了,,,,还有挂机卖东西时虽然可以不用管这个,</p>
+<p>但如果可以验证通过,不用打怪,只要坐着卖东西,一天下来也有好多经验拿.</p>
+<p>再看看以下运行记录,有兴趣的朋友就可以用按键精灵或模拟精灵之类的自己弄一个出来了</p>
+<pre><code>16:55:12.906 自动验证完成...
+16:55:10.562 自动检测答案:1
+16:55:10.515 自动读取答案选项: 1.?9? 2.?T? 3.?Y?
+16:55:10.281 正在自动过神医: 第[1]次
+16:55:08.921 [.9]自动检测验证码:?9?
+16:15:44 检测到按下了设定热键: Ctrl+F2  ::False
+16:14:24.859 自动验证完成...
+16:14:22.000 自动检测答案:3
+16:14:21.921 自动读取答案选项: 1.NF? 2.FY? 3.95?
+16:14:18.578 正在自动过神医: 第[2]次
+16:14:18.531 [.9]自动检测验证码:95?
+16:14:11.531 正在自动过神医: 第[1]次
+16:14:08.500 [.9]自动检测验证码:???
+15:47:44 检测到按下了设定热键: Ctrl+F2  ::True
+15:33:16.718 自动验证完成...
+15:33:14.546 自动检测答案:3
+15:33:14.484 自动读取答案选项: 1.?VE 2.?2S 3.?P3
+15:33:10.296 正在自动过神医: 第[1]次
+15:33:02 检测到按下了设定热键: Ctrl+F4  ::True
+15:33:02.703 [.9]自动检测验证码:?P3
+15:32:58.625 自动验证完成...
+15:32:55.093 自动检测答案:2
+15:32:54.609 自动读取答案选项: 1.U?? 2.E?? 3.U??
+15:32:48.421 正在自动过神医: 第[1]次
+15:32:46.609 [.9]自动检测验证码:E??
+15:32:40.078 注册热键: Ctrl+F4
+15:32:39.890 注册热键: Ctrl+F4(暂停检测)
+15:32:39.859 注册热键: Ctrl+F2
+15:32:39.656 注册热键: Ctrl+F2(隐藏提示窗口)
+15:32:39.546 注册热键: Ctrl+F1
+15:32:39.328 注册热键: Ctrl+F1(隐藏游戏窗口)
+15:32:39.203 神医+字位置颜色: 188CE8
+15:32:39.062 自动检测显示模式: 软件模式
+</code></pre></li>
+</ol>
+<p><span style="font-size: small">SS在野外打怪时跳过神医验证的方法:
+</span><span style="color: #993300"><span style="font-size: small">因为<span style="color: #ff00ff">FFO只要不走路或在城内</span>就不会触发神医验证所以,
+首先找到挂机点,然后小退再进,这时<span style="color: #ff00ff">不要走动</span>(一走动就会跳出那个神医了),
+要找个好的挂机点不需要走路的,只要站着不动就能打的那种.
+按TAB选怪然后开始打吧,人不需要走动,这样可以一直打而不会出现神医.
+想要移动位置,也不难,SS不是有幻影吗,直接用幻影移过去就好了.</span></span></p>
+<p><span><font size="3">完了,上面的第一个小秘密就是利用上面的原理来实现的.不用我说你们应该也知道（只要一个在旁边坐着不打就好了，适用于挂宠物）
+</font></span></p>
+<p>唉，FFO太让我失望了，之前的FO也是，骂声一片，不知TX什么时候可以改掉唯利是图的毛病，什么都要钱，一点也不为玩家考虑。
+刚开始接触还行，更新了几次，都是向钱看，不知那些开发人员是做什么的，没有什么实质的修改，每次更新都要玩家大出血。
+非RMB玩家在里面根本没有前途，看首人家一身的装备宠物，再看看自己，伤心......
+之前有玩魔域，也是向钱看的，不玩了。
+不知还有没有其它好玩的游戏啊，有的朋友推荐下。</p>
+<p><span style="color: #ff00ff">小提示:检测神医只需要检测%temp%\ffoo_tt.gif文件就可以了,</span><span style="color: #ff00ff">这个文件发生改变就说明游戏窗口中一定有验证窗口出现了这个文件的内容就是游戏里面所用的验证图片.也只需要读取这个图片上面的字符就可以过神医了.我上面就是利用这个文件来实现的</span></p>
+<p><span style="color: #ff00ff">点击答案后,检测这个文件是否有变化,如果没有就说明验证通过,否则失败.</span></p>
+<p><span style="font-size: small">2008-09-08  后记: ,对自由幻想越来越失望,准备公开这个程序,有兴趣朋友的可以直接给我留言留下email.
+纯VBSCRIPT脚本编写,目前基本上没有使用问题.适用于任何屏幕,(使用软件模式效果最好).代码没有整理看起来会乱乱的,
+2008-09-15  一个星期过去了,程序不再发放
+</span><span style="font-size: small">2008-10-06  抽空改进了一下,加快了检测速度.重新整理优化了全部代码,使用完全模块化方式,使得可以直接在另一个脚本中调用.</span></p>
+<p><span style="font-size: small">2008-10-13 上次可能有很多人不知道.
+</span><span style="font-size: small">将抽空在这几天内再次限量发放过神医脚本
+到这个星期五为止,我将在所收到的邮件中抽取一些朋友发放.
+有兴趣的就直接email给我</span></p>
+<p><span style="font-size: small">注:有收到的朋友未经本人同意,不得随意转发给他人使用,原因........我不说大家也应该明白
+我的邮箱地址自己找.</span></p>
+<p><span style="font-size: small">2008-10-17 今天再试了一下,发现TX服务器上已经修改了验识码的程序.所以目前已经暂时无法识别了.
+需要重新制作数据库,一个人做工作量比较大,所以暂时就无法使用了.除非有人做出新的数据库.
+</span></p>
+<p><span style="font-size: small">有兴趣的朋友可以email给我[域名就是我的QQ号] 域名@qq.com,我会发送程序给你,包括如何重制识别码数据库?</span></p>
+<p><span style="font-size: small">2008-10-26 直接发出来好了,有兴趣的朋友自己下载研究.
+目前由于新版FFO修改了识别码算法,我没有足够的时间重新制识别码数据库,</span></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/游戏人生/">游戏人生</a></li><li><a href="/categories/游戏人生/编程/">编程</a></li></span></span> | <span class="tags">标签 <a href="/tags/FFO/" class="label label-primary">FFO</a><a href="/tags/完美挂机/" class="label label-success">完美挂机</a><a href="/tags/神医/" class="label label-info">神医</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post23/#comments" class="ds-thread-count comment-link" data-thread-key="23" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></h1>
       
         <span>发表于<time datetime="2008-07-22T17:01:15.000Z"> <a href="/post/post19/">2008-07-22</a></time></span>      
@@ -779,112 +894,6 @@ map .../scsi_ext.img (fd0)
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></h1>
-      
-        <span>发表于<time datetime="2008-05-05T14:57:29.000Z"> <a href="/post/pxe_ris/">2008-05-05</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <h3 id="windows-">Windows网络安装简介</h3>
-<p>作者：Rinrin</p>
-<p>顾名思义，Windows网络安装表示从局域网内部引导Windows安装，核心技术基于微软的RIS(Remote Installation Services)。RIS有一个缺点，即需要在域环境下才能配置运行RIS。不过这个限制已经被国外的高手破解了，现在可以从任何一台Windows（甚至是Linux）机器上配置网络安装所需要的服务。本文将简单说明实现Windows网络安装的技术要点。</p>
-<p>实现Windows网络安装需要四个服务：BOOTP,TFTP,BINL,Windows Share. 其中BOOTP和TFTP是实现PXE启动的基础，关于PXE启动的详细信息，可以参考本文后的引用2。</p>
-<p>BINL服务，微软称之为启动信息协商层(Boot Information Negotiation Layer)，其作用是网卡查询、身份验证、启动镜像选择等功能。实现Windows网络安装只需要其中一项功能，即网卡查询。Sherpya逆向分析了BINL协议，并写了一个开源的Binl服务程序。要了解详细信息，可以参考本文后的引用1。</p>
-<p>Windows共享服务提供了安装文件的来源，并且在文本模式安装阶段作为启动分区(Boot Partition)，因此也是必不可少的。</p>
-<p>Windows网络安装的大致步骤如下：</p>
-<ol>
-<li>目标计算机从网卡PXE Boot ROM启动（当然，你也可以用PXELinux或PXEGrub来实现类似的启动功能）。</li>
-<li>目标计算机从DHCP/BOOTP服务器获得网络地址，并获得TFTP服务器的IP地址和启动文件信息。</li>
-<li>目标计算机向TFTP服务器获得启动文件startrom.com/startrom.n12</li>
-<li>startrom.com获取ntldr(由setupldr.exe改名而来)，并将控制权传递给它。</li>
-<li>setupldr.exe获取ntdetect.com和winnt.sif，winnt.sif应该包含启动相关信息。
-从这个时候起，有两种启动方法，即ramdisk和网络启动，对于Ramdisk，启动分区为\Device\Ramdisk{xxxx...}，你可以参考本文后的引用2。对于网络启动，你需要在winnt.sif中设定SetupSourceDevice参数。</li>
-<li>setupldr.exe通过ntdetect.com获得网卡的Vendor ID和Device ID, 并将它发送到Binl服务端口(4011)。</li>
-<li>Binl服务查找&ldquo;数据库&rdquo;，获得需要加载的驱动名称和服务名，返回给setupldr.exe</li>
-<li>Setupldr.exe按照正常顺序加载驱动，不过在最后，它会试着去加载前面给出网卡驱动和网络设备相关驱动，你可以从TFTP服务器的log里看到这些。有意思的是，txtsetup.sif并没有网络设备相关驱动的信息，我想可能是直接写在setupldr.exe里了。</li>
-<li>控制权移交给kernel，kernel会试着去mount启动分区，要注意的是，你建好的共享必须提供匿名访问，否则会停住不动。</li>
-<li>开始文本模式安装，setupdd复制文件到硬盘。完成后重新启动。</li>
-<li>开始GUI阶段安装，要注意的是，之前应该在Winnt.sif中指定OriSrc和OriTyp，至于是不是必须的，我不好说，因为并没有试验过。</li>
-<li>安装结束。实际上，你可以在winnt.sif中加入相关信息，以便实现无人值守安装。</li>
-</ol>
-<p>接下来，看一个实际的例子：</p>
-<ol>
-<li>准备好DHCP/TFTP服务器，可以用tftpd32，也可以用性能较好的haneWin，看你的选择了。</li>
-<li>设定好DHCP/TFTP服务器，指定TFTP根目录和启动文件名(startrom.n12或其他)。</li>
-<li><p>TFTP目录结构如下：</p>
-<pre><code>TFTP
-│ntdetect.com
-│ntldr
-│startrom.n12
-│winnt.sif
-│
-└─boot
- └─I386
-</code></pre><p>其中ntldr由setupldr.exe改名而来，I386目录可以直接从安装光盘中复制。</p>
-</li>
-<li><p>winnt.sif内容如下：</p>
-<pre><code>[Data]
-floppyless = &quot;1&quot;
-msdosinitiated = &quot;1&quot;
-OriSrc = &quot;\\Angel\TFTP\boot\i386&quot;
-OriTyp = &quot;4&quot;
-LocalSourceOnCD = 1
-DisableAdminAccountOnDomainJoin = 1
-
-[SetupData]
-OsLoadOptions = &quot;/fastdetect&quot;
-SetupSourceDevice = &quot;\Device\LanmanRedirector\Angel\TFTP\boot&quot;
-
-[UserData]
-ComputerName = *
-</code></pre><p>Angel为当前计算机主机名，TFTP为共享名。</p>
-</li>
-<li><p>编译Binl服务程序binlsrv.c，可以在本文后的引用1找到。如果你装了VC，可以用cl binlsrv.c ws2_32.lib来编译。</p>
-</li>
-<li><p>编写文件nics.txt，和binlsrv.exe放在同一目录下：</p>
-<pre><code>1022 2000 vmxnet.sys vmxnet
-1186 1300 RTL8139.sys rtl8139
-</code></pre><p>从左到右分别为<strong>PCI Vendor ID</strong>, <strong>Device ID</strong>, <strong>驱动名</strong>, <strong>服务名</strong></p>
-</li>
-<li><p>把网卡驱动（如<strong>vmxnet.sys,RTL8139.sys</strong>）放到<strong>TFTP\boot\I386</strong>目录下</p>
-</li>
-<li>将TFTP目录共享，注意匿名访问。如何设置就不说了，网络上有很多文章，重点是启用Guest、允许网络访问、允许空会话、NTFS权限等等，完了别忘了重启一下Server服务。</li>
-<li>启动目标计算机，开始网络安装！</li>
-</ol>
-<h3 id="-">后记：</h3>
-<p>  Windows网络安装并不复杂，国外的高手几年前就开始研究了。希望大家能多到Boot land, 911CD这样的论坛逛一逛，开阔眼界吧。</p>
-<p>  引用：</p>
-<ol>
-<li>Sherpya. RIS for Linux, <a href="http://oss.netfarm.it/guides/" target="_blank">http://oss.netfarm.it/guides/</a></li>
-<li>Climbing. PXE服务器架设指南及PXE启动WinPE（含PE2.0）解决方案总结, <a href="http://www.znpc.net/bbs/viewthread.php?tid=3662&amp;extra=page%3D1" target="_blank">http://www.znpc.net/bbs/viewthread.php?tid=3662&amp;extra=page%3D1</a></li>
-</ol>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/转载文章/">转载文章</a></li></span></span> | <span class="tags">标签 <a href="/tags/PXE/" class="label label-primary">PXE</a><a href="/tags/网络/" class="label label-success">网络</a><a href="/tags/RIS/" class="label label-info">RIS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/pxe_ris/#comments" class="ds-thread-count comment-link" data-thread-key="5" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -948,7 +957,8 @@ ComputerName = *
   
   &copy; 2014 chenall
   
-    </span>
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
   <span id='analytics-51la'>
 <script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
 <noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
@@ -964,7 +974,7 @@ ComputerName = *
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-20 14:23:49</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:53:52</em></span></div>
 </div>
 <div class="clearfix"></div>
 

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-02-20T14:23:21.671Z</updated>
+  <updated>2014-02-25T13:51:22.730Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -13,6 +13,88 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[[分享] HG320路由器盲刷64K CFE NVRAM固件]]></title>
+    <link href="http://chenall.net/post/hg320_64k/"/>
+    <id>http://chenall.net/post/hg320_64k/</id>
+    <published>2014-02-24T20:00:00.000Z</published>
+    <updated>2014-02-25T13:47:38.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://item.taobao.com/item.htm?spm=a1z09.5.0.0.qCXaZs&amp;id=16255606413" target="_blank">HG320</a>是一款神器级的高性价比无线路由器，由于其厂家为“烽火通信科技股份有限公司”，这款产品更多的被叫做了“烽火HG320”。中国电信采购了这款设备，并作为安装业务时的标配产品，但这次中国电信难得厚道了一把。</p>
+<p>参数方面，这款与磊科的NR235W/NR236W以及热议的贝尔RG200E-CA非常接近，BCM5358 500MHz处理器，64MB RAM+16MB ROM的组合在其他品牌中算是高端配置了，接口包括1WAN+4LAN+1USB，算是齐全。</p>
+<p>这款机器可以刷包括TOMATO、DD-WRT、磊科双WAN等多种固件，而且由于内置了JTAG接口，因此即使刷出问题也有挽救方案。很多玩家基于这款机器进行了各种DIY，包括升级RAM，增加天线等，价格不高，折腾余地很大。</p>
+<p>这不我又开始折腾上了，由于默认情况下NVRAM只有32KB，平常的话使用起来倒是没有什么问题，不过若是你的配置的内容太多的超过32KB（像OpenVPN证书，一下就是10KB以上，很容易超），这时就会出现配置丢失的问题。</p>
+<a id="more"></a>
+
+<p>之前很早就发现了 <a href="http://hi.baidu.com/zengchen228" target="_blank">~╰独①儛②</a> 提供的 <a href="http://hi.baidu.com/zengchen228/item/1d0f673a03523af2e7bb7a17" target="_blank">HG320 64K CFE</a> 刷了这个之后配合64K的固件就可以使用64K的NVRAM了，一直没有去尝试，最近又买了几个路由器，就拿来试试。</p>
+<p>需要准备的软件ROM: <a href="http://pan.baidu.com/s/1CJPEm" target="_blank">点这里下载</a></p>
+<p>里面包括了 <a href="http://hi.baidu.com/zengchen228" target="_blank">~╰独①儛②</a> 提供的CFE，还有 <a href="http://pan.baidu.com/s/1cMsgd" target="_blank">bwq518 提供的支持64K NVRAM的固件</a>，还有TFTP、PUTTY等软件。</p>
+<p>为了方便使用，先把连接路由器的网卡IP改成固定192.168.1.2，准备好TTL数据线，然后就是拆机了，按照下面方法接好TTL数据线，然后接上网线，电源。</p>
+<p><img src="http://c-dl.qiniudn.com/post/hg320_ttl.jpg" alt=""></p>
+<p>首先要刷64K 的CFE，可以先刷DD的MINI版，然后在DD里面刷，或者在MINIWEB下刷，</p>
+<p>相关资料：</p>
+<p><a href="http://www.right.com.cn/forum/thread-79340-1-1.html" target="_blank">http://www.right.com.cn/forum/thread-79340-1-1.html</a></p>
+<p><a href="http://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=117002" target="_blank">不拆机刷CFE，不用TTL</a></p>
+<p>我这里已经有TTL数据线了了，还是直接用TTL线刷比较快。</p>
+<p>但不知什么原因我的TTL接上去之后什么都不显示，但经过测试输入命令有反应，最简单的就是输入<code>reboot</code>之后路由器就会重启。所以本文介绍的是盲刷，只提供一个参考。</p>
+<p>首先要启动到CFE模式，最保险的方法</p>
+<p>打开TFTP程序</p>
+<p><img src="http://c-dl.qiniudn.com/post/hg320_tftp.jpg" alt=""></p>
+<p>打开路由器，直到变绿.</p>
+<p><img src="http://c-dl.qiniudn.com/post/hg320_tftp_ok.png" alt=""></p>
+<p>这时<code>ping 192.168.1.1</code>测试正常。并且TTL=100</p>
+<p><img src="http://c-dl.qiniudn.com/post/hg320_ttl_100.png" alt=""></p>
+<p>说明这时已经停在了CFE界面。（如果一直没有办法进入，可以进入路由器管理界面，直接刷ddwrt固件重启之后一般就能行了）</p>
+<p>可以开工了，直接运行tftpd32，不用管它，放着。</p>
+<p>运行putty,选择对应的COM端口，和速度一般是（115200)，然后连接。</p>
+<p>可以试着输入&#39;reboot&#39;回车测试一下，如果路由器重启了，说明正常，重新使用上面的方法进入CFE界面。</p>
+<ol>
+<li><p>首先清理NVRAM，在putty中直接输入以下命令回车（我这里是看不到回显的，只能盲打盲刷），下同。  </p>
+<pre><code> nvram erase
+</code></pre></li>
+<li><p>然后开始刷64k的cfe。一切正常的话就会看到tftpd32的窗口会闪一下，并且会显示下载了cfe64k.bin文件。  </p>
+<pre><code> flash -noheader 192.168.1.2:cfe64.bin flash0.boot
+</code></pre></li>
+<li>重启路由器  <pre><code> reboot
+</code></pre></li>
+<li><p>继续使用前面的方法进入CFE开始刷固件(也可以在上面输入reboot重启时，在putty窗口，按住Ctrl+C)。</p>
+<ol>
+<li>退出MINIWEB和清理nvram  <pre><code> quit
+ nvram erase
+</code></pre></li>
+<li>刷e1500固件（因为这个CFE是基于E1500的CFE修改的，有校验）  <pre><code> flash -ctheader 192.168.1.2:e1500.bin flash1.trx
+</code></pre> 注： 注意看一下TFTPD32的窗口，成功的话会有传e1500.bin文件的信息。
+ 等待刷写完成，一分钟左右，如果右数第三个指示灯有在闪就进入下一步，否则重启路由器，重新进入CFE，重复4.1，然后再下一步。</li>
+<li>刷tomato固件 <pre><code> flash -noerase -noheader 192.168.1.2:64k.trx flash1.trx
+</code></pre> 注： 注意看一下TFTPD32的窗口，成功的话会有传64k.trx文件的信息。并且网络指示灯会一直在闪，表示正在上传固件。</li>
+<li>重启路由器<pre><code> reboot
+</code></pre></li>
+</ol>
+</li>
+<li><p>一切正常的话，等待路由器重启完成之后就可以看到支持64K NVRAM的固件已经刷好了。 </p>
+<p><img src="http://c-dl.qiniudn.com/post/hg320_64k_nvram.png" alt=""></p>
+</li>
+<li><p>以后可以直接在路由器的固件升级功能中直接升级或刷其它固件。</p>
+</li>
+</ol>
+]]></content>
+    <summary type="html"><![CDATA[<p><a href="http://item.taobao.com/item.htm?spm=a1z09.5.0.0.qCXaZs&amp;id=16255606413" target="_blank">HG320</a>是一款神器级的高性价比无线路由器，由于其厂家为“烽火通信科技股份有限公司”，这款产品更多的被叫做了“烽火HG320”。中国电信采购了这款设备，并作为安装业务时的标配产品，但这次中国电信难得厚道了一把。</p>
+<p>参数方面，这款与磊科的NR235W/NR236W以及热议的贝尔RG200E-CA非常接近，BCM5358 500MHz处理器，64MB RAM+16MB ROM的组合在其他品牌中算是高端配置了，接口包括1WAN+4LAN+1USB，算是齐全。</p>
+<p>这款机器可以刷包括TOMATO、DD-WRT、磊科双WAN等多种固件，而且由于内置了JTAG接口，因此即使刷出问题也有挽救方案。很多玩家基于这款机器进行了各种DIY，包括升级RAM，增加天线等，价格不高，折腾余地很大。</p>
+<p>这不我又开始折腾上了，由于默认情况下NVRAM只有32KB，平常的话使用起来倒是没有什么问题，不过若是你的配置的内容太多的超过32KB（像OpenVPN证书，一下就是10KB以上，很容易超），这时就会出现配置丢失的问题。</p>
+]]></summary>
+    
+      <category term="hg320" scheme="http://chenall.net/tags/hg320/"/>
+    
+      <category term="tomato" scheme="http://chenall.net/tags/tomato/"/>
+    
+      <category term="路由器" scheme="http://chenall.net/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+      <category term="刷机" scheme="http://chenall.net/tags/%E5%88%B7%E6%9C%BA/"/>
+    
+      <category term="实用文集" scheme="http://chenall.net/categories/%E5%AE%9E%E7%94%A8%E6%96%87%E9%9B%86/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hexo 模块化主题]]></title>
@@ -2073,63 +2155,6 @@ empty($debug) || fclose($debug);
       <category term="原创" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B/"/>
     
       <category term="代理" scheme="http://chenall.net/tags/%E4%BB%A3%E7%90%86/"/>
-    
-      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[PHP相关记录]]></title>
-    <link href="http://chenall.net/post/php_manual/"/>
-    <id>http://chenall.net/post/php_manual/</id>
-    <published>2012-11-27T10:35:48.000Z</published>
-    <updated>2014-02-10T03:31:11.000Z</updated>
-    <content type="html"><![CDATA[<ol>
-<li>PHP Curl 417 Expectation Failed
-原因: 服务端使用lighttpd,而lighttp不支持返回&quot;Expect: 100-continue&quot;这样的header，就会以417 &quot;Expectation failed&quot; 来代替（lighttpd 1.5.0无此问题）。
-解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(&#39;Expect:&#39;);</li>
-<li>使用MYSQLI或PDO来代替MYSQL
-相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a>
-通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
-<li>MYSQL数据库查询语句优化
-如下例子第二句比第一句速度更快,当然了,两个命令显示的结果是不一样的,具体可以查一下相关资料,只是大部份情况下都可以用join命令来优化.<pre><code>select * from t1,t2 where t1.id=t2.id
-select * from t1 left join t2 using(id)
-</code></pre></li>
-<li>在线PHP手册国内镜像站点
-<a href="http://php.sinaapp.com/manual/zh/" target="_blank"><a href="http://php.sinaapp.com/manual/zh/">http://php.sinaapp.com/manual/zh/</a></a>
-或
-<a href="http://cn2.php.net" target="_blank"><a href="http://cn2.php.net">http://cn2.php.net</a></a></li>
-<li>PHP使用CURL时显示上下传进度的方法<pre><code>function curl_progress($download_size, $downloaded, $upload_size,$uploaded)
-{//PHP手册上的说明有误，其实应该是四个参数。如本例。
-    if ($download_size)
-        echo &quot;D:&quot;.(round(($downloaded100)/$download_size,2)).&quot;%\t\r&quot;;
-    else if ($upload_size)
-        echo &quot;U:&quot;.(round(($uploaded100)/$upload_size,2)).&quot;%\t\r&quot;;
-    return 0;
-}
-$curl_opts = array(CURLOPT_URL =&gt; $url,
-    CURLOPT_PROGRESSFUNCTION=&gt; ‘curl_progress’,
-    CURLOPT_NOPROGRESS =&gt; false);
-$curl = curl_init();
-curl_setopt_array ($curl, $curl_opts);
-$ret = curl_exec ($curl);
-curl_close($curl);
-</code></pre></li>
-</ol>
-]]></content>
-    
-    
-      <category term="curl" scheme="http://chenall.net/tags/curl/"/>
-    
-      <category term="CURLOPT" scheme="http://chenall.net/tags/CURLOPT/"/>
-    
-      <category term="mysql" scheme="http://chenall.net/tags/mysql/"/>
-    
-      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
-    
-      <category term="进度条" scheme="http://chenall.net/tags/%E8%BF%9B%E5%BA%A6%E6%9D%A1/"/>
     
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     

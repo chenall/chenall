@@ -114,6 +114,83 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></h1>
+      
+        <span>发表于<time datetime="2011-01-14T11:56:59.000Z"> <a href="/post/case_convert/">2011-01-14</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>在编程中经常会需要对字符串进行大小写的转换。</p>
+<p>正常情况下是用两个函数upper和lower进行转换。</p>
+<p>其实转换的方法还是有挺多种的</p>
+<p>比如我之前写的：<a href="/post/c_upper/">C语言的基础函数大小写转换</a></p>
+<p>今天再发一个合二为一的版本，一个函数可以就实现把字符串转换为大写或小写，而且代码也很简单：</p>
+<p>说明：使用了异或运算和一些技巧</p>
+<p>异或的运算方法是一个二进制运算：</p>
+<pre><code>1^1=0
+0^0=0
+1^0=1
+0^1=1
+两者相等为0,不等为1.
+比如小写的&#39;a&#39;的ascii码为97
+</code></pre><p>二进制是:01100001</p>
+<p>它的大写&#39;A&#39;的ascii码为65</p>
+<p>二进制是：01000001</p>
+<p>由此可见大小写字母之间只是二进制第5位的区别。2的5次方＝32=0x20;</p>
+<p>使用异或运算:</p>
+<pre><code>01100001  ‘a&#39;
+xor
+00100000   0×20
+—————————
+01000001  &#39;A&#39;
+</code></pre><p>刚好是它的大写。反向计算则刚好是小写。</p>
+<p>最终的代码如下：</p>
+<pre><code>/*
+功能：把字符串ch全部转换为大写或小写。
+flag：转换标志，必须是&#39;a&#39;或&#39;A&#39;
+      &#39;a&#39; 转换为大写，&#39;A&#39;，转换为小写。
+来源： http://chenall.net
+*/
+void case_convert(char *ch,char flag)
+{
+    if (flag != &#39;a&#39; &amp;&amp; flag != &#39;A&#39;)
+        return;
+    while (*ch)
+    {
+        if ((unsigned char)(*ch-flag) &lt; 26)
+        {
+            *ch ^= 0×20;
+        }
+        ++ch;
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary">c语言</a><a href="/tags/upper/" class="label label-success">upper</a><a href="/tags/转换/" class="label label-info">转换</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/case_convert/#comments" class="ds-thread-count comment-link" data-thread-key="631" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></h1>
       
         <span>发表于<time datetime="2010-12-31T09:09:35.000Z"> <a href="/post/grub4dos_instwee/">2010-12-31</a></time></span>      
@@ -1229,68 +1306,6 @@ WENV reset sr* 清除sr开头的所有变量
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></h1>
-      
-        <span>发表于<time datetime="2010-09-12T20:31:55.000Z"> <a href="/post/20100907/">2010-09-12</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>快速计算某个POS软件的员工密码...</p>
-<p>使用批处理计算快速简单.</p>
-<p>^_^ 至少有N+X个密码可以用哦.</p>
-<p>不想解释.</p>
-<p>谁用谁知道 .</p>
-<p>嘿黑,别做坏事哦.</p>
-<p>==================================================</p>
-<p>保存为BAT或CMD文件,运行按提示输入就可以了...(注:如果复制下来是全角的引导需要替换成半角的)</p>
-<pre><code class="lang-bat">@echo off
-set /p se=se:
-set /p yx=yx#:
-set /a &quot;se &amp;= 0xffff&quot;
-set yy=0
-echo.
-:loop
-set /a xx=(se+3203+2*yx+yy*0x10000 )*2/3
-set /a &quot;zz=(xx*3/2-3203-2*yx)&amp;0xffff&quot;
-if &quot;%zz%&quot;==&quot;%se%&quot; set/p=%xx%,&lt;nul
-set /a yy += 1
-if %yy% LEQ 20 goto :loop
-
-:ok
-echo.
-echo.You can use any of the above password,,(⊙o⊙)
-echo.
-pause
-</code></pre>
-<p>运行的结果演示:
- <img src="http://c-dl.qiniudn.com/upload/2010/09/8B8D0CDF9DFF0A2AD4B9CA2AC793323D2C331CEA.jpg" alt=""></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a><a href="/tags/batch/" class="label label-success">batch</a><a href="/tags/代码/" class="label label-info">代码</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/20100907/#comments" class="ds-thread-count comment-link" data-thread-key="555" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1354,7 +1369,8 @@ pause
   
   &copy; 2014 chenall
   
-    </span>
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
   <span id='analytics-51la'>
 <script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
 <noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
@@ -1370,7 +1386,7 @@ pause
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-20 14:23:49</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:53:52</em></span></div>
 </div>
 <div class="clearfix"></div>
 

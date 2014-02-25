@@ -114,6 +114,71 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/php_manual/">PHP相关记录</a></h1>
+      
+        <span>发表于<time datetime="2012-11-27T10:35:48.000Z"> <a href="/post/php_manual/">2012-11-27</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <ol>
+<li>PHP Curl 417 Expectation Failed
+原因: 服务端使用lighttpd,而lighttp不支持返回&quot;Expect: 100-continue&quot;这样的header，就会以417 &quot;Expectation failed&quot; 来代替（lighttpd 1.5.0无此问题）。
+解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(&#39;Expect:&#39;);</li>
+<li>使用MYSQLI或PDO来代替MYSQL
+相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a>
+通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
+<li>MYSQL数据库查询语句优化
+如下例子第二句比第一句速度更快,当然了,两个命令显示的结果是不一样的,具体可以查一下相关资料,只是大部份情况下都可以用join命令来优化.<pre><code>select * from t1,t2 where t1.id=t2.id
+select * from t1 left join t2 using(id)
+</code></pre></li>
+<li>在线PHP手册国内镜像站点
+<a href="http://php.sinaapp.com/manual/zh/" target="_blank"><a href="http://php.sinaapp.com/manual/zh/">http://php.sinaapp.com/manual/zh/</a></a>
+或
+<a href="http://cn2.php.net" target="_blank"><a href="http://cn2.php.net">http://cn2.php.net</a></a></li>
+<li>PHP使用CURL时显示上下传进度的方法<pre><code>function curl_progress($download_size, $downloaded, $upload_size,$uploaded)
+{//PHP手册上的说明有误，其实应该是四个参数。如本例。
+    if ($download_size)
+        echo &quot;D:&quot;.(round(($downloaded100)/$download_size,2)).&quot;%\t\r&quot;;
+    else if ($upload_size)
+        echo &quot;U:&quot;.(round(($uploaded100)/$upload_size,2)).&quot;%\t\r&quot;;
+    return 0;
+}
+$curl_opts = array(CURLOPT_URL =&gt; $url,
+    CURLOPT_PROGRESSFUNCTION=&gt; ‘curl_progress’,
+    CURLOPT_NOPROGRESS =&gt; false);
+$curl = curl_init();
+curl_setopt_array ($curl, $curl_opts);
+$ret = curl_exec ($curl);
+curl_close($curl);
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/curl/" class="label label-primary">curl</a><a href="/tags/CURLOPT/" class="label label-success">CURLOPT</a><a href="/tags/mysql/" class="label label-info">mysql</a><a href="/tags/PHP/" class="label label-warning">PHP</a><a href="/tags/进度条/" class="label label-primary">进度条</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/php_manual/#comments" class="ds-thread-count comment-link" data-thread-key="883" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/not_2345/">关于2345网址导航</a></h1>
       
         <span>发表于<time datetime="2012-10-16T11:57:33.000Z"> <a href="/post/not_2345/">2012-10-16</a></time></span>      
@@ -622,141 +687,6 @@ if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></h1>
-      
-        <span>发表于<time datetime="2012-06-18T19:09:55.000Z"> <a href="/post/dbank_login/">2012-06-18</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>因为最近在折腾的自动签到程序，之前使用模拟的方法登录，速度慢，而且很容易出错。</p>
-<p>所以就想使用post的方法快速登录。</p>
-<p>经过抓包分析终于搞定了，以下是原理。</p>
-<p>post 的地址是 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a></p>
-<p>参数如下:</p>
-<ul>
-<li>response 最关键的参数，经过一系列计算得到</li>
-</ul>
-<ol>
-<li>用户名+&quot;:NSP Passport:&quot;+密码 进行32位md5计算。（小写）
-测试时可以利用以下地址的在线工具进行计算
-<a href="http://app.baidu.com/yiten_md5?keyword=MD5" target="_blank">http://app.baidu.com/yiten_md5?keyword=MD5</a></li>
-<li>上面的结果再 + &quot;:&quot; + nonce 进行32位md5计算.(小写)，得到的就是response的值。</li>
-</ol>
-<ul>
-<li>nsp_user 用户名</li>
-<li>nsp_cid 从表单中提取</li>
-<li>nonce  从表单中提取</li>
-<li>m=1 固定值。</li>
-</ul>
-<p>提交以上参数之后如果参数正确的话返回json数据里面包含了一个k的数据。</p>
-<p>最终再提交一下以下地址就行了。k的值从上面的返回中获取，如果没有看到k的值肯定是你前面提交的参数错了。</p>
-<p><a href="http://login.dbank.com/loginauth.php?k=K的参数" target="_blank">http://login.dbank.com/loginauth.php?k=K的参数</a></p>
-<p>附，测试登录过程。</p>
-<p>测试帐号 test@chenall.tk 密码： wMtA8HscF6G0Zv6V</p>
-<p>打开 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a>
-提取到需要的数据</p>
-<pre><code>&lt;input type=&quot;hidden&quot; id=&quot;nonce&quot; name=&quot;nonce&quot; value=&quot;4fdf0b700b0052.91924864&quot;&gt;
-&lt;input type=&quot;hidden&quot; id=&quot;nsp_cid&quot; name=&quot;nsp_cid&quot; value=&quot;802fdd1049992984cf49a1cd0fc7545c&quot;&gt;
-</code></pre><p>2012-08-21 更新: 发现上面这一步可以省略,nonce是一个随机值,你可以自己随便生成一个随机数就行了.nsp_cid参数可以省略,不需要.</p>
-<p>首先计算response的值:</p>
-<p><span style="color:#ff0000;">test@chenall.tk</span><span style="color:#ff00ff;">:NSP Passport:</span><span style="color:#ff0000;">wMtA8HscF6G0Zv6V</span></p>
-<p>经过md5计算后得到</p>
-<p><span style="color:#ff00ff;">aead43fd1435a2087a12c4ac9d21e56c</span></p>
-<p>再进行一次md5计算</p>
-<p><span style="color:#ff00ff;">aead43fd1435a2087a12c4ac9d21e56c</span><span style="color:#ff0000;">:4fdf0b700b0052.91924864</span></p>
-<p>得到</p>
-<p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
-<p>现在参数全部有了直接提交（用get或post都可以）</p>
-<p><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#104;&#116;&#116;&#x70;&#x3a;&#47;&#47;&#108;&#x6f;&#103;&#x69;&#110;&#x2e;&#100;&#x62;&#97;&#110;&#107;&#46;&#99;&#111;&#109;&#47;&#108;&#111;&#x67;&#x69;&#x6e;&#x61;&#x75;&#x74;&#x68;&#46;&#x70;&#x68;&#x70;&#x3f;&#110;&#115;&#112;&#x5f;&#x61;&#x70;&#x70;&#x3d;&#x34;&#x38;&#48;&#x34;&#57;&#x26;&#x6d;&#x3d;&#49;&#x26;&#110;&#111;&#110;&#x63;&#101;&#61;&#52;&#x66;&#100;&#x66;&#48;&#x62;&#x37;&#x30;&#x30;&#98;&#x30;&#48;&#x35;&#x32;&#x2e;&#57;&#x31;&#x39;&#x32;&#52;&#56;&#x36;&#x34;&#x26;&#x6e;&#115;&#x70;&#x5f;&#x63;&#105;&#x64;&#61;&#x38;&#48;&#x32;&#x66;&#100;&#100;&#49;&#48;&#52;&#57;&#x39;&#x39;&#50;&#x39;&#56;&#52;&#x63;&#102;&#52;&#x39;&#x61;&#49;&#x63;&#100;&#48;&#102;&#x63;&#x37;&#53;&#x34;&#53;&#99;&#38;&#x6e;&#115;&#x70;&#x5f;&#x75;&#x73;&#101;&#114;&#61;&#116;&#101;&#x73;&#116;&#x40;&#99;&#x68;&#x65;&#x6e;&#x61;&#x6c;&#x6c;&#46;&#116;&#107;&#38;&#114;&#x65;&#x73;&#x70;&#x6f;&#110;&#x73;&#101;&#x3d;&#57;&#x63;&#100;&#x38;&#x34;&#99;&#50;&#53;&#x30;&#48;&#97;&#x36;&#x30;&#x31;&#x33;&#101;&#x66;&#51;&#x62;&#100;&#x31;&#52;&#52;&#x31;&#57;&#49;&#57;&#49;&#51;&#x32;&#98;&#54;">&#104;&#116;&#116;&#x70;&#x3a;&#47;&#47;&#108;&#x6f;&#103;&#x69;&#110;&#x2e;&#100;&#x62;&#97;&#110;&#107;&#46;&#99;&#111;&#109;&#47;&#108;&#111;&#x67;&#x69;&#x6e;&#x61;&#x75;&#x74;&#x68;&#46;&#x70;&#x68;&#x70;&#x3f;&#110;&#115;&#112;&#x5f;&#x61;&#x70;&#x70;&#x3d;&#x34;&#x38;&#48;&#x34;&#57;&#x26;&#x6d;&#x3d;&#49;&#x26;&#110;&#111;&#110;&#x63;&#101;&#61;&#52;&#x66;&#100;&#x66;&#48;&#x62;&#x37;&#x30;&#x30;&#98;&#x30;&#48;&#x35;&#x32;&#x2e;&#57;&#x31;&#x39;&#x32;&#52;&#56;&#x36;&#x34;&#x26;&#x6e;&#115;&#x70;&#x5f;&#x63;&#105;&#x64;&#61;&#x38;&#48;&#x32;&#x66;&#100;&#100;&#49;&#48;&#52;&#57;&#x39;&#x39;&#50;&#x39;&#56;&#52;&#x63;&#102;&#52;&#x39;&#x61;&#49;&#x63;&#100;&#48;&#102;&#x63;&#x37;&#53;&#x34;&#53;&#99;&#38;&#x6e;&#115;&#x70;&#x5f;&#x75;&#x73;&#101;&#114;&#61;&#116;&#101;&#x73;&#116;&#x40;&#99;&#x68;&#x65;&#x6e;&#x61;&#x6c;&#x6c;&#46;&#116;&#107;&#38;&#114;&#x65;&#x73;&#x70;&#x6f;&#110;&#x73;&#101;&#x3d;&#57;&#x63;&#100;&#x38;&#x34;&#99;&#50;&#53;&#x30;&#48;&#97;&#x36;&#x30;&#x31;&#x33;&#101;&#x66;&#51;&#x62;&#100;&#x31;&#52;&#52;&#x31;&#57;&#49;&#57;&#49;&#51;&#x32;&#98;&#54;</a></p>
-<p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
-<pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
-</code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
-<p>另外要说一点，看起来挺安全的，因为没有传输密码。但是好像有一个问题。最终的登录地址目前没有任何的限制。只要得到这个地址，你换一台电脑直接提交这个地址就可以登录了，这也是一个安全隐患。不知有没有时间限制，我试了昨天生成的地址，今天还能用。
-大家可以试试点击上面的链接，看看是不是还能正常登录。
-2012-06-21  经测试修改了密码之后，上面的自动登录链接依然有效。
-2012-06-25  一个星期过去了，依旧。
-2012-06-26  发现其它的也是一样，只要获取到最终的API参数，无需登录或密码都可以操作。比如签到不需要登录就行了。
-2012-08-21  登录的第一步获取nonce等值的过程可以省略了.具本看前面的介绍
-            题外话，本来想把网盘签到的post方法也找出来，里面最重要的参数是nsp<em>key，这个是把很多的数据整在一起进行MD5计算，看了好久还没有找全所有的需要的数据。无奈只能放弃，如果您有已经研究出了计算的方法，不妨分享一下。
-2012-06-26 已经找出计算方法，现在可以直接快速签到了。^</em>^，chrome真是强大，调试一下很快就找出来了，以前还傻傻的慢慢看JS源码。。</p>
-<h3 id="_-_-"><em>快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录</em>,</h3>
-<p>本文测试帐号的自动签到链接如下:
-<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp</a>
-如何获取到上面的链接呢？最简单的方法直接抓包就行了，用chrome就可以直接抓包了。
-当然可以手工打造一个链接，要生成这个链接首先要知道各个参数是如何得来的。
-上面的链接参数解释(其中不重要的参数可以不要)</p>
-<ul>
-<li>nsp_svc是固定的，表示要进行签到 <code>nsp_svc=com.dbank.signin.signin</code></li>
-<li>anticache 是一个随机数字，不重要</li>
-<li>nsp_sid 身份标志信息，这个就是cookie里面的session的值</li>
-<li>nsp_sid=kuTubNkuCQi19uaOXxiuu4FjMYp18kTozF5VnBk1HnAkFwEv</li>
-<li>nsp_ts  这个不需要解释了，是一个时间串，<del>不是很重要，同样可以固定</del></li>
-<li>nsp_key 验证信息，通过多种参数进行组合再进行MD5加密的结果 nsp_key=9AC41E0B0DD240F97361F87483131667</li>
-<li>nsp_fmt=JS&amp;nsp_cb=_jqjsp 这个参数也不重要,可以省略
-看了上面的参数列表，基本上都是现成的，只有nsp_key需要额外获取。
-这个nsp_key的获取方法:</li>
-</ul>
-<ol>
-<li><p>把上面除了nsp_key之外的参数按字母正向排序一下,得到如下结果。</p>
-<pre><code>anticache=383
-nsp_cb=_jqjsp
-nsp_fmt=JS
-nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED
-nsp_svc=com.dbank.signin.signin
-nsp_ts=1341032380236
-</code></pre></li>
-<li><p>去掉参数中间的<code>=</code>合成一串得到<em>anticache383nsp_cb_jqjspnsp_fmtJSnsp_sidwuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwEDnsp_svccom.dbank.signin.signinnsp_ts1341032380236</em></p>
-</li>
-<li>获取cookie里面的secret的值接在上一步的前面比如是<code>325c8b0ee26aa42cd4a4c20326a97a98</code>那最终得到的字符串如下<div><span style="color:#ff0000;">325c8b0ee26aa42cd4a4c20326a97a98</span><span style="color:#b22222;">anticache383nsp_cb_jqjspnsp_fmtJSnsp_sid</span><span style="color:#ff0000;">wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED</span><span style="color:#b22222;">nsp_svccom.dbank.signin.signinnsp_ts1341032380236</span></div></li>
-<li>把上一步的字符串进行MD5计算就得到了nsp_key的值了<code>9AC41E0B0DD240F97361F87483131667</code></li>
-<li>现在所有参数都有了，组合成前面的链接就行了，<strong>这个链接经过我测试就像前面的自动登录链接一下一直有效。</strong> 需要自动签到很简单，只需要定时打开该链接就行了，根据返回的结果还可以获取签到的结果。</li>
-</ol>
-<p>PS: 请继续看本文尾部，有更新的方法哦。</p>
-<p>整理一下本文的自动登录和签到链接</p>
-<p><a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">自动登录测试</a>
-<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">自动签到测试</a></p>
-<p>大家有兴趣可以试试点击以上这两个链接，看看可以用多久，，目前自动登录的链接在本文发表日期6月18日获取的，目前6月30号，依然有效。
-EDIT: 发现现在的签到的链接是有限制的（前几天我测试时好像没有限制），所以。。。只好每次都重新生成了,也简单，只需要获取登录之后cookie里面的<code>secret</code>和<code>session</code>的值替换进去就行了，其它的都不需要变。
-我算是知道为什么华为网盘的页面打开速度反应偏慢了。你想啊，每打开一个页面，都需要调用10个以上的API，每个都需要经过一系列的MD5计算能不慢吗。而且经过这么复杂的计算个人认为没有增加什么安全性可言，只是人为增加客户端和服务端的计算量。
-建议参考一下其它的网盘，登录后可以直接调用API，而不需要这么麻烦。像天翼网盘，登录之后直接
-<a href="http://cloud.189.cn/userInfoJson.action" target="_blank">http://cloud.189.cn/userInfoJson.action</a> 就可以获取用户信息
-<a href="http://cloud.189.cn/userSign.action" target="_blank">http://cloud.189.cn/userSign.action</a>  签到
-看起来又直观，又简单，真搞不明白华为为什么要搞得这么复杂，我猜测可能是为了和其它API的调用保持一致吧。</p>
-<p>EDIT2: 经测试，那些参数中有一些是可以不要的。重新整理一下必备参数如下.只有需要两个参数了。</p>
-<pre><code>nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED
-nsp_svc=com.dbank.signin.signin
-nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
-</code></pre><p>最终的链接地址为因为参数少了，链接里面的参数也要相应的减少.
-<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348</a></p>
-<p>EDIT3: 2014-01-15 由于搏客转移到HEXO,文章重新整理了下,新的API有改变 nsp_ts是必须的而且不能和服务器的时间差太多,在php中可以用time()获取.
-由于API有了一些变化,另外华为网盘已经有相关的API文档了,上面的计算方法大部份都可以从API文档中找到,估计上面的链接应该都失效了,懒得重新获取了.留本文作为研究记录,</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/一键签到/" class="label label-primary">一键签到</a><a href="/tags/免密码/" class="label label-success">免密码</a><a href="/tags/华为网盘/" class="label label-info">华为网盘</a><a href="/tags/自动登录/" class="label label-warning">自动登录</a><a href="/tags/自动签到/" class="label label-primary">自动签到</a><a href="/tags/原创/" class="label label-success">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/dbank_login/#comments" class="ds-thread-count comment-link" data-thread-key="835" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -820,7 +750,8 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
   
   &copy; 2014 chenall
   
-    </span>
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
   <span id='analytics-51la'>
 <script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
 <noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
@@ -836,7 +767,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-20 14:23:49</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:53:52</em></span></div>
 </div>
 <div class="clearfix"></div>
 

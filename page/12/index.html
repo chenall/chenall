@@ -114,6 +114,58 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post55/">[分享]影子系统 POWERSHADOW 2.6免费版 精简版 for 2k,xp,2003</a></h1>
+      
+        <span>发表于<time datetime="2009-04-28T21:14:34.000Z"> <a href="/post/post55/">2009-04-28</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>软件主页: <a href="http://www.powershadow.com" target="_blank">http://www.powershadow.com</a></p>
+<h2 id="-">【软件介绍】:</h2>
+<blockquote>
+<hr>
+<p>好消息：
+PowerShadow目前免费发放给中国用户使用。</p>
+<hr>
+<p>PowerShadow构建现有操作系统的虚拟影像，即影子模式（shadow mode），它和真实的系统完全一样，用户可随时选择启用或者退出这个虚拟影像。用户进入影子模式（shadow mode）后，所有操作都是虚拟的，不会对真正的系统产生影响，一切改变将在退出Shadow模式后消失。因此所有的病毒、木马程序、流氓软件都无法侵害真正的操作系统，它们的所有操作都只是假象。</p>
+<p>PowerShadow目前免费发放给中国用户使用，注册信息：
+用户名：PowerShadow 序列号：VVR29E-R4WCK2-K4T111-V1YHTP-4JYJDD </p>
+</blockquote>
+<h3 id="-">精简版的内容.</h3>
+<p>只保留了主要的系统SYS文件.安装时只需要一个SYS文件就可以了.
+snpshot.2k对应2000系统.
+snpshot.xp对应XP和2003的系统.
+Install.cmd安装批处理脚本.(已经按上面的序列号自动注册,安装完成即可使用).</p>
+<p>喜欢的可以下载测试.(不带控制台).</p>
+<p><a href="http://chenall.ys168.com/note/fd.htm?http://ys-G.ys168.com/?shadow.rar_4s7bsm0e1e2bs7bsm0cqq0bt0c0btoq2bthp0bt0c0c1bt4bu14z97f14z" target="_blank"><a href="http://chenall.ys168.com">http://chenall.ys168.com</a> soft 目录下shadow.rar文件</a></p>
+<p>后注: 建议配合GRUB4DOS启动管理来获取更高的安全选项.使用GRUB4DOS可以让菜单上只显示保护模式,以防止他人随便进入正常模式.自己要使用时通过GRUB4DOS来转换.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/powershadow/" class="label label-primary">powershadow</a><a href="/tags/snpshot/" class="label label-success">snpshot</a><a href="/tags/影子系统/" class="label label-info">影子系统</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post55/#comments" class="ds-thread-count comment-link" data-thread-key="55" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post54/">vi 编辑器使用指南</a></h1>
       
         <span>发表于<time datetime="2009-04-15T16:56:09.000Z"> <a href="/post/post54/">2009-04-15</a></time></span>      
@@ -1854,50 +1906,6 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h1>
-      
-        <span>发表于<time datetime="2009-01-15T12:56:42.000Z"> <a href="/post/post40/">2009-01-15</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 
-例子:  </p>
-<pre><code>map --mem /minipe/system.wim (hd1)
-map --hook
-</code></pre><p>说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.<code>GRUB4DOS</code>会把这个文件的内容作为一个磁盘分区(hd1,0).</p>
-<p>也就是把一个文件虚拟成一个分区.</p>
-<p>然后进到入DOS后,利用一个磁盘工具把上面的(hd1,0)分区保存为一个文件. 
-例子:用todisk</p>
-<pre><code>todisk 2:1=q to (c:\system.wim)
-</code></pre><p>把第二磁盘的第一分区保存为system.wim(即还原过程).</p>
-<p>这个方法在某些情况下很有用处.由于1个磁盘扇区是512字节,所以最后得到的文件会是512字节的倍数(不足补00),所以只适用于对文件内容长度要求不是很严格的地方.</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post40/#comments" class="ds-thread-count comment-link" data-thread-key="40" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1961,7 +1969,8 @@ map --hook
   
   &copy; 2014 chenall
   
-    </span>
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
   <span id='analytics-51la'>
 <script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
 <noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
@@ -1977,7 +1986,7 @@ map --hook
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-20 14:23:49</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:53:52</em></span></div>
 </div>
 <div class="clearfix"></div>
 

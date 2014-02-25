@@ -114,6 +114,237 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></h1>
+      
+        <span>发表于<time datetime="2011-08-22T13:16:17.000Z"> <a href="/post/g4d_filelist/">2011-08-22</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>本模块是一个GRUB4DOS的批处理</p>
+<p>可用于搜索N级目录下的指定类型文件,并显示于菜单上</p>
+<p>这是一个通用模块,可以通过参数直接调用或者通过预先设置变量的方法再调用,</p>
+<p>使用方法请参考本站另一贴子</p>
+<p><a href="/post/grub4dos_hdpart/">[原创] GRUB4DOS 通用模块之分区选择</a></p>
+<h3 id="2011-08-22-">2011-08-22 (最终版）</h3>
+<ol>
+<li>优化了检测代码．</li>
+<li>filpre支持子目录的检测．</li>
+</ol>
+<h3 id="2011-08-21-">2011-08-21 (变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）</h3>
+<ol>
+<li>菜单标题自动居中显示</li>
+<li><p>cmd的语法改变</p>
+<p>旧的版本<code>cmd=echo</code>要改成<code>cmd=&quot;echo %1&quot;</code></p>
+<p>在批处理中调用需要使用<code>%%1</code>
+即，需要多一个<code>%1</code>的参数，这个参数用于接收文件参数．可以放在cmd参数的任意位置．
+并且支持类拟<code>%~dpnx1</code>的格式．</p>
+</li>
+<li><p>新增<code>filpre</code>参数,指定文件名前辍.</p>
+<p><del>注意:使用该参数时,<code>subdir</code>参数将不起作用,为了不影响其它情况下的检测速度,该参数只支持单级目录.</del></p>
+</li>
+</ol>
+<h3 id="2011-08-16-">2011-08-16 更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)</h3>
+<ol>
+<li><p>添加了一个参数root,指定要从哪个目录开始找.例子:</p>
+<p>root=()/boot</p>
+<p>从只找/BOOT目录下的文件,注:前面的()是必须的,你也可以指定一个磁盘,代表从这个磁盘的这个目录开始查找比如</p>
+<p>root=(hd0,4)/boot</p>
+<p>则先从(hd0,4)/boot目录下查找文件,</p>
+<p>注:如果有带devs参数,必须确保上面的(hd0,4)磁盘有在在devs列表中.</p>
+</li>
+<li><p>支持查找无扩展名的文件(之前的版本无扩展名的全部被当成一个子目录对待)</p>
+</li>
+<li>新的ext参数只查找无扩展名的文件.<code>ext=.</code>会查找无扩展名的文件.</li>
+<li>菜单的注释新增了文件大小的提示(因为新的版本使用cat --locate=0来检测是否一个文件,就顺便把这个也利用上了.)</li>
+</ol>
+<p>本模块支持的参数如下</p>
+<ul>
+<li><code>m.cmd</code>    指定每个菜单要执行的命令 ( 必须的其它的都是可选参数.)</li>
+<li><code>m.title</code>     指定菜单标题</li>
+<li><code>m.return</code>    指定返回命令</li>
+<li><code>m.menu</code>    指定菜单位置(默认使用(md)0x210+16来存放菜单)</li>
+<li><code>m.subdir</code>    指定要查找的目录级数,默认1</li>
+<li><code>m.devs</code>    指定要查找的设备(find的参数)</li>
+<li><code>m.init</code>     指定菜单的初始化命令</li>
+<li><code>m.ext</code>    指定扩展名(用于过滤),多个扩展名用双引号每个扩展名之间用空格分隔<pre><code> 例: ext=&quot;.gho .txt&quot;
+</code></pre></li>
+<li><code>m.root</code>    指定根目录.(第一个被检查的目录)比如(hd0,4)/boot/或(hd0,5)<pre><code> 注：该参数和m.devs参数配合使用时，将会只查找以上路径下的文件．例子:
+ 指定m.root=(hd0,4)/boot 或/boot
+ 只会查找符合条件的磁盘/BOOT目录下的文件．
+</code></pre></li>
+<li><code>m.dirext</code>       是否检测带扩展名的目录,设为任意值即启用,默认禁用,<pre><code>  除非有必要,否则不建议使用,启动这个参数会使得检测的速度变得很慢.
+</code></pre></li>
+<li><code>m.filpre</code>　  指定文件名前辍,过滤非以filpre参数开头的文件.(测试)</li>
+</ul>
+<p>以下是使用的效果截图,欢迎反馈BUG或建议.(图片原链接已失效,以后再抽空重新弄)</p>
+<ol>
+<li><h3 id="-">当前分区,根目录</h3>
+</li>
+<li><h3 id="-3-">当前分区,3级目录</h3>
+</li>
+<li><h3 id="-">当前分区,二级目录,</h3>
+</li>
+<li><h3 id="-">二级目录,所有硬盘分区</h3>
+</li>
+<li><h3 id="2011-08-16-">2011-08-16更新的版本效果图.</h3>
+</li>
+</ol>
+<pre><code class="lang-bat">!BAT
+setlocal
+debug off
+checkrange 20110918:-1 read 0x8278 || echo Please use grub4dos-0.4.5b-2011-09-18 or above! &amp;&amp; exit 1
+if &quot;%1&quot;==&quot;&quot; goto :参数检测
+set *
+:获取参数
+if /i &quot;%1&quot;==&quot;&quot; &amp;&amp; goto :参数检测
+set m.%~1=%~2
+shift 1
+shift 1
+goto :获取参数
+
+:help
+echo Usage: %0 cmd=&quot;cmd for each file&quot; OPTIONS..
+echo OPTIONS:
+echo -e \t title=&quot;the main menu title&quot;
+echo -e \t menu=&quot;pre_set menu file&quot;
+echo -e \t subdir=n
+echo -e \t devs=&quot;find parameters&quot;
+echo -e \t return=&quot;return cmd&quot;
+echo -e \t init=&quot;init cmd&quot;
+echo -e \t filpre=filepre
+echo -e \t ext=fileext
+echo -e \t root=&quot;root dir. e.g. ()/boot/&quot;
+echo -e \n\t for more please visit http://chenall.net
+exit
+
+:菜单居中
+set title=屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯
+set title=%title:~0,%1%%
+exit
+
+:参数检测
+if not exist m.cmd &amp;&amp; goto :help
+if not exist m.title &amp;&amp; set m.title=Please select a file
+if not exist m.menu &amp;&amp; set m.menu=(md)0x210+16 &amp;&amp; echo -e default 1\ndebug off &gt; (md)0x210+16
+if not exist m.subdir &amp;&amp; set m.subdir=1
+if not exist m.devs &amp;&amp; set m.devs=--set-root
+if not exist m.root &amp;&amp; set m.root=()
+echo -e !BAT\necho %m.cmd% \&gt;\&gt; %m.menu% &gt; (md)0x260+4
+::获取标题字符数量用于标题居中
+set title=%m.title%
+set /a title=68-*0x4CB00&gt;&gt;1
+call :菜单居中 %title%
+::自动生成菜单
+set ?_n=1
+set m.info=File list menu for grub4dos by chenall.\n\t\t for more information please visit http://chenall.net
+if exist m.init &amp;&amp; echo %m.init% &gt;&gt; %m.menu%
+echo title %title% %m.title% %title%\n\n\t%m.info% &gt;&gt; %m.menu%
+echo pause %m.info% &gt;&gt; %m.menu%
+echo -e $[0106] %m.info%
+echo $[0102] Please wait ...
+echo $[1105] Working......
+root %m.root%
+if exist m.debug echo %@time%
+find %m.devs% call :生成文件列表 || echo Unknow Error.
+if exist m.debug pause %@time%
+echo title 屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯 http://chenall.net 屯 2011-08-22 屯\n\n\t%m.info% &gt;&gt; %m.menu%
+echo pause %m.info% &gt;&gt; %m.menu%
+set ?_n=
+if not exist m.return &amp;&amp; configfile %m.menu%
+echo title   0. Return &gt;&gt;  %m.menu%
+echo %m.return%  &gt;&gt; %m.menu%
+echo boot &gt;&gt; %m.menu%
+configfile %m.menu%
+exit
+
+:文件过滤
+if &quot;%~1&quot;==&quot;&quot; exit
+set tmp=%1
+shift
+if &quot;%tmp:~-2,1%&quot;==&quot;~&quot; &amp;&amp; goto :文件过滤
+if &quot;%tmp:~0,1%&quot;==&quot;$&quot; &amp;&amp; goto :文件过滤
+call :检测文件 %0
+goto :文件过滤
+
+:获取文件大小
+calc *0x8290&gt;&gt;30 &amp;&amp; set size=30GB &amp;&amp; exit
+calc *0x8290&gt;&gt;20 &amp;&amp; set size=20MB &amp;&amp; exit
+calc *0x8290&gt;&gt;10 &amp;&amp; set size=10KB &amp;&amp; exit
+set size=00B
+exit
+
+:检测文件
+if exist m.debug1 &amp;&amp; echo %~f1
+::检测前辍
+call Fn.10 &quot;%m.filpre%&quot; &quot;%~n1&quot;
+if &quot;%@retval%&quot;==&quot;1&quot; &amp;&amp; goto :检测目录
+::检测后辍
+if exist m.ext || goto :添加菜单
+set f.type=%~x1
+if not exist f.type set f.type=.
+call :过滤 %m.ext% &amp;&amp; goto :添加菜单
+
+:检测目录
+if %m.subdir%==0 &amp;&amp; exit
+if exist m.dirext || if &quot;%~x1&quot;==&quot;&quot; || exit
+cat --length=0 /%1 &amp;&amp; exit
+if exist m.debug2 &amp;&amp; echo $[0101] %~f1
+goto :生成文件列表
+
+:过滤
+if &quot;%1&quot;==&quot;&quot; &amp;&amp; exit 1
+shift
+if /i &quot;%0&quot;==&quot;%f.type%&quot; || goto :过滤
+exit
+
+:添加菜单
+cat --length=0 /%1 || goto :检测目录
+call :获取文件大小
+if exist m.debug3 &amp;&amp; echo $[0102] %~f1
+calc *0x8290=*0x8290&gt;&gt;%size:~0,2%
+set size=%@retval% %size:~2%
+set m=1    %?_n%
+echo title %m:~-3%. %~f1\n\n\t~%size% %~f1  &gt;&gt; %m.menu%
+(md)0x260+4 %~f1
+echo boot &gt;&gt; %m.menu%
+set /a ?_n=%?_n%+1
+exit
+
+:生成文件列表
+setlocal
+if &quot;%~1&quot;==&quot;&quot; || root %~f1
+set /a m.subdir=%m.subdir%-1
+ls | call :文件过滤= || echo
+endlocal
+exit
+</code></pre>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/文件列表/" class="label label-info">文件列表</a><a href="/tags/模块/" class="label label-warning">模块</a><a href="/tags/原创/" class="label label-primary">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/g4d_filelist/#comments" class="ds-thread-count comment-link" data-thread-key="754" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></h1>
       
         <span>发表于<time datetime="2011-08-17T13:12:30.000Z"> <a href="/post/grub4dos_replace/">2011-08-17</a></time></span>      
@@ -837,83 +1068,6 @@ title 3.Plop Boot Manager
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></h1>
-      
-        <span>发表于<time datetime="2011-01-14T11:56:59.000Z"> <a href="/post/case_convert/">2011-01-14</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>在编程中经常会需要对字符串进行大小写的转换。</p>
-<p>正常情况下是用两个函数upper和lower进行转换。</p>
-<p>其实转换的方法还是有挺多种的</p>
-<p>比如我之前写的：<a href="/post/c_upper/">C语言的基础函数大小写转换</a></p>
-<p>今天再发一个合二为一的版本，一个函数可以就实现把字符串转换为大写或小写，而且代码也很简单：</p>
-<p>说明：使用了异或运算和一些技巧</p>
-<p>异或的运算方法是一个二进制运算：</p>
-<pre><code>1^1=0
-0^0=0
-1^0=1
-0^1=1
-两者相等为0,不等为1.
-比如小写的&#39;a&#39;的ascii码为97
-</code></pre><p>二进制是:01100001</p>
-<p>它的大写&#39;A&#39;的ascii码为65</p>
-<p>二进制是：01000001</p>
-<p>由此可见大小写字母之间只是二进制第5位的区别。2的5次方＝32=0x20;</p>
-<p>使用异或运算:</p>
-<pre><code>01100001  ‘a&#39;
-xor
-00100000   0×20
-—————————
-01000001  &#39;A&#39;
-</code></pre><p>刚好是它的大写。反向计算则刚好是小写。</p>
-<p>最终的代码如下：</p>
-<pre><code>/*
-功能：把字符串ch全部转换为大写或小写。
-flag：转换标志，必须是&#39;a&#39;或&#39;A&#39;
-      &#39;a&#39; 转换为大写，&#39;A&#39;，转换为小写。
-来源： http://chenall.net
-*/
-void case_convert(char *ch,char flag)
-{
-    if (flag != &#39;a&#39; &amp;&amp; flag != &#39;A&#39;)
-        return;
-    while (*ch)
-    {
-        if ((unsigned char)(*ch-flag) &lt; 26)
-        {
-            *ch ^= 0×20;
-        }
-        ++ch;
-    }
-}
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary">c语言</a><a href="/tags/upper/" class="label label-success">upper</a><a href="/tags/转换/" class="label label-info">转换</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/case_convert/#comments" class="ds-thread-count comment-link" data-thread-key="631" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -977,7 +1131,8 @@ void case_convert(char *ch,char flag)
   
   &copy; 2014 chenall
   
-    </span>
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
   <span id='analytics-51la'>
 <script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
 <noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
@@ -993,7 +1148,7 @@ void case_convert(char *ch,char flag)
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-20 14:23:49</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:53:52</em></span></div>
 </div>
 <div class="clearfix"></div>
 
