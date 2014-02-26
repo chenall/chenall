@@ -181,7 +181,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 </code></pre><p>ʵ�����ӣ� ��<code>PHP</code>��ʹ��<code>system</code> ����ϵͳ����ʱ��������<code>php</code>һ�㶼��ʹ��<code>www</code>�û����еģ�����Ҫ�ر�����Ҫ����Ҫ����ĳ���û����ļ�ʱ�Ϳ���ָ��ĳ��Ŀ¼�����ʹ��ĳ���û�Ȩ�����������С�</p>
 <p>���ӣ� Ŀ¼ <strong>/mnt/sudodir</strong> �����ĳ�������ʹ��rootȨ����ִ�С�</p>
 <pre><code>www ALL=(root) NOPASSWD: /mnt/sudodir
-</code></pre><p>ʹ��ʱ��ֱ��<code>sudo /mnt/sudodir/cmd</code>������Ҫ�������롣</p>
+</code></pre><p>ʹ��ʱ��ֱ��<code>sudo -u root /mnt/sudodir/cmd</code>������Ҫ�������롣</p>
 <p>Ϊ�˰�ȫ���������� <strong>/mnt/sudodir</strong> ����<code>root</code>�û�֮��������Ӧ��ֻ�����е�Ȩ�ޡ�</p>
 <p>�鿴��ǰ�û���<code>sudo</code>Ȩ�޿���ʹ������ <code>sudo -l</code></p>
 <p>PS�� ��������Щ���ϣ���Ҫ��Ϊ��ͨ��<a href="https://github.com/" target="_blank">github</a>��webhook����, �����ҵ�VPS�ϵ�PHP�ű���ʵ�� <code>hexo</code> վ�����Զ����£�������ֻ��Ҫ����Դ�ļ���github�ϣ������Զ�����վ�����ݣ������Զ�ͬ����������ͬ�ĵط����п��һ�����һƪ����������������</p>
@@ -219,7 +219,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/ϵͳ����/">ϵͳ����</a></li><li><a href="/categories/ϵͳ����/linux/">linux</a></li></span></span> | <span class="tags">标签 <a href="/tags/linux/" class="label label-primary">linux</a><a href="/tags/sudo/" class="label label-success">sudo</a></span> | <span class="time">最近更新:<time title="2014-02-26 20:43:42"datetime="2014-02-26 20:43:42"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/ϵͳ����/">ϵͳ����</a></li><li><a href="/categories/ϵͳ����/linux/">linux</a></li></span></span> | <span class="tags">标签 <a href="/tags/linux/" class="label label-primary">linux</a><a href="/tags/sudo/" class="label label-success">sudo</a></span> | <span class="time">最近更新:<time title="2014-02-26 21:47:10"datetime="2014-02-26 21:47:10"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/linux-sudo-config/#comments" class="ds-thread-count comment-link" data-thread-key="1402261740" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -239,7 +239,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo �����������ļ�/etc/sudoers����</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li><li class="list-group-item"><a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></li><li class="list-group-item"><a href="/post/jwpos/">佳为后台程序单文件版本 有使用佳为软件的朋友别错过了</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo �����������ļ�/etc/sudoers����</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo �����������ļ�/etc/sudoers����</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="1402261740"  data-url="http://chenall.net/post/linux-sudo-config/" data-title="linux sudo �����������ļ�/etc/sudoers����"></div>
@@ -320,7 +320,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 20:43:42</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:47:10</em></span></div>
 </div>
 <div class="clearfix"></div>
 
