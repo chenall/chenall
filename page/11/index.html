@@ -114,9 +114,74 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></h1>
+      
+        <span>发表于<time datetime="2009-08-13T01:41:01.000Z"> <a href="/post/1key/">2009-08-13</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>看起来可能有点乱^_^.实现起来也是挺麻烦的,暂时只是我的一个想法,仅供有兴趣的朋友研究尝试.放在这里做个记录,以后有兴趣再搞个成品.</p>
+<h2 id="-">最终的理想效果.</h2>
+<ul>
+<li>安装/卸载/使用方便简单,(只需改名复制或删除文件就可以了)</li>
+<li>进入DOS时无需再加载NTFS等驱动,也不需要查找操作,直接就开始备份或恢复.</li>
+<li>完全自定义,或模块化.</li>
+</ul>
+<h2 id="-">思路:</h2>
+<ul>
+<li><p>首先,启动过程.
+目前网络上的一键还原软件,大都是基于<code>GRUB4DOS</code>的,通过在<code>BOOT.INI</code>中添加相应菜单项或直接加入到MBR中来启动的.需要修改<br>我的思路是:  </p>
+<ol>
+<li>直接把<code>GRUB4DOS</code>的<code>GRLDR</code>改名为<code>NTLDR</code>放在系统盘代替系统的<code>NTLDR</code>来启动.原来的<code>NTLDR</code>可以改名为<code>NTLDR.LDR</code>或其它名子.(VISTA以上的系统可以改为BOOTMGR),这样的安装方式的优点,安装时不需要做许多修改就可以用,只需把原来的系统启动文件改名,然后用定制的GRLDR代替就好了.</li>
+<li>由<code>GRUB4DO</code>S接管系统的启动,然后根据某些标记(某个文件的内容)来自动选择是启动到系统还是进入备份还原操作.</li>
+<li>当然了还可以在启动时通过按某个按键进入恢复备份操作.</li>
+</ol>
+</li>
+<li><p>执行过程.
+通过在WINDOWS界面下选择备份或恢复操作(把这些操作存在一个特定的文件中)
+启动时通过GRUB4DOS的DD功能把这个文件的内容转到启动IMG里面.
+启动IMG执行定义的操作.</p>
+</li>
+<li><p>基本文件内容</p>
+<pre><code>GHOST.ZIP        GHOST主程序文件(方便自定义,由GRUB4DOS启动时自动载入到上面的IMG中)
+ADDINS.ZIP        扩展文件,自定义的扩展文件,同样自动载入到上面的IMG中.
+config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS动态加入到主IMG中.
+</code></pre></li>
+</ul>
+<p>一个主IMG文件(里面只包含启动基本的文件,其它的文件通过GRUB4DOS动态加入)</p>
+<p>img自动装载以上文件,然后根据config.ini的内容直接进行备份或恢复操作.</p>
+<h2 id="-">成品参考:</h2>
+<p>  <a href="/post/qgho/" title="QGHO一键恢复程序">QGHO 快速一键恢复程序</a><br>  <a href="/post/g4d_hd_tools/">基于GRUB4DOS的硬盘工具箱</a><br>  <a href="/post/modboot/" title="一个模块化的DOS工具箱">MODBOOT</a>  </p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/GHOST/" class="label label-primary">GHOST</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/还原/" class="label label-info">还原</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/1key/#comments" class="ds-thread-count comment-link" data-thread-key="84" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></h1>
       
-        <span>发表于<time datetime="2009-08-02T18:00:02.000Z"> <a href="/post/anti-trojan-virus/">2009-08-02</a></time></span>      
+        <span>发表于<time datetime="2009-08-02T10:00:02.000Z"> <a href="/post/anti-trojan-virus/">2009-08-02</a></time></span>      
     </header>
     
     
@@ -139,7 +204,7 @@
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/传播/" class="label label-primary">传播</a><a href="/tags/木马/" class="label label-success">木马</a><a href="/tags/病毒/" class="label label-info">病毒</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/传播/" class="label label-primary">传播</a><a href="/tags/木马/" class="label label-success">木马</a><a href="/tags/病毒/" class="label label-info">病毒</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/anti-trojan-virus/#comments" class="ds-thread-count comment-link" data-thread-key="80" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -157,7 +222,7 @@
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></h1>
       
-        <span>发表于<time datetime="2009-07-08T22:55:42.000Z"> <a href="/post/wssiscsi/">2009-07-08</a></time></span>      
+        <span>发表于<time datetime="2009-07-08T14:55:42.000Z"> <a href="/post/wssiscsi/">2009-07-08</a></time></span>      
     </header>
     
     
@@ -200,7 +265,7 @@ Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/ISCSI/" class="label label-primary">ISCSI</a><a href="/tags/Microsoft/" class="label label-success">Microsoft</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/Software/" class="label label-warning">Software</a><a href="/tags/Target 2003/" class="label label-primary">Target 2003</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/ISCSI/" class="label label-primary">ISCSI</a><a href="/tags/Microsoft/" class="label label-success">Microsoft</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/Software/" class="label label-warning">Software</a><a href="/tags/Target 2003/" class="label label-primary">Target 2003</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/wssiscsi/#comments" class="ds-thread-count comment-link" data-thread-key="69" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -218,7 +283,7 @@ Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></h1>
       
-        <span>发表于<time datetime="2009-07-07T16:34:53.000Z"> <a href="/post/post68/">2009-07-07</a></time></span>      
+        <span>发表于<time datetime="2009-07-07T08:34:53.000Z"> <a href="/post/post68/">2009-07-07</a></time></span>      
     </header>
     
     
@@ -246,7 +311,7 @@ Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/限制/" class="label label-primary">限制</a><a href="/tags/隐藏/" class="label label-success">隐藏</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/限制/" class="label label-primary">限制</a><a href="/tags/隐藏/" class="label label-success">隐藏</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post68/#comments" class="ds-thread-count comment-link" data-thread-key="68" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -264,7 +329,7 @@ Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></h1>
       
-        <span>发表于<time datetime="2009-07-01T23:11:54.000Z"> <a href="/post/post67/">2009-07-01</a></time></span>      
+        <span>发表于<time datetime="2009-07-01T15:11:54.000Z"> <a href="/post/post67/">2009-07-01</a></time></span>      
     </header>
     
     
@@ -314,7 +379,7 @@ goto :eof
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/进制转换/" class="label label-primary">进制转换</a><a href="/tags/批处理/" class="label label-success">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/进制转换/" class="label label-primary">进制转换</a><a href="/tags/批处理/" class="label label-success">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post67/#comments" class="ds-thread-count comment-link" data-thread-key="67" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -332,7 +397,7 @@ goto :eof
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></h1>
       
-        <span>发表于<time datetime="2009-05-27T18:45:22.000Z"> <a href="/post/openvpn_userpw_author/">2009-05-27</a></time></span>      
+        <span>发表于<time datetime="2009-05-27T10:45:22.000Z"> <a href="/post/openvpn_userpw_author/">2009-05-27</a></time></span>      
     </header>
     
     
@@ -390,7 +455,7 @@ auth-nocache
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/auth-user-pass-verify/" class="label label-primary">auth-user-pass-verify</a><a href="/tags/openvpn/" class="label label-success">openvpn</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/auth-user-pass-verify/" class="label label-primary">auth-user-pass-verify</a><a href="/tags/openvpn/" class="label label-success">openvpn</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/openvpn_userpw_author/#comments" class="ds-thread-count comment-link" data-thread-key="64" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -408,7 +473,7 @@ auth-nocache
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></h1>
       
-        <span>发表于<time datetime="2009-05-19T09:29:43.000Z"> <a href="/post/openvpn_script_pre/">2009-05-19</a></time></span>      
+        <span>发表于<time datetime="2009-05-19T01:29:43.000Z"> <a href="/post/openvpn_script_pre/">2009-05-19</a></time></span>      
     </header>
     
     
@@ -464,7 +529,7 @@ auth-nocache
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary">openvpn</a><a href="/tags/脚本/" class="label label-success">脚本</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary">openvpn</a><a href="/tags/脚本/" class="label label-success">脚本</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/openvpn_script_pre/#comments" class="ds-thread-count comment-link" data-thread-key="63" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -482,7 +547,7 @@ auth-nocache
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></h1>
       
-        <span>发表于<time datetime="2009-05-17T17:47:03.000Z"> <a href="/post/openvpn_inlinefile/">2009-05-17</a></time></span>      
+        <span>发表于<time datetime="2009-05-17T09:47:03.000Z"> <a href="/post/openvpn_inlinefile/">2009-05-17</a></time></span>      
     </header>
     
     
@@ -510,7 +575,7 @@ auth-nocache
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/inline/" class="label label-primary">inline</a><a href="/tags/openvpn/" class="label label-success">openvpn</a><a href="/tags/tls-auth/" class="label label-info">tls-auth</a><a href="/tags/内置证书/" class="label label-warning">内置证书</a><a href="/tags/证书/" class="label label-primary">证书</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/inline/" class="label label-primary">inline</a><a href="/tags/openvpn/" class="label label-success">openvpn</a><a href="/tags/tls-auth/" class="label label-info">tls-auth</a><a href="/tags/内置证书/" class="label label-warning">内置证书</a><a href="/tags/证书/" class="label label-primary">证书</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/openvpn_inlinefile/#comments" class="ds-thread-count comment-link" data-thread-key="62" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -528,7 +593,7 @@ auth-nocache
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></h1>
       
-        <span>发表于<time datetime="2009-05-15T16:20:09.000Z"> <a href="/post/openvpn/">2009-05-15</a></time></span>      
+        <span>发表于<time datetime="2009-05-15T08:20:09.000Z"> <a href="/post/openvpn/">2009-05-15</a></time></span>      
     </header>
     
     
@@ -555,7 +620,7 @@ auth-nocache
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary">openvpn</a><a href="/tags/WINDOWS/" class="label label-success">WINDOWS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/OpenVPN/">OpenVPN</a></li></span></span> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary">openvpn</a><a href="/tags/WINDOWS/" class="label label-success">WINDOWS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/openvpn/#comments" class="ds-thread-count comment-link" data-thread-key="61" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -573,7 +638,7 @@ auth-nocache
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></h1>
       
-        <span>发表于<time datetime="2009-05-13T21:14:14.000Z"> <a href="/post/mail/">2009-05-13</a></time></span>      
+        <span>发表于<time datetime="2009-05-13T13:14:14.000Z"> <a href="/post/mail/">2009-05-13</a></time></span>      
     </header>
     
     
@@ -648,48 +713,8 @@ goto :eof
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/邮箱/" class="label label-primary">邮箱</a><a href="/tags/自动登录/" class="label label-success">自动登录</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/邮箱/" class="label label-primary">邮箱</a><a href="/tags/自动登录/" class="label label-success">自动登录</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/mail/#comments" class="ds-thread-count comment-link" data-thread-key="60" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/dropbox_version/">[转] DropBox的版本控制功能</a></h1>
-      
-        <span>发表于<time datetime="2009-05-08T10:04:27.000Z"> <a href="/post/dropbox_version/">2009-05-08</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>经过一段时间的试用,喜欢上了dropbox(虽然速度有点慢).版本控制功能也很好用.可以无所顾忌的删除修改文件了.大不了就还原一下.
- 由于是采用版本控制,所以同步时它并不是整个文件上传的而是diff方式,也就是只传不同的部份.这样上传快了很多.(不知会不会有什么后遗问题,^_^)</p>
-<p>在几台需要同步的电脑装上dropbox就可以后台自动实时同步,也不用担心版本问题.</p>
-<p>另外个人认为还是使用可移动版的dropbox比较方便..
- 可移动版的dropbox可以在这里下到.(需要有dropbox帐户)或以下地址.</p>
-<p> <a href="http://dl.getdropbox.com/u/50461/DropboxPortable/DropboxPortable%200.6.507.zip" target="_blank"><a href="http://dl.getdropbox.com/u/50461/DropboxPortable/DropboxPortable%200.6.507.zip">http://dl.getdropbox.com/u/50461/DropboxPortable/DropboxPortable%200.6.507.zip</a></a>(Windows only)</p>
-<p>来源: <a href="http://www.netbusy.cn/roy/post/dropboxbb.html" target="_blank"><a href="http://www.netbusy.cn/roy/post/dropboxbb.html">http://www.netbusy.cn/roy/post/dropboxbb.html</a></a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/转载文章/">转载文章</a></li></span></span> | <span class="tags">标签 <a href="/tags/dropbox/" class="label label-primary">dropbox</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/dropbox_version/#comments" class="ds-thread-count comment-link" data-thread-key="58" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -779,7 +804,7 @@ goto :eof
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:57:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:02:26</em></span></div>
 </div>
 <div class="clearfix"></div>
 

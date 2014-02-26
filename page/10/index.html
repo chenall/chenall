@@ -114,9 +114,56 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></h1>
+      
+        <span>发表于<time datetime="2009-10-26T12:56:35.000Z"> <a href="/post/vmware-time/">2009-10-26</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>有使用虚拟机的朋友应该就会发现在虚拟机上的时间是不准确的，往往会慢上许多。对于普通应用来说当然是没有问题的，但对于一些对时间控制要求比较高一点的场合就不行了，一般情况下可以通过安装虚拟机附加工具来解决，方法网上也有许多，这里就不再介绍了。</p>
+<p>最近安装了一个<a href="http://www.panabit.com/" target="_blank">Panabit</a>到虚拟机(vmware server)上，用于网络行为管理控制，定义了一些规则以后，我需要在某个时间段启用某个规则，发现时间不准不好控制，在网上找了许多方法，都不太管用。像装附加工具，由于使用的是精简的BSD系统无法安装TOOLS，所以这个方法也就没有用了。</p>
+<p>后来就找到了这个命令ntpdate命令可以同步ntp服务器上的时间。再结合系统的定时程序cron让它每隔一分钟就同步一次以保证时间的准确。</p>
+<p>具体方法：</p>
+<ol>
+<li>首先需要有一个NTP服务器，如果可以上网可以使用网上提供的NTP服务器，如果没有就自己建一个</li>
+<li><p>修改BSD系统文件让它自动同步时间
+先在/etc/rc.conf里面添加一句cron start,用于启动cron服务。</p>
+<p>然后在/etc/crontab文件里面添加以下内容用于自动执行时间同步命令(把ntp.server.address换成你的NTP服务器地址）</p>
+<pre><code>*/1        *        *        *        *        root        ntpdate ntp.server.address
+</code></pre></li>
+<li>重启BSD系统，过一段时间再查一下时间是不是变得准确了虽然还是会有几秒的误差，但是影响不大。</li>
+</ol>
+<p>PS：不太熟悉BSD或LINUX系统，以上是结合网上找到的资料整理出来的，如果大家的更好的办法麻烦告之一下。</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/crontab/" class="label label-primary">crontab</a><a href="/tags/panabit/" class="label label-success">panabit</a><a href="/tags/Vmware/" class="label label-info">Vmware</a><a href="/tags/时间不准/" class="label label-warning">时间不准</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/vmware-time/#comments" class="ds-thread-count comment-link" data-thread-key="104" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></h1>
       
-        <span>发表于<time datetime="2009-10-25T10:56:36.000Z"> <a href="/post/windows7_folder_tips/">2009-10-25</a></time></span>      
+        <span>发表于<time datetime="2009-10-25T02:56:36.000Z"> <a href="/post/windows7_folder_tips/">2009-10-25</a></time></span>      
     </header>
     
     
@@ -215,7 +262,7 @@ LocalizedResourceName=自定义显示的名称</li>
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/desktop.ini/" class="label label-primary">desktop.ini</a><a href="/tags/文件夹/" class="label label-success">文件夹</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/desktop.ini/" class="label label-primary">desktop.ini</a><a href="/tags/文件夹/" class="label label-success">文件夹</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_folder_tips/#comments" class="ds-thread-count comment-link" data-thread-key="103" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -233,7 +280,7 @@ LocalizedResourceName=自定义显示的名称</li>
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></h1>
       
-        <span>发表于<time datetime="2009-10-23T11:23:25.000Z"> <a href="/post/sandboxie/">2009-10-23</a></time></span>      
+        <span>发表于<time datetime="2009-10-23T03:23:25.000Z"> <a href="/post/sandboxie/">2009-10-23</a></time></span>      
     </header>
     
     
@@ -274,7 +321,7 @@ LocalizedResourceName=自定义显示的名称</li>
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/sandboxie/" class="label label-primary">sandboxie</a><a href="/tags/影子/" class="label label-success">影子</a><a href="/tags/沙盘/" class="label label-info">沙盘</a><a href="/tags/还原/" class="label label-warning">还原</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/sandboxie/" class="label label-primary">sandboxie</a><a href="/tags/影子/" class="label label-success">影子</a><a href="/tags/沙盘/" class="label label-info">沙盘</a><a href="/tags/还原/" class="label label-warning">还原</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/sandboxie/#comments" class="ds-thread-count comment-link" data-thread-key="102" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -292,7 +339,7 @@ LocalizedResourceName=自定义显示的名称</li>
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/iconshex/">让你的任意文件显示个性图标</a></h1>
       
-        <span>发表于<time datetime="2009-10-17T21:57:52.000Z"> <a href="/post/iconshex/">2009-10-17</a></time></span>      
+        <span>发表于<time datetime="2009-10-17T13:57:52.000Z"> <a href="/post/iconshex/">2009-10-17</a></time></span>      
     </header>
     
     
@@ -319,7 +366,7 @@ LocalizedResourceName=自定义显示的名称</li>
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统增强/">系统增强</a></li></span></span> | <span class="tags">标签 <a href="/tags/iconshex/" class="label label-primary">iconshex</a><a href="/tags/图标/" class="label label-success">图标</a><a href="/tags/个性/" class="label label-info">个性</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统增强/">系统增强</a></li></span></span> | <span class="tags">标签 <a href="/tags/iconshex/" class="label label-primary">iconshex</a><a href="/tags/图标/" class="label label-success">图标</a><a href="/tags/个性/" class="label label-info">个性</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/iconshex/#comments" class="ds-thread-count comment-link" data-thread-key="101" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -337,7 +384,7 @@ LocalizedResourceName=自定义显示的名称</li>
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></h1>
       
-        <span>发表于<time datetime="2009-09-29T21:29:21.000Z"> <a href="/post/cmd_if_exist/">2009-09-29</a></time></span>      
+        <span>发表于<time datetime="2009-09-29T13:29:21.000Z"> <a href="/post/cmd_if_exist/">2009-09-29</a></time></span>      
     </header>
     
     
@@ -395,7 +442,7 @@ exit /b 0       http://www.chenall.net
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/IF_EXIST/" class="label label-primary">IF_EXIST</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/IF_EXIST/" class="label label-primary">IF_EXIST</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/cmd_if_exist/#comments" class="ds-thread-count comment-link" data-thread-key="99" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -413,7 +460,7 @@ exit /b 0       http://www.chenall.net
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></h1>
       
-        <span>发表于<time datetime="2009-09-25T08:35:56.000Z"> <a href="/post/batch_fangkuai/">2009-09-25</a></time></span>      
+        <span>发表于<time datetime="2009-09-25T00:35:56.000Z"> <a href="/post/batch_fangkuai/">2009-09-25</a></time></span>      
     </header>
     
     
@@ -644,7 +691,7 @@ goto :eof
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary">batch</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/游戏/" class="label label-info">游戏</a><a href="/tags/转载/" class="label label-warning">转载</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary">batch</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/游戏/" class="label label-info">游戏</a><a href="/tags/转载/" class="label label-warning">转载</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/batch_fangkuai/#comments" class="ds-thread-count comment-link" data-thread-key="98" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -662,7 +709,7 @@ goto :eof
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></h1>
       
-        <span>发表于<time datetime="2009-09-16T23:40:45.000Z"> <a href="/post/windows_no_usbstor/">2009-09-16</a></time></span>      
+        <span>发表于<time datetime="2009-09-16T15:40:45.000Z"> <a href="/post/windows_no_usbstor/">2009-09-16</a></time></span>      
     </header>
     
     
@@ -693,7 +740,7 @@ goto :eof
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/USBSTOR/" class="label label-primary">USBSTOR</a><a href="/tags/USB硬盘/" class="label label-success">USB硬盘</a><a href="/tags/禁用U盘/" class="label label-info">禁用U盘</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/USBSTOR/" class="label label-primary">USBSTOR</a><a href="/tags/USB硬盘/" class="label label-success">USB硬盘</a><a href="/tags/禁用U盘/" class="label label-info">禁用U盘</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows_no_usbstor/#comments" class="ds-thread-count comment-link" data-thread-key="96" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -711,7 +758,7 @@ goto :eof
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></h1>
       
-        <span>发表于<time datetime="2009-09-14T13:43:59.000Z"> <a href="/post/batch_email_backup/">2009-09-14</a></time></span>      
+        <span>发表于<time datetime="2009-09-14T05:43:59.000Z"> <a href="/post/batch_email_backup/">2009-09-14</a></time></span>      
     </header>
     
     
@@ -785,7 +832,7 @@ rem 附:每天定时自动执行的命令.使用管理员的权限执行就可�
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary">batch</a><a href="/tags/VBScript/" class="label label-success">VBScript</a><a href="/tags/定时备份/" class="label label-info">定时备份</a><a href="/tags/批处理/" class="label label-warning">批处理</a><a href="/tags/自动备份/" class="label label-primary">自动备份</a><a href="/tags/邮件/" class="label label-success">邮件</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-20 14:16:20"datetime="2014-02-20 14:16:20"> 2014-02-20</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary">batch</a><a href="/tags/VBScript/" class="label label-success">VBScript</a><a href="/tags/定时备份/" class="label label-info">定时备份</a><a href="/tags/批处理/" class="label label-warning">批处理</a><a href="/tags/自动备份/" class="label label-primary">自动备份</a><a href="/tags/邮件/" class="label label-success">邮件</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/batch_email_backup/#comments" class="ds-thread-count comment-link" data-thread-key="95" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -803,7 +850,7 @@ rem 附:每天定时自动执行的命令.使用管理员的权限执行就可�
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></h1>
       
-        <span>发表于<time datetime="2009-09-09T12:16:38.000Z"> <a href="/post/vbs_send_mail/">2009-09-09</a></time></span>      
+        <span>发表于<time datetime="2009-09-09T04:16:38.000Z"> <a href="/post/vbs_send_mail/">2009-09-09</a></time></span>      
     </header>
     
     
@@ -896,7 +943,7 @@ End If
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/VB/">VB</a></li><li><a href="/categories/程序设计/VB/VBScript/">VBScript</a></li></span></span> | <span class="tags">标签 <a href="/tags/VBScript/" class="label label-primary">VBScript</a><a href="/tags/VBS发邮件/" class="label label-success">VBS发邮件</a><a href="/tags/邮件附件/" class="label label-info">邮件附件</a><a href="/tags/转载/" class="label label-warning">转载</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/VB/">VB</a></li><li><a href="/categories/程序设计/VB/VBScript/">VBScript</a></li></span></span> | <span class="tags">标签 <a href="/tags/VBScript/" class="label label-primary">VBScript</a><a href="/tags/VBS发邮件/" class="label label-success">VBS发邮件</a><a href="/tags/邮件附件/" class="label label-info">邮件附件</a><a href="/tags/转载/" class="label label-warning">转载</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/vbs_send_mail/#comments" class="ds-thread-count comment-link" data-thread-key="93" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -914,7 +961,7 @@ End If
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></h1>
       
-        <span>发表于<time datetime="2009-09-02T21:16:28.000Z"> <a href="/post/firadisk/">2009-09-02</a></time></span>      
+        <span>发表于<time datetime="2009-09-02T13:16:28.000Z"> <a href="/post/firadisk/">2009-09-02</a></time></span>      
     </header>
     
     
@@ -971,73 +1018,8 @@ chainloader (0xff)
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/驱动/">驱动</a></li></span></span> | <span class="tags">标签 <a href="/tags/FiraDisk/" class="label label-primary">FiraDisk</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/驱动/" class="label label-warning">驱动</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/驱动/">驱动</a></li></span></span> | <span class="tags">标签 <a href="/tags/FiraDisk/" class="label label-primary">FiraDisk</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/驱动/" class="label label-warning">驱动</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/firadisk/#comments" class="ds-thread-count comment-link" data-thread-key="88" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></h1>
-      
-        <span>发表于<time datetime="2009-08-13T09:41:01.000Z"> <a href="/post/1key/">2009-08-13</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>看起来可能有点乱^_^.实现起来也是挺麻烦的,暂时只是我的一个想法,仅供有兴趣的朋友研究尝试.放在这里做个记录,以后有兴趣再搞个成品.</p>
-<h2 id="-">最终的理想效果.</h2>
-<ul>
-<li>安装/卸载/使用方便简单,(只需改名复制或删除文件就可以了)</li>
-<li>进入DOS时无需再加载NTFS等驱动,也不需要查找操作,直接就开始备份或恢复.</li>
-<li>完全自定义,或模块化.</li>
-</ul>
-<h2 id="-">思路:</h2>
-<ul>
-<li><p>首先,启动过程.
-目前网络上的一键还原软件,大都是基于<code>GRUB4DOS</code>的,通过在<code>BOOT.INI</code>中添加相应菜单项或直接加入到MBR中来启动的.需要修改<br>我的思路是:  </p>
-<ol>
-<li>直接把<code>GRUB4DOS</code>的<code>GRLDR</code>改名为<code>NTLDR</code>放在系统盘代替系统的<code>NTLDR</code>来启动.原来的<code>NTLDR</code>可以改名为<code>NTLDR.LDR</code>或其它名子.(VISTA以上的系统可以改为BOOTMGR),这样的安装方式的优点,安装时不需要做许多修改就可以用,只需把原来的系统启动文件改名,然后用定制的GRLDR代替就好了.</li>
-<li>由<code>GRUB4DO</code>S接管系统的启动,然后根据某些标记(某个文件的内容)来自动选择是启动到系统还是进入备份还原操作.</li>
-<li>当然了还可以在启动时通过按某个按键进入恢复备份操作.</li>
-</ol>
-</li>
-<li><p>执行过程.
-通过在WINDOWS界面下选择备份或恢复操作(把这些操作存在一个特定的文件中)
-启动时通过GRUB4DOS的DD功能把这个文件的内容转到启动IMG里面.
-启动IMG执行定义的操作.</p>
-</li>
-<li><p>基本文件内容</p>
-<pre><code>GHOST.ZIP        GHOST主程序文件(方便自定义,由GRUB4DOS启动时自动载入到上面的IMG中)
-ADDINS.ZIP        扩展文件,自定义的扩展文件,同样自动载入到上面的IMG中.
-config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS动态加入到主IMG中.
-</code></pre></li>
-</ul>
-<p>一个主IMG文件(里面只包含启动基本的文件,其它的文件通过GRUB4DOS动态加入)</p>
-<p>img自动装载以上文件,然后根据config.ini的内容直接进行备份或恢复操作.</p>
-<h2 id="-">成品参考:</h2>
-<p>  <a href="/post/qgho/" title="QGHO一键恢复程序">QGHO 快速一键恢复程序</a><br>  <a href="/post/g4d_hd_tools/">基于GRUB4DOS的硬盘工具箱</a><br>  <a href="/post/modboot/" title="一个模块化的DOS工具箱">MODBOOT</a>  </p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/GHOST/" class="label label-primary">GHOST</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/还原/" class="label label-info">还原</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/1key/#comments" class="ds-thread-count comment-link" data-thread-key="84" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -1127,7 +1109,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:57:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:02:26</em></span></div>
 </div>
 <div class="clearfix"></div>
 

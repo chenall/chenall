@@ -114,9 +114,55 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h1>
+      
+        <span>发表于<time datetime="2009-01-16T14:12:50.000Z"> <a href="/post/post41/">2009-01-16</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <blockquote><p>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。</p>
+<p>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。</p>
+<p>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。</p>
+<p>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。</p>
+<p>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：</p>
+<pre><code>cat --hex (hd0)+1,466
+</code></pre><p>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。</p>
+<p>再举一例：</p>
+<pre><code>cat --hex (hd0)+63,800+63,64400
+</code></pre><p>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。</p>
+<p>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。</p>
+<p>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。</p>
+<footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/资料/">资料</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/资料/" class="label label-success">资料</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post41/#comments" class="ds-thread-count comment-link" data-thread-key="41" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h1>
       
-        <span>发表于<time datetime="2009-01-15T12:56:42.000Z"> <a href="/post/post40/">2009-01-15</a></time></span>      
+        <span>发表于<time datetime="2009-01-15T04:56:42.000Z"> <a href="/post/post40/">2009-01-15</a></time></span>      
     </header>
     
     
@@ -142,7 +188,7 @@ map --hook
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post40/#comments" class="ds-thread-count comment-link" data-thread-key="40" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -160,7 +206,7 @@ map --hook
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></h1>
       
-        <span>发表于<time datetime="2008-12-30T15:22:10.000Z"> <a href="/post/post38/">2008-12-30</a></time></span>      
+        <span>发表于<time datetime="2008-12-30T07:22:10.000Z"> <a href="/post/post38/">2008-12-30</a></time></span>      
     </header>
     
     
@@ -202,7 +248,7 @@ map --hook
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/远程桌面/" class="label label-primary">远程桌面</a><a href="/tags/转载/" class="label label-success">转载</a><a href="/tags/实用技术/" class="label label-info">实用技术</a><a href="/tags/解决/" class="label label-warning">解决</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/远程桌面/" class="label label-primary">远程桌面</a><a href="/tags/转载/" class="label label-success">转载</a><a href="/tags/实用技术/" class="label label-info">实用技术</a><a href="/tags/解决/" class="label label-warning">解决</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post38/#comments" class="ds-thread-count comment-link" data-thread-key="38" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -220,7 +266,7 @@ map --hook
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></h1>
       
-        <span>发表于<time datetime="2008-12-23T16:32:23.000Z"> <a href="/post/post37/">2008-12-23</a></time></span>      
+        <span>发表于<time datetime="2008-12-23T08:32:23.000Z"> <a href="/post/post37/">2008-12-23</a></time></span>      
     </header>
     
     
@@ -240,7 +286,7 @@ map --hook
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span></span> | <span class="tags">标签 <a href="/tags/GPXE/" class="label label-primary">GPXE</a><a href="/tags/ISCSI/" class="label label-success">ISCSI</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/WIN2003/" class="label label-warning">WIN2003</a><a href="/tags/无盘2003/" class="label label-primary">无盘2003</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span></span> | <span class="tags">标签 <a href="/tags/GPXE/" class="label label-primary">GPXE</a><a href="/tags/ISCSI/" class="label label-success">ISCSI</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/WIN2003/" class="label label-warning">WIN2003</a><a href="/tags/无盘2003/" class="label label-primary">无盘2003</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post37/#comments" class="ds-thread-count comment-link" data-thread-key="37" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -258,7 +304,7 @@ map --hook
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></h1>
       
-        <span>发表于<time datetime="2008-12-21T13:53:35.000Z"> <a href="/post/post36/">2008-12-21</a></time></span>      
+        <span>发表于<time datetime="2008-12-21T05:53:35.000Z"> <a href="/post/post36/">2008-12-21</a></time></span>      
     </header>
     
     
@@ -316,7 +362,7 @@ initrd (pd)/undi.img
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/DOS/">DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/DOSRDP/" class="label label-primary">DOSRDP</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/MSNET/" class="label label-info">MSNET</a><a href="/tags/NETWORK/" class="label label-warning">NETWORK</a><a href="/tags/TFTP/" class="label label-primary">TFTP</a><a href="/tags/UNDI/" class="label label-success">UNDI</a><a href="/tags/DOS/" class="label label-info">DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/DOS/">DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/DOSRDP/" class="label label-primary">DOSRDP</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/MSNET/" class="label label-info">MSNET</a><a href="/tags/NETWORK/" class="label label-warning">NETWORK</a><a href="/tags/TFTP/" class="label label-primary">TFTP</a><a href="/tags/UNDI/" class="label label-success">UNDI</a><a href="/tags/DOS/" class="label label-info">DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post36/#comments" class="ds-thread-count comment-link" data-thread-key="36" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -334,7 +380,7 @@ initrd (pd)/undi.img
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post35/">一个文件处理的小工具</a></h1>
       
-        <span>发表于<time datetime="2008-12-19T23:04:37.000Z"> <a href="/post/post35/">2008-12-19</a></time></span>      
+        <span>发表于<time datetime="2008-12-19T15:04:37.000Z"> <a href="/post/post35/">2008-12-19</a></time></span>      
     </header>
     
     
@@ -444,7 +490,7 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/软件/" class="label label-primary">软件</a><a href="/tags/str/" class="label label-success">str</a><a href="/tags/strw/" class="label label-info">strw</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/软件/" class="label label-primary">软件</a><a href="/tags/str/" class="label label-success">str</a><a href="/tags/strw/" class="label label-info">strw</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post35/#comments" class="ds-thread-count comment-link" data-thread-key="35" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -462,7 +508,7 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></h1>
       
-        <span>发表于<time datetime="2008-12-14T14:53:38.000Z"> <a href="/post/post34/">2008-12-14</a></time></span>      
+        <span>发表于<time datetime="2008-12-14T06:53:38.000Z"> <a href="/post/post34/">2008-12-14</a></time></span>      
     </header>
     
     
@@ -512,7 +558,7 @@ del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a><a href="/tags/SCSI/" class="label label-success">SCSI</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a><a href="/tags/SCSI/" class="label label-success">SCSI</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post34/#comments" class="ds-thread-count comment-link" data-thread-key="34" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -530,7 +576,7 @@ del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></h1>
       
-        <span>发表于<time datetime="2008-12-10T17:18:35.000Z"> <a href="/post/post33/">2008-12-10</a></time></span>      
+        <span>发表于<time datetime="2008-12-10T09:18:35.000Z"> <a href="/post/post33/">2008-12-10</a></time></span>      
     </header>
     
     
@@ -554,7 +600,7 @@ del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span></span> | <span class="tags">标签 <a href="/tags/extract/" class="label label-primary">extract</a><a href="/tags/DOS/" class="label label-success">DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/">杂七杂八</a></li></span></span> | <span class="tags">标签 <a href="/tags/extract/" class="label label-primary">extract</a><a href="/tags/DOS/" class="label label-success">DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post33/#comments" class="ds-thread-count comment-link" data-thread-key="33" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -572,7 +618,7 @@ del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></h1>
       
-        <span>发表于<time datetime="2008-12-03T02:04:20.000Z"> <a href="/post/post32/">2008-12-03</a></time></span>      
+        <span>发表于<time datetime="2008-12-02T18:04:20.000Z"> <a href="/post/post32/">2008-12-03</a></time></span>      
     </header>
     
     
@@ -602,7 +648,7 @@ del /f &quot;%temp%\eyou.hta&quot;
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/eyou/" class="label label-primary">eyou</a><a href="/tags/自动登录/" class="label label-success">自动登录</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/eyou/" class="label label-primary">eyou</a><a href="/tags/自动登录/" class="label label-success">自动登录</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post32/#comments" class="ds-thread-count comment-link" data-thread-key="32" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -620,7 +666,7 @@ del /f &quot;%temp%\eyou.hta&quot;
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/freeime/">[软件推荐]  极点中文输入平台</a></h1>
       
-        <span>发表于<time datetime="2008-11-01T16:10:51.000Z"> <a href="/post/freeime/">2008-11-01</a></time></span>      
+        <span>发表于<time datetime="2008-11-01T08:10:51.000Z"> <a href="/post/freeime/">2008-11-01</a></time></span>      
     </header>
     
     
@@ -651,65 +697,8 @@ del /f &quot;%temp%\eyou.hta&quot;
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/输入法/">输入法</a></li></span></span> | <span class="tags">标签 <a href="/tags/freeime/" class="label label-primary">freeime</a><a href="/tags/ime/" class="label label-success">ime</a><a href="/tags/极点/" class="label label-info">极点</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/输入法/">输入法</a></li></span></span> | <span class="tags">标签 <a href="/tags/freeime/" class="label label-primary">freeime</a><a href="/tags/ime/" class="label label-success">ime</a><a href="/tags/极点/" class="label label-info">极点</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/freeime/#comments" class="ds-thread-count comment-link" data-thread-key="26" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/jwpos/">佳为后台程序单文件版本 有使用佳为软件的朋友别错过了</a></h1>
-      
-        <span>发表于<time datetime="2008-10-28T21:15:31.000Z"> <a href="/post/jwpos/">2008-10-28</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>佳为软件是什么东西我就不介绍了,很多商场都在使用的.</p>
-<p>由于佳为软件的安装目录必须是固定的<code>C:\JWPOS</code>和<code>C:\JWFORALL</code>,而且这两个目录加起来近200MB,使用也不太方便,所以就抽空打包制作了这样一个单文件的版本.</p>
-<h2 id="-">特点:</h2>
-<ol>
-<li><p>单文件节省硬盘空间.</p>
-</li>
-<li><p>文件放置位置不用固定.放哪都可以,</p>
-</li>
-<li><p>内置快速方便的启动器.</p>
-</li>
-<li><p>当然了佳为后台所使用的C:\LS目录还是在硬盘的C:\LS下面的.</p>
-</li>
-<li><p>其它的自己试用就知道了,</p>
-</li>
-</ol>
-<h2 id="-">说明:</h2>
-<ol>
-<li><p>请先修改好自己对应的配置文件(主要是JWINIP.INI 这个文件只要放在程序的 &lt;配置文件&gt; 下面就可以了.其它的佳为配置文件都可以放在这里.</p>
-</li>
-<li><p>启动器的设置请打开JW_CONFIG.INI文件里面有介绍如何修改.</p>
-</li>
-</ol>
-<p>2012-06-16</p>
-<p>下载已经失效,新的版本可以在一台电脑中同时使用多套佳为系统有需要的可以留言.</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/原创分享/">原创分享</a></li></span></span> | <span class="tags">标签 <a href="/tags/佳为后台/" class="label label-primary">佳为后台</a><a href="/tags/单文件/" class="label label-success">单文件</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/jwpos/#comments" class="ds-thread-count comment-link" data-thread-key="24" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -799,7 +788,7 @@ del /f &quot;%temp%\eyou.hta&quot;
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:57:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:02:26</em></span></div>
 </div>
 <div class="clearfix"></div>
 

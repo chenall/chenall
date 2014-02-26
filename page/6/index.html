@@ -114,9 +114,135 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></h1>
+      
+        <span>发表于<time datetime="2011-01-28T05:55:38.000Z"> <a href="/post/weesetup/">2011-01-28</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>wee 是一个微型的grub4dos用于安装到硬盘mbr上，可以用来代替之前的grldr.mbr方案。</p>
+<p>支持的文件系统： FAT12/16/32/NTFS EXT2/3/4</p>
+<p>weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。</p>
+<p>注意： 如果你的biod不支持EBIOS请不要安装（一般情况下较新的电脑都会支持），具体原因请看下面的WEE说明。</p>
+<blockquote>
+<p>WEE access disk sectors only using EBIOS(int13/AH=42h), and never using CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS on a drive, then WEE will not be able to access that drive.</p>
+<p>WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are supported.</p>
+<p>WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable because it is of a valid Linux kernel format.</p>
+<p>Any single sector boot record file(with 55 AA at offset 0x1FE) can boot as well.</p>
+<p>Besides, WEE can run 32-bit programs written for it.</p>
+</blockquote>
+<p>2011-04-24</p>
+<ul>
+<li>升级内置wee63.mbr到最新版.</li>
+<li>允许在只读设备上运行. </li>
+</ul>
+<p>2011-02-17</p>
+<ol>
+<li>升级内置wee63.mbr到最新版.</li>
+<li>添加-l参数，显示磁盘列表.</li>
+<li>阻止在使用了fbinst的磁盘上使用该程序.</li>
+</ol>
+<pre><code>weesetup v1.2.
+ Usage:
+  weesetup [OPTIONS] DEVICE
+
+OPTIONS:
+  -i wee63.mbr Use a custom wee63.mbr file.
+
+ -o outfile Export new wee63.mbr to outfile.
+
+ -s scriptfile Import script from scriptfile.
+
+ -m mbrfile Read mbr from mbrfile(must use with option -o).
+
+ -f Force install.
+  -u Update.
+  -b Backup mbr to second sector(default is nt6mbr).
+  -l List all disks in system and exit.
+</code></pre><p>Report bugs to website:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank"><a href="http://code.google.com/p/grubutils/issues">http://code.google.com/p/grubutils/issues</a></a></p>
+<p>Thanks:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a><br>  wee63setup.c by SvOlli,xdio.c by bean  </p>
+<p>wee 安装程序v1.2</p>
+<p> 用法:</p>
+<p>  weesetup [参数] 磁盘</p>
+<p> 参数:</p>
+<p>  -i wee63.mbr 使用外置的wee63.mbr。</p>
+<p>  -o outfile 导出新的WEE63.MBR文件到outfile.</p>
+<p>  -s scriptfile 导入wee脚本文件.</p>
+<p>  -m mbrfile 从mbrfile获取mbr信息（必须配合参数-o使用）.</p>
+<p>  -f 强制安装.  </p>
+<p>  -u 更新wee.  </p>
+<p>  -b 备份旧的mbr到第二扇区（默认不备份，而是直接使用内置的nt6mbr）.  </p>
+<p>  -l 显示所在硬盘列表  </p>
+<p>请到以下网址报告BUG:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank"><a href="http://code.google.com/p/grubutils/issues">http://code.google.com/p/grubutils/issues</a></a></p>
+<p>感谢: 
+  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a><br>  wee63setup.c by SvOlli,xdio.c by bean </p>
+<p>更多资料请访问我的搏客:<br> <a href="http://chenall.net/post/weesetup/"><a href="http://chenall.net/post/weesetup/">http://chenall.net/post/weesetup/</a></a> </p>
+<p>编译方法：</p>
+<ol>
+<li><p>首先从SVN下载GRUBUTILS源码 
+svn co svn://svn.gna.org/svn/grubutil grubutil</p>
+</li>
+<li><p>在grubutil目录下新建一个子目录weesetup，然后把weesetup的源码复制过去.</p>
+<p>在weesetup目录下执行make，就可以在bin目录中生成一个weesetup.exe</p>
+</li>
+</ol>
+<p>附:内置的wee63.mbr默认脚本内容</p>
+<pre><code> find --set-root /boot/grub/grldr
+ /boot/grub/grldr
+ find --set-root /boot/grldr
+ /boot/grldr
+ timeout 1
+ default 0
+ title 1.GRUB4DOS
+ find --set-root /BOOT/GRUB/GRLDR
+ /BOOT/GRUB/GRLDR
+ find --set-root /BOOT/GRLDR
+ /BOOT/GRLDR
+ find --set-root /BOOT/GRUB.EXE
+ /BOOT/GRUB.EXE
+ find --set-root /grldr
+ /grldr
+
+title 2.Windows
+ chainloader (hd0)1+1
+ find --set-root /bootmgr
+ /bootmgr
+ find --set-root /ntldr
+ /ntldr
+
+title 3.Plop Boot Manager
+ find --set-root /BOOT/GRUB/PLPBT.BIN
+ /BOOT/GRUB/PLPBT.BIN
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C语言/">C语言</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/wee/" class="label label-success">wee</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/weesetup/#comments" class="ds-thread-count comment-link" data-thread-key="642" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></h1>
       
-        <span>发表于<time datetime="2011-01-14T11:56:59.000Z"> <a href="/post/case_convert/">2011-01-14</a></time></span>      
+        <span>发表于<time datetime="2011-01-14T03:56:59.000Z"> <a href="/post/case_convert/">2011-01-14</a></time></span>      
     </header>
     
     
@@ -175,7 +301,7 @@ void case_convert(char *ch,char flag)
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary">c语言</a><a href="/tags/upper/" class="label label-success">upper</a><a href="/tags/转换/" class="label label-info">转换</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary">c语言</a><a href="/tags/upper/" class="label label-success">upper</a><a href="/tags/转换/" class="label label-info">转换</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/case_convert/#comments" class="ds-thread-count comment-link" data-thread-key="631" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -193,7 +319,7 @@ void case_convert(char *ch,char flag)
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></h1>
       
-        <span>发表于<time datetime="2010-12-31T09:09:35.000Z"> <a href="/post/grub4dos_instwee/">2010-12-31</a></time></span>      
+        <span>发表于<time datetime="2010-12-31T01:09:35.000Z"> <a href="/post/grub4dos_instwee/">2010-12-31</a></time></span>      
     </header>
     
     
@@ -381,7 +507,7 @@ exit 1
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/wee/" class="label label-success">wee</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/wee/" class="label label-success">wee</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_instwee/#comments" class="ds-thread-count comment-link" data-thread-key="615" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -399,7 +525,7 @@ exit 1
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></h1>
       
-        <span>发表于<time datetime="2010-12-29T22:49:14.000Z"> <a href="/post/qgho/">2010-12-29</a></time></span>      
+        <span>发表于<time datetime="2010-12-29T14:49:14.000Z"> <a href="/post/qgho/">2010-12-29</a></time></span>      
     </header>
     
     
@@ -558,7 +684,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/Qgho/" class="label label-success">Qgho</a><a href="/tags/GHOST/" class="label label-info">GHOST</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/Qgho/" class="label label-success">Qgho</a><a href="/tags/GHOST/" class="label label-info">GHOST</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/qgho/#comments" class="ds-thread-count comment-link" data-thread-key="624" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -576,7 +702,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></h1>
       
-        <span>发表于<time datetime="2010-12-14T23:46:26.000Z"> <a href="/post/grub4dos_run/">2010-12-14</a></time></span>      
+        <span>发表于<time datetime="2010-12-14T15:46:26.000Z"> <a href="/post/grub4dos_run/">2010-12-14</a></time></span>      
     </header>
     
     
@@ -664,7 +790,7 @@ echo -e \n%~nx0 %2\nboot &gt;&gt; (md)0x3000+0x10
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary">batch</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary">batch</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_run/#comments" class="ds-thread-count comment-link" data-thread-key="612" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -682,7 +808,7 @@ echo -e \n%~nx0 %2\nboot &gt;&gt; (md)0x3000+0x10
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></h1>
       
-        <span>发表于<time datetime="2010-11-22T13:03:39.000Z"> <a href="/post/windows_f6/">2010-11-22</a></time></span>      
+        <span>发表于<time datetime="2010-11-22T05:03:39.000Z"> <a href="/post/windows_f6/">2010-11-22</a></time></span>      
     </header>
     
     
@@ -752,7 +878,7 @@ chainloader (cd)
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/实用/">实用</a></li></span></span> | <span class="tags">标签 <a href="/tags/F6/" class="label label-primary">F6</a><a href="/tags/GRUB/" class="label label-success">GRUB</a><a href="/tags/GRUB4DOS/" class="label label-info">GRUB4DOS</a><a href="/tags/SCSI/" class="label label-warning">SCSI</a><a href="/tags/TXTSETUP.OEM/" class="label label-primary">TXTSETUP.OEM</a><a href="/tags/服务器/" class="label label-success">服务器</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/实用/">实用</a></li></span></span> | <span class="tags">标签 <a href="/tags/F6/" class="label label-primary">F6</a><a href="/tags/GRUB/" class="label label-success">GRUB</a><a href="/tags/GRUB4DOS/" class="label label-info">GRUB4DOS</a><a href="/tags/SCSI/" class="label label-warning">SCSI</a><a href="/tags/TXTSETUP.OEM/" class="label label-primary">TXTSETUP.OEM</a><a href="/tags/服务器/" class="label label-success">服务器</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows_f6/#comments" class="ds-thread-count comment-link" data-thread-key="70" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -770,7 +896,7 @@ chainloader (cd)
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h1>
       
-        <span>发表于<time datetime="2010-10-13T00:00:00.000Z"> <a href="/post/grub4dos_wenv/">2010-10-13</a></time></span>      
+        <span>发表于<time datetime="2010-10-12T16:00:00.000Z"> <a href="/post/grub4dos_wenv/">2010-10-13</a></time></span>      
     </header>
     
     
@@ -1023,7 +1149,7 @@ WENV reset sr* 清除sr开头的所有变量
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB/" class="label label-primary">GRUB</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB/" class="label label-primary">GRUB</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_wenv/#comments" class="ds-thread-count comment-link" data-thread-key="127" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -1041,7 +1167,7 @@ WENV reset sr* 清除sr开头的所有变量
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></h1>
       
-        <span>发表于<time datetime="2010-10-12T15:27:51.000Z"> <a href="/post/c_upper/">2010-10-12</a></time></span>      
+        <span>发表于<time datetime="2010-10-12T07:27:51.000Z"> <a href="/post/c_upper/">2010-10-12</a></time></span>      
     </header>
     
     
@@ -1100,7 +1226,7 @@ WENV reset sr* 清除sr开头的所有变量
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary">c语言</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary">c语言</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/c_upper/#comments" class="ds-thread-count comment-link" data-thread-key="597" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -1118,7 +1244,7 @@ WENV reset sr* 清除sr开头的所有变量
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h1>
       
-        <span>发表于<time datetime="2010-09-23T21:29:54.000Z"> <a href="/post/grub4dos_snake/">2010-09-23</a></time></span>      
+        <span>发表于<time datetime="2010-09-23T13:29:54.000Z"> <a href="/post/grub4dos_snake/">2010-09-23</a></time></span>      
     </header>
     
     
@@ -1153,7 +1279,7 @@ WENV reset sr* 清除sr开头的所有变量
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/游戏/" class="label label-primary">游戏</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/游戏/" class="label label-primary">游戏</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_snake/#comments" class="ds-thread-count comment-link" data-thread-key="576" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -1171,7 +1297,7 @@ WENV reset sr* 清除sr开头的所有变量
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></h1>
       
-        <span>发表于<time datetime="2010-09-21T21:55:29.000Z"> <a href="/post/snake_idea/">2010-09-21</a></time></span>      
+        <span>发表于<time datetime="2010-09-21T13:55:29.000Z"> <a href="/post/snake_idea/">2010-09-21</a></time></span>      
     </header>
     
     
@@ -1247,56 +1373,8 @@ WENV reset sr* 清除sr开头的所有变量
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/snake/" class="label label-primary">snake</a><a href="/tags/贪吃蛇/" class="label label-success">贪吃蛇</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C/">C</a></li></span></span> | <span class="tags">标签 <a href="/tags/snake/" class="label label-primary">snake</a><a href="/tags/贪吃蛇/" class="label label-success">贪吃蛇</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/snake_idea/#comments" class="ds-thread-count comment-link" data-thread-key="569" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></h1>
-      
-        <span>发表于<time datetime="2010-09-17T18:19:51.000Z"> <a href="/post/grub4dos_echo/">2010-09-17</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>搞了一个增强版的ECHO命令,看看效用还有反应如何.可以在屏幕任意位置显示字符并且可以指定颜色.</p>
-<p>颜色设置只支持console模式(文本模式).</p>
-<p>使用方法(具体请下载附件研究)</p>
-<p>注: <code>最新版本的GRUB4DOS已经内置此功能,并且功能得到了增强</code>,<strong>想要编写GRUB4DOS扩展的可以下载源码研究一下</strong></p>
-<p>本站所有GRUB4DOS扩展的源码都可以从这里下载: <a href="https://code.google.com/p/grubutils/" target="_blank">https://code.google.com/p/grubutils/</a></p>
-<p>echo [-n] [-P:XXYY] MESSAGE
- 其中MESSAGE中可以使用$[ABCD]来指定后面显示的字符使用的颜色.
- A 值为1时闪烁 (blinking foreground color).
- B 值为1时高亮(light)
- C [0-7]背景色(background color)
- D [0-7]前景色-字体颜色(foreground color)</p>
-<p>截图效果.(随便弄的,对外观不是很感冒)_:)</p>
-<p>注:图片就是附件执行的效果,未修改添加.
- 嘻嘻,对于某些喜欢修改XXXX的爱好者来说可能会有用,因为你可以自定义整个屏幕上显示的信息.</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/09/B6860606576903B7DADE22718F1B8DA060588955.png" alt=""></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/ECHO/" class="label label-primary">ECHO</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_echo/#comments" class="ds-thread-count comment-link" data-thread-key="566" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -1386,7 +1464,7 @@ WENV reset sr* 清除sr开头的所有变量
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:57:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:02:26</em></span></div>
 </div>
 <div class="clearfix"></div>
 

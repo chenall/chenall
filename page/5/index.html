@@ -114,9 +114,192 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></h1>
+      
+        <span>发表于<time datetime="2011-10-08T09:12:07.000Z"> <a href="/post/grub4dos_date_bat/">2011-10-08</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>修改系统日期有很多种方法，比如直接进入BIOS修改，或者进入系统后修改。</p>
+<p>如果我想每次开机都改成一个固定的时间，进入系统后自动更新为正确的时间（一般用于过期软件破解）</p>
+<p>现在可以直接使用GRUB4DOS来实现自动修改了。</p>
+<p>本批处理属于GRUB4DOS高级编程，直接调用BIOS中断来实现修改日期的目的。</p>
+<p>BIOS中断调用的实现例子。</p>
+<p>用法:</p>
+<p>把批处理直接保存为DATE然后使用以下命令就可以了或直接使用C语言编译的版本</p>
+<p>  显示当前日期</p>
+<pre><code>date
+</code></pre><p>  修改日期</p>
+<pre><code>date 2011-01-01
+</code></pre><h3 id="-">相关资料:</h3>
+<pre><code>时钟服务(Clock Service——INT 1AH) 
+00H —读取时钟“滴答”计数06H —设置闹钟
+01H —设置时钟“滴答”计数07H —闹钟复位
+02H —读取时间0AH —读取天数计数
+03H —设置时间0BH —设置天数计数
+04H —读取日期 80H —设置声音源信息 
+05H —设置日期
+(1)、功能00H
+功能描述：读取时钟“滴答”计数
+入口参数：AH=00H
+出口参数：AL=00H——未过午夜，否则，表示已过午夜
+CX:DX=时钟“滴答”计数
+(2)、功能01H
+功能描述：设置时钟“滴答”计数
+入口参数：AH=01H
+CX:DX=时钟“滴答”计数
+出口参数：无
+(3)、功能02H
+功能描述：读取时间
+入口参数：AH=02H
+出口参数：CH=BCD码格式的小时
+CL=BCD码格式的分钟
+DH=BCD码格式的秒
+DL=00H——标准时间，否则，夏令时
+CF=0——时钟在走，否则，时钟停止
+(4)、功能03H
+功能描述：设置时间
+入口参数：AH=03H
+CH=BCD码格式的小时
+CL=BCD码格式的分钟
+DH=BCD码格式的秒
+DL=00H——标准时间，否则，夏令时
+出口参数：无
+(5)、功能04H
+功能描述：读取日期
+入口参数：AH=04H
+出口参数：CH=BCD码格式的世纪
+CL=BCD码格式的年
+DH=BCD码格式的月
+DL=BCD码格式的日
+CF=0——时钟在走，否则，时钟停止
+(6)、功能05H
+功能描述：设置日期
+入口参数：AH=05H
+CH=BCD码格式的世纪
+CL=BCD码格式的年
+DH=BCD码格式的月
+DL=BCD码格式的日
+出口参数：无
+(7)、功能06H
+功能描述：设置闹钟
+入口参数：AH=06H
+CH=BCD码格式的小时
+CL=BCD码格式的分钟
+DH=BCD码格式的秒
+出口参数：CF=０——操作成功，否则，闹钟已设置或时钟已停止
+(8)、功能07H
+功能描述：闹钟复位
+入口参数：AH=07H
+出口参数：无
+(9)、功能0AH
+功能描述：读取天数计数，仅在PS/2有效，在此从略
+(10)、功能0BH
+功能描述：设置天数计数，仅在PS/2有效，在此从略
+(11)、功能80H
+功能描述：设置声音源信息
+入口参数：AH=80H
+AL=声音源
+=00H——8253可编程计时器，通道2
+=01H——盒式磁带输入
+=02H——I/O通道上的&quot;Audio In&quot;
+=03H——声音产生芯片
+出口参数：无
+</code></pre><p>C语言版的代码在这里</p>
+<p><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c" target="_blank"><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c">http://code.google.com/p/grubutils/source/browse/trunk/src/date.c</a></a></p>
+<p>批处理版源码:</p>
+<pre><code>!BAT
+::datefunc for grub4dos by chenall 2011-10-08
+setlocal
+debug off
+set edi=0x60000
+set esi=0x60004
+set ebp=0x60008
+set esp=0x6000C
+set ebx=0x60010
+set bx=0x60010
+set edx=0x60014
+set dx=0x60014
+set ecx=0x60018
+set cx=0x60018
+set eax=0x6001C
+set ax=0x6001C
+set gs=0x60020
+set fs=0x60024
+set es=0x60028
+set ds=0x6002c
+set ss=0x60030
+set eip=0x60034
+set cs=0x60038
+set eflags=0x60003c
+::时钟服务(Clock Service——INT 1AH) 
+::04H —读取日期
+call :BIOS_INT 1A ax=0x400
+set date=%*
+if exist date &amp;&amp; goto :SET_DATE
+call Fn.0 0 &quot;%%04X%%04X&quot; *%cx% *%dx% | set date=
+echo -n The current date is: %date:~0,4%-%date:~4,2%-%date:~6%
+set /p date=Enter the new date: (yyyy-mm-dd)
+
+:SET_DATE  调用BIOS中断修改日期
+::05H —设置日期
+call :BIOS_INT 1A ax=0x500 cx=0x%date:~0,4% dx=0x%date:~5,2%%%date:~8,2%
+exit
+
+:BIOS_INT
+::初始化系统参数
+echo -n &gt; (md)0x300+1
+write %cs% -1
+write %ss% -1
+write %esp% -1
+write %eflags% -1
+write %ds% -1
+write %es% -1
+write %fs% -1
+write %gs% -1
+write %eip% 0xFFFF%1CD
+shift 1
+
+::设置参数
+:参数
+if &quot;%2&quot;==&quot;&quot; goto :realmode_run
+write %%%1% %2
+shift 1
+shift 1
+goto :参数
+:realmode_run
+call Fn.53 0x60000
+exit
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/date/" class="label label-primary">date</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/time/" class="label label-info">time</a><a href="/tags/批处理/" class="label label-warning">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_date_bat/#comments" class="ds-thread-count comment-link" data-thread-key="782" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></h1>
       
-        <span>发表于<time datetime="2011-08-22T13:16:17.000Z"> <a href="/post/g4d_filelist/">2011-08-22</a></time></span>      
+        <span>发表于<time datetime="2011-08-22T05:16:17.000Z"> <a href="/post/g4d_filelist/">2011-08-22</a></time></span>      
     </header>
     
     
@@ -329,7 +512,7 @@ exit
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/文件列表/" class="label label-info">文件列表</a><a href="/tags/模块/" class="label label-warning">模块</a><a href="/tags/原创/" class="label label-primary">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/文件列表/" class="label label-info">文件列表</a><a href="/tags/模块/" class="label label-warning">模块</a><a href="/tags/原创/" class="label label-primary">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/g4d_filelist/#comments" class="ds-thread-count comment-link" data-thread-key="754" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -347,7 +530,7 @@ exit
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></h1>
       
-        <span>发表于<time datetime="2011-08-17T13:12:30.000Z"> <a href="/post/grub4dos_replace/">2011-08-17</a></time></span>      
+        <span>发表于<time datetime="2011-08-17T05:12:30.000Z"> <a href="/post/grub4dos_replace/">2011-08-17</a></time></span>      
     </header>
     
     
@@ -413,7 +596,7 @@ endlocal &amp;&amp; set %1=%%%1%%
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/编程/">编程</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/编程/">编程</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_replace/#comments" class="ds-thread-count comment-link" data-thread-key="767" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -431,7 +614,7 @@ endlocal &amp;&amp; set %1=%%%1%%
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></h1>
       
-        <span>发表于<time datetime="2011-08-09T16:07:36.000Z"> <a href="/post/grub4dos_hdpart/">2011-08-09</a></time></span>      
+        <span>发表于<time datetime="2011-08-09T08:07:36.000Z"> <a href="/post/grub4dos_hdpart/">2011-08-09</a></time></span>      
     </header>
     
     
@@ -532,7 +715,7 @@ exit
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/模块/" class="label label-info">模块</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/批处理/" class="label label-success">批处理</a><a href="/tags/模块/" class="label label-info">模块</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_hdpart/#comments" class="ds-thread-count comment-link" data-thread-key="738" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -550,7 +733,7 @@ exit
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></h1>
       
-        <span>发表于<time datetime="2011-08-02T22:22:07.000Z"> <a href="/post/asm_addr/">2011-08-02</a></time></span>      
+        <span>发表于<time datetime="2011-08-02T14:22:07.000Z"> <a href="/post/asm_addr/">2011-08-02</a></time></span>      
     </header>
     
     
@@ -583,7 +766,7 @@ exit
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/ASM/">ASM</a></li></span></span> | <span class="tags">标签 <a href="/tags/编程/" class="label label-primary">编程</a><a href="/tags/汇编/" class="label label-success">汇编</a><a href="/tags/ASM/" class="label label-info">ASM</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/ASM/">ASM</a></li></span></span> | <span class="tags">标签 <a href="/tags/编程/" class="label label-primary">编程</a><a href="/tags/汇编/" class="label label-success">汇编</a><a href="/tags/ASM/" class="label label-info">ASM</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/asm_addr/#comments" class="ds-thread-count comment-link" data-thread-key="729" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -601,7 +784,7 @@ exit
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></h1>
       
-        <span>发表于<time datetime="2011-05-24T01:23:39.000Z"> <a href="/post/winsock_fix/">2011-05-24</a></time></span>      
+        <span>发表于<time datetime="2011-05-23T17:23:39.000Z"> <a href="/post/winsock_fix/">2011-05-24</a></time></span>      
     </header>
     
     
@@ -631,7 +814,7 @@ exit
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/DNS/" class="label label-primary">DNS</a><a href="/tags/WINSOCK/" class="label label-success">WINSOCK</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/DNS/" class="label label-primary">DNS</a><a href="/tags/WINSOCK/" class="label label-success">WINSOCK</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/winsock_fix/#comments" class="ds-thread-count comment-link" data-thread-key="687" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -649,7 +832,7 @@ exit
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></h1>
       
-        <span>发表于<time datetime="2011-05-04T01:04:59.000Z"> <a href="/post/modboot/">2011-05-04</a></time></span>      
+        <span>发表于<time datetime="2011-05-03T17:04:59.000Z"> <a href="/post/modboot/">2011-05-04</a></time></span>      
     </header>
     
     
@@ -708,7 +891,7 @@ boot
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/DOS/">DOS</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/DOS/" class="label label-success">DOS</a></span> | <span class="time">最近更新:<time title="2014-02-10 13:15:27"datetime="2014-02-10 13:15:27"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/DOS/">DOS</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/DOS/" class="label label-success">DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/modboot/#comments" class="ds-thread-count comment-link" data-thread-key="637" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -726,7 +909,7 @@ boot
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></h1>
       
-        <span>发表于<time datetime="2011-04-29T00:38:14.000Z"> <a href="/post/vhd_mnt/">2011-04-29</a></time></span>      
+        <span>发表于<time datetime="2011-04-28T16:38:14.000Z"> <a href="/post/vhd_mnt/">2011-04-29</a></time></span>      
     </header>
     
     
@@ -825,7 +1008,7 @@ exit
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/vhd/" class="label label-primary">vhd</a><a href="/tags/vhdmount/" class="label label-success">vhdmount</a><a href="/tags/系统相关/" class="label label-info">系统相关</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/vhd/" class="label label-primary">vhd</a><a href="/tags/vhdmount/" class="label label-success">vhdmount</a><a href="/tags/系统相关/" class="label label-info">系统相关</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/vhd_mnt/#comments" class="ds-thread-count comment-link" data-thread-key="667" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -843,7 +1026,7 @@ exit
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></h1>
       
-        <span>发表于<time datetime="2011-02-25T09:41:12.000Z"> <a href="/post/win_print_set/">2011-02-25</a></time></span>      
+        <span>发表于<time datetime="2011-02-25T01:41:12.000Z"> <a href="/post/win_print_set/">2011-02-25</a></time></span>      
     </header>
     
     
@@ -898,7 +1081,7 @@ net start spooler
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/win_print_set/#comments" class="ds-thread-count comment-link" data-thread-key="652" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -916,7 +1099,7 @@ net start spooler
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></h1>
       
-        <span>发表于<time datetime="2011-02-21T14:09:45.000Z"> <a href="/post/linux_assembly/">2011-02-21</a></time></span>      
+        <span>发表于<time datetime="2011-02-21T06:09:45.000Z"> <a href="/post/linux_assembly/">2011-02-21</a></time></span>      
     </header>
     
     
@@ -931,134 +1114,8 @@ net start spooler
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/资料/">资料</a></li></span></span> | <span class="tags">标签 <a href="/tags/linux/" class="label label-primary">linux</a><a href="/tags/汇编/" class="label label-success">汇编</a><a href="/tags/转载/" class="label label-info">转载</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/资料/">资料</a></li></span></span> | <span class="tags">标签 <a href="/tags/linux/" class="label label-primary">linux</a><a href="/tags/汇编/" class="label label-success">汇编</a><a href="/tags/转载/" class="label label-info">转载</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/linux_assembly/#comments" class="ds-thread-count comment-link" data-thread-key="650" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></h1>
-      
-        <span>发表于<time datetime="2011-01-28T13:55:38.000Z"> <a href="/post/weesetup/">2011-01-28</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>wee 是一个微型的grub4dos用于安装到硬盘mbr上，可以用来代替之前的grldr.mbr方案。</p>
-<p>支持的文件系统： FAT12/16/32/NTFS EXT2/3/4</p>
-<p>weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。</p>
-<p>注意： 如果你的biod不支持EBIOS请不要安装（一般情况下较新的电脑都会支持），具体原因请看下面的WEE说明。</p>
-<blockquote>
-<p>WEE access disk sectors only using EBIOS(int13/AH=42h), and never using CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS on a drive, then WEE will not be able to access that drive.</p>
-<p>WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are supported.</p>
-<p>WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable because it is of a valid Linux kernel format.</p>
-<p>Any single sector boot record file(with 55 AA at offset 0x1FE) can boot as well.</p>
-<p>Besides, WEE can run 32-bit programs written for it.</p>
-</blockquote>
-<p>2011-04-24</p>
-<ul>
-<li>升级内置wee63.mbr到最新版.</li>
-<li>允许在只读设备上运行. </li>
-</ul>
-<p>2011-02-17</p>
-<ol>
-<li>升级内置wee63.mbr到最新版.</li>
-<li>添加-l参数，显示磁盘列表.</li>
-<li>阻止在使用了fbinst的磁盘上使用该程序.</li>
-</ol>
-<pre><code>weesetup v1.2.
- Usage:
-  weesetup [OPTIONS] DEVICE
-
-OPTIONS:
-  -i wee63.mbr Use a custom wee63.mbr file.
-
- -o outfile Export new wee63.mbr to outfile.
-
- -s scriptfile Import script from scriptfile.
-
- -m mbrfile Read mbr from mbrfile(must use with option -o).
-
- -f Force install.
-  -u Update.
-  -b Backup mbr to second sector(default is nt6mbr).
-  -l List all disks in system and exit.
-</code></pre><p>Report bugs to website:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank"><a href="http://code.google.com/p/grubutils/issues">http://code.google.com/p/grubutils/issues</a></a></p>
-<p>Thanks:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a><br>  wee63setup.c by SvOlli,xdio.c by bean  </p>
-<p>wee 安装程序v1.2</p>
-<p> 用法:</p>
-<p>  weesetup [参数] 磁盘</p>
-<p> 参数:</p>
-<p>  -i wee63.mbr 使用外置的wee63.mbr。</p>
-<p>  -o outfile 导出新的WEE63.MBR文件到outfile.</p>
-<p>  -s scriptfile 导入wee脚本文件.</p>
-<p>  -m mbrfile 从mbrfile获取mbr信息（必须配合参数-o使用）.</p>
-<p>  -f 强制安装.  </p>
-<p>  -u 更新wee.  </p>
-<p>  -b 备份旧的mbr到第二扇区（默认不备份，而是直接使用内置的nt6mbr）.  </p>
-<p>  -l 显示所在硬盘列表  </p>
-<p>请到以下网址报告BUG:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank"><a href="http://code.google.com/p/grubutils/issues">http://code.google.com/p/grubutils/issues</a></a></p>
-<p>感谢: 
-  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a><br>  wee63setup.c by SvOlli,xdio.c by bean </p>
-<p>更多资料请访问我的搏客:<br> <a href="http://chenall.net/post/weesetup/"><a href="http://chenall.net/post/weesetup/">http://chenall.net/post/weesetup/</a></a> </p>
-<p>编译方法：</p>
-<ol>
-<li><p>首先从SVN下载GRUBUTILS源码 
-svn co svn://svn.gna.org/svn/grubutil grubutil</p>
-</li>
-<li><p>在grubutil目录下新建一个子目录weesetup，然后把weesetup的源码复制过去.</p>
-<p>在weesetup目录下执行make，就可以在bin目录中生成一个weesetup.exe</p>
-</li>
-</ol>
-<p>附:内置的wee63.mbr默认脚本内容</p>
-<pre><code> find --set-root /boot/grub/grldr
- /boot/grub/grldr
- find --set-root /boot/grldr
- /boot/grldr
- timeout 1
- default 0
- title 1.GRUB4DOS
- find --set-root /BOOT/GRUB/GRLDR
- /BOOT/GRUB/GRLDR
- find --set-root /BOOT/GRLDR
- /BOOT/GRLDR
- find --set-root /BOOT/GRUB.EXE
- /BOOT/GRUB.EXE
- find --set-root /grldr
- /grldr
-
-title 2.Windows
- chainloader (hd0)1+1
- find --set-root /bootmgr
- /bootmgr
- find --set-root /ntldr
- /ntldr
-
-title 3.Plop Boot Manager
- find --set-root /BOOT/GRUB/PLPBT.BIN
- /BOOT/GRUB/PLPBT.BIN
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C语言/">C语言</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/wee/" class="label label-success">wee</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/weesetup/#comments" class="ds-thread-count comment-link" data-thread-key="642" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -1148,7 +1205,7 @@ title 3.Plop Boot Manager
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:57:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:02:26</em></span></div>
 </div>
 <div class="clearfix"></div>
 

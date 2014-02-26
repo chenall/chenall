@@ -114,9 +114,58 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></h1>
+      
+        <span>发表于<time datetime="2012-07-04T08:51:34.000Z"> <a href="/post/freenas_tftp_case/">2012-07-04</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>如题，因为默认情况下创建的卷都是有区分大小写的，这样一来使用TFTP服务就不太方便。而Windows下的TFTP服务器就没有这样的问题，因为WINDOWS都是不区分大小写的，为了方便需要想办法TFTP服务不区分大小写。</p>
+<p>查一了些资料，刚开始本来以为TFTP服务有什么参数还是什么的可以不区分大小写的，找了挺久了，没有发现任何有用的信息。</p>
+<p>后来仔细看了一下ZFS文件系统部份，发现ZFS上面是可以创建不区分大小写的卷的。相关资料链接如下：</p>
+<p><a href="http://docs.oracle.com/cd/E26926_01/html/E25826/gazss.html" target="_blank">http://docs.oracle.com/cd/E26926_01/html/E25826/gazss.html</a></p>
+<p>以下就是所需要的信息：</p>
+<blockquote>
+<p><code>casesensitivity</code>  字符串  <em>mixed</em></p>
+<p>此属性指示文件系统使用的文件名匹配算法应当是<code>casesensitive</code>、<code>caseinsensitive</code>，还是允许这两种匹配风格的组合 (mixed)。传统上，UNIX 和 POSIX 文件系统的文件名区分大小写。
+此属性的值为 mixed 时表示文件系统对区分大小写和不区分大小写的匹配行为要求均可支持。当前，在支持混合行为的文件系统上，不区分大小写的匹配行为仅限于 Oracle Solaris SMB 服务器产品。有关使用 mixed 值的更多信息，请参见casesensitivity 属性。
+不管 casesensitivity 属性设置如何，在创建文件时，文件系统都会保留指定的名称的大小写。在创建文件系统后无法更改此属性。</p>
+</blockquote>
+<p>试着直接<code>zfs set</code> 来改变该属性发现是只读的，不可修改。所以只能重新创建一个卷了。</p>
+<p>因为使用WEB图形界面创建的ZFS卷不能设置这个属性，所以必须到SHELL下创建，命令举例：</p>
+<pre><code>zfs create -o casesensitivity=insensitive zfs0/tftproot
+</code></pre><p>在zfs0上创建一个新的卷tftproot不区分大小写。我们简单一点只需要上面的命令就可以了，其它的容量限制什么的可以直接在图形界面下修改。</p>
+<p>然后只要把TFTP服务的根目录设为上面新创建的卷就行了。不区分大小写用着就是比较方便。</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/FreeNas/">FreeNas</a></li></span></span> | <span class="tags">标签 <a href="/tags/case/" class="label label-primary">case</a><a href="/tags/freenas/" class="label label-success">freenas</a><a href="/tags/TFTP/" class="label label-info">TFTP</a><a href="/tags/zfs/" class="label label-warning">zfs</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/freenas_tftp_case/#comments" class="ds-thread-count comment-link" data-thread-key="840" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></h1>
       
-        <span>发表于<time datetime="2012-06-18T19:09:55.000Z"> <a href="/post/dbank_login/">2012-06-18</a></time></span>      
+        <span>发表于<time datetime="2012-06-18T11:09:55.000Z"> <a href="/post/dbank_login/">2012-06-18</a></time></span>      
     </header>
     
     
@@ -161,7 +210,7 @@
 <p>得到</p>
 <p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
 <p>现在参数全部有了直接提交（用get或post都可以）</p>
-<p><a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#x68;&#116;&#116;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#103;&#x69;&#x6e;&#46;&#100;&#98;&#97;&#110;&#107;&#x2e;&#99;&#111;&#109;&#x2f;&#108;&#111;&#103;&#x69;&#x6e;&#97;&#x75;&#116;&#104;&#46;&#112;&#104;&#112;&#63;&#x6e;&#x73;&#x70;&#x5f;&#x61;&#x70;&#112;&#61;&#52;&#x38;&#x30;&#x34;&#x39;&#x26;&#109;&#61;&#x31;&#x26;&#110;&#x6f;&#x6e;&#99;&#x65;&#x3d;&#x34;&#102;&#100;&#102;&#x30;&#98;&#55;&#48;&#x30;&#98;&#x30;&#x30;&#53;&#50;&#x2e;&#57;&#x31;&#57;&#50;&#x34;&#56;&#x36;&#x34;&#x26;&#x6e;&#115;&#x70;&#95;&#x63;&#x69;&#x64;&#61;&#x38;&#48;&#x32;&#102;&#x64;&#100;&#49;&#48;&#x34;&#57;&#x39;&#x39;&#50;&#57;&#x38;&#x34;&#99;&#102;&#x34;&#x39;&#x61;&#49;&#99;&#100;&#x30;&#102;&#x63;&#x37;&#x35;&#52;&#53;&#99;&#x26;&#110;&#115;&#x70;&#95;&#117;&#115;&#x65;&#x72;&#61;&#116;&#x65;&#x73;&#x74;&#x40;&#x63;&#x68;&#101;&#x6e;&#97;&#108;&#x6c;&#x2e;&#x74;&#x6b;&#x26;&#x72;&#101;&#115;&#112;&#x6f;&#x6e;&#x73;&#101;&#x3d;&#57;&#99;&#x64;&#56;&#52;&#99;&#50;&#53;&#48;&#48;&#x61;&#x36;&#x30;&#49;&#51;&#x65;&#x66;&#x33;&#98;&#100;&#x31;&#52;&#52;&#49;&#x39;&#x31;&#x39;&#49;&#51;&#50;&#98;&#54;">&#x68;&#116;&#116;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#103;&#x69;&#x6e;&#46;&#100;&#98;&#97;&#110;&#107;&#x2e;&#99;&#111;&#109;&#x2f;&#108;&#111;&#103;&#x69;&#x6e;&#97;&#x75;&#116;&#104;&#46;&#112;&#104;&#112;&#63;&#x6e;&#x73;&#x70;&#x5f;&#x61;&#x70;&#112;&#61;&#52;&#x38;&#x30;&#x34;&#x39;&#x26;&#109;&#61;&#x31;&#x26;&#110;&#x6f;&#x6e;&#99;&#x65;&#x3d;&#x34;&#102;&#100;&#102;&#x30;&#98;&#55;&#48;&#x30;&#98;&#x30;&#x30;&#53;&#50;&#x2e;&#57;&#x31;&#57;&#50;&#x34;&#56;&#x36;&#x34;&#x26;&#x6e;&#115;&#x70;&#95;&#x63;&#x69;&#x64;&#61;&#x38;&#48;&#x32;&#102;&#x64;&#100;&#49;&#48;&#x34;&#57;&#x39;&#x39;&#50;&#57;&#x38;&#x34;&#99;&#102;&#x34;&#x39;&#x61;&#49;&#99;&#100;&#x30;&#102;&#x63;&#x37;&#x35;&#52;&#53;&#99;&#x26;&#110;&#115;&#x70;&#95;&#117;&#115;&#x65;&#x72;&#61;&#116;&#x65;&#x73;&#x74;&#x40;&#x63;&#x68;&#101;&#x6e;&#97;&#108;&#x6c;&#x2e;&#x74;&#x6b;&#x26;&#x72;&#101;&#115;&#112;&#x6f;&#x6e;&#x73;&#101;&#x3d;&#57;&#99;&#x64;&#56;&#52;&#99;&#50;&#53;&#48;&#48;&#x61;&#x36;&#x30;&#49;&#51;&#x65;&#x66;&#x33;&#98;&#100;&#x31;&#52;&#52;&#49;&#x39;&#x31;&#x39;&#49;&#51;&#50;&#98;&#54;</a></p>
+<p><a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#116;&#x74;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#103;&#x69;&#x6e;&#46;&#100;&#x62;&#97;&#x6e;&#x6b;&#x2e;&#99;&#111;&#x6d;&#47;&#108;&#111;&#x67;&#x69;&#110;&#97;&#x75;&#x74;&#104;&#46;&#x70;&#104;&#112;&#63;&#x6e;&#x73;&#x70;&#x5f;&#97;&#x70;&#112;&#61;&#52;&#56;&#48;&#x34;&#x39;&#x26;&#109;&#61;&#x31;&#38;&#110;&#111;&#x6e;&#x63;&#x65;&#61;&#52;&#102;&#x64;&#102;&#48;&#x62;&#x37;&#48;&#x30;&#98;&#48;&#x30;&#53;&#50;&#46;&#57;&#49;&#57;&#x32;&#52;&#x38;&#54;&#52;&#38;&#110;&#x73;&#112;&#95;&#x63;&#x69;&#100;&#x3d;&#56;&#x30;&#x32;&#102;&#100;&#x64;&#49;&#x30;&#52;&#x39;&#x39;&#57;&#50;&#x39;&#56;&#x34;&#99;&#x66;&#x34;&#57;&#97;&#49;&#99;&#100;&#x30;&#x66;&#99;&#55;&#53;&#52;&#x35;&#99;&#x26;&#x6e;&#115;&#112;&#95;&#117;&#x73;&#x65;&#114;&#x3d;&#x74;&#x65;&#x73;&#116;&#x40;&#x63;&#x68;&#101;&#110;&#x61;&#108;&#108;&#46;&#116;&#x6b;&#x26;&#x72;&#101;&#115;&#112;&#x6f;&#110;&#115;&#x65;&#x3d;&#x39;&#99;&#100;&#x38;&#52;&#99;&#x32;&#x35;&#x30;&#x30;&#x61;&#x36;&#48;&#49;&#x33;&#101;&#x66;&#51;&#98;&#x64;&#x31;&#52;&#x34;&#x31;&#x39;&#x31;&#57;&#x31;&#x33;&#x32;&#x62;&#54;">&#104;&#116;&#x74;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#103;&#x69;&#x6e;&#46;&#100;&#x62;&#97;&#x6e;&#x6b;&#x2e;&#99;&#111;&#x6d;&#47;&#108;&#111;&#x67;&#x69;&#110;&#97;&#x75;&#x74;&#104;&#46;&#x70;&#104;&#112;&#63;&#x6e;&#x73;&#x70;&#x5f;&#97;&#x70;&#112;&#61;&#52;&#56;&#48;&#x34;&#x39;&#x26;&#109;&#61;&#x31;&#38;&#110;&#111;&#x6e;&#x63;&#x65;&#61;&#52;&#102;&#x64;&#102;&#48;&#x62;&#x37;&#48;&#x30;&#98;&#48;&#x30;&#53;&#50;&#46;&#57;&#49;&#57;&#x32;&#52;&#x38;&#54;&#52;&#38;&#110;&#x73;&#112;&#95;&#x63;&#x69;&#100;&#x3d;&#56;&#x30;&#x32;&#102;&#100;&#x64;&#49;&#x30;&#52;&#x39;&#x39;&#57;&#50;&#x39;&#56;&#x34;&#99;&#x66;&#x34;&#57;&#97;&#49;&#99;&#100;&#x30;&#x66;&#99;&#55;&#53;&#52;&#x35;&#99;&#x26;&#x6e;&#115;&#112;&#95;&#117;&#x73;&#x65;&#114;&#x3d;&#x74;&#x65;&#x73;&#116;&#x40;&#x63;&#x68;&#101;&#110;&#x61;&#108;&#108;&#46;&#116;&#x6b;&#x26;&#x72;&#101;&#115;&#112;&#x6f;&#110;&#115;&#x65;&#x3d;&#x39;&#99;&#100;&#x38;&#52;&#99;&#x32;&#x35;&#x30;&#x30;&#x61;&#x36;&#48;&#49;&#x33;&#101;&#x66;&#51;&#98;&#x64;&#x31;&#52;&#x34;&#x31;&#x39;&#x31;&#57;&#x31;&#x33;&#x32;&#x62;&#54;</a></p>
 <p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
 <pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
 </code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
@@ -233,7 +282,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/一键签到/" class="label label-primary">一键签到</a><a href="/tags/免密码/" class="label label-success">免密码</a><a href="/tags/华为网盘/" class="label label-info">华为网盘</a><a href="/tags/自动登录/" class="label label-warning">自动登录</a><a href="/tags/自动签到/" class="label label-primary">自动签到</a><a href="/tags/原创/" class="label label-success">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/一键签到/" class="label label-primary">一键签到</a><a href="/tags/免密码/" class="label label-success">免密码</a><a href="/tags/华为网盘/" class="label label-info">华为网盘</a><a href="/tags/自动登录/" class="label label-warning">自动登录</a><a href="/tags/自动签到/" class="label label-primary">自动签到</a><a href="/tags/原创/" class="label label-success">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/dbank_login/#comments" class="ds-thread-count comment-link" data-thread-key="835" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -251,7 +300,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></h1>
       
-        <span>发表于<time datetime="2012-03-29T17:21:48.000Z"> <a href="/post/netdisk-autosign/">2012-03-29</a></time></span>      
+        <span>发表于<time datetime="2012-03-29T09:21:48.000Z"> <a href="/post/netdisk-autosign/">2012-03-29</a></time></span>      
     </header>
     
     
@@ -276,7 +325,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/签到/" class="label label-primary">签到</a><a href="/tags/自动/" class="label label-success">自动</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/签到/" class="label label-primary">签到</a><a href="/tags/自动/" class="label label-success">自动</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/netdisk-autosign/#comments" class="ds-thread-count comment-link" data-thread-key="827" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -294,7 +343,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></h1>
       
-        <span>发表于<time datetime="2012-02-13T16:00:55.000Z"> <a href="/post/g4d_hd_tools/">2012-02-13</a></time></span>      
+        <span>发表于<time datetime="2012-02-13T08:00:55.000Z"> <a href="/post/g4d_hd_tools/">2012-02-13</a></time></span>      
     </header>
     
     
@@ -505,7 +554,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/实用/">实用</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/工具箱/" class="label label-success">工具箱</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:34:03"datetime="2014-02-10 03:34:03"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/实用/">实用</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/工具箱/" class="label label-success">工具箱</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/g4d_hd_tools/#comments" class="ds-thread-count comment-link" data-thread-key="700" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -523,7 +572,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></h1>
       
-        <span>发表于<time datetime="2012-02-13T10:40:00.000Z"> <a href="/post/ntboot/">2012-02-13</a></time></span>      
+        <span>发表于<time datetime="2012-02-13T02:40:00.000Z"> <a href="/post/ntboot/">2012-02-13</a></time></span>      
     </header>
     
     
@@ -551,7 +600,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/ntboot/" class="label label-success">ntboot</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 13:15:27"datetime="2014-02-10 13:15:27"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/ntboot/" class="label label-success">ntboot</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/ntboot/#comments" class="ds-thread-count comment-link" data-thread-key="117" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -569,7 +618,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></h1>
       
-        <span>发表于<time datetime="2012-01-19T08:00:35.000Z"> <a href="/post/grub4dos_dev/">2012-01-19</a></time></span>      
+        <span>发表于<time datetime="2012-01-19T00:00:35.000Z"> <a href="/post/grub4dos_dev/">2012-01-19</a></time></span>      
     </header>
     
     
@@ -826,7 +875,7 @@ make
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/实用/">实用</a></li></span></span> | <span class="tags">标签 <a href="/tags/colinux/" class="label label-primary">colinux</a><a href="/tags/debian/" class="label label-success">debian</a><a href="/tags/GRUB4DOS/" class="label label-info">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-13 14:31:05"datetime="2014-02-13 14:31:05"> 2014-02-13</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/实用/">实用</a></li></span></span> | <span class="tags">标签 <a href="/tags/colinux/" class="label label-primary">colinux</a><a href="/tags/debian/" class="label label-success">debian</a><a href="/tags/GRUB4DOS/" class="label label-info">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_dev/#comments" class="ds-thread-count comment-link" data-thread-key="804" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -844,7 +893,7 @@ make
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></h1>
       
-        <span>发表于<time datetime="2012-01-11T21:36:32.000Z"> <a href="/post/newext/">2012-01-11</a></time></span>      
+        <span>发表于<time datetime="2012-01-11T13:36:32.000Z"> <a href="/post/newext/">2012-01-11</a></time></span>      
     </header>
     
     
@@ -885,7 +934,7 @@ goto :add_ext
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/技巧/" class="label label-primary">技巧</a><a href="/tags/病毒/" class="label label-success">病毒</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/技巧/" class="label label-primary">技巧</a><a href="/tags/病毒/" class="label label-success">病毒</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/newext/#comments" class="ds-thread-count comment-link" data-thread-key="802" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -903,7 +952,7 @@ goto :add_ext
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/cardrom/">卡蝶机</a></h1>
       
-        <span>发表于<time datetime="2012-01-11T20:22:10.000Z"> <a href="/post/cardrom/">2012-01-11</a></time></span>      
+        <span>发表于<time datetime="2012-01-11T12:22:10.000Z"> <a href="/post/cardrom/">2012-01-11</a></time></span>      
     </header>
     
     
@@ -952,7 +1001,7 @@ goto :add_ext
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/卡蝶机/" class="label label-success">卡蝶机</a></span> | <span class="time">最近更新:<time title="2014-02-20 14:16:20"datetime="2014-02-20 14:16:20"> 2014-02-20</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/卡蝶机/" class="label label-success">卡蝶机</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/cardrom/#comments" class="ds-thread-count comment-link" data-thread-key="797" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -970,7 +1019,7 @@ goto :add_ext
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></h1>
       
-        <span>发表于<time datetime="2011-11-09T14:35:20.000Z"> <a href="/post/datatoexcel/">2011-11-09</a></time></span>      
+        <span>发表于<time datetime="2011-11-09T06:35:20.000Z"> <a href="/post/datatoexcel/">2011-11-09</a></time></span>      
     </header>
     
     
@@ -1069,7 +1118,7 @@ end sub
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/VB/">VB</a></li><li><a href="/categories/程序设计/VB/VBScript/">VBScript</a></li></span></span> | <span class="tags">标签 <a href="/tags/EXCEL/" class="label label-primary">EXCEL</a><a href="/tags/VBScript/" class="label label-success">VBScript</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/VB/">VB</a></li><li><a href="/categories/程序设计/VB/VBScript/">VBScript</a></li></span></span> | <span class="tags">标签 <a href="/tags/EXCEL/" class="label label-primary">EXCEL</a><a href="/tags/VBScript/" class="label label-success">VBScript</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/datatoexcel/#comments" class="ds-thread-count comment-link" data-thread-key="787" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -1087,7 +1136,7 @@ end sub
       <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></h1>
       
-        <span>发表于<time datetime="2011-10-17T23:36:28.000Z"> <a href="/post/grub4dos_biosint/">2011-10-17</a></time></span>      
+        <span>发表于<time datetime="2011-10-17T15:36:28.000Z"> <a href="/post/grub4dos_biosint/">2011-10-17</a></time></span>      
     </header>
     
     
@@ -1160,191 +1209,8 @@ unsigned long eflags; // as input and output
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/chkpci/" class="label label-primary">chkpci</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-10 13:15:27"datetime="2014-02-10 13:15:27"> 2014-02-10</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/chkpci/" class="label label-primary">chkpci</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_biosint/#comments" class="ds-thread-count comment-link" data-thread-key="785" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></h1>
-      
-        <span>发表于<time datetime="2011-10-08T17:12:07.000Z"> <a href="/post/grub4dos_date_bat/">2011-10-08</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>修改系统日期有很多种方法，比如直接进入BIOS修改，或者进入系统后修改。</p>
-<p>如果我想每次开机都改成一个固定的时间，进入系统后自动更新为正确的时间（一般用于过期软件破解）</p>
-<p>现在可以直接使用GRUB4DOS来实现自动修改了。</p>
-<p>本批处理属于GRUB4DOS高级编程，直接调用BIOS中断来实现修改日期的目的。</p>
-<p>BIOS中断调用的实现例子。</p>
-<p>用法:</p>
-<p>把批处理直接保存为DATE然后使用以下命令就可以了或直接使用C语言编译的版本</p>
-<p>  显示当前日期</p>
-<pre><code>date
-</code></pre><p>  修改日期</p>
-<pre><code>date 2011-01-01
-</code></pre><h3 id="-">相关资料:</h3>
-<pre><code>时钟服务(Clock Service——INT 1AH) 
-00H —读取时钟“滴答”计数06H —设置闹钟
-01H —设置时钟“滴答”计数07H —闹钟复位
-02H —读取时间0AH —读取天数计数
-03H —设置时间0BH —设置天数计数
-04H —读取日期 80H —设置声音源信息 
-05H —设置日期
-(1)、功能00H
-功能描述：读取时钟“滴答”计数
-入口参数：AH=00H
-出口参数：AL=00H——未过午夜，否则，表示已过午夜
-CX:DX=时钟“滴答”计数
-(2)、功能01H
-功能描述：设置时钟“滴答”计数
-入口参数：AH=01H
-CX:DX=时钟“滴答”计数
-出口参数：无
-(3)、功能02H
-功能描述：读取时间
-入口参数：AH=02H
-出口参数：CH=BCD码格式的小时
-CL=BCD码格式的分钟
-DH=BCD码格式的秒
-DL=00H——标准时间，否则，夏令时
-CF=0——时钟在走，否则，时钟停止
-(4)、功能03H
-功能描述：设置时间
-入口参数：AH=03H
-CH=BCD码格式的小时
-CL=BCD码格式的分钟
-DH=BCD码格式的秒
-DL=00H——标准时间，否则，夏令时
-出口参数：无
-(5)、功能04H
-功能描述：读取日期
-入口参数：AH=04H
-出口参数：CH=BCD码格式的世纪
-CL=BCD码格式的年
-DH=BCD码格式的月
-DL=BCD码格式的日
-CF=0——时钟在走，否则，时钟停止
-(6)、功能05H
-功能描述：设置日期
-入口参数：AH=05H
-CH=BCD码格式的世纪
-CL=BCD码格式的年
-DH=BCD码格式的月
-DL=BCD码格式的日
-出口参数：无
-(7)、功能06H
-功能描述：设置闹钟
-入口参数：AH=06H
-CH=BCD码格式的小时
-CL=BCD码格式的分钟
-DH=BCD码格式的秒
-出口参数：CF=０——操作成功，否则，闹钟已设置或时钟已停止
-(8)、功能07H
-功能描述：闹钟复位
-入口参数：AH=07H
-出口参数：无
-(9)、功能0AH
-功能描述：读取天数计数，仅在PS/2有效，在此从略
-(10)、功能0BH
-功能描述：设置天数计数，仅在PS/2有效，在此从略
-(11)、功能80H
-功能描述：设置声音源信息
-入口参数：AH=80H
-AL=声音源
-=00H——8253可编程计时器，通道2
-=01H——盒式磁带输入
-=02H——I/O通道上的&quot;Audio In&quot;
-=03H——声音产生芯片
-出口参数：无
-</code></pre><p>C语言版的代码在这里</p>
-<p><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c" target="_blank"><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c">http://code.google.com/p/grubutils/source/browse/trunk/src/date.c</a></a></p>
-<p>批处理版源码:</p>
-<pre><code>!BAT
-::datefunc for grub4dos by chenall 2011-10-08
-setlocal
-debug off
-set edi=0x60000
-set esi=0x60004
-set ebp=0x60008
-set esp=0x6000C
-set ebx=0x60010
-set bx=0x60010
-set edx=0x60014
-set dx=0x60014
-set ecx=0x60018
-set cx=0x60018
-set eax=0x6001C
-set ax=0x6001C
-set gs=0x60020
-set fs=0x60024
-set es=0x60028
-set ds=0x6002c
-set ss=0x60030
-set eip=0x60034
-set cs=0x60038
-set eflags=0x60003c
-::时钟服务(Clock Service——INT 1AH) 
-::04H —读取日期
-call :BIOS_INT 1A ax=0x400
-set date=%*
-if exist date &amp;&amp; goto :SET_DATE
-call Fn.0 0 &quot;%%04X%%04X&quot; *%cx% *%dx% | set date=
-echo -n The current date is: %date:~0,4%-%date:~4,2%-%date:~6%
-set /p date=Enter the new date: (yyyy-mm-dd)
-
-:SET_DATE  调用BIOS中断修改日期
-::05H —设置日期
-call :BIOS_INT 1A ax=0x500 cx=0x%date:~0,4% dx=0x%date:~5,2%%%date:~8,2%
-exit
-
-:BIOS_INT
-::初始化系统参数
-echo -n &gt; (md)0x300+1
-write %cs% -1
-write %ss% -1
-write %esp% -1
-write %eflags% -1
-write %ds% -1
-write %es% -1
-write %fs% -1
-write %gs% -1
-write %eip% 0xFFFF%1CD
-shift 1
-
-::设置参数
-:参数
-if &quot;%2&quot;==&quot;&quot; goto :realmode_run
-write %%%1% %2
-shift 1
-shift 1
-goto :参数
-:realmode_run
-call Fn.53 0x60000
-exit
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/date/" class="label label-primary">date</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/time/" class="label label-info">time</a><a href="/tags/批处理/" class="label label-warning">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-10 03:31:11"datetime="2014-02-10 03:31:11"> 2014-02-10</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_date_bat/#comments" class="ds-thread-count comment-link" data-thread-key="782" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -1434,7 +1300,7 @@ exit
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-25 13:57:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:02:26</em></span></div>
 </div>
 <div class="clearfix"></div>
 
