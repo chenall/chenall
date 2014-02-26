@@ -92,7 +92,7 @@ test ALL=/sbin/reboot
 www ALL=(root) NOPASSWD: /mnt/sudodir
 ```
 
-使用时，直接`sudo /mnt/sudodir/cmd`，不需要输入密码。
+使用时，直接`sudo -u root /mnt/sudodir/cmd`，不需要输入密码。
 
 为了安全起见，这个 **/mnt/sudodir** 除了`root`用户之外其它人应该只有运行的权限。
 
