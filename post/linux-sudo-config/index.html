@@ -7,16 +7,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>linux sudo �����������ļ�/etc/sudoers���� | chenall&#39;s Blog</title>
+<title>linux sudo 命令和配置文件/etc/sudoers介绍 | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="sudo ��linux�³��õ�������ͨ�û�ʹ�ó����û�Ȩ�޵Ĺ��ߡ� ���������ļ� sudoers һ���� /etc Ŀ¼�¡�
-�������� sudoers �ļ����Ķ���sudo ���ṩ��һ���༭���ļ������visudo ���Ը��ļ������޸ġ�ǿ���Ƽ�ʹ�ø������޸� sudoers����Ϊ��������У���ļ������Ƿ���ȷ����������ȷ���ڱ����˳�ʱ�ͻ���ʾ���Ķ����ó����ġ�">
+<meta name="description" content="sudo 是linux下常用的允许普通用户使用超级用户权限的工具。 它的配置文件 sudoers 一般在 /etc 目录下。
+不过不管 sudoers 文件在哪儿，sudo 都提供了一个编辑该文件的命令：visudo 来对该文件进行修改。强烈推荐使用该命令修改 sudoers，因为它会帮你校验文件配置是否正确，如果不正确，在保存退出时就会提示你哪段配置出错的。">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<meta property="og:title" content="linux sudo �����������ļ�/etc/sudoers����"/>
+<meta property="og:title" content="linux sudo 命令和配置文件/etc/sudoers介绍"/>
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
@@ -115,7 +115,7 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title">linux sudo �����������ļ�/etc/sudoers����</h1>
+      <h1 class="title">linux sudo 命令和配置文件/etc/sudoers介绍</h1>
       
         <span>发表于<time datetime="2014-02-26T09:40:34.000Z"> <a href="/post/linux-sudo-config/">2014-02-26</a></time></span>      
     </header>
@@ -125,9 +125,9 @@
 </div></section>
     <div class="entry">
       
-        <p><code>sudo</code> ��<strong>linux</strong>�³��õ�������ͨ�û�ʹ�ó����û�Ȩ�޵Ĺ��ߡ� ���������ļ� <strong>sudoers</strong> һ���� <strong>/etc</strong> Ŀ¼�¡�</p>
-<p>�������� <strong>sudoers</strong> �ļ����Ķ���<code>sudo</code> ���ṩ��һ���༭���ļ������<strong>visudo</strong> ���Ը��ļ������޸ġ�ǿ���Ƽ�ʹ�ø������޸� <strong>sudoers</strong>����Ϊ��������У���ļ������Ƿ���ȷ����������ȷ���ڱ����˳�ʱ�ͻ���ʾ���Ķ����ó����ġ� </p>
-<p>������ <strong>sudoers</strong> ��Ĭ�������ļ����ݡ�</p>
+        <p><code>sudo</code> 是<strong>linux</strong>下常用的允许普通用户使用超级用户权限的工具。 它的配置文件 <strong>sudoers</strong> 一般在 <strong>/etc</strong> 目录下。</p>
+<p>不过不管 <strong>sudoers</strong> 文件在哪儿，<code>sudo</code> 都提供了一个编辑该文件的命令：<strong>visudo</strong> 来对该文件进行修改。强烈推荐使用该命令修改 <strong>sudoers</strong>，因为它会帮你校验文件配置是否正确，如果不正确，在保存退出时就会提示你哪段配置出错的。 </p>
+<p>以下是 <strong>sudoers</strong> 的默认配置文件内容。</p>
 <a id="more"></a>
 
 <pre><code>#
@@ -155,37 +155,37 @@ root    ALL=(ALL:ALL) ALL
 
 # Allow members of group sudo to execute any command
 %sudo   ALL=(ALL:ALL) ALL
-</code></pre><h3 id="-">�������ø�ʽ</h3>
+</code></pre><h3 id="-">基本配置格式</h3>
 <pre><code>&lt;user list&gt; &lt;host list&gt; = &lt;operator list&gt; &lt;tag list&gt; &lt;command list&gt;
 </code></pre><ul>
-<li><em>user list</em>       �û�/�飬�����Ѿ����õ��û��ı����б�, �û���ֱ�� <code>username</code>���û�������<code>%</code>������<code>%admin</code>,</li>
-<li><em>host list</em>       �������������б�</li>
-<li><em>operator list</em>   runas�û������������ĸ��û�������Ȩ����ִ��</li>
-<li><em>command list</em>    ����ִ�е��������б�</li>
-<li><em>tag list</em>        ���򾭳��õ����� <strong>NOPASSWD:</strong> ��������������֮�����Բ����������롣</li>
+<li><em>user list</em>       用户/组，或者已经设置的用户的别名列表, 用户名直接 <code>username</code>，用户组加上<code>%</code>，比如<code>%admin</code>,</li>
+<li><em>host list</em>       主机名或别名列表</li>
+<li><em>operator list</em>   runas用户，即可以以哪个用户、组的权限来执行</li>
+<li><em>command list</em>    可以执行的命令或列表</li>
+<li><em>tag list</em>        这个经常用到的是 <strong>NOPASSWD:</strong> ，添加这个参数之后可以不用输入密码。</li>
 </ul>
-<p>��������Ĭ�����������Ķ�Ӧ���õ�˵��</p>
-<pre><code>## root �û������������������������û�������Ȩ��ִ���������˵��root�û��������߼���Ȩ�ޡ�
+<p>再来看看默认配置里面的对应配置的说明</p>
+<pre><code>## root 用户可以在任意主机上以任意用户、组的权限执行任意命令，说明root用户具有最高级的权限。
 root    ALL=(ALL:ALL) ALL
 
-## admin�����û���ӵ�����߼�Ȩ�ޡ�
+## admin组的用户都拥有最高级权限。
 %admin ALL=(ALL) ALL
 
-## sudo ���û���root�û�Ȩ��һ��
+## sudo 组用户和root用户权限一样
 %sudo   ALL=(ALL:ALL) ALL
-</code></pre><p><strong>tag list</strong> ������ <strong>NOPASSWD:</strong> ������ʱ����Ҫ������������:</p>
-<pre><code>## test �û����Բ��������������� **/sbin/reboot** ����
+</code></pre><p><strong>tag list</strong> 如果是 <strong>NOPASSWD:</strong> 则运行时不需要输入密码例子:</p>
+<pre><code>## test 用户可以不用输入密码运行 **/sbin/reboot** 命令
 test ALL=(ALL) NOPASSWD: /sbin/reboot
-</code></pre><p> <strong>operator list</strong> �� <strong>tag list</strong> ���ǿ�ѡ�ģ����������ģ�</p>
+</code></pre><p> <strong>operator list</strong> 和 <strong>tag list</strong> 都是可选的，比如下面的：</p>
 <pre><code>test ALL=/sbin/reboot
-</code></pre><p>ʵ�����ӣ� ��<code>PHP</code>��ʹ��<code>system</code> ����ϵͳ����ʱ��������<code>php</code>һ�㶼��ʹ��<code>www</code>�û����еģ�����Ҫ�ر�����Ҫ����Ҫ����ĳ���û����ļ�ʱ�Ϳ���ָ��ĳ��Ŀ¼�����ʹ��ĳ���û�Ȩ�����������С�</p>
-<p>���ӣ� Ŀ¼ <strong>/mnt/sudodir</strong> �����ĳ�������ʹ��rootȨ����ִ�С�</p>
+</code></pre><p>实用例子， 在<code>PHP</code>上使用<code>system</code> 调用系统命令时，由于是<code>php</code>一般都是使用<code>www</code>用户运行的，如果要特别的需要，需要处理某个用户的文件时就可以指定某个目录或命令，使用某个用户权限免密码运行。</p>
+<p>例子： 目录 <strong>/mnt/sudodir</strong> 里面的程序可以使用root权限来执行。</p>
 <pre><code>www ALL=(root) NOPASSWD: /mnt/sudodir
-</code></pre><p>ʹ��ʱ��ֱ��<code>sudo -u root /mnt/sudodir/cmd</code>������Ҫ�������롣</p>
-<p>Ϊ�˰�ȫ���������� <strong>/mnt/sudodir</strong> ����<code>root</code>�û�֮��������Ӧ��ֻ�����е�Ȩ�ޡ�</p>
-<p>�鿴��ǰ�û���<code>sudo</code>Ȩ�޿���ʹ������ <code>sudo -l</code></p>
-<p>PS�� ��������Щ���ϣ���Ҫ��Ϊ��ͨ��<a href="https://github.com/" target="_blank">github</a>��webhook����, �����ҵ�VPS�ϵ�PHP�ű���ʵ�� <code>hexo</code> վ�����Զ����£�������ֻ��Ҫ����Դ�ļ���github�ϣ������Զ�����վ�����ݣ������Զ�ͬ����������ͬ�ĵط����п��һ�����һƪ����������������</p>
-<p>�ο����ϣ� <a href="https://help.ubuntu.com/community/Sudoers" target="_blank">https://help.ubuntu.com/community/Sudoers</a></p>
+</code></pre><p>使用时，直接<code>sudo -u root /mnt/sudodir/cmd</code>，不需要输入密码。</p>
+<p>为了安全起见，这个 <strong>/mnt/sudodir</strong> 除了<code>root</code>用户之外其它人应该只有运行的权限。</p>
+<p>查看当前用户的<code>sudo</code>权限可以使用命令 <code>sudo -l</code></p>
+<p>PS： 我整理这些资料，主要是为了通过<a href="https://github.com/" target="_blank">github</a>的webhook功能, 配和我的VPS上的PHP脚本来实现 <code>hexo</code> 站点的自动更新，这样我只需要更新源文件到github上，它就自动生成站点内容，并且自动同步到多个不同的地方，有空我会再整一篇文章来介绍这个。</p>
+<p>参考资料： <a href="https://help.ubuntu.com/community/Sudoers" target="_blank">https://help.ubuntu.com/community/Sudoers</a></p>
 
       
     </div>
@@ -212,14 +212,14 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 <div class="panel panel-success">
     <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
     <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="http://chenall.net">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
-    <div class="panel-body">本文链接: <a href="/post/linux-sudo-config/">linux sudo �����������ļ�/etc/sudoers����</a></div>
+    <div class="panel-body">本文链接: <a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></div>
 </div></div><div class="widget" id="widget_after_content_ujian>">
 <div class="ujian-hook"></div>
 </div></section>
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/ϵͳ����/">ϵͳ����</a></li><li><a href="/categories/ϵͳ����/linux/">linux</a></li></span></span> | <span class="tags">标签 <a href="/tags/linux/" class="label label-primary">linux</a><a href="/tags/sudo/" class="label label-success">sudo</a></span> | <span class="time">最近更新:<time title="2014-02-26 21:47:10"datetime="2014-02-26 21:47:10"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/linux/">linux</a></li></span></span> | <span class="tags">标签 <a href="/tags/linux/" class="label label-primary">linux</a><a href="/tags/sudo/" class="label label-success">sudo</a></span> | <span class="time">最近更新:<time title="2014-02-26 21:50:11"datetime="2014-02-26 21:50:11"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/linux-sudo-config/#comments" class="ds-thread-count comment-link" data-thread-key="1402261740" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -239,10 +239,10 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo �����������ļ�/etc/sudoers����</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
-<div class="ds-thread"  data-thread-key="1402261740"  data-url="http://chenall.net/post/linux-sudo-config/" data-title="linux sudo �����������ļ�/etc/sudoers����"></div>
+<div class="ds-thread"  data-thread-key="1402261740"  data-url="http://chenall.net/post/linux-sudo-config/" data-title="linux sudo 命令和配置文件/etc/sudoers介绍"></div>
 <!-- Duoshuo Comment END -->
 
 </div></div><!--wapper-->
@@ -320,7 +320,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script></span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:47:10</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 21:50:11</em></span></div>
 </div>
 <div class="clearfix"></div>
 
@@ -348,9 +348,9 @@ var duoshuoQuery = {short_name:"chenall"};
 
 <script type="text/javascript">
     var wumiiPermaLink = "http://chenall.net/post/linux-sudo-config/";
-    var wumiiTitle = "linux sudo �����������ļ�/etc/sudoers����";
+    var wumiiTitle = "linux sudo 命令和配置文件/etc/sudoers介绍";
     var wumiiTags = "linux,sudo";
-    var wumiiCategories = ["ϵͳ����","linux"];
+    var wumiiCategories = ["系统相关","linux"];
     var wumiiSitePrefix = "http://chenall.net";
     var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
 </script>
