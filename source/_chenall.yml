@@ -52,6 +52,8 @@ modules:
     uid: 1880458
   ujian: #友荐：为网站添加'猜你喜欢'功能
     uid: 1880458
+  swiftype: #Swiftype配置，详情访问https://swiftype.com
+    key: P473Cjp95e3bFhiCP88w
 
 ##评论功能设置,目前支持disqus和duoshuo/uyan,需要在上面的modules中进行要应的设置
 # show_count 是否显示文章的评论数量
@@ -69,7 +71,7 @@ comments:
 analytics:
   # provider 要加载的统计代码类型,可同时加载多少,使用","分隔. 如下就加载了51la和google的统计代码
   # provider: 51la,google 
-  provider: 51la,google
+  provider: 51la,google,baidu
   # google-analytics UA
   google: UA-30310093-1
   # 我要啦」免费统计 ID
@@ -78,6 +80,8 @@ analytics:
   cnzz:
     siteid: 5774006  #站点ID,在获取统计代码的页面的地址栏上可以看到siteid=xxxx或从代码中提取(一般是一串数字)
     show: #显示样式  留空: 图片形式1; 1: 图片形式2; 2: 图片形式1; 其它值: 文字形式
+  baidu:
+    hash: 41a3a9225fc0df0d53086baea0f90d96
 
 # 站点顶部菜单,支持子菜单
 menu:
@@ -103,6 +107,7 @@ widgets:
   header: #顶部
   footer: #底部
   sidebar: #侧边栏
+    - swiftype
     - google_cse
     - category
     - latest_update_posts
