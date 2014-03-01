@@ -40,6 +40,11 @@
 <script src="/js/respond.proxy.js"></script>
    <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
 <![endif]-->
+<script type="text/javascript">
+function loadjs(c,d){var a=document.createElement("script");a.async=!0;a.type="text/javascript";a.src=c;a.charset=d||"gbk";(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(a)};
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var _js2load = [];
+</script>
 
 <!--addons at end of head-->
 </head>
@@ -179,7 +184,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/ff0_02/">FFO宠物技能[转]</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/iconshex/">让你的任意文件显示个性图标</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="650"  data-url="http://chenall.net/post/linux_assembly/" data-title="[转]Linux 汇编语言开发指南"></div>
@@ -188,6 +193,13 @@
 </div></div><!--wapper-->
        </div><!-- ID main-col END -->
        <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_swiftype" class="widget panel panel-primary">
+    
+<form class="input-group">
+<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
+</form></div>
+
 <div id="widget_google_cse" class="widget panel panel-primary">
     
 <gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
@@ -253,13 +265,13 @@
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-30310093-1']);
   _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script></span>  </div>
+  _js2load.push({src:('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'});
+</script></span><span id='analytics-baidu'>
+<script>
+var _hmt = _hmt || [];
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
+</script>
+</span>  </div>
   <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
@@ -274,14 +286,7 @@
                 
             <script type="text/javascript">
 var duoshuoQuery = {short_name:"chenall"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
 </script>
     
             <!--wumii_relatedItems-->
@@ -293,29 +298,25 @@ var duoshuoQuery = {short_name:"chenall"};
     var wumiiCategories = ["程序设计","资料"];
     var wumiiSitePrefix = "http://chenall.net";
     var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+    _js2load.push({src:'http://widget.wumii.cn/ext/relatedItemsWidget'});
 </script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
 <a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
 <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
 </a>
     
             
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
-<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
 <a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
     
-            <script>
-  (function() {
-    var cx = '013748367689400048621:dmsqkhtcvbm';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
+            
+<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
+<script type="text/javascript">
+var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
+_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
+$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
 </script>
+    
+            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=[];
@@ -367,7 +368,8 @@ var duoshuoQuery = {short_name:"chenall"};
 })(jQuery);
 </script>    
 <script type="text/javascript">
-$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
+_js2load.forEach(function(obj){loadjs(obj.src,obj.charset)});
 </script>
 
 

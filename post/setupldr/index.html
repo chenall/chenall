@@ -43,6 +43,11 @@ SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文�
 <script src="/js/respond.proxy.js"></script>
    <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
 <![endif]-->
+<script type="text/javascript">
+function loadjs(c,d){var a=document.createElement("script");a.async=!0;a.type="text/javascript";a.src=c;a.charset=d||"gbk";(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(a)};
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var _js2load = [];
+</script>
 
 <!--addons at end of head-->
 </head>
@@ -231,7 +236,7 @@ SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文�
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post54/">vi 编辑器使用指南</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li><li class="list-group-item"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></li><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li><li class="list-group-item"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="111"  data-url="http://chenall.net/post/setupldr/" data-title="【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究"></div>
@@ -240,6 +245,13 @@ SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文�
 </div></div><!--wapper-->
        </div><!-- ID main-col END -->
        <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_swiftype" class="widget panel panel-primary">
+    
+<form class="input-group">
+<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
+</form></div>
+
 <div id="widget_google_cse" class="widget panel panel-primary">
     
 <gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
@@ -305,13 +317,13 @@ SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文�
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-30310093-1']);
   _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script></span>  </div>
+  _js2load.push({src:('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'});
+</script></span><span id='analytics-baidu'>
+<script>
+var _hmt = _hmt || [];
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
+</script>
+</span>  </div>
   <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
@@ -326,14 +338,7 @@ SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文�
                 
             <script type="text/javascript">
 var duoshuoQuery = {short_name:"chenall"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
 </script>
     
             <!--wumii_relatedItems-->
@@ -345,29 +350,25 @@ var duoshuoQuery = {short_name:"chenall"};
     var wumiiCategories = ["个人日记","系统相关"];
     var wumiiSitePrefix = "http://chenall.net";
     var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+    _js2load.push({src:'http://widget.wumii.cn/ext/relatedItemsWidget'});
 </script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
 <a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
 <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
 </a>
     
             
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
-<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
 <a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
     
-            <script>
-  (function() {
-    var cx = '013748367689400048621:dmsqkhtcvbm';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
+            
+<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
+<script type="text/javascript">
+var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
+_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
+$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
 </script>
+    
+            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=[];
@@ -419,7 +420,8 @@ var duoshuoQuery = {short_name:"chenall"};
 })(jQuery);
 </script>    
 <script type="text/javascript">
-$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
+_js2load.forEach(function(obj){loadjs(obj.src,obj.charset)});
 </script>
 
 

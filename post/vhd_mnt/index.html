@@ -44,6 +44,11 @@
 <script src="/js/respond.proxy.js"></script>
    <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
 <![endif]-->
+<script type="text/javascript">
+function loadjs(c,d){var a=document.createElement("script");a.async=!0;a.type="text/javascript";a.src=c;a.charset=d||"gbk";(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(a)};
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var _js2load = [];
+</script>
 
 <!--addons at end of head-->
 </head>
@@ -267,7 +272,7 @@ exit
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/alrun-merry/">[分享] ALMRun–小巧的快速启动工具</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="667"  data-url="http://chenall.net/post/vhd_mnt/" data-title="[原创] VHD_MNT VHD文件快速挂载/卸载工具"></div>
@@ -276,6 +281,13 @@ exit
 </div></div><!--wapper-->
        </div><!-- ID main-col END -->
        <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_swiftype" class="widget panel panel-primary">
+    
+<form class="input-group">
+<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
+</form></div>
+
 <div id="widget_google_cse" class="widget panel panel-primary">
     
 <gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
@@ -341,13 +353,13 @@ exit
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-30310093-1']);
   _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script></span>  </div>
+  _js2load.push({src:('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'});
+</script></span><span id='analytics-baidu'>
+<script>
+var _hmt = _hmt || [];
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
+</script>
+</span>  </div>
   <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
@@ -362,14 +374,7 @@ exit
                 
             <script type="text/javascript">
 var duoshuoQuery = {short_name:"chenall"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
 </script>
     
             <!--wumii_relatedItems-->
@@ -381,29 +386,25 @@ var duoshuoQuery = {short_name:"chenall"};
     var wumiiCategories = ["程序设计","批处理"];
     var wumiiSitePrefix = "http://chenall.net";
     var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+    _js2load.push({src:'http://widget.wumii.cn/ext/relatedItemsWidget'});
 </script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
 <a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
 <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
 </a>
     
             
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};</script>
-<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1880458"></script>
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
 <a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
     
-            <script>
-  (function() {
-    var cx = '013748367689400048621:dmsqkhtcvbm';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
+            
+<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
+<script type="text/javascript">
+var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
+_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
+$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
 </script>
+    
+            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=[];
@@ -455,7 +456,8 @@ var duoshuoQuery = {short_name:"chenall"};
 })(jQuery);
 </script>    
 <script type="text/javascript">
-$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');})
+$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
+_js2load.forEach(function(obj){loadjs(obj.src,obj.charset)});
 </script>
 
 
