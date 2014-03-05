@@ -71,8 +71,8 @@ time_format: HH:mm:ss
 per_page: 10
 
 # Directory
-source_dir: chenall.net/source
-public_dir: chenall.net/public
+source_dir: :config/source
+public_dir: :config/public
 pagination_dir: page
 
 # Extensions
