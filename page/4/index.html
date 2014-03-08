@@ -119,6 +119,49 @@ var _js2load = [];
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></h1>
+      
+        <span>发表于<time datetime="2012-07-05T08:40:04.000Z"> <a href="/post/dbankdown/">2012-07-05</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>华为网盘其实挺好的，上下载速度都很快。只是下载的时候可以说十之八九会跳出注册登录的窗口，也就是需要登录才能下载。这个本来没有什么，只是我的密码都是随机的，记不住啊，每每下载都要登录太麻烦了。所以就想看看有没有什么办法可以不用登录直接下载的。查看了一下网页源码，发现其实很简单。</p>
+<p>如果有关注我微搏的话，应该很早就知道了，当然了网络上也有很多工具可以免登录下载，比如<a href="https://www.google.com/search?q=Dbank+linker&amp;qscrl=1" target="_blank">Dbank linker</a>.只是用起来不太方便。</p>
+<p>这里分享两个相对比较简单的方法可以直接解除限制，原理是一样的。</p>
+<ol>
+<li><p>使用书签的方案，优点快速简单，把以下链接保存为书签，以后打开网盘下载页，点击一下该书签就可以直接下载了。</p>
+<p><a href="javascript:globallinkdata.data[&#39;profile.productid&#39;]=30;adsShow=0;alert(&#39;%E5%B7%B2%E8%A7%A3%E9%99%A4%E4%B8%8B%E8%BD%BD%E9%99%90%E5%88%B6%EF%BC%8Cchenall%E7%A5%9D%E4%BD%A0%E5%A5%BD%E8%BF%90!&#39;">解除华为网盘下载限制</a></p>
+</li>
+<li><p>使用去广告过滤工具比如admucher（这个更强，连广告都没有了），使用替换工具查找<code>&quot;profile.productid&quot;:&quot;*&quot;</code>替换为<code>&quot;profile.productid&quot;:30</code></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/免登录/" class="label label-primary">免登录</a><a href="/tags/华为网盘/" class="label label-success">华为网盘</a><a href="/tags/破解/" class="label label-info">破解</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/dbankdown/#comments" class="ds-thread-count comment-link" data-thread-key="842" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></h1>
       
         <span>发表于<time datetime="2012-07-04T08:51:34.000Z"> <a href="/post/freenas_tftp_case/">2012-07-04</a></time></span>      
@@ -215,7 +258,7 @@ var _js2load = [];
 <p>得到</p>
 <p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
 <p>现在参数全部有了直接提交（用get或post都可以）</p>
-<p><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x68;&#116;&#116;&#112;&#x3a;&#47;&#47;&#108;&#111;&#103;&#x69;&#x6e;&#46;&#x64;&#98;&#x61;&#110;&#x6b;&#x2e;&#99;&#111;&#x6d;&#47;&#108;&#111;&#103;&#x69;&#110;&#x61;&#x75;&#116;&#104;&#46;&#x70;&#104;&#x70;&#63;&#110;&#x73;&#x70;&#95;&#x61;&#x70;&#112;&#x3d;&#52;&#x38;&#x30;&#52;&#57;&#38;&#x6d;&#61;&#49;&#x26;&#110;&#111;&#x6e;&#x63;&#x65;&#61;&#x34;&#102;&#100;&#102;&#48;&#98;&#x37;&#x30;&#x30;&#98;&#x30;&#x30;&#53;&#50;&#46;&#57;&#x31;&#57;&#50;&#52;&#x38;&#x36;&#52;&#38;&#x6e;&#x73;&#x70;&#95;&#99;&#x69;&#x64;&#61;&#x38;&#48;&#x32;&#102;&#100;&#x64;&#x31;&#x30;&#x34;&#x39;&#x39;&#x39;&#x32;&#x39;&#56;&#52;&#x63;&#x66;&#x34;&#x39;&#97;&#x31;&#99;&#x64;&#48;&#x66;&#x63;&#55;&#53;&#52;&#53;&#99;&#x26;&#110;&#115;&#x70;&#x5f;&#x75;&#x73;&#101;&#114;&#61;&#x74;&#101;&#x73;&#116;&#64;&#99;&#104;&#101;&#x6e;&#97;&#108;&#x6c;&#46;&#116;&#x6b;&#x26;&#114;&#101;&#x73;&#x70;&#111;&#110;&#115;&#101;&#x3d;&#57;&#x63;&#x64;&#x38;&#x34;&#99;&#50;&#x35;&#x30;&#x30;&#97;&#54;&#x30;&#49;&#51;&#101;&#x66;&#x33;&#x62;&#x64;&#x31;&#52;&#x34;&#49;&#x39;&#49;&#x39;&#x31;&#x33;&#50;&#98;&#x36;">&#x68;&#116;&#116;&#112;&#x3a;&#47;&#47;&#108;&#111;&#103;&#x69;&#x6e;&#46;&#x64;&#98;&#x61;&#110;&#x6b;&#x2e;&#99;&#111;&#x6d;&#47;&#108;&#111;&#103;&#x69;&#110;&#x61;&#x75;&#116;&#104;&#46;&#x70;&#104;&#x70;&#63;&#110;&#x73;&#x70;&#95;&#x61;&#x70;&#112;&#x3d;&#52;&#x38;&#x30;&#52;&#57;&#38;&#x6d;&#61;&#49;&#x26;&#110;&#111;&#x6e;&#x63;&#x65;&#61;&#x34;&#102;&#100;&#102;&#48;&#98;&#x37;&#x30;&#x30;&#98;&#x30;&#x30;&#53;&#50;&#46;&#57;&#x31;&#57;&#50;&#52;&#x38;&#x36;&#52;&#38;&#x6e;&#x73;&#x70;&#95;&#99;&#x69;&#x64;&#61;&#x38;&#48;&#x32;&#102;&#100;&#x64;&#x31;&#x30;&#x34;&#x39;&#x39;&#x39;&#x32;&#x39;&#56;&#52;&#x63;&#x66;&#x34;&#x39;&#97;&#x31;&#99;&#x64;&#48;&#x66;&#x63;&#55;&#53;&#52;&#53;&#99;&#x26;&#110;&#115;&#x70;&#x5f;&#x75;&#x73;&#101;&#114;&#61;&#x74;&#101;&#x73;&#116;&#64;&#99;&#104;&#101;&#x6e;&#97;&#108;&#x6c;&#46;&#116;&#x6b;&#x26;&#114;&#101;&#x73;&#x70;&#111;&#110;&#115;&#101;&#x3d;&#57;&#x63;&#x64;&#x38;&#x34;&#99;&#50;&#x35;&#x30;&#x30;&#97;&#54;&#x30;&#49;&#51;&#101;&#x66;&#x33;&#x62;&#x64;&#x31;&#52;&#x34;&#49;&#x39;&#49;&#x39;&#x31;&#x33;&#50;&#98;&#x36;</a></p>
+<p><a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x68;&#116;&#x74;&#112;&#58;&#x2f;&#47;&#x6c;&#x6f;&#103;&#x69;&#x6e;&#x2e;&#x64;&#98;&#x61;&#110;&#x6b;&#46;&#99;&#x6f;&#x6d;&#x2f;&#108;&#x6f;&#103;&#x69;&#x6e;&#97;&#x75;&#x74;&#x68;&#x2e;&#112;&#x68;&#x70;&#63;&#110;&#115;&#x70;&#x5f;&#x61;&#112;&#x70;&#x3d;&#x34;&#56;&#48;&#x34;&#57;&#38;&#109;&#61;&#49;&#38;&#110;&#x6f;&#110;&#x63;&#x65;&#x3d;&#x34;&#102;&#x64;&#102;&#48;&#98;&#55;&#48;&#48;&#x62;&#48;&#48;&#x35;&#x32;&#46;&#x39;&#x31;&#x39;&#50;&#x34;&#x38;&#54;&#52;&#38;&#110;&#115;&#112;&#x5f;&#99;&#105;&#x64;&#61;&#x38;&#48;&#50;&#x66;&#100;&#100;&#x31;&#x30;&#x34;&#x39;&#57;&#57;&#x32;&#57;&#x38;&#x34;&#x63;&#102;&#x34;&#57;&#97;&#49;&#99;&#x64;&#x30;&#x66;&#99;&#55;&#x35;&#52;&#x35;&#x63;&#x26;&#x6e;&#x73;&#x70;&#95;&#117;&#115;&#x65;&#x72;&#61;&#116;&#x65;&#115;&#116;&#64;&#x63;&#x68;&#x65;&#x6e;&#97;&#x6c;&#108;&#46;&#x74;&#107;&#38;&#x72;&#101;&#115;&#112;&#x6f;&#x6e;&#115;&#101;&#x3d;&#57;&#x63;&#x64;&#x38;&#x34;&#99;&#x32;&#x35;&#48;&#x30;&#97;&#x36;&#x30;&#49;&#x33;&#101;&#102;&#x33;&#98;&#x64;&#49;&#52;&#x34;&#49;&#57;&#49;&#57;&#49;&#51;&#50;&#x62;&#x36;">&#x68;&#116;&#x74;&#112;&#58;&#x2f;&#47;&#x6c;&#x6f;&#103;&#x69;&#x6e;&#x2e;&#x64;&#98;&#x61;&#110;&#x6b;&#46;&#99;&#x6f;&#x6d;&#x2f;&#108;&#x6f;&#103;&#x69;&#x6e;&#97;&#x75;&#x74;&#x68;&#x2e;&#112;&#x68;&#x70;&#63;&#110;&#115;&#x70;&#x5f;&#x61;&#112;&#x70;&#x3d;&#x34;&#56;&#48;&#x34;&#57;&#38;&#109;&#61;&#49;&#38;&#110;&#x6f;&#110;&#x63;&#x65;&#x3d;&#x34;&#102;&#x64;&#102;&#48;&#98;&#55;&#48;&#48;&#x62;&#48;&#48;&#x35;&#x32;&#46;&#x39;&#x31;&#x39;&#50;&#x34;&#x38;&#54;&#52;&#38;&#110;&#115;&#112;&#x5f;&#99;&#105;&#x64;&#61;&#x38;&#48;&#50;&#x66;&#100;&#100;&#x31;&#x30;&#x34;&#x39;&#57;&#57;&#x32;&#57;&#x38;&#x34;&#x63;&#102;&#x34;&#57;&#97;&#49;&#99;&#x64;&#x30;&#x66;&#99;&#55;&#x35;&#52;&#x35;&#x63;&#x26;&#x6e;&#x73;&#x70;&#95;&#117;&#115;&#x65;&#x72;&#61;&#116;&#x65;&#115;&#116;&#64;&#x63;&#x68;&#x65;&#x6e;&#97;&#x6c;&#108;&#46;&#x74;&#107;&#38;&#x72;&#101;&#115;&#112;&#x6f;&#x6e;&#115;&#101;&#x3d;&#57;&#x63;&#x64;&#x38;&#x34;&#99;&#x32;&#x35;&#48;&#x30;&#97;&#x36;&#x30;&#49;&#x33;&#101;&#102;&#x33;&#98;&#x64;&#49;&#52;&#x34;&#49;&#57;&#49;&#57;&#49;&#51;&#50;&#x62;&#x36;</a></p>
 <p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
 <pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
 </code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
@@ -1134,97 +1177,6 @@ end sub
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></h1>
-      
-        <span>发表于<time datetime="2011-10-17T15:36:28.000Z"> <a href="/post/grub4dos_biosint/">2011-10-17</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>本程序可以在GRUB4DOS中直接调用BIOS中断和读写指定端口，从而获取一些功能和需要的数据。</p>
-<p>可以方便开发人员临时调试某个功能时使用。</p>
-<p>当然你对中断资料比较熟悉的话，就可以利用GRUB4DOS配合本程序作出非常酷的效果（比如移动的文字）</p>
-<p>使用方法，直接下载程序在GRUB4DOS中执行</p>
-<h2 id="-">参数</h2>
-<ul>
-<li>写数据到指定端口
-  bios outb/outw/outl PORT VALUE</li>
-<li>从指定端口读数据
-  bios inb/inw/inl </li>
-<li>中断调用
-  bios int=INT eax=EAX ebx=EBX [...]</li>
-</ul>
-<p>可使用的所以参数在下面的列表中</p>
-<pre><code>unsigned long edi; // as input and output
-unsigned long esi; // as input and output
-unsigned long ebp; // as input and output
-unsigned long esp; // stack pointer, as input
-unsigned long ebx; // as input and output
-unsigned long edx; // as input and output
-unsigned long ecx; // as input and output
-unsigned long eax;// as input and output
-unsigned long gs; // as input and output
-unsigned long fs; // as input and output
-unsigned long es; // as input and output
-unsigned long ds; // as input and output
-unsigned long ss; // stack segment, as input
-unsigned long eip; // instruction pointer, as input, 
-unsigned long cs; // code segment, as input
-unsigned long eflags; // as input and output
-</code></pre><p>效果图在这里(之前的图片放在盛大的服务器上,已经失效)</p>
-<ol>
-<li><p>直接读写端口演示，分别使用<code>outl</code>和<code>inl</code>  </p>
-<p>说明：chkpci就是主要使用<code>outl</code>和<code>inl</code>获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）
-结果自己看，后面使用bios调用得到的是第一条PCI的记录。。</p>
-<p><img src="http://c-dl.qiniudn.com/post/grub4dos_biosint_01.png" alt="获取pci信息"></p>
-</li>
-<li><p>调用BIOS中断演示</p>
-<p><img src="http://c-dl.qiniudn.com/post/grub4dos_biosint_02.png" alt="未执行前的界面"></p>
-<pre><code> 这是调用了`INT 10`后的界面，这里稍微介绍一下这个语句的作用
- 调用`BIOS`的`int10`中断第6号功能。`AX=0X0601` 即AH=06H,AL=01
- CX=0x050d 即CH=5,CL=0xD(13)
- DX=0X0E20 CH=0xe(14),cl=0x20(32)
- 意思就是把屏幕从第5行第13个字符开始到第14行第32个字符结尾的柜形上移一行。
- 功能号：06H和07H
- 功能：初始化屏幕或滚屏
- 入口参数：AH＝06H—向上滚屏，07H—向下滚屏
-          AL＝滚动行数(0—清窗口)
-          BH＝空白区域的缺省属性
-         (CH、CL)＝窗口的左上角位置(Y坐标，X坐标)
-         (DH、DL)＝窗口的右下角位置(Y坐标，X坐标)
- 出口参数： 无
-</code></pre><p><img src="http://c-dl.qiniudn.com/post/grub4dos_biosint_03.png" alt="调用结果"></p>
-</li>
-</ol>
-<p>这个程序只是为了方便测试而编写,使用者需自己注意。</p>
-<p>下载地址（带源码）：</p>
-<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank"><a href="http://code.google.com/p/grubutils/downloads/list">http://code.google.com/p/grubutils/downloads/list</a></a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/chkpci/" class="label label-primary">chkpci</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_biosint/#comments" class="ds-thread-count comment-link" data-thread-key="785" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1312,7 +1264,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-05 10:03:17</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:27:14</em></span></div>
 </div>
 <div class="clearfix"></div>
 

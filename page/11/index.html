@@ -119,6 +119,81 @@ var _js2load = [];
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></h1>
+      
+        <span>发表于<time datetime="2009-09-02T13:16:28.000Z"> <a href="/post/firadisk/">2009-09-02</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>Windows 下 Grub4dos仿真盘的驱动.</p>
+<p>可以支持grub4dos map--mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
+<p>另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
+<p>感谢<em>zw2312914</em>的推荐: <a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5742">http://bbs.znpc.net/viewthread.php?tid=5742</a></a>,感谢软件作者karyonix的分享.</p>
+<p>以下内容摘自上面时空论坛的一些原文.</p>
+<blockquote><p> 谢谢 karyonix 。此驱动类似 windrv 大的wdsys。即可以在windows环境使用grub4dos（--mem方式）仿真的镜像（包括iso)。</p>
+<p> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8804</a></p>
+<p> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8168</a></p>
+<p> 希望有更多的朋友能测试下。</p>
+<p> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a></p>
+<p> 看了一下，名叫firadisk。</p>
+<p> 貌似已经超级强大了，可以支持grub4dos map--mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
+<p> 另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
+<p> 支持x86/x64系统，但对于64位系统，尚无法使用4GB以上的内存，grub4dos似乎也不行。内存盘上限大概是3.25GB</p>
+<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">时空论坛</a></cite></footer></blockquote>
+
+
+<p>我已经测试过了,很强大,0pe或Micrope直接用这个驱动替换里面的wdsys.sys驱动,可以正常使用.</p>
+<p>其它PE只需要在内核中加入这个驱动,就可以直接整体ISO来启动,再也不用担心ISO启动找不到外置的问题了.</p>
+<p>在PE中添加该驱动只需在TXTSETUP.SIF中添加以下语句,然后把firadisk.sys文件放到system32\drivers目录下就可以了</p>
+<pre><code>[scsi.load]
+Firadisk=Firadisk.sys,4
+</code></pre><p>整体ISO启动方法例子.</p>
+<pre><code> title pe from iso
+ map --mem /xxxxpe.iso (0xff)
+ map --hook
+ chainloader (0xff)
+</code></pre><p>还有一些想法,我还没有条件测试,</p>
+<ol>
+<li><p>把这个驱动加入到WINDOWS的安装盘中,这样是不是就可以直接以</p>
+<pre><code>map --mem /winxp.iso (0xff)
+map --hook
+chainloader (0xff)
+</code></pre><p>的方式来安装XP或其它系统了</p>
+</li>
+<li><p>制作Ram系统,应该是支持的了.只需要在WINDOWS系统中加入这个驱动,然后把系统打包成一个镜像,用GRUB4DOS的map --mem来加载启动.</p>
+</li>
+</ol>
+<p>也可以到这个贴子看看由无忧论坛 <a href="http://bbs.wuyou.com/space.php?uid=40023" target="_blank">天风</a> 制作的 <a href="http://bbs.wuyou.com/viewthread.php?tid=148670" target="_blank">RAM WINDOWS 7</a></p>
+<p>后注:这个驱动还是持续更新中,希望越来越强大,<del>不知是否以后会支持非mem的磁盘,如果可以的话就更强大了</del>(新版已支持).....让我们一起期待吧.</p>
+<p>上面的已经测试过,可以直接用于ISO启动安装WIN XP/2003系统,或PE.</p>
+<p>具体情况: <a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1">http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1</a></a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/驱动/">驱动</a></li></span></span> | <span class="tags">标签 <a href="/tags/FiraDisk/" class="label label-primary">FiraDisk</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a><a href="/tags/SCSI/" class="label label-info">SCSI</a><a href="/tags/驱动/" class="label label-warning">驱动</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/firadisk/#comments" class="ds-thread-count comment-link" data-thread-key="88" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></h1>
       
         <span>发表于<time datetime="2009-08-13T01:41:01.000Z"> <a href="/post/1key/">2009-08-13</a></time></span>      
@@ -636,99 +711,6 @@ auth-nocache
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></h1>
-      
-        <span>发表于<time datetime="2009-05-13T13:14:14.000Z"> <a href="/post/mail/">2009-05-13</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>网易邮箱自动登录批处理脚本.具体请看里面的使用说明.</p>
-<p>可以自动登录网易邮箱.批处理调用.</p>
-<h2 id="-">使用方法:</h2>
-<ul>
-<li>直接在批处理里面输入用户名和密码.</li>
-<li>使用命令行方加参数启动.第一个参数为用户名和邮箱名,第二个参数为密码</li>
-<li>直接在本批处理中使用call :登录网易邮箱　邮箱地址 密码
-具体见下面的例子
-例子: call mail.cmd &quot;mymail@163.com&quot; &quot;mypass&quot;
-用户名是mymail@163.com密码是mypass登录到163邮箱</li>
-</ul>
-<h2 id="-">代码</h2>
-<p>把以下代码另存为一个批处理文件比如mail.cmd就可以使用了．</p>
-<pre><code>@echo off 
-::网易邮箱自动登录批处理.===http://chenall.net=======chenall=================== 
-::        使用方法. 
-::                1,直接在批处理里面输入用户名和密码. 
-::                2.使用命令行方加参数启动.第一个参数为用户名和邮箱名,第二个参数为密码
-::                3.直接在本批处理中使用call :登录网易邮箱　邮箱地址 密码
-::                  具体见下面的例子
-::        例子: call mail.cmd &quot;mymail@163.com&quot; &quot;mypass&quot; 
-::                用户名是mymail@163.com密码是mypass登录到163邮箱 
-:: 
-::用户名后面需要加邮箱后辍。如mymail@126.com(登录126邮箱) 或mymail@163.com(登录163邮箱) 
-:: 
-::如转载请保留完整出处!  http://chenall.net/2009/05/mail/
-:: 最后修改日期　2010-05-23.
-
-if not &quot;%~2&quot;==&quot;&quot; goto :登录网易邮箱
-::直接在本批处理中使用call批量登录方法,按照下面的方法添加语句在本注释之后goto :eof之前就可以了
-::call :登录网易邮箱 mymail@163.com my163pass
-::call :登录网易邮箱 mymail@126.com my26pass
-
-goto :eof
-
-:登录网易邮箱
-set &quot;user=%1&quot; 
-set &quot;pass=%2&quot; 
-if not defined user goto :eof 
-if not defined pass goto :eof
-::过滤用户名密码中的引号 
-set user=%user:&quot;=%&amp;set pass=%pass:&quot;=% 
-setlocal enabledelayedexpansion 
-::修改密码中出现的#和&amp;,否则会登录不了 
-set &quot;pass=!pass:#=%%23!&quot;
-set &quot;pass=!pass:&amp;=%%26!&quot;
-endlocal&amp;set &quot;pass=%pass%&quot; 
-set user=%user: =% 
-set pass=%pass: =% 
-setlocal
-for /f &quot;tokens=1,2 delims=@&quot; %%i in (&quot;%user%&quot;) do ( 
-    if /i &quot;%%~nj&quot;==&quot;163&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;product=mail163&amp;url=http://entry.mail.163.com/coremail/fcg/ntesdoor2?lightweight%3D1%26verifycookie%3D1%26language%3D-1%26style%3D&quot; 
-    if /i &quot;%%~nj&quot;==&quot;126&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;product=mail126&amp;url=http://entry.mail.126.com/cgi/ntesdoor?hid%3D10010102%26lightweight%3D1%26verifycookie%3D1%26language%3D0%26style%3D&quot; 
-    if /i &quot;%%~nj&quot;==&quot;yeah&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;product=mailyeah&amp;url=http://entry.mail.yeah.net/cgi/ntesdoor?lightweight%3D1%26verifycookie%3D1%26style%3D&quot; 
-    if /i &quot;%%~nj&quot;==&quot;netease&quot; set &quot;login.action=https://reg.163.com/logins.jsp?type=1&amp;url=http://entry.yeah.net/cgi/ntesdoor?lightweight%3D1%26verifycookie%3D1%26style%3D-1&quot; 
-    echo.正在自动登录%USER%的邮箱%%j……
-) 
-start &quot;正在自动登录中&quot; &quot;%login.action%&amp;username=%user%&amp;password=%pass%&quot; 
-endlocal
-goto :eof
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/邮箱/" class="label label-primary">邮箱</a><a href="/tags/自动登录/" class="label label-success">自动登录</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/mail/#comments" class="ds-thread-count comment-link" data-thread-key="60" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -816,7 +798,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-05 10:03:17</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:27:14</em></span></div>
 </div>
 <div class="clearfix"></div>
 

@@ -119,6 +119,53 @@ var _js2load = [];
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></h1>
+      
+        <span>发表于<time datetime="2010-01-05T12:53:46.000Z"> <a href="/post/grub4dos_read/">2010-01-05</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>grub4dos外部命令编写尝试</p>
+<p> read.o</p>
+<p> 功能等同于内部命令read</p>
+<p> 使用方法同样</p>
+<p> 例子</p>
+<p> read.o 0x8290</p>
+<p>使用的代码如下。保存为read.c</p>
+<p>然后使用gcc编译就可以了。编译命令
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/grub4dos_read/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary">GRUB4DOS</a><a href="/tags/read/" class="label label-success">read</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_read/#comments" class="ds-thread-count comment-link" data-thread-key="119" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></h1>
       
         <span>发表于<time datetime="2010-01-05T12:42:02.000Z"> <a href="/post/grub4dos_user/">2010-01-05</a></time></span>      
@@ -586,60 +633,6 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></h1>
-      
-        <span>发表于<time datetime="2009-10-29T08:27:05.000Z"> <a href="/post/win7_bcdfix/">2009-10-29</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>从VISTA开始，系统和硬盘是紧密相联的，只要改动了MBR就有可能出现启动失败的问题。出现如下错误提示代码。</p>
- <font color="#0000FF">Status: 0xc000000d</font>
-
-<p>TIPS：在硬盘MBR的偏移 <strong>0x1B8</strong> to 0x1BB是这个硬盘的签名信息，WINOWS 系统通过这个信息来找到硬盘，在XP时代如果有两个硬盘的签名信息一样系统启动过程中会自动改掉，如果失败就会出现0X7B蓝屏信息。如果有注意的话就会发现，你只要改动上面的信息，重启系统后，系统会重新分配盘符（表现为你调整好的盘符乱掉了）。</p>
-<p>最近在试用WINDOWS 7，因为我经常在折腾我的电脑，也是经常碰到这个问题。按照以前的解决方法如下</p>
-<ul>
-<li>首先想办法启动到PE或另一个系统中</li>
-<li>然后执行bcdedit 命令进行修复<pre><code>bcdedit /store c:\boot\bcd /set {default} device partition=c:
-bcdedit /store c:\boot\bcd /set {default} osdevice partition=c:
-</code></pre>说明:<strong>c:\boot\bcd</strong> 指定启动时使用的BCD文件 
-后面的<strong>c:</strong> 指定WINDOWS 7系统目前所在的盘符（如果进入PE后，你的WIN7安装磁盘的盘符是F:就写F:）</li>
-<li>重启就会发现一切正常了。</li>
-</ul>
-<p>后来一次在测试中意外发现了另一个参数（这里首先得感谢下<a href="http://bbs.wuyou.com/" target="_blank">无忧启动论坛</a>的<a href="http://bbs.wuyou.com/viewpro.php?uid=131142" target="_blank">victor888</a> ,被他逼着学习bcdedit了，所以就多了解了一下，纯属意外），可以永绝祸患，只要改一下，以后就不会再出现这种问题了。不敢独享，如果有碰到同样问题的朋友可以试下，没有碰到的朋友也可以试下。^_^</p>
-<p>当然了我只是在自己的电脑测试过，有没有效果要靠大家的测试了。说不多说，进入正题，请看下面的命令</p>
-<p>首先进入WINDOWS 7系统，使用管理员权限打开CMD命令窗口，然后输入以下命令。</p>
-<pre><code>bcdedit /set {current} device boot
-bcdedit /set {current} osdevice boot
-</code></pre><p>适用情况：系统安装在硬盘上，并且和启动文件BOOTMGR在同一个分区上。</p>
-<p>其中:一般情况下以上的命令不需要修改可以直接使用，{current}代表当前系统。boot 代表启动分区。</p>
-<p>如果执行失败了可以把{current}改成你的WINDOWS 7的启动GUID（BCDEDIT命令可以查看）</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/Windows 7/" class="label label-primary">Windows 7</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/win7_bcdfix/#comments" class="ds-thread-count comment-link" data-thread-key="105" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -727,7 +720,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-05 10:03:17</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:27:14</em></span></div>
 </div>
 <div class="clearfix"></div>
 

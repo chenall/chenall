@@ -119,6 +119,59 @@ var _js2load = [];
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></h1>
+      
+        <span>发表于<time datetime="2012-11-30T03:54:17.000Z"> <a href="/post/all_print_to_lpt/">2012-11-30</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>一直都懒得写文章,嘿嘿,抽空把一些日常工作中用到的实用功能分享一下,也许会有人需要.</p>
+<p>一般情况下使用共享打印机都是直接输入计算机名或IP然后双击那个共享的打印机进行安装,这个方法比较简单.</p>
+<p>但是有一些软件它必须使用<code>LPT</code>端口来打印,这时就没有办法用共享了,这里介绍另一种安装方法,可以解决这类问题.如果你早就知道了可以跳过,因为可能是一样的方法.</p>
+<p>例子: 有一个条码打印机 OS-214的,使用佳为软件的标签打印,如果是本机的打印一切正常,但是如果使用上面的共享打印就不行了,因为它是直接写<code>LPT</code>端口的.</p>
+<h3 id="-">解决方法:</h3>
+<ol>
+<li>在装有条码打印机的机子上把这个打印机设为共享比如名为<code>LABEL</code></li>
+<li>在需要使用的机子上映射并安装这个共享打印机<blockquote>
+<p>   例子,有装打印机的电脑IP是<code>192.168.0.5</code>,共享名为<code>LABEL</code>
+ 在需要使用的机子上直接输入以下命令先进行共享映射.</p>
+<pre><code class="lang-bat"> net use LPT1: \\192.168.0.5\LABEL /PERSISTENT:YES
+</code></pre>
+<p> 成功之后就可以把这个打印机当成本地的来使用了,只要再本地添加新打印机就行了,端口选择<code>LPT1</code>,驱动就是对应的驱动.</p>
+</blockquote>
+</li>
+<li>装完了可以打印一下测试页,如果正常的话就OK了,否则请查看是不是哪一步出错了.</li>
+<li>其它机子只要重复用2-3的方法依次安装就行了.</li>
+</ol>
+<p>再试试看,是不是可以了.</p>
+<p>用这个方法也可以把<code>USB</code>端口等的打印机转换成<code>LPT</code>端口(只要全部在同一机子上操作就行了),因为某些软件必须使用<code>LPT</code>端口.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/共享/" class="label label-primary">共享</a><a href="/tags/打印机/" class="label label-success">打印机</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/all_print_to_lpt/#comments" class="ds-thread-count comment-link" data-thread-key="887" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></h1>
       
         <span>发表于<time datetime="2012-11-27T04:03:49.000Z"> <a href="/post/php_http_proxy/">2012-11-27</a></time></span>      
@@ -767,49 +820,6 @@ if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></h1>
-      
-        <span>发表于<time datetime="2012-07-05T08:40:04.000Z"> <a href="/post/dbankdown/">2012-07-05</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>华为网盘其实挺好的，上下载速度都很快。只是下载的时候可以说十之八九会跳出注册登录的窗口，也就是需要登录才能下载。这个本来没有什么，只是我的密码都是随机的，记不住啊，每每下载都要登录太麻烦了。所以就想看看有没有什么办法可以不用登录直接下载的。查看了一下网页源码，发现其实很简单。</p>
-<p>如果有关注我微搏的话，应该很早就知道了，当然了网络上也有很多工具可以免登录下载，比如<a href="https://www.google.com/search?q=Dbank+linker&amp;qscrl=1" target="_blank">Dbank linker</a>.只是用起来不太方便。</p>
-<p>这里分享两个相对比较简单的方法可以直接解除限制，原理是一样的。</p>
-<ol>
-<li><p>使用书签的方案，优点快速简单，把以下链接保存为书签，以后打开网盘下载页，点击一下该书签就可以直接下载了。</p>
-<p><a href="javascript:globallinkdata.data[&#39;profile.productid&#39;]=30;adsShow=0;alert(&#39;%E5%B7%B2%E8%A7%A3%E9%99%A4%E4%B8%8B%E8%BD%BD%E9%99%90%E5%88%B6%EF%BC%8Cchenall%E7%A5%9D%E4%BD%A0%E5%A5%BD%E8%BF%90!&#39;">解除华为网盘下载限制</a></p>
-</li>
-<li><p>使用去广告过滤工具比如admucher（这个更强，连广告都没有了），使用替换工具查找<code>&quot;profile.productid&quot;:&quot;*&quot;</code>替换为<code>&quot;profile.productid&quot;:30</code></p>
-</li>
-</ol>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/免登录/" class="label label-primary">免登录</a><a href="/tags/华为网盘/" class="label label-success">华为网盘</a><a href="/tags/破解/" class="label label-info">破解</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/dbankdown/#comments" class="ds-thread-count comment-link" data-thread-key="842" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -897,7 +907,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-05 10:03:17</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:27:14</em></span></div>
 </div>
 <div class="clearfix"></div>
 
