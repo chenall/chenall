@@ -19,6 +19,8 @@ categories:
 
 这里介绍一种相对比较简单的,一般的PHP服务器都有支持.相关代码如下.伪造一个referer地址发送过去,请求下载,获取返回的头信息,里面包含了真正的地址.
 
+<!--more-->
+
 ```
 $curl = curl_init();//curl模块初始化
 curl_setopt ($curl, CURLOPT_URL, $url);//$url 目标地址

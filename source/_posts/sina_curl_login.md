@@ -20,6 +20,8 @@ categories:
 
 附上我自己测试通过的PHP代码如下,希望有对有同样问题的朋友有用,如果你有更好的方案欢迎分享一下.
 
+<!--more-->
+
 2012-08-18 更新: 发现只要不设置CURLOPT_COOKIESESSION参数就行了,不需要修改COOKIE_FILE.
 
 ```

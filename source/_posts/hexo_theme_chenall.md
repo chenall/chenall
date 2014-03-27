@@ -23,15 +23,22 @@ description: hexo模块化主题,自由,强大,本主题还通过主题插件实
 
 以下是本主题的特色:
 
+基于[Hexo]默认主题light修改而成,采用bootstrap css框架,主要考虑多站点支持.
+在尽量保留原有主题功能的同时采用模块化设计支持多个widgets.实现高度自定义,通过widgets你可以添加许多实用功能.
+可以自定义组合各种组件,像评论系统,统计系统等.
+
+- 支持多站点共用同一主题,免切换
 - 支持单独启用或禁用小工具(像侧边栏之类的)
 - 支持单独启用或禁用评论
+- 支持自动设置目录(source_dir,public_dir,scaffolds)
 - 可以单独指定加载小工具
-- 支持多个分类，支持子分类,分类名不区分大小写
+- 支持多个分类，支持子分类
 - 独特的用户配置文件(自动加载`$SOURCE\_$THEME.yml`[默认就是**source\\_chenall.yml**]作为主题的配置文件,这样可以避免升级主题或其它原因导致的配置文件丢失).
 - `iLink` 文章内链功能
 - `ijs` 文章内嵌脚本或能
 - 允许在head或body的前面或尾部附加自定义内容.
 - 独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)
+
 
 <!--more-->
 
@@ -55,6 +62,8 @@ svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
 hexo server --config chenall.net/_config.yml
 ```
 
+注2: V2.0版适用的hexo版本为 2.5.3 以上(2.5.2版本有Bug会显示不正常).2.4.X版请下载V1.0版主题.
+
 ## **具体效果:** [demo] 或本站 [chenall.net]
 
 ### 安装方法
@@ -67,9 +76,11 @@ git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
 或
 ```
 svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
+## 若要下载1.0版用以下命令
+svn co https://github.com/chenall/hexo-theme-chenall/tags/V1.0 themes/chenall
 ```
 
-另外: 主题内置的`list_posts`插件还需要额外安装一个`lodash`组件,使用以下命令安装即可.
+另外: 主题内置的`list_posts`插件还需要额外安装一个`lodash`组件,使用以下命令安装即可.(V1.0版需要)
 
 ```
 npm install lodash --save
@@ -83,6 +94,25 @@ npm install lodash --save
 cd themes/light
 git pull 或 svn up
 ```
+
+## 自动设置目录 (V2.0)
+
+`hexo`默认的`source`目录等虽然可以通过配置文件来指定,但由于必须使用固定的目录,使用起来不太灵活
+
+本主题对此进行了扩展,允许这些目录跟随配置文件自动变化,比如下面的配置,最终的source_dir是`$config/_config.yml`
+
+
+```
+CustomDir:
+  source_dir: source
+  public_dir: public
+```
+
+说明:
+
+1. 目前只支持'public_dir','source_dir','scaffold_dir'的配置.
+2. 可以使用变量**:config**代表配置文件目录.比如 source_dir: **:config**
+3. 具体实例可以参考[demo.site
 
 ### 分类说明
 
