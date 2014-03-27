@@ -36,7 +36,7 @@ description: hexo模块化主题,自由,强大,本主题还通过主题插件实
 - 独特的用户配置文件(自动加载`$SOURCE\_$THEME.yml`[默认就是**source\\_chenall.yml**]作为主题的配置文件,这样可以避免升级主题或其它原因导致的配置文件丢失).
 - `iLink` 文章内链功能
 - `ijs` 文章内嵌脚本或能
-- 允许在head或body的前面或尾部附加自定义内容.
+- 允许在head或body的前面或尾部附加自定义内容.(相对1.0版改变,新版只使用`source/_modules`目录).
 - 独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)
 
 
