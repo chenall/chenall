@@ -131,7 +131,7 @@ var _js2load = [];
       
         <p>OpenVpn使用用户名和密码验证方法.本例为了方便使用是的批处理.</p>
 <p>方法如下.</p>
-<h3 id="-">服务端</h3>
+<h3 id="服务端">服务端</h3>
 <ol>
 <li>在配置文件中添加如下语句,(如果已经有就修改一下)<pre><code> #用于用户名和密码验证,使得可以在变量中取到密码.
   script-security 3 system
@@ -161,13 +161,13 @@ var _js2load = [];
  ::验证失败,让程序返回一个失败值1.
  exit /b 1
 </code></pre></li>
-<li><p>脚本已经弄好了,接下来就是添加用户名和密码文件.上面的脚本指定的用户名和密码文件是存放在一个文件名为users的文件中.<br> 在配置文件同目录中新建一个USERS文件.内容按以下格式添加.<br>  使用&quot;,&quot;作为分隔符,格式:用户名,密码,是否启用(1,启用,0,禁用)  </p>
+<li><p>脚本已经弄好了,接下来就是添加用户名和密码文件.上面的脚本指定的用户名和密码文件是存放在一个文件名为users的文件中.<br> 在配置文件同目录中新建一个USERS文件.内容按以下格式添加.<br>  使用”,”作为分隔符,格式:用户名,密码,是否启用(1,启用,0,禁用)  </p>
 <pre><code> 用户,密码,启用
   user1,passowrd1,1
   user2,password2,0
 </code></pre></li>
 </ol>
-<h3 id="-">客户端</h3>
+<h3 id="客户端">客户端</h3>
 <p>只要在配置文件中添加如下语句开启用户和密码验证即可使用.</p>
 <pre><code>auth-user-pass
 #可选的语句,一般建议加上,用途,加上以后就不会在内存中保存用户密码.
@@ -227,7 +227,7 @@ auth-nocache
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/iconshex/">让你的任意文件显示个性图标</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="64"  data-url="http://chenall.net/post/openvpn_userpw_author/" data-title="[OpenVPN] OpenVPN简单用户密码验证实例."></div>
@@ -296,7 +296,7 @@ auth-nocache
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -312,14 +312,12 @@ auth-nocache
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -416,7 +414,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

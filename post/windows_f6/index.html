@@ -138,9 +138,9 @@ var _js2load = [];
 <li>将以上文件放到U盘根目录下名为SCSI.IMG.</li>
 <li>把GRUB4DOS引导写入U盘.(只要使用U盘启动时可以用GRUB即可)</li>
 <li><p>GRUB4DOS的启动命令</p>
-<h3 id="-">相关文章:</h3>
+<h3 id="相关文章:">相关文章:</h3>
 <p><a href="http://bbs.wuyou.com/viewthread.php?tid=121630&amp;extra=page%3D1" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=121630&amp;extra=page%3D1</a><br><a href="http://bbs.wuyou.com/viewthread.php?tid=121630&amp;page=5#pid1349207" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=121630&amp;page=5#pid1349207</a><br><a href="http://bbs.znpc.net/viewthread.php?tid=4562" target="_blank">http://bbs.znpc.net/viewthread.php?tid=4562</a>  </p>
-<h3 id="grub4dos-">GRUB4DOS菜单内容</h3>
+<h3 id="GRUB4DOS菜单内容">GRUB4DOS菜单内容</h3>
 <pre><code>title 从光盘安装系统并自动加载S&amp;amp;R&amp;amp;S软盘驱动.
 find --set-root /SCSI.IMG
 map --mem (md)+2880 (fd0)
@@ -178,11 +178,11 @@ chainloader (cd)
  [BusExtenders]
  volsnap= &quot;Volume Shadow Copy Manager&quot;,files.none,volsnap`
 </code></pre><p>添加了以后就可以在启动PE之前将对应的驱动加载到fd1上然后再启动PE就可以自动识别了.</p>
-<p> 从此不再需要集成驱动的系统安装盘/PE了....</p>
+<p> 从此不再需要集成驱动的系统安装盘/PE了….</p>
 <p> 后记:此方法用于PE启动时使用(fd0)就可以加载了,用于系统安装时,一般使用(fd1)以实现免按F6安装.</p>
 <p>其中TXTSETUP.OEM里面的[default]字段下SCSI的值必须是你本机对应的驱动,否则不会自动加载.</p>
 <p>还有一种方式,使用GHOST像绿茶网吧版的.虽然也是GHOST方式,但是属于全新安装的.安装的时候如果出现7B蓝屏说明没有对应驱动,这时也可以使用这个方法来加载驱动后再重新启动安装就不会蓝屏了.(需要加载到(fd0)并按F6选择正确的驱动,最好同时加载到(fd1))</p>
-<p>从此不再需要集成驱动的系统安装盘/PE了....</p>
+<p>从此不再需要集成驱动的系统安装盘/PE了….</p>
 <p>2010-11-22 更新一些说明.</p>
 <p>2009-07-09 注:如果使用(fd0)不成功的朋友,可以尝试再加载一个非OEM F6镜像的IMG到(fd0),也就是(fd0)不要有TXTSETUP.OEM文件,一般就可以了.</p>
 
@@ -240,7 +240,7 @@ chainloader (cd)
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="70"  data-url="http://chenall.net/post/windows_f6/" data-title="[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱."></div>
@@ -309,7 +309,7 @@ chainloader (cd)
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -325,14 +325,12 @@ chainloader (cd)
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -429,7 +427,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

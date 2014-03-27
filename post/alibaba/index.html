@@ -136,7 +136,7 @@ var _js2load = [];
 <p>“零知识证明”说的是示证者向验证者表明他知道某种秘密，不仅能使验证者完全确信他的确知道这个秘密，同时还保证一丁点秘密也不泄露给验证者。阿里巴巴的这个方案，就是认证理论“零知识证明”的一个重要协议。</p>
 <p>除了被俘后如何靠情报保命这个问题，零知识证明在社会领域中还有着很多应用场合。例如你证明了一个世界级的数学难题，但在发表出来之前，总是要找个泰斗级的数学家审稿吧，于是你将证明过程发给了他，他看懂后却动了歪心思，他把你的稿子压住，把你的证明用自己的名义发表，他名利双收，你郁闷至死，你去告他也没用，因为学术界更相信的是这位泰斗，而不是你这个无名之辈。</p>
 <p>这并不是天方夜谭，而是学术界常见的难题，前些年有个博士生告他的泰斗级导师剽窃他的成果，但除了令师生关系恶化外没有任何效果，最后他使出了撒手锏，称他在给导师审阅的论文的关键公式中，故意标错了一个下标，而这会导致整个推导失败。学术委员会一查果真如此，但还是有倾向于泰斗的声音，有人说那是泰斗的笔误，只不过让你发现了而矣，并不能证明那公式就是你推导出来的。</p>
-<p>这个博士生故意标错下标，不能说他没有心眼，但他没有把“零知识证明”理论用好，以致于落到这种地步。“零知识证明”早在1986年就被A.Fiat和A.Shamir用数学的方法给出了解决方案，并在同年申请了美国专利，但由于该理论可能被用于军事领域，专利局被军方密令搁置，6个月后，军方命令：“该申请发表后会有害于国家安全......所有美国人的研究未经许可而泄露将会被判刑罚款”。看来军方认为作者肯定是美国人了，但作者实际上是在美国申请专利的以色列人，研究也是在以色列的大学里做的，军方这个命令摆了个大乌龙，虽然两天后撤消了，但已经成为了学术界的笑柄。</p>
+<p>这个博士生故意标错下标，不能说他没有心眼，但他没有把“零知识证明”理论用好，以致于落到这种地步。“零知识证明”早在1986年就被A.Fiat和A.Shamir用数学的方法给出了解决方案，并在同年申请了美国专利，但由于该理论可能被用于军事领域，专利局被军方密令搁置，6个月后，军方命令：“该申请发表后会有害于国家安全……所有美国人的研究未经许可而泄露将会被判刑罚款”。看来军方认为作者肯定是美国人了，但作者实际上是在美国申请专利的以色列人，研究也是在以色列的大学里做的，军方这个命令摆了个大乌龙，虽然两天后撤消了，但已经成为了学术界的笑柄。</p>
 <p>这个笑柄也说明了一个问题，即“零知识证明”非常重要。基于数学的推理虽然非常复杂，但思路却很简单，上述的阿里巴巴方案就是其中之一。其它的一些方案，也都是像这样遵循着分割和选择（Cut and Chose）协议的。</p>
 <p>例如图论中有个哈米尔顿回路（Hamiltonian Cyclic）问题，说的是多个顶点的全连通图，若有一条通路通过了所有顶点，且每个顶点只通过一次，那这就是哈米尔顿回路。如果顶点较多的话，即使用计算机穷举计算很难找出这条回路，因为通路的可能性真在是太多了。</p>
 <p>如果松鼠会贴了一张全连通图（命名为A图）悬赏哈米尔顿回路，而且任命我（奥卡姆剃刀）作为评审官，你幸运的找到了一条，那该怎么办呢，将结果直接发给我吗？千万不要，因为保不齐我会将你的成果让给了我的亲信。那你该怎么办呢？应该这么办：</p>
@@ -153,7 +153,7 @@ var _js2load = [];
 <p>大家已经看出来了，零知识证明需要示证者和验证者的密切配合，但如果你只是一个数学界的无名之辈，即使你宣称你解决了数学难题，也不会有人跟你配合着玩零知识证明，那你该怎么办呢？</p>
 <p>我告诉你一个可以在法庭上都能当作有效证据的招数，你将证明打印好，选择一个最可靠最权威的邮政公司，把它寄给自己，当你收到这个扣着邮戳的包裹后，不要打开，把它放好，然后就可以把证明寄给数学泰斗。如果他用自己的名义发表了，不必着急，等他依靠其影响力把这个证明炒热后再出手，你上法庭控告他，他当然不承认，在法庭上你将那个没开封的包裹拿出来，上面清清楚楚地盖着时间戳，这就证明了你包裹里的证明是发生在那个时间戳之前的，加上之后的你邮给泰斗论文的邮件存根，和泰斗以自己名义发表论文的时间，三者就构成了一个完整的证据链，泰斗灰头土脸名声扫地，而你大获全胜名利双收。</p>
 <p>参考文献：《通信网的安全-理论与技术》，王育民等编著，西安电子科技大学出版社，2000.5</p>
-<p>本文章来源：<a href="http://songshuhui.net/" title="让我们剥开科学的坚果" target="_blank">科学松鼠会</a>　<a href="http://songshuhui.net/archives/36968.html" target="_blank"><a href="http://songshuhui.net/archives/36968.html">http://songshuhui.net/archives/36968.html</a></a></p>
+<p>本文章来源：<a href="http://songshuhui.net/" title="让我们剥开科学的坚果" target="_blank">科学松鼠会</a>　<a href="http://songshuhui.net/archives/36968.html" target="_blank">http://songshuhui.net/archives/36968.html</a></p>
 
       
     </div>
@@ -209,7 +209,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/dropbox_cn/">[转载] Dropbox无法访问</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/dropbox_version/">[转] DropBox的版本控制功能</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/not_2345/">关于2345网址导航</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/dropbox_cn/">[转载] Dropbox无法访问</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="324"  data-url="http://chenall.net/post/alibaba/" data-title="[转载] 阿里巴巴的零知识证明"></div>
@@ -278,7 +278,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -294,14 +294,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -398,7 +396,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

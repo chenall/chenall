@@ -139,7 +139,7 @@ var _js2load = [];
 <p>欢迎有兴趣的朋友一起继续优化。相比第1个版本，执行效率提升了许多。</p>
 <a id="more"></a>
 
-<pre><code class="lang-batch">@echo off
+<pre><code class="batch">@echo off
 :::::::::INI文件读取 by chenall QQ:366840202::::::::::::::::::::::
 ::使用方法:                                                     ::
 ::    inifile iniFilePath [section] [item]                      ::
@@ -282,7 +282,7 @@ goto :eof
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/dropbox_cn/">[转载] Dropbox无法访问</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></li><li class="list-group-item"><a href="/post/cmd2exe/">[转载]CMD 批处理转 EXE，仅17K。</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="109"  data-url="http://chenall.net/post/batch_inifile/" data-title="【原创】批处理读取INI格式文件"></div>
@@ -351,7 +351,7 @@ goto :eof
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -367,14 +367,12 @@ goto :eof
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -471,7 +469,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

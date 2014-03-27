@@ -10,9 +10,7 @@
 <title>解决电脑远程登陆出现 “远程计算机已结束连接” | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="此贴转自时空论坛 原贴: http://bbs.znpc.net/viewthread.php?tid=3304   转到这里留个备份,以后再碰到这个问题比较好找.^_^
-
-解决电脑远程登陆出现 远程计算机已结束连接">
+<meta name="description" content="http://bbs-znpc-net/viewthread-php?tid=3304&quot;&gt;此贴转自时空论坛 原贴: http://bbs.znpc.net/viewthread.php?tid=3304   转到这里留个备份,以后再碰到这个问题比较好找.^_^">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -131,18 +129,14 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <h2 id="-http-bbs-znpc-net-viewthread-php-tid-3304-">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
+        <h2 id="此贴转自时空论坛_原贴:_<a_href="http://bbs-znpc-net/viewthread-php?tid=3304" target="_blank">http://bbs-znpc-net/viewthread-php?tid=3304</a>">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
 <p>   转到这里留个备份,以后再碰到这个问题比较好找.^_^</p>
-<h2 id="-">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
+<h2 id="解决电脑远程登陆出现_<strong>远程计算机已结束连接</strong>">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
 <p>   此问题在远程系统是GHOST版的windowsxp时出现的比较普遍。</p>
-<h2 id="-"><strong> 现象描述：</strong></h2>
-<p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便
-弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
-<h2 id="-"><strong>解决方法：</strong></h2>
-<p>打开注册表
-找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\
-在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.
-再导入注册表:</p>
+<h2 id="<strong>_现象描述：</strong>"><strong> 现象描述：</strong></h2>
+<p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便<br>弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
+<h2 id="<strong>解决方法：</strong>"><strong>解决方法：</strong></h2>
+<p>打开注册表<br>找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\<br>在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.<br>再导入注册表:</p>
 <pre><code>Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\0000]
@@ -155,8 +149,7 @@ var _js2load = [];
 &quot;DeviceDesc&quot;=&quot;终端服务器设备重定向器&quot;
 &quot;ConfigFlags&quot;=dword:00000000
 &quot;Capabilities&quot;=dword:00000000
-</code></pre><p>最后，把控制面板－管理工具－服务中的 <strong>Remote Desktop Help Session Manager</strong> 和 <strong>Telnet</strong> 服务开启，
-将电脑重启，远程桌面管理就可以恢复正常了。</p>
+</code></pre><p>最后，把控制面板－管理工具－服务中的 <strong>Remote Desktop Help Session Manager</strong> 和 <strong>Telnet</strong> 服务开启，<br>将电脑重启，远程桌面管理就可以恢复正常了。</p>
 <p>注:可能是因为做GHOST系统时,为了省事在删除硬件时直接使用了devcon remove *,所以才会出现这个问题.</p>
 
       
@@ -213,7 +206,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></li><li class="list-group-item"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="38"  data-url="http://chenall.net/post/post38/" data-title="解决电脑远程登陆出现 “远程计算机已结束连接”"></div>
@@ -282,7 +275,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -298,14 +291,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -402,7 +393,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

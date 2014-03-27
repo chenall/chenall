@@ -150,15 +150,11 @@ var _js2load = [];
 <li>共有2个分店，1个总部。</li>
 <li>为了速度的要求，总部使用光纤接入，分店使用普通ADSL接入。</li>
 <li>总部的本地网络的IP网段为:192.100.0.0/24<br>分店1的IP网段为：192.100.1.0/24<br>分店2的IP网段为 : 192.100.2.0/24<br>说明：192.100.0.0/24  IP地址为192.100.0 开头，子网掩码为255.255.255.0</li>
-<li>在总部和分店各找出一台可以上网的计算机充当路由器角色。为了方便这些电脑的IP最后一位相同。
-总部的路由器IP地址为: 192.100.0.254/24<br>分店1的路由器IP地址: 192.100.1.254/24<br>分店2的路由器IP地址: 192.100.2.254/24  </li>
-<li>在4的电脑上安装VPN软件。(本文介绍的是使用虚拟网卡类VPN）
-安装好虚拟网卡软件并配置好IP地址：<br>总部的IP配置: 192.101.1.254 子网掩码：255.255.255.0 网关：不用设置<br>分店1的IP配置: 192.101.1.1 子网掩码：255.255.255.0 网关：不用设置<br>分店2的IP配置: 192.101.1.2 子网掩码：255.255.255.0 网关：不用设置  </li>
+<li>在总部和分店各找出一台可以上网的计算机充当路由器角色。为了方便这些电脑的IP最后一位相同。<br>总部的路由器IP地址为: 192.100.0.254/24<br>分店1的路由器IP地址: 192.100.1.254/24<br>分店2的路由器IP地址: 192.100.2.254/24  </li>
+<li>在4的电脑上安装VPN软件。(本文介绍的是使用虚拟网卡类VPN）<br>安装好虚拟网卡软件并配置好IP地址：<br>总部的IP配置: 192.101.1.254 子网掩码：255.255.255.0 网关：不用设置<br>分店1的IP配置: 192.101.1.1 子网掩码：255.255.255.0 网关：不用设置<br>分店2的IP配置: 192.101.1.2 子网掩码：255.255.255.0 网关：不用设置  </li>
 <li>在4的电脑上配置好路由，为了方便使用RIP路由协议。如果分店比较多可以使用OSPF大型路由协议<br>6.1 首先，启用路由和远程访问（从系统的管理工具-路由和远程访问进入设置）。<br>6.2 添加RIP协议（展开 IP 路由选择,在常规上点右键新增路由协议添加）<br>6.3 为RIP协议指定使用的网卡（右键点击RIP协议，接增接口，选择虚拟网卡）<br>6.4 可选设置，设置RIP通讯密码，也就是激活身份验证，只有密码相同才可以互访。  </li>
-<li>对其它的电脑进行IP配置。最终IP配置如下。 
-总部所有电脑的IP设置：IP:<em>192.100.0.XXX</em> 子网掩码：<em>255.255.255.0</em> 网关:<em>192.100.0.254</em><br>分店1所有电脑的IP设置：IP:<em>192.100.1.XXX</em> 子网掩码：<em>255.255.255.0</em> 网关:<em>192.100.1.254</em><br>分店2所有电脑的IP设置：IP:<em>192.100.2.XXX</em> 子网掩码：<em>255.255.255.0</em> 网关:<em>192.100.2.254</em>  </li>
-<li>以上设置好了以后就可以直接互连互访了。
-像总部<em>192.100.0.5</em> 的电脑可以直接访问<em>192.100.1.6</em>的电脑，等.. </li>
+<li>对其它的电脑进行IP配置。最终IP配置如下。<br>总部所有电脑的IP设置：IP:<em>192.100.0.XXX</em> 子网掩码：<em>255.255.255.0</em> 网关:<em>192.100.0.254</em><br>分店1所有电脑的IP设置：IP:<em>192.100.1.XXX</em> 子网掩码：<em>255.255.255.0</em> 网关:<em>192.100.1.254</em><br>分店2所有电脑的IP设置：IP:<em>192.100.2.XXX</em> 子网掩码：<em>255.255.255.0</em> 网关:<em>192.100.2.254</em>  </li>
+<li>以上设置好了以后就可以直接互连互访了。<br>像总部<em>192.100.0.5</em> 的电脑可以直接访问<em>192.100.1.6</em>的电脑，等.. </li>
 </ol>
 <p>附简易连接图示（画得不好，别拍砖,,,,,)：</p>
 <p><img src="http://c-dl.qiniudn.com/post/soft_vpn.png" alt=""></p>
@@ -223,7 +219,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="107"  data-url="http://chenall.net/post/soft_vpn/" data-title="【分享】免费安全纯软件连锁VPN解决方案 （简版）"></div>
@@ -292,7 +288,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -308,14 +304,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -412,7 +406,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

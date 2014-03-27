@@ -119,8 +119,7 @@ var _js2load = [];
 
 <div class="archive">
 
-  <ul class="list-group"><li class="list-group-item"><h3><time datetime="2012-11-27T02:35:48.000Z">2012-11-27</time>  <a href="/post/php_manual/">PHP相关记录</a></h3><p class="list-group-item-text">PHP Curl 417 Expectation Failed
-原因: 服务端使用lighttpd,而lighttp不支持返回&quot;Expect: 100-continue&quot;这样的header，就会以417 &quot;Expectation failed&quot; 来代替（lighttpd 1.5.0无此问题）。</p><li class="list-group-item"><h3><time datetime="2012-08-13T07:20:14.000Z">2012-08-13</time>  <a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></h3><p class="list-group-item-text">有时候我们获取一些新浪微博的数据,但又不想使用API,只好使用模拟登录了.
+  <ul class="list-group"><li class="list-group-item"><h3><time datetime="2012-11-27T02:35:48.000Z">2012-11-27</time>  <a href="/post/php_manual/">PHP相关记录</a></h3><p class="list-group-item-text">PHP Curl 417 Expectation Failed原因: 服务端使用lighttpd,而lighttp不支持返回”Expect: 100-continue”这样的header，就会以417 “Expectation failed” 来代替（lighttpd 1.5.0无此问题）。解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(‘Expect:’);</p><li class="list-group-item"><h3><time datetime="2012-08-13T07:20:14.000Z">2012-08-13</time>  <a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></h3><p class="list-group-item-text">有时候我们获取一些新浪微博的数据,但又不想使用API,只好使用模拟登录了.
 发现以前可以使用的CURL模拟登录代码失效了,Google一下,发现有很多人碰到这个问题.但是没有找到解决方法,所以就自己研究了一下,发现了原因.</p>
 
 </div></div><!--wapper-->
@@ -186,7 +185,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -202,14 +201,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:36</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:10</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -293,7 +290,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

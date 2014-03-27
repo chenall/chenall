@@ -121,17 +121,12 @@ var _js2load = [];
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T07:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
 
- root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下
-  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
+ root中文解释就是“根”的意思。  例子：  一个磁盘文件列表如下
+  其中一开始X:\就是默认root  现在要访问boot\file3 就可以使用 /boot/file3 来访问  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
 
-启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示</p><li class="list-group-item"><h3><time datetime="2009-11-14T11:37:05.000Z">2009-11-14</time>  <a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></h3><p class="list-group-item-text">一般的PE光盘必须的文件列表如下
+启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）. 有时候系统的启动文件被删了就会出现如下提示 BOOTMGR is missing或者NTLDR is missing 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p><li class="list-group-item"><h3><time datetime="2009-11-14T11:37:05.000Z">2009-11-14</time>  <a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></h3><p class="list-group-item-text">一般的PE光盘必须的文件列表如下
  WINNT.SIF文件内容例子
-SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG文件位置等
-SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文件必须放在根目录下</p><li class="list-group-item"><h3><time datetime="2009-11-11T16:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
+SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG文件位置等SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文件必须放在根目录下</p><li class="list-group-item"><h3><time datetime="2009-11-11T16:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
 有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。
 2014-01-21  注: 这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了</p><li class="list-group-item"><h3><time datetime="2009-11-06T11:19:32.000Z">2009-11-06</time>  <a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></h3><p class="list-group-item-text">批处理读取INI文件,以前无聊时写的.当时只是觉得好玩就尝试写了一下，原贴请看DOS联盟论坛
 http://www.cn-dos.net/forum/viewthread.php?tid=25789
@@ -201,7 +196,7 @@ Ghost硬盘安装器，可以在你熟悉的Windows环境下恢复GHO文件（�
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -217,14 +212,12 @@ Ghost硬盘安装器，可以在你熟悉的Windows环境下恢复GHO文件（�
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:03</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -308,7 +301,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

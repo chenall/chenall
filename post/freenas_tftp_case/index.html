@@ -136,9 +136,7 @@ var _js2load = [];
 <p>以下就是所需要的信息：</p>
 <blockquote>
 <p><code>casesensitivity</code>  字符串  <em>mixed</em></p>
-<p>此属性指示文件系统使用的文件名匹配算法应当是<code>casesensitive</code>、<code>caseinsensitive</code>，还是允许这两种匹配风格的组合 (mixed)。传统上，UNIX 和 POSIX 文件系统的文件名区分大小写。
-此属性的值为 mixed 时表示文件系统对区分大小写和不区分大小写的匹配行为要求均可支持。当前，在支持混合行为的文件系统上，不区分大小写的匹配行为仅限于 Oracle Solaris SMB 服务器产品。有关使用 mixed 值的更多信息，请参见casesensitivity 属性。
-不管 casesensitivity 属性设置如何，在创建文件时，文件系统都会保留指定的名称的大小写。在创建文件系统后无法更改此属性。</p>
+<p>此属性指示文件系统使用的文件名匹配算法应当是<code>casesensitive</code>、<code>caseinsensitive</code>，还是允许这两种匹配风格的组合 (mixed)。传统上，UNIX 和 POSIX 文件系统的文件名区分大小写。<br>此属性的值为 mixed 时表示文件系统对区分大小写和不区分大小写的匹配行为要求均可支持。当前，在支持混合行为的文件系统上，不区分大小写的匹配行为仅限于 Oracle Solaris SMB 服务器产品。有关使用 mixed 值的更多信息，请参见casesensitivity 属性。<br>不管 casesensitivity 属性设置如何，在创建文件时，文件系统都会保留指定的名称的大小写。在创建文件系统后无法更改此属性。</p>
 </blockquote>
 <p>试着直接<code>zfs set</code> 来改变该属性发现是只读的，不可修改。所以只能重新创建一个卷了。</p>
 <p>因为使用WEB图形界面创建的ZFS卷不能设置这个属性，所以必须到SHELL下创建，命令举例：</p>
@@ -200,7 +198,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li><li class="list-group-item"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="840"  data-url="http://chenall.net/post/freenas_tftp_case/" data-title="[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器"></div>
@@ -269,7 +267,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -285,14 +283,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -389,7 +385,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

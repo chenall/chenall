@@ -12,8 +12,7 @@
 
 <meta name="description" content="以下需要先设置好GRUB4DOS作为引导。
 
-启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示">
+启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）. 有时候系统的启动文件被删了就会出现如下提示 BOOTMGR is missing或者NTLDR is missing 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -134,10 +133,7 @@ var _js2load = [];
       
         <p>以下需要先设置好GRUB4DOS作为引导。</p>
 <ol>
-<li><p>启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示
- <em>BOOTMGR is missing</em>或者<em>NTLDR is missing</em>
- 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p>
+<li><p>启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.<br> 有时候系统的启动文件被删了就会出现如下提示<br> <em>BOOTMGR is missing</em>或者<em>NTLDR is missing</em><br> 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p>
 <p>先复制NTLDR(从XP系统中找）还有bootmgr（VISTA以上系统启动文件），到U盘上。</p>
 <pre><code> title 1.启动硬盘上的xp/2k3系统(NTLDR)
  chainloader /NTLDR
@@ -149,8 +145,7 @@ var _js2load = [];
  find --set-root --ignore-floppies --ignore-cd /boot/bcd
  dd if=()+1 of=(md)0x3e+1
 </code></pre></li>
-<li><p>备份恢复硬盘MBR（此功能不熟悉的最好不要用，否则后果自负）
-首先U盘上需要放一个文件比如MBR_BAK，（大小在512字节以上，内容可以随意）作为备份恢复的载体</p>
+<li><p>备份恢复硬盘MBR（此功能不熟悉的最好不要用，否则后果自负）<br>首先U盘上需要放一个文件比如MBR_BAK，（大小在512字节以上，内容可以随意）作为备份恢复的载体</p>
 <pre><code> title 1.备份硬盘MBR
  checkrange 0x80 read 0x8280 &amp;&amp; dd if=(hd1)+1 of=()/MBR_BAK
  checkrange 0x80 read 0x8280 || dd if=(hd0)+1 of=()/MBR_BAK
@@ -159,19 +154,14 @@ var _js2load = [];
  checkrange 0x80 read 0x8280 || dd if=()/mbr_bak of=(hd0)+1 count=1
  checkrange 0x80 read 0x8280 &amp;&amp; dd if=()/mbr_bak of=(hd1)+1 count=1
 </code></pre></li>
-<li><p>加载启动一个IMG镜像，比如MAXDOS.IMG
-把MAXDOS.IMG放在U盘boot目录下</p>
+<li><p>加载启动一个IMG镜像，比如MAXDOS.IMG<br>把MAXDOS.IMG放在U盘boot目录下</p>
 <pre><code> title MaxDos
  map --mem /boot/maxdos.img (fd0)
  map --hook
  chainloader (fd0)+1
  rootnoverify
 </code></pre></li>
-<li><p>从网络启动（PXE），代替网卡的PXE模块。
-首先从<a href="http://rom-o-matic.net/" target="_blank"><a href="http://rom-o-matic.net/">http://rom-o-matic.net/</a></a>下载GPXE或Etherboot的启动镜像
-选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的
-到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)
-比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
+<li><p>从网络启动（PXE），代替网卡的PXE模块。<br>首先从<a href="http://rom-o-matic.net/" target="_blank">http://rom-o-matic.net/</a>下载GPXE或Etherboot的启动镜像<br>选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的<br>到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)<br>比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
 <pre><code> title Gpxe 从网络启动
  kernel /boot/gpxe.zlilo
 
@@ -234,7 +224,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/not_2345/">关于2345网址导航</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="112"  data-url="http://chenall.net/post/grub4dos_sysapp/" data-title="[Grub4DOS] 系统维护简单应用举例"></div>
@@ -303,7 +293,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -319,14 +309,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -423,7 +411,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

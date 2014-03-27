@@ -177,9 +177,7 @@ var _js2load = [];
 <p>以下就是所需要的信息：</p>
 <blockquote>
 <p><code>casesensitivity</code>  字符串  <em>mixed</em></p>
-<p>此属性指示文件系统使用的文件名匹配算法应当是<code>casesensitive</code>、<code>caseinsensitive</code>，还是允许这两种匹配风格的组合 (mixed)。传统上，UNIX 和 POSIX 文件系统的文件名区分大小写。
-此属性的值为 mixed 时表示文件系统对区分大小写和不区分大小写的匹配行为要求均可支持。当前，在支持混合行为的文件系统上，不区分大小写的匹配行为仅限于 Oracle Solaris SMB 服务器产品。有关使用 mixed 值的更多信息，请参见casesensitivity 属性。
-不管 casesensitivity 属性设置如何，在创建文件时，文件系统都会保留指定的名称的大小写。在创建文件系统后无法更改此属性。</p>
+<p>此属性指示文件系统使用的文件名匹配算法应当是<code>casesensitive</code>、<code>caseinsensitive</code>，还是允许这两种匹配风格的组合 (mixed)。传统上，UNIX 和 POSIX 文件系统的文件名区分大小写。<br>此属性的值为 mixed 时表示文件系统对区分大小写和不区分大小写的匹配行为要求均可支持。当前，在支持混合行为的文件系统上，不区分大小写的匹配行为仅限于 Oracle Solaris SMB 服务器产品。有关使用 mixed 值的更多信息，请参见casesensitivity 属性。<br>不管 casesensitivity 属性设置如何，在创建文件时，文件系统都会保留指定的名称的大小写。在创建文件系统后无法更改此属性。</p>
 </blockquote>
 <p>试着直接<code>zfs set</code> 来改变该属性发现是只读的，不可修改。所以只能重新创建一个卷了。</p>
 <p>因为使用WEB图形界面创建的ZFS卷不能设置这个属性，所以必须到SHELL下创建，命令举例：</p>
@@ -228,10 +226,8 @@ var _js2load = [];
 <li>response 最关键的参数，经过一系列计算得到</li>
 </ul>
 <ol>
-<li>用户名+&quot;:NSP Passport:&quot;+密码 进行32位md5计算。（小写）
-测试时可以利用以下地址的在线工具进行计算
-<a href="http://app.baidu.com/yiten_md5?keyword=MD5" target="_blank">http://app.baidu.com/yiten_md5?keyword=MD5</a></li>
-<li>上面的结果再 + &quot;:&quot; + nonce 进行32位md5计算.(小写)，得到的就是response的值。</li>
+<li>用户名+”:NSP Passport:”+密码 进行32位md5计算。（小写）<br>测试时可以利用以下地址的在线工具进行计算<br><a href="http://app.baidu.com/yiten_md5?keyword=MD5" target="_blank">http://app.baidu.com/yiten_md5?keyword=MD5</a></li>
+<li>上面的结果再 + “:” + nonce 进行32位md5计算.(小写)，得到的就是response的值。</li>
 </ol>
 <ul>
 <li>nsp_user 用户名</li>
@@ -244,8 +240,7 @@ var _js2load = [];
 <p><a href="http://login.dbank.com/loginauth.php?k=K的参数" target="_blank">http://login.dbank.com/loginauth.php?k=K的参数</a></p>
 <p>附，测试登录过程。</p>
 <p>测试帐号 test@chenall.tk 密码： wMtA8HscF6G0Zv6V</p>
-<p>打开 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a>
-提取到需要的数据</p>
+<p>打开 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a><br>提取到需要的数据</p>
 <pre><code>&lt;input type=&quot;hidden&quot; id=&quot;nonce&quot; name=&quot;nonce&quot; value=&quot;4fdf0b700b0052.91924864&quot;&gt;
 &lt;input type=&quot;hidden&quot; id=&quot;nsp_cid&quot; name=&quot;nsp_cid&quot; value=&quot;802fdd1049992984cf49a1cd0fc7545c&quot;&gt;
 </code></pre><p>2012-08-21 更新: 发现上面这一步可以省略,nonce是一个随机值,你可以自己随便生成一个随机数就行了.nsp_cid参数可以省略,不需要.</p>
@@ -258,24 +253,13 @@ var _js2load = [];
 <p>得到</p>
 <p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
 <p>现在参数全部有了直接提交（用get或post都可以）</p>
-<p><a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x68;&#x74;&#x74;&#x70;&#58;&#x2f;&#47;&#108;&#x6f;&#x67;&#105;&#x6e;&#x2e;&#100;&#x62;&#97;&#x6e;&#107;&#x2e;&#x63;&#x6f;&#109;&#x2f;&#108;&#111;&#x67;&#x69;&#x6e;&#97;&#117;&#116;&#104;&#x2e;&#112;&#104;&#x70;&#63;&#110;&#115;&#112;&#95;&#x61;&#112;&#112;&#61;&#x34;&#x38;&#x30;&#x34;&#x39;&#38;&#109;&#61;&#x31;&#38;&#110;&#111;&#x6e;&#99;&#101;&#x3d;&#52;&#102;&#100;&#x66;&#x30;&#x62;&#55;&#x30;&#x30;&#98;&#48;&#x30;&#53;&#50;&#46;&#57;&#x31;&#57;&#50;&#x34;&#56;&#x36;&#x34;&#38;&#110;&#115;&#x70;&#95;&#x63;&#105;&#100;&#61;&#x38;&#x30;&#50;&#x66;&#x64;&#x64;&#x31;&#48;&#52;&#57;&#x39;&#57;&#50;&#x39;&#56;&#x34;&#99;&#102;&#x34;&#57;&#x61;&#x31;&#x63;&#100;&#x30;&#102;&#99;&#55;&#53;&#52;&#x35;&#99;&#x26;&#110;&#x73;&#112;&#x5f;&#117;&#x73;&#101;&#114;&#x3d;&#x74;&#101;&#x73;&#x74;&#64;&#99;&#x68;&#101;&#110;&#97;&#108;&#x6c;&#46;&#116;&#107;&#x26;&#x72;&#x65;&#115;&#112;&#111;&#110;&#x73;&#101;&#x3d;&#57;&#99;&#100;&#x38;&#52;&#x63;&#50;&#53;&#x30;&#x30;&#x61;&#54;&#x30;&#49;&#x33;&#x65;&#x66;&#x33;&#x62;&#x64;&#x31;&#52;&#x34;&#x31;&#x39;&#49;&#x39;&#49;&#51;&#50;&#x62;&#54;">&#x68;&#x74;&#x74;&#x70;&#58;&#x2f;&#47;&#108;&#x6f;&#x67;&#105;&#x6e;&#x2e;&#100;&#x62;&#97;&#x6e;&#107;&#x2e;&#x63;&#x6f;&#109;&#x2f;&#108;&#111;&#x67;&#x69;&#x6e;&#97;&#117;&#116;&#104;&#x2e;&#112;&#104;&#x70;&#63;&#110;&#115;&#112;&#95;&#x61;&#112;&#112;&#61;&#x34;&#x38;&#x30;&#x34;&#x39;&#38;&#109;&#61;&#x31;&#38;&#110;&#111;&#x6e;&#99;&#101;&#x3d;&#52;&#102;&#100;&#x66;&#x30;&#x62;&#55;&#x30;&#x30;&#98;&#48;&#x30;&#53;&#50;&#46;&#57;&#x31;&#57;&#50;&#x34;&#56;&#x36;&#x34;&#38;&#110;&#115;&#x70;&#95;&#x63;&#105;&#100;&#61;&#x38;&#x30;&#50;&#x66;&#x64;&#x64;&#x31;&#48;&#52;&#57;&#x39;&#57;&#50;&#x39;&#56;&#x34;&#99;&#102;&#x34;&#57;&#x61;&#x31;&#x63;&#100;&#x30;&#102;&#99;&#55;&#53;&#52;&#x35;&#99;&#x26;&#110;&#x73;&#112;&#x5f;&#117;&#x73;&#101;&#114;&#x3d;&#x74;&#101;&#x73;&#x74;&#64;&#99;&#x68;&#101;&#110;&#97;&#108;&#x6c;&#46;&#116;&#107;&#x26;&#x72;&#x65;&#115;&#112;&#111;&#110;&#x73;&#101;&#x3d;&#57;&#99;&#100;&#x38;&#52;&#x63;&#50;&#53;&#x30;&#x30;&#x61;&#54;&#x30;&#49;&#x33;&#x65;&#x66;&#x33;&#x62;&#x64;&#x31;&#52;&#x34;&#x31;&#x39;&#49;&#x39;&#49;&#51;&#50;&#x62;&#54;</a></p>
+<p><a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#108;&#111;&#x67;&#x69;&#110;&#46;&#100;&#x62;&#97;&#x6e;&#107;&#x2e;&#99;&#x6f;&#109;&#x2f;&#x6c;&#x6f;&#103;&#x69;&#110;&#97;&#x75;&#x74;&#104;&#x2e;&#x70;&#x68;&#x70;&#x3f;&#110;&#115;&#112;&#95;&#97;&#x70;&#112;&#x3d;&#x34;&#x38;&#48;&#52;&#x39;&#38;&#109;&#x3d;&#x31;&#38;&#110;&#111;&#110;&#x63;&#x65;&#x3d;&#52;&#102;&#100;&#102;&#x30;&#x62;&#x37;&#48;&#x30;&#98;&#x30;&#48;&#x35;&#x32;&#x2e;&#x39;&#49;&#57;&#50;&#x34;&#56;&#54;&#x34;&#38;&#110;&#115;&#x70;&#x5f;&#99;&#105;&#100;&#61;&#x38;&#x30;&#50;&#102;&#x64;&#x64;&#x31;&#x30;&#x34;&#x39;&#57;&#x39;&#50;&#57;&#x38;&#52;&#99;&#x66;&#x34;&#57;&#97;&#49;&#x63;&#100;&#x30;&#x66;&#99;&#55;&#53;&#x34;&#53;&#x63;&#x26;&#x6e;&#x73;&#x70;&#95;&#117;&#x73;&#101;&#114;&#61;&#x74;&#x65;&#x73;&#116;&#64;&#x63;&#x68;&#101;&#110;&#97;&#108;&#x6c;&#46;&#116;&#x6b;&#x26;&#x72;&#101;&#x73;&#112;&#x6f;&#x6e;&#x73;&#101;&#x3d;&#x39;&#99;&#100;&#x38;&#52;&#99;&#x32;&#x35;&#x30;&#x30;&#97;&#x36;&#x30;&#x31;&#x33;&#x65;&#102;&#x33;&#x62;&#x64;&#x31;&#52;&#52;&#49;&#x39;&#49;&#57;&#49;&#51;&#x32;&#x62;&#54;">&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#108;&#111;&#x67;&#x69;&#110;&#46;&#100;&#x62;&#97;&#x6e;&#107;&#x2e;&#99;&#x6f;&#109;&#x2f;&#x6c;&#x6f;&#103;&#x69;&#110;&#97;&#x75;&#x74;&#104;&#x2e;&#x70;&#x68;&#x70;&#x3f;&#110;&#115;&#112;&#95;&#97;&#x70;&#112;&#x3d;&#x34;&#x38;&#48;&#52;&#x39;&#38;&#109;&#x3d;&#x31;&#38;&#110;&#111;&#110;&#x63;&#x65;&#x3d;&#52;&#102;&#100;&#102;&#x30;&#x62;&#x37;&#48;&#x30;&#98;&#x30;&#48;&#x35;&#x32;&#x2e;&#x39;&#49;&#57;&#50;&#x34;&#56;&#54;&#x34;&#38;&#110;&#115;&#x70;&#x5f;&#99;&#105;&#100;&#61;&#x38;&#x30;&#50;&#102;&#x64;&#x64;&#x31;&#x30;&#x34;&#x39;&#57;&#x39;&#50;&#57;&#x38;&#52;&#99;&#x66;&#x34;&#57;&#97;&#49;&#x63;&#100;&#x30;&#x66;&#99;&#55;&#53;&#x34;&#53;&#x63;&#x26;&#x6e;&#x73;&#x70;&#95;&#117;&#x73;&#101;&#114;&#61;&#x74;&#x65;&#x73;&#116;&#64;&#x63;&#x68;&#101;&#110;&#97;&#108;&#x6c;&#46;&#116;&#x6b;&#x26;&#x72;&#101;&#x73;&#112;&#x6f;&#x6e;&#x73;&#101;&#x3d;&#x39;&#99;&#100;&#x38;&#52;&#99;&#x32;&#x35;&#x30;&#x30;&#97;&#x36;&#x30;&#x31;&#x33;&#x65;&#102;&#x33;&#x62;&#x64;&#x31;&#52;&#52;&#49;&#x39;&#49;&#57;&#49;&#51;&#x32;&#x62;&#54;</a></p>
 <p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
 <pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
 </code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
-<p>另外要说一点，看起来挺安全的，因为没有传输密码。但是好像有一个问题。最终的登录地址目前没有任何的限制。只要得到这个地址，你换一台电脑直接提交这个地址就可以登录了，这也是一个安全隐患。不知有没有时间限制，我试了昨天生成的地址，今天还能用。
-大家可以试试点击上面的链接，看看是不是还能正常登录。
-2012-06-21  经测试修改了密码之后，上面的自动登录链接依然有效。
-2012-06-25  一个星期过去了，依旧。
-2012-06-26  发现其它的也是一样，只要获取到最终的API参数，无需登录或密码都可以操作。比如签到不需要登录就行了。
-2012-08-21  登录的第一步获取nonce等值的过程可以省略了.具本看前面的介绍
-            题外话，本来想把网盘签到的post方法也找出来，里面最重要的参数是nsp<em>key，这个是把很多的数据整在一起进行MD5计算，看了好久还没有找全所有的需要的数据。无奈只能放弃，如果您有已经研究出了计算的方法，不妨分享一下。
-2012-06-26 已经找出计算方法，现在可以直接快速签到了。^</em>^，chrome真是强大，调试一下很快就找出来了，以前还傻傻的慢慢看JS源码。。</p>
-<h3 id="_-_-"><em>快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录</em>,</h3>
-<p>本文测试帐号的自动签到链接如下:
-<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp</a>
-如何获取到上面的链接呢？最简单的方法直接抓包就行了，用chrome就可以直接抓包了。
-当然可以手工打造一个链接，要生成这个链接首先要知道各个参数是如何得来的。
-上面的链接参数解释(其中不重要的参数可以不要)</p>
+<p>另外要说一点，看起来挺安全的，因为没有传输密码。但是好像有一个问题。最终的登录地址目前没有任何的限制。只要得到这个地址，你换一台电脑直接提交这个地址就可以登录了，这也是一个安全隐患。不知有没有时间限制，我试了昨天生成的地址，今天还能用。<br>大家可以试试点击上面的链接，看看是不是还能正常登录。<br>2012-06-21  经测试修改了密码之后，上面的自动登录链接依然有效。<br>2012-06-25  一个星期过去了，依旧。<br>2012-06-26  发现其它的也是一样，只要获取到最终的API参数，无需登录或密码都可以操作。比如签到不需要登录就行了。<br>2012-08-21  登录的第一步获取nonce等值的过程可以省略了.具本看前面的介绍<br>            题外话，本来想把网盘签到的post方法也找出来，里面最重要的参数是nsp<em>key，这个是把很多的数据整在一起进行MD5计算，看了好久还没有找全所有的需要的数据。无奈只能放弃，如果您有已经研究出了计算的方法，不妨分享一下。<br>2012-06-26 已经找出计算方法，现在可以直接快速签到了。^</em>^，chrome真是强大，调试一下很快就找出来了，以前还傻傻的慢慢看JS源码。。</p>
+<h3 id="<em>快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录</em>,"><em>快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录</em>,</h3>
+<p>本文测试帐号的自动签到链接如下:<br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp</a><br>如何获取到上面的链接呢？最简单的方法直接抓包就行了，用chrome就可以直接抓包了。<br>当然可以手工打造一个链接，要生成这个链接首先要知道各个参数是如何得来的。<br>上面的链接参数解释(其中不重要的参数可以不要)</p>
 <ul>
 <li>nsp_svc是固定的，表示要进行签到 <code>nsp_svc=com.dbank.signin.signin</code></li>
 <li>anticache 是一个随机数字，不重要</li>
@@ -283,9 +267,7 @@ var _js2load = [];
 <li>nsp_sid=kuTubNkuCQi19uaOXxiuu4FjMYp18kTozF5VnBk1HnAkFwEv</li>
 <li>nsp_ts  这个不需要解释了，是一个时间串，<del>不是很重要，同样可以固定</del></li>
 <li>nsp_key 验证信息，通过多种参数进行组合再进行MD5加密的结果 nsp_key=9AC41E0B0DD240F97361F87483131667</li>
-<li>nsp_fmt=JS&amp;nsp_cb=_jqjsp 这个参数也不重要,可以省略
-看了上面的参数列表，基本上都是现成的，只有nsp_key需要额外获取。
-这个nsp_key的获取方法:</li>
+<li>nsp_fmt=JS&amp;nsp_cb=_jqjsp 这个参数也不重要,可以省略<br>看了上面的参数列表，基本上都是现成的，只有nsp_key需要额外获取。<br>这个nsp_key的获取方法:</li>
 </ul>
 <ol>
 <li><p>把上面除了nsp_key之外的参数按字母正向排序一下,得到如下结果。</p>
@@ -304,23 +286,14 @@ nsp_ts=1341032380236
 </ol>
 <p>PS: 请继续看本文尾部，有更新的方法哦。</p>
 <p>整理一下本文的自动登录和签到链接</p>
-<p><a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">自动登录测试</a>
-<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">自动签到测试</a></p>
-<p>大家有兴趣可以试试点击以上这两个链接，看看可以用多久，，目前自动登录的链接在本文发表日期6月18日获取的，目前6月30号，依然有效。
-EDIT: 发现现在的签到的链接是有限制的（前几天我测试时好像没有限制），所以。。。只好每次都重新生成了,也简单，只需要获取登录之后cookie里面的<code>secret</code>和<code>session</code>的值替换进去就行了，其它的都不需要变。
-我算是知道为什么华为网盘的页面打开速度反应偏慢了。你想啊，每打开一个页面，都需要调用10个以上的API，每个都需要经过一系列的MD5计算能不慢吗。而且经过这么复杂的计算个人认为没有增加什么安全性可言，只是人为增加客户端和服务端的计算量。
-建议参考一下其它的网盘，登录后可以直接调用API，而不需要这么麻烦。像天翼网盘，登录之后直接
-<a href="http://cloud.189.cn/userInfoJson.action" target="_blank">http://cloud.189.cn/userInfoJson.action</a> 就可以获取用户信息
-<a href="http://cloud.189.cn/userSign.action" target="_blank">http://cloud.189.cn/userSign.action</a>  签到
-看起来又直观，又简单，真搞不明白华为为什么要搞得这么复杂，我猜测可能是为了和其它API的调用保持一致吧。</p>
+<p><a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">自动登录测试</a><br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">自动签到测试</a></p>
+<p>大家有兴趣可以试试点击以上这两个链接，看看可以用多久，，目前自动登录的链接在本文发表日期6月18日获取的，目前6月30号，依然有效。<br>EDIT: 发现现在的签到的链接是有限制的（前几天我测试时好像没有限制），所以。。。只好每次都重新生成了,也简单，只需要获取登录之后cookie里面的<code>secret</code>和<code>session</code>的值替换进去就行了，其它的都不需要变。<br>我算是知道为什么华为网盘的页面打开速度反应偏慢了。你想啊，每打开一个页面，都需要调用10个以上的API，每个都需要经过一系列的MD5计算能不慢吗。而且经过这么复杂的计算个人认为没有增加什么安全性可言，只是人为增加客户端和服务端的计算量。<br>建议参考一下其它的网盘，登录后可以直接调用API，而不需要这么麻烦。像天翼网盘，登录之后直接<br><a href="http://cloud.189.cn/userInfoJson.action" target="_blank">http://cloud.189.cn/userInfoJson.action</a> 就可以获取用户信息<br><a href="http://cloud.189.cn/userSign.action" target="_blank">http://cloud.189.cn/userSign.action</a>  签到<br>看起来又直观，又简单，真搞不明白华为为什么要搞得这么复杂，我猜测可能是为了和其它API的调用保持一致吧。</p>
 <p>EDIT2: 经测试，那些参数中有一些是可以不要的。重新整理一下必备参数如下.只有需要两个参数了。</p>
 <pre><code>nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED
 nsp_svc=com.dbank.signin.signin
 nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
-</code></pre><p>最终的链接地址为因为参数少了，链接里面的参数也要相应的减少.
-<a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348</a></p>
-<p>EDIT3: 2014-01-15 由于搏客转移到HEXO,文章重新整理了下,新的API有改变 nsp_ts是必须的而且不能和服务器的时间差太多,在php中可以用time()获取.
-由于API有了一些变化,另外华为网盘已经有相关的API文档了,上面的计算方法大部份都可以从API文档中找到,估计上面的链接应该都失效了,懒得重新获取了.留本文作为研究记录,</p>
+</code></pre><p>最终的链接地址为因为参数少了，链接里面的参数也要相应的减少.<br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348</a></p>
+<p>EDIT3: 2014-01-15 由于搏客转移到HEXO,文章重新整理了下,新的API有改变 nsp_ts是必须的而且不能和服务器的时间差太多,在php中可以用time()获取.<br>由于API有了一些变化,另外华为网盘已经有相关的API文档了,上面的计算方法大部份都可以从API文档中找到,估计上面的链接应该都失效了,懒得重新获取了.留本文作为研究记录,</p>
 
       
     </div>
@@ -401,31 +374,21 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
 <p>引导程序WEE+GRUB4DOS。</p>
 <p>自带基于MODBOOT的一键恢复程序QGHO，可以随时进行备份恢复系统。</p>
 <p>可以方便的进行功能扩展，一切皆有可能。</p>
-<h3 id="-">说明：</h3>
+<h3 id="说明：">说明：</h3>
 <ul>
 <li>默认情况下不显示任何菜单，只有在需要的时候才会显示（按对应的按键，或使用了自定义的菜单接口）</li>
 <li>自带MODBOOT和NTBOOT两个组件。</li>
 <li>可以通过很简单的方法进行功能扩展。</li>
 <li>恢复系统使用的是QGHO（基于MODBOOT）。</li>
 <li><p>启动时如果不按任何按键或按了无效按键则使用默认的方式启动系统（启动第一激活的主分区上）</p>
-<p>如果有存在SYS_MENU.LST文件则会调用该菜单。
-可以通过按指定的按键进入对应的系统。</p>
+<p>如果有存在SYS_MENU.LST文件则会调用该菜单。<br>可以通过按指定的按键进入对应的系统。</p>
 </li>
 <li><p>所以的东西都可以自己修改（当然了前提是你熟悉GRUB4DOS，知道要改的东西。）</p>
 </li>
 <li>因为是使用WEE作为主引导的，安装、修复都很方便，双击一下就搞定了。</li>
-<li>一些文件目录说明。
-ADDONS　　　附加工具目录，下载附加的工具直接解压到该目录下就可以了。
-BIN　　　　　　一些应用程序，用于修复系统引导。
-MODBOOT　　MODBOOT模块程序
-NTBOOT　　　NTBOOT模块程序
-grub　　　　　GRUB4DOS程序目录。
-以上目录一般情况下你可以不必理会它里面的内容。
-PRELOAD.BAT　主引导界面还有快捷键的定义批处理（GRUB4DOS专用）
-preload.fnt　　主引导界面使用的字体库。
-SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建，如果有的话默认就会显示这个菜单内容）</li>
+<li>一些文件目录说明。<br>ADDONS　　　附加工具目录，下载附加的工具直接解压到该目录下就可以了。<br>BIN　　　　　　一些应用程序，用于修复系统引导。<br>MODBOOT　　MODBOOT模块程序<br>NTBOOT　　　NTBOOT模块程序<br>grub　　　　　GRUB4DOS程序目录。<br>以上目录一般情况下你可以不必理会它里面的内容。<br>PRELOAD.BAT　主引导界面还有快捷键的定义批处理（GRUB4DOS专用）<br>preload.fnt　　主引导界面使用的字体库。<br>SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建，如果有的话默认就会显示这个菜单内容）</li>
 </ul>
-<h2 id="-">【更新历史】</h2>
+<h2 id="【更新历史】">【更新历史】</h2>
 <h3 id="2014-01-13">2014-01-13</h3>
 <ul>
 <li>删作本页面的部份失效图片</li>
@@ -470,12 +433,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <ul>
 <li>﻿QGHO修正</li>
 <li>GRUB4DOS更新</li>
-<li>新增支持自动检测多操作系统功能
-按F8就可以显示支持的系统菜单
-按Ctrl+F8重新检测
-比如你硬盘第一个分区安装WINDOWS 2003,第二个分区安装WINDOWS XP
-第三分分区安装WINDOWS 7，启动时按F8可以自动检测到，按菜单选择启动。
-其它说明:<ol>
+<li>新增支持自动检测多操作系统功能<br>按F8就可以显示支持的系统菜单<br>按Ctrl+F8重新检测<br>比如你硬盘第一个分区安装WINDOWS 2003,第二个分区安装WINDOWS XP<br>第三分分区安装WINDOWS 7，启动时按F8可以自动检测到，按菜单选择启动。<br>其它说明:<ol>
 <li>支持VBOOT启动的VHD/VMDK系统，把这些文件放在放在任意硬盘的VBOOT目录下就可以自动检测</li>
 <li>支持NT6的VHD启动功能。把VHD文件放在任意硬盘的WIN_VHD目录中就可以自动检测.</li>
 <li>以上两个系统的文件名必须以@开头才会自动检测。</li>
@@ -512,9 +470,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 </ol>
 <h3 id="2011-08-30">2011-08-30</h3>
 <ol>
-<li><strong>﻿此版本内置的QGHO有问题,不能正常使用,请更新或使用旧版本</strong>
-更新NTBOOT/MODBOOT脚本.
-更新GRUB4DOS到最新版本.</li>
+<li><strong>﻿此版本内置的QGHO有问题,不能正常使用,请更新或使用旧版本</strong><br>更新NTBOOT/MODBOOT脚本.<br>更新GRUB4DOS到最新版本.</li>
 </ol>
 <h3 id="2011-08-11">2011-08-11</h3>
 <ol>
@@ -526,8 +482,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <li>GRUB4DOS更新到2011-08-09版.</li>
 <li>NTBOOT更新.<strong>PE1添加了一个ntpath参数,具体用法请查看tangope.rar里面的#TangoPE.txt</strong>.</li>
 <li>MODBOOT更新.<strong>批处理脚本修改优化.</strong></li>
-<li><p>QGHO一键恢复程序更新.
-重新设计了自定义恢复过程,初次启动时自动查找所有硬盘分区根目录下的GHO文件并列在菜单上.</p>
+<li><p>QGHO一键恢复程序更新.<br>重新设计了自定义恢复过程,初次启动时自动查找所有硬盘分区根目录下的GHO文件并列在菜单上.</p>
 <p>可以选择指定分区再次查找(默认找2级目录) ,可以修改支持查找N级目录</p>
 <p>打开MODBOOT\LEVEL3\QGHO.BAT查找Q.S.SUB=2,要找几级就改成2,建议不要太大,否则查找的过程很慢.</p>
 </li>
@@ -577,10 +532,9 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <p>4.GRUB4DOS升级到最新版。</p>
 <p>5.支持修改默认的一键恢复密码。</p>
 <p>安装方法：</p>
-<p>下载SYS_TOOLS.RAR并解压到你电脑的任意磁盘根目录下。注： 解压完成后会多出一个BOOT目录（隐藏的）。
-进入BOOT\BIN目录，双击setup_hd0.cmd就行了。</p>
+<p>下载SYS_TOOLS.RAR并解压到你电脑的任意磁盘根目录下。注： 解压完成后会多出一个BOOT目录（隐藏的）。<br>进入BOOT\BIN目录，双击setup_hd0.cmd就行了。</p>
 <p>注：如果有杀毒软件可能会有警报，否则不会有什么提示，重启系统即可。如果安装失败可以尝试使用BOOTICE进行安装</p>
-<p>BOOTICE 下载地址: <a href="http://bbs.wuyou.com/viewthread.php?tid=57675" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=57675">http://bbs.wuyou.com/viewthread.php?tid=57675</a></a></p>
+<p>BOOTICE 下载地址: <a href="http://bbs.wuyou.com/viewthread.php?tid=57675" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=57675</a></p>
 <p>用BOOTICE进行第二步的安装方法</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2011/05/31AAE4E9668FEC052E0BF3DB7B4FD8FD4A46CA6A.png" alt=""></p>
 <p><img src="http://c-dl.qiniudn.com/upload/2011/05/8112D8AD5D88D0D09C2F16C21C5C6A8EDDDC6301.png" alt=""></p>
@@ -592,7 +546,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <p>可以自己参考以上模块自己添加其它模块，也欢迎共享你的模块。</p>
 <p>默认是启动第一个激活分区上面的系统，你可以自己写一个菜单文件改名为SYS_MENU.LST放到BOOT目录下，默认就会调用该菜单。</p>
 <p>进入一键恢复的密码默认是qgho，在启动时按F9输入正确的密码之后可以修改.</p>
-<h2 id="-">【下载地址】之前的链接已失效,如若需要可以留言我再抽空整理下重新上传.</h2>
+<h2 id="【下载地址】之前的链接已失效,如若需要可以留言我再抽空整理下重新上传-">【下载地址】之前的链接已失效,如若需要可以留言我再抽空整理下重新上传.</h2>
 
       
     </div>
@@ -626,7 +580,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
     
     <div class="entry">
       
-        <h2 id="-">【说明】</h2>
+        <h2 id="【说明】">【说明】</h2>
 <ul>
 <li>本启动盘可以用于直接启动硬盘上的NT系统.可以从任意地方加载这个镜像文件进行启动。</li>
 <li>可以通过本镜像启动硬盘上的Windows系统,不依赖硬盘上的系统引导文件.</li>
@@ -677,29 +631,12 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <p>好了，废话不多说了，直接开始了。如果想偷懒的话，有提供了可以直接使用的成品下载。</p>
 <p>说明: <strong>内容比较乱,只是记录一下整这个的过程(从文件大小也从最初的几个G到整最后的<code>50MB</code>,偷懒的直接下载最新版本就行了,想自己折腾的可以继续看下去(按日期顺序从后往前看)</strong></p>
 <p>===========2013-03-02=============</p>
-<p>由于gcc4.7编译出来的和版本启动memtest86有问题,
-gcc换成4.8版.
-git 换成1.6版.
-下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-02-03.zip" target="_blank">grub4dos_dev-gcc-4.8</a></p>
-<p>===========2013-01-14=============
-更新了一下,使用最新的tinycolinux内核 4.7.3
-svn 1.7.5
-git 1.8.0
-gcc 4.7.2</p>
-<p>下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-01-14.zip" target="_blank">grub4dos_dev</a>
-MD5: F41AF644B3DA6C133A35C45278047C24
-===========2012-02-27 ====================
-今天roy修正了gcc4.6下编译的问题 ，重新做了一个gcc4.6的版本。
-linux核心tinycore4.3
-gcc4.6+git1.6+svn1.6+7z+grub4dos-dev
-<a href="http://www.ctdisk.com/file/4946481" target="_blank">Colinux_TinyCoreLinux_grub4dos_dev.7z</a>
-MD5: FA11D60B45FEF4282DD9E0B640F39CF0</p>
-<h2 id="-2012-02-13-">===========2012-02-13 ====================</h2>
-<p>With the new version, you only need three steps to get started.
-(1) Download file <a href="http://www.ctdisk.com/file/4551969" target="_blank">Colinux_tinyslat_grub4dos_Dev.7z</a>
-(2) use 7-ZIP  extract to the location you want to install.
-(3) after decompression files run quick start.cmd in TinyDev directory</p>
-<p>Node: /mnt/cofs ----&gt; e:\colinux</p>
+<p>由于gcc4.7编译出来的和版本启动memtest86有问题,<br>gcc换成4.8版.<br>git 换成1.6版.<br>下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-02-03.zip" target="_blank">grub4dos_dev-gcc-4.8</a></p>
+<p>===========2013-01-14=============<br>更新了一下,使用最新的tinycolinux内核 4.7.3<br>svn 1.7.5<br>git 1.8.0<br>gcc 4.7.2</p>
+<p>下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-01-14.zip" target="_blank">grub4dos_dev</a><br>MD5: F41AF644B3DA6C133A35C45278047C24<br>===========2012-02-27 ====================<br>今天roy修正了gcc4.6下编译的问题 ，重新做了一个gcc4.6的版本。<br>linux核心tinycore4.3<br>gcc4.6+git1.6+svn1.6+7z+grub4dos-dev<br><a href="http://www.ctdisk.com/file/4946481" target="_blank">Colinux_TinyCoreLinux_grub4dos_dev.7z</a><br>MD5: FA11D60B45FEF4282DD9E0B640F39CF0</p>
+<h2 id="===========2012-02-13_====================">===========2012-02-13 ====================</h2>
+<p>With the new version, you only need three steps to get started.<br>(1) Download file <a href="http://www.ctdisk.com/file/4551969" target="_blank">Colinux_tinyslat_grub4dos_Dev.7z</a><br>(2) use 7-ZIP  extract to the location you want to install.<br>(3) after decompression files run quick start.cmd in TinyDev directory</p>
+<p>Node: /mnt/cofs ——&gt; e:\colinux</p>
 <ol>
 <li><p>Default cofs directory is e:\colinux so you must create this directory first for use cofs.</p>
 <p>To use a different location you can modifying the file TinyDev\tinyslat\tinyslat.ini and then restart <code>quick start.cmd</code></p>
@@ -717,12 +654,10 @@ and change home=ram0 to home=sda
 </code></pre><p>Restart Colinux and enter</p>
 <p> mke2fs -j /dev/sda</p>
 <p>Restart Colinux again</p>
-<p>Now
- /mnt/sda --&gt; sda_1g.fs</p>
+<p>Now<br> /mnt/sda —&gt; sda_1g.fs</p>
 </li>
 </ol>
-<p>==================2012-02-07==================
-结合Tinycore和slatiz优点的版本。使用了tinycore的核心+slatiz软件包管理器。相对完美版本，有以下优点</p>
+<p>==================2012-02-07==================<br>结合Tinycore和slatiz优点的版本。使用了tinycore的核心+slatiz软件包管理器。相对完美版本，有以下优点</p>
 <ul>
 <li>小巧（解开后才70MB不到，使用MSYS/CYGWIN等至少也得100MB以上吧）。</li>
 <li>方便，移动性，直接解压到电脑上就可以运行了（不要放在中文目录下）。</li>
@@ -732,26 +667,11 @@ and change home=ram0 to home=sda
 <li>自带的软件包gcc 4.5+svn1.6+git1.7+7z+……。总之下载后就可以直接编译GRUB4DOS相关程序。当然了也可以作为一个桌面linux来使用。</li>
 </ul>
 <p>使用方法：</p>
-<p>只要三步就可以开始启动 下载－〉解压-&gt;执行。
-  下载 
-  2012-02-08更新cofs权限问题
-  2012-02-09因为git新的版本不可以在COFS上用git下载源码,所以GIT换成1.6版.
-  <a href="http://www.ctdisk.com/file/4551969" target="_blank">Colinux_tinyslat_grub4dos_Dev.7z</a>
-  增加软件方法：</p>
+<p>只要三步就可以开始启动 下载－〉解压-&gt;执行。<br>  下载<br>  2012-02-08更新cofs权限问题<br>  2012-02-09因为git新的版本不可以在COFS上用git下载源码,所以GIT换成1.6版.<br>  <a href="http://www.ctdisk.com/file/4551969" target="_blank">Colinux_tinyslat_grub4dos_Dev.7z</a><br>  增加软件方法：</p>
 <ol>
-<li>tinycore方案（推荐）
-  tce-load -wi packname
-  默认使用了163的镜像，可以通过修改opt目录下的tcemirror文件改成使用其它镜像。</li>
-<li>slatiz方案（备用）
-  tczpkg get-install packname
-  这个只是作为备用。下载安装的软件不会被保存。</li>
-<li><p>slatiz方案+tinycore
-为了解决有时tinycore的软件源没有提供相应软件，而slatiz有提供时，可以使用该方法。
-首先通过taz2tcz下载slatiz软件并转换为tcz格式。
-taz2tcz packname
-软件安装
-tce-load -i packname
-注意：</p>
+<li>tinycore方案（推荐）<br>  tce-load -wi packname<br>  默认使用了163的镜像，可以通过修改opt目录下的tcemirror文件改成使用其它镜像。</li>
+<li>slatiz方案（备用）<br>  tczpkg get-install packname<br>  这个只是作为备用。下载安装的软件不会被保存。</li>
+<li><p>slatiz方案+tinycore<br>为了解决有时tinycore的软件源没有提供相应软件，而slatiz有提供时，可以使用该方法。<br>首先通过taz2tcz下载slatiz软件并转换为tcz格式。<br>taz2tcz packname<br>软件安装<br>tce-load -i packname<br>注意：</p>
 <ol>
 <li>你需要自己处理软件包的依赖关系（depends），可以使用tazpkg depends packname 查看。然后依次下载并转换所有包。</li>
 <li>执行tce-load 时请注意查看上一步最终的软件包名。比如以下是下载xz程序的输出,注意看我们要安装的是xz，最终的名字是xz-4.999.9beta</li>
@@ -769,12 +689,11 @@ tc@box:~$ tce-load -i xz-4.999.9beta
 /etc/sysconfig/tcedir/optional/xz-4.999.9beta.tcz: OK
 </code></pre></li>
 </ol>
-<p>==================2012-02-05==================
-因为目前用GCC4.6编译出来的GRLDR无法启动，所以重新整了一个GCC4.4的。</p>
+<p>==================2012-02-05==================<br>因为目前用GCC4.6编译出来的GRLDR无法启动，所以重新整了一个GCC4.4的。</p>
 <p>相关下载：</p>
 <p>Colinux 主程序 ：<a href="http://www.ctdisk.com/file/4499842" target="_blank">colinux_mini.7z</a></p>
 <p>系统镜像包： <a href="http://www.ctdisk.com/file/4499927" target="_blank">tinycore_colinux_60M_GCC4.4.7z</a></p>
-<h2 id="-2012-02-04-">==================2012-02-04==================</h2>
+<h2 id="==================2012-02-04==================">==================2012-02-04==================</h2>
 <p>整合了02-03版tinycore的两个版本优点，完善了一下。新的版本有以下优点</p>
 <ul>
 <li>占用空间小。</li>
@@ -788,8 +707,7 @@ tc@box:~$ tce-load -i xz-4.999.9beta
 <li><p>tinydev_tce_cofs.ini  用户数据保存到tinycore.gz同目录的home目录下使用该配置文件需要先把grubdev.iso解开到同目录下。把配置文件名改为tinydev.ini 之后再启动，会自动建立HOME目录。需要的文件列表如下：tce 目录</p>
 <p>tinycore.gz 文件</p>
 <p>tinydev.ini 配置文件</p>
-<p>启动之后可以使用tce-load命令下载新的软件并且可以保存。如果你对tinycore比较了解，直接添加软件到TCE目录就行了。
-下载地址： tinycore_colinux_60M.7z</p>
+<p>启动之后可以使用tce-load命令下载新的软件并且可以保存。如果你对tinycore比较了解，直接添加软件到TCE目录就行了。<br>下载地址： tinycore_colinux_60M.7z</p>
 </li>
 </ol>
 <p>==================2012-02-03==================</p>
@@ -807,7 +725,7 @@ tc@box:~$ tce-load -i xz-4.999.9beta
 <li><p>你也可以安装为服务使用“安装服务.cmd”就行了。</p>
 </li>
 </ol>
-<h1 id="-">相关文件下载：</h1>
+<h1 id="相关文件下载：">相关文件下载：</h1>
 <ol>
 <li>Colinux 主程序  <a href="http://code.google.com/p/grubutils/downloads/detail?name=colinux_mini.7z&amp;can=1&amp;q=" target="_blank">colinux_mini</a>直接解压到非中文的目录即可使用</li>
 <li><p>定制好的系统包（选择其中一个就行了），解压到Colinux安装目录下。1.最小巧只需要60MB空间，缺点：不可保存用户配置完全在内存中运行。tinycore_colinux_dev.7z2.中等，需要160MB，缺点：占用空间比较大，但是可以保存用户配置。</p>
@@ -826,24 +744,17 @@ svn co http://grub4dos-chenall.googlecode.com/svn/trunk grub4dos-src
 cd grub4dos-src
 
 make
-</code></pre><p>如果你习惯用git也可以用git来下载源码
-``
-git clone git://github.com/chenall/GRUB4DOS.git
-cd GRUB4DOS
-make
-```
-其它说明：tinycore默认是超级用户，可以用exit命令退出。用sudo su进入超级用户模式。要增加软件可以使用tce-load命令比如以下命令就可以下载并安装xterm</p>
+</code></pre><p>如果你习惯用git也可以用git来下载源码<br>``<br>git clone git://github.com/chenall/GRUB4DOS.git<br>cd GRUB4DOS<br>make<br>```<br>其它说明：tinycore默认是超级用户，可以用exit命令退出。用sudo su进入超级用户模式。要增加软件可以使用tce-load命令比如以下命令就可以下载并安装xterm</p>
 </li>
 </ol>
 <p>tce-load -wi xterm</p>
 <p>另外已经重定向X的显示到主机。只要主机有安装X SERVER在LINUX下启动X程序就会在主机上显示。</p>
 <h2 id="2012-01-19">2012-01-19</h2>
 <p>首先要准备的文件列表</p>
-<p>以下软件都在这里<a href="http://sourceforge.net/projects/colinux/files/" target="_blank"><a href="http://sourceforge.net/projects/colinux/files/">http://sourceforge.net/projects/colinux/files/</a></a> 可以自己选择其它版本下载</p>
+<p>以下软件都在这里<a href="http://sourceforge.net/projects/colinux/files/" target="_blank">http://sourceforge.net/projects/colinux/files/</a> 可以自己选择其它版本下载</p>
 <ol>
 <li>Colinux我选用最新的版本  <a href="http://sourceforge.net/projects/colinux/files/Snapshots/devel-20110807-Snapshot/devel-coLinux-20110807.exe/download" target="_blank">devel-coLinux-20110807.exe</a></li>
-<li>用于colinux的linux镜像     <a href="http://sourceforge.net/projects/colinux/files/Images%202.6.x%20Debian/Debian%206.0%20Squeeze/Debian-6.0.1-squeeze.7z/download" target="_blank">Debian-6.0.1-squeeze</a>
-安装Colinux，直接默认安装就行了。</li>
+<li>用于colinux的linux镜像     <a href="http://sourceforge.net/projects/colinux/files/Images%202.6.x%20Debian/Debian%206.0%20Squeeze/Debian-6.0.1-squeeze.7z/download" target="_blank">Debian-6.0.1-squeeze</a><br>安装Colinux，直接默认安装就行了。</li>
 </ol>
 <p>安装完之后，解压Debian-6.0.1的压缩包到Colinux安装目录下。会多出几个文件。</p>
 <p>直接运行解压出来的squeeze.bat就可以启动一个debian了。</p>
@@ -855,16 +766,16 @@ make
 <p>vi /etc/apt/sources.list</p>
 <p>看看里面有没有包含 testing的行，如果有就不用改了。</p>
 <p>像这个只有一行</p>
-<p>deb <a href="http://ftp.debian.org/debian" target="_blank"><a href="http://ftp.debian.org/debian">http://ftp.debian.org/debian</a></a> squeeze main</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank">http://ftp.debian.org/debian</a> squeeze main</p>
 <p>要增加一个testing的源。</p>
 <p>懂得VI的可以略过以下内容.开始修改。</p>
-<p>首先复制当前行（直输入&#39;yy&#39;即连按两次&#39;y&#39;）</p>
-<p>然后直接粘贴（直接按&#39;p&#39;键）现在有两行了</p>
-<p>修改其中一行的&quot;squeeze&quot;为&quot;testing&quot;（光标移到&#39;s&#39;处输入&#39;dw&#39;，再按&#39;I&#39;输入&quot;testing &quot;。)</p>
+<p>首先复制当前行（直输入’yy’即连按两次’y’）</p>
+<p>然后直接粘贴（直接按’p’键）现在有两行了</p>
+<p>修改其中一行的”squeeze”为”testing”（光标移到’s’处输入’dw’，再按’I’输入”testing “。)</p>
 <p>最终就是</p>
-<p>deb <a href="http://ftp.debian.org/debian" target="_blank"><a href="http://ftp.debian.org/debian">http://ftp.debian.org/debian</a></a> squeeze main</p>
-<p>deb <a href="http://ftp.debian.org/debian" target="_blank"><a href="http://ftp.debian.org/debian">http://ftp.debian.org/debian</a></a> testing main</p>
-<p>保存并退出（先按一下&quot;Esc&quot;键再输入&quot;:x&quot;回车即可）</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank">http://ftp.debian.org/debian</a> squeeze main</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank">http://ftp.debian.org/debian</a> testing main</p>
+<p>保存并退出（先按一下”Esc”键再输入”:x”回车即可）</p>
 <p>好了现在更新一下源信息。</p>
 <p>apt-get update</p>
 <p>============分隔线，增加debian软件源完成======================</p>
@@ -872,10 +783,10 @@ make
 <p>注：如果不需要编译wee可以安装gcc-4.3或gcc-4.4会比较稳定。</p>
 <p>apt-get install gcc-4.5 autoconf automake make patch git subversion</p>
 <p>注：git和subversion是源码管理工具，用于下载源码的，可以安装其中一个就行了。</p>
-<p>所有的提示直接按&#39;Y&#39;或回车确认。坐着泡一杯茶再过来，差不多装好了。</p>
+<p>所有的提示直接按’Y’或回车确认。坐着泡一杯茶再过来，差不多装好了。</p>
 <p>如果网络环境很给力的话，几分钟就行了。否则可能得等上半个小时吧。</p>
 <p>电脑：俺正在努力下载安装软件，没空陪你了，你自己玩去吧。</p>
-<p>...............................................</p>
+<p>………………………………………..</p>
 <p>半个小时后。</p>
 <p>好像差不多了。。继续工作。</p>
 <p>等等，还少了压缩软件，如果你只是玩玩，不要也罢。</p>
@@ -883,7 +794,7 @@ make
 <p>现在已经万事具备，只欠东风了。</p>
 <p>只要下载源码然后就可以编译了。新手请最好看完后面内容再下载编译测试。</p>
 <p>下载源码方法:</p>
-<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/svn/trunk">http://grub4dos-chenall.googlecode.com/svn/trunk</a></a> grub4dos-src</p>
+<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank">http://grub4dos-chenall.googlecode.com/svn/trunk</a> grub4dos-src</p>
 <p>或</p>
 <p>git clone git://github.com/chenall/grub4dos.git grub4dos-src</p>
 <p>编译：</p>
@@ -908,7 +819,7 @@ make
 <p>echo /dev/cofs0 /mnt/cofs cofs &gt;&gt; /etc/fstab</p>
 <p>如果电脑d:\cofs目录下有生成一个test文件夹，则证明成功挂载</p>
 <p>cd /mnt/cofs</p>
-<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/svn/trunk">http://grub4dos-chenall.googlecode.com/svn/trunk</a></a> grub4dos-src</p>
+<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank">http://grub4dos-chenall.googlecode.com/svn/trunk</a> grub4dos-src</p>
 <p>cd grub4dos-src</p>
 <p>make</p>
 <p>以后你就可以在WINDOWS中打开d:\cofs这个目录，修改里面的源码，然后再到linux里面去编译就行了。</p>
@@ -960,7 +871,7 @@ make
 <p>取消文件夹选项中的隐藏已知文件类型的扩展名就行了。</p>
 <p>如果不知道在哪里改的可以直接下载附件，里面有隐藏和显示的注册表。</p>
 <p>直接双陆对应的注册表文件就可以了。</p>
-<pre><code class="lang-`">@ech off
+<pre><code class="`">@ech off
 ::添加自定义可执行程序扩展名批处理 by chenall
 ::http://chenall.net
 call :add_ext .exa
@@ -1007,20 +918,19 @@ goto :add_ext
     <div class="entry">
       
         <blockquote>
-<p> 卡碟機 是一項很具創意的發明。它可以讓你把光碟 ISO 映像檔「燒」到 MicroSD 卡中， 而電腦就會從媒體身份（Media Type）的層面把 MicroSD 卡辨認為一部傳統的 DVD/CD 光碟機。
- 系統管理員可以把操作系統的安裝光碟內容寫到卡碟機裡的 MicroSD 卡裡，就可以免卻使用外置式光碟機和燒碟的麻煩，方便又環保。</p>
+<p> 卡碟機 是一項很具創意的發明。它可以讓你把光碟 ISO 映像檔「燒」到 MicroSD 卡中， 而電腦就會從媒體身份（Media Type）的層面把 MicroSD 卡辨認為一部傳統的 DVD/CD 光碟機。<br> 系統管理員可以把操作系統的安裝光碟內容寫到卡碟機裡的 MicroSD 卡裡，就可以免卻使用外置式光碟機和燒碟的麻煩，方便又環保。</p>
 </blockquote>
-<h2 id="-">[相关介绍]</h2>
+<h2 id="[相关介绍]">[相关介绍]</h2>
 <p>●光碟機/讀卡器二合一</p>
 <p>●可燒錄ISO 映像檔,模擬USB 光碟機</p>
 <p>●隨插即用,免驅動程式</p>
 <p>●無光碟機蕊,低耗電,使用壽命長.免用光碟片,無耗材,省錢又環保</p>
 <p>更详细的介绍可以点这里查看。</p>
-<p><a href="https://docs.google.com/viewer?url=http%3A%2F%2Fjlanlingtech.web-maker.com.tw%2Fupload%2F20111004173405.pdf" target="_blank"><a href="https://docs.google.com/viewer?url=http%3A%2F%2Fjlanlingtech.web-maker.com.tw%2Fupload%2F20111004173405.pdf">https://docs.google.com/viewer?url=http%3A%2F%2Fjlanlingtech.web-maker.com.tw%2Fupload%2F20111004173405.pdf</a></a></p>
+<p><a href="https://docs.google.com/viewer?url=http%3A%2F%2Fjlanlingtech.web-maker.com.tw%2Fupload%2F20111004173405.pdf" target="_blank">https://docs.google.com/viewer?url=http%3A%2F%2Fjlanlingtech.web-maker.com.tw%2Fupload%2F20111004173405.pdf</a></p>
 <p>&nbsp;</p>
 <p>或这里下载PDF格式</p>
-<p><a href="http://hinet.dyndns.org/cardrom_manual.pdf" target="_blank"><a href="http://hinet.dyndns.org/cardrom_manual.pdf">http://hinet.dyndns.org/cardrom_manual.pdf</a></a></p>
-<h2 id="-">[一些截图] 注: 图片已失效</h2>
+<p><a href="http://hinet.dyndns.org/cardrom_manual.pdf" target="_blank">http://hinet.dyndns.org/cardrom_manual.pdf</a></p>
+<h2 id="[一些截图]_注:_图片已失效">[一些截图] 注: 图片已失效</h2>
 <ul>
 <li>初始，还没有烧录ISO的状态</li>
 <li>已经烧录好的装态</li>
@@ -1092,7 +1002,7 @@ Conn.Open StrConn
 RS.Open SQL,conn,1,1
 rstoexcel(RS,&quot;c:\sql.xls&quot;)
 </code></pre><p>参考资料: <a href="http://support.microsoft.com/kb/247412/zh-cn" target="_blank">http://support.microsoft.com/kb/247412/zh-cn</a></p>
-<pre><code class="lang-VB">
+<pre><code class="VB">
 Dim Conn, StrConn, RS, SQL
 set Conn = CreateObject(&quot;ADODB.Connection&quot;)
 set RS = CreateObject(&quot;ADODB.Recordset&quot;)
@@ -1180,7 +1090,7 @@ end sub
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/3/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li class="active"><li><span class="page-number current">4</span></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/5/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/3/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li class="active"><li><span class="page-number current">4</span></li></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/5/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1245,7 +1155,7 @@ end sub
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -1261,14 +1171,12 @@ end sub
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -1352,7 +1260,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

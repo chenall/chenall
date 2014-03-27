@@ -134,18 +134,14 @@ var _js2load = [];
         <p>以前经常去华军软件园下载软件,后来很少上了,最近发现下载需要输入验证码才能下载.</p>
 <p>这个验证码是带广告类型的,需要输入中文,很是麻烦,对于我等懒人来说当然是能不用输入就不用输入了.</p>
 <p>查了一下网页源码,发现可以直接饶过验证下载.原理有兴趣的自己Google一下.^_^这里就不再啰嗦了.直接进入主题.</p>
-<p>方法如下有很多种.
-<a id="more"></a></p>
+<p>方法如下有很多种.<br><a id="more"></a></p>
 <ol>
-<li><p>书签法,直接把以下链接存为书签,下载时点一下就自动通过验证了.
-书签1:<br><a href='javascript:CustomDefinedAjaxOnkeyup(1);'>华军软件园免验证下载</a>
-书签2:<br><a href="javascript:showDownlist(type,'checkok');">华军软件园免验证下载</a></p>
+<li><p>书签法,直接把以下链接存为书签,下载时点一下就自动通过验证了.<br>书签1:<br><a href='javascript:CustomDefinedAjaxOnkeyup(1);'>华军软件园免验证下载</a><br>书签2:<br><a href="javascript:showDownlist(type,'checkok');">华军软件园免验证下载</a></p>
 </li>
-<li><p>使用admucher之类的自动通过验证.
-打开admucher在<em>My Filters</em>里面添加一条<em>Add Javascript to all pages</em>的规则(admucher 请使用这里的版本:<a href="http://cjx82630.ys168.com/" target="_blank">http://cjx82630.ys168.com/</a>)</p>
+<li><p>使用admucher之类的自动通过验证.<br>打开admucher在<em>My Filters</em>里面添加一条<em>Add Javascript to all pages</em>的规则(admucher 请使用这里的版本:<a href="http://cjx82630.ys168.com/" target="_blank">http://cjx82630.ys168.com/</a>)</p>
 <pre><code>if(__amscript_cd(“onlinedown.net”) &amp;&amp; location.href.indexOf(“_2.”)!= -1){__amscript_addonload(“CustomDefinedAjaxOnkeyup(1);”)};
 </code></pre></li>
-<li>用admucher的文本替换功能(Replace Text)<br>Match text(匹配) :  <em>showDownlist(type,&quot;checkno&quot;)</em><br>Replacement text(替换): <em>showDownlist(type,&quot;checkok&quot;)</em>  </li>
+<li>用admucher的文本替换功能(Replace Text)<br>Match text(匹配) :  <em>showDownlist(type,”checkno”)</em><br>Replacement text(替换): <em>showDownlist(type,”checkok”)</em>  </li>
 </ol>
 <p>注:前面的两种方法是自动验证,这个方法是饶过验证. 区别是前面的两种方法验证码处会有提示<strong>正确 请选下载链接下载</strong></p>
 <p>第3种直接从源头去掉验证过程,直接显示下载地址出来了.自己选一种方法使用就可以免去输验证码之苦了.嘿嘿.</p>
@@ -204,7 +200,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/iconshex/">让你的任意文件显示个性图标</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="853"  data-url="http://chenall.net/post/onlinedown_no_check/" data-title="[分享]华军软件园免验证码下载"></div>
@@ -273,7 +269,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -289,14 +285,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -393,7 +387,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

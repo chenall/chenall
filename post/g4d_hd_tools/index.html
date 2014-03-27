@@ -137,31 +137,21 @@ var _js2load = [];
 <p>引导程序WEE+GRUB4DOS。</p>
 <p>自带基于MODBOOT的一键恢复程序QGHO，可以随时进行备份恢复系统。</p>
 <p>可以方便的进行功能扩展，一切皆有可能。</p>
-<h3 id="-">说明：</h3>
+<h3 id="说明：">说明：</h3>
 <ul>
 <li>默认情况下不显示任何菜单，只有在需要的时候才会显示（按对应的按键，或使用了自定义的菜单接口）</li>
 <li>自带MODBOOT和NTBOOT两个组件。</li>
 <li>可以通过很简单的方法进行功能扩展。</li>
 <li>恢复系统使用的是QGHO（基于MODBOOT）。</li>
 <li><p>启动时如果不按任何按键或按了无效按键则使用默认的方式启动系统（启动第一激活的主分区上）</p>
-<p>如果有存在SYS_MENU.LST文件则会调用该菜单。
-可以通过按指定的按键进入对应的系统。</p>
+<p>如果有存在SYS_MENU.LST文件则会调用该菜单。<br>可以通过按指定的按键进入对应的系统。</p>
 </li>
 <li><p>所以的东西都可以自己修改（当然了前提是你熟悉GRUB4DOS，知道要改的东西。）</p>
 </li>
 <li>因为是使用WEE作为主引导的，安装、修复都很方便，双击一下就搞定了。</li>
-<li>一些文件目录说明。
-ADDONS　　　附加工具目录，下载附加的工具直接解压到该目录下就可以了。
-BIN　　　　　　一些应用程序，用于修复系统引导。
-MODBOOT　　MODBOOT模块程序
-NTBOOT　　　NTBOOT模块程序
-grub　　　　　GRUB4DOS程序目录。
-以上目录一般情况下你可以不必理会它里面的内容。
-PRELOAD.BAT　主引导界面还有快捷键的定义批处理（GRUB4DOS专用）
-preload.fnt　　主引导界面使用的字体库。
-SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建，如果有的话默认就会显示这个菜单内容）</li>
+<li>一些文件目录说明。<br>ADDONS　　　附加工具目录，下载附加的工具直接解压到该目录下就可以了。<br>BIN　　　　　　一些应用程序，用于修复系统引导。<br>MODBOOT　　MODBOOT模块程序<br>NTBOOT　　　NTBOOT模块程序<br>grub　　　　　GRUB4DOS程序目录。<br>以上目录一般情况下你可以不必理会它里面的内容。<br>PRELOAD.BAT　主引导界面还有快捷键的定义批处理（GRUB4DOS专用）<br>preload.fnt　　主引导界面使用的字体库。<br>SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建，如果有的话默认就会显示这个菜单内容）</li>
 </ul>
-<h2 id="-">【更新历史】</h2>
+<h2 id="【更新历史】">【更新历史】</h2>
 <h3 id="2014-01-13">2014-01-13</h3>
 <ul>
 <li>删作本页面的部份失效图片</li>
@@ -206,12 +196,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <ul>
 <li>﻿QGHO修正</li>
 <li>GRUB4DOS更新</li>
-<li>新增支持自动检测多操作系统功能
-按F8就可以显示支持的系统菜单
-按Ctrl+F8重新检测
-比如你硬盘第一个分区安装WINDOWS 2003,第二个分区安装WINDOWS XP
-第三分分区安装WINDOWS 7，启动时按F8可以自动检测到，按菜单选择启动。
-其它说明:<ol>
+<li>新增支持自动检测多操作系统功能<br>按F8就可以显示支持的系统菜单<br>按Ctrl+F8重新检测<br>比如你硬盘第一个分区安装WINDOWS 2003,第二个分区安装WINDOWS XP<br>第三分分区安装WINDOWS 7，启动时按F8可以自动检测到，按菜单选择启动。<br>其它说明:<ol>
 <li>支持VBOOT启动的VHD/VMDK系统，把这些文件放在放在任意硬盘的VBOOT目录下就可以自动检测</li>
 <li>支持NT6的VHD启动功能。把VHD文件放在任意硬盘的WIN_VHD目录中就可以自动检测.</li>
 <li>以上两个系统的文件名必须以@开头才会自动检测。</li>
@@ -248,9 +233,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 </ol>
 <h3 id="2011-08-30">2011-08-30</h3>
 <ol>
-<li><strong>﻿此版本内置的QGHO有问题,不能正常使用,请更新或使用旧版本</strong>
-更新NTBOOT/MODBOOT脚本.
-更新GRUB4DOS到最新版本.</li>
+<li><strong>﻿此版本内置的QGHO有问题,不能正常使用,请更新或使用旧版本</strong><br>更新NTBOOT/MODBOOT脚本.<br>更新GRUB4DOS到最新版本.</li>
 </ol>
 <h3 id="2011-08-11">2011-08-11</h3>
 <ol>
@@ -262,8 +245,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <li>GRUB4DOS更新到2011-08-09版.</li>
 <li>NTBOOT更新.<strong>PE1添加了一个ntpath参数,具体用法请查看tangope.rar里面的#TangoPE.txt</strong>.</li>
 <li>MODBOOT更新.<strong>批处理脚本修改优化.</strong></li>
-<li><p>QGHO一键恢复程序更新.
-重新设计了自定义恢复过程,初次启动时自动查找所有硬盘分区根目录下的GHO文件并列在菜单上.</p>
+<li><p>QGHO一键恢复程序更新.<br>重新设计了自定义恢复过程,初次启动时自动查找所有硬盘分区根目录下的GHO文件并列在菜单上.</p>
 <p>可以选择指定分区再次查找(默认找2级目录) ,可以修改支持查找N级目录</p>
 <p>打开MODBOOT\LEVEL3\QGHO.BAT查找Q.S.SUB=2,要找几级就改成2,建议不要太大,否则查找的过程很慢.</p>
 </li>
@@ -313,10 +295,9 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <p>4.GRUB4DOS升级到最新版。</p>
 <p>5.支持修改默认的一键恢复密码。</p>
 <p>安装方法：</p>
-<p>下载SYS_TOOLS.RAR并解压到你电脑的任意磁盘根目录下。注： 解压完成后会多出一个BOOT目录（隐藏的）。
-进入BOOT\BIN目录，双击setup_hd0.cmd就行了。</p>
+<p>下载SYS_TOOLS.RAR并解压到你电脑的任意磁盘根目录下。注： 解压完成后会多出一个BOOT目录（隐藏的）。<br>进入BOOT\BIN目录，双击setup_hd0.cmd就行了。</p>
 <p>注：如果有杀毒软件可能会有警报，否则不会有什么提示，重启系统即可。如果安装失败可以尝试使用BOOTICE进行安装</p>
-<p>BOOTICE 下载地址: <a href="http://bbs.wuyou.com/viewthread.php?tid=57675" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=57675">http://bbs.wuyou.com/viewthread.php?tid=57675</a></a></p>
+<p>BOOTICE 下载地址: <a href="http://bbs.wuyou.com/viewthread.php?tid=57675" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=57675</a></p>
 <p>用BOOTICE进行第二步的安装方法</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2011/05/31AAE4E9668FEC052E0BF3DB7B4FD8FD4A46CA6A.png" alt=""></p>
 <p><img src="http://c-dl.qiniudn.com/upload/2011/05/8112D8AD5D88D0D09C2F16C21C5C6A8EDDDC6301.png" alt=""></p>
@@ -328,7 +309,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <p>可以自己参考以上模块自己添加其它模块，也欢迎共享你的模块。</p>
 <p>默认是启动第一个激活分区上面的系统，你可以自己写一个菜单文件改名为SYS_MENU.LST放到BOOT目录下，默认就会调用该菜单。</p>
 <p>进入一键恢复的密码默认是qgho，在启动时按F9输入正确的密码之后可以修改.</p>
-<h2 id="-">【下载地址】之前的链接已失效,如若需要可以留言我再抽空整理下重新上传.</h2>
+<h2 id="【下载地址】之前的链接已失效,如若需要可以留言我再抽空整理下重新上传-">【下载地址】之前的链接已失效,如若需要可以留言我再抽空整理下重新上传.</h2>
 
       
     </div>
@@ -384,7 +365,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post55/">[分享]影子系统 POWERSHADOW 2.6免费版 精简版 for 2k,xp,2003</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/dropbox_version/">[转] DropBox的版本控制功能</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/ff0_02/">FFO宠物技能[转]</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="700"  data-url="http://chenall.net/post/g4d_hd_tools/" data-title="[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]"></div>
@@ -453,7 +434,7 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -469,14 +450,12 @@ SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建�
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -573,7 +552,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

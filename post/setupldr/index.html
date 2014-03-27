@@ -12,8 +12,7 @@
 
 <meta name="description" content="一般的PE光盘必须的文件列表如下
  WINNT.SIF文件内容例子
-SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG文件位置等
-SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文件必须放在根目录下">
+SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG文件位置等SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文件必须放在根目录下">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -142,27 +141,21 @@ var _js2load = [];
  BootDevice=&quot;ramdisk(0)&quot;
  BootPath=&quot;\I386\SYSTEM32\&quot;
  OsLoadOptions=&quot;/minint /fastdetect /rdpath=I386\WINPE.IMG&quot;
-</code></pre><p><code>SETUPLDR.BIN</code>是启动文件，<code>WINNT.SIF</code>指定启动参数信息比如<code>WINPE.IMG</code>文件位置等
-<code>SETUPLDR.BIN</code>加载时会根据<code>WINNT.SIF</code>里面的内容来启动，<code>WINNT.SIF</code>文件必须放在根目录下</p>
+</code></pre><p><code>SETUPLDR.BIN</code>是启动文件，<code>WINNT.SIF</code>指定启动参数信息比如<code>WINPE.IMG</code>文件位置等<br><code>SETUPLDR.BIN</code>加载时会根据<code>WINNT.SIF</code>里面的内容来启动，<code>WINNT.SIF</code>文件必须放在根目录下</p>
 <p>启动文件加载过程</p>
 <pre><code>SETUPLDR.BIN -&gt; NTDETECT.COM -&gt; WINNT.SIF -&gt; 根据OsLoadOptions 加载WINPE.IMG--&gt;读取WINPE.IMG里面I386\TXTSETUP.SIF.....
 </code></pre><p>现在的PE一般都把<code>WINNT.SIF</code>改名了是<code>WINNT.XPE</code>，还有<code>I386</code>目录改成<code>WXPE</code>,而<code>SETUPLDR.BIN</code>名字改的就比较多了，一般情况下可以根据文件大小看得出来。</p>
-<p>其中<code>WINNT.SIF</code>位置还有<code>I386</code>目录都是通过<code>SETUPLDR.BIN</code>来指定的，<code>SETUPLDR.BIN</code>可以任意位置任意文件名。比如<code>BOOT\MTLDR.BIN</code>
-修改<code>WINNT.SIF</code>和<code>I386</code>名字的方法网上有许多介绍，只需要直接查找替换就行了（用十六进制编辑器打开<code>SETUPLDR.BIN</code>查找替换，长度要一样）。如果要改的比以前短，就在替换的字符后面再加十六进制0就可以了。</p>
-<p> 这里介绍的是另一个比较特殊的修改方法，直接定位修改。
-<a id="more"></a></p>
-<h3 id="-setupldr-bin-">首先了解一下SETUPLDR.BIN的一些结构，</h3>
+<p>其中<code>WINNT.SIF</code>位置还有<code>I386</code>目录都是通过<code>SETUPLDR.BIN</code>来指定的，<code>SETUPLDR.BIN</code>可以任意位置任意文件名。比如<code>BOOT\MTLDR.BIN</code><br>修改<code>WINNT.SIF</code>和<code>I386</code>名字的方法网上有许多介绍，只需要直接查找替换就行了（用十六进制编辑器打开<code>SETUPLDR.BIN</code>查找替换，长度要一样）。如果要改的比以前短，就在替换的字符后面再加十六进制0就可以了。</p>
+<p> 这里介绍的是另一个比较特殊的修改方法，直接定位修改。<br><a id="more"></a></p>
+<h3 id="首先了解一下SETUPLDR-BIN的一些结构，">首先了解一下SETUPLDR.BIN的一些结构，</h3>
 <hr>
 <p>已知:</p>
-<p><em>0X2A432</em> 处的winnt.sif就是启动后读取的文件名
-<em>0x2A43E</em> 处的OsLoadOptions对应了winnt.sif里面的OsloadOptions</p>
+<p><em>0X2A432</em> 处的winnt.sif就是启动后读取的文件名<br><em>0x2A43E</em> 处的OsLoadOptions对应了winnt.sif里面的OsloadOptions</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/11/FC8601F9C5800FCC38E5E6588DBBBF77FB2D8082.png" alt=""></p>
 <p><code>WINNT.SIF</code>可以随意改成其它字符（据我所知在以前还没有人改超过原来的字符数9）</p>
-<p>这里介绍改超过9个字符的方法如下图有11个字符了。<em>0x2a43d</em>位置的00不能改（要修改请继续看后面）
- 修改后对应的文件是<font color="#FF0000">BOOT\PE.SIF</font></p>
+<p>这里介绍改超过9个字符的方法如下图有11个字符了。<em>0x2a43d</em>位置的00不能改（要修改请继续看后面）<br> 修改后对应的文件是<font color="#FF0000">BOOT\PE.SIF</font></p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/11/E0291F639D16DF47718C78035F4858C7AC49E391.png" alt=""></p>
-<p>我还需要更长的路径可以吗？当然了，接着往下看.看下图<code>WINNT.SIF</code>文件的位置被改成了<code>CSPE/KERNEL/OsLoadOptions</code>
-这样子不需要修改其它东西了。只需把WINNT.SIF放在CSPE/KERNEL目录中里面改名为OsLoadOptions就可以了</p>
+<p>我还需要更长的路径可以吗？当然了，接着往下看.看下图<code>WINNT.SIF</code>文件的位置被改成了<code>CSPE/KERNEL/OsLoadOptions</code><br>这样子不需要修改其它东西了。只需把WINNT.SIF放在CSPE/KERNEL目录中里面改名为OsLoadOptions就可以了</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/11/2F1DD1A230CAD09ACF3B7942EF1635C4F0B7BA9E.png" alt=""></p>
 <p>聪明的人可能就已经发现了，没错借用了OsLoadOptions这个字符串了。上面由于没有改到这个字符串的内容，所以还是可以启动的，接着看下图。改到了OsLoadOptions字符串了</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/11/CE90367AE94E968A0EA2B4995BFBFD9FCC46B4DF.png" alt=""></p>
@@ -173,9 +166,7 @@ var _js2load = [];
  WINNT.SIF=&quot;/minint /fastdetect /rdpath=I386\WINPE.IMG&quot;
 </code></pre><p>注意:上面的WINNT.SIF后面有一个00是截断字符，后面的字符就不要了，这个路径最长可以28个字符也就是写到0x2A44C位置例子如下图</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/11/F25249493A12A9B4C3DB7E611F8EEBA43BEAF773.png" alt=""></p>
-<p>上图WINNT.SIF位置是BOOT\CSPE1\KERNEL\WINNT.SIF
- OsLoadOptions从<code>0X2A43E</code>开始到00结束
- 所以WINNT.SIF内容要相应的改成如下。</p>
+<p>上图WINNT.SIF位置是BOOT\CSPE1\KERNEL\WINNT.SIF<br> OsLoadOptions从<code>0X2A43E</code>开始到00结束<br> 所以WINNT.SIF内容要相应的改成如下。</p>
 <pre><code>[SetupData]
  BootDevice=&quot;ramdisk(0)&quot;
  BootPath=&quot;\I386\SYSTEM32\&quot;
@@ -236,7 +227,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/ff0_02/">FFO宠物技能[转]</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="111"  data-url="http://chenall.net/post/setupldr/" data-title="【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究"></div>
@@ -305,7 +296,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -321,14 +312,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -425,7 +414,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

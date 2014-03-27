@@ -133,7 +133,7 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <p>来源:<a href="http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/" target="_blank"><a href="http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/">http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/</a></a></p>
+        <p>来源:<a href="http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/" target="_blank">http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/</a></p>
 <p>感谢作者(vgod)用心绘制的<a href="http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/" target="_blank">Vim入门图解说明</a></p>
 <p><img src="http://blog.vgod.tw.s3.amazonaws.com/wp-content/uploads/2009/12/vim-cheat-sheet-full-thumb.png?9d7bd4" alt=""></p>
 <p><img src="http://blog.vgod.tw.s3.amazonaws.com/wp-content/uploads/2009/12/vim-cheat-sheet-diagram-thumb.png?9d7bd4" alt=""></p>
@@ -141,273 +141,7 @@ var _js2load = [];
 <p>这个图把vim中基本的移动方法都画上去了，为了方便programmer，特别列出了很多只有写程式才会用的按键。除了这些以外，其实还有一些好用的东西我还没想到怎么画上去比较好(像是tags、没有标准快速键的tab、man..)，如果大家有idea欢迎提供。</p>
 <p>这些图示依照移动的单位大小分为以下几个种类，分别用不同颜色标示：</p>
 <p>（注意，这不是完整的vim快速键列表，只是我觉得比较常用的键而已。）</p>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">字元(character)</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">h</div>
-            </td>
-            <td>左</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">j</div>
-            </td>
-            <td>下</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">k</div>
-            </td>
-            <td>上</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">l</div>
-            </td>
-            <td>右</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">单字(word)</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">w</div>
-            </td>
-            <td>下一个word</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">W</div>
-            </td>
-            <td>下一个word(跳过标点符号)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">b</div>
-            </td>
-            <td>前一个word</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">e</div>
-            </td>
-            <td>跳到目前word的尾端</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">行(line)</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #fff105; WIDTH: 1.5em">0</div>
-            </td>
-            <td>跳到目前行的开头</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #fff105; WIDTH: 1.5em">^</div>
-            </td>
-            <td>跳到目前行第一个非空白字元</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #fff105; WIDTH: 1.5em">$</div>
-            </td>
-            <td>跳到行尾</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">段落(paragraph)、区块(block)</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">{</div>
-            </td>
-            <td>上一段(以空白行分隔)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">}</div>
-            </td>
-            <td>下一段(以空白行分隔)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">[{</div>
-            </td>
-            <td>跳到目前区块开头</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">]}</div>
-            </td>
-            <td>跳到目前区块结尾</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">%</div>
-            </td>
-            <td>跳到目前对应的括号上(适用各种括号,有设定好的话连HTML tag都能跳)</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">萤幕(screen)、绝对位置</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">H</div>
-            </td>
-            <td>萤幕顶端</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">M</div>
-            </td>
-            <td>萤幕中间</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">L</div>
-            </td>
-            <td>萤幕底部</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">:<strong>x</strong></div>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; MARGIN-TOP: 3px; WIDTH: 1.5em"><strong>x</strong>G</div>
-            </td>
-            <td>跳到第x行(x是行号)</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">搜寻(search)</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff">/xxxx</div>
-            </td>
-            <td>搜寻xxxx</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em">#</div>
-            </td>
-            <td>往前搜寻目前游标所在的字(word)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em"><em></div>
-            </td>
-            <td>往后搜寻目前游标所在的字(word)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em">f<em>*x</em></em></div>
-            </td>
-            <td>在目前行往后搜寻字元x</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em">gd</div>
-            </td>
-            <td>跳到目前游标所在的字(word)的定义位置(写程式用, 跳到定义变数/函式的地方)</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">分割视窗</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">:split</div>
-            </td>
-            <td>分割视窗(可加档名顺便开启另一档案)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">:diffsplit xxx</div>
-            </td>
-            <td>以分割视窗和档案xxx做比较(diff)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W p</div>
-            </td>
-            <td>跳到前一个分割视窗(在两个分割窗来回切换)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W j</div>
-            </td>
-            <td>跳到下面的分割窗</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W h</div>
-            </td>
-            <td>跳到左边的分割窗</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W k</div>
-            </td>
-            <td>跳到上面的分割窗</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W l</div>
-            </td>
-            <td>跳到右边的分割窗</td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th colspan="2">自动补齐(Auto-completion) (在Insert Mode中使用)</th>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #f98cff">Ctrl-N</div>
-            </td>
-            <td>自动补齐档案内的下一个可能字(word)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #f98cff">Ctrl-P</div>
-            </td>
-            <td>自动补齐档案内的上一个可能字(word)</td>
-        </tr>
-        <tr>
-            <td>
-                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #f98cff">Ctrl-X Ctrl-F</div>
-            </td>
-            <td>自动补齐档名</td>
-        </tr>
-    </tbody>
-</table>
+<table><br>    <tbody><br>        <tr><br>            <th colspan="2">字元(character)</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">h</div><br>            </td><br>            <td>左</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">j</div><br>            </td><br>            <td>下</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">k</div><br>            </td><br>            <td>上</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #7b7b00; WIDTH: 1.5em; COLOR: white">l</div><br>            </td><br>            <td>右</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">单字(word)</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">w</div><br>            </td><br>            <td>下一个word</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">W</div><br>            </td><br>            <td>下一个word(跳过标点符号)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">b</div><br>            </td><br>            <td>前一个word</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #a19700; WIDTH: 1.5em">e</div><br>            </td><br>            <td>跳到目前word的尾端</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">行(line)</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #fff105; WIDTH: 1.5em">0</div><br>            </td><br>            <td>跳到目前行的开头</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #fff105; WIDTH: 1.5em">^</div><br>            </td><br>            <td>跳到目前行第一个非空白字元</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #fff105; WIDTH: 1.5em">$</div><br>            </td><br>            <td>跳到行尾</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">段落(paragraph)、区块(block)</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">{</div><br>            </td><br>            <td>上一段(以空白行分隔)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">}</div><br>            </td><br>            <td>下一段(以空白行分隔)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">[{</div><br>            </td><br>            <td>跳到目前区块开头</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">]}</div><br>            </td><br>            <td>跳到目前区块结尾</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff6500; WIDTH: 1.5em">%</div><br>            </td><br>            <td>跳到目前对应的括号上(适用各种括号,有设定好的话连HTML tag都能跳)</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">萤幕(screen)、绝对位置</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">H</div><br>            </td><br>            <td>萤幕顶端</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">M</div><br>            </td><br>            <td>萤幕中间</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">L</div><br>            </td><br>            <td>萤幕底部</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; WIDTH: 1.5em">:<strong>x</strong></div><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #00c100; MARGIN-TOP: 3px; WIDTH: 1.5em"><strong>x</strong>G</div><br>            </td><br>            <td>跳到第x行(x是行号)</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">搜寻(search)</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff">/xxxx</div><br>            </td><br>            <td>搜寻xxxx</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em">#</div><br>            </td><br>            <td>往前搜寻目前游标所在的字(word)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em"><em></div><br>            </td><br>            <td>往后搜寻目前游标所在的字(word)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em">f<em>*x</em></em></div><br>            </td><br>            <td>在目前行往后搜寻字元x</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #008fff; WIDTH: 1.5em">gd</div><br>            </td><br>            <td>跳到目前游标所在的字(word)的定义位置(写程式用, 跳到定义变数/函式的地方)</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">分割视窗</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">:split</div><br>            </td><br>            <td>分割视窗(可加档名顺便开启另一档案)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">:diffsplit xxx</div><br>            </td><br>            <td>以分割视窗和档案xxx做比较(diff)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W p</div><br>            </td><br>            <td>跳到前一个分割视窗(在两个分割窗来回切换)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W j</div><br>            </td><br>            <td>跳到下面的分割窗</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W h</div><br>            </td><br>            <td>跳到左边的分割窗</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W k</div><br>            </td><br>            <td>跳到上面的分割窗</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #ff0024">Ctrl-W l</div><br>            </td><br>            <td>跳到右边的分割窗</td><br>        </tr><br>    </tbody><br></table><br><table><br>    <tbody><br>        <tr><br>            <th colspan="2">自动补齐(Auto-completion) (在Insert Mode中使用)</th><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #f98cff">Ctrl-N</div><br>            </td><br>            <td>自动补齐档案内的下一个可能字(word)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #f98cff">Ctrl-P</div><br>            </td><br>            <td>自动补齐档案内的上一个可能字(word)</td><br>        </tr><br>        <tr><br>            <td><br>                <div style="TEXT-ALIGN: center; BACKGROUND-COLOR: #f98cff">Ctrl-X Ctrl-F</div><br>            </td><br>            <td>自动补齐档名</td><br>        </tr><br>    </tbody><br></table>
 
 
       
@@ -464,7 +198,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post54/">vi 编辑器使用指南</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/post35/">一个文件处理的小工具</a></li><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/s6/">[健康知识]  睡眠与养生</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="128"  data-url="http://chenall.net/post/vim/" data-title="[转] Vim入门图解说明."></div>
@@ -533,7 +267,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -549,14 +283,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -653,7 +385,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

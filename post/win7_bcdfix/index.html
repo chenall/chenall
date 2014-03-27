@@ -141,8 +141,7 @@ var _js2load = [];
 <li>首先想办法启动到PE或另一个系统中</li>
 <li>然后执行bcdedit 命令进行修复<pre><code>bcdedit /store c:\boot\bcd /set {default} device partition=c:
 bcdedit /store c:\boot\bcd /set {default} osdevice partition=c:
-</code></pre>说明:<strong>c:\boot\bcd</strong> 指定启动时使用的BCD文件 
-后面的<strong>c:</strong> 指定WINDOWS 7系统目前所在的盘符（如果进入PE后，你的WIN7安装磁盘的盘符是F:就写F:）</li>
+</code></pre>说明:<strong>c:\boot\bcd</strong> 指定启动时使用的BCD文件<br>后面的<strong>c:</strong> 指定WINDOWS 7系统目前所在的盘符（如果进入PE后，你的WIN7安装磁盘的盘符是F:就写F:）</li>
 <li>重启就会发现一切正常了。</li>
 </ul>
 <p>后来一次在测试中意外发现了另一个参数（这里首先得感谢下<a href="http://bbs.wuyou.com/" target="_blank">无忧启动论坛</a>的<a href="http://bbs.wuyou.com/viewpro.php?uid=131142" target="_blank">victor888</a> ,被他逼着学习bcdedit了，所以就多了解了一下，纯属意外），可以永绝祸患，只要改一下，以后就不会再出现这种问题了。不敢独享，如果有碰到同样问题的朋友可以试下，没有碰到的朋友也可以试下。^_^</p>
@@ -208,7 +207,7 @@ bcdedit /set {current} osdevice boot
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/not_2345/">关于2345网址导航</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/ff0_02/">FFO宠物技能[转]</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="105"  data-url="http://chenall.net/post/win7_bcdfix/" data-title="【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题"></div>
@@ -277,7 +276,7 @@ bcdedit /set {current} osdevice boot
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -293,14 +292,12 @@ bcdedit /set {current} osdevice boot
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -397,7 +394,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

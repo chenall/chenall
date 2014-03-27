@@ -135,14 +135,11 @@ var _js2load = [];
 <p>可以方便开发人员临时调试某个功能时使用。</p>
 <p>当然你对中断资料比较熟悉的话，就可以利用GRUB4DOS配合本程序作出非常酷的效果（比如移动的文字）</p>
 <p>使用方法，直接下载程序在GRUB4DOS中执行</p>
-<h2 id="-">参数</h2>
+<h2 id="参数">参数</h2>
 <ul>
-<li>写数据到指定端口
-  bios outb/outw/outl PORT VALUE</li>
-<li>从指定端口读数据
-  bios inb/inw/inl </li>
-<li>中断调用
-  bios int=INT eax=EAX ebx=EBX [...]</li>
+<li>写数据到指定端口<br>  bios outb/outw/outl PORT VALUE</li>
+<li>从指定端口读数据<br>  bios inb/inw/inl </li>
+<li>中断调用<br>  bios int=INT eax=EAX ebx=EBX […]</li>
 </ul>
 <p>可使用的所以参数在下面的列表中</p>
 <pre><code>unsigned long edi; // as input and output
@@ -164,8 +161,7 @@ unsigned long eflags; // as input and output
 </code></pre><p>效果图在这里(之前的图片放在盛大的服务器上,已经失效)</p>
 <ol>
 <li><p>直接读写端口演示，分别使用<code>outl</code>和<code>inl</code>  </p>
-<p>说明：chkpci就是主要使用<code>outl</code>和<code>inl</code>获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）
-结果自己看，后面使用bios调用得到的是第一条PCI的记录。。</p>
+<p>说明：chkpci就是主要使用<code>outl</code>和<code>inl</code>获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）<br>结果自己看，后面使用bios调用得到的是第一条PCI的记录。。</p>
 <p><img src="http://c-dl.qiniudn.com/post/grub4dos_biosint_01.png" alt="获取pci信息"></p>
 </li>
 <li><p>调用BIOS中断演示</p>
@@ -188,7 +184,7 @@ unsigned long eflags; // as input and output
 </ol>
 <p>这个程序只是为了方便测试而编写,使用者需自己注意。</p>
 <p>下载地址（带源码）：</p>
-<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank"><a href="http://code.google.com/p/grubutils/downloads/list">http://code.google.com/p/grubutils/downloads/list</a></a></p>
+<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank">http://code.google.com/p/grubutils/downloads/list</a></p>
 
       
     </div>
@@ -244,7 +240,7 @@ unsigned long eflags; // as input and output
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/ff0_02/">FFO宠物技能[转]</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="785"  data-url="http://chenall.net/post/grub4dos_biosint/" data-title="可以在GRUB4DOS下调用BIOS中断的外部命令"></div>
@@ -313,7 +309,7 @@ unsigned long eflags; // as input and output
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -329,14 +325,12 @@ unsigned long eflags; // as input and output
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -433,7 +427,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

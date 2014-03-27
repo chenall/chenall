@@ -141,24 +141,18 @@ var _js2load = [];
   };
  struct snakes *snake_head;//指向当前蛇头的链表.snake_head-&gt;up 就是蛇尾.
 </code></pre></li>
-<li><p>蛇的移动处理.
-由于使用了环形的链表,像车轮一样走,只要把最后一个链表作为蛇头就可以了.
-实际操作过程.</p>
+<li><p>蛇的移动处理.<br>由于使用了环形的链表,像车轮一样走,只要把最后一个链表作为蛇头就可以了.<br>实际操作过程.</p>
 <ol>
 <li>首先确位移动的位置</li>
 <li>在屏幕上清除当前蛇尾的显示.</li>
 <li>修改蛇尾的POS为新的位置,并显示.</li>
 <li>把蛇尾作为新的蛇头.snake_head = snake_head-&gt;up; </li>
 </ol>
-<p>这里还有一个需要注意处理的:
-根据按键处理移动时不可以反方向移动.也就是说不可以直接后退.</p>
+<p>这里还有一个需要注意处理的:<br>根据按键处理移动时不可以反方向移动.也就是说不可以直接后退.</p>
 </li>
-<li><p>碰壁或者蛇头碰到蛇身就算失败.
-处理方法:
-墙壁可以随便使用表格线划出来,蛇可移动的区域全部放空白.</p>
+<li><p>碰壁或者蛇头碰到蛇身就算失败.<br>处理方法:<br>墙壁可以随便使用表格线划出来,蛇可移动的区域全部放空白.</p>
 <p>只要判断前面不是食物也不是空白,就算Game Over了.</p>
-<p>部份代码:
-以下是使用直接写屏的方法处理vga指向显存的指针(short类型).</p>
+<p>部份代码:<br>以下是使用直接写屏的方法处理vga指向显存的指针(short类型).</p>
 <pre><code> while(delay())
 
  {
@@ -226,15 +220,9 @@ var _js2load = [];
 <p>使用方法(具体请下载附件研究)</p>
 <p>注: <code>最新版本的GRUB4DOS已经内置此功能,并且功能得到了增强</code>,<strong>想要编写GRUB4DOS扩展的可以下载源码研究一下</strong></p>
 <p>本站所有GRUB4DOS扩展的源码都可以从这里下载: <a href="https://code.google.com/p/grubutils/" target="_blank">https://code.google.com/p/grubutils/</a></p>
-<p>echo [-n] [-P:XXYY] MESSAGE
- 其中MESSAGE中可以使用$[ABCD]来指定后面显示的字符使用的颜色.
- A 值为1时闪烁 (blinking foreground color).
- B 值为1时高亮(light)
- C [0-7]背景色(background color)
- D [0-7]前景色-字体颜色(foreground color)</p>
+<p>echo [-n] [-P:XXYY] MESSAGE<br> 其中MESSAGE中可以使用$[ABCD]来指定后面显示的字符使用的颜色.<br> A 值为1时闪烁 (blinking foreground color).<br> B 值为1时高亮(light)<br> C [0-7]背景色(background color)<br> D [0-7]前景色-字体颜色(foreground color)</p>
 <p>截图效果.(随便弄的,对外观不是很感冒)_:)</p>
-<p>注:图片就是附件执行的效果,未修改添加.
- 嘻嘻,对于某些喜欢修改XXXX的爱好者来说可能会有用,因为你可以自定义整个屏幕上显示的信息.</p>
+<p>注:图片就是附件执行的效果,未修改添加.<br> 嘻嘻,对于某些喜欢修改XXXX的爱好者来说可能会有用,因为你可以自定义整个屏幕上显示的信息.</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2010/09/B6860606576903B7DADE22718F1B8DA060588955.png" alt=""></p>
 
       
@@ -269,15 +257,15 @@ var _js2load = [];
     
     <div class="entry">
       
-        <p>快速计算某个POS软件的员工密码...</p>
+        <p>快速计算某个POS软件的员工密码…</p>
 <p>使用批处理计算快速简单.</p>
 <p>^_^ 至少有N+X个密码可以用哦.</p>
 <p>不想解释.</p>
 <p>谁用谁知道 .</p>
 <p>嘿黑,别做坏事哦.</p>
 <p>==================================================</p>
-<p>保存为BAT或CMD文件,运行按提示输入就可以了...(注:如果复制下来是全角的引导需要替换成半角的)</p>
-<pre><code class="lang-bat">@echo off
+<p>保存为BAT或CMD文件,运行按提示输入就可以了…(注:如果复制下来是全角的引导需要替换成半角的)</p>
+<pre><code class="bat">@echo off
 set /p se=se:
 set /p yx=yx#:
 set /a &quot;se &amp;= 0xffff&quot;
@@ -296,8 +284,7 @@ echo.You can use any of the above password,,(⊙o⊙)
 echo.
 pause
 </code></pre>
-<p>运行的结果演示:
- <img src="http://c-dl.qiniudn.com/upload/2010/09/8B8D0CDF9DFF0A2AD4B9CA2AC793323D2C331CEA.jpg" alt=""></p>
+<p>运行的结果演示:<br> <img src="http://c-dl.qiniudn.com/upload/2010/09/8B8D0CDF9DFF0A2AD4B9CA2AC793323D2C331CEA.jpg" alt=""></p>
 
       
     </div>
@@ -331,19 +318,19 @@ pause
     
     <div class="entry">
       
-        <h2 id="-">[用途]</h2>
+        <h2 id="[用途]">[用途]</h2>
 <ol>
 <li><p>在GRUB4DOS下直接检测PCI设备信息.</p>
 </li>
-<li><p>待定.......</p>
+<li><p>待定…….</p>
 </li>
 </ol>
-<h2 id="-">[用法]</h2>
+<h2 id="[用法]">[用法]</h2>
 <p>直接在GRUB4DOS下运行,可以加一个PCI信息库文件参数.<a href="http://c-dl.qiniudn.com/upload/PCIDEVS.gz">PCI信息库文件</a></p>
 <p>另: 因为GRUB4DOS是支持自动解压的.所以这个信息库文件可以使用GZIP压缩再调用(加快读取速度).</p>
 <p>注意: 目前库文件限制在1MB以内(一般来说也够用了)</p>
 <p>其它说明: 使用库文件时,会把库文件读取到内存6M-8M之间,使用时请注意不要冲突</p>
-<h2 id="-">[下载]</h2>
+<h2 id="[下载]">[下载]</h2>
 <p>CHKPCI(带源码)</p>
 <p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank">http://code.google.com/p/grubutils/downloads/list</a></p>
 <p>更新信息(changelog):</p>
@@ -383,13 +370,12 @@ pause
 <p> 添加读取PCIDEVS.TXT按格式显示设备信息的功能.</p>
 <h3 id="2010-08-25">2010-08-25</h3>
 <p> 第一版,只能显示PCI信息.</p>
-<h2 id="-">【相关资料】</h2>
+<h2 id="【相关资料】">【相关资料】</h2>
 <p>一些资料请看这里.</p>
-<p><a href="http://chenall.net/post/scanpci/"><a href="http://chenall.net/post/scanpci/">http://chenall.net/post/scanpci/</a></a></p>
-<h2 id="class-codes">Class Codes</h2>
-<p><table border="1"><tbody><tr><th>Class</th><th>Description</th></tr><tr><td>0x00</td><td>Devices built before class codes</td></tr><tr><td>0x01</td><td>Mass storage controller</td></tr><tr><td>0x02</td><td>Network controller</td></tr><tr><td>0x03</td><td>Display controller</td></tr><tr><td>0x04</td><td>Multimedia device</td></tr><tr><td>0x05</td><td>Memory Controller</td></tr><tr><td>0x06</td><td>Bridge Device</td></tr><tr><td>0x07</td><td>Simple communications controllers</td></tr><tr><td>0x08</td><td>Base system peripherals</td></tr><tr><td>0x09</td><td>Inupt devices</td></tr><tr><td>0x0A</td><td>Docking Stations</td></tr><tr><td>0x0B</td><td>Processorts</td></tr><tr><td>0x0C</td><td>Serial bus controllers</td></tr><tr><td>0x0D-0xFE</td><td>Reserved</td></tr><tr><td>0xFF</td><td>Misc</td></tr></tbody></table>
-更多资料请点这里查看</p>
-<p><a href="https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk" target="_blank"><a href="https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk">https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk</a></a></p>
+<p><a href="http://chenall.net/post/scanpci/">http://chenall.net/post/scanpci/</a></p>
+<h2 id="Class_Codes">Class Codes</h2>
+<p><table border="1"><tbody><tr><th>Class</th><th>Description</th></tr><tr><td>0x00</td><td>Devices built before class codes</td></tr><tr><td>0x01</td><td>Mass storage controller</td></tr><tr><td>0x02</td><td>Network controller</td></tr><tr><td>0x03</td><td>Display controller</td></tr><tr><td>0x04</td><td>Multimedia device</td></tr><tr><td>0x05</td><td>Memory Controller</td></tr><tr><td>0x06</td><td>Bridge Device</td></tr><tr><td>0x07</td><td>Simple communications controllers</td></tr><tr><td>0x08</td><td>Base system peripherals</td></tr><tr><td>0x09</td><td>Inupt devices</td></tr><tr><td>0x0A</td><td>Docking Stations</td></tr><tr><td>0x0B</td><td>Processorts</td></tr><tr><td>0x0C</td><td>Serial bus controllers</td></tr><tr><td>0x0D-0xFE</td><td>Reserved</td></tr><tr><td>0xFF</td><td>Misc</td></tr></tbody></table><br>更多资料请点这里查看</p>
+<p><a href="https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk" target="_blank">https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk</a></p>
 <p>[截图]</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2010/08/158B5714E04F16AD5C39EF2BE35C76E70E0FAEA1.png" alt="首先是帮助信息"></p>
 <p><img src="http://c-dl.qiniudn.com/upload/2010/08/AE12A9F981EA2C70F956A931B6A3108D5FCA6710.png" alt="不加参数,只列出PCI设备信息."></p>
@@ -482,45 +468,26 @@ pause
 <p> 注意： 在 SQL Server 中使用分布式查询与通过 ODBC 使用链接表功能相似。此功能先前受 Microsoft Access 支持，现在已将 OLE DB 作为外部数据的接口构建到 SQL Server 中。</p>
 <p>下图显示了 SQL Server 实例的客户端计算机与 OLE DB 访问接口之间的连接。</p>
 <p> <img src="http://i.msdn.microsoft.com/dynimg/IC53346.gif" alt="客户端到 SQL Server 到 OLE DB 访问接口"></p>
-<p> 有关分布式查询的重要主题
-下表列出的主题提供了有助于理解和使用分布式查询来访问数据的信息，这些数据或者是在单独的 SQL Server 实例中或者在除 SQL Server 之外的其他数据源中。</p>
-<table class='table table-bordered'><tbody>
-<tr><th>有关信息</th> <th>请参阅</th></tr><tr> <td>配置 OLE DB 访问接口和链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188279.aspx" target="_blank"><font color="#1364C4">配置链接服务器</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms190918.aspx" target="_blank"><font color="#1364C4">为分布式查询配置 OLE DB 访问接口</font></a></td> </tr>
-<tr><td>分布式事务中的分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms177403.aspx" target="_blank"><font color="#1364C4">分布式查询和分布式事务</font></a></td></tr>
-<tr><td>特定的 OLE DB 访问接口</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187072.aspx" target="_blank"><font color="#1364C4">用 SQL Server 测试过的 OLE DB 访问接口</font></a></td></tr>
-<tr><td>OLE DB 访问接口的语言支持</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187442.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的 SQL 方言要求</font></a></td> </tr>
-<tr> <td>链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188313.aspx" target="_blank"><font color="#1364C4">访问外部数据</font></a></td></tr>
-<tr><td>ODBC 和分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms131368.aspx" target="_blank"><font color="#1364C4">支持分布式查询的架构函数</font></a></td></tr>
-<tr><td> 性能问题 </td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms180972.aspx" target="_blank"><font color="#1364C4">优化分布式查询</font></a></td></tr>
-<tr> <td> OLE DB 访问接口开发人员参考</td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms179468.aspx" target="_blank"><font color="#1364C4">用于分布式查询的 OLE DB 访问接口参考</font></a></td></tr>
-<tr> <td> 统计要求 </td> <td> <a href="http://msdn.microsoft.com/zh-cn/library/ms186237.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的分布统计要求</font></a> </td></tr>
-<tr> <td> 分布式查询、链接服务器和允许的 Transact-SQL 语句的规则和限制。 </td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms175129.aspx" target="_blank"><font color="#1364C4">分布式查询的准则</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms187961.aspx" target="_blank"><font color="#1364C4">系统存储过程</font></a></td> </tr>
-</tbody></table>
+<p> 有关分布式查询的重要主题<br>下表列出的主题提供了有助于理解和使用分布式查询来访问数据的信息，这些数据或者是在单独的 SQL Server 实例中或者在除 SQL Server 之外的其他数据源中。</p>
+<table class='table table-bordered'><tbody><br><tr><th>有关信息</th> <th>请参阅</th></tr><tr> <td>配置 OLE DB 访问接口和链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188279.aspx" target="_blank"><font color="#1364C4">配置链接服务器</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms190918.aspx" target="_blank"><font color="#1364C4">为分布式查询配置 OLE DB 访问接口</font></a></td> </tr><br><tr><td>分布式事务中的分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms177403.aspx" target="_blank"><font color="#1364C4">分布式查询和分布式事务</font></a></td></tr><br><tr><td>特定的 OLE DB 访问接口</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187072.aspx" target="_blank"><font color="#1364C4">用 SQL Server 测试过的 OLE DB 访问接口</font></a></td></tr><br><tr><td>OLE DB 访问接口的语言支持</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187442.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的 SQL 方言要求</font></a></td> </tr><br><tr> <td>链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188313.aspx" target="_blank"><font color="#1364C4">访问外部数据</font></a></td></tr><br><tr><td>ODBC 和分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms131368.aspx" target="_blank"><font color="#1364C4">支持分布式查询的架构函数</font></a></td></tr><br><tr><td> 性能问题 </td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms180972.aspx" target="_blank"><font color="#1364C4">优化分布式查询</font></a></td></tr><br><tr> <td> OLE DB 访问接口开发人员参考</td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms179468.aspx" target="_blank"><font color="#1364C4">用于分布式查询的 OLE DB 访问接口参考</font></a></td></tr><br><tr> <td> 统计要求 </td> <td> <a href="http://msdn.microsoft.com/zh-cn/library/ms186237.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的分布统计要求</font></a> </td></tr><br><tr> <td> 分布式查询、链接服务器和允许的 Transact-SQL 语句的规则和限制。 </td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms175129.aspx" target="_blank"><font color="#1364C4">分布式查询的准则</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms187961.aspx" target="_blank"><font color="#1364C4">系统存储过程</font></a></td> </tr><br></tbody></table>
 
 <hr>
 <p>例子:</p>
 <p>商场使用佳为软件,使用的是MSSQL数据库,需要在两个分店之间传数据.</p>
 <ol>
-<li><p>首先就是建立服务器之间的链接.
-使用以下命令添加(具体命令参数,请查看对应链接的详细介绍.
- <a href="http://msdn.microsoft.com/zh-cn/library/ms190479.aspx" target="_blank">sp_addlinkedserver&gt;&gt;</a></p>
+<li><p>首先就是建立服务器之间的链接.<br>使用以下命令添加(具体命令参数,请查看对应链接的详细介绍.<br> <a href="http://msdn.microsoft.com/zh-cn/library/ms190479.aspx" target="_blank">sp_addlinkedserver&gt;&gt;</a></p>
 <pre><code>  sp_addlinkedserver &#39;srv01&#39;,&#39;&#39;,&#39;SQLOLEDB&#39;,&#39;192.168.0.1&#39;,&#39;pos&#39;
 </code></pre><p> <a href="http://msdn.microsoft.com/zh-cn/library/ms189811.aspx" target="_blank">sp_addlinkedsrvlogin&gt;&gt;</a>设置连接参数密码</p>
 <pre><code>  sp_addlinkedsrvlogin &#39;srv01&#39;,&#39;false&#39;,NULL,&#39;sa&#39;,&#39;password&#39;
 </code></pre></li>
-<li><p>创建好了就可以直接使用了.
-<em>格式
-server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em>schema_name</em>]<strong>.</strong><em>object_name
-具体点击这里查看</em><a href="http://msdn.microsoft.com/zh-cn/library/ms177563.aspx" target="_blank"><font color="#960BB4">Transact-SQL 语法约定</font></a></p>
+<li><p>创建好了就可以直接使用了.<br><em>格式<br>server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em>schema_name</em>]<strong>.</strong><em>object_name<br>具体点击这里查看</em><a href="http://msdn.microsoft.com/zh-cn/library/ms177563.aspx" target="_blank"><font color="#960BB4">Transact-SQL 语法约定</font></a></p>
 </li>
 </ol>
-<p>使用的例子:
- 查询员工用户信息表</p>
+<p>使用的例子:<br> 查询员工用户信息表</p>
 <pre><code> select * from srv01.pos.dbo.jygtab&lt;/font&gt;
  或
  select * from openquery(&#39;srv01&#39;,&#39;select * from jygtab&#39;)
-</code></pre><p>当然同样可以加条件查询,或者更新都是可以的.
- 几个例子:</p>
+</code></pre><p>当然同样可以加条件查询,或者更新都是可以的.<br> 几个例子:</p>
 <pre><code> 查询1号员工的资料:
  select * from srv01.pos.dbo.jygtab where yx#=1
  修改资料:
@@ -599,7 +566,7 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
     
     <div class="entry">
       
-        <p>　　由于最近在测试GRUB4DOS的网络启动,因为要测试不同TFTP服务器的情况.所以需要来回切换两个TFTP服务器.刚开始时还是使用比较保守的方法，即修改DHCP服务器的配置，指定TFTP服务器地址，然后重启PXE客户端．</p>
+        <p>由于最近在测试GRUB4DOS的网络启动,因为要测试不同TFTP服务器的情况.所以需要来回切换两个TFTP服务器.刚开始时还是使用比较保守的方法，即修改DHCP服务器的配置，指定TFTP服务器地址，然后重启PXE客户端．</p>
 <p>　　每次修改服务器的配置很麻烦，而且也影响了其它机器的启动，后来突然想到，GRUB4DOS　PXE启动时的服务器IP地址在内存中保存的位置是已知的．是不是可以直接修改这个IP地址来实现切换TFTP服务器的功能呢，经过测试是成功的，分享一下，也许在某些情况下你也用得上．^_^</p>
 <p>具体效果看图片．．．．</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2010/06/BD825164772A2EE4EDE97353B2A955423D61BC96.png" alt=""></p>
@@ -653,7 +620,7 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
 <p>许多人都转而求其它方法，后来我经过测试发现其实新浪很早就提供了从其它微搏同步到新浪的方法了．</p>
 <p>只要使用关联搏客的功能就可以实现自动把其它微搏同步过来了．</p>
 <p>比如自动从同步<a href="http://digu.com/chenall" target="_blank">嘀咕</a>．</p>
-<p>只要在关联搏客中输入你要同步的地址比如<a href="http://digu.com/chenall" target="_blank">我的嘀咕</a>页面是：<a href="http://chenall.net/"><a href="http://chenall.net/">http://chenall.net/</a></a></p>
+<p>只要在关联搏客中输入你要同步的地址比如<a href="http://digu.com/chenall" target="_blank">我的嘀咕</a>页面是：<a href="http://chenall.net/">http://chenall.net/</a></p>
 <p>OK，关联成功．以后你在嘀咕发的微搏就会自动同步到新浪了．</p>
 <p>怎么样是不是很简单．</p>
 <p>如果上面的同步方法失败了（只要关联成功一般就可以的了），还可以使用另一个方法，利用google reader还可以同时把多个来源同步到新浪．</p>
@@ -701,8 +668,8 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
     
     <div class="entry">
       
-        <p>转载自<a href="http://www.williamlong.info/" target="_blank"><font color="#4E0A13">月光博客</font></a> [ <a href="http://www.williamlong.info/" target="_blank"><font color="#4E0A13"><a href="http://www.williamlong.info/">http://www.williamlong.info/</a></font></a> ]</p>
-<p>原文链接地址：<a href="http://www.williamlong.info/archives/2173.html" target="_blank"><font color="#670E1A"><a href="http://www.williamlong.info/archives/2173.html">http://www.williamlong.info/archives/2173.html</a></font></a></p>
+        <p>转载自<a href="http://www.williamlong.info/" target="_blank"><font color="#4E0A13">月光博客</font></a> [ <a href="http://www.williamlong.info/" target="_blank"><font color="#4E0A13">http://www.williamlong.info/</font></a> ]</p>
+<p>原文链接地址：<a href="http://www.williamlong.info/archives/2173.html" target="_blank"><font color="#670E1A">http://www.williamlong.info/archives/2173.html</font></a></p>
 <p>　　5月１０日下午，世界上最伟大的云存储服务之一——Dropbox被证实无法从中国地区访问，客户端和网站均无法正常连接和登录，我先前曾经<a href="http://www.williamlong.info/archives/2170.html" target="_blank"><font color="#4E0A13">多次推荐过</font></a>这个伟大的服务，没想到这么快Dropbox就惨遭毒手。</p>
 <p>　　目前，中国用户已经无法通过Dropbox客户端和Web网页访问Dropbox，已经连接上Dropbox服务器的客户端一经退出就会无法再登录，显示的现象是Connecting一直在持续却连接不上，从客户端点“Launch Dropbox Website”也无法打开网页登录。</p>
 <p>　　封锁Dropbox的方式是关键字封锁和IP封锁，关键字为“.dropbox.com”，IP为Dropbox官方网站的IP，可谓是全方面地定点封锁。</p>
@@ -736,7 +703,7 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/6/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li class="active"><li><span class="page-number current">7</span></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/8/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/6/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li class="active"><li><span class="page-number current">7</span></li></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/8/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -801,7 +768,7 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -817,14 +784,12 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -908,7 +873,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

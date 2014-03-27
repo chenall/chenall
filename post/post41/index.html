@@ -10,8 +10,7 @@
 <title>[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节 | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。
-在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。">
+<meta name="description" content="我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。对于内存文件来讲，也是如此，(md)xxxxx+yyyyy 和 (rd)xxxxx+yyyyy 这类表达法都是表示扇区的整数倍，这样大小的文件。然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 image.gz 文件，如果你不指定这个文件的精确大小，那么grub 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。怎样指定扇区序列的精确长度呢？这可能是 GNU GRUB 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 466 个字节，就可以这样：cat --hex (hd0)+1,466其中 (hd0)+1 是扇区序列，466 表示只从扇区序列中取出 466 字节作为文件的长度。再举一例：cat --hex (hd0)+63,800+63,64400如果没有结尾的&ldquo;,64400&rdquo;，那么，&ldquo;(hd0)+63,800+63&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 63 个扇区，所以文件总共有 126 个扇区。文件的长度就是 126x512=64512 字节。加上了结尾的&ldquo;,64400&rdquo;之后，文件变小了，它表示的文件长度为 64400。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。不点时空论坛">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -130,20 +129,7 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <blockquote><p>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。</p>
-<p>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。</p>
-<p>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。</p>
-<p>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。</p>
-<p>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：</p>
-<pre><code>cat --hex (hd0)+1,466
-</code></pre><p>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。</p>
-<p>再举一例：</p>
-<pre><code>cat --hex (hd0)+63,800+63,64400
-</code></pre><p>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。</p>
-<p>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。</p>
-<p>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。</p>
-<footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
-
+        <blockquote><br>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。<br><br>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。<br><br>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。<br><br>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。<br><br>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：<br><code>cat --hex (hd0)+1,466</code><br>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。<br><br>再举一例：<br><code>cat --hex (hd0)+63,800+63,64400</code><br>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。<br><br>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。<br><br>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。<br><footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
       
     </div>
     <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
@@ -198,7 +184,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/freeime/">[软件推荐]  极点中文输入平台</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="41"  data-url="http://chenall.net/post/post41/" data-title="[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节"></div>
@@ -267,7 +253,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -283,14 +269,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -387,7 +371,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

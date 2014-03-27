@@ -128,21 +128,11 @@ var _js2load = [];
     <div class="entry">
       
         <p>Windows 下 Grub4dos仿真盘的驱动.</p>
-<p>可以支持grub4dos map--mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
+<p>可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
 <p>另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
-<p>感谢<em>zw2312914</em>的推荐: <a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5742">http://bbs.znpc.net/viewthread.php?tid=5742</a></a>,感谢软件作者karyonix的分享.</p>
+<p>感谢<em>zw2312914</em>的推荐: <a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5742</a>,感谢软件作者karyonix的分享.</p>
 <p>以下内容摘自上面时空论坛的一些原文.</p>
-<blockquote><p> 谢谢 karyonix 。此驱动类似 windrv 大的wdsys。即可以在windows环境使用grub4dos（--mem方式）仿真的镜像（包括iso)。</p>
-<p> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8804</a></p>
-<p> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8168</a></p>
-<p> 希望有更多的朋友能测试下。</p>
-<p> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a></p>
-<p> 看了一下，名叫firadisk。</p>
-<p> 貌似已经超级强大了，可以支持grub4dos map--mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
-<p> 另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
-<p> 支持x86/x64系统，但对于64位系统，尚无法使用4GB以上的内存，grub4dos似乎也不行。内存盘上限大概是3.25GB</p>
-<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">时空论坛</a></cite></footer></blockquote>
-
+<blockquote><br> 谢谢 karyonix 。此驱动类似 windrv 大的wdsys。即可以在windows环境使用grub4dos（—mem方式）仿真的镜像（包括iso)。<br><br> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8804</a><br><br> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8168</a><br><br> 希望有更多的朋友能测试下。<br><br> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a><br><br> 看了一下，名叫firadisk。<br><br> 貌似已经超级强大了，可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。<br><br> 另外，也支持直接在boot.ini加载各种镜像，无488M限制。<br><br> 支持x86/x64系统，但对于64位系统，尚无法使用4GB以上的内存，grub4dos似乎也不行。内存盘上限大概是3.25GB<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">时空论坛</a></cite></footer></blockquote> 
 
 <p>我已经测试过了,很强大,0pe或Micrope直接用这个驱动替换里面的wdsys.sys驱动,可以正常使用.</p>
 <p>其它PE只需要在内核中加入这个驱动,就可以直接整体ISO来启动,再也不用担心ISO启动找不到外置的问题了.</p>
@@ -162,13 +152,13 @@ map --hook
 chainloader (0xff)
 </code></pre><p>的方式来安装XP或其它系统了</p>
 </li>
-<li><p>制作Ram系统,应该是支持的了.只需要在WINDOWS系统中加入这个驱动,然后把系统打包成一个镜像,用GRUB4DOS的map --mem来加载启动.</p>
+<li><p>制作Ram系统,应该是支持的了.只需要在WINDOWS系统中加入这个驱动,然后把系统打包成一个镜像,用GRUB4DOS的map —mem来加载启动.</p>
 </li>
 </ol>
 <p>也可以到这个贴子看看由无忧论坛 <a href="http://bbs.wuyou.com/space.php?uid=40023" target="_blank">天风</a> 制作的 <a href="http://bbs.wuyou.com/viewthread.php?tid=148670" target="_blank">RAM WINDOWS 7</a></p>
-<p>后注:这个驱动还是持续更新中,希望越来越强大,<del>不知是否以后会支持非mem的磁盘,如果可以的话就更强大了</del>(新版已支持).....让我们一起期待吧.</p>
+<p>后注:这个驱动还是持续更新中,希望越来越强大,<del>不知是否以后会支持非mem的磁盘,如果可以的话就更强大了</del>(新版已支持)…..让我们一起期待吧.</p>
 <p>上面的已经测试过,可以直接用于ISO启动安装WIN XP/2003系统,或PE.</p>
-<p>具体情况: <a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1">http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1</a></a></p>
+<p>具体情况: <a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1</a></p>
 
       
     </div>
@@ -203,26 +193,22 @@ chainloader (0xff)
     <div class="entry">
       
         <p>看起来可能有点乱^_^.实现起来也是挺麻烦的,暂时只是我的一个想法,仅供有兴趣的朋友研究尝试.放在这里做个记录,以后有兴趣再搞个成品.</p>
-<h2 id="-">最终的理想效果.</h2>
+<h2 id="最终的理想效果-">最终的理想效果.</h2>
 <ul>
 <li>安装/卸载/使用方便简单,(只需改名复制或删除文件就可以了)</li>
 <li>进入DOS时无需再加载NTFS等驱动,也不需要查找操作,直接就开始备份或恢复.</li>
 <li>完全自定义,或模块化.</li>
 </ul>
-<h2 id="-">思路:</h2>
+<h2 id="思路:">思路:</h2>
 <ul>
-<li><p>首先,启动过程.
-目前网络上的一键还原软件,大都是基于<code>GRUB4DOS</code>的,通过在<code>BOOT.INI</code>中添加相应菜单项或直接加入到MBR中来启动的.需要修改<br>我的思路是:  </p>
+<li><p>首先,启动过程.<br>目前网络上的一键还原软件,大都是基于<code>GRUB4DOS</code>的,通过在<code>BOOT.INI</code>中添加相应菜单项或直接加入到MBR中来启动的.需要修改<br>我的思路是:  </p>
 <ol>
 <li>直接把<code>GRUB4DOS</code>的<code>GRLDR</code>改名为<code>NTLDR</code>放在系统盘代替系统的<code>NTLDR</code>来启动.原来的<code>NTLDR</code>可以改名为<code>NTLDR.LDR</code>或其它名子.(VISTA以上的系统可以改为BOOTMGR),这样的安装方式的优点,安装时不需要做许多修改就可以用,只需把原来的系统启动文件改名,然后用定制的GRLDR代替就好了.</li>
 <li>由<code>GRUB4DO</code>S接管系统的启动,然后根据某些标记(某个文件的内容)来自动选择是启动到系统还是进入备份还原操作.</li>
 <li>当然了还可以在启动时通过按某个按键进入恢复备份操作.</li>
 </ol>
 </li>
-<li><p>执行过程.
-通过在WINDOWS界面下选择备份或恢复操作(把这些操作存在一个特定的文件中)
-启动时通过GRUB4DOS的DD功能把这个文件的内容转到启动IMG里面.
-启动IMG执行定义的操作.</p>
+<li><p>执行过程.<br>通过在WINDOWS界面下选择备份或恢复操作(把这些操作存在一个特定的文件中)<br>启动时通过GRUB4DOS的DD功能把这个文件的内容转到启动IMG里面.<br>启动IMG执行定义的操作.</p>
 </li>
 <li><p>基本文件内容</p>
 <pre><code>GHOST.ZIP        GHOST主程序文件(方便自定义,由GRUB4DOS启动时自动载入到上面的IMG中)
@@ -232,7 +218,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
 </ul>
 <p>一个主IMG文件(里面只包含启动基本的文件,其它的文件通过GRUB4DOS动态加入)</p>
 <p>img自动装载以上文件,然后根据config.ini的内容直接进行备份或恢复操作.</p>
-<h2 id="-">成品参考:</h2>
+<h2 id="成品参考:">成品参考:</h2>
 <p>  <a href="/post/qgho/" title="QGHO一键恢复程序">QGHO 快速一键恢复程序</a><br>  <a href="/post/g4d_hd_tools/">基于GRUB4DOS的硬盘工具箱</a><br>  <a href="/post/modboot/" title="一个模块化的DOS工具箱">MODBOOT</a>  </p>
 
       
@@ -309,8 +295,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     <div class="entry">
       
         <p>一些介绍.</p>
-<p>Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标）技术将通过OEM以Windows Storage Server 2003 R2的功能包提供，命名为Microsoft iSCSI Software Target，可用于标准版（Standard Edition）或企业版（Enterprise Edition）的Windows Storage Server 2003 R2。通过将这个Microsoft iSCSI Software Target与OEM合作伙伴的硬件集成，微软表示部署块和文件存储设备的成本将下降25%之多。
-Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一个高性价比的IP SAN解决方案，同时支持File（文件）和Block（块）级别的数据传输；无需改变现有系统架构，直接应用在现有网络结构中，安装、实施、维护、升级均不影响现有作业；其管理方式将被整合在Microsoft Management Console (MMC) 用户界面 中，实现快捷方便的操作；并可实现snapshots快照、backup备份及clustering集群应用；Microsoft iSCSI Software Target 目前只能用于Windows Storage Server 2003 R2 Standard或Enterprise版本上。</p>
+<p>Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标）技术将通过OEM以Windows Storage Server 2003 R2的功能包提供，命名为Microsoft iSCSI Software Target，可用于标准版（Standard Edition）或企业版（Enterprise Edition）的Windows Storage Server 2003 R2。通过将这个Microsoft iSCSI Software Target与OEM合作伙伴的硬件集成，微软表示部署块和文件存储设备的成本将下降25%之多。<br>Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一个高性价比的IP SAN解决方案，同时支持File（文件）和Block（块）级别的数据传输；无需改变现有系统架构，直接应用在现有网络结构中，安装、实施、维护、升级均不影响现有作业；其管理方式将被整合在Microsoft Management Console (MMC) 用户界面 中，实现快捷方便的操作；并可实现snapshots快照、backup备份及clustering集群应用；Microsoft iSCSI Software Target 目前只能用于Windows Storage Server 2003 R2 Standard或Enterprise版本上。</p>
 <p>根据介绍,它只能安装在Windows Storage Server 2003 R2 Standard或Enterprise版本上.</p>
 <p>如果是直接安装确实是不行的.图下面图示.会出现一个错误提示.</p>
 <p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzZdbXTWI/AAAAAAAAAGE/w3ce_78V1tA/20090708222415242.jpg?imgmax=800" target="_blank"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzXPSMrwI/AAAAAAAAAGA/-_MSsLYoHSw/thumb_20090708222415242.jpg?imgmax=800" alt=""></a></p>
@@ -319,8 +304,7 @@ Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一
 <p>只要按照上面的要求修改注册表就可以安装了.</p>
 <ol>
 <li>修改[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion]<br><code>ProductName=&quot;Microsoft Windows Server 2003 R2&quot;</code></li>
-<li><p>在 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft]
-下新建项,ServerAppliance<br>然后在新建的项下再新建一个Edition的Dword值为2或3就可以了.</p>
+<li><p>在 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft]<br>下新建项,ServerAppliance<br>然后在新建的项下再新建一个Edition的Dword值为2或3就可以了.</p>
 <p>整理后的注册表内容.如果不懂得修改,只要把下面的内容存为REG文件,直接双击导入就可以了.</p>
 <pre><code>REGEDIT4
 
@@ -485,7 +469,7 @@ goto :eof
       
         <p>OpenVpn使用用户名和密码验证方法.本例为了方便使用是的批处理.</p>
 <p>方法如下.</p>
-<h3 id="-">服务端</h3>
+<h3 id="服务端">服务端</h3>
 <ol>
 <li>在配置文件中添加如下语句,(如果已经有就修改一下)<pre><code> #用于用户名和密码验证,使得可以在变量中取到密码.
   script-security 3 system
@@ -515,13 +499,13 @@ goto :eof
  ::验证失败,让程序返回一个失败值1.
  exit /b 1
 </code></pre></li>
-<li><p>脚本已经弄好了,接下来就是添加用户名和密码文件.上面的脚本指定的用户名和密码文件是存放在一个文件名为users的文件中.<br> 在配置文件同目录中新建一个USERS文件.内容按以下格式添加.<br>  使用&quot;,&quot;作为分隔符,格式:用户名,密码,是否启用(1,启用,0,禁用)  </p>
+<li><p>脚本已经弄好了,接下来就是添加用户名和密码文件.上面的脚本指定的用户名和密码文件是存放在一个文件名为users的文件中.<br> 在配置文件同目录中新建一个USERS文件.内容按以下格式添加.<br>  使用”,”作为分隔符,格式:用户名,密码,是否启用(1,启用,0,禁用)  </p>
 <pre><code> 用户,密码,启用
   user1,passowrd1,1
   user2,password2,0
 </code></pre></li>
 </ol>
-<h3 id="-">客户端</h3>
+<h3 id="客户端">客户端</h3>
 <p>只要在配置文件中添加如下语句开启用户和密码验证即可使用.</p>
 <pre><code>auth-user-pass
 #可选的语句,一般建议加上,用途,加上以后就不会在内存中保存用户密码.
@@ -575,12 +559,10 @@ auth-nocache
 </li>
 <li><p>禁止某个IP登录./只充许部份指定的IP进行登录.<br>在大部份自动运行的脚本中都可以应用.</p>
 </li>
-<li><p>在连接或断开时自动运行.
-<em>up</em> <strong>cmd</strong>(在连接上以后执行,可以用于处理路由等)<br><em>down-pre</em> <strong>cmd</strong> (在断开之时执行,)<br><em>down</em> <strong>cmd</strong>(在断开之后执行)  </p>
+<li><p>在连接或断开时自动运行.<br><em>up</em> <strong>cmd</strong>(在连接上以后执行,可以用于处理路由等)<br><em>down-pre</em> <strong>cmd</strong> (在断开之时执行,)<br><em>down</em> <strong>cmd</strong>(在断开之后执行)  </p>
 </li>
 </ol>
-<p>要注意的是.
-在OpenVPN 2.1_rc9.以后的版本中配置文件中要使用如下语句</p>
+<p>要注意的是.<br>在OpenVPN 2.1_rc9.以后的版本中配置文件中要使用如下语句</p>
 <p><em>script-security</em> 2 system(不保存密码在环境变量中)或<em>script-security</em> <strong>3</strong> system(保存密码在环境变量中)</p>
 <p>当使用</p>
 <p><em>auth-user-pass-verify</em> cmd via_env</p>
@@ -588,8 +570,8 @@ auth-nocache
 <p>后面SYSTEM参数的作用是,</p>
 <p>The <strong>method</strong> parameter indicates how OpenVPN should call external commands and scripts. Settings for <strong>method:</strong></p>
 <ul>
-<li><strong>execve</strong> -- (default) Use execve() function on Unix family OSes and CreateProcess() on Windows.   </li>
-<li><strong>system</strong> -- Use system() function (deprecated and less safe since the external program command line is subject to shell expansion).</li>
+<li><strong>execve</strong> — (default) Use execve() function on Unix family OSes and CreateProcess() on Windows.   </li>
+<li><strong>system</strong> — Use system() function (deprecated and less safe since the external program command line is subject to shell expansion).</li>
 </ul>
 <p>如果不加这个参数使用默认的(<strong>execve</strong>),那在执行脚本时一般情况下只能使用内置命令.</p>
 <p>(当然了这个环境也可以说比较安全).可以通过指定路径来运行外部程序,但不一定都是可以运行成功的.</p>
@@ -598,8 +580,7 @@ auth-nocache
 <pre><code>up test.cmd
 </code></pre><p>test.cmd内容就以下一句话  </p>
 <pre><code>@set&gt;test.log
-</code></pre><p>使用加SYSTEM参数前后对比生成文件的内容就可以发现其中的区别.
-```</p>
+</code></pre><p>使用加SYSTEM参数前后对比生成文件的内容就可以发现其中的区别.<br>```</p>
 
       
     </div>
@@ -633,7 +614,7 @@ auth-nocache
     
     <div class="entry">
       
-        <h3 id="-openvpn-openvpn-">[OpenVPN] OpenVPN 独立配置文件</h3>
+        <h3 id="[OpenVPN]_OpenVPN_独立配置文件">[OpenVPN] OpenVPN 独立配置文件</h3>
 <p>前言: OpenVPN使用证书连接可以加强安全性但是如果客户端多了要分发证书很不方便,还有如果一个客户端需要连接多个不同的服务器,一般情况下证书文件都使用默认的文件名</p>
 <p>例子对于<strong>CA</strong>根证书一般使用如下语句:</p>
 <pre><code>ca ca.crt
@@ -680,10 +661,10 @@ auth-nocache
     <div class="entry">
       
         <p>利用OpenVPN实现虚拟网实战.之前一直使用SOFTETHER,因为它配置简单,使用方便.而且它也支持RIP协议,方便自动配置路由.SOFTETHER可以从这里下载,</p>
-<p><a href="http://www.onlinedown.net/soft/34495.htm" target="_blank"><a href="http://www.onlinedown.net/soft/34495.htm">http://www.onlinedown.net/soft/34495.htm</a></a></p>
+<p><a href="http://www.onlinedown.net/soft/34495.htm" target="_blank">http://www.onlinedown.net/soft/34495.htm</a></p>
 <p>现在由于SOFTETHER 已经不支持VISTA之类的系统了,所以想寻找一个替代品.OpenVpn 之前也有尝试过,可能是当时还不懂配置或是什么其它的原因,发现它不支持RIP路由协议.而且配置也不方便所以就没有使用了.</p>
 <p>最近又尝试了一下,发现它支持RIP和OSPF路由协议了,这里记录一下安装过程,供有需要的人参考.</p>
-<p>需要准备的软件OpenVpn可以从它的主页下载.<a href="http://openvpn.net/index.php/downloads.html" target="_blank"><a href="http://openvpn.net/index.php/downloads.html">http://openvpn.net/index.php/downloads.html</a></a></p>
+<p>需要准备的软件OpenVpn可以从它的主页下载.<a href="http://openvpn.net/index.php/downloads.html" target="_blank">http://openvpn.net/index.php/downloads.html</a></p>
 <p>本文是使用2.1RC15版配置的.其它版本应该差不多.</p>
 
       
@@ -779,7 +760,7 @@ auth-nocache
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -795,14 +776,12 @@ auth-nocache
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -886,7 +865,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

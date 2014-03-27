@@ -167,8 +167,7 @@ main()
         (0, p - (*(int *)(p - 8)));
 }
 </code></pre><p>0x8300 是 grub4dos 系统函数(API)的入口点. 你可以在 asm.S 源码中找到它的定义.</p>
-<p>目前可以使用的函数和变量:
-    <a href="http://grubutils.googlecode.com/svn/trunk/src/include/grub4dos.h" target="_blank">http://grubutils.googlecode.com/svn/trunk/src/include/grub4dos.h</a></p>
+<p>目前可以使用的函数和变量:<br>    <a href="http://grubutils.googlecode.com/svn/trunk/src/include/grub4dos.h" target="_blank">http://grubutils.googlecode.com/svn/trunk/src/include/grub4dos.h</a></p>
 <p>另外为了方便使用也可以把上面的函数重新定义下，我根据自己的理解整理一下的代码如下。</p>
 <pre><code>//重新定义printf和sprintf函数
 #define sprintf ((int (*)(char *, const char *, ...))((*(int **)0x8300)[0]))
@@ -240,7 +239,7 @@ int main(char *arg,int flags)
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/post44/">[分享]超级解霸V9精简版(用来播放光蝶)</a></li><li class="list-group-item"><a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/freeime/">[软件推荐]  极点中文输入平台</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="118"  data-url="http://chenall.net/post/grub4dos_user/" data-title="[grub4dos] grub4dos 运行外部命令[简介]"></div>
@@ -309,7 +308,7 @@ int main(char *arg,int flags)
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -325,14 +324,12 @@ int main(char *arg,int flags)
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -429,7 +426,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

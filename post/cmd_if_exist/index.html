@@ -13,7 +13,7 @@
 <meta name="description" content="编写批处理时经常需要用到外部命令,一些常用的命令一般的系统都会有,但是一些精简的系统上可能就没有了,如果没有做判断就可能导致程序出现未知的错误.
 一般检测文件是否存在可以使用
 
-IF EXIST filename 执行某个命令...">
+IF EXIST filename 执行某个命令…">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -135,11 +135,11 @@ var _js2load = [];
         <p>编写批处理时经常需要用到外部命令,一些常用的命令一般的系统都会有,但是一些精简的系统上可能就没有了,如果没有做判断就可能导致程序出现未知的错误.</p>
 <p>一般检测文件是否存在可以使用</p>
 <blockquote>
-<p>IF EXIST filename 执行某个命令...</p>
+<p>IF EXIST filename 执行某个命令…</p>
 </blockquote>
 <p>但是这样只能检测当前目录下或指定目录的,而批处理的外部命令通过PATH变量来确定位置的.正常情况下可以通过以下命令来确定这个外部命令是否存在,</p>
 <blockquote>
-<p>for %I in (find.exe) do if &quot;%~$PATH:I&quot;==&quot;&quot; echo find 命令不存在</p>
+<p>for %I in (find.exe) do if “%~$PATH:I”==”” echo find 命令不存在</p>
 </blockquote>
 <p>为了以后方便就写了一个模块,用于判断命令是否存在.</p>
 <pre><code>@echo off
@@ -230,7 +230,7 @@ exit /b 0       http://www.chenall.net
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="99"  data-url="http://chenall.net/post/cmd_if_exist/" data-title="批处理检测外部命令是否存在的模块"></div>
@@ -299,7 +299,7 @@ exit /b 0       http://www.chenall.net
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -315,14 +315,12 @@ exit /b 0       http://www.chenall.net
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -419,7 +417,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

@@ -160,12 +160,7 @@ var _js2load = [];
 <p>R： 进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。</p>
 <p>s： 删除光标所在字元，并进入输入模式。</p>
 <p>S： 删除光标所在的列，并进入输入模式。</p>
-<p>其实呢，在PC上根本没有这麽麻烦！输入跟编辑都可以在输入模式下完成。例如要删除字元，直接按[Delete] 不就得了。而插入状态与取代状态可以直接用 [Insert] 切换，犯不著用什麽指令模式的编辑指令。不过就如前面所提到的，这些指令几乎是每台终端机都能用，而不是仅仅在 PC 上。
-在指令模式下移动光标的基本指令是 h, j, k, l 。想来各位现在也应该能猜到只要直接用 PC 的方向键就可以了，而且无论在指令模式或输入模式下都可以。多容易不是。
-当然 PC 键盘也有不足之处。有个很好用的指令 u 可以恢复被删除的文字，而 U 指令则可以恢复光标所在列的所有改变。这与某些电脑上的 [Undo] 按键功能相同。
-三、附件：vi详细指令表
-（一）、基本编辑指令：
-新增 (append)</p>
+<p>其实呢，在PC上根本没有这麽麻烦！输入跟编辑都可以在输入模式下完成。例如要删除字元，直接按[Delete] 不就得了。而插入状态与取代状态可以直接用 [Insert] 切换，犯不著用什麽指令模式的编辑指令。不过就如前面所提到的，这些指令几乎是每台终端机都能用，而不是仅仅在 PC 上。<br>在指令模式下移动光标的基本指令是 h, j, k, l 。想来各位现在也应该能猜到只要直接用 PC 的方向键就可以了，而且无论在指令模式或输入模式下都可以。多容易不是。<br>当然 PC 键盘也有不足之处。有个很好用的指令 u 可以恢复被删除的文字，而 U 指令则可以恢复光标所在列的所有改变。这与某些电脑上的 [Undo] 按键功能相同。<br>三、附件：vi详细指令表<br>（一）、基本编辑指令：<br>新增 (append)</p>
 <p>a ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。</p>
 <p>A： 从光标所在列最後面的地方开始新增资料。</p>
 <p>插入 (insert)</p>
@@ -180,43 +175,11 @@ var _js2load = [];
 <p>R： 进入取替换状态，新增文字会覆盖原先文字，直到按 [ESC] 回到指令模式下为止。</p>
 <p>s： 删除光标所在字元，并进入输入模式。</p>
 <p>S： 删除光标所在的列，并进入输入模式。</p>
-<p>（二）、光标移动指令：
-由於许多编辑工作是藉由光标来定位，所以 vi 提供许多移动光标的方式，这个我们列
-几张简表来说明（这些当然是指令模式下的指令）：</p>
-<p>指令 说明  功能键 
-0 移动到光标所在列的最前面 [Home]
-$  移动到光标所在列的最後面 [End]
-[CTRL][d] 向下半页  [PageDown]
-[CTRL][f] 向下一页 
-[CTRL][u] 向上半页 
-[CTRL][b] 向上一页 [PageUp]</p>
-<p>指令 说明
-H 移动到视窗的第一列
-M 移动到视窗的中间列
-L 移动到视窗的最後列 
-b 移动到下个字的第一个字母
-w 移缴细鲎值牡谝桓鲎帜?nbsp; 
-e 移动到下个字的最後一个字母
-^ 移动到光标所在列的第一个非空白字元</p>
-<p>指令 说明 
-n- 减号移动到上一列的第一个非空白字元前面加上数字可以指定移动到以上 n 列 
-n+ 加号移动到下一列的第一个非空白字元前面加上数字可以指定移动到以下 n 列
-nG 直接用数字 n 加上大写 G 移动到第 n 列
-指令 说明
-fx
-往右移动到 x 字元上 
-Fx 往左移动到 x 字元上 
-tx 往右移动到 x 字元前
-Tx 往左移动到 x 字元前
-; 配合 f&amp;t 使用，重复一次
-, 配合 f&amp;t 使用，反方向重复一次
-/string 往右移动到有 string 的地方
-?string 往左移动到有 string 的地方
-n  配合 /&amp;? 使用，重复一次 
-N  配合 /&amp;? 使用，反方向重复一次</p>
-<p>指令 说明 备注
-n( 
-左括号移动到句子的</p>
+<p>（二）、光标移动指令：<br>由於许多编辑工作是藉由光标来定位，所以 vi 提供许多移动光标的方式，这个我们列<br>几张简表来说明（这些当然是指令模式下的指令）：</p>
+<p>指令 说明  功能键<br>0 移动到光标所在列的最前面 [Home]<br>$  移动到光标所在列的最後面 [End]<br>[CTRL][d] 向下半页  [PageDown]<br>[CTRL][f] 向下一页<br>[CTRL][u] 向上半页<br>[CTRL][b] 向上一页 [PageUp]</p>
+<p>指令 说明<br>H 移动到视窗的第一列<br>M 移动到视窗的中间列<br>L 移动到视窗的最後列<br>b 移动到下个字的第一个字母<br>w 移缴细鲎值牡谝桓鲎帜?nbsp; <br>e 移动到下个字的最後一个字母<br>^ 移动到光标所在列的第一个非空白字元</p>
+<p>指令 说明 <br>n- 减号移动到上一列的第一个非空白字元前面加上数字可以指定移动到以上 n 列<br>n+ 加号移动到下一列的第一个非空白字元前面加上数字可以指定移动到以下 n 列<br>nG 直接用数字 n 加上大写 G 移动到第 n 列<br>指令 说明<br>fx<br>往右移动到 x 字元上<br>Fx 往左移动到 x 字元上 <br>tx 往右移动到 x 字元前<br>Tx 往左移动到 x 字元前<br>; 配合 f&amp;t 使用，重复一次<br>, 配合 f&amp;t 使用，反方向重复一次<br>/string 往右移动到有 string 的地方<br>?string 往左移动到有 string 的地方<br>n  配合 /&amp;? 使用，重复一次<br>N  配合 /&amp;? 使用，反方向重复一次</p>
+<p>指令 说明 备注<br>n(<br>左括号移动到句子的</p>
 
       
     </div>
@@ -272,7 +235,7 @@ n(
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/jwpos/">佳为后台程序单文件版本 有使用佳为软件的朋友别错过了</a></li><li class="list-group-item"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/post44/">[分享]超级解霸V9精简版(用来播放光蝶)</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="54"  data-url="http://chenall.net/post/post54/" data-title="vi 编辑器使用指南"></div>
@@ -341,7 +304,7 @@ n(
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -357,14 +320,12 @@ n(
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -461,7 +422,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

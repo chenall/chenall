@@ -121,17 +121,12 @@ var _js2load = [];
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T07:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
 
- root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下
-  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
+ root中文解释就是“根”的意思。  例子：  一个磁盘文件列表如下
+  其中一开始X:\就是默认root  现在要访问boot\file3 就可以使用 /boot/file3 来访问  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
 
-启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示</p><li class="list-group-item"><h3><time datetime="2009-11-14T11:37:05.000Z">2009-11-14</time>  <a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></h3><p class="list-group-item-text">一般的PE光盘必须的文件列表如下
+启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）. 有时候系统的启动文件被删了就会出现如下提示 BOOTMGR is missing或者NTLDR is missing 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p><li class="list-group-item"><h3><time datetime="2009-11-14T11:37:05.000Z">2009-11-14</time>  <a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></h3><p class="list-group-item-text">一般的PE光盘必须的文件列表如下
  WINNT.SIF文件内容例子
-SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG文件位置等
-SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文件必须放在根目录下</p><li class="list-group-item"><h3><time datetime="2009-11-11T16:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
+SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG文件位置等SETUPLDR.BIN加载时会根据WINNT.SIF里面的内容来启动，WINNT.SIF文件必须放在根目录下</p><li class="list-group-item"><h3><time datetime="2009-11-11T16:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
 有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。
 2014-01-21  注: 这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了</p><li class="list-group-item"><h3><time datetime="2009-11-06T11:19:32.000Z">2009-11-06</time>  <a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></h3><p class="list-group-item-text">批处理读取INI文件,以前无聊时写的.当时只是觉得好玩就尝试写了一下，原贴请看DOS联盟论坛
 http://www.cn-dos.net/forum/viewthread.php?tid=25789
@@ -153,28 +148,27 @@ sandboxie沙盘介绍：
 二、效果图。（测试只用MOU和WIM格式测试）</p><li class="list-group-item"><h3><time datetime="2009-09-29T13:29:21.000Z">2009-09-29</time>  <a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></h3><p class="list-group-item-text">编写批处理时经常需要用到外部命令,一些常用的命令一般的系统都会有,但是一些精简的系统上可能就没有了,如果没有做判断就可能导致程序出现未知的错误.
 一般检测文件是否存在可以使用
 
-IF EXIST filename 执行某个命令...</p><li class="list-group-item"><h3><time datetime="2009-09-25T00:35:56.000Z">2009-09-25</time>  <a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></h3><p class="list-group-item-text">绝对经典的批处理游戏！！！
+IF EXIST filename 执行某个命令…</p><li class="list-group-item"><h3><time datetime="2009-09-25T00:35:56.000Z">2009-09-25</time>  <a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></h3><p class="list-group-item-text">绝对经典的批处理游戏！！！
 本游戏需要三方choice.exe支持，请自行搜索下载
 来源:批处理写的俄罗斯方块游戏</p><li class="list-group-item"><h3><time datetime="2009-09-16T15:40:45.000Z">2009-09-16</time>  <a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></h3><p class="list-group-item-text">有时候为了安全着想,需要禁用U盘,USB硬盘等储存设备,一般可以通过以下两种方式.
 
 在BIOS中禁用
 使用软件禁用
 
-在BIOS中禁用比较麻烦,而且一般情况下不能只禁用U盘,会连其它USB设备都用不了.用软件一般都比较强大(未用过).</p><li class="list-group-item"><h3><time datetime="2009-09-14T05:43:59.000Z">2009-09-14</time>  <a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></h3><p class="list-group-item-text">因为需要,想让系统自动定时备份我的文件到邮箱上(只备份更新或新增加的文件),在网上找了许多软件要么是收费的,要么使用不方便.后来想起了以前收藏的一段 VBSCRIPT发送邮件的代码就想到是否可以利用批处理自己写一个脚本来实现,所以就有了以下的代码,有兴趣的朋友可以一起继续完善,现在只能根据文件大小,日期.来确定是否上传.</p><li class="list-group-item"><h3><time datetime="2009-09-09T04:16:38.000Z">2009-09-09</time>  <a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></h3><p class="list-group-item-text">利用VBScript发送邮件,以前从网上找的代码,不知原来的出处了.也不知作者是何人.....
+在BIOS中禁用比较麻烦,而且一般情况下不能只禁用U盘,会连其它USB设备都用不了.用软件一般都比较强大(未用过).</p><li class="list-group-item"><h3><time datetime="2009-09-14T05:43:59.000Z">2009-09-14</time>  <a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></h3><p class="list-group-item-text">因为需要,想让系统自动定时备份我的文件到邮箱上(只备份更新或新增加的文件),在网上找了许多软件要么是收费的,要么使用不方便.后来想起了以前收藏的一段 VBSCRIPT发送邮件的代码就想到是否可以利用批处理自己写一个脚本来实现,所以就有了以下的代码,有兴趣的朋友可以一起继续完善,现在只能根据文件大小,日期.来确定是否上传.</p><li class="list-group-item"><h3><time datetime="2009-09-09T04:16:38.000Z">2009-09-09</time>  <a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></h3><p class="list-group-item-text">利用VBScript发送邮件,以前从网上找的代码,不知原来的出处了.也不知作者是何人…..
 挺有用的脚本,我就一直在使用这个脚本来发邮件,还可以带附件.放在这里做个备份,免得到时又找不到了.
 目前我就通过批处理配合这个脚本来自动备份我的一些文件到邮箱里面.每天自动定时备份.</p><li class="list-group-item"><h3><time datetime="2009-09-02T13:16:28.000Z">2009-09-02</time>  <a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></h3><p class="list-group-item-text">Windows 下 Grub4dos仿真盘的驱动.
-可以支持grub4dos map--mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。
+可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。
 另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p><li class="list-group-item"><h3><time datetime="2009-08-13T01:41:01.000Z">2009-08-13</time>  <a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></h3><p class="list-group-item-text">看起来可能有点乱^_^.实现起来也是挺麻烦的,暂时只是我的一个想法,仅供有兴趣的朋友研究尝试.放在这里做个记录,以后有兴趣再搞个成品.
 最终的理想效果.
 
 安装/卸载/使用方便简单,(只需改名复制或删除文件就可以了)</p><li class="list-group-item"><h3><time datetime="2009-08-02T10:00:02.000Z">2009-08-02</time>  <a href="/post/anti-trojan-virus/">防病毒木马几则</a></h3><p class="list-group-item-text">现在病毒木马横行,很多人的电脑经常被病毒所侵,从而造成资料密码被盗.如果防止这一现象呢?
 实际上除了一些主动传播的病毒以外,大部份的病毒都是用户自己不知不觉装上去的,所以要防毒,主要还是要靠用户自己小心,不要太相信杀毒软件,因为它不是万能的也不具有&quot;智慧&quot;,很多病毒只要稍微改变一下杀软就不认识它了,就可以在电脑上横行了.</p><li class="list-group-item"><h3><time datetime="2009-07-08T14:55:42.000Z">2009-07-08</time>  <a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></h3><p class="list-group-item-text">一些介绍.
-Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标）技术将通过OEM以Windows Storage Server 2003 R2的功能包提供，命名为Microsoft iSCSI Software Target，可用于标准版（Standard Edition）或企业版（Enterprise Edition）的Windows Storage Server 2003 R2。通过将这个Microsoft iSCSI Software Target与OEM合作伙伴的硬件集成，微软表示部署块和文件存储设备的成本将下降25%之多。</p><li class="list-group-item"><h3><time datetime="2009-07-07T08:34:53.000Z">2009-07-07</time>  <a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></h3><p class="list-group-item-text">利用WINDOWS自身的功能通过修改注册表实现
+Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标）技术将通过OEM以Windows Storage Server 2003 R2的功能包提供，命名为Microsoft iSCSI Software Target，可用于标准版（Standard Edition）或企业版（Enterprise Edition）的Windows Storage Server 2003 R2。通过将这个Microsoft iSCSI Software Target与OEM合作伙伴的硬件集成，微软表示部署块和文件存储设备的成本将下降25%之多。Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一个高性价比的IP SAN解决方案，同时支持File（文件）和Block（块）级别的数据传输；无需改变现有系统架构，直接应用在现有网络结构中，安装、实施、维护、升级均不影响现有作业；其管理方式将被整合在Microsoft Management Console (MMC) 用户界面 中，实现快捷方便的操作；并可实现snapshots快照、backup备份及clustering集群应用；Microsoft iSCSI Software Target 目前只能用于Windows Storage Server 2003 R2 Standard或Enterprise版本上。</p><li class="list-group-item"><h3><time datetime="2009-07-07T08:34:53.000Z">2009-07-07</time>  <a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></h3><p class="list-group-item-text">利用WINDOWS自身的功能通过修改注册表实现
 
 隐藏或显示某个磁盘,隐藏盘符在资源管理器中看不到
 
 限制某个磁盘不可访问(具体表现为双击这个盘符或直接运入中输入这个盘符时会出现如下提示)
-
 
 
 
@@ -191,21 +185,14 @@ http://www.onlinedown.net/soft/34495.htm</p><li class="list-group-item"><h3><tim
 【软件介绍】:
 
 
-好消息：
-PowerShadow目前免费发放给中国用户使用。
+好消息：PowerShadow目前免费发放给中国用户使用。
 
 PowerShadow构建现有操作系统的虚拟影像，即影子模式（shadow mode），它和真实的系统完全一样，用户可随时选择启用或者退出这个虚拟影像。用户进入影子模式（shadow mode）后，所有操作都是虚拟的，不会对真正的系统产生影响，一切改变将在退出Shadow模式后消失。因此所有的病毒、木马程序、流氓软件都无法侵害真正的操作系统，它们的所有操作都只是假象。</p><li class="list-group-item"><h3><time datetime="2009-04-15T08:56:09.000Z">2009-04-15</time>  <a href="/post/post54/">vi 编辑器使用指南</a></h3><p class="list-group-item-text">一、Unix编辑器概述
 编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。</p><li class="list-group-item"><h3><time datetime="2009-03-31T16:20:57.000Z">2009-04-01</time>  <a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></h3><p class="list-group-item-text">等了好长时间GRUB4DOS-0.4.4正式版终于发布.
 下载地址:
 http://nufans.net/grub4dos/grub4dos-0.4.4.zip
 http://nufans.net/grub4dos/grub4dos-0.4.4-src.zip</p><li class="list-group-item"><h3><time datetime="2009-03-31T16:05:30.000Z">2009-04-01</time>  <a href="/post/aspfunc/">ASP函数语法速查表</a></h3><p class="list-group-item-text">ASP函数语法速查表
-
-
-
-Abs(数值)
-绝对值。一个数字的绝对值是它的正值。空字符串 (null)   的绝对值，也是空字符串。未初始化的变数，其绝对为 0
-例子：ABS(-2000) 
-  结果：2000</p><li class="list-group-item"><h3><time datetime="2009-03-26T15:22:45.000Z">2009-03-26</time>  <a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></h3><p class="list-group-item-text">可以点击链接直接下载，或者进入网络硬盘下载。共享密码是:chenall
+Abs(数值)绝对值。一个数字的绝对值是它的正值。空字符串 (null)   的绝对值，也是空字符串。未初始化的变数，其绝对为 0例子：ABS(-2000)   结果：2000Array(以逗点分隔的数组元素)Array 函数传回数组元素的值。例子：   A=Array(1,2,3)  B=A(2)  结果： 2  说明：变量B为A数组的第二个元素的值。 Asc(字符串)将字符串的第一字母转换成 ANSI(美国国家标准符号)字码。例子：Asc(＂Internet＂)  结果：73  说明：显示第一字母 I 的 ANSI 字码。 CBool(表达式)转换成布尔逻辑值变量型态(True 或False)例子：CBool(1+2)  结果：True CDate(日期表达式)换成日期变量型态。可先使用 IsDate 函数判断是否可以转换成日 期。例子： CDate (now( )+2)   结果：2000/5/28 10:30:59 CDbl(表达式)转换成DOUBLE变量型态。Chr(ANSI 字码)将ASCII 字码转换成字符。例子： Chr(72)  结果： H CInt(表达式)转换成整数变量型态。例子： CInt (“3.12”)   结果： 3 CLng(表达式)转换成LONG 变量型态。CSng(表达式)转换成SINGLE 变量型态。CStr(表达式)转换成字符串变量型态。Date()传回系统的日期。例子： Date   结果： 2000/5/13DateAdd(I , N , D)将一个日期加上一段期间后的日期。 I ：设定一个日期( Date)所加上的一段期间的单位。譬如 interval=”d” 表示   N的单位为日。 I的设定值如下：   yyyy Year 年   q Quarter 季   m Month 月   d Day 日   w   Weekday 星期   h Hour 时   n Minute 分   s Second 秒   N   ：数值表达式，设定一个日期所加上的一段期间，可为正值或负值，正值表示加(结果为 &gt;date 以后的日期)，负值表示减(结果为 &gt;date   以前的日期)。   D ：待加减的日期。例子： DateAdd(“m” , 1 , “31-Jan-98”)   结果： 28-Feb-98   说明：将日期   31-Jan-98 加上一个月，结果为 28-Feb-98 而非 31-Fe-98 。   例子： DateAdd(“d” , 20 ,   “30-Jan-99”)   结果： 1999/2/9   说明：将一个日期 30-Jan-99 加上 20 天后的日期。DateDiff (I , D1 , D2[,FW[,FY]])计算两个日期之间的期间。   I ：设定两个日期之间的期间计算之单位。譬如 &gt;I=”m” 表示计算的单位为月。   &gt;I 的设定值如：   yyyy &gt; Year 年   q Quarter 季   m Month 月   d Day 日   w Weekday 星期   h Hour 时   m Minute 分   s Second 秒   D1   ,D2：计算期间的两个日期表达式，若 &gt;date1 较早，则两个日期之间的期间结果为正值；若 &gt;date2 较早， 则结果为负值。   FW   ：设定每周第一天为星期几， 若未设定表示为星期天。 &gt;FW 的设定值如下：   0 使用 &gt;API 的设定值。   1 星期天   2   星期一   3 星期二   4 星期三   5 星期四   6 星期五   7 星期六   FY ：设定一年的第一周，   若未设定则表示一月一日那一周为一年的第一周。 &gt;FY 的设定值如下：   0 使用 &gt;API 的设定值。   1   一月一日那一周为一年的第一周   2 至少包括四天的第一周为一年的第一周   3 包括七天的第一周为一年的第一周例子： DateDiff (“d”,”25-Mar-99 “,”30-Jun-99 “)   结果： 97   说明：显示两个日期之间的期间为 97 天。DatePart (I,D,[,FW[,FY]])传回一个日期的之部份。   &gt;I ：设定传回那一部份。譬如 &gt;I=”d” 表示传回 部份为日。 &gt;I   的设定值如下：   yyyy Year 年   q Quarter 季   m Month 月   d Day 日   w Weekday   星期   h Hour 时   m Minute 分   s Second 秒   D ：待计算的日期。   &gt;FW   ：设定每周第一天为星期几， 若未设定则表示为星期天。 &gt;FW 的设定值如下：   0 使用 &gt;API 的设定值。   1 星期天   2   星期一&gt;3 星期二   4 星期三   5 星期四   6 星期五   7 星期六   FY ：设定一年的第一周，   若未设定则表示一月一日那一周为一年的第一周。 &gt;FY 的设定值如下：   0 使用 &gt;API 的设定值。   1   一月一日那一周为一年的第一周   2 至少包括四天的第一周为一年的第一周   3 包括七天的第一周为一年的第一周例子： DatePart (“m”,”25-Mar-99 “)   结果： 3   说明：显示传回一个日期   的月部份。Dateserial (year,month,day)转换(year,month,day) 成日期变量型态。例子： DateSerial (99,10,1)   结果： 1999/10/1DateValue ( 日期的字符串或表达式 )转换成日期变量型态，日期从 January 1,100 到 December 31,9999 。格式为 month,day,and   year 或 month/day/year 。譬如： December 30,1999 、 Dec 30,1999 、 12/30/1999 、   12/30/99例子： DateValue (“January 1,2002 “)   结果： 2002/1/1Day( 日期的字符串或表达式 )传回日期的「日」部份。例子： Day(“ 12/1/1999 “)   结果： 1Fix( 表达式 )转换字符串成整数数字型态。与 Int 函数相同。若为 null 时传回 null 。   Int (number) 与   Fix(number) 的差别在负数。如 Int (-5.6)=-6 ， Fix(-5.6)=-5 。例子： Fix(5.6)   结果： 5Hex( 表达式 )传回数值的十六进制值。若表达式为 null 时 Hex( 表达式 )=null ，若表达式 =Empty 时 Hex( 表达式   )=0 。 16 进位可以加「 &amp;H 」表示，譬如 16 进位 &amp;H10 表示十进制的 16 。例子： Hex(30)   结果： 1EHour( 时间的字符串或表达式 )传回时间的「小时」部份。例子： Hour(“12:30:54 “)   结果： 12InStr   ([start,]string1,string2[,compare]) 将一 个 字符串由左 而右与另一个比较，传回第一个相同的位置。   start 为从第几个字比较起，若省略 start   则从第一个字比较起， string1 为待寻找的字符串表达式， string2 为 待比较的字符串表达式， compare 为比较的方法， compare=0   表二进制比较法， compare=1 表文字比较法，若省略 compare 则为预设的二进制比较法。例子： InStr(“abc123def123”,”12”)   结果： 4InstrRev   ([start,]string1,string2[,compare])将一 个 字符串 由右而左与另一个比较，传回第一个相同的位置。   start 为从第几个字比较起，若省略 start   则从第一个字比较起， string1 为待寻找的字符串表达式， string2 为 待比较的字符串表达式， compare 为比较的方法， compare=0   表二进制比较法， compare=1 表文字比较法，若省略 compare 则为预设的二进制比较法。例子： InstrRev (“abc123def123”,”12”)   结果： 10Int ( 表达式 )传回一个数值的整数部份。与 Fix 函数相同。例子： Int (5.6)   结果： 5IsArray ( 变数 )测试变量是 (True) 否 (False) 是一个数组。例子： IsArray (3)   结果： False   说明：不是一个数组。IsDate ( 日期或字符串的表达式 )是否可以转换成日期。日期从 January 1,100 A.D. 到 December 31,9999 A.D 。例子： IsDate (“December 31,1999 “)   结果： True   说明：可以转换成日期。IsEmpty ( 变数 )测试变量是 (True) 否 (False) 已经被初始化例子： IsEmpty (a)   结果： TrueIsNull ( 变数 )测试变数是 (True) 否 (False) 不是有效的数据。例子： IsNull (“”)   结果： False   说明：是有效的数据。IsNumeric ( 表达式 )是 (True) 否 (False) 是数字。例子： IsNumeric (“abc123”)   结果： False   说明：不是数字。LCase ( 字符串表达式 ) top转换字符串成小写。将大写字母的部份转换成小写。字符串其余的部份不变。例子： LCase (“ABC123”)   结果： abc123Left( 字符串表达式 ,length)取字符串左边的几个字。 length 为取个字。 Len 函数可得知字符串的长度。例子： Left(“ABC123”,3)   结果： ABCLen( 字符串表达式 变量 )取得字符串的长度。例子： Len(“ABC123”)   结果： 6LTrim ( 字符串表达式 )除去字符串左边的空白字。 RTrim 除去字符串右边的空白字， Trim 函数除去字符串左右两边的空白字。例子： LTrim (“456+” abc “)   结果： 456abc123Mid( 字符串表达式 ,start[,length]) 取字符串中的几个字。 start 为从第几个 字取起， length 为取几个字， 若略 length 则从 start   取到最右底。由Len 函数可得知字符串的长度。例子： Mid(“abc123”,2,3)   结果： c12Minute( 日期的字符串或表达式 )传回时间的「分钟」部份。例子： Minute(“12:30:54”)   结果：30Month(日期的字符串或表达式)传回日期的「月」部份。例子：Month(“12/1/2001”)   结果：12MonthName(month[,abbreviate])传回月的名称。   month ：待传回月名称的数字 1~12 。譬如， 1 代表一月， 7 代表七月。   abbreviate: 是 (True) 否 (False) 为缩写，譬如 March ，缩写为 Mar 。默认值为 False   。中文的月名称无缩写。例子： MonthName (7)   结果：七月Now()传回系统的日期时间。例子： Now()   结果： 2001/12/30 10:35:59 AMOct()传回数值的八进位值。八进位可以加「 &amp;O 」表示，譬如八进位 &amp;O10 表示十进制的 8 。例子： Oct(10)   结果： 12Replace(   字符串表达式,findnreplacewith[,start[,count[,compare]]]) 将一个字符串取代 部份字。寻找待取代的原字符串 (find) ， 若找到则被取代为新字符串 (replacewith) 。   find ：待寻找取代的原字符串。   replacewith ：取代后的字。   start ：从第几个字开始寻找取代，   若未设定则由第一个字开始寻找。   count ：取代的次数。 若未设定则所有寻找到的字符串取代字符 串全部被取代。   compare   ：寻找比较的方法， compare=0 表示二进制比较法， compare=1 表文字比较法， compare =2 表根据比较的 数据型态而定，若省略   compare 则为预设的二进制比较法。例子： Replace(“ABCD123ABC”,”AB”,”ab”)   结果： abCD123abCRight( 字符串表达式 ,length)取字符串右边的几个字， length 为取几个字。 Len 函数可得知字符串的长度。例子： Right(“ABC123”,3)   结果： 123Rnd [(number)]0~1 的 随机随机数值。 number 是任何有效的数值表达式。若 number 小于 0 表示每次得到相同的 随机随机数值。   number 大于 0 或未提供时表示依序得到下一个 随机随机数值。 &gt;number=0 表示得到最近产生的   随机随机数值。为了避免得到相同的随机随机数顺序，可以于 Rnd 函数前加 Randomize 。例子： Rnd   结果： 0.498498Round( 数值表达式 [,D])四舍五入。   D ：为四舍五入到第几位小数，若省略则四舍五入到整数。例子： Round(30635,1)   结果： 3.6RTrim ( 字符串表达式 )除去字符串右边的空白字。 LTrim 除去字符串左边的空白字， Trim 函数除去字符串左右两边的空白字。例子： RTrim (“abc123 “)+”456”   结果： abc123456Second( 时间的字符串或表达式 )传回时间的「秒」部份。例子：Second(“12:30:54”)   结果：54Space( 重复次数 )得到重复相同的空白字符串。例子： A”+Space (5)+”B   结果： A B   说明： A 和 B   中间加入五个空白字。String( 重复次数，待重复的字 )得到重复相同的字符串。例子： String(5,71)   结果： GGGGGStrReverse (String(10,71))将一个字符串顺序颠倒。例子： StrReverse (“ABC”)   结果： CBATime()传回系统的时间。例子： Time   结果： 10:35:59 PMTimeSerial (hour,minute,second)转换指定的 ( hour,minute,second) 成时间 变量型态。例子： TimeSerial (10,31,59)   结果： 10:31:59TimeValue ( 日期的字符串或表达式 )转换 成时间变量型态。日期的字符串或表达式从 0:00:00(12:00:00 A.M.) 到 23:59:59(11:59:59   P.M.) 。例子： TimeValue (“ 11:59:59 “)   结果： 11:59:59Trim( 字符串表达式 )除去字符串左右两边的空白字。例子： Trim(“ abc123 “)   结果： abc123UCase ()转换字符串成大写。将小写字母的部份转换成大写，字符串其余部份不变。例子： UCase (“abc123”)   结果： ABC123VarType ( 变数 )传回一个变量类型。与 TypeName 函数相同， VarType 传回变量类型的代码， TypeName 传回变量类型的名称。例子： VarType ( “I love you!”)   结果： 8Weekday( 日期表达式 ,[FW]) 传回星期几的数字。   FW ：设定一周的第一天是星期几。若 省略则表 1( 星期日 ) 。   Firstdayfweek 设定值为： 1( 星期日 ),2( 星期一 ),3( 星期二 ),4( 星期三 ),5( 星期四 ),6( 星期五 ),7(   星期六 ) 。例子： Weekday(“ 1/1/2000”)   结果： 7WeekDayName (W,A,FW)传回星期几的名称。   W ：是 (True) 否 (False) 为缩写。譬如 March ，缩写为 Mar 。预设为   False 。中文的星期几名称无缩写。   FW ：设定一周的第一天是星期几。 若省略表 1( 星期日 ) 。设定待传回星期几的名称，为一周中的第几天。   A ： 1( 星期日 ),2( 星期一 ),3( 星期二 ),4( 星期三 ),5( 星期四 ),6( 星期五 ),7( 星期六 ) 。例子： WeekDayName (“1/1/2000”)   结果：星期六Year()传回日期的「年」部份。例子： Year(“ 12/1/2000 “)   结果：   2000</p><li class="list-group-item"><h3><time datetime="2009-03-26T15:22:45.000Z">2009-03-26</time>  <a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></h3><p class="list-group-item-text">可以点击链接直接下载，或者进入网络硬盘下载。共享密码是:chenall
 外置驱动使用说明.txt
 请先读我.txt
 更新历史.txt
@@ -223,9 +210,7 @@ write 可以在内存中写入一个数值使用如下命令就可以了
 
 保留视频功能.
 保留自动播放司服器
-修正原版自动播放司服器不能正常使用的问题.</p><li class="list-group-item"><h3><time datetime="2009-02-07T08:21:01.000Z">2009-02-07</time>  <a href="/post/post43/">[转]正则表达式30分钟入门教程</a></h3><p class="list-group-item-text">30分钟内让你明白正则表达式是什么，并对它有一些基本的了解，让你可以在自己的程序或网页里使用它。</p><li class="list-group-item"><h3><time datetime="2009-01-16T14:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。
-在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。</p><li class="list-group-item"><h3><time datetime="2009-01-15T04:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 例子:  
-
+修正原版自动播放司服器不能正常使用的问题.</p><li class="list-group-item"><h3><time datetime="2009-02-07T08:21:01.000Z">2009-02-07</time>  <a href="/post/post43/">[转]正则表达式30分钟入门教程</a></h3><p class="list-group-item-text">30分钟内让你明白正则表达式是什么，并对它有一些基本的了解，让你可以在自己的程序或网页里使用它。</p><li class="list-group-item"><h3><time datetime="2009-01-16T14:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。对于内存文件来讲，也是如此，(md)xxxxx+yyyyy 和 (rd)xxxxx+yyyyy 这类表达法都是表示扇区的整数倍，这样大小的文件。然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 image.gz 文件，如果你不指定这个文件的精确大小，那么grub 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。怎样指定扇区序列的精确长度呢？这可能是 GNU GRUB 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 466 个字节，就可以这样：cat --hex (hd0)+1,466其中 (hd0)+1 是扇区序列，466 表示只从扇区序列中取出 466 字节作为文件的长度。再举一例：cat --hex (hd0)+63,800+63,64400如果没有结尾的&ldquo;,64400&rdquo;，那么，&ldquo;(hd0)+63,800+63&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 63 个扇区，所以文件总共有 126 个扇区。文件的长度就是 126x512=64512 字节。加上了结尾的&ldquo;,64400&rdquo;之后，文件变小了，它表示的文件长度为 64400。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。不点时空论坛</p><li class="list-group-item"><h3><time datetime="2009-01-15T04:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问例子:  
 说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.GRUB4DOS会把这个文件的内容作为一个磁盘分区(hd1,0).</p>
 
 </div></div><!--wapper-->
@@ -291,7 +276,7 @@ write 可以在内存中写入一个数值使用如下命令就可以了
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -307,14 +292,12 @@ write 可以在内存中写入一个数值使用如下命令就可以了
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:03</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -398,7 +381,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

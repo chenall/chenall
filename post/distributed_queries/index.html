@@ -141,45 +141,26 @@ var _js2load = [];
 <p> 注意： 在 SQL Server 中使用分布式查询与通过 ODBC 使用链接表功能相似。此功能先前受 Microsoft Access 支持，现在已将 OLE DB 作为外部数据的接口构建到 SQL Server 中。</p>
 <p>下图显示了 SQL Server 实例的客户端计算机与 OLE DB 访问接口之间的连接。</p>
 <p> <img src="http://i.msdn.microsoft.com/dynimg/IC53346.gif" alt="客户端到 SQL Server 到 OLE DB 访问接口"></p>
-<p> 有关分布式查询的重要主题
-下表列出的主题提供了有助于理解和使用分布式查询来访问数据的信息，这些数据或者是在单独的 SQL Server 实例中或者在除 SQL Server 之外的其他数据源中。</p>
-<table class='table table-bordered'><tbody>
-<tr><th>有关信息</th> <th>请参阅</th></tr><tr> <td>配置 OLE DB 访问接口和链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188279.aspx" target="_blank"><font color="#1364C4">配置链接服务器</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms190918.aspx" target="_blank"><font color="#1364C4">为分布式查询配置 OLE DB 访问接口</font></a></td> </tr>
-<tr><td>分布式事务中的分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms177403.aspx" target="_blank"><font color="#1364C4">分布式查询和分布式事务</font></a></td></tr>
-<tr><td>特定的 OLE DB 访问接口</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187072.aspx" target="_blank"><font color="#1364C4">用 SQL Server 测试过的 OLE DB 访问接口</font></a></td></tr>
-<tr><td>OLE DB 访问接口的语言支持</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187442.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的 SQL 方言要求</font></a></td> </tr>
-<tr> <td>链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188313.aspx" target="_blank"><font color="#1364C4">访问外部数据</font></a></td></tr>
-<tr><td>ODBC 和分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms131368.aspx" target="_blank"><font color="#1364C4">支持分布式查询的架构函数</font></a></td></tr>
-<tr><td> 性能问题 </td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms180972.aspx" target="_blank"><font color="#1364C4">优化分布式查询</font></a></td></tr>
-<tr> <td> OLE DB 访问接口开发人员参考</td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms179468.aspx" target="_blank"><font color="#1364C4">用于分布式查询的 OLE DB 访问接口参考</font></a></td></tr>
-<tr> <td> 统计要求 </td> <td> <a href="http://msdn.microsoft.com/zh-cn/library/ms186237.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的分布统计要求</font></a> </td></tr>
-<tr> <td> 分布式查询、链接服务器和允许的 Transact-SQL 语句的规则和限制。 </td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms175129.aspx" target="_blank"><font color="#1364C4">分布式查询的准则</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms187961.aspx" target="_blank"><font color="#1364C4">系统存储过程</font></a></td> </tr>
-</tbody></table>
+<p> 有关分布式查询的重要主题<br>下表列出的主题提供了有助于理解和使用分布式查询来访问数据的信息，这些数据或者是在单独的 SQL Server 实例中或者在除 SQL Server 之外的其他数据源中。</p>
+<table class='table table-bordered'><tbody><br><tr><th>有关信息</th> <th>请参阅</th></tr><tr> <td>配置 OLE DB 访问接口和链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188279.aspx" target="_blank"><font color="#1364C4">配置链接服务器</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms190918.aspx" target="_blank"><font color="#1364C4">为分布式查询配置 OLE DB 访问接口</font></a></td> </tr><br><tr><td>分布式事务中的分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms177403.aspx" target="_blank"><font color="#1364C4">分布式查询和分布式事务</font></a></td></tr><br><tr><td>特定的 OLE DB 访问接口</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187072.aspx" target="_blank"><font color="#1364C4">用 SQL Server 测试过的 OLE DB 访问接口</font></a></td></tr><br><tr><td>OLE DB 访问接口的语言支持</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187442.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的 SQL 方言要求</font></a></td> </tr><br><tr> <td>链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188313.aspx" target="_blank"><font color="#1364C4">访问外部数据</font></a></td></tr><br><tr><td>ODBC 和分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms131368.aspx" target="_blank"><font color="#1364C4">支持分布式查询的架构函数</font></a></td></tr><br><tr><td> 性能问题 </td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms180972.aspx" target="_blank"><font color="#1364C4">优化分布式查询</font></a></td></tr><br><tr> <td> OLE DB 访问接口开发人员参考</td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms179468.aspx" target="_blank"><font color="#1364C4">用于分布式查询的 OLE DB 访问接口参考</font></a></td></tr><br><tr> <td> 统计要求 </td> <td> <a href="http://msdn.microsoft.com/zh-cn/library/ms186237.aspx" target="_blank"><font color="#1364C4">OLE DB 访问接口的分布统计要求</font></a> </td></tr><br><tr> <td> 分布式查询、链接服务器和允许的 Transact-SQL 语句的规则和限制。 </td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms175129.aspx" target="_blank"><font color="#1364C4">分布式查询的准则</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms187961.aspx" target="_blank"><font color="#1364C4">系统存储过程</font></a></td> </tr><br></tbody></table>
 
 <hr>
 <p>例子:</p>
 <p>商场使用佳为软件,使用的是MSSQL数据库,需要在两个分店之间传数据.</p>
 <ol>
-<li><p>首先就是建立服务器之间的链接.
-使用以下命令添加(具体命令参数,请查看对应链接的详细介绍.
- <a href="http://msdn.microsoft.com/zh-cn/library/ms190479.aspx" target="_blank">sp_addlinkedserver&gt;&gt;</a></p>
+<li><p>首先就是建立服务器之间的链接.<br>使用以下命令添加(具体命令参数,请查看对应链接的详细介绍.<br> <a href="http://msdn.microsoft.com/zh-cn/library/ms190479.aspx" target="_blank">sp_addlinkedserver&gt;&gt;</a></p>
 <pre><code>  sp_addlinkedserver &#39;srv01&#39;,&#39;&#39;,&#39;SQLOLEDB&#39;,&#39;192.168.0.1&#39;,&#39;pos&#39;
 </code></pre><p> <a href="http://msdn.microsoft.com/zh-cn/library/ms189811.aspx" target="_blank">sp_addlinkedsrvlogin&gt;&gt;</a>设置连接参数密码</p>
 <pre><code>  sp_addlinkedsrvlogin &#39;srv01&#39;,&#39;false&#39;,NULL,&#39;sa&#39;,&#39;password&#39;
 </code></pre></li>
-<li><p>创建好了就可以直接使用了.
-<em>格式
-server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em>schema_name</em>]<strong>.</strong><em>object_name
-具体点击这里查看</em><a href="http://msdn.microsoft.com/zh-cn/library/ms177563.aspx" target="_blank"><font color="#960BB4">Transact-SQL 语法约定</font></a></p>
+<li><p>创建好了就可以直接使用了.<br><em>格式<br>server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em>schema_name</em>]<strong>.</strong><em>object_name<br>具体点击这里查看</em><a href="http://msdn.microsoft.com/zh-cn/library/ms177563.aspx" target="_blank"><font color="#960BB4">Transact-SQL 语法约定</font></a></p>
 </li>
 </ol>
-<p>使用的例子:
- 查询员工用户信息表</p>
+<p>使用的例子:<br> 查询员工用户信息表</p>
 <pre><code> select * from srv01.pos.dbo.jygtab&lt;/font&gt;
  或
  select * from openquery(&#39;srv01&#39;,&#39;select * from jygtab&#39;)
-</code></pre><p>当然同样可以加条件查询,或者更新都是可以的.
- 几个例子:</p>
+</code></pre><p>当然同样可以加条件查询,或者更新都是可以的.<br> 几个例子:</p>
 <pre><code> 查询1号员工的资料:
  select * from srv01.pos.dbo.jygtab where yx#=1
  修改资料:
@@ -246,7 +227,7 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="490"  data-url="http://chenall.net/post/distributed_queries/" data-title="分布式查询"></div>
@@ -315,7 +296,7 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -331,14 +312,12 @@ server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -435,7 +414,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

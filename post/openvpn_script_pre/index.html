@@ -145,12 +145,10 @@ var _js2load = [];
 </li>
 <li><p>禁止某个IP登录./只充许部份指定的IP进行登录.<br>在大部份自动运行的脚本中都可以应用.</p>
 </li>
-<li><p>在连接或断开时自动运行.
-<em>up</em> <strong>cmd</strong>(在连接上以后执行,可以用于处理路由等)<br><em>down-pre</em> <strong>cmd</strong> (在断开之时执行,)<br><em>down</em> <strong>cmd</strong>(在断开之后执行)  </p>
+<li><p>在连接或断开时自动运行.<br><em>up</em> <strong>cmd</strong>(在连接上以后执行,可以用于处理路由等)<br><em>down-pre</em> <strong>cmd</strong> (在断开之时执行,)<br><em>down</em> <strong>cmd</strong>(在断开之后执行)  </p>
 </li>
 </ol>
-<p>要注意的是.
-在OpenVPN 2.1_rc9.以后的版本中配置文件中要使用如下语句</p>
+<p>要注意的是.<br>在OpenVPN 2.1_rc9.以后的版本中配置文件中要使用如下语句</p>
 <p><em>script-security</em> 2 system(不保存密码在环境变量中)或<em>script-security</em> <strong>3</strong> system(保存密码在环境变量中)</p>
 <p>当使用</p>
 <p><em>auth-user-pass-verify</em> cmd via_env</p>
@@ -158,8 +156,8 @@ var _js2load = [];
 <p>后面SYSTEM参数的作用是,</p>
 <p>The <strong>method</strong> parameter indicates how OpenVPN should call external commands and scripts. Settings for <strong>method:</strong></p>
 <ul>
-<li><strong>execve</strong> -- (default) Use execve() function on Unix family OSes and CreateProcess() on Windows.   </li>
-<li><strong>system</strong> -- Use system() function (deprecated and less safe since the external program command line is subject to shell expansion).</li>
+<li><strong>execve</strong> — (default) Use execve() function on Unix family OSes and CreateProcess() on Windows.   </li>
+<li><strong>system</strong> — Use system() function (deprecated and less safe since the external program command line is subject to shell expansion).</li>
 </ul>
 <p>如果不加这个参数使用默认的(<strong>execve</strong>),那在执行脚本时一般情况下只能使用内置命令.</p>
 <p>(当然了这个环境也可以说比较安全).可以通过指定路径来运行外部程序,但不一定都是可以运行成功的.</p>
@@ -168,8 +166,7 @@ var _js2load = [];
 <pre><code>up test.cmd
 </code></pre><p>test.cmd内容就以下一句话  </p>
 <pre><code>@set&gt;test.log
-</code></pre><p>使用加SYSTEM参数前后对比生成文件的内容就可以发现其中的区别.
-```</p>
+</code></pre><p>使用加SYSTEM参数前后对比生成文件的内容就可以发现其中的区别.<br>```</p>
 
       
     </div>
@@ -225,7 +222,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="63"  data-url="http://chenall.net/post/openvpn_script_pre/" data-title="[OpenVPN] OpenVPN脚本应用之--简介."></div>
@@ -294,7 +291,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -310,14 +307,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -414,7 +409,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

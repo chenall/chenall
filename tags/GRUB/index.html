@@ -125,29 +125,18 @@ var _js2load = [];
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
-<div class="tab-pane fade in active" id="year_2008"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2008-05-05T15:15:40.000Z">2008-05-05</time>  <a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></h3><p class="list-group-item-text">不再想写说明了，以下就只供参考。 目前支持两种方式的外置驱动
-具体请点击以下地址查看.
-外置硬盘控制器驱动使用添加方法
+<div class="tab-pane fade in active" id="year_2008"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2008-05-05T15:15:40.000Z">2008-05-05</time>  <a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></h3><p class="list-group-item-text">不再想写说明了，以下就只供参考。 目前支持两种方式的外置驱动具体请点击以下地址查看.外置硬盘控制器驱动使用添加方法
+决定采用第二种方法。(利用无盘天使驱动）已经上传了测试版本=080303=XXXX.RAR（两个文件，一个内核一个驱动）使用方法内详</p></div><div class="tab-pane fade" id="year_2009"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T07:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
 
-决定采用第二种方法。(利用无盘天使驱动）
-已经上传了测试版本=080303=XXXX.RAR（两个文件，一个内核一个驱动）使用方法内详</p></div><div class="tab-pane fade" id="year_2009"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T07:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
+ root中文解释就是“根”的意思。  例子：  一个磁盘文件列表如下
+  其中一开始X:\就是默认root  现在要访问boot\file3 就可以使用 /boot/file3 来访问  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
 
- root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下
-  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
-
-启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示</p></ul></div><div class="tab-pane fade" id="year_2010"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2010-11-22T05:03:39.000Z">2010-11-22</time>  <a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></h3><p class="list-group-item-text">这个在配合使用U盘安装系统碰到SCSI/RAID硬盘时特别有用,不需要在安装光盘上集成那个驱动了.
-2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-12T16:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.
-在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
-可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
-目前已经增加了许多的强大功能.具体见后面的介绍.</p><li class="list-group-item"><h3><time datetime="2010-09-04T00:49:00.000Z">2010-09-04</time>  <a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></h3><p class="list-group-item-text">[用途]
+启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）. 有时候系统的启动文件被删了就会出现如下提示 BOOTMGR is missing或者NTLDR is missing 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p></ul></div><div class="tab-pane fade" id="year_2010"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2010-11-22T05:03:39.000Z">2010-11-22</time>  <a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></h3><p class="list-group-item-text">这个在配合使用U盘安装系统碰到SCSI/RAID硬盘时特别有用,不需要在安装光盘上集成那个驱动了.
+2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-12T16:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能目前已经增加了许多的强大功能.具体见后面的介绍.推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p><li class="list-group-item"><h3><time datetime="2010-09-04T00:49:00.000Z">2010-09-04</time>  <a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></h3><p class="list-group-item-text">[用途]
 在GRUB4DOS下直接检测PCI设备信息.
 
 
-待定.......
+待定…….
 
 
 [用法]
@@ -231,7 +220,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -247,14 +236,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:36</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:09</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -338,7 +325,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

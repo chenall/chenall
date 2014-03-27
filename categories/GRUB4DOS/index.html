@@ -127,14 +127,10 @@ var _js2load = [];
 <div class="tab-content">
 <div class="tab-pane fade in active" id="year_2009"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T07:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
 
- root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下
-  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
+ root中文解释就是“根”的意思。  例子：  一个磁盘文件列表如下
+  其中一开始X:\就是默认root  现在要访问boot\file3 就可以使用 /boot/file3 来访问  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p><li class="list-group-item"><h3><time datetime="2009-11-15T12:46:08.000Z">2009-11-15</time>  <a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></h3><p class="list-group-item-text">以下需要先设置好GRUB4DOS作为引导。
 
-启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示</p><li class="list-group-item"><h3><time datetime="2009-11-11T16:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
+启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）. 有时候系统的启动文件被删了就会出现如下提示 BOOTMGR is missing或者NTLDR is missing 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p><li class="list-group-item"><h3><time datetime="2009-11-11T16:08:01.000Z">2009-11-12</time>  <a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h3><p class="list-group-item-text">grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.
 有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。
 2014-01-21  注: 这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了</p><li class="list-group-item"><h3><time datetime="2009-03-31T16:20:57.000Z">2009-04-01</time>  <a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></h3><p class="list-group-item-text">等了好长时间GRUB4DOS-0.4.4正式版终于发布.
 下载地址:
@@ -146,9 +142,7 @@ http://nufans.net/grub4dos/grub4dos-0.4.4-src.zip</p><li class="list-group-item"
 write 可以在内存中写入一个数值使用如下命令就可以了
 在内存地址0x60000中写入1.
 如果想写入的是一个字符串呢?用上面的方法肯定行不通.
-因为需要我想在内存固定位置中写入一个字符串,在另一个菜单中读取.之前考虑了使用dd命令,虽可以实现但不太方便.</p><li class="list-group-item"><h3><time datetime="2009-01-16T14:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。
-在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。</p><li class="list-group-item"><h3><time datetime="2009-01-15T04:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 例子:  
-
+因为需要我想在内存固定位置中写入一个字符串,在另一个菜单中读取.之前考虑了使用dd命令,虽可以实现但不太方便.</p><li class="list-group-item"><h3><time datetime="2009-01-16T14:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。对于内存文件来讲，也是如此，(md)xxxxx+yyyyy 和 (rd)xxxxx+yyyyy 这类表达法都是表示扇区的整数倍，这样大小的文件。然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 image.gz 文件，如果你不指定这个文件的精确大小，那么grub 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。怎样指定扇区序列的精确长度呢？这可能是 GNU GRUB 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 466 个字节，就可以这样：cat --hex (hd0)+1,466其中 (hd0)+1 是扇区序列，466 表示只从扇区序列中取出 466 字节作为文件的长度。再举一例：cat --hex (hd0)+63,800+63,64400如果没有结尾的&ldquo;,64400&rdquo;，那么，&ldquo;(hd0)+63,800+63&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 63 个扇区，所以文件总共有 126 个扇区。文件的长度就是 126x512=64512 字节。加上了结尾的&ldquo;,64400&rdquo;之后，文件变小了，它表示的文件长度为 64400。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。不点时空论坛</p><li class="list-group-item"><h3><time datetime="2009-01-15T04:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问例子:  
 说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.GRUB4DOS会把这个文件的内容作为一个磁盘分区(hd1,0).</p></div><div class="tab-pane fade" id="year_2010"><ul class="list-group"><li class="list-group-item"><h3><time datetime="2010-12-31T01:09:35.000Z">2010-12-31</time>  <a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></h3><p class="list-group-item-text">wee是由不点基于grub4dos开发的嵌入微型 grub,可以安装到硬盘MBR上代替原来的引导代码.
 有什么用途呢?
 得益于GRUB4DOS的灵活性,wee同样很灵活,可以启动任意支持的分区上的可启动文件.</p><li class="list-group-item"><h3><time datetime="2010-12-14T15:46:26.000Z">2010-12-14</time>  <a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></h3><p class="list-group-item-text">GRUB4DOS是什么东西,我这里就不解释了.
@@ -157,20 +151,16 @@ write 可以在内存中写入一个数值使用如下命令就可以了
 使用方法非常简单. 具体见里面的例子:
 附上两个增强的版本：
 zxw版： 自动列表.数字启动</p><li class="list-group-item"><h3><time datetime="2010-11-22T05:03:39.000Z">2010-11-22</time>  <a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></h3><p class="list-group-item-text">这个在配合使用U盘安装系统碰到SCSI/RAID硬盘时特别有用,不需要在安装光盘上集成那个驱动了.
-2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-12T16:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.
-在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
-可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
-目前已经增加了许多的强大功能.具体见后面的介绍.</p><li class="list-group-item"><h3><time datetime="2010-09-23T13:29:54.000Z">2010-09-23</time>  <a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h3><p class="list-group-item-text">经典的游戏贪吃蛇,GRUB4DOS版.比较简单的一个游戏.
+2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-12T16:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能目前已经增加了许多的强大功能.具体见后面的介绍.推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p><li class="list-group-item"><h3><time datetime="2010-09-23T13:29:54.000Z">2010-09-23</time>  <a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h3><p class="list-group-item-text">经典的游戏贪吃蛇,GRUB4DOS版.比较简单的一个游戏.
 嘻嘻,界面不是很好看,没有使用图形模式,只是一个试验品.抛砖引玉.^_^
-关于这个游戏的相关信息请看搏客贴子:
- http://chenall.net/post/snake_idea/</p><li class="list-group-item"><h3><time datetime="2010-09-17T10:19:51.000Z">2010-09-17</time>  <a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></h3><p class="list-group-item-text">搞了一个增强版的ECHO命令,看看效用还有反应如何.可以在屏幕任意位置显示字符并且可以指定颜色.
+关于这个游戏的相关信息请看搏客贴子: http://chenall.net/post/snake_idea/</p><li class="list-group-item"><h3><time datetime="2010-09-17T10:19:51.000Z">2010-09-17</time>  <a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></h3><p class="list-group-item-text">搞了一个增强版的ECHO命令,看看效用还有反应如何.可以在屏幕任意位置显示字符并且可以指定颜色.
 颜色设置只支持console模式(文本模式).
 使用方法(具体请下载附件研究)
 注: 最新版本的GRUB4DOS已经内置此功能,并且功能得到了增强,想要编写GRUB4DOS扩展的可以下载源码研究一下</p><li class="list-group-item"><h3><time datetime="2010-09-04T00:49:00.000Z">2010-09-04</time>  <a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></h3><p class="list-group-item-text">[用途]
 在GRUB4DOS下直接检测PCI设备信息.
 
 
-待定.......
+待定…….
 
 
 [用法]
@@ -181,12 +171,11 @@ zxw版： 自动列表.数字启动</p><li class="list-group-item"><h3><time dat
 [说明]
   2010-04-20更新</p><li class="list-group-item"><h3><time datetime="2010-03-03T16:31:57.000Z">2010-03-04</time>  <a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></h3><p class="list-group-item-text">[功能说明]  加载一个点阵字库用于显示中文。
 
-  可以直接使用完整的点阵字库，或从以下软件生成的小字库
-  http://www.cn-dos.net/forum/viewthread.php?tid=47921</p><li class="list-group-item"><h3><time datetime="2010-02-01T13:37:56.000Z">2010-02-01</time>  <a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></h3><p class="list-group-item-text">[程序说明]   GRUB4DOS 下运行的简单双目计算器.
+  可以直接使用完整的点阵字库，或从以下软件生成的小字库  http://www.cn-dos.net/forum/viewthread.php?tid=47921</p><li class="list-group-item"><h3><time datetime="2010-02-01T13:37:56.000Z">2010-02-01</time>  <a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></h3><p class="list-group-item-text">[程序说明]   GRUB4DOS 下运行的简单双目计算器.
 
 注: 最新版GRUB4DOS已经内置本功能
 [下载地址]
-   程序下载: http://grub4dos-chenall.googlecode.com/files/calc.zip</p><li class="list-group-item"><h3><time datetime="2010-01-30T06:15:53.000Z">2010-01-30</time>  <a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></h3><p class="list-group-item-text">[功能说明]用于菜单中，可以直接跳到另一个菜单项执行.
+   程序下载: http://grub4dos-chenall.googlecode.com/files/calc.zip   最新版grub4dos下载:  http://grub4dos-chenall.googlecode.com/</p><li class="list-group-item"><h3><time datetime="2010-01-30T06:15:53.000Z">2010-01-30</time>  <a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></h3><p class="list-group-item-text">[功能说明]用于菜单中，可以直接跳到另一个菜单项执行.
 
 注：因为是调用fallback命令的功能
 所以如果有使用fallback则使用这个命令之后之前的fallback设置就失效。
@@ -219,7 +208,7 @@ replace 变量名 字符串1 字符串2 [起始位置]</p><li class="list-group-
 可以在你的菜单中简单的加入一个分区选择模块.
 要求:  必须使用2011-08-09以后发布的GRUB4DOS
 使用方法:
-首先复制代码另存为hd_part.lst</p><li class="list-group-item"><h3><time datetime="2011-05-03T17:04:59.000Z">2011-05-04</time>  <a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></h3><p class="list-group-item-text">MODBOOT是何物？
+首先复制代码另存为hd_part.lst然后在你的批处理或菜单中直接调用.调用的方法有两种.</p><li class="list-group-item"><h3><time datetime="2011-05-03T17:04:59.000Z">2011-05-04</time>  <a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></h3><p class="list-group-item-text">MODBOOT是何物？
 MODBOOT是一个模块化的DOS启动控制中心。
 基于以下网站的MODBOOT改进而成的，配合GRUB4DOS启动，实现真正的模块化
 http://nu2.nu/bootdisk/modboot/</p><li class="list-group-item"><h3><time datetime="2011-01-28T05:55:38.000Z">2011-01-28</time>  <a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></h3><p class="list-group-item-text">wee 是一个微型的grub4dos用于安装到硬盘mbr上，可以用来代替之前的grldr.mbr方案。
@@ -296,7 +285,7 @@ weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -312,14 +301,12 @@ weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -403,7 +390,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

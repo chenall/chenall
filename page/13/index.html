@@ -842,20 +842,7 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
     
     <div class="entry">
       
-        <blockquote><p>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。</p>
-<p>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。</p>
-<p>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。</p>
-<p>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。</p>
-<p>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：</p>
-<pre><code>cat --hex (hd0)+1,466
-</code></pre><p>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。</p>
-<p>再举一例：</p>
-<pre><code>cat --hex (hd0)+63,800+63,64400
-</code></pre><p>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。</p>
-<p>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。</p>
-<p>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。</p>
-<footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
-
+        <blockquote><br>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。<br><br>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。<br><br>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。<br><br>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。<br><br>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：<br><code>cat --hex (hd0)+1,466</code><br>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。<br><br>再举一例：<br><code>cat --hex (hd0)+63,800+63,64400</code><br>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。<br><br>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。<br><br>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。<br><footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
       
     </div>
     
@@ -888,14 +875,12 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
     
     <div class="entry">
       
-        <p>利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 
-例子:  </p>
+        <p>利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问<br>例子:  </p>
 <pre><code>map --mem /minipe/system.wim (hd1)
 map --hook
 </code></pre><p>说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.<code>GRUB4DOS</code>会把这个文件的内容作为一个磁盘分区(hd1,0).</p>
 <p>也就是把一个文件虚拟成一个分区.</p>
-<p>然后进到入DOS后,利用一个磁盘工具把上面的(hd1,0)分区保存为一个文件. 
-例子:用todisk</p>
+<p>然后进到入DOS后,利用一个磁盘工具把上面的(hd1,0)分区保存为一个文件.<br>例子:用todisk</p>
 <pre><code>todisk 2:1=q to (c:\system.wim)
 </code></pre><p>把第二磁盘的第一分区保存为system.wim(即还原过程).</p>
 <p>这个方法在某些情况下很有用处.由于1个磁盘扇区是512字节,所以最后得到的文件会是512字节的倍数(不足补00),所以只适用于对文件内容长度要求不是很严格的地方.</p>
@@ -932,18 +917,14 @@ map --hook
     
     <div class="entry">
       
-        <h2 id="-http-bbs-znpc-net-viewthread-php-tid-3304-">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
+        <h2 id="此贴转自时空论坛_原贴:_<a_href="http://bbs-znpc-net/viewthread-php?tid=3304" target="_blank">http://bbs-znpc-net/viewthread-php?tid=3304</a>">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
 <p>   转到这里留个备份,以后再碰到这个问题比较好找.^_^</p>
-<h2 id="-">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
+<h2 id="解决电脑远程登陆出现_<strong>远程计算机已结束连接</strong>">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
 <p>   此问题在远程系统是GHOST版的windowsxp时出现的比较普遍。</p>
-<h2 id="-"><strong> 现象描述：</strong></h2>
-<p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便
-弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
-<h2 id="-"><strong>解决方法：</strong></h2>
-<p>打开注册表
-找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\
-在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.
-再导入注册表:</p>
+<h2 id="<strong>_现象描述：</strong>"><strong> 现象描述：</strong></h2>
+<p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便<br>弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
+<h2 id="<strong>解决方法：</strong>"><strong>解决方法：</strong></h2>
+<p>打开注册表<br>找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\<br>在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.<br>再导入注册表:</p>
 <pre><code>Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\0000]
@@ -956,8 +937,7 @@ map --hook
 &quot;DeviceDesc&quot;=&quot;终端服务器设备重定向器&quot;
 &quot;ConfigFlags&quot;=dword:00000000
 &quot;Capabilities&quot;=dword:00000000
-</code></pre><p>最后，把控制面板－管理工具－服务中的 <strong>Remote Desktop Help Session Manager</strong> 和 <strong>Telnet</strong> 服务开启，
-将电脑重启，远程桌面管理就可以恢复正常了。</p>
+</code></pre><p>最后，把控制面板－管理工具－服务中的 <strong>Remote Desktop Help Session Manager</strong> 和 <strong>Telnet</strong> 服务开启，<br>将电脑重启，远程桌面管理就可以恢复正常了。</p>
 <p>注:可能是因为做GHOST系统时,为了省事在删除硬件时直接使用了devcon remove *,所以才会出现这个问题.</p>
 
       
@@ -1033,10 +1013,9 @@ map --hook
         <p>使用<a href="http://www.nu2.nu/bootdisk/network/" target="_blank">Barts Network modboot disk</a>修改的镜像. </p>
 <p>适用于PXE启动,因为里面只带一个网卡驱动PXE UNDI NDIS.DOS</p>
 <p>非PXE启动也可以使用,要求网卡有带启动功能,建议使用PXE启动.</p>
-<h3 id="-">使用方法</h3>
+<h3 id="使用方法">使用方法</h3>
 <ol>
-<li><p>用于PXE启动(可使用GRUB或SYSLINUX之类的软件来启动)
-GRUB菜单例子</p>
+<li><p>用于PXE启动(可使用GRUB或SYSLINUX之类的软件来启动)<br>GRUB菜单例子</p>
 <pre><code>title Network1(GRUB4DOS内置的MAP)
 map --mem (pd)/undi.img (fd0)
 map --hook
@@ -1049,9 +1028,9 @@ initrd (pd)/undi.img
 </code></pre></li>
 <li>用于光盘启动.(可使用ULTRAISO来制作启动ISO,直接把镜像作为启动文件)</li>
 <li>软盘启动,直接用WINIMAGE写入软盘.</li>
-<li>...</li>
+<li>…</li>
 </ol>
-<h3 id="-">其它说明:</h3>
+<h3 id="其它说明:">其它说明:</h3>
 <ol>
 <li>只带一个驱动,所以镜像很小适用范围广,没有网卡限制,一般只要支持PXE启动的网卡都可以使用.避免了新碰到新机器的网卡不能识别问题.</li>
 <li><p>内置ODI_PKT驱动,可以使用WATTCP程序,内置了几个DOS下的程序.</p>
@@ -1070,8 +1049,8 @@ initrd (pd)/undi.img
 </ul>
 </li>
 </ol>
-<p>另:这个网络启动后也可以用于GHOST的网络克隆. 有兴趣的可以下载试用,觉得好用就支持一下....</p>
-<p>下载地址: <a href="http://chenall.ys168.com/" target="_blank"><a href="http://chenall.ys168.com/">http://chenall.ys168.com/</a></a></p>
+<p>另:这个网络启动后也可以用于GHOST的网络克隆. 有兴趣的可以下载试用,觉得好用就支持一下….</p>
+<p>下载地址: <a href="http://chenall.ys168.com/" target="_blank">http://chenall.ys168.com/</a></p>
 <p>目录 SOFT\network_UNDI.rar 1,020KB</p>
 
       
@@ -1169,16 +1148,13 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
 <p>str  1.exe 0x100  0 /v /p /a  从文件偏移位置256开始在屏幕上显示文件内容，如果Bytes输入为0，则表示从Start开始至文件末尾。</p>
 <p>str  1.exe 0x100  0 /e /hex:11223344  将文件偏移位置256开始的4个字节修改为，0x11,0x22,0x33,0x44。</p>
 <p>str  1.exe 0x100  0 /e /asc:1234  将文件偏移位置256开始的4个字节修改为，1234, 也就是0x31,0x32,0x33,0x34</p>
-<p>查找替换算法使用的是 KMP 算法，不重复计数，如文件 1.txt 的内容为10个字符0：
-0000000000</p>
+<p>查找替换算法使用的是 KMP 算法，不重复计数，如文件 1.txt 的内容为10个字符0：<br>0000000000</p>
 <p>如执行命令： str 1.txt 0 0 /f /asc:0000 /a</p>
 <p>则执行结果为：</p>
 <p>   Find string At:</p>
 <p>   0  0x0</p>
 <p>   4  0x4</p>
-<p>不会是：
-   Find string At:
-   0  0x0</p>
+<p>不会是：<br>   Find string At:<br>   0  0x0</p>
 <p>   1  0x1</p>
 <p>   2  0x2</p>
 <p>   3  0x3</p>
@@ -1245,7 +1221,7 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
 <p>附上测试效果图.使用VMSARE测试.</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2008/12/0.JPG" alt=""><img src="http://c-dl.qiniudn.com/upload/2008/12/1.JPG" alt=""><img src="http://c-dl.qiniudn.com/upload/2008/12/2.JPG" alt=""></p>
 <p>附件为下面批处理脚本,可用在PE下</p>
-<pre><code class="lang-bat">@echo off
+<pre><code class="bat">@echo off
 title 在PE下安装硬盘控制器驱动简单脚本 by chenall 2008-12-14
 rem 使用方法: 1.可直接拖放,即把对应驱动的SYS文件拖放到这个程序的图标上.
 rem  2.使用命令行pe_scsi.cmd [你的SYS文件]
@@ -1302,14 +1278,10 @@ del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
     
     <div class="entry">
       
-        <p>今天在制作一个启动盘,时需要用EXTRACT来解压cab文件,却发现死活不行.
-总是提示 <em><code>out of memory while processing cabinet file</code></em> 错误</p>
-<p>查了相关文章 <a href="http://support.microsoft.com/kb/261758" target="_blank"><a href="http://support.microsoft.com/kb/261758">http://support.microsoft.com/kb/261758</a></a> 还是没有用.</p>
+        <p>今天在制作一个启动盘,时需要用EXTRACT来解压cab文件,却发现死活不行.<br>总是提示 <em><code>out of memory while processing cabinet file</code></em> 错误</p>
+<p>查了相关文章 <a href="http://support.microsoft.com/kb/261758" target="_blank">http://support.microsoft.com/kb/261758</a> 还是没有用.</p>
 <p>已经加载了himem.sys的内存管理,并且内存达到512MB.郁闷了半天.研究了WIN98的启动盘才发现问题所在.</p>
-<p>WIN98启动盘使用了XMSDSK内存盘.跟踪后发现,如果没有这个XMSDSK内存盘EXTRACT就会有上面的提示.
-经过多次测试才发现
-原来这个extract程序要求启动分区可用空间大于<code>2048KB</code>否则就会有上面的错误提示.
-而这个启动分区是根据环境变量<code>comspec</code>的值来确定的.而WIN98启动盘使用了XMSDSK内存盘后把这个变量指定的内存盘(COMMAND.COM也复制过去了),所以没这个问题.</p>
+<p>WIN98启动盘使用了XMSDSK内存盘.跟踪后发现,如果没有这个XMSDSK内存盘EXTRACT就会有上面的提示.<br>经过多次测试才发现<br>原来这个extract程序要求启动分区可用空间大于<code>2048KB</code>否则就会有上面的错误提示.<br>而这个启动分区是根据环境变量<code>comspec</code>的值来确定的.而WIN98启动盘使用了XMSDSK内存盘后把这个变量指定的内存盘(COMMAND.COM也复制过去了),所以没这个问题.</p>
 <p>不得已只好也使用XMSDSK来虚拟一个大于2048KB的内存盘来临时使用下.</p>
 
       
@@ -1447,7 +1419,7 @@ del /f &quot;%temp%\eyou.hta&quot;
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -1463,14 +1435,12 @@ del /f &quot;%temp%\eyou.hta&quot;
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -1554,7 +1524,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

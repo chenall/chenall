@@ -121,11 +121,8 @@ var _js2load = [];
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2009-11-16T07:36:31.000Z">2009-11-16</time>  <a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></h3><p class="list-group-item-text">一、基本概念。
 
- root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下
-  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问</p>
+ root中文解释就是“根”的意思。  例子：  一个磁盘文件列表如下
+  其中一开始X:\就是默认root  现在要访问boot\file3 就可以使用 /boot/file3 来访问  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p>
 
 </div></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -190,7 +187,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -206,14 +203,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:36</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:09</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -297,7 +292,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

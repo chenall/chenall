@@ -131,14 +131,11 @@ var _js2load = [];
 <p>可以方便开发人员临时调试某个功能时使用。</p>
 <p>当然你对中断资料比较熟悉的话，就可以利用GRUB4DOS配合本程序作出非常酷的效果（比如移动的文字）</p>
 <p>使用方法，直接下载程序在GRUB4DOS中执行</p>
-<h2 id="-">参数</h2>
+<h2 id="参数">参数</h2>
 <ul>
-<li>写数据到指定端口
-  bios outb/outw/outl PORT VALUE</li>
-<li>从指定端口读数据
-  bios inb/inw/inl </li>
-<li>中断调用
-  bios int=INT eax=EAX ebx=EBX [...]</li>
+<li>写数据到指定端口<br>  bios outb/outw/outl PORT VALUE</li>
+<li>从指定端口读数据<br>  bios inb/inw/inl </li>
+<li>中断调用<br>  bios int=INT eax=EAX ebx=EBX […]</li>
 </ul>
 <p>可使用的所以参数在下面的列表中</p>
 <pre><code>unsigned long edi; // as input and output
@@ -160,8 +157,7 @@ unsigned long eflags; // as input and output
 </code></pre><p>效果图在这里(之前的图片放在盛大的服务器上,已经失效)</p>
 <ol>
 <li><p>直接读写端口演示，分别使用<code>outl</code>和<code>inl</code>  </p>
-<p>说明：chkpci就是主要使用<code>outl</code>和<code>inl</code>获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）
-结果自己看，后面使用bios调用得到的是第一条PCI的记录。。</p>
+<p>说明：chkpci就是主要使用<code>outl</code>和<code>inl</code>获取PCI信息的（具体的在本站文章上面的搜索中输入CHKPCI查看更多介绍）<br>结果自己看，后面使用bios调用得到的是第一条PCI的记录。。</p>
 <p><img src="http://c-dl.qiniudn.com/post/grub4dos_biosint_01.png" alt="获取pci信息"></p>
 </li>
 <li><p>调用BIOS中断演示</p>
@@ -184,7 +180,7 @@ unsigned long eflags; // as input and output
 </ol>
 <p>这个程序只是为了方便测试而编写,使用者需自己注意。</p>
 <p>下载地址（带源码）：</p>
-<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank"><a href="http://code.google.com/p/grubutils/downloads/list">http://code.google.com/p/grubutils/downloads/list</a></a></p>
+<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank">http://code.google.com/p/grubutils/downloads/list</a></p>
 
       
     </div>
@@ -229,7 +225,7 @@ unsigned long eflags; // as input and output
 <pre><code>date
 </code></pre><p>  修改日期</p>
 <pre><code>date 2011-01-01
-</code></pre><h3 id="-">相关资料:</h3>
+</code></pre><h3 id="相关资料:">相关资料:</h3>
 <pre><code>时钟服务(Clock Service——INT 1AH) 
 00H —读取时钟“滴答”计数06H —设置闹钟
 01H —设置时钟“滴答”计数07H —闹钟复位
@@ -304,7 +300,7 @@ AL=声音源
 =03H——声音产生芯片
 出口参数：无
 </code></pre><p>C语言版的代码在这里</p>
-<p><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c" target="_blank"><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c">http://code.google.com/p/grubutils/source/browse/trunk/src/date.c</a></a></p>
+<p><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c" target="_blank">http://code.google.com/p/grubutils/source/browse/trunk/src/date.c</a></p>
 <p>批处理版源码:</p>
 <pre><code>!BAT
 ::datefunc for grub4dos by chenall 2011-10-08
@@ -406,25 +402,23 @@ exit
 <p>这是一个通用模块,可以通过参数直接调用或者通过预先设置变量的方法再调用,</p>
 <p>使用方法请参考本站另一贴子</p>
 <p><a href="/post/grub4dos_hdpart/">[原创] GRUB4DOS 通用模块之分区选择</a></p>
-<h3 id="2011-08-22-">2011-08-22 (最终版）</h3>
+<h3 id="2011-08-22_(最终版）">2011-08-22 (最终版）</h3>
 <ol>
 <li>优化了检测代码．</li>
 <li>filpre支持子目录的检测．</li>
 </ol>
-<h3 id="2011-08-21-">2011-08-21 (变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）</h3>
+<h3 id="2011-08-21_(变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）">2011-08-21 (变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）</h3>
 <ol>
 <li>菜单标题自动居中显示</li>
 <li><p>cmd的语法改变</p>
 <p>旧的版本<code>cmd=echo</code>要改成<code>cmd=&quot;echo %1&quot;</code></p>
-<p>在批处理中调用需要使用<code>%%1</code>
-即，需要多一个<code>%1</code>的参数，这个参数用于接收文件参数．可以放在cmd参数的任意位置．
-并且支持类拟<code>%~dpnx1</code>的格式．</p>
+<p>在批处理中调用需要使用<code>%%1</code><br>即，需要多一个<code>%1</code>的参数，这个参数用于接收文件参数．可以放在cmd参数的任意位置．<br>并且支持类拟<code>%~dpnx1</code>的格式．</p>
 </li>
 <li><p>新增<code>filpre</code>参数,指定文件名前辍.</p>
 <p><del>注意:使用该参数时,<code>subdir</code>参数将不起作用,为了不影响其它情况下的检测速度,该参数只支持单级目录.</del></p>
 </li>
 </ol>
-<h3 id="2011-08-16-">2011-08-16 更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)</h3>
+<h3 id="2011-08-16_更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)">2011-08-16 更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)</h3>
 <ol>
 <li><p>添加了一个参数root,指定要从哪个目录开始找.例子:</p>
 <p>root=()/boot</p>
@@ -436,7 +430,7 @@ exit
 <li><p>支持查找无扩展名的文件(之前的版本无扩展名的全部被当成一个子目录对待)</p>
 </li>
 <li>新的ext参数只查找无扩展名的文件.<code>ext=.</code>会查找无扩展名的文件.</li>
-<li>菜单的注释新增了文件大小的提示(因为新的版本使用cat --locate=0来检测是否一个文件,就顺便把这个也利用上了.)</li>
+<li>菜单的注释新增了文件大小的提示(因为新的版本使用cat —locate=0来检测是否一个文件,就顺便把这个也利用上了.)</li>
 </ol>
 <p>本模块支持的参数如下</p>
 <ul>
@@ -459,18 +453,18 @@ exit
 </ul>
 <p>以下是使用的效果截图,欢迎反馈BUG或建议.(图片原链接已失效,以后再抽空重新弄)</p>
 <ol>
-<li><h3 id="-">当前分区,根目录</h3>
+<li><h3 id="当前分区,根目录">当前分区,根目录</h3>
 </li>
-<li><h3 id="-3-">当前分区,3级目录</h3>
+<li><h3 id="当前分区,3级目录">当前分区,3级目录</h3>
 </li>
-<li><h3 id="-">当前分区,二级目录,</h3>
+<li><h3 id="当前分区,二级目录,">当前分区,二级目录,</h3>
 </li>
-<li><h3 id="-">二级目录,所有硬盘分区</h3>
+<li><h3 id="二级目录,所有硬盘分区">二级目录,所有硬盘分区</h3>
 </li>
-<li><h3 id="2011-08-16-">2011-08-16更新的版本效果图.</h3>
+<li><h3 id="2011-08-16更新的版本效果图-">2011-08-16更新的版本效果图.</h3>
 </li>
 </ol>
-<pre><code class="lang-bat">!BAT
+<pre><code class="bat">!BAT
 setlocal
 debug off
 checkrange 20110918:-1 read 0x8278 || echo Please use grub4dos-0.4.5b-2011-09-18 or above! &amp;&amp; exit 1
@@ -721,19 +715,15 @@ endlocal &amp;&amp; set %1=%%%1%%
 <p>可以在你的菜单中简单的加入一个分区选择模块.</p>
 <p>要求:  必须使用2011-08-09以后发布的GRUB4DOS</p>
 <p>使用方法:</p>
-<p>首先复制代码另存为hd_part.lst
-然后在你的批处理或菜单中直接调用.调用的方法有两种.</p>
-<p>1.简单调用,直接在执行模块的时候加参数例子:
-<img src="http://photo.staticsdo.com/a1/486/458/0/60809-49499083-8.png" alt="">
-效果图.根据你硬盘的分区情况列出菜单.</p>
+<p>首先复制代码另存为hd_part.lst<br>然后在你的批处理或菜单中直接调用.调用的方法有两种.</p>
+<p>1.简单调用,直接在执行模块的时候加参数例子:<br><img src="http://photo.staticsdo.com/a1/486/458/0/60809-49499083-8.png" alt=""><br>效果图.根据你硬盘的分区情况列出菜单.</p>
 <p><img src="http://photo.staticsdo.com/a1/422/278/391/60810-49499083-8.png" alt=""></p>
-<p>2.如果你需要多次调用,建议使用此方法(先设置好需要的变量后再执行模块)
-如实现上面的例子:</p>
+<p>2.如果你需要多次调用,建议使用此方法(先设置好需要的变量后再执行模块)<br>如实现上面的例子:</p>
 <pre><code>set m.cmd=&quot;pause test cmd&quot;
 set m.return=&quot;pause test return&quot;
 hd_part.lst
 </code></pre><p>注:使用方法1时,将不会使用变量参数即1,2不能混用.</p>
-<pre><code class="lang-bat">!BAT
+<pre><code class="bat">!BAT
 ::::通用Grub4dos硬盘分区选择接口模块.
 ::1.程序占用内存地址(md)0x20A+22
 ::2.首先设置好参数,然后直接执行本批处理调用.
@@ -849,9 +839,7 @@ exit
 <li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.9q45zbcktzsz" target="_blank">ROM数据</a></li>
 <li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.w29nkjwberks" target="_blank">其它内容的地址</a> </li>
 </ol>
-<p>来源:
- <a href="http://www.feiesoft.com/asm/appendix6.html" target="_blank"><a href="http://www.feiesoft.com/asm/appendix6.html">http://www.feiesoft.com/asm/appendix6.html</a></a>
- <a href="http://blog.csdn.net/wenweimin/article/details/105559" target="_blank"><a href="http://blog.csdn.net/wenweimin/article/details/105559">http://blog.csdn.net/wenweimin/article/details/105559</a></a></p>
+<p>来源:<br> <a href="http://www.feiesoft.com/asm/appendix6.html" target="_blank">http://www.feiesoft.com/asm/appendix6.html</a><br> <a href="http://blog.csdn.net/wenweimin/article/details/105559" target="_blank">http://blog.csdn.net/wenweimin/article/details/105559</a></p>
 <iframe style="WIDTH: 100%; HEIGHT: 800px" src="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM&amp;embedded=true"></iframe>
 
       
@@ -937,7 +925,7 @@ exit
         <p>MODBOOT是何物？</p>
 <p>MODBOOT是一个模块化的DOS启动控制中心。</p>
 <p>基于以下网站的MODBOOT改进而成的，配合GRUB4DOS启动，实现真正的模块化</p>
-<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank"><a href="http://nu2.nu/bootdisk/modboot/">http://nu2.nu/bootdisk/modboot/</a></a></p>
+<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank">http://nu2.nu/bootdisk/modboot/</a></p>
 <p>优点：快速，方便，小巧、可扩展。</p>
 <ol>
 <li>快速：以最快速的方式启动。</li>
@@ -972,11 +960,10 @@ boot
 <p>本工具的最新版本不再单独上传,请关注我的<a href="/post/g4d\_hd\_tools/" title="[分享] 基于GRUB4DOS的硬盘工具箱[2011-08-02更新]">GRUB4DOS硬盘工具箱</a>. 将会随工具箱一起更新. </p>
 <p>演示版下载：(2011-05-03 更新）<br>文件名称: modboot.iso<br>文件大小: 13.42 MB (14,075,904 字节)<br>修改时间: 2011年05月25日，19:52:41<br>MD5: 73D2905E2E00F8EC4F0336AAAF58F6FB<br>SHA1: F54FC61E074B0960FB85A5705EF8163398EB03B8  </p>
 <p>下载：<a href="http://yunfile.com/file/chenall/e95e35f4/" target="_blank">modboot.iso</a></p>
-<p>演示用的ISO里面有带一个<a href="/post/qgho/">QGHO</a>（快速备份还原工具），这是一个比较复杂的模块。 
-如果要自己制作一个可以用于MODBOOT的模块，请查看里面的使用说明。或以下站点（英文）</p>
-<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank"><a href="http://nu2.nu/bootdisk/modboot/">http://nu2.nu/bootdisk/modboot/</a></a></p>
+<p>演示用的ISO里面有带一个<a href="/post/qgho/">QGHO</a>（快速备份还原工具），这是一个比较复杂的模块。<br>如果要自己制作一个可以用于MODBOOT的模块，请查看里面的使用说明。或以下站点（英文）</p>
+<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank">http://nu2.nu/bootdisk/modboot/</a></p>
 <p>无忧启动论坛相关贴子：</p>
-<p><a href="http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1">http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1</a></a></p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1</a></p>
 <p>有什么疑问可以直接论坛回复或本文章后面评论。</p>
 
       
@@ -1129,7 +1116,7 @@ exit
     <div class="entry">
       
         <p>因为无忧里面以下贴子,</p>
-<p><a href="http://bbs.wuyou.com/viewthread.php?tid=187450" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=187450">http://bbs.wuyou.com/viewthread.php?tid=187450</a></a></p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=187450" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=187450</a></p>
 <p>所以就抽空研究了一下整理了一个批处理出来.</p>
 <p>自己目前用不上,发在这里留一个底,万一自己以后碰到了就有现成的可用了.</p>
 <p>如果对您有用就支持一下吧,^_^</p>
@@ -1191,7 +1178,7 @@ net start spooler
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/4/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><li><span class="page-number current">5</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/6/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/4/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><li><span class="page-number current">5</span></li></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/6/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1256,7 +1243,7 @@ net start spooler
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -1272,14 +1259,12 @@ net start spooler
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -1363,7 +1348,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

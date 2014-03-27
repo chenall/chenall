@@ -10,10 +10,7 @@
 <title>[原创]QGHO 快速一键恢复程序(2011-01-02更新) | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="[说明]   QGHO是一个用于演示GRUB4DOS功能的小程序.
- 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).
- 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.
- BUG报告或其它资料请移步我的搏客">
+<meta name="description" content="[说明]   QGHO是一个用于演示GRUB4DOS功能的小程序. 可以快速全自动/手动 备份恢复分区.(使用GHOST内核). 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序. BUG报告或其它资料请移步我的搏客 http://chenall.net/post/qgho/">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -132,16 +129,10 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <p>[说明]
-   QGHO是一个用于演示GRUB4DOS功能的小程序.
- 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).
- 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.
- BUG报告或其它资料请移步我的搏客
- <a href="http://chenall.net/post/qgho/"><a href="http://chenall.net/post/qgho/">http://chenall.net/post/qgho/</a></a></p>
-<h3 id="-">[注意事项]</h3>
+        <p>[说明]<br>   QGHO是一个用于演示GRUB4DOS功能的小程序.<br> 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).<br> 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.<br> BUG报告或其它资料请移步我的搏客<br> <a href="http://chenall.net/post/qgho/">http://chenall.net/post/qgho/</a></p>
+<h3 id="[注意事项]">[注意事项]</h3>
 <ol>
-<li>必须安装在硬盘上使用,因为默认是备份第一硬盘第一分区到第一硬盘最后分区的.
-如果U盘启动可能会备份到U盘中</li>
+<li>必须安装在硬盘上使用,因为默认是备份第一硬盘第一分区到第一硬盘最后分区的.<br>如果U盘启动可能会备份到U盘中</li>
 <li>如果需要修改默认设置请看QGHO.SET文件.里面有详细说明.</li>
 <li>文件列表:(所有文件都是必须的)<pre><code>GRUB4DOS.MOD  GRUB4DOS 外命模块(使用GZ压缩过了)
 QGHO.BIN  MSDOS软盘最小化镜像
@@ -156,8 +147,8 @@ QGHO.TXT  说明文件.
 <li><p>转载或修改请保留出处.</p>
 </li>
 </ol>
-<p>主要是为了展示GRUB4DOS的功能,,QGHO更多的扩展功能等待你去挖掘......</p>
-<h3 id="-">[使用方法]</h3>
+<p>主要是为了展示GRUB4DOS的功能,,QGHO更多的扩展功能等待你去挖掘……</p>
+<h3 id="[使用方法]">[使用方法]</h3>
 <p> 直接复制QGHO目录到某个硬盘的根目录下,在你的GRUB4DOS菜单中添加一个菜单</p>
 <pre><code>title QGHO
  find --set-root /QGHO/QGHO.BIN
@@ -165,9 +156,9 @@ QGHO.TXT  说明文件.
 </code></pre><p>一般情况下,你不需要修改任何东西即可直接使用.<br>默认自动备份第一硬盘第一分区数据到第一硬盘最后一个分区上.  </p>
 <p>你可以自己修改/QGHO/QGHO.SET来实现自定义的备份.<br> 比如设定备份任意分区到任意目录.  </p>
 <p>没有磁盘限制,只要你定义的分区没有错就可以了.  </p>
-<h3 id="-">[其它]</h3>
+<h3 id="[其它]">[其它]</h3>
 <p> 如果你对这个有兴趣的话,也可以编写一个GUI界面来修改QGHO.SET内容.<br> 因为我对GUI不感冒,所以这些事我就不做了.  </p>
-<p>懂得使用就用,不懂的就不要瞎折腾了,对GRUB4DOS不了解的朋友请直接略过吧.... </p>
+<p>懂得使用就用,不懂的就不要瞎折腾了,对GRUB4DOS不了解的朋友请直接略过吧…. </p>
 <p>写给使用QGHO作为系统一键备份恢复的朋友:  </p>
 <p>如果你已经把GRUB4DOS作为系统的第一引导,只要做如下操作就可以做到一键自动备份/恢复.</p>
 <p> 并且可以通过在系统中修改QGHO.SET的设置来实现下一次引导时自动进行的操作.</p>
@@ -176,7 +167,7 @@ QGHO.TXT  说明文件.
 </code></pre><p> 具体QGHO.SET的设置方法请用记事本打开QGHO.SET查看.</p>
 <p>下载地址:</p>
 <p><a href="http://dl.dbank.com/c0az9tcai0" title="QGHO 最新版快盘下载" target="_blank">QGHO 最新版下载</a></p>
-<h3 id="-">[更新内容]</h3>
+<h3 id="[更新内容]">[更新内容]</h3>
 <p>2010-01-02</p>
 <ol>
 <li>添加了选择指定GHO文件恢复到指定分区的功能，具体看后面的图片 </li>
@@ -187,18 +178,18 @@ QGHO.TXT  说明文件.
 <li>恢复模式时会自动检测GHO文件的密码.</li>
 <li>其它优化调整. </li>
 </ol>
-<h3 id="-">[截图]</h3>
+<h3 id="[截图]">[截图]</h3>
 <p>启动界面</p>
 <p>显示参数信息.</p>
 <p>开始备份.</p>
 <p>新功能，菜单3.</p>
 <p>选择要恢复的目的分区。</p>
 <p>选择要恢复的GHO文件。</p>
-<h3 id="-">[菜单文件]</h3>
-<p>注:这是老版的,新版已经改用批处理方式,想要查看批处理源码可以打开GRUB4DOS.MOD<br> 查找&quot;!BAT&quot;就可以看到了.(可能需要对GRUB4DOS.MOD进行解压)</p>
+<h3 id="[菜单文件]">[菜单文件]</h3>
+<p>注:这是老版的,新版已经改用批处理方式,想要查看批处理源码可以打开GRUB4DOS.MOD<br> 查找”!BAT”就可以看到了.(可能需要对GRUB4DOS.MOD进行解压)</p>
 <p>供想学习GRUB4DOS的朋友使用,大部份都有注释,有什么不明白的可以提出来.</p>
 <p>如果你有发现了错误麻烦通知我,谢谢.</p>
-<pre><code class="lang-bat">default=0
+<pre><code class="bat">default=0
 timeout=5
 #设置可执行程序的路径(外部命令)
 command --set-path=(fd0)/bin/
@@ -331,7 +322,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/post19/">[游戏推荐] 电精１代出招表资料</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="624"  data-url="http://chenall.net/post/qgho/" data-title="[原创]QGHO 快速一键恢复程序(2011-01-02更新)"></div>
@@ -400,7 +391,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -416,14 +407,12 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -520,7 +509,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

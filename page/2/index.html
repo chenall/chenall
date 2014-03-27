@@ -128,7 +128,7 @@ var _js2load = [];
     <div class="entry">
       
         <p>主机商采用的是自己的KiwiVM管理面板,Bandwagonhost好像只能PayPal付款，并有一个30天的退款保证.</p>
-<p>目前该主机商给LEB读者发布了一个优惠码，只要在付款时在<code>Promotional Code</code>用中输入&quot;LEB&quot;优惠码价格就会变成原价的%50.01.</p>
+<p>目前该主机商给LEB读者发布了一个优惠码，只要在付款时在<code>Promotional Code</code>用中输入”LEB”优惠码价格就会变成原价的%50.01.</p>
 <p>我入手的这一款配置信息,很实惠有木有啊..月付$1.99,年付$9.99,当然是选择年付了.</p>
 <blockquote>
 <p>CPU：2 cores<br>内存：512MB<br>vSWAP：512MB<br>硬盘：5 GB<br>月流量：500GB<br>1 IP/KiwiVM  </p>
@@ -175,7 +175,7 @@ var _js2load = [];
     <div class="entry">
       
         <p>在某些情况下,为了简化查询,我们需要提取中文的拼音首字母,</p>
-<p>比如&quot;中华人民共和国&quot; 是ZHRMGHG</p>
+<p>比如”中华人民共和国” 是ZHRMGHG</p>
 <p>最近在<a href="http://chenall.net/post/alrun-merry/" title="[分享] ALMRun–小巧的快速启动工具 ">ALMRun</a>程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,</p>
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
 
@@ -260,9 +260,8 @@ var _js2load = [];
     <div class="entry">
       
         <ol>
-<li><p>获取WINDOWS文件的文件名/路径/扩展名
-例子:</p>
-<pre><code class="lang-lua"> file=&quot;c:\\Windows\\notepad.txt&quot;
+<li><p>获取WINDOWS文件的文件名/路径/扩展名<br>例子:</p>
+<pre><code class="lua"> file=&quot;c:\\Windows\\notepad.txt&quot;
  FileName = file:match(&quot;([^\\]+)$&quot;) -- notepad.txt
  FilePath = file:sub(1,-FileName:len()-1) -- c:\Windows\
  FileExt = FileName:match(&quot;%.[^%.]*$&quot;) -- .txt
@@ -270,13 +269,13 @@ var _js2load = [];
 </li>
 <li><p>WINDOWS下环境变量扩展</p>
 <p>例子:</p>
-<pre><code class="lang-lua">path = &quot;%WinDir%\\Notepad.exe&quot;
+<pre><code class="lua">path = &quot;%WinDir%\\Notepad.exe&quot;
 path = path:gsub(&quot;%%(%S+)%%&quot;,os.getenv) -- C:\Windows\notepad.exe
 </code></pre>
 </li>
 <li><p>获取CMD命令输出结果</p>
 <p>例子:</p>
-<pre><code class="lang-lua">local f = io.popen(&#39;dir /b /s&#39;)
+<pre><code class="lua">local f = io.popen(&#39;dir /b /s&#39;)
 print(f:read(&quot;*a&quot;) -- 读取所有内容
 </code></pre>
 <p>其中read参数可以如下</p>
@@ -284,23 +283,22 @@ print(f:read(&quot;*a&quot;) -- 读取所有内容
 <li>*a 读取所有内容</li>
 <li>*n 读取为数据(当输出为数字时用,否则会得到空值)</li>
 <li>*l  读取一行 和 f:line() 一样(read不加参数时默认)</li>
-<li>数字 读取指定数量的字符. 比如输出 &quot;123456&quot; f:read(3) -- &quot;123&quot;</li>
+<li>数字 读取指定数量的字符. 比如输出 “123456” f:read(3) — “123”</li>
 </ul>
 <p>使用以下命令可以循环读取每一行.</p>
-<pre><code class="lang-lua"> for line in f:lines() do
+<pre><code class="lua"> for line in f:lines() do
  print(line)
  end
 </code></pre>
-<p>f:lines()也可以用f:read(&quot;*l&quot;)
-或用下面语句读取每4个字节</p>
-<pre><code class="lang-lua">for line in f:read(4) do
+<p>f:lines()也可以用f:read(“*l”)<br>或用下面语句读取每4个字节</p>
+<pre><code class="lua">for line in f:read(4) do
 print(line)
 end
 </code></pre>
 </li>
 <li><p>字符串相关操作</p>
 <ul>
-<li>连接使用&quot;..&quot;<pre><code class="lang-lua">a=&quot;abcd&quot;
+<li>连接使用”..”<pre><code class="lua">a=&quot;abcd&quot;
 b=3456
 print(a..b..&quot;test&quot;)  ---- abcd3456test
 </code></pre>
@@ -417,9 +415,9 @@ a:sub(1,-3) -- 1234
 <p><strong><a href="http://ip:8888" target="_blank">http://ip:8888</a></strong> 进入管理面板</p>
 <p>里面可以管理虚拟主机,FTP/MYSQL等.挺方便的.</p>
 <p>然后想怎么折腾就怎么折腾吧,别忘了VPS安全,使用iptables设置一下规则.(都可以从Google上找到)</p>
-<p>这个比较适合有一定LINUX基础的人练手,有独立IP可以做很多事情....</p>
+<p>这个比较适合有一定LINUX基础的人练手,有独立IP可以做很多事情….</p>
 <p>申请了一个免费的tk域名先装一个typecho来测试一下.</p>
-<p><a href="http://xvps.tk/" target="_blank"><a href="http://xvps.tk/">http://xvps.tk/</a></a></p>
+<p><a href="http://xvps.tk/" target="_blank">http://xvps.tk/</a></p>
 <p>嘿嘿,有了这个就相当于有了一台属于自己的永不断电的电脑了.以后又有得折腾了.^_^</p>
 
       
@@ -463,7 +461,7 @@ $fs = new $disk(CONSUMER_KEY,CONSUMER_SECRET);
 $fs-&gt;ls();
 </code></pre><p>这样一来,批量管理网盘就变得容易了.一个文件可以同时上传到N个网盘. 不知有没有支持的?</p>
 <p>以后有空再放个DEMO出来.</p>
-<p>EDIT: 由于时间还有个人精力有限,搁浅了...</p>
+<p>EDIT: 由于时间还有个人精力有限,搁浅了…</p>
 
       
     </div>
@@ -498,16 +496,16 @@ $fs-&gt;ls();
     <div class="entry">
       
         <p>本站的软件大部份是使用该软件制作的.</p>
-<h2 id="cameyo-news">Cameyo News</h2>
-<h3 id="version-2-0-873-is-out">Version 2.0.873 is out</h3>
+<h2 id="Cameyo_News">Cameyo News</h2>
+<h3 id="Version_2-0-873_is_out">Version 2.0.873 is out</h3>
 <ul>
 <li>Improved Windows 8 support</li>
 <li>Automatically notifies about new Cameyo versions</li>
 <li><p>New languages</p>
-<p>If you don&#39;t already have it, <a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ1/cameyo.com/download.aspx" target="_blank">download it now</a></p>
+<p>If you don’t already have it, <a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ1/cameyo.com/download.aspx" target="_blank">download it now</a></p>
 </li>
 </ul>
-<h3 id="coming-soon-">Coming soon(看到以下内容了吗?太赞了.期待新的版本)</h3>
+<h3 id="Coming_soon(看到以下内容了吗?太赞了-期待新的版本)">Coming soon(看到以下内容了吗?太赞了.期待新的版本)</h3>
 <p> Our upcoming major version will:</p>
 <ul>
 <li>Be FAST</li>
@@ -516,9 +514,9 @@ $fs-&gt;ls();
 <li>Support auto-updating for virtual applications</li>
 <li>Allow password protection against package editing</li>
 <li>Be Terminal Servers friendly</li>
-<li>Contain many more things we can&#39;t tell you just yet!</li>
+<li>Contain many more things we can’t tell you just yet!</li>
 </ul>
-<h3 id="useful-links-to-remember-">Useful links to remember:</h3>
+<h3 id="Useful_links_to_remember:">Useful links to remember:</h3>
 <p><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ3/online.cameyo.com/library.aspx" target="_blank">Online App Library</a><br><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ4/online.cameyo.com/library.aspx" target="_blank">Access your personal Favorite apps, from anywhere</a><br><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ5/online.cameyo.com/submit.aspx" target="_blank">Our unique online packager</a>  </p>
 
       
@@ -555,8 +553,7 @@ $fs-&gt;ls();
       
         <p>金山快盘开放平台 PHP SDK</p>
 <p>来源: <a href="/post/sdk_kp_php/" target="_blank">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></p>
-<p>时间: 2013-04-12
-使用方法：</p>
+<p>时间: 2013-04-12<br>使用方法：</p>
 <p>有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php</p>
 <p>可以根据自己的需要选择使用。</p>
 <ol>
@@ -592,12 +589,11 @@ $kp-&gt;upload_file(array(&#39;overwrite&#39;=&gt;&quot;true&quot;,&#39;root&#39
 <li>accessToken</li>
 </ul>
 <p>关于params参数可以自己上官网查看</p>
-<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank"><a href="http://www.kuaipan.cn/developers/document.htm">http://www.kuaipan.cn/developers/document.htm</a></a></p>
-<h3 id="sdk-kp-class-php">SDK简化版说明 kp.class.php</h3>
+<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank">http://www.kuaipan.cn/developers/document.htm</a></p>
+<h3 id="SDK简化版说明_kp-class-php">SDK简化版说明 kp.class.php</h3>
 <ol>
 <li>授权<pre><code>$oauth = $kp-&gt;OAuth();
-</code></pre>打开一个窗口供用户信息授权信息，然后返回。
-授权成功后自己请保存以下OAUTH信息，下次可以直接使用。<pre><code>$oauth-&gt;oauth_token
+</code></pre>打开一个窗口供用户信息授权信息，然后返回。<br>授权成功后自己请保存以下OAUTH信息，下次可以直接使用。<pre><code>$oauth-&gt;oauth_token
 $oauth-&gt;oauth_token_secret
 </code></pre>以后可以直接使用下面的方法不需要再次授权。<pre><code>$kp-&gt;oauth_token = $oauth-&gt;oauth_token
 $kp-&gt;oauth_token_secret = $oauth-&gt;oauth_token_secret
@@ -611,12 +607,11 @@ $kp-&gt;oauth_token_secret = $oauth-&gt;oauth_token_secret
 </code></pre></li>
 <li>移动文件（夹）<pre><code>$ret = $kp-&gt;mv(FROM_PATH,TO_PATH);
 </code></pre></li>
-<li>下载文件
-直接下载  <pre><code>$ret= $kp-&gt;download(PATH);
+<li>下载文件<br>直接下载  <pre><code>$ret= $kp-&gt;download(PATH);
 </code></pre>手动下载，返回一个地址<pre><code>$ret= $kp-&gt;download(PATH,false);
 </code></pre></li>
 <li>上传文件<pre><code>$ret= $kp-&gt;upload(PATH,FILE);
-</code></pre>如果<code>PATH</code>路径最后字符是&#39;/&#39;，认为是一个目录，上传到该目录，上传后的文件名从<code>FILE</code>中提取。如果<code>PATH</code>路径最后字符不是&#39;/&#39;，认为是一个文件，上传后的文件名就是<code>PATH</code>指定的文件名。<pre><code>$ret= $kp-&gt;upload(PATH,FILE,true);//显示上传进度百分比
+</code></pre>如果<code>PATH</code>路径最后字符是’/‘，认为是一个目录，上传到该目录，上传后的文件名从<code>FILE</code>中提取。如果<code>PATH</code>路径最后字符不是’/‘，认为是一个文件，上传后的文件名就是<code>PATH</code>指定的文件名。<pre><code>$ret= $kp-&gt;upload(PATH,FILE,true);//显示上传进度百分比
 </code></pre></li>
 <li>列出文件夹内容<pre><code>$ret= $kp-&gt;ls(PATH);
 </code></pre></li>
@@ -628,7 +623,7 @@ else
 </ol>
 <p>可以看一下k_test.php里面的测试实例。</p>
 <p>最新SDK源码下载地址:</p>
-<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank"><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></a></p>
+<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></p>
 
       
     </div>
@@ -663,12 +658,10 @@ else
     <div class="entry">
       
         <p>最近由于需要发送（带大附件）的邮件，上网找了一下，像PHPMailer等试了一下，虽然封装得很好，但是用起来都不太顺手。</p>
-<p>像PHPMailer发送大附件时就会提示类似如下的错误:
-    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)</p>
+<p>像PHPMailer发送大附件时就会提示类似如下的错误:<br>    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)</p>
 <p>我分配了128MB的内存发送个20MB的附件都不行，把内存加到512可以了，说明这个PHPMailer太占用内存了。可能是和PHPMail的封装有关，因为数据要转来转去的，很占用内存。</p>
 <p>去看了一下SMTP协议，才发现原来用SMTP协议发送邮件是如此的简单。</p>
-<p>可以使用TELNET 命令验证
-以下是使用TELNET命令发送一个邮件的过程记录，红色是输入的内容，绿色是注释。</p>
+<p>可以使用TELNET 命令验证<br>以下是使用TELNET命令发送一个邮件的过程记录，红色是输入的内容，绿色是注释。</p>
 <p><span style="color: #ff0000;">TELNET SMTP.QQ.COM 25</span></p>
 <p><span style="color: #3366ff;">220 smtp.qq.com Esmtp QQ Mail Server</span></p>
 <p><span style="color: #ff0000;">HELO LOCALHOST  <span style="color: #00ff00;">首先需要发送HELO或EHLO命令</span></span></p>
@@ -684,18 +677,16 @@ else
 <p><span style="color: #ff0000;">RCPT TO: 接收者邮件地址</span></p>
 <p><span style="color: #3366ff;">250 Ok</span></p>
 <p><span style="color: #ff0000;">DATA   <span style="color: #00ff00;">告诉服务器我要开始发送邮件数据了</span></span></p>
-<p><span style="color: #3366ff;">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;  <span style="color: #00ff00;">告诉你要使用</span></span><span style="color: #00ff00;"> &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;即PHP的&quot;\r\n.\r\n&quot;来告之服务器已经完成了。这里只是简单的发送了一些字符信息，先输入一个回车，然后你要发送的内容，完成之后再按回车，接首输入&quot;.&quot;再回车完成数据发送。</span></p>
+<p><span style="color: #3366ff;">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;  <span style="color: #00ff00;">告诉你要使用</span></span><span style="color: #00ff00;"> &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;即PHP的”\r\n.\r\n”来告之服务器已经完成了。这里只是简单的发送了一些字符信息，先输入一个回车，然后你要发送的内容，完成之后再按回车，接首输入”.”再回车完成数据发送。</span></p>
 <p><span style="color: #ff0000;">abcdtest</span></p>
 <p><span style="color: #ff0000;">aass</span></p>
 <p><span style="color: #ff0000;">.</span></p>
 <p><span style="color: #3366ff;">250 Ok: queued as</span></p>
 <p><span style="color: #ff0000;">QUIT</span></p>
 <p><span style="color: #00ff00;">退出</span></span></p>
-<p>然后就可以到你的邮箱中去看看有没有收到刚发送的邮件。
-明白了发送原理就可以去写代码来实现了。这里用的是<code>fsock</code>方式。使用PHP写了一个很简单的SMTP类，可以发送带附件的邮件。需要的可以拿去用。</p>
-<p>使用<code>github</code>托管源码，可以从以下地方下载最新版本源码。
-<a href="https://github.com/chenall/chenall/tree/master/cs_smtp" target="_blank">https://github.com/chenall/chenall/tree/master/cs_smtp</a></p>
-<pre><code class="lang-php">&lt;?php
+<p>然后就可以到你的邮箱中去看看有没有收到刚发送的邮件。<br>明白了发送原理就可以去写代码来实现了。这里用的是<code>fsock</code>方式。使用PHP写了一个很简单的SMTP类，可以发送带附件的邮件。需要的可以拿去用。</p>
+<p>使用<code>github</code>托管源码，可以从以下地方下载最新版本源码。<br><a href="https://github.com/chenall/chenall/tree/master/cs_smtp" target="_blank">https://github.com/chenall/chenall/tree/master/cs_smtp</a></p>
+<pre><code class="php">&lt;?php
 
 /*
     简易的SMTP发送邮件类，代码比较少，有助于学习SMTP协议，
@@ -934,7 +925,7 @@ class cs_smtp
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li class="active"><li><span class="page-number current">2</span></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/3/">&raquo;</a></li>
+  <li><a class="extend prev" href="/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li class="active"><li><span class="page-number current">2</span></li></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/3/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -999,7 +990,7 @@ class cs_smtp
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -1015,14 +1006,12 @@ class cs_smtp
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -1106,7 +1095,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

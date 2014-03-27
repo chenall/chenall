@@ -132,7 +132,7 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <h2 id="-">【说明】</h2>
+        <h2 id="【说明】">【说明】</h2>
 <ul>
 <li>本启动盘可以用于直接启动硬盘上的NT系统.可以从任意地方加载这个镜像文件进行启动。</li>
 <li>可以通过本镜像启动硬盘上的Windows系统,不依赖硬盘上的系统引导文件.</li>
@@ -141,7 +141,7 @@ var _js2load = [];
 </ul>
 <a id="more"></a>
 
-<h3 id="-32-64-">支持的系统32位/64位</h3>
+<h3 id="支持的系统32位/64位">支持的系统32位/64位</h3>
 <ul>
 <li>Windows 2000</li>
 <li>Windows xp</li>
@@ -156,9 +156,9 @@ var _js2load = [];
 <li>新增支持直接使用ISO来安装系统（支持FIRADISK/WINVBLK/VBOOT三种驱动方式）</li>
 <li>新增支持WIM格式的 PE1.X</li>
 </ul>
-<h3 id="-winnt-windows-">支持的系统目录<code>WINNT</code>和<code>WINDOWS</code>.新版已更新，支持任意目录</h3>
-<h3 id="-">当硬盘上的系统启动文件丢失或损坏时，可以直接使用本启动盘来启动系统应急。</h3>
-<h2 id="-">【使用方法】</h2>
+<h3 id="支持的系统目录<code>WINNT</code>和<code>WINDOWS</code>-新版已更新，支持任意目录">支持的系统目录<code>WINNT</code>和<code>WINDOWS</code>.新版已更新，支持任意目录</h3>
+<h3 id="当硬盘上的系统启动文件丢失或损坏时，可以直接使用本启动盘来启动系统应急。">当硬盘上的系统启动文件丢失或损坏时，可以直接使用本启动盘来启动系统应急。</h3>
+<h2 id="【使用方法】">【使用方法】</h2>
 <ul>
 <li>直接刻到光盘上启动（新版）。</li>
 <li>使用GRUB4DOS或syslinux等工具调用启动。<pre><code>  title ntboot
@@ -167,28 +167,25 @@ var _js2load = [];
   chainloader (0xff)&lt;/span&gt;
 </code></pre></li>
 </ul>
-<h3 id="-">[其它用途]</h3>
+<h3 id="[其它用途]">[其它用途]</h3>
 <p>删除并备份自己电脑上的引导文件,使之不能引导,这样别人就不能使用你的电脑了.</p>
 <p>自己要用时直接使用U盘或其它启动工具启动该镜像进行启动.</p>
-<h3 id="-">[其它说明]</h3>
-<p>欢迎有兴趣的朋友一起研究,讨论.
-无忧启动论坛专贴: <a href="http://bbs.wuyou.com/viewthread.php?tid=190203" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=190203">http://bbs.wuyou.com/viewthread.php?tid=190203</a></a></p>
-<h3 id="-">【截图&amp;介绍】</h3>
+<h3 id="[其它说明]">[其它说明]</h3>
+<p>欢迎有兴趣的朋友一起研究,讨论.<br>无忧启动论坛专贴: <a href="http://bbs.wuyou.com/viewthread.php?tid=190203" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=190203</a></p>
+<h3 id="【截图&amp;介绍】">【截图&amp;介绍】</h3>
 <ul>
 <li><p>帮助信息(见后面详细介绍)<br><img src="http://c-dl.qiniudn.com/post/ntboot_help.png" alt=""></p>
 <ol>
-<li>NT5|NT6=root|file 
-启动<code>NT5</code>或<code>NT6</code>系统.可以指定系统分区<code>root</code>,如果没有指定则自动查找.<br><code>file</code> 指定一个文件来启动.<br><code>NT5</code>可以指定一个IMG文件(使用NTLDR调用这个IMG镜像启动)<br><code>NT6</code>可以指定一个WIM文件或VHD文件.直接从这个文件启动.  </li>
-<li><p>PE1=file [PDIR=pdir] [OPTIONS=options]<br>  启动<code>PE1.X</code>系统,<code>PDIR</code>参数替换默认的系统<code>WXPE</code>目录(原版的PE是<code>I386</code>)<br>  <code>OPTIONS</code>指定其它要附加的参数.<strong>注意参数中的&quot;/&quot;要换成&quot;#&quot;</strong></p>
+<li>NT5|NT6=root|file<br>启动<code>NT5</code>或<code>NT6</code>系统.可以指定系统分区<code>root</code>,如果没有指定则自动查找.<br><code>file</code> 指定一个文件来启动.<br><code>NT5</code>可以指定一个IMG文件(使用NTLDR调用这个IMG镜像启动)<br><code>NT6</code>可以指定一个WIM文件或VHD文件.直接从这个文件启动.  </li>
+<li><p>PE1=file [PDIR=pdir] [OPTIONS=options]<br>  启动<code>PE1.X</code>系统,<code>PDIR</code>参数替换默认的系统<code>WXPE</code>目录(原版的PE是<code>I386</code>)<br>  <code>OPTIONS</code>指定其它要附加的参数.<strong>注意参数中的”/“要换成”#”</strong></p>
 </li>
-<li><p>VBOOT=file [options...]<br> 调用VBOOT来启动系统,file指定要启动的文件VHD/VMDK之类的.</p>
+<li><p>VBOOT=file [options…]<br> 调用VBOOT来启动系统,file指定要启动的文件VHD/VMDK之类的.</p>
 </li>
 <li><p>ISO_INST<br> 使用硬盘上的ISO文件来安装系统.支持<code>firadisk</code>/<code>vboot</code>/<code>winvblk</code>三种驱动.</p>
 </li>
 <li><p>如果你的内存足够大则在安装系统时可以使用@cdrom代替cdrom,这时会把镜像加载到内存,默认是直接映射,加载到内存安装的速度会比较快.<br> 若是使用#cdrom可以把镜像加载到高位内存。一些参数用法可以看NTBOOT.LST里面的菜单演示.</p>
 </li>
-<li>启动菜单演示
- <img src="http://c-dl.qiniudn.com/post/ntboot_menu.png" alt=""></li>
+<li>启动菜单演示<br> <img src="http://c-dl.qiniudn.com/post/ntboot_menu.png" alt=""></li>
 </ol>
 </li>
 <li><p>合盘调用方法</p>
@@ -198,7 +195,7 @@ var _js2load = [];
 /BOOT/NTBOOT/NTBOOT nt6=/boot/imgs/win7pe.wim
 boot
 </code></pre></li>
-<li>注必须使用全路径,像上面的样子或带盘符的路径如<em>(cd)/BOOT/NTBOOT/NTBOOT ...</em>  </li>
+<li>注必须使用全路径,像上面的样子或带盘符的路径如<em>(cd)/BOOT/NTBOOT/NTBOOT …</em>  </li>
 <li><p>为了方便你可以在使用NTBOOT之前执行一次NTBOOT设置一个参数NTBOOT,或下面的命令</p>
 <pre><code>/BOOT/NTBOOT/NTBOOT eof
 </code></pre><p>执行之后会设置一个变量NTBOOT以后就可以直接使用%NTBOOT%来调用比如用下面的命令启动硬盘上/boot/win7/win7.vhd中的系统.</p>
@@ -211,16 +208,12 @@ boot
 </li>
 <li><p>PE1 可以启动CD,FD,HD上面的文件,默认情况下只会查找硬盘,指定完整路径参数时就可以使用CD,FD上的文件了.比如在光盘上使用时可以直接使用NTBOOT来启动光盘上的PE,路径直接使用<em>()/path/file</em>即可.</p>
 </li>
-<li><p>关于 [options...]
-  这个目前支持的参数例表如下:</p>
+<li><p>关于 [options…]<br>  这个目前支持的参数例表如下:</p>
 <ul>
 <li>cdrom=iso_file         指定虚拟光驱的ISO文件</li>
 <li>harddisk=hdd_img   指定虚拟磁盘的镜像文件</li>
 <li>floppy=fdd_img       指定要加载的软盘镜像（自动加载到fd0）</li>
-<li>boot=cdrom|harddisk|floppy 指定从什么地方启动。<br>其中：cdrom固定是(0xff),harddisk固定是(hd0),floppy固定是(fd0).
-   opt=&quot;other options&quot;  其它要附加的参数。 
-比如：
-使VBOOT在启动的时候暂停。<pre><code>/BOOT/NTBOOT/NTBOOT vboot=/vboot/winxp/winxp-s1.vhd opt=&quot;pause&quot;
+<li>boot=cdrom|harddisk|floppy 指定从什么地方启动。<br>其中：cdrom固定是(0xff),harddisk固定是(hd0),floppy固定是(fd0).<br>   opt=”other options”  其它要附加的参数。<br>比如：<br>使VBOOT在启动的时候暂停。<pre><code>/BOOT/NTBOOT/NTBOOT vboot=/vboot/winxp/winxp-s1.vhd opt=&quot;pause&quot;
 </code></pre>以下例子，将会调用VBOOT的自动还原模式。<pre><code>/BOOT/NTBOOT/NTBOOT vboot=/vboot/winxp/winxp-s1.vhd opt=&quot;immutable&quot;
 </code></pre>关于VBOOT的参数，请参阅VBOOT的使用说明。</li>
 </ul>
@@ -228,12 +221,12 @@ boot
 <li><p>2011-09-27 新增addons=cmd参数(PE1和ISO_INST)<br>addons=cmd  运行一个指定的命令</p>
 </li>
 </ul>
-<h3 id="-">【下载地址】</h3>
+<h3 id="【下载地址】">【下载地址】</h3>
 <p>﻿文件名称: <a href="http://www.ctdisk.com/file/4630256" target="_blank">NTBOOT-2012-02-13.iso</a><br>文件大小: 2.97 MB (3,117,056 字节)<br>修改时间: 2012年02月13日，16:05:37<br>MD5: 3B256FAD32B3A1654277C8F6A0235080<br>SHA1: A1778884375526CF118EBE92248C8E4F253C26CC  </p>
 <p>﻿文件名称: <a href="http://www.ctdisk.com/file/4630255" target="_blank">NTBOOT-2012-02-13_DPMS.iso</a><br>文件大小: 48.97 MB (51,347,456 字节)<br>修改时间: 2012年02月13日，16:06:02<br>MD5: 778EC7E14CC9203656D7E114272CC4C6<br>SHA1: 3C075C7ABC28CBE86D8CE070DDAAE714E9D35E0E  </p>
 <p>最新版请关注我的GRUB4DOS硬盘工具箱.将会随工具箱一起更新.</p>
 <a href="/post/g4d_hd_tools/" target="_blank">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a><br>
-<h3 id="-">【部份更新历史】</h3>
+<h3 id="【部份更新历史】">【部份更新历史】</h3>
 <h4 id="2011-12-14">2011-12-14</h4>
 <ul>
 <li>使用新的GRUB4DOS。</li>
@@ -307,7 +300,7 @@ boot
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/post23/">[原创]QQ自由幻想挂机过神医完美解决方案</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="117"  data-url="http://chenall.net/post/ntboot/" data-title="[分享] Windows NT 系列通用启动盘[2012-02-13]"></div>
@@ -376,7 +369,7 @@ boot
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -392,14 +385,12 @@ boot
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -496,7 +487,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

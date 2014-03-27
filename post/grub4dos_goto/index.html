@@ -133,17 +133,17 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <h2 id="-">[功能说明]</h2>
+        <h2 id="[功能说明]">[功能说明]</h2>
 <p>用于菜单中，可以直接跳到另一个菜单项执行.</p>
 <p>注：因为是调用<code>fallback</code>命令的功能</p>
 <p>所以如果有使用<code>fallback</code>则使用这个命令之后之前的<code>fallback</code>设置就失效。</p>
 <p>注: <em>这个只是演示一下GRUB4DOS外部命令的编写,在新版GRUB4DOS中已经直接支持</em></p>
-<h2 id="-">[下载地址]</h2>
-<p>  <a href="http://grub4dos-chenall.googlecode.com/files/goto.zip" target="_blank"><a href="http://grub4dos-chenall.googlecode.com/files/goto.zip">http://grub4dos-chenall.googlecode.com/files/goto.zip</a></a></p>
+<h2 id="[下载地址]">[下载地址]</h2>
+<p>  <a href="http://grub4dos-chenall.googlecode.com/files/goto.zip" target="_blank">http://grub4dos-chenall.googlecode.com/files/goto.zip</a></p>
 <p>  GRUB4DOS最新版本下载</p>
-<p>  <a href="http://code.google.com/p/grub4dos-chenall/" target="_blank"><a href="http://code.google.com/p/grub4dos-chenall/">http://code.google.com/p/grub4dos-chenall/</a></a></p>
-<h2 id="-">[使用方法]</h2>
-<h3 id="-">例子：</h3>
+<p>  <a href="http://code.google.com/p/grub4dos-chenall/" target="_blank">http://code.google.com/p/grub4dos-chenall/</a></p>
+<h2 id="[使用方法]">[使用方法]</h2>
+<h3 id="例子：">例子：</h3>
 <pre><code>default 1
  timeout 5
 
@@ -159,21 +159,15 @@ title 1.title 1
 
 title 2.title 2
  pause title 2
-</code></pre><p> [其它说明]
- 必须配合grub4dos 0.4.5a 2010-01-21以后的版本使用.
-很简单的一个功能。</p>
+</code></pre><p> [其它说明]<br> 必须配合grub4dos 0.4.5a 2010-01-21以后的版本使用.<br>很简单的一个功能。</p>
 <p>源码只有两行^_^够简单吧。</p>
 <pre><code>  builtin_cmd(&quot;fallback&quot;,arg,flags);
   return !(errnum = MAX_ERR_NUM);
 </code></pre><p>这里顺便解释一下GRUB4DOS中fallback命令的用法</p>
 <blockquote>
-<p>fallback
-  fallback NUM 进入无人干预启动模式：如果默认启动入口项出错失败，立即用入口项 NUM 来启动（这里的“入口项”与 default 命令中的“入口项”意义相同）。</p>
+<p>fallback<br>  fallback NUM 进入无人干预启动模式：如果默认启动入口项出错失败，立即用入口项 NUM 来启动（这里的“入口项”与 default 命令中的“入口项”意义相同）。</p>
 </blockquote>
-<p>可以指定多个入口项比如
- fallback 1 2 3 4
- 这样当启动出错失败就跳到第1个菜单处执行，第一个菜单执行过程中出错失败就继续进入第2个菜单....
-如果到第4个菜单还是执行失败则，提示出错信息。</p>
+<p>可以指定多个入口项比如<br> fallback 1 2 3 4<br> 这样当启动出错失败就跳到第1个菜单处执行，第一个菜单执行过程中出错失败就继续进入第2个菜单….<br>如果到第4个菜单还是执行失败则，提示出错信息。</p>
 <p> 不加任何参数的<code>fallback</code>命令代表取消<code>fallback</code>的设置。</p>
 <p><code>fallback</code>可以用于智能控制<code>GRUB4DOS</code>的菜单的执行过程。</p>
 <p><code>goto</code>命令就是利用了<code>fallback</code>的原理。先指定一个入口，然后再返回一个失败信息。这样菜单指行时就会跳过去了。</p>
@@ -232,7 +226,7 @@ title 2.title 2
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/cameyo_2-0-873/">单文件程序制作利器Cameyo更新</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="125"  data-url="http://chenall.net/post/grub4dos_goto/" data-title="[GRUB4DOS] 一个很简单的外部命令"></div>
@@ -301,7 +295,7 @@ title 2.title 2
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -317,14 +311,12 @@ title 2.title 2
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -421,7 +413,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

@@ -18,7 +18,6 @@
 
 
 
-
 原理:">
 
 
@@ -145,9 +144,8 @@ var _js2load = [];
 <li><p>限制某个磁盘不可访问(具体表现为双击这个盘符或直接运入中输入这个盘符时会出现如下提示)</p>
 </li>
 </ol>
-<p><a id="more"></a>
-<img src="http://c-dl.qiniudn.com/upload/2009/7/9E9989B32704B5B5600B4350CF797F2A27558ECE.jpg" alt=""></p>
-<h3 id="-">原理:</h3>
+<p><a id="more"></a><br><img src="http://c-dl.qiniudn.com/upload/2009/7/9E9989B32704B5B5600B4350CF797F2A27558ECE.jpg" alt=""></p>
+<h3 id="原理:">原理:</h3>
 <ol>
 <li><p>注册表相关键值.<br> 系统级,具体优先权.针对所有用户.  </p>
 <pre><code>    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer
@@ -155,26 +153,23 @@ var _js2load = [];
 <pre><code> HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer
 </code></pre><p> <code>NoDrives</code> 指定隐藏盘符.<br> <code>NoViewOnDrive</code> 指定限制盘符.<br> 以上值在注册表中都是一个<code>REG_DWORD</code>数据.  </p>
 </li>
-<li><p>数据和盘符的对应方法.
- 将上面的REG_DWORD数据转换成二进制数.也就是<strong>11110011</strong>之类的数字.<br> 从右边算起,第一位代表A,第二位代表B,依此类推.....<br> 比如想要隐藏E,C盘.<br> 可以按以下方法来得到这个值.<br> <strong>GFEDCBA</strong><br> <strong>0010100</strong>  </p>
-<p> 也就是把E,C对应的位设为1.然后再把这个二进制数转换16进制或10进制填入到上面的<code>NoDrives</code>中就可以了.
- 限制的同上,只是改成<code>NoViewOnDrive</code></p>
+<li><p>数据和盘符的对应方法.<br> 将上面的REG_DWORD数据转换成二进制数.也就是<strong>11110011</strong>之类的数字.<br> 从右边算起,第一位代表A,第二位代表B,依此类推…..<br> 比如想要隐藏E,C盘.<br> 可以按以下方法来得到这个值.<br> <strong>GFEDCBA</strong><br> <strong>0010100</strong>  </p>
+<p> 也就是把E,C对应的位设为1.然后再把这个二进制数转换16进制或10进制填入到上面的<code>NoDrives</code>中就可以了.<br> 限制的同上,只是改成<code>NoViewOnDrive</code></p>
 <p> 如果要显示只要把对应位置的1改成0再转成10进制就可以了.</p>
 </li>
 </ol>
-<h3 id="-">附上一个修改的图文实例.</h3>
+<h3 id="附上一个修改的图文实例-">附上一个修改的图文实例.</h3>
 <p>隐藏T和W盘.未隐藏之前的截图.<br><a href="http://c-dl.qiniudn.com/upload/2009/7/438C41854D2FB23D9507B03BA68AEF41940ADBBF.jpg"><img src="http://c-dl.qiniudn.com/upload/2009/7/438C41854D2FB23D9507B03BA68AEF41940ADBBF.jpg" alt=""></a></p>
 <p>修改方法.  </p>
 <p><a href="http://c-dl.qiniudn.com/upload/2009/7/44A715EAEF27205EAB10B28F030540937F8AA55B.jpg"><img src="http://c-dl.qiniudn.com/upload/2009/7/44A715EAEF27205EAB10B28F030540937F8AA55B.jpg" alt=""></a></p>
 <p><a href="http://c-dl.qiniudn.com/upload/2009/7/170A59A44BAE4436F37FA6166E6C3D617C9B246E.jpg"><img src="http://c-dl.qiniudn.com/upload/2009/7/170A59A44BAE4436F37FA6166E6C3D617C9B246E.jpg" alt=""></a></p>
 <p>再点击一下十进制按钮.  </p>
 <p><a href="http://c-dl.qiniudn.com/upload/2009/7/809A9F036F53412097C5A47E0CAF1C1F08089F1F.jpg"><img src="http://c-dl.qiniudn.com/upload/2009/7/809A9F036F53412097C5A47E0CAF1C1F08089F1F.jpg" alt=""></a></p>
-<p>最后得到的值是<strong>4718592</strong>
-打开注册表.定位到上面的注册表位置.<br>修改<code>NoDrives</code>的值为<strong>4718592</strong>.如果没有该值则新建一个.  </p>
+<p>最后得到的值是<strong>4718592</strong><br>打开注册表.定位到上面的注册表位置.<br>修改<code>NoDrives</code>的值为<strong>4718592</strong>.如果没有该值则新建一个.  </p>
 <p><a href="http://c-dl.qiniudn.com/upload/2009/7/15CA4B165BBA9D849BECF443CD91229DBFBC8D88.jpg"><img src="http://c-dl.qiniudn.com/upload/2009/7/1F5D11D6BDBFFC3B6CD203204E9937F5D32EAB7E.jpg" alt=""></a></p>
 <p>修改完了就OK了,最终效果图.可以发现T,W已经看不到了.  </p>
 <p><a href="http://c-dl.qiniudn.com/upload/2009/7/FCBB865B0673DB563DF18FC6AB54E389B9B8880C.jpg"><img src="http://c-dl.qiniudn.com/upload/2009/7/FCBB865B0673DB563DF18FC6AB54E389B9B8880C.jpg" alt=""></a></p>
-<h3 id="-">其它说明</h3>
+<h3 id="其它说明">其它说明</h3>
 <ol>
 <li>修改后并不能直接反应出效果,只需要重启<code>EXPLORER.EXE</code>进程就可以了,或注销再进就可以看到了.</li>
 <li>限制磁盘访问的方法同上,只是注册表中修改的值变成了<code>NoViewOnDrive</code></li>
@@ -237,7 +232,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/jwpos/">佳为后台程序单文件版本 有使用佳为软件的朋友别错过了</a></li><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="68"  data-url="http://chenall.net/post/post68/" data-title="无需第三方工具Windows下隐藏限制磁盘访问."></div>
@@ -306,7 +301,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -322,14 +317,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -426,7 +419,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

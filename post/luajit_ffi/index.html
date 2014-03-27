@@ -129,14 +129,13 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <h1 id="-luajit-">关于LuaJIT,以下是官网的介绍.</h1>
+        <h1 id="关于LuaJIT,以下是官网的介绍-">关于LuaJIT,以下是官网的介绍.</h1>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
 <p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
-<p><a id="more"></a>
-<span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等...</span></span></p>
+<p><a id="more"></a><br><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI库允许调用外部C函数以及使用C数据结构.这意味着我们可以通过它来调用一些系统API或DLL的函数,像调用LIBCURL来实现网络功能.等…</span></span></p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">比如以下来自官网最简单的应用代码</span></span></p>
-<pre><code class="lang-lua">--Load the FFI library.
+<pre><code class="lua">--Load the FFI library.
 local ffi = require(&quot;ffi&quot;)
 
 --Add a C declaration for the function. The part inside the double-brackets (in green) is just standard C syntax.
@@ -147,7 +146,7 @@ ffi.cdef[[
 --Call the named C function — Yes, it&#39;s that simple!
 ffi.C.printf(&quot;Hello %s!&quot;, &quot;world&quot;)
 </code></pre>
-<pre><code class="lang-lua">local ffi = require(&quot;ffi&quot;)
+<pre><code class="lua">local ffi = require(&quot;ffi&quot;)
 ffi.cdef[[
     int MessageBoxA(void *w, const char *txt, const char *cap, int type);
 ]]
@@ -156,7 +155,7 @@ ffi.C.MessageBoxA(nil, &quot;Hello world!&quot;, &quot;Test&quot;, 0)
 <p>看起来很简单不是吗?</p>
 <p>这里给一个稍微复杂一些的例子,这是我在是学习过程中碰到的一些问题的总结,里面包括了一些常用的操作,像ffi.new 创建一个C的类型,ffi.cast数据类型转换,等.有兴趣的可以通过这个例子来学习一下如何应用.少走一些弯路.希望对大家有用.</p>
 <p>本代码要保存为ANSI格式才可以正常运行</p>
-<pre><code class="lang-lua">local ffi = require(&quot;ffi&quot;)
+<pre><code class="lua">local ffi = require(&quot;ffi&quot;)
 ffi.cdef[[
     typedef char TCHAR;
     typedef unsigned int UINT;
@@ -193,7 +192,7 @@ local lpString = ffi.new(&quot;char*&quot;,win32.malloc(1024))--分配内存
 local test = user32.GetWindowTextA(hwnd,lpString,1023)--获取文本
 local str1 = ffi.string(lpString);
 local strtest =&quot;FFI 调用SetWindowText功能测试&quot;
-local t = user32.MessageBoxA(0,&quot;是否把以下窗体\n&lt;&quot;..str1..&quot;&gt;\n的标题修改为以下内容:\n&quot;..strtest,&quot;LUAJIT FFI 调用WINAPI测试&quot;,0x44)--MB_ICONINFORMATION || 0x00000004L
+local t = user32.MessageBoxA(0,&quot;是否把以下窗体\n&amp;lt;&quot;..str1..&quot;&amp;gt;\n的标题修改为以下内容:\n&quot;..strtest,&quot;LUAJIT FFI 调用WINAPI测试&quot;,0x44)--MB_ICONINFORMATION || 0x00000004L
 if t == IDYES then
     if user32.SetWindowTextA(hwnd,strtest) == true then
         user32.MessageBoxA(0,&quot;修改成功&quot;,&quot;测试&quot;,0x40)
@@ -269,7 +268,7 @@ end
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="939"  data-url="http://chenall.net/post/luajit_ffi/" data-title="[分享] LuaJIT的FFI调用WINDOWS API功能示例"></div>
@@ -338,7 +337,7 @@ end
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -354,14 +353,12 @@ end
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -458,7 +455,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

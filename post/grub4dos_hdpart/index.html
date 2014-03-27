@@ -15,7 +15,7 @@
 可以在你的菜单中简单的加入一个分区选择模块.
 要求:  必须使用2011-08-09以后发布的GRUB4DOS
 使用方法:
-首先复制代码另存为hd_part.lst">
+首先复制代码另存为hd_part.lst然后在你的批处理或菜单中直接调用.调用的方法有两种.">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -139,19 +139,15 @@ var _js2load = [];
 <p>可以在你的菜单中简单的加入一个分区选择模块.</p>
 <p>要求:  必须使用2011-08-09以后发布的GRUB4DOS</p>
 <p>使用方法:</p>
-<p>首先复制代码另存为hd_part.lst
-然后在你的批处理或菜单中直接调用.调用的方法有两种.</p>
-<p>1.简单调用,直接在执行模块的时候加参数例子:
-<img src="http://photo.staticsdo.com/a1/486/458/0/60809-49499083-8.png" alt="">
-效果图.根据你硬盘的分区情况列出菜单.</p>
+<p>首先复制代码另存为hd_part.lst<br>然后在你的批处理或菜单中直接调用.调用的方法有两种.</p>
+<p>1.简单调用,直接在执行模块的时候加参数例子:<br><img src="http://photo.staticsdo.com/a1/486/458/0/60809-49499083-8.png" alt=""><br>效果图.根据你硬盘的分区情况列出菜单.</p>
 <p><img src="http://photo.staticsdo.com/a1/422/278/391/60810-49499083-8.png" alt=""></p>
-<p>2.如果你需要多次调用,建议使用此方法(先设置好需要的变量后再执行模块)
-如实现上面的例子:</p>
+<p>2.如果你需要多次调用,建议使用此方法(先设置好需要的变量后再执行模块)<br>如实现上面的例子:</p>
 <pre><code>set m.cmd=&quot;pause test cmd&quot;
 set m.return=&quot;pause test return&quot;
 hd_part.lst
 </code></pre><p>注:使用方法1时,将不会使用变量参数即1,2不能混用.</p>
-<pre><code class="lang-bat">!BAT
+<pre><code class="bat">!BAT
 ::::通用Grub4dos硬盘分区选择接口模块.
 ::1.程序占用内存地址(md)0x20A+22
 ::2.首先设置好参数,然后直接执行本批处理调用.
@@ -275,7 +271,7 @@ exit
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></li><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/alrun-merry/">[分享] ALMRun–小巧的快速启动工具</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="738"  data-url="http://chenall.net/post/grub4dos_hdpart/" data-title="[GRUB4DOS] 通用模块之分区选择"></div>
@@ -344,7 +340,7 @@ exit
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -360,14 +356,12 @@ exit
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -464,7 +458,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

@@ -146,24 +146,18 @@ var _js2load = [];
   };
  struct snakes *snake_head;//指向当前蛇头的链表.snake_head-&gt;up 就是蛇尾.
 </code></pre></li>
-<li><p>蛇的移动处理.
-由于使用了环形的链表,像车轮一样走,只要把最后一个链表作为蛇头就可以了.
-实际操作过程.</p>
+<li><p>蛇的移动处理.<br>由于使用了环形的链表,像车轮一样走,只要把最后一个链表作为蛇头就可以了.<br>实际操作过程.</p>
 <ol>
 <li>首先确位移动的位置</li>
 <li>在屏幕上清除当前蛇尾的显示.</li>
 <li>修改蛇尾的POS为新的位置,并显示.</li>
 <li>把蛇尾作为新的蛇头.snake_head = snake_head-&gt;up; </li>
 </ol>
-<p>这里还有一个需要注意处理的:
-根据按键处理移动时不可以反方向移动.也就是说不可以直接后退.</p>
+<p>这里还有一个需要注意处理的:<br>根据按键处理移动时不可以反方向移动.也就是说不可以直接后退.</p>
 </li>
-<li><p>碰壁或者蛇头碰到蛇身就算失败.
-处理方法:
-墙壁可以随便使用表格线划出来,蛇可移动的区域全部放空白.</p>
+<li><p>碰壁或者蛇头碰到蛇身就算失败.<br>处理方法:<br>墙壁可以随便使用表格线划出来,蛇可移动的区域全部放空白.</p>
 <p>只要判断前面不是食物也不是空白,就算Game Over了.</p>
-<p>部份代码:
-以下是使用直接写屏的方法处理vga指向显存的指针(short类型).</p>
+<p>部份代码:<br>以下是使用直接写屏的方法处理vga指向显存的指针(short类型).</p>
 <pre><code> while(delay())
 
  {
@@ -248,7 +242,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/lua_base_1/">[学习] LUA脚本学习1</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="569"  data-url="http://chenall.net/post/snake_idea/" data-title="[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路"></div>
@@ -317,7 +311,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -333,14 +327,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -437,7 +429,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

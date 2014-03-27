@@ -121,30 +121,23 @@ var _js2load = [];
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2010-12-31T01:09:35.000Z">2010-12-31</time>  <a href="/post/grub4dos_instwee/">wee install script for grub4dos</a></h3><p class="list-group-item-text">wee是由不点基于grub4dos开发的嵌入微型 grub,可以安装到硬盘MBR上代替原来的引导代码.
 有什么用途呢?
-得益于GRUB4DOS的灵活性,wee同样很灵活,可以启动任意支持的分区上的可启动文件.</p><li class="list-group-item"><h3><time datetime="2010-12-29T14:49:14.000Z">2010-12-29</time>  <a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></h3><p class="list-group-item-text">[说明]   QGHO是一个用于演示GRUB4DOS功能的小程序.
- 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).
- 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.
- BUG报告或其它资料请移步我的搏客</p><li class="list-group-item"><h3><time datetime="2010-12-14T15:46:26.000Z">2010-12-14</time>  <a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></h3><p class="list-group-item-text">GRUB4DOS是什么东西,我这里就不解释了.
+得益于GRUB4DOS的灵活性,wee同样很灵活,可以启动任意支持的分区上的可启动文件.</p><li class="list-group-item"><h3><time datetime="2010-12-29T14:49:14.000Z">2010-12-29</time>  <a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></h3><p class="list-group-item-text">[说明]   QGHO是一个用于演示GRUB4DOS功能的小程序. 可以快速全自动/手动 备份恢复分区.(使用GHOST内核). 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序. BUG报告或其它资料请移步我的搏客 http://chenall.net/post/qgho/</p><li class="list-group-item"><h3><time datetime="2010-12-14T15:46:26.000Z">2010-12-14</time>  <a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></h3><p class="list-group-item-text">GRUB4DOS是什么东西,我这里就不解释了.
 本脚本可以简化GRUB4DOS菜单编写的难度.
 适用在合盘或需要选择启动多种镜像的情况.
 使用方法非常简单. 具体见里面的例子:
 附上两个增强的版本：
 zxw版： 自动列表.数字启动</p><li class="list-group-item"><h3><time datetime="2010-11-22T05:03:39.000Z">2010-11-22</time>  <a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></h3><p class="list-group-item-text">这个在配合使用U盘安装系统碰到SCSI/RAID硬盘时特别有用,不需要在安装光盘上集成那个驱动了.
-2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-12T16:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.
-在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
-可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
-目前已经增加了许多的强大功能.具体见后面的介绍.</p><li class="list-group-item"><h3><time datetime="2010-10-12T07:27:51.000Z">2010-10-12</time>  <a href="/post/c_upper/">C语言的基础函数大小写转换</a></h3><p class="list-group-item-text">在程序中经常会需要对字母的大小写进行转换，虽然有现成的upper/lower函数，但是有时因为各种原因，或想减小程序的体积，需要自己编写函数来实现。
+2014-01-03 PS: 目前已经有很多工具根据此原理实现了自动化操作,本文作为实现的原理,只提供参考</p><li class="list-group-item"><h3><time datetime="2010-10-12T16:00:00.000Z">2010-10-13</time>  <a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></h3><p class="list-group-item-text">[功能说明]GRUB4DOS菜单脚本命令增强.在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能目前已经增加了许多的强大功能.具体见后面的介绍.推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p><li class="list-group-item"><h3><time datetime="2010-10-12T07:27:51.000Z">2010-10-12</time>  <a href="/post/c_upper/">C语言的基础函数大小写转换</a></h3><p class="list-group-item-text">在程序中经常会需要对字母的大小写进行转换，虽然有现成的upper/lower函数，但是有时因为各种原因，或想减小程序的体积，需要自己编写函数来实现。
  这里来讨论一下各种转换的方法。
 根据ASCII码我们可以知道大写字母和小写字母相差32(20H)=100000B(二进制).</p><li class="list-group-item"><h3><time datetime="2010-09-23T13:29:54.000Z">2010-09-23</time>  <a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h3><p class="list-group-item-text">经典的游戏贪吃蛇,GRUB4DOS版.比较简单的一个游戏.
 嘻嘻,界面不是很好看,没有使用图形模式,只是一个试验品.抛砖引玉.^_^
-关于这个游戏的相关信息请看搏客贴子:
- http://chenall.net/post/snake_idea/</p><li class="list-group-item"><h3><time datetime="2010-09-21T13:55:29.000Z">2010-09-21</time>  <a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></h3><p class="list-group-item-text">注:原创方案,如有雷同纯属巧合.
+关于这个游戏的相关信息请看搏客贴子: http://chenall.net/post/snake_idea/</p><li class="list-group-item"><h3><time datetime="2010-09-21T13:55:29.000Z">2010-09-21</time>  <a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></h3><p class="list-group-item-text">注:原创方案,如有雷同纯属巧合.
 本人对图形系统并不感冒.不喜欢也不会设计图形.所以本文介绍的也只会有简单的界面.
 突然有了一些灵感,所以就把它记录下来,并尝试用代码来实现它.
 当然了它不是拿来玩的而是用于学习,呵呵.</p><li class="list-group-item"><h3><time datetime="2010-09-17T10:19:51.000Z">2010-09-17</time>  <a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></h3><p class="list-group-item-text">搞了一个增强版的ECHO命令,看看效用还有反应如何.可以在屏幕任意位置显示字符并且可以指定颜色.
 颜色设置只支持console模式(文本模式).
 使用方法(具体请下载附件研究)
-注: 最新版本的GRUB4DOS已经内置此功能,并且功能得到了增强,想要编写GRUB4DOS扩展的可以下载源码研究一下</p><li class="list-group-item"><h3><time datetime="2010-09-12T12:31:55.000Z">2010-09-12</time>  <a href="/post/20100907/">[原创] 无聊贴一段代码</a></h3><p class="list-group-item-text">快速计算某个POS软件的员工密码...
+注: 最新版本的GRUB4DOS已经内置此功能,并且功能得到了增强,想要编写GRUB4DOS扩展的可以下载源码研究一下</p><li class="list-group-item"><h3><time datetime="2010-09-12T12:31:55.000Z">2010-09-12</time>  <a href="/post/20100907/">[原创] 无聊贴一段代码</a></h3><p class="list-group-item-text">快速计算某个POS软件的员工密码…
 使用批处理计算快速简单.
 ^_^ 至少有N+X个密码可以用哦.
 不想解释.
@@ -154,7 +147,7 @@ zxw版： 自动列表.数字启动</p><li class="list-group-item"><h3><time dat
 在GRUB4DOS下直接检测PCI设备信息.
 
 
-待定.......
+待定…….
 
 
 [用法]
@@ -170,12 +163,10 @@ SQL Server 用户可以使用分布式查询访问以下内容：</p><li class="
 注: 新的版本GRUB4DOS已经支持多国语言菜单,所以本程序也已经不再更新维护，也不建议使用．本文只保留作为记录.
 [说明]
   2010-04-20更新</p><li class="list-group-item"><h3><time datetime="2010-03-10T09:16:06.000Z">2010-03-10</time>  <a href="/post/how-to-be-a-good-programmer/">[转]如何成为一个优秀的程序员</a></h3><p class="list-group-item-text">看了这一篇文章觉得挺不错的，就转过来了，呵呵。想要学好电脑技术，最重要的一点还是文章的总结一个字“活”。学活了做什么事都事半工倍。做其它事情也是一样。
-
 学会举一反三，严禁不求甚解。
 以下是原文内容及声明：</p><li class="list-group-item"><h3><time datetime="2010-03-03T16:31:57.000Z">2010-03-04</time>  <a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></h3><p class="list-group-item-text">[功能说明]  加载一个点阵字库用于显示中文。
 
-  可以直接使用完整的点阵字库，或从以下软件生成的小字库
-  http://www.cn-dos.net/forum/viewthread.php?tid=47921</p><li class="list-group-item"><h3><time datetime="2010-03-01T02:41:11.000Z">2010-03-01</time>  <a href="/post/vim/">[转] Vim入门图解说明.</a></h3><p class="list-group-item-text">来源:http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/
+  可以直接使用完整的点阵字库，或从以下软件生成的小字库  http://www.cn-dos.net/forum/viewthread.php?tid=47921</p><li class="list-group-item"><h3><time datetime="2010-03-01T02:41:11.000Z">2010-03-01</time>  <a href="/post/vim/">[转] Vim入门图解说明.</a></h3><p class="list-group-item-text">来源:http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/
 感谢作者(vgod)用心绘制的Vim入门图解说明
 
 
@@ -183,15 +174,14 @@ PDF版下载</p><li class="list-group-item"><h3><time datetime="2010-02-01T13:37
 
 注: 最新版GRUB4DOS已经内置本功能
 [下载地址]
-   程序下载: http://grub4dos-chenall.googlecode.com/files/calc.zip</p><li class="list-group-item"><h3><time datetime="2010-01-30T06:15:53.000Z">2010-01-30</time>  <a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></h3><p class="list-group-item-text">[功能说明]用于菜单中，可以直接跳到另一个菜单项执行.
+   程序下载: http://grub4dos-chenall.googlecode.com/files/calc.zip   最新版grub4dos下载:  http://grub4dos-chenall.googlecode.com/</p><li class="list-group-item"><h3><time datetime="2010-01-30T06:15:53.000Z">2010-01-30</time>  <a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></h3><p class="list-group-item-text">[功能说明]用于菜单中，可以直接跳到另一个菜单项执行.
 
 注：因为是调用fallback命令的功能
 所以如果有使用fallback则使用这个命令之后之前的fallback设置就失效。
 注: 这个只是演示一下GRUB4DOS外部命令的编写,在新版GRUB4DOS中已经直接支持</p><li class="list-group-item"><h3><time datetime="2010-01-29T12:23:05.000Z">2010-01-29</time>  <a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></h3><p class="list-group-item-text">[使用方法]下载后解压得到FAT文件复制到GRUB4DOS启动盘的/BOOT/GRUB目录下。
 
 或直接使用全路径比如这个文件放在(hd0,1)/boot目录下。
-则(hd0,1)/boot/fat xxxx</p><li class="list-group-item"><h3><time datetime="2010-01-28T12:55:25.000Z">2010-01-28</time>  <a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></h3><p class="list-group-item-text">注：现在许多人都有自己的域名，空间了。选择一个好的服务提供商，会为你以后的操作带来更大的方便。请各位站长们注意了，千万别被被那些垃圾服务商们的广告（实际上都是说一套做一套）给骗了。
-如果你非要选择以下列到了服务提供商，我只能祝你好运了。</p><li class="list-group-item"><h3><time datetime="2010-01-13T05:27:32.000Z">2010-01-13</time>  <a href="/post/fat/">FAT 文件系统原理</a></h3><p class="list-group-item-text">研究FAT文件系统的好文.
+则(hd0,1)/boot/fat xxxx</p><li class="list-group-item"><h3><time datetime="2010-01-28T12:55:25.000Z">2010-01-28</time>  <a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></h3><p class="list-group-item-text">注：现在许多人都有自己的域名，空间了。选择一个好的服务提供商，会为你以后的操作带来更大的方便。请各位站长们注意了，千万别被被那些垃圾服务商们的广告（实际上都是说一套做一套）给骗了。如果你非要选择以下列到了服务提供商，我只能祝你好运了。我向来不喜欢太啰嗦，今天可能算是个特别的日子，不知怎么的竟然写起软文来了，就算是发发牢骚，说说自己做站两年来被垃圾主机商害惨了的经历。06年毕业后，所有的同学都已经找好工作了。我不知怎么想的，或许是不太喜欢受到太多的约束，不太喜欢那种自己想象起来是很枯燥乏味的上班下班的工作，东闯西闯基本上跑遍整过中国之后最后回到了上海，依然很迷茫困惑。一晃时间又过去一个多月，这段时间基本上就是天天晚上网吧通宵，不是因为沉迷网络，而是想办法，找资料，还有就是晚上网吧通宵便宜，一个通宵10个钟头8块钱，白天一个小时是3块钱，对于快走头无路的我是迫不得已的，最后自然而然的就沉沦到了个人站长的大军中来。原来域名只要一块钱就可以注册一个了，于是就注册了一大堆，真正做站的就只有一个8cin.cn，因为垃圾主机商的缘故，昨天基本上已经被K的精光了，下面会说到。这两年来一步一个脚印的走过了，可谓是惨痛经历，这是题外话，个人的事情就不多说了。回正题，谈谈草根站长被中国垃圾主机商害惨的经历。上面提到的站是自己做的第一个站，导航，不是因为定位的问题，而是个人的技术有限，一个导航站，就html，简单，方便。拼了几天之后出来了几百个html页面，于是就到了找主机的问题。开始做站之前就听说了网上到处是骗子，于是慎之又慎，终于选择了一个可以承受被骗的损失的主机，试用了一段时间，于是拼命的去宣传搞流量，最高的ip也不过几十几百。没办法了，只能从网站的内容着手，于是日以继夜的学SEO，泡站长论坛。天天对着电脑，每天的工作不下于16个小时，我曾经有过最高记录是对着电脑整整工作了28个小时，我的一切似乎都在跟生命赛跑。时间对于每个人来说都是公平的，对我来说却很不公平，转眼间两年多过去了，我依然还是那样过着，没有任何的成绩，更谈不上成功了，更多的是个人淡淡的伤痛的回忆，因为路是自己选的，所以我们不应该去后悔，但是对于身边的人，家里的人的无知的伤害是无法弥补的。关于做站，我想我还会坚持下去，关于垃圾主机商,真想说几句最恶意的脏话，出于文明的缘故，因此发发牢骚，说说自己的经历便罢!8cin.cn这是我的第一个站百度最高收录15000左右，最高ip8000左右。垃圾主机商金豹网络kingbao.net，总会找很多借口很多理由去停你的空间，截止本文发布的时候，基本上已经被百度K光了。4hei.cn这个站是我从我的一大堆的一元域名里面选出来专门做一个披露垃圾主机商的网站的，后来想想，觉得正义是对的，但太过于正义，对别人就不太好了，毕竟人家也还要混饭吃，后来就转型了，就做一个信息站，对应的垃圾主机商以勒科技 yileidc。com，只要你的站上了300IP，基本上就打不开了，那能做站吗?现在想想，终于理解做好人原来也是那么的难的。cim8.com创梦吧，终于搞了个.com的米来做站了，本来想做代理域名主机的，但是垃圾主机商太黑了，我怎么可以昧着良心去做骗人的勾当呢?一年来就搁着，对应的主机同8cin.cn。aliggz.cn阿里哥哥，这是开始做阿里妈妈的时候做的站，最高ip1000左右，百度收录最高1w上下。对应的主机商西部数据xibusoft.com，听说这个主机商是四川人，估计现在已经不在人世了。这应该谅解的，祝你走好。网站数据转移到过很多的空间，现在站还开着的。w1lw.cn环保网，对应的主机商5944.net，这个怎么垃圾就不多说了，站长都知道。可恨的是日以继夜奋斗了一个星期做出来的数据第二天醒来就被清光了。ws帮公司做的一个网站，对应的垃圾主机商重庆炫网科技有限公司seawww.com，连数据都要不回来，被公司骂的狗血淋头，谁能知道心里是什么滋味?也害的公司不知道受了多少损失。92qiche.cn就爱汽车网对应的垃圾主机商唯沃数据vwhost.cn。92qiche.com.cn就爱汽车网对应的垃圾主机商007boy.com.cn，估计这个是一个小代理，骗点小钱混混。w2wl.cn对应的垃圾主机商八万互联80000web.com，专门在淘宝上忽悠人的，一年的空间，付钱之后逼着你给他好评，等你好评之后，以后就任由他了，想关你站就关你站。不是我刻意针对某某垃圾主机商，我只是说我用过的垃圾主机而己，当然这只是占中国垃圾主机商中的冰山一角。真希望正义的站长都站出来还这样行业的一片净土。也希望垃圾主机商不要再昧着良心做人了。最近做了一个新站，花了几百块买来的域名13288.com.cn，后来听说是以一元拍来的，没话说。但我相信不久之后它的价值绝对会超出这个价值的。作者原话： 本文完全原创，如果某某LJ主机商觉得我说错，可以随时找我对质，网站上有QQ，当然现在已经不再用你们的主机了。http://www.xkzzz.com/zz/idc/idcgs/200904/18-13932.html</p><li class="list-group-item"><h3><time datetime="2010-01-13T05:27:32.000Z">2010-01-13</time>  <a href="/post/fat/">FAT 文件系统原理</a></h3><p class="list-group-item-text">研究FAT文件系统的好文.
 来源：http://www.sjhf.net/Article/Index.html
 如果看不到请点击以下链接查看
 FAT 文件系统原理</p><li class="list-group-item"><h3><time datetime="2010-01-05T12:53:46.000Z">2010-01-05</time>  <a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></h3><p class="list-group-item-text">grub4dos外部命令测试 简单的 read 命令</p><li class="list-group-item"><h3><time datetime="2010-01-05T12:42:02.000Z">2010-01-05</time>  <a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></h3><p class="list-group-item-text">grub4dos从0.4.5版开始可以运行用户自己写的外部命令了。
@@ -263,7 +253,7 @@ FAT 文件系统原理</p><li class="list-group-item"><h3><time datetime="2010-0
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -279,14 +269,12 @@ FAT 文件系统原理</p><li class="list-group-item"><h3><time datetime="2010-0
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:03</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -370,7 +358,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

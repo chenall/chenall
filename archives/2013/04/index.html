@@ -120,8 +120,9 @@ var _js2load = [];
 <div class="archive">
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2013-04-20T07:21:35.000Z">2013-04-20</time>  <a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></h3><p class="list-group-item-text">在某些情况下,为了简化查询,我们需要提取中文的拼音首字母,
-比如&quot;中华人民共和国&quot; 是ZHRMGHG
-最近在ALMRun程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,</p>
+比如”中华人民共和国” 是ZHRMGHG
+最近在ALMRun程序就用到了这个方法,,顺便写了一下PHP版的.感觉PHP的更简单哈,
+适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
 
 </div></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -186,7 +187,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -202,14 +203,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:04</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -293,7 +292,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

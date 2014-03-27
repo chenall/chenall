@@ -127,10 +127,10 @@ var _js2load = [];
     
     <div class="entry">
       
-        <h3 id="cameyo-">Cameyo 简介：</h3>
+        <h3 id="Cameyo_简介：">Cameyo 简介：</h3>
 <p>Cameyo 是一款完全免费的应用程序虚拟化 (Application Virtualization) 工具或者说单文件软件制作工具，支持 XP、Vista 、 Windows7、Windows8，支持32位和64位系统。应用程序虚拟化技术就是将完整的程序资源打包为一个单一的可执行文件，从而无需安装即可运行。以前，要制作绿色软件需要学习很多技术，一般用户难以入门，而 Cameyo 则将此绿化过程变得简单且傻瓜。</p>
 <p>Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相关资源打包成单个绿色文件，当执行这个“绿色软件”时，它会产生一个虚拟环境来执行，类似影子系统一样，一切涉及的操作都是在这个虚拟环境中完成，并不会去动原本的系统。所以使用 Cameyo 制作的绿色软件还有一个好处就是几乎不会对系统有害。</p>
-<h3 id="packageeditor">PackageEditor</h3>
+<h3 id="PackageEditor">PackageEditor</h3>
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 <p>2.1版修改内容:</p>
 <ul>
@@ -261,20 +261,23 @@ var _js2load = [];
     
     <div class="entry">
       
-        <h3 id="-">主题简介</h3>
+        <h3 id="主题简介">主题简介</h3>
 <p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题 <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a> 修改而成,采用 <a href="http://getbootstrap.com/" target="_blank">bootstrap</a> 框架  </p>
 <p>在尽量保留原有主题功能的同时采用模块化设计支持实现组件模块化.完全自定义,通过widgets你可以添加许多实用功能.可以自定义组合各种组件,像评论系统,统计系统等.</p>
 <p>大部份的JS/CSS等静态文件都使用CDN加载,使用了 <a href="http://open.bootcss.com/" target="_blank">bootcss</a> 和 <a href="http://www.staticfile.org/" target="_blank">qiniu</a> 的CDN服务.</p>
 <p>以下是本主题的特色:</p>
+<p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题light修改而成,采用bootstrap css框架,主要考虑多站点支持.<br>在尽量保留原有主题功能的同时采用模块化设计支持多个widgets.实现高度自定义,通过widgets你可以添加许多实用功能.<br>可以自定义组合各种组件,像评论系统,统计系统等.</p>
 <ul>
+<li>支持多站点共用同一主题,免切换</li>
 <li>支持单独启用或禁用小工具(像侧边栏之类的)</li>
 <li>支持单独启用或禁用评论</li>
+<li>支持自动设置目录(source_dir,public_dir,scaffolds)</li>
 <li>可以单独指定加载小工具</li>
-<li>支持多个分类，支持子分类,分类名不区分大小写</li>
+<li>支持多个分类，支持子分类</li>
 <li>独特的用户配置文件(自动加载<code>$SOURCE\_$THEME.yml</code>[默认就是<strong>source\_chenall.yml</strong>]作为主题的配置文件,这样可以避免升级主题或其它原因导致的配置文件丢失).</li>
 <li><code>iLink</code> 文章内链功能</li>
 <li><code>ijs</code> 文章内嵌脚本或能</li>
-<li>允许在head或body的前面或尾部附加自定义内容.</li>
+<li>允许在head或body的前面或尾部附加自定义内容.(相对1.0版改变,新版只使用<code>source/_modules</code>目录).</li>
 <li>独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)</li>
 </ul>
 
@@ -292,7 +295,7 @@ var _js2load = [];
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-03-27 16:41:32"datetime="2014-03-27 16:41:32"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/hexo_theme_chenall/#comments" class="ds-thread-count comment-link" data-thread-key="1402132138" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -317,8 +320,7 @@ var _js2load = [];
     <div class="entry">
       
         <p>经过一段时间的处理转换,大量的手工活,总体来说搬家还是挺顺利,整个转换过程使用了差不多1个月的时间.终算把搏客搬到<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>上了.</p>
-<p>前段时间在尝试静态搏客<a href="/post/jekyll_or_hexo/" target="_blank">静态搏客 jekyll & Hexo</a>
-,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
+<p>前段时间在尝试静态搏客<a href="/post/jekyll_or_hexo/" target="_blank">静态搏客 jekyll & Hexo</a><br>,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
 <p>在这期间,学习到了很多新的知识.</p>
 <ul>
 <li>首次接触CSS/HTML</li>
@@ -445,7 +447,7 @@ var _js2load = [];
     
     <div class="entry">
       
-        <h1 id="-luajit-">关于LuaJIT,以下是官网的介绍.</h1>
+        <h1 id="关于LuaJIT,以下是官网的介绍-">关于LuaJIT,以下是官网的介绍.</h1>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
 <p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT open source license</a>.</p>
 <p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
@@ -490,7 +492,7 @@ var _js2load = [];
       
         <p><strong>本文章作者和出处:  <a href="http://coolshell.cn/" target="_blank">酷壳 – CoolShell.cn</a> ，请勿用于任何商业用途</strong></p>
 <p>这几天系统地学习了一下<a href="http://www.lua.org/" target="_blank">Lua这个脚本语言</a>，Lua脚本是一个很轻量级的脚本，也是号称性能最高的脚本，用在很多需要性能的地方，比如：游戏脚本，nginx，wireshark的脚本，当你把他的源码下下来编译后，你会发现解释器居然不到200k，这是多么地变态啊（/bin/sh都要1M，MacOS平台），而且能和C语言非常好的互动。我很好奇得浏览了一下Lua解释器的源码，这可能是我看过最干净的C的源码了。</p>
-<p>我不想写一篇大而全的语言手册，一方面是因为已经有了（见本文后面的链接），重要的原因是，因为大篇幅的文章会挫败人的学习热情，我始终觉得好的文章读起来就像拉大便一样，能一口气很流畅地搞完，才会让人爽（这也是我为什么不想写书的原因）。所以，这必然又是一篇&quot;入厕文章&quot;，还是那句话，我希望本文能够让大家利用上下班，上厕所大便的时间学习一个技术。呵呵。</p>
+<p>我不想写一篇大而全的语言手册，一方面是因为已经有了（见本文后面的链接），重要的原因是，因为大篇幅的文章会挫败人的学习热情，我始终觉得好的文章读起来就像拉大便一样，能一口气很流畅地搞完，才会让人爽（这也是我为什么不想写书的原因）。所以，这必然又是一篇”入厕文章”，还是那句话，我希望本文能够让大家利用上下班，上厕所大便的时间学习一个技术。呵呵。</p>
 <p>相信你现在已经在厕所里脱掉裤子露出屁股已经准备好大便了，那就让我们畅快地排泄吧……</p>
 
       
@@ -539,14 +541,14 @@ var _js2load = [];
 <p>还有中文编码问题 </p>
 <p><code>... invalid byte sequence in GBK ..</code></p>
 <p>在网上找了一下，大多是说要修改<em>jekyll</em>程序的文件，本来我也想改，不过看了一下发现原来新版的已经不需要这样修改了</p>
-<p>直接在配置文件_config.yam中添加一行&#39;encoding: UTF-8&#39;就行了。</p>
+<p>直接在配置文件_config.yam中添加一行’encoding: UTF-8’就行了。</p>
 <p>经过各种折腾总算把测试平台建好了，我比较喜欢绿色化，所以顺便绿色化了一下，有需要的可以留言，我再上传（7z压缩后100MB左右，解压后400MB左右python27+ruyb193+nodejs+svn+git+XXX需要的基本都有了）</p>
 <p>再来说下经过我试用后的比较，个人比较喜欢Hexo，因为它的功能还有扩展性都比较强，速度也快。</p>
 <p><em>jekyll</em> 更新比较快，调试信息比较清楚，而且Github原生支持，只是产生的速度慢一些。</p>
 <p>另外<em>jekyll</em> 受限于<em>Liquid</em>语法对于修改模板来说真的很不方便，如果可以用其它语法就好了，当然如果你不需要修改模板就没有什么问题了。</p>
 <p>分别用<em>jekyll</em>和<em>Hexo</em>生成了两个网站，有兴趣可以去观赏下。</p>
-<p><em>jekyll</em> 托管在<em>github</em>上(作为ALMRUN程序的主页)  <a href="http://almrun.chenall.net" target="_blank"><a href="http://almrun.chenall.net">http://almrun.chenall.net</a></a></p>
-<p>hexo 托管在BAE上  <a href="http://hexo.chenall.net" target="_blank"><a href="http://hexo.chenall.net">http://hexo.chenall.net</a></a></p>
+<p><em>jekyll</em> 托管在<em>github</em>上(作为ALMRUN程序的主页)  <a href="http://almrun.chenall.net" target="_blank">http://almrun.chenall.net</a></p>
+<p>hexo 托管在BAE上  <a href="http://hexo.chenall.net" target="_blank">http://hexo.chenall.net</a></p>
 <p>2014-01-10 经过测试比较后,最后我决定采用<a href="https://github.com/tommy351/hexo" target="_blank">Hexo</a></p>
 
       
@@ -571,7 +573,7 @@ var _js2load = [];
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li class="active"><li><span class="page-number current">1</span></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/2/">&raquo;</a></li>
+  <li class="active"><li><span class="page-number current">1</span></li></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/2/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -636,7 +638,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -652,14 +654,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -743,7 +743,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

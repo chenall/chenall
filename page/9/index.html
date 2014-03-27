@@ -134,8 +134,7 @@ var _js2load = [];
 <p> 例子</p>
 <p> read.o 0x8290</p>
 <p>使用的代码如下。保存为read.c</p>
-<p>然后使用gcc编译就可以了。编译命令
-
+<p>然后使用gcc编译就可以了。编译命令<br>
       
     </div>
     
@@ -217,9 +216,7 @@ var _js2load = [];
       
         <p>一、基本概念。</p>
 <blockquote>
-<p> root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下</p>
+<p> root中文解释就是“根”的意思。<br>  例子：<br>  一个磁盘文件列表如下</p>
 <pre><code>    X:\
     x:\test1\file1
     x:\test2\file1
@@ -230,11 +227,7 @@ var _js2load = [];
     X:\boot\test\file1
     X:\boot\test\file2
     X:\boot\test\file3
-</code></pre><p>  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问
-  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。
-  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，
-  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p>
+</code></pre><p>  其中一开始X:\就是默认root<br>  现在要访问boot\file3 就可以使用 /boot/file3 来访问<br>  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。<br>  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，<br>  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p>
 </blockquote>
 <pre><code>root (hd0,0)/ 设置(hd0,0)/为当前根
 root () 在GRUB4DOS中()代表当前根磁盘(root drive)相当于上面的X:
@@ -249,22 +242,13 @@ find --set-root --ignore-floppies /boot/bcd # 查找时不找软盘设备
 find --set-root --ignore-cd /boot/bcd # 不找光盘设备。
 find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘设备
 </code></pre></li>
-<li><p>设置默认root
-root (hd0,0)/windows 设置(hd0,0)/windows为root,以后要访问(hd0,0)/windows里面的文件直接使用 /xxx就可以了</p>
+<li><p>设置默认root<br>root (hd0,0)/windows 设置(hd0,0)/windows为root,以后要访问(hd0,0)/windows里面的文件直接使用 /xxx就可以了</p>
 </li>
-<li><p>把启动设备设为root
-root <code>bootdev</code>  把当前启动设备设置为ROOT,在某些情况下可用。
-应用：
-从U盘启动，
-find --set-root /boot/bcd 查找文件并设置为root,如果找到了这时的root 就是上面找到的磁盘分区
-root <code>bootdev</code> 返回U盘启动root</p>
+<li><p>把启动设备设为root<br>root <code>bootdev</code>  把当前启动设备设置为ROOT,在某些情况下可用。<br>应用：<br>从U盘启动，<br>find —set-root /boot/bcd 查找文件并设置为root,如果找到了这时的root 就是上面找到的磁盘分区<br>root <code>bootdev</code> 返回U盘启动root</p>
 </li>
-<li><p>设置当前磁盘的最后一个分区为ROOT
-root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同样应用在特殊场合。用于定位最后分区，如果当前root设备不是硬盘则会出错。
-这个命令在作一键还原的时候可能会比较有用，一般一键还原会装在最后一个分区。使用这个来定位就好了</p>
+<li><p>设置当前磁盘的最后一个分区为ROOT<br>root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同样应用在特殊场合。用于定位最后分区，如果当前root设备不是硬盘则会出错。<br>这个命令在作一键还原的时候可能会比较有用，一般一键还原会装在最后一个分区。使用这个来定位就好了</p>
 </li>
-<li><p>root 和 rootnoverify的区别
-<code>rootnoverify</code> 不会尝试<code>mount</code> 它所指向的分区,像一些特殊的软盘镜像启动，它里面的文件系统GRUB4DOS不认，这时如果使用root (fd0)就会出错</p>
+<li><p>root 和 rootnoverify的区别<br><code>rootnoverify</code> 不会尝试<code>mount</code> 它所指向的分区,像一些特殊的软盘镜像启动，它里面的文件系统GRUB4DOS不认，这时如果使用root (fd0)就会出错</p>
 </li>
 </ol>
 
@@ -302,10 +286,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
       
         <p>以下需要先设置好GRUB4DOS作为引导。</p>
 <ol>
-<li><p>启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.
- 有时候系统的启动文件被删了就会出现如下提示
- <em>BOOTMGR is missing</em>或者<em>NTLDR is missing</em>
- 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p>
+<li><p>启动硬盘上的系统（不管硬盘上有没有NTLDR/BOOTMGR文件，只要启动配置文件BOOT.INI/BCD存在即可）.<br> 有时候系统的启动文件被删了就会出现如下提示<br> <em>BOOTMGR is missing</em>或者<em>NTLDR is missing</em><br> 这时下面的菜单就可以派上用场了，启动进入系统后再把文件复制过去就OK了，当然了也可以不复制这样你的U盘就是启动KEY了，不懂得的人就进不了你的系统了.</p>
 <p>先复制NTLDR(从XP系统中找）还有bootmgr（VISTA以上系统启动文件），到U盘上。</p>
 <pre><code> title 1.启动硬盘上的xp/2k3系统(NTLDR)
  chainloader /NTLDR
@@ -317,8 +298,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
  find --set-root --ignore-floppies --ignore-cd /boot/bcd
  dd if=()+1 of=(md)0x3e+1
 </code></pre></li>
-<li><p>备份恢复硬盘MBR（此功能不熟悉的最好不要用，否则后果自负）
-首先U盘上需要放一个文件比如MBR_BAK，（大小在512字节以上，内容可以随意）作为备份恢复的载体</p>
+<li><p>备份恢复硬盘MBR（此功能不熟悉的最好不要用，否则后果自负）<br>首先U盘上需要放一个文件比如MBR_BAK，（大小在512字节以上，内容可以随意）作为备份恢复的载体</p>
 <pre><code> title 1.备份硬盘MBR
  checkrange 0x80 read 0x8280 &amp;&amp; dd if=(hd1)+1 of=()/MBR_BAK
  checkrange 0x80 read 0x8280 || dd if=(hd0)+1 of=()/MBR_BAK
@@ -327,19 +307,14 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
  checkrange 0x80 read 0x8280 || dd if=()/mbr_bak of=(hd0)+1 count=1
  checkrange 0x80 read 0x8280 &amp;&amp; dd if=()/mbr_bak of=(hd1)+1 count=1
 </code></pre></li>
-<li><p>加载启动一个IMG镜像，比如MAXDOS.IMG
-把MAXDOS.IMG放在U盘boot目录下</p>
+<li><p>加载启动一个IMG镜像，比如MAXDOS.IMG<br>把MAXDOS.IMG放在U盘boot目录下</p>
 <pre><code> title MaxDos
  map --mem /boot/maxdos.img (fd0)
  map --hook
  chainloader (fd0)+1
  rootnoverify
 </code></pre></li>
-<li><p>从网络启动（PXE），代替网卡的PXE模块。
-首先从<a href="http://rom-o-matic.net/" target="_blank"><a href="http://rom-o-matic.net/">http://rom-o-matic.net/</a></a>下载GPXE或Etherboot的启动镜像
-选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的
-到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)
-比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
+<li><p>从网络启动（PXE），代替网卡的PXE模块。<br>首先从<a href="http://rom-o-matic.net/" target="_blank">http://rom-o-matic.net/</a>下载GPXE或Etherboot的启动镜像<br>选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的<br>到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)<br>比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
 <pre><code> title Gpxe 从网络启动
  kernel /boot/gpxe.zlilo
 
@@ -390,15 +365,12 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
  BootDevice=&quot;ramdisk(0)&quot;
  BootPath=&quot;\I386\SYSTEM32\&quot;
  OsLoadOptions=&quot;/minint /fastdetect /rdpath=I386\WINPE.IMG&quot;
-</code></pre><p><code>SETUPLDR.BIN</code>是启动文件，<code>WINNT.SIF</code>指定启动参数信息比如<code>WINPE.IMG</code>文件位置等
-<code>SETUPLDR.BIN</code>加载时会根据<code>WINNT.SIF</code>里面的内容来启动，<code>WINNT.SIF</code>文件必须放在根目录下</p>
+</code></pre><p><code>SETUPLDR.BIN</code>是启动文件，<code>WINNT.SIF</code>指定启动参数信息比如<code>WINPE.IMG</code>文件位置等<br><code>SETUPLDR.BIN</code>加载时会根据<code>WINNT.SIF</code>里面的内容来启动，<code>WINNT.SIF</code>文件必须放在根目录下</p>
 <p>启动文件加载过程</p>
 <pre><code>SETUPLDR.BIN -&gt; NTDETECT.COM -&gt; WINNT.SIF -&gt; 根据OsLoadOptions 加载WINPE.IMG--&gt;读取WINPE.IMG里面I386\TXTSETUP.SIF.....
 </code></pre><p>现在的PE一般都把<code>WINNT.SIF</code>改名了是<code>WINNT.XPE</code>，还有<code>I386</code>目录改成<code>WXPE</code>,而<code>SETUPLDR.BIN</code>名字改的就比较多了，一般情况下可以根据文件大小看得出来。</p>
-<p>其中<code>WINNT.SIF</code>位置还有<code>I386</code>目录都是通过<code>SETUPLDR.BIN</code>来指定的，<code>SETUPLDR.BIN</code>可以任意位置任意文件名。比如<code>BOOT\MTLDR.BIN</code>
-修改<code>WINNT.SIF</code>和<code>I386</code>名字的方法网上有许多介绍，只需要直接查找替换就行了（用十六进制编辑器打开<code>SETUPLDR.BIN</code>查找替换，长度要一样）。如果要改的比以前短，就在替换的字符后面再加十六进制0就可以了。</p>
-<p> 这里介绍的是另一个比较特殊的修改方法，直接定位修改。
-
+<p>其中<code>WINNT.SIF</code>位置还有<code>I386</code>目录都是通过<code>SETUPLDR.BIN</code>来指定的，<code>SETUPLDR.BIN</code>可以任意位置任意文件名。比如<code>BOOT\MTLDR.BIN</code><br>修改<code>WINNT.SIF</code>和<code>I386</code>名字的方法网上有许多介绍，只需要直接查找替换就行了（用十六进制编辑器打开<code>SETUPLDR.BIN</code>查找替换，长度要一样）。如果要改的比以前短，就在替换的字符后面再加十六进制0就可以了。</p>
+<p> 这里介绍的是另一个比较特殊的修改方法，直接定位修改。<br>
       
     </div>
     
@@ -605,9 +577,8 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
     
     <div class="entry">
       
-        <h3 id="-">软件简介</h3>
-<p>该软件是一个能虚拟网卡和集线器（HUB）的工具，只要可以访问互联网，都可以使用它来组建远程局域网。在此虚拟的局域网上能进行所有物理局域网上的操作。可以互相访问，可以联网玩只支持局网的游戏（TCP/IP）。该软件能够突破防火墙拦截，信息包都经过加密，安全上不存在问题。
-
+        <h3 id="软件简介">软件简介</h3>
+<p>该软件是一个能虚拟网卡和集线器（HUB）的工具，只要可以访问互联网，都可以使用它来组建远程局域网。在此虚拟的局域网上能进行所有物理局域网上的操作。可以互相访问，可以联网玩只支持局网的游戏（TCP/IP）。该软件能够突破防火墙拦截，信息包都经过加密，安全上不存在问题。<br>
       
     </div>
     
@@ -636,7 +607,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/8/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li class="active"><li><span class="page-number current">9</span></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><a class="page-number" href="/page/12/">12</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/10/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/8/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li class="active"><li><span class="page-number current">9</span></li></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><a class="page-number" href="/page/12/">12</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/10/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -701,7 +672,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -717,14 +688,12 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -808,7 +777,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

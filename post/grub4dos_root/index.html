@@ -12,11 +12,8 @@
 
 <meta name="description" content="一、基本概念。
 
- root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下
-  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问">
+ root中文解释就是“根”的意思。  例子：  一个磁盘文件列表如下
+  其中一开始X:\就是默认root  现在要访问boot\file3 就可以使用 /boot/file3 来访问  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -137,9 +134,7 @@ var _js2load = [];
       
         <p>一、基本概念。</p>
 <blockquote>
-<p> root中文解释就是“根”的意思。
-  例子：
-  一个磁盘文件列表如下</p>
+<p> root中文解释就是“根”的意思。<br>  例子：<br>  一个磁盘文件列表如下</p>
 <pre><code>    X:\
     x:\test1\file1
     x:\test2\file1
@@ -150,11 +145,7 @@ var _js2load = [];
     X:\boot\test\file1
     X:\boot\test\file2
     X:\boot\test\file3
-</code></pre><p>  其中一开始X:\就是默认root
-  现在要访问boot\file3 就可以使用 /boot/file3 来访问
-  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。
-  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，
-  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p>
+</code></pre><p>  其中一开始X:\就是默认root<br>  现在要访问boot\file3 就可以使用 /boot/file3 来访问<br>  默认root是可以改变的比如我需要连续访问x:\boot\test\file1,file2,file3。<br>  这样每次访问都要使用/boot/test/file1这样的路径会比较麻烦，<br>  这时可以设置x:\boot\test为root 这样要访问上面的文件就只要 /file1就可以了</p>
 </blockquote>
 <pre><code>root (hd0,0)/ 设置(hd0,0)/为当前根
 root () 在GRUB4DOS中()代表当前根磁盘(root drive)相当于上面的X:
@@ -169,22 +160,13 @@ find --set-root --ignore-floppies /boot/bcd # 查找时不找软盘设备
 find --set-root --ignore-cd /boot/bcd # 不找光盘设备。
 find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘设备
 </code></pre></li>
-<li><p>设置默认root
-root (hd0,0)/windows 设置(hd0,0)/windows为root,以后要访问(hd0,0)/windows里面的文件直接使用 /xxx就可以了</p>
+<li><p>设置默认root<br>root (hd0,0)/windows 设置(hd0,0)/windows为root,以后要访问(hd0,0)/windows里面的文件直接使用 /xxx就可以了</p>
 </li>
-<li><p>把启动设备设为root
-root <code>bootdev</code>  把当前启动设备设置为ROOT,在某些情况下可用。
-应用：
-从U盘启动，
-find --set-root /boot/bcd 查找文件并设置为root,如果找到了这时的root 就是上面找到的磁盘分区
-root <code>bootdev</code> 返回U盘启动root</p>
+<li><p>把启动设备设为root<br>root <code>bootdev</code>  把当前启动设备设置为ROOT,在某些情况下可用。<br>应用：<br>从U盘启动，<br>find —set-root /boot/bcd 查找文件并设置为root,如果找到了这时的root 就是上面找到的磁盘分区<br>root <code>bootdev</code> 返回U盘启动root</p>
 </li>
-<li><p>设置当前磁盘的最后一个分区为ROOT
-root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同样应用在特殊场合。用于定位最后分区，如果当前root设备不是硬盘则会出错。
-这个命令在作一键还原的时候可能会比较有用，一般一键还原会装在最后一个分区。使用这个来定位就好了</p>
+<li><p>设置当前磁盘的最后一个分区为ROOT<br>root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同样应用在特殊场合。用于定位最后分区，如果当前root设备不是硬盘则会出错。<br>这个命令在作一键还原的时候可能会比较有用，一般一键还原会装在最后一个分区。使用这个来定位就好了</p>
 </li>
-<li><p>root 和 rootnoverify的区别
-<code>rootnoverify</code> 不会尝试<code>mount</code> 它所指向的分区,像一些特殊的软盘镜像启动，它里面的文件系统GRUB4DOS不认，这时如果使用root (fd0)就会出错</p>
+<li><p>root 和 rootnoverify的区别<br><code>rootnoverify</code> 不会尝试<code>mount</code> 它所指向的分区,像一些特殊的软盘镜像启动，它里面的文件系统GRUB4DOS不认，这时如果使用root (fd0)就会出错</p>
 </li>
 </ol>
 
@@ -242,7 +224,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li><li class="list-group-item"><a href="/post/dropbox_version/">[转] DropBox的版本控制功能</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/cameyo_2-0-873/">单文件程序制作利器Cameyo更新</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/distributed_queries/">分布式查询</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="113"  data-url="http://chenall.net/post/grub4dos_root/" data-title="[GRUB4DOS] root 命令介绍"></div>
@@ -311,7 +293,7 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -327,14 +309,12 @@ root <code>endpart</code> 设置当前硬盘的最后一个分区为root，同�
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -431,7 +411,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

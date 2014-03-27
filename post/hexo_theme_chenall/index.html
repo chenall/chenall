@@ -129,61 +129,78 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <h3 id="-">主题简介</h3>
+        <h3 id="主题简介">主题简介</h3>
 <p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题 <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a> 修改而成,采用 <a href="http://getbootstrap.com/" target="_blank">bootstrap</a> 框架  </p>
 <p>在尽量保留原有主题功能的同时采用模块化设计支持实现组件模块化.完全自定义,通过widgets你可以添加许多实用功能.可以自定义组合各种组件,像评论系统,统计系统等.</p>
 <p>大部份的JS/CSS等静态文件都使用CDN加载,使用了 <a href="http://open.bootcss.com/" target="_blank">bootcss</a> 和 <a href="http://www.staticfile.org/" target="_blank">qiniu</a> 的CDN服务.</p>
 <p>以下是本主题的特色:</p>
+<p>基于<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>默认主题light修改而成,采用bootstrap css框架,主要考虑多站点支持.<br>在尽量保留原有主题功能的同时采用模块化设计支持多个widgets.实现高度自定义,通过widgets你可以添加许多实用功能.<br>可以自定义组合各种组件,像评论系统,统计系统等.</p>
 <ul>
+<li>支持多站点共用同一主题,免切换</li>
 <li>支持单独启用或禁用小工具(像侧边栏之类的)</li>
 <li>支持单独启用或禁用评论</li>
+<li>支持自动设置目录(source_dir,public_dir,scaffolds)</li>
 <li>可以单独指定加载小工具</li>
-<li>支持多个分类，支持子分类,分类名不区分大小写</li>
+<li>支持多个分类，支持子分类</li>
 <li>独特的用户配置文件(自动加载<code>$SOURCE\_$THEME.yml</code>[默认就是<strong>source\_chenall.yml</strong>]作为主题的配置文件,这样可以避免升级主题或其它原因导致的配置文件丢失).</li>
 <li><code>iLink</code> 文章内链功能</li>
 <li><code>ijs</code> 文章内嵌脚本或能</li>
-<li>允许在head或body的前面或尾部附加自定义内容.</li>
+<li>允许在head或body的前面或尾部附加自定义内容.(相对1.0版改变,新版只使用<code>source/_modules</code>目录).</li>
 <li>独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)</li>
 </ul>
 <a id="more"></a>
 
-<p>注: 上面的$SOURCE是hexo配置文件中在<code>source_dir</code>,$THEME是hexo配置文件中的<code>theme</code>,即 <strong>hexo.source<em>dir + &#39;</em>&#39;+ hexo.config.theme+ &#39;.yml&#39;</strong>;</p>
+<p>注: 上面的$SOURCE是hexo配置文件中在<code>source_dir</code>,$THEME是hexo配置文件中的<code>theme</code>,即 <strong>hexo.source<em>dir + ‘</em>‘+ hexo.config.theme+ ‘.yml’</strong>;</p>
 <p>其它: 本主题可以轻松支持多站点，每个站点的配置各自独立，互不影响（包括站点特定插件等）。</p>
 <p>效果见本站源码：<a href="https://github.com/chenall/chenall" target="_blank">https://github.com/chenall/chenall</a><br>还有demo源码: <a href="https://github.com/chenall/hexo-theme-chenall" target="_blank">https://github.com/chenall/hexo-theme-chenall</a>  </p>
 <p>site分支里面的文件就是文章源码，源码里面包括了对应的配置文件_config.yml和插件等。</p>
-<p>安装hexo之后，再安装本主题。 
-然后下载本站源码，就可以使用新版的hexo测试了</p>
+<p>安装hexo之后，再安装本主题。<br>然后下载本站源码，就可以使用新版的hexo测试了</p>
 <p>例子:</p>
 <pre><code>svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
 svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
 hexo server --config chenall.net/_config.yml
-</code></pre><h2 id="-demo-chenall-net-"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
-<h3 id="-">安装方法</h3>
+</code></pre><p>注2: V2.0版适用的hexo版本为 2.5.3 以上(2.5.2版本有Bug会显示不正常).2.4.X版请下载V1.0版主题.</p>
+<h2 id="<strong>具体效果:</strong>_<a_href="http://hexo-chenall-net" target="_blank">demo</a>_或本站_<a_href="http://chenall-net" target="_blank">chenall-net</a>"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
+<h3 id="安装方法">安装方法</h3>
 <p>通过以下命令下载主题到您的theme目录，然后修改blog的<code>_config.yml</code>中<em>theme</em>为<code>chenall</code>。</p>
 <pre><code>git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
 </code></pre><p>或</p>
 <pre><code>svn co -r HEAD https://github.com/chenall/hexo-theme-chenall/trunk themes/chenall
-</code></pre><p>另外: 主题内置的<code>list_posts</code>插件还需要额外安装一个<code>lodash</code>组件,使用以下命令安装即可.</p>
+## 若要下载1.0版用以下命令
+svn co https://github.com/chenall/hexo-theme-chenall/tags/V1.0 themes/chenall
+</code></pre><p>另外: 主题内置的<code>list_posts</code>插件还需要额外安装一个<code>lodash</code>组件,使用以下命令安装即可.(V1.0版需要)</p>
 <pre><code>npm install lodash --save
-</code></pre><h3 id="-">更新</h3>
+</code></pre><h3 id="更新">更新</h3>
 <p>通过以下命令来保持更新:</p>
 <pre><code>cd themes/light
 git pull 或 svn up
-</code></pre><h3 id="-">分类说明</h3>
+</code></pre><h2 id="自动设置目录_(V2-0)">自动设置目录 (V2.0)</h2>
+<p><code>hexo</code>默认的<code>source</code>目录等虽然可以通过配置文件来指定,但由于必须使用固定的目录,使用起来不太灵活</p>
+<p>本主题对此进行了扩展,允许这些目录跟随配置文件自动变化,比如下面的配置,最终的source_dir是<code>$config/_config.yml</code></p>
+<pre><code>CustomDir:
+  source_dir: source
+  public_dir: public
+</code></pre><p>说明:</p>
+<ol>
+<li>目前只支持’public_dir’,’source_dir’,’scaffold_dir’的配置.</li>
+<li>可以使用变量<strong>:config</strong>代表配置文件目录.比如 source_dir: <strong>:config</strong></li>
+<li>具体实例可以参考[demo.site</li>
+</ol>
+<h3 id="分类说明">分类说明</h3>
 <p>本主题分类方式是额外实现的,一行一个分类,每一行都是一个独立分类.</p>
 <p>同时支持多级分类,像下面的.就设置了两个分类,<code>编程开发</code>和<code>VBScript</code>,<code>VBScript</code>是一个子分类.具体效果请参考<a href="http://hexo.chenall.net" target="_blank">demo</a></p>
-<pre><code class="lang-yaml">categories: 
+<pre><code class="yaml">categories: 
 - 程序设计/VB/VBScript
 - 编程开发
 </code></pre>
-<h3 id="ijs-">ijs 内嵌脚本</h3>
+<h3 id="ijs_内嵌脚本">ijs 内嵌脚本</h3>
 <p><code>ijs</code> 是本主题的内置的<code>tag</code>插件,可以在文章中内嵌脚本,这样可以实现一些特殊功能.(因为是在主题中执行的,所以可以使用那些helper插件);</p>
 <p>一个简单的例子,在文章中插入以下内容.</p>
 <pre><code>{% ijs %}
 return link_to(&#39;http://chenall.net&#39;,&#39;我的搏客&#39;);
 {% endijs %}
 </code></pre><p>以上通过hexo内置的<em>helper</em>插件<strong>link_to</strong>实现在文章中插入一个链接指向<code>http://chenall.net</code>.</p>
-<h2 id="-notextile-0-notextile-">效果: <a href="http://chenall.net" title="我的搏客">我的搏客</a></h2>
+<h2 id="效果:_<a href="http://chenall.net" title="我的搏客">我的搏客</a>">效果: <a href="http://chenall.net" title="我的搏客">我的搏客</a></h2>
 <p>复杂一些的例子,在文章中插入最新的5篇文章列表.</p>
 <pre><code>{% ijs %}
 var str = &#39;&#39;;
@@ -196,9 +213,9 @@ if (site.posts.length){
 }
 return str;
 {% endijs %}
-</code></pre><h2 id="-">效果如下:</h2>
+</code></pre><h2 id="效果如下:">效果如下:</h2>
 <ul class="list-group"><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li></ul>
-<h3 id="ilink-">iLink 文章内链</h3>
+<h3 id="iLink_文章内链">iLink 文章内链</h3>
 <p><code>iLink</code> 是本主题内置的的<code>tag</code>插件,通过<strong>iLink</strong>可以很方便的在文章中插入文章链接.</p>
 <p>iLink 使用格式</p>
 <pre><code>{% iLink TYPE:VALUE%}
@@ -235,9 +252,8 @@ VALUE: 值
 </ol>
 </li>
 </ul>
-<h3 id="-">附加自定义内容</h3>
-<p>如果你需要一些添加一些额外和主题无关的内容.这时就可以使用这个功能. 
-在<code>_modules</code>目录中(主题或source都可以)新建一个文件夹<code>partial</code>.</p>
+<h3 id="附加自定义内容">附加自定义内容</h3>
+<p>如果你需要一些添加一些额外和主题无关的内容.这时就可以使用这个功能.<br>在<code>_modules</code>目录中(主题或source都可以)新建一个文件夹<code>partial</code>.</p>
 <p>然后就可以通过<code>partial</code>里面的特定文件添加额外内容.</p>
 <p>具体文件列表:</p>
 <ul>
@@ -247,11 +263,11 @@ VALUE: 值
 <li><code>head_end.ejs</code>     标签<code>&lt;/head&gt;</code>前</li>
 </ul>
 <p>例子: 想要在head中添加一行<code>meta</code>信息就可以在<code>head_start.ejs</code>中添加.</p>
-<h2 id="-">主题配置说明</h2>
+<h2 id="主题配置说明">主题配置说明</h2>
 <p>注: 配置中如果需要访问到本地路径,除非特别指定否则应该用<code>css/theme.css</code>不要写成<code>/css/theme.css</code>,前者是相对路径会自动添加<strong>config.root</strong>路径.后者是绝对路径.</p>
 <p>本主题特色: <strong>把这个配置文件复制到<code>source</code>目录下并改名为<code>_chenall.yml</code>则会优先使用该配置,这样可以避免由于升级主题或其它原因导致的配置丢失.更方便使用.</strong></p>
-<h3 id="-">默认的配置</h3>
-<pre><code class="lang-yaml"># Site default meta keywords
+<h3 id="默认的配置">默认的配置</h3>
+<pre><code class="yaml"># Site default meta keywords
 #keywords: site, wide, default, keywords
 
 #已加载的模块,按顺序加载,所以需要自己调整加载的顺序,比如jquery一般要加载在最前面
@@ -393,9 +409,9 @@ github_id: chenall/almrun
 
 rss: atom.xml
 </code></pre>
-<h3 id="-">其它语言支持</h3>
+<h3 id="其它语言支持">其它语言支持</h3>
 <p>  本主题只设置了简体中文语言文件,要使用其它语言,可以自己翻译下.以下是简体中文的语言文件例子:</p>
-<pre><code class="lang-yaml">categories: 分类
+<pre><code class="yaml">categories: 分类
 search: 搜索
 tags: 标签
 tagcloud: 标签云
@@ -463,7 +479,7 @@ widgets:
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-03-27 16:41:32"datetime="2014-03-27 16:41:32"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/hexo_theme_chenall/#comments" class="ds-thread-count comment-link" data-thread-key="1402132138" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -485,7 +501,7 @@ widgets:
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post35/">一个文件处理的小工具</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/post55/">[分享]影子系统 POWERSHADOW 2.6免费版 精简版 for 2k,xp,2003</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="1402132138"  data-url="http://chenall.net/post/hexo_theme_chenall/" data-title="Hexo 模块化主题"></div>
@@ -554,7 +570,7 @@ widgets:
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -570,14 +586,12 @@ widgets:
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:41:32</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -674,7 +688,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

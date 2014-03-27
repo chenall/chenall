@@ -121,8 +121,7 @@ var _js2load = [];
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2012-11-30T03:54:17.000Z">2012-11-30</time>  <a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></h3><p class="list-group-item-text">一直都懒得写文章,嘿嘿,抽空把一些日常工作中用到的实用功能分享一下,也许会有人需要.
 一般情况下使用共享打印机都是直接输入计算机名或IP然后双击那个共享的打印机进行安装,这个方法比较简单.
-但是有一些软件它必须使用LPT端口来打印,这时就没有办法用共享了,这里介绍另一种安装方法,可以解决这类问题.如果你早就知道了可以跳过,因为可能是一样的方法.</p><li class="list-group-item"><h3><time datetime="2012-11-27T04:03:49.000Z">2012-11-27</time>  <a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></h3><p class="list-group-item-text">使用PHP做的一个简易HTTP代理服务端,没有多少技术含量.有时可以利用一下.嘿嘿.比如在公司内部可以用它来偷偷上网,当然了要求了内部网站,并且支持PHP而且该服务器可以上网,你还要有办法访问到这个电脑.</p><li class="list-group-item"><h3><time datetime="2012-11-27T02:35:48.000Z">2012-11-27</time>  <a href="/post/php_manual/">PHP相关记录</a></h3><p class="list-group-item-text">PHP Curl 417 Expectation Failed
-原因: 服务端使用lighttpd,而lighttp不支持返回&quot;Expect: 100-continue&quot;这样的header，就会以417 &quot;Expectation failed&quot; 来代替（lighttpd 1.5.0无此问题）。</p>
+但是有一些软件它必须使用LPT端口来打印,这时就没有办法用共享了,这里介绍另一种安装方法,可以解决这类问题.如果你早就知道了可以跳过,因为可能是一样的方法.</p><li class="list-group-item"><h3><time datetime="2012-11-27T04:03:49.000Z">2012-11-27</time>  <a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></h3><p class="list-group-item-text">使用PHP做的一个简易HTTP代理服务端,没有多少技术含量.有时可以利用一下.嘿嘿.比如在公司内部可以用它来偷偷上网,当然了要求了内部网站,并且支持PHP而且该服务器可以上网,你还要有办法访问到这个电脑.</p><li class="list-group-item"><h3><time datetime="2012-11-27T02:35:48.000Z">2012-11-27</time>  <a href="/post/php_manual/">PHP相关记录</a></h3><p class="list-group-item-text">PHP Curl 417 Expectation Failed原因: 服务端使用lighttpd,而lighttp不支持返回”Expect: 100-continue”这样的header，就会以417 “Expectation failed” 来代替（lighttpd 1.5.0无此问题）。解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(‘Expect:’);</p>
 
 </div></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -187,7 +186,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -203,14 +202,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:04</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -294,7 +291,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

@@ -131,13 +131,12 @@ var _js2load = [];
 <p>一般情况下使用共享打印机都是直接输入计算机名或IP然后双击那个共享的打印机进行安装,这个方法比较简单.</p>
 <p>但是有一些软件它必须使用<code>LPT</code>端口来打印,这时就没有办法用共享了,这里介绍另一种安装方法,可以解决这类问题.如果你早就知道了可以跳过,因为可能是一样的方法.</p>
 <p>例子: 有一个条码打印机 OS-214的,使用佳为软件的标签打印,如果是本机的打印一切正常,但是如果使用上面的共享打印就不行了,因为它是直接写<code>LPT</code>端口的.</p>
-<h3 id="-">解决方法:</h3>
+<h3 id="解决方法:">解决方法:</h3>
 <ol>
 <li>在装有条码打印机的机子上把这个打印机设为共享比如名为<code>LABEL</code></li>
 <li>在需要使用的机子上映射并安装这个共享打印机<blockquote>
-<p>   例子,有装打印机的电脑IP是<code>192.168.0.5</code>,共享名为<code>LABEL</code>
- 在需要使用的机子上直接输入以下命令先进行共享映射.</p>
-<pre><code class="lang-bat"> net use LPT1: \\192.168.0.5\LABEL /PERSISTENT:YES
+<p>   例子,有装打印机的电脑IP是<code>192.168.0.5</code>,共享名为<code>LABEL</code><br> 在需要使用的机子上直接输入以下命令先进行共享映射.</p>
+<pre><code class="bat"> net use LPT1: \\192.168.0.5\LABEL /PERSISTENT:YES
 </code></pre>
 <p> 成功之后就可以把这个打印机当成本地的来使用了,只要再本地添加新打印机就行了,端口选择<code>LPT1</code>,驱动就是对应的驱动.</p>
 </blockquote>
@@ -183,147 +182,22 @@ var _js2load = [];
         <p>使用PHP做的一个简易HTTP代理服务端,没有多少技术含量.有时可以利用一下.嘿嘿.比如在公司内部可以用它来偷偷上网,当然了要求了内部网站,并且支持PHP而且该服务器可以上网,你还要有办法访问到这个电脑.</p>
 <p>最初我是利用它来抓取数据包用的,通过代理可以在代理服务器上抓取到所有发送和接收的数据包,所以使用别人的代理时需要注意,因为别人可以截获/修改你发送的数据包,</p>
 <p>要求: 有独立IP,支持PHP+CURL.</p>
-<p>使用方法,把代码直接上传到PHP服务器上,并设置好URL重写规则.就可以开始使用了,
-一个简单的URL重写规则(比较适用于服务端和客户端是网一网络的情况比如内网，只是简单的判断一下如果是通过代理访问就设为代理服务器)</p>
-<pre><code>RewriteCond %{HTTP_PROXY_CONNECTION} !^$
-RewriteRule !^proxy.php proxy.php [NE,NC,L]
-</code></pre><p>比如你的服务器IP是 192.168.0.88</p>
-<p>在浏览器客户端设置HTTP代理192.168.0.88 端口 80就可以开始上网了.</p>
-<p>注：最新版本源码请从以下地址查看、下载。
-<a href="https://github.com/chenall/chenall/tree/master/php/php_proxy" target="_blank"><a href="https://github.com/chenall/chenall/tree/master/php/php_proxy">https://github.com/chenall/chenall/tree/master/php/php_proxy</a></a></p>
-<pre><code class="lang-php">&lt;?php
-/*
-    使用PHP服务端来做简易的HTTP代理
-    不支持需要证书的网站或使用&quot;multipart/form-data&quot;加密的POST类型(一般上传文件或发贴使用这个加密).
-    用途: ......
-    编写: chenall
-    时间: 2012-11-27
-    版本: 1.1
-    网址: http://chenall.net/post/php_http_proxy/
-    修订:
-
-         2012-11-28 v1.1
-           1.添加write_function,分段输出(可以在线视频).
-           2.预置调试,可以开启记录模式,记录所有访问和返回的内容.
-*/
-$chunked = 0;
-$gziped = 0;
-function header_function($ch, $header){
-    global $debug;
-    if (stripos($header,&#39;chunked&#39;) !== false)//如果碰到分断好像会出错,所以过滤一下.若你有好的方案烦告之.
-        $GLOBALS[&#39;chunked&#39;] = 1;
-    if (stripos($header,&#39;Content-Encoding: gzip&#39;) === 0)
-        $GLOBALS[&#39;gziped&#39;] = 1;
-    header($header);
-    empty($debug) || fwrite($debug,$header);
-    return strlen($header);
-}
-
-function write_function($ch, $body){
-    global $debug;
-    if ($GLOBALS[&#39;chunked&#39;]){
-        printf(&quot;%x\r\n%s\r\n&quot;, strlen($body), $body);
-    }else{
-        echo $body;
-    }
-    if ($debug)
-    {
-        //if ($GLOBALS[&#39;gziped&#39;])
-        //    fwrite($debug,gzinflate(substr($body,10,-4)));
-        //else
-            fwrite($debug,$body);
-    }
-    return strlen($body);
-}
-
-function proxy()
-{
-    global $debug;
-    $hearer = array();
-    //获取HTTP相关的HEADER信息
-    if (function_exists(&#39;getallheaders&#39;))
-    {
-        $allheader = getallheaders();
-        foreach($allheader as $h=&gt;$key)
-        {
-            $header[] = $h.&#39;: &#39;.$key;
-        }
-    }
-    else
-    {
-        foreach($_SERVER as $key=&gt;$value)
-        {
-            if (strcasecmp(substr($key,0,4),&#39;HTTP&#39;) == 0)
-            {
-                $header[] = substr($key,5).&#39;: &#39;.$value;
-            }
-        }
-        if (isset($_SERVER[&#39;PHP_AUTH_DIGEST&#39;])) { 
-            $header[] = &#39;AUTHORIZATION: &#39;.$_SERVER[&#39;PHP_AUTH_DIGEST&#39;]; 
-        } else if (isset($_SERVER[&#39;PHP_AUTH_USER&#39;]) &amp;&amp; isset($_SERVER[&#39;PHP_AUTH_PW&#39;])) {
-            $header[] = &#39;AUTHORIZATION: &#39;.base64_encode($_SERVER[&#39;PHP_AUTH_USER&#39;] . &#39;:&#39; . $_SERVER[&#39;PHP_AUTH_PW&#39;]); 
-        }
-        if (isset($_SERVER[&#39;CONTENT_LENGTH&#39;])) { 
-            $header[] = &#39;CONTENT-LENGTH: &#39;.$_SERVER[&#39;CONTENT_LENGTH&#39;]; 
-        }
-        if (isset($_SERVER[&#39;CONTENT_TYPE&#39;])) { 
-            $header[] = &#39;CONTENT_TYPE: &#39;.$_SERVER[&#39;CONTENT_TYPE&#39;]; 
-        }
-    }
-    $url = $_SERVER[&#39;REQUEST_URI&#39;];
-    $curl_opts = array(
-        CURLOPT_URL =&gt; $url,
-        CURLOPT_CONNECTTIMEOUT =&gt; 10,
-        CURLOPT_TIMEOUT =&gt; 10,
-        CURLOPT_AUTOREFERER =&gt; true,
-        CURLOPT_FOLLOWLOCATION =&gt; true,
-        CURLOPT_RETURNTRANSFER =&gt; true,
-        CURLOPT_BINARYTRANSFER =&gt; true,
-        CURLOPT_HEADERFUNCTION =&gt; &#39;header_function&#39;,
-        CURLOPT_WRITEFUNCTION =&gt; &#39;write_function&#39;,
-        CURLOPT_CUSTOMREQUEST =&gt;$_SERVER[&#39;REQUEST_METHOD&#39;],
-        CURLOPT_SSL_VERIFYPEER =&gt; false,
-        CURLOPT_HTTPHEADER =&gt; $header,
-        CURLOPT_SSL_VERIFYHOST =&gt; false
-    );
-
-    if ($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;)//如果是POST就读取POST信息,不支持
-    {
-        $curl_opts[CURLOPT_POST] = true; 
-        $curl_opts[CURLOPT_POSTFIELDS] = file_get_contents(&#39;php://input&#39;); 
-    }
-    $curl = curl_init();
-    curl_setopt_array ($curl, $curl_opts);
-    empty($debug) || fwrite($debug,&quot;\r\n&quot;.date(&#39;Y-m-d H:i:s&#39;,time()).&quot; URL: &quot;.$curl_opts[CURLOPT_URL].&quot;\r\n&quot;.$curl_opts[CURLOPT_POSTFIELDS].&quot;\r\n&quot;.implode(&quot;\r\n&quot;,$header).&quot;\r\n\r\n&quot;);
-    $ret = curl_exec ($curl);
-    if ($GLOBALS[&#39;chunked&#39;]){
-        echo &quot;0\r\n\r\n&quot;;
-    }
-    curl_close($curl);
-    unset($curl);
-}
-$debug = 1;//设为1开启记录.
-if ($debug)
-{
-    if (!file_exists(&#39;debug/&#39;))
-        mkdir(&#39;debug&#39;);
-    $debug = fopen(&quot;debug/&quot;.$_SERVER[&#39;REMOTE_ADDR&#39;].date(&#39;_ymdHis_&#39;,time()).&#39;__&#39;.$_SERVER[&#39;SERVER_NAME&#39;].&quot;.log&quot;,&#39;a&#39;);
-    fwrite($debug,print_r($_SERVER,true));
-    fwrite($debug,&quot;===========php://input===========\r\n&quot;.@file_get_contents(&#39;php://input&#39;).&quot;\r\n======================\r\n&quot;);
-}
-proxy();
-empty($debug) || fclose($debug);
-</code></pre>
 
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/php_http_proxy/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/PHP/" class="label label-primary">PHP</a><a href="/tags/原创/" class="label label-success">原创</a><a href="/tags/代理/" class="label label-info">代理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/PHP/" class="label label-primary">PHP</a><a href="/tags/原创/" class="label label-success">原创</a><a href="/tags/代理/" class="label label-info">代理</a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/php_http_proxy/#comments" class="ds-thread-count comment-link" data-thread-key="884" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -348,20 +222,12 @@ empty($debug) || fclose($debug);
     <div class="entry">
       
         <ol>
-<li>PHP Curl 417 Expectation Failed
-原因: 服务端使用lighttpd,而lighttp不支持返回&quot;Expect: 100-continue&quot;这样的header，就会以417 &quot;Expectation failed&quot; 来代替（lighttpd 1.5.0无此问题）。
-解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(&#39;Expect:&#39;);</li>
-<li>使用MYSQLI或PDO来代替MYSQL
-相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a>
-通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
-<li>MYSQL数据库查询语句优化
-如下例子第二句比第一句速度更快,当然了,两个命令显示的结果是不一样的,具体可以查一下相关资料,只是大部份情况下都可以用join命令来优化.<pre><code>select * from t1,t2 where t1.id=t2.id
+<li>PHP Curl 417 Expectation Failed<br>原因: 服务端使用lighttpd,而lighttp不支持返回”Expect: 100-continue”这样的header，就会以417 “Expectation failed” 来代替（lighttpd 1.5.0无此问题）。<br>解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(‘Expect:’);</li>
+<li>使用MYSQLI或PDO来代替MYSQL<br>相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a><br>通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
+<li>MYSQL数据库查询语句优化<br>如下例子第二句比第一句速度更快,当然了,两个命令显示的结果是不一样的,具体可以查一下相关资料,只是大部份情况下都可以用join命令来优化.<pre><code>select * from t1,t2 where t1.id=t2.id
 select * from t1 left join t2 using(id)
 </code></pre></li>
-<li>在线PHP手册国内镜像站点
-<a href="http://php.sinaapp.com/manual/zh/" target="_blank"><a href="http://php.sinaapp.com/manual/zh/">http://php.sinaapp.com/manual/zh/</a></a>
-或
-<a href="http://cn2.php.net" target="_blank"><a href="http://cn2.php.net">http://cn2.php.net</a></a></li>
+<li>在线PHP手册国内镜像站点<br><a href="http://php.sinaapp.com/manual/zh/" target="_blank">http://php.sinaapp.com/manual/zh/</a><br>或<br><a href="http://cn2.php.net" target="_blank">http://cn2.php.net</a></li>
 <li>PHP使用CURL时显示上下传进度的方法<pre><code>function curl_progress($download_size, $downloaded, $upload_size,$uploaded)
 {//PHP手册上的说明有误，其实应该是四个参数。如本例。
     if ($download_size)
@@ -456,29 +322,22 @@ curl_close($curl);
         <p>最近在学习PHP,随手做几个基于网盘的直链,,嘿嘿以后不用担心没有地方放文件了.</p>
 <p>初步测试,挺稳定的说,放一段时间看一下.</p>
 <p>没有什么好说的.直接上效果,</p>
-<p>图片直链</p>
-<p><a href="http://d.chenall.net/2/9lightning9.jpg" target="_blank"><img src="http://d.chenall.net/2/9lightning9.jpg" alt=""></a></p>
-<p><a href="http://d.chenall.net/2/8lightning8.jpg" target="_blank"><img src="http://d.chenall.net/2/8lightning8.jpg" alt=""></a></p>
-<p>MP3在线播放</p>
-<audio controls="controls" loop="loop" src="http://d.chenall.net/2/詹雅雯 - 今年一定会好过.mp3">你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。</audio>
-
-<p>文件下载直链测试: <a href="http://d.chenall.net/2/詹雅雯 - 今年一定会好过.mp3" title="189天翼云直链下载测试" target="_blank">詹雅雯 - 今年一定会好过.mp3</a></p>
-<p>目前正在整理天翼网盘的API,有兴趣的朋友请继续关注本文.</p>
-<p>目前已经完成的API功能如下.基本可用,但是还没有完善,提示信息比较少,出错不好定位.</p>
-<blockquote>
-<p>del/ren/move/mkdir/upload/download/login/logout</p>
-</blockquote>
-<p>到时再看情况,根据需求放出API下载.天翼网盘直链,你也可以.</p>
 
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/189_dl/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/天翼云/" class="label label-primary">天翼云</a><a href="/tags/直链/" class="label label-success">直链</a><a href="/tags/PHP/" class="label label-info">PHP</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/天翼云/" class="label label-primary">天翼云</a><a href="/tags/直链/" class="label label-success">直链</a><a href="/tags/PHP/" class="label label-info">PHP</a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/189_dl/#comments" class="ds-thread-count comment-link" data-thread-key="857" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -507,96 +366,22 @@ curl_close($curl);
 <p>可能是因为新浪限制了不允许模拟登录,同样的登录参数,用网页登录一切正常,用CURL登录,返回的<span style="color:#800000;">COOKIES</span>竟然是<span style="color:#ff0000;">临时</span>的.</p>
 <p>所以看起来是登录成功了,并且获取到了用户信息,但是再次访问还是未登录状态.我的解决方法比较简单,直接修改COOKIES的时效这样就行了.</p>
 <p>附上我自己测试通过的PHP代码如下,希望有对有同样问题的朋友有用,如果你有更好的方案欢迎分享一下.</p>
-<p>2012-08-18 更新: 发现只要不设置CURLOPT_COOKIESESSION参数就行了,不需要修改COOKIE_FILE.</p>
-<pre><code>&lt;?php
-class sina
-{
-/*
-    一个简单的新浪微搏curl模拟登录类. 来源: http://chenall.net/post/sina_curl_login/
-    使用方法:
 
-    http函数是一个简单的curl封装函数,需要自己去实现,
-    http函数原型如下:
-        http($url,$post_data = null)
-        返回网页内容.
-    第一个参数$url,就是要访问的url地址,$post_data是post数据,如果为空,则代表GET访问.
-
-    1.使用加密后密码登录 加密方法: sha1(sha1($pass))
-        $sina = new sina($username,$sha1pass)
-    2.直接使用原始密码登录
-        $sina = new sina($username,$sha1pass,0)
-    执行之后如果$sina-&gt;status非空,则登录成功,否则登录失败.
-    登录成功之后,你就可以直接继续使用http函数来访问其它内容.
-    使用 unset($sina) 会自动注销登录.
-*/
-    public $status;
-    function __construct($su,$sp,$flags = 1) {
-        $this-&gt;status = $this-&gt;login($su,$sp,$flags);
-    }
-
-    function __destruct()
-    {
-        //注销登录
-        $this-&gt;logout();
-    }
-
-    function logout()
-    {
-        http(&quot;http://weibo.com/logout.php&quot;);
-        unset($this-&gt;status);
-    }
-    /*不需要了,只要不设置HTTP函数中不设置CURLOPT_COOKIESESSION参数就行了,要设可以设为false.
-    function ResetCookie()//重置相关cookie
-    {
-        global $cookie_file;
-        $str = file_get_contents($cookie_file);
-        $t = time()+3600;//设置cookie有效时间一个小时
-        $str = preg_replace(&quot;/\t0\t/&quot;, &quot;\t&quot;.$t.&quot;\t&quot;, $str);
-        $f = fopen($cookie_file,&quot;w&quot;);
-        fwrite($f,$str);
-        fclose($f);
-    }
-    */
-
-    function login($su,$sp,$flags = 0)
-    {
-        $su = urlencode(base64_encode($su));
-        $data = http(&quot;http://login.sina.com.cn/sso/prelogin.php?entry=miniblog&amp;client=ssologin.js&amp;user=&quot;.$su);
-        if (empty($data))
-            return null;
-        //$data = substr($data,35,-1);
-        $data = json_decode($data);
-        if ($data-&gt;retcode != 0)
-            return null;
-        if ($flags == 0)
-            $sp = sha1(sha1($sp));
-        $sp .= strval($data-&gt;servertime).$data-&gt;nonce;
-        $sp = sha1($sp);
-        $data = &quot;url=http%3A%2F%2Fweibo.com%2Fajaxlogin.php%3F&amp;returntype=META&amp;ssosimplelogin=1&amp;su=&quot;.$su.&#39;&amp;service=miniblog&amp;servertime=&#39;.$data-&gt;servertime.&quot;&amp;nonce=&quot;.$data-&gt;nonce.&#39;&amp;pwencode=wsse&amp;sp=&#39;.$sp;
-        $data = http(&quot;http://login.sina.com.cn/sso/login.php?client=ssologin.js&quot;,$data);
-        //$this-&gt;ResetCookie();
-        if (preg_match(&quot;/location\.replace\(&#39;(.*)&#39;\)/&quot;,$data,$url))
-        {
-            $data = http($url[1]);
-            //$this-&gt;ResetCookie();
-            $data = json_decode(substr($data,1,-2));
-            if ($data-&gt;result == true)
-                return $data-&gt;userinfo;
-        }
-        return null;
-    }
-}
-?&gt;
-</code></pre>
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/sina_curl_login/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/curl/" class="label label-primary">curl</a><a href="/tags/新浪/" class="label label-success">新浪</a><a href="/tags/登录/" class="label label-info">登录</a><a href="/tags/PHP/" class="label label-warning">PHP</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/curl/" class="label label-primary">curl</a><a href="/tags/新浪/" class="label label-success">新浪</a><a href="/tags/登录/" class="label label-info">登录</a><a href="/tags/PHP/" class="label label-warning">PHP</a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/sina_curl_login/#comments" class="ds-thread-count comment-link" data-thread-key="854" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -623,8 +408,7 @@ class sina
         <p>以前经常去华军软件园下载软件,后来很少上了,最近发现下载需要输入验证码才能下载.</p>
 <p>这个验证码是带广告类型的,需要输入中文,很是麻烦,对于我等懒人来说当然是能不用输入就不用输入了.</p>
 <p>查了一下网页源码,发现可以直接饶过验证下载.原理有兴趣的自己Google一下.^_^这里就不再啰嗦了.直接进入主题.</p>
-<p>方法如下有很多种.
-
+<p>方法如下有很多种.<br>
       
     </div>
     
@@ -667,24 +451,22 @@ class sina
 <p>相比官方的版本,更简单,这个没有限制目录的哦,不需要流量费的,可能会被封锁,不过这个是利用官方提供的API写的,应该不会,关键是华为网盘的速度够快.若是被封锁了就有些可惜.</p>
 <p>快盘的那个就明确不会.</p>
 <p>嘻嘻,以后就可以把文件上传到网盘上,然后用直链提供下载了.</p>
-<p>会PHP的朋友很容易写出来.废话不多说直接进主题.</p>
-<p>测试的效果如下.</p>
-<p>1.图片直链</p>
-<p><img src="http://d.chenall.net/1/Lighthouse.jpg" alt="华为网盘直链效果测试"></p>
-<p>子目录测试</p>
-<p><img src="http://d.chenall.net/1/照片/Hydrangeas.jpg" alt="直链测试,支持子目录的哦."></p>
-<p>2.文件下载链接</p>
-<p><a href="http://d.chenall.net/1/网盘自动签到2012-07-27.rar" target="_blank">网盘自动签到2012-07-27</a></p>
-
+<p>
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/dbank_dl/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/华为网盘/" class="label label-primary">华为网盘</a><a href="/tags/直链/" class="label label-success">直链</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/华为网盘/" class="label label-primary">华为网盘</a><a href="/tags/直链/" class="label label-success">直链</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/dbank_dl/#comments" class="ds-thread-count comment-link" data-thread-key="850" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -710,43 +492,22 @@ class sina
       
         <p>使用快盘API写了一个直链的应用测试.. 以后可以把文件或图片直接上传到快盘中,然后直链. API有调用限制,好像是一天5000次,对于我等小站来说足够用了,</p>
 <p>另外好像快盘的文件下载速度没有华为网盘的给力啊.速度相对比较慢,可以对比一下我的另一个文章关于华为网盘直链的测试,显示图片的速度更快.</p>
-<p>2012-12-28:  因为快盘官方可能不太喜欢此类应用或其它原因,经常隔一段时间需要重审,所以这个目前只能自己使用.</p>
-<p>2012-08-16:  发现昨天快盘服务器维护过后,稳定多了,速度也比较给力.</p>
-<p>2012-08-29 更新<br>现在的授权可以直接用于子域名.<br>例: 授权域名 chenall.net<br>则a.chenall.net或www.a.chenall.net等都可以直接使用.<br>当然了也可以直接单独对a.chenall.net授权.  </p>
-<p>有兴趣的话可以申请使用,申请比较简单,只要通过认证就可以了.根据域名进行认证的.方法</p>
-<p>打开以下网址,把chenall.net换成你的域名,然后会跳出一个快盘的授权,确认了之后就可以使用了.</p>
-<p><a href="http://chenall.net/kuaipan/?ru=`chenall.net`">http://chenall.net/kuaipan/?ru=`chenall.net`</a></p>
-<p>把你要直链的文件传到快盘的&lt;我的应用\直链&gt;目录下,然后在你的网站上就可以直接使用了</p>
-<p><a href="http://chenall.net/kuaipan/?path=`FILEPATH`">http://chenall.net/kuaipan/?path=`FILEPATH`</a></p>
-<p>比如:以下会直接下载你的帐号直链应用目录下的test.txt 文件.</p>
-<p><a href="http://chenall.net/kuaipan/?path=`test.txt`">http://chenall.net/kuaipan/?path=`test.txt`</a></p>
-<p>注,网站域名要和你授权的域名一致,否则无法使用,如果需要访问中文的文件,需要用UTF-8编码.</p>
-<p>因为这个应用未通过申核,目前只能自用.</p>
-<p>今天去看了一下,发现已经通过了,只要你有快盘帐号,现在就可以开始使用了.</p>
-<p>快盘直链效果测试</p>
-<ul>
-<li><p>图片直链
-<img src="http://d.chenall.net/kuaipan/3lightning3.jpg" alt=""></p>
-<p>子目录图片显示测试</p>
-<p><img src="http://d.chenall.net/kuaipan/imgs/Img222951204.jpg" alt=""></p>
-</li>
-<li><p>音乐直链播放</p>
-<audio width="300" height="32" autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/kuaipan/爱情总在幻灭时最美.mp3" type="audio/mpeg" /> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
-</li>
-<li><p>文件直链下载</p>
-<p><a href="http://d.chenall.net/kuaipan/网盘自动签到2012-07-25.rar" target="_blank">网盘自动签到2012-07-25</a></p>
-</li>
-</ul>
-
+<p>
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/kuaipan_dl/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary">直链</a><a href="/tags/金山快盘/" class="label label-success">金山快盘</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span></span> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary">直链</a><a href="/tags/金山快盘/" class="label label-success">金山快盘</a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/kuaipan_dl/#comments" class="ds-thread-count comment-link" data-thread-key="848" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -775,41 +536,22 @@ class sina
 <p>像这种一般情况下<span style="line-height: 16px;">是根据来源地址(Referer)判断的,如果来源地址是合法的域则可以下载,否则提示错误.</span></p>
 <p>这种只要伪造一个来源地址就可以突破了.伪造的方法有很多,从Google上找了一下有很多种.</p>
 <p>这里介绍一种相对比较简单的,一般的PHP服务器都有支持.相关代码如下.伪造一个referer地址发送过去,请求下载,获取返回的头信息,里面包含了真正的地址.</p>
-<pre><code>$curl = curl_init();//curl模块初始化
-curl_setopt ($curl, CURLOPT_URL, $url);//$url 目标地址
-curl_setopt ($curl, CURLOPT_REFERER, $referer_url);//$referer_url 要伪造的地址
-curl_setopt($curl,CURLOPT_HEADER,1);//只获取http头信息,如果不使用这个设置,则相当在服务器上下载该文件了.这样会占用服务器的资源.
-curl_setopt($curl,CURLOPT_NOBODY,1);//不返回html的body信息  
-curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);//返回数据流，不直接输出  
-curl_setopt($curl,CURLOPT_TIMEOUT,30); //超时时长，单位秒
-$r = curl_exec ($curl);
-curl_close ($curl);
-if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址即最终的地址,发送给客户端,由客户端去下载.
-{
-    header(&quot;Location: &quot;.$matches[1]);
-}
-</code></pre><p>注: 需要注意的是尽量不要通过服务器下载再中转,这样很浪费服务器资源.目前网上有很多方法都是直接通过服务器下载再发送给客户端的.这个方法只有通过服务器获取一下头信息,然后直接返回给客户端浏览器了.</p>
-<p>附: 利用以上方法实现的直链效果,以下全部是使用网盘的直链,因为我做了封装,看起来就像是本站上的文件.</p>
-<ul>
-<li><p>图片直链(如果图片不显示可能是失效了)<br>经典视觉欺骗,以下图片有几个黑点?<br><img src="http://d.chenall.net/0/c05l7vhroi/几个黑点.jpg" alt=""><br><img src="http://d.chenall.net/0/c05l7vhroi/左右脑冲突.jpg" alt="">  </p>
-</li>
-<li><p>MP3音乐在线播放(使用的是HTML5的代码,需要浏览器支持)  </p>
-<audio autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/0/c05l7vhroi/05我的快乐.mp3" type="audio/mpeg"/><source src="http://d.chenall.net/0/c05l7vhroi/爱情总在幻灭时最美.mp3" type="audio/mpeg"/> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
-</li>
-<li><p>文件直链下载</p>
-<p><a href="http://d.chenall.net/0/c08k4wpqad/1/" target="_blank">Chrome Dev 22.0.1201.0</a></p>
-</li>
-</ul>
 
       
     </div>
     
     
       
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/netdisk_referer/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary">直链</a><a href="/tags/破解/" class="label label-success">破解</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/综合/">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary">直链</a><a href="/tags/破解/" class="label label-success">破解</a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/netdisk_referer/#comments" class="ds-thread-count comment-link" data-thread-key="846" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -823,7 +565,7 @@ if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址�
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/2/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/2/">2</a></li><li class="active"><li><span class="page-number current">3</span></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/4/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/2/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/2/">2</a></li><li class="active"><li><span class="page-number current">3</span></li></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/4/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -888,7 +630,7 @@ if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址�
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -904,14 +646,12 @@ if (preg_match(&#39;/Location: (.*)/&#39;,$r, $matches))//获取Location地址�
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -995,7 +735,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

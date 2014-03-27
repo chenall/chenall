@@ -136,8 +136,7 @@ var _js2load = [];
 <li>首先想办法启动到PE或另一个系统中</li>
 <li>然后执行bcdedit 命令进行修复<pre><code>bcdedit /store c:\boot\bcd /set {default} device partition=c:
 bcdedit /store c:\boot\bcd /set {default} osdevice partition=c:
-</code></pre>说明:<strong>c:\boot\bcd</strong> 指定启动时使用的BCD文件 
-后面的<strong>c:</strong> 指定WINDOWS 7系统目前所在的盘符（如果进入PE后，你的WIN7安装磁盘的盘符是F:就写F:）</li>
+</code></pre>说明:<strong>c:\boot\bcd</strong> 指定启动时使用的BCD文件<br>后面的<strong>c:</strong> 指定WINDOWS 7系统目前所在的盘符（如果进入PE后，你的WIN7安装磁盘的盘符是F:就写F:）</li>
 <li>重启就会发现一切正常了。</li>
 </ul>
 <p>后来一次在测试中意外发现了另一个参数（这里首先得感谢下<a href="http://bbs.wuyou.com/" target="_blank">无忧启动论坛</a>的<a href="http://bbs.wuyou.com/viewpro.php?uid=131142" target="_blank">victor888</a> ,被他逼着学习bcdedit了，所以就多了解了一下，纯属意外），可以永绝祸患，只要改一下，以后就不会再出现这种问题了。不敢独享，如果有碰到同样问题的朋友可以试下，没有碰到的朋友也可以试下。^_^</p>
@@ -187,8 +186,7 @@ bcdedit /set {current} osdevice boot
 <p>具体方法：</p>
 <ol>
 <li>首先需要有一个NTP服务器，如果可以上网可以使用网上提供的NTP服务器，如果没有就自己建一个</li>
-<li><p>修改BSD系统文件让它自动同步时间
-先在/etc/rc.conf里面添加一句cron start,用于启动cron服务。</p>
+<li><p>修改BSD系统文件让它自动同步时间<br>先在/etc/rc.conf里面添加一句cron start,用于启动cron服务。</p>
 <p>然后在/etc/crontab文件里面添加以下内容用于自动执行时间同步命令(把ntp.server.address换成你的NTP服务器地址）</p>
 <pre><code>*/1        *        *        *        *        root        ntpdate ntp.server.address
 </code></pre></li>
@@ -241,57 +239,7 @@ bcdedit /set {current} osdevice boot
 <p><img src="http://c-dl.qiniudn.com/upload/2009/10/6F82F0AE06F64B8A257E871C7EC8E7EE73606F6C.png" alt=""></p>
 <p>想知道上面的文件夹是如何来的吗？</p>
 <p>首先大家都知道从WINDOWS 9X开始，在系统中经常可以看到desktop.ini的身影，通过它可以对一个文件夹进行自定义外观的操作。</p>
-<blockquote><p>以下内容来源于百度百科 <a href="http://baike.baidu.com/view/676737.html" target="_blank"><a href="http://baike.baidu.com/view/676737.html">http://baike.baidu.com/view/676737.html</a></a></p>
-<h3 id="-">一、文件夹图标</h3>
-<p>　　[.ShellClassInfo]</p>
-<p>　　InfoTip=注释</p>
-<p>　　IconFile=图标文件的路径</p>
-<p>　　IconIndex=选择要使用文件中的第几个图标</p>
-<p>　　自定义图标文件，其扩展名可以是.exe、.dll、.ico等。</p>
-<h3 id="-">二、文件夹</h3>
-<p>　　[ExtShellFolderViews]</p>
-<p>　　{BE098140-A513-11D0-A3A4-00C04FD706EC}={BE098140-A513-11D0-A3A4-00C04FD706EC}</p>
-<p>　　[{BE098140-A513-11D0-A3A4-00C04FD706EC}]</p>
-<p>　　Attributes=1</p>
-<p>　　IconArea_Image=11.jpg</p>
-<p>　　[.ShellClassInfo]</p>
-<p>　　ConfirmFileOp=50</p>
-<p>　　其中11.jpg是图片，把以上内容用记事本保存为desktop.ini ，和背景图片一起放在要改变背景的文件夹内。为了防止误删，可以把desktop.ini和图片设为隐藏属性。</p>
-<h3 id="-">三、标示特殊文件夹</h3>
-<p>　　系统中有一些特殊的文件夹，如回收站、我的电脑、我的文档、网上邻居等。这些文件夹的标示有两种方法：</p>
-<h4 id="1-clsid">1. 直接在文件夹名后续上一个<strong>.</strong>在加对应的CLSID</h4>
-<p>　　如：把一个文件夹取名为：新建文件夹.{20D04FE0-3AEA-1069-A2D8-08002B30309D}</p>
-<p>　　（注意：新建文件夹后面有一个半角的句号）</p>
-<p>　　那么这个文件夹的图标将变为我的电脑的图标，并且在双击该文件夹时将打开我的电脑。</p>
-<p>　　在下面查看CLSID</p>
-<p>　　在注册表中展开HKEY_CLASSES_ROOT\CLSID\，在CLSID分支下面就可以看到很多的ID，这些ID对应的都是系统里面不同的程序，文件，系统组件等</p>
-<p>　　常见组件类对应的CLSID:</p>
-<p>　　我的文档：450D8FBA-AD25-11D0-98A8-0800361B1103</p>
-<p>　　我的电脑：20D04FE0-3AEA-1069-A2D8-08002B30309D</p>
-<p>　　网上邻居：208D2C60-3AEA-1069-A2D7-08002B30309D</p>
-<p>　　回收站：645FF040-5081-101B-9F08-00AA002F954E</p>
-<p>　　Internet Explorer：871C5380-42A0-1069-A2EA-08002B30309D</p>
-<p>　　控制面板：21EC2020-3AEA-1069-A2DD-08002B30309D</p>
-<p>　　拨号网络/网络连接 :992CFFA0-F557-101A-88EC-00DD010CCC48</p>
-<p>　　任务计划 :D6277990-4C6A-11CF-8D87-00AA0060F5BF</p>
-<p>　　打印机(和传真):2227A280-3AEA-1069-A2DE-08002B30309D</p>
-<p>　　历史文件夹:7BD29E00-76C1-11CF-9DD0-00A0C9034933</p>
-<p>　　ActiveX缓存文件夹: 88C6C381-2E85-11D0-94DE-444553540000</p>
-<p>　　公文包: 85BBD920-42A0-1069-A2E4-08002B30309D</p>
-<h4 id="2-desktop-ini-">2. 第二种是通过一个desktop.ini文件</h4>
-<p>　　还以我的电脑为例:</p>
-<p>　　新建一个文件夹,名字随便,然后在其下边建立desktop.ini文件,内容如下:</p>
-<p>　　[.ShellClassInfo]</p>
-<p>　　CLSID={相应的ID}</p>
-<p>　　注:有部分病毒会建立这样的文件夹以达到隐藏自身的目的.另外这也是一种我们隐藏小秘密的方法.</p>
-<h3 id="-">四、标示文件夹所有者</h3>
-<p>　　这通常见于我的文档等如我的文档里就有这样一个文件，内容如下：</p>
-<p>　　[DeleteOnCopy]</p>
-<p>　　Owner=Administrator</p>
-<p>　　Personalized=5</p>
-<p>　　PersonalizedName=My Documents</p>
-<footer><strong>百度百科</strong><cite><a href="http://baike.baidu.com/view/676737.html" target="_blank">baike.baidu.com/view/&hellip;</a></cite></footer></blockquote>
-
+<blockquote>以下内容来源于百度百科 <a href="http://baike.baidu.com/view/676737.html" target="_blank">http://baike.baidu.com/view/676737.html</a><br><br>### 一、文件夹图标<br><br>　　[.ShellClassInfo]<br><br>　　InfoTip=注释<br><br>　　IconFile=图标文件的路径<br><br>　　IconIndex=选择要使用文件中的第几个图标<br><br>　　自定义图标文件，其扩展名可以是.exe、.dll、.ico等。<br><br>### 二、文件夹<br><br>　　[ExtShellFolderViews]<br><br>　　{BE098140-A513-11D0-A3A4-00C04FD706EC}={BE098140-A513-11D0-A3A4-00C04FD706EC}<br><br>　　[{BE098140-A513-11D0-A3A4-00C04FD706EC}]<br><br>　　Attributes=1<br><br>　　IconArea_Image=11.jpg<br><br>　　[.ShellClassInfo]<br><br>　　ConfirmFileOp=50<br><br>　　其中11.jpg是图片，把以上内容用记事本保存为desktop.ini ，和背景图片一起放在要改变背景的文件夹内。为了防止误删，可以把desktop.ini和图片设为隐藏属性。<br><br>### 三、标示特殊文件夹<br><br>　　系统中有一些特殊的文件夹，如回收站、我的电脑、我的文档、网上邻居等。这些文件夹的标示有两种方法：<br><br>####1. 直接在文件夹名后续上一个<strong>.</strong>在加对应的CLSID<br><br>　　如：把一个文件夹取名为：新建文件夹.{20D04FE0-3AEA-1069-A2D8-08002B30309D}<br><br>　　（注意：新建文件夹后面有一个半角的句号）<br><br>　　那么这个文件夹的图标将变为我的电脑的图标，并且在双击该文件夹时将打开我的电脑。<br><br>　　在下面查看CLSID<br><br>　　在注册表中展开HKEY_CLASSES_ROOT\CLSID\，在CLSID分支下面就可以看到很多的ID，这些ID对应的都是系统里面不同的程序，文件，系统组件等<br><br>　　常见组件类对应的CLSID:<br><br>　　我的文档：450D8FBA-AD25-11D0-98A8-0800361B1103<br><br>　　我的电脑：20D04FE0-3AEA-1069-A2D8-08002B30309D<br><br>　　网上邻居：208D2C60-3AEA-1069-A2D7-08002B30309D<br><br>　　回收站：645FF040-5081-101B-9F08-00AA002F954E<br><br>　　Internet Explorer：871C5380-42A0-1069-A2EA-08002B30309D<br><br>　　控制面板：21EC2020-3AEA-1069-A2DD-08002B30309D<br><br>　　拨号网络/网络连接 :992CFFA0-F557-101A-88EC-00DD010CCC48<br><br>　　任务计划 :D6277990-4C6A-11CF-8D87-00AA0060F5BF<br><br>　　打印机(和传真):2227A280-3AEA-1069-A2DE-08002B30309D<br><br>　　历史文件夹:7BD29E00-76C1-11CF-9DD0-00A0C9034933<br><br>　　ActiveX缓存文件夹: 88C6C381-2E85-11D0-94DE-444553540000<br><br>　　公文包: 85BBD920-42A0-1069-A2E4-08002B30309D<br><br>#### 2. 第二种是通过一个desktop.ini文件<br><br>　　还以我的电脑为例:<br><br>　　新建一个文件夹,名字随便,然后在其下边建立desktop.ini文件,内容如下:<br><br>　　[.ShellClassInfo]<br><br>　　CLSID={相应的ID}<br><br>　　注:有部分病毒会建立这样的文件夹以达到隐藏自身的目的.另外这也是一种我们隐藏小秘密的方法.<br><br>### 四、标示文件夹所有者<br><br>　　这通常见于我的文档等如我的文档里就有这样一个文件，内容如下：<br><br>　　[DeleteOnCopy]<br><br>　　Owner=Administrator<br><br>　　Personalized=5<br><br>　　PersonalizedName=My Documents<footer><strong>百度百科</strong><cite><a href="http://baike.baidu.com/view/676737.html" target="_blank">baike.baidu.com/view/&hellip;</a></cite></footer></blockquote>
 
 <p>好进入正题，其实上面的文件夹都是用到了一个参数<font style="background-color: transparent" color="#ff00ff" size="4">LocalizedResourceName</font><font color="#000000">（这个的意思自己翻译一下),通过它我们就可以为我们的文件夹重新定义名字。</font></p>
 <font style="background-color: transparent" color="#ff00ff" size="4"></font><font color="#000000">其它的我就不多说了，自己找下资料，上面的文件夹制作方法例子：</font>
@@ -299,9 +247,7 @@ bcdedit /set {current} osdevice boot
 <ol>
 <li>新建一个文件夹名为<font color="#ff00ff">test</font><font color="#000000">(随意)</font></li>
 <li>在<font color="#ff00ff">test</font>文件夹中新建一个<font color="#ff00ff">desktop.ini</font>文件（注意一下扩展名）</li>
-<li>在desktop.ini中输入以下内容
-[.ShellClassInfo]
-LocalizedResourceName=自定义显示的名称</li>
+<li>在desktop.ini中输入以下内容<br>[.ShellClassInfo]<br>LocalizedResourceName=自定义显示的名称</li>
 <li><p>最后一步也是很重要的一步，否则就不能显示。给<font color="#ff00ff">test</font>文件加个只读或者系统的属性</p>
 <p>使用ATTRIB命令（可以进入CMD，然后输入attrib+空格再把上面的文件夹拖放到CMD窗口获取这个文件夹路径）</p>
 <p>::+r只读属性;+s是系统属性，可以只加一个</p>
@@ -345,7 +291,7 @@ LocalizedResourceName=自定义显示的名称</li>
     
     <div class="entry">
       
-        <p>sandboxie沙盘功能：（部份摘自百度百科，URL：<a href="http://baike.baidu.com/view/756166.htm" target="_blank"><a href="http://baike.baidu.com/view/756166.htm">http://baike.baidu.com/view/756166.htm</a></a>)</p>
+        <p>sandboxie沙盘功能：（部份摘自百度百科，URL：<a href="http://baike.baidu.com/view/756166.htm" target="_blank">http://baike.baidu.com/view/756166.htm</a>)</p>
 <p>sandboxie沙盘介绍：</p>
 <p>  Sandboxie允许你在“沙盘环境”中运行浏览器或其他程序，这个“沙盘”个人感觉就是跟“影子”一样的概念罢了。因此，在沙盘中运行的程序所产生的变化可以随时删除。可用来保护浏览网页时真实系统的安全，也可以用来清除上网、运行程序的痕迹，还可以用来测试软件，测试病毒等用途。即使在沙盘进程中下载的文件，也可以随着沙盘的清空而删除。</p>
 <p>  如果大家对“影子”/“沙盘”这2个概念还不清楚的话，这里引用官方的一段话：电脑就像一张纸，程序的运行与改动，就像将字写在纸上。而Sandboxie就相当于在纸上放了块玻璃，程序的运行与改动就像写在了那块玻璃上，除去玻璃，纸上还是一点改变都没有的。</p>
@@ -358,13 +304,8 @@ LocalizedResourceName=自定义显示的名称</li>
 <p>  木马和病毒总是比杀毒软件抢先一步。所以我们在安装程序的时候，即时杀毒软件没有报毒，也存在一定的风险。但使用Sandboxie后，就会将风险降低为零了。</p>
 <p>  选要安装或解压的不明程序，按鼠标右键，选择“用沙盘运行”（图3），就会以保护的形式来安装或解压该程序。同样，在程序的安装窗口中会发现标题栏上有两个“[#]”符号代表受保护。笔者在安装一个捆绑木马的程序时做了保护措施。恢复系统之后，发现在这期间安装的程序包括木马都消失了，相当的安全。</p>
 <p>三、保护整个电脑，充当半个“影子系统”</p>
-<p>  Sandboxie还提供整个电脑的保护，在 Sandboxie中选择“功能”菜单，然后“选择运行沙盘→Windows 资源管理器”，就会自动弹出有两个“[#]”符号的“我的电脑”窗口。之后对整个电脑进行任意操作，包括格式化分区、删除文件、拷贝文件等都很安全。恢复的方法很简单。在Sandboxie主界面选择“配置 →沙盘设置→设置自动清理选项”，将隔离层中的内容清除即可。
-  另外，在最新的Sandboxie版本中，它提供了多用户管理功能和多种独立保护方案。</p>
-<p>四、应用实例
-  可以对一些网络电视软件设置让它自动在“沙盘”里面运行，退出后自动删除沙盘（因为大都的网络电视软件都会有一个缓存文件夹，越用越大.
-  方法:
-  首先点击sandboxie的“沙盘”菜单，选择“创建新沙盘”，输入一个名称,然后新建的沙盘进行设置。在<strong>程序启载-&gt;强制运行程序</strong>里面添加要自动使用沙盘运行的程序就行了
-  当然了也可以使用<strong>强制运行文件夹</strong>让整个文件夹里面的程序都从沙盘运行</p>
+<p>  Sandboxie还提供整个电脑的保护，在 Sandboxie中选择“功能”菜单，然后“选择运行沙盘→Windows 资源管理器”，就会自动弹出有两个“[#]”符号的“我的电脑”窗口。之后对整个电脑进行任意操作，包括格式化分区、删除文件、拷贝文件等都很安全。恢复的方法很简单。在Sandboxie主界面选择“配置 →沙盘设置→设置自动清理选项”，将隔离层中的内容清除即可。<br>  另外，在最新的Sandboxie版本中，它提供了多用户管理功能和多种独立保护方案。</p>
+<p>四、应用实例<br>  可以对一些网络电视软件设置让它自动在“沙盘”里面运行，退出后自动删除沙盘（因为大都的网络电视软件都会有一个缓存文件夹，越用越大.<br>  方法:<br>  首先点击sandboxie的“沙盘”菜单，选择“创建新沙盘”，输入一个名称,然后新建的沙盘进行设置。在<strong>程序启载-&gt;强制运行程序</strong>里面添加要自动使用沙盘运行的程序就行了<br>  当然了也可以使用<strong>强制运行文件夹</strong>让整个文件夹里面的程序都从沙盘运行</p>
 <p>  用途：方便测试软件，或使用外挂怕中毒，可以把外挂或软件放到这个目录里面来运行。</p>
 <p>五、相关文章：</p>
 <p><a href="http://news.newhua.com/news1/Teach_Virus/2009/99/09991541512B7DE9EFI69J72GI9KC8F02807K7K5H3BID2F8KAADGF6.html" target="_blank">上网不留痕迹 沙盘Sandboxie</a></p>
@@ -404,7 +345,7 @@ LocalizedResourceName=自定义显示的名称</li>
     
     <div class="entry">
       
-        <p>软件来源。<a href="http://bbs.wuyou.com/viewthread.php?tid=120136" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=120136">http://bbs.wuyou.com/viewthread.php?tid=120136</a></a></p>
+        <p>软件来源。<a href="http://bbs.wuyou.com/viewthread.php?tid=120136" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=120136</a></p>
 <p>一、功能，可以让你的一些没有图标（或只有通用图标）的文件，显示自定义的个性图标。</p>
 <p>二、效果图。（测试只用MOU和WIM格式测试）</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/10/1E07CEFE5DF0D7CE951D16C5A809C6189D465C8A.png" alt=""></p>
@@ -414,8 +355,7 @@ LocalizedResourceName=自定义显示的名称</li>
  默认只注册MOU和WIM格式，如果需要其它的格式请打开辑编这个CMD文件，按照里面的说明添加
 </code></pre><p>四、软件使用说明（自己看图，我这里就不再解释了）</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2009/10/1F9634553F878C50A86A38661F57188B629F7D00.png" alt=""></p>
-<p>五。下载
- <a href="http://cid-281872885f98ebeb.skydrive.live.com/self.aspx/NamipanPublic/2009-10-16/iconshex.zip" target="_blank">通用图标扩展</a></p>
+<p>五。下载<br> <a href="http://cid-281872885f98ebeb.skydrive.live.com/self.aspx/NamipanPublic/2009-10-16/iconshex.zip" target="_blank">通用图标扩展</a></p>
 
       
     </div>
@@ -452,11 +392,11 @@ LocalizedResourceName=自定义显示的名称</li>
         <p>编写批处理时经常需要用到外部命令,一些常用的命令一般的系统都会有,但是一些精简的系统上可能就没有了,如果没有做判断就可能导致程序出现未知的错误.</p>
 <p>一般检测文件是否存在可以使用</p>
 <blockquote>
-<p>IF EXIST filename 执行某个命令...</p>
+<p>IF EXIST filename 执行某个命令…</p>
 </blockquote>
 <p>但是这样只能检测当前目录下或指定目录的,而批处理的外部命令通过PATH变量来确定位置的.正常情况下可以通过以下命令来确定这个外部命令是否存在,</p>
 <blockquote>
-<p>for %I in (find.exe) do if &quot;%~$PATH:I&quot;==&quot;&quot; echo find 命令不存在</p>
+<p>for %I in (find.exe) do if “%~$PATH:I”==”” echo find 命令不存在</p>
 </blockquote>
 <p>为了以后方便就写了一个模块,用于判断命令是否存在.</p>
 <pre><code>@echo off
@@ -528,14 +468,14 @@ exit /b 0       http://www.chenall.net
         <p>绝对经典的批处理游戏！！！</p>
 <p>本游戏需要三方choice.exe支持，请自行搜索下载</p>
 <p>来源:<a href="http://www.cn-dos.net/forum/viewthread.php?tid=48950&amp;fpage=1" target="_blank">批处理写的俄罗斯方块游戏</a></p>
-<pre><code class="lang-bat">@echo off&amp;rem 俄罗斯方块游戏，由netbenton编写，在bathome首发，完成时间：2009年9月25日 ver 2.0
+<pre><code class="bat">@echo off&amp;rem 俄罗斯方块游戏，由netbenton编写，在bathome首发，完成时间：2009年9月25日 ver 2.0
 if &quot;%1&quot; equ &quot;para2&quot; goto :para2
 
 set        &quot;d-v=for %%a in (!str!) do set/a one=0x%%a,x=one/4+n,y=one%%4+m&amp;(for %%b in (&quot;r!x!.!y!&quot;) do if &quot;!%%~b!&quot; equ &quot;　&quot; (set r!x!.!y!=■) else (set err=1))&quot;
 ::函数d-v，把str中的图标数据，放置到总坐标空间中，如果有覆盖，则err=1。调用方法：(%d-v%)
 ::变量使用：one  x  y
 
-set &quot;d-e=set aec=!cr!!cr!        ┌───────────┐!cr!&amp;(for /l %%a in (2,1,#) do for %%b in (&quot;│!ebuf:@=%%a!│　　!ebu%%a!&quot;) do set aec=!aec!        %%~b!cr!)&amp;cls&echo;!aec!        └───────────┘&quot;
+set &quot;d-e=set aec=!cr!!cr!        ┌───────────┐!cr!&amp;(for /l %%a in (2,1,#) do for %%b in (&quot;│!ebuf:@=%%a!│　　!ebu%%a!&quot;) do set aec=!aec!        %%~b!cr!)&amp;cls&amp;echo;!aec!        └───────────┘&quot;
 ::函数d-e，把总坐标空间显示出来，调用方法：(%d-e:#=行数%)
 set ebu4=第!guan!关
 set ebu6=总分：!fen!
@@ -825,7 +765,7 @@ goto :eof
       
         <p>因为需要,想让系统自动定时备份我的文件到邮箱上(只备份更新或新增加的文件),在网上找了许多软件要么是收费的,要么使用不方便.后来想起了以前收藏的一段 <a href="/post/VBS_SEND_MAIL/">VBSCRIPT发送邮件的代码</a>就想到是否可以利用批处理自己写一个脚本来实现,所以就有了以下的代码,有兴趣的朋友可以一起继续完善,现在只能根据文件大小,日期.来确定是否上传.</p>
 <p>批处理文件自动上传到邮件备份.功能:自动上传有更新的文件到指定的邮箱中(邮箱在SENDMAIL.VBS里面指定)</p>
-<pre><code class="lang-bat">@echo off
+<pre><code class="bat">@echo off
 ::设定要备份的文件所在目录
 set 备份目录=D:\Web\webdisk\USER\justway\佳为企管系列__商品流通 (商场,超市,百货,批发商贸,电器,家居,加工)
 
@@ -915,11 +855,11 @@ rem 附:每天定时自动执行的命令.使用管理员的权限执行就可�
     
     <div class="entry">
       
-        <p>利用<code>VBScript</code>发送邮件,以前从网上找的代码,不知原来的出处了.也不知作者是何人.....</p>
+        <p>利用<code>VBScript</code>发送邮件,以前从网上找的代码,不知原来的出处了.也不知作者是何人…..</p>
 <p>挺有用的脚本,我就一直在使用这个脚本来发邮件,还可以带附件.放在这里做个备份,免得到时又找不到了.</p>
 <p>目前我就通过批处理配合这个脚本来自动备份我的一些文件到邮箱里面.每天自动定时备份.</p>
 <p>反正许多邮件的空间是无限的,,用来作备份也是挺不错的.一般都可以上传30-50MB附件,基本上够用了.</p>
-<pre><code class="lang-vb">&#39;code by NetPatch
+<pre><code class="vb">&#39;code by NetPatch
 &#39;VBS发送邮件参数说明
 &#39;You_Account：你的邮件帐号
 &#39;You_Password:你的邮件密码
@@ -1081,7 +1021,7 @@ End If
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -1097,14 +1037,12 @@ End If
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -1188,7 +1126,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

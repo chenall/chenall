@@ -10,10 +10,7 @@
 <title>[GRUB4DOS] 外部命令WENV [2010-10-17] | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="[功能说明]GRUB4DOS菜单脚本命令增强.
-在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
-可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
-目前已经增加了许多的强大功能.具体见后面的介绍.">
+<meta name="description" content="[功能说明]GRUB4DOS菜单脚本命令增强.在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能目前已经增加了许多的强大功能.具体见后面的介绍.推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -132,19 +129,12 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <h3 id="-">[功能说明]</h3>
-<p>GRUB4DOS菜单脚本命令增强.
-在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
-可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
-目前已经增加了许多的强大功能.具体见后面的介绍.
-推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p>
+        <h3 id="[功能说明]">[功能说明]</h3>
+<p>GRUB4DOS菜单脚本命令增强.<br>在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.<br>可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能<br>目前已经增加了许多的强大功能.具体见后面的介绍.<br>推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p>
 <p> 注: <code>由于新版的GRUB4DOS的功能已经得到了增强,基本上WENV的功能GRUB4DOS都可以实现了,所以本程序已经不再维护更新,建议使用GRUB4DOS内置功能代替</code></p>
-<h3 id="-">[下载地址]</h3>
+<h3 id="[下载地址]">[下载地址]</h3>
 <p> <a href="http://grubutils.googlecode.com" target="_blank">http://grubutils.googlecode.com</a></p>
-<p> WENV 是一个基于GRUB4DOS的程序，可以用它来增强GRUB4DOS的脚本能力,来现一些不可思议的功能。
- WENV 最初只支持简单变量和运行GRUB4DOS命令。到了现在已经支持各式各样的处理。 可以把让它当成是GRUB4DOS的增强形SHELL，方便各位grub4dos fans编写高效强大的菜单。 在这里要感谢无论启动论坛上众多朋友的支持，如果没有你们，WENV还只是一个小玩具。
- <a href="http://bbs.wuyou.com/viewthread.php?tid=159851" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851</a> 取之于网络，共享于网络。 本说明文件来源于无忧论坛zhaohj提供的README.TXT,我经过修改整理而成。
- <a href="http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205</a> 如有发现错误，请通知我，谢谢。 WENV目前支持的命令列表(wenv-commands): </p>
+<p> WENV 是一个基于GRUB4DOS的程序，可以用它来增强GRUB4DOS的脚本能力,来现一些不可思议的功能。<br> WENV 最初只支持简单变量和运行GRUB4DOS命令。到了现在已经支持各式各样的处理。 可以把让它当成是GRUB4DOS的增强形SHELL，方便各位grub4dos fans编写高效强大的菜单。 在这里要感谢无论启动论坛上众多朋友的支持，如果没有你们，WENV还只是一个小玩具。<br> <a href="http://bbs.wuyou.com/viewthread.php?tid=159851" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851</a> 取之于网络，共享于网络。 本说明文件来源于无忧论坛zhaohj提供的README.TXT,我经过修改整理而成。<br> <a href="http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205</a> 如有发现错误，请通知我，谢谢。 WENV目前支持的命令列表(wenv-commands): </p>
 <ul>
 <li><a href="#SET_FUNC">SET</a> 设置/修改/新增/删除变量</li>
 <li><a href="#GET_FUNC">GET</a> 显示变量/判断变是是否存在</li>
@@ -155,32 +145,21 @@ var _js2load = [];
 <li><a href="#READ_FUNC">READ</a> 分析一个文件并执行里面的命令（必须是WENV支持的命令），并且支持参数。</li>
 <li><a href="#CHECK_FUNC">CHECK</a> 判断/检测相当于if命令，后面可以跟WENV-COMMAND（当判断的返回值为真时执行）  </li>
 </ul>
-<h4 id="-other-"><a href="#OTHER">其它介绍，还有使用示例见文章尾。</a></h4>
-<p>两个内置变量:
- ?_WENV 保存上一次wenv call运行的返回值
- ?_GET 保存上一次wenv get variable变量的长度</p>
+<h4 id="<a_href="#OTHER">其它介绍，还有使用示例见文章尾。</a>"><a href="#OTHER">其它介绍，还有使用示例见文章尾。</a></h4>
+<p>两个内置变量:<br> ?_WENV 保存上一次wenv call运行的返回值<br> ?_GET 保存上一次wenv get variable变量的长度</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2010/10/9EF3DCF527FD6D7A2A5886C0F661399E50C99DB0.png" alt=""></p>
-<p> <a id="SET_FUNC" name="SET_FUNC" classtype="bookmark"></a>
-一：SET 设置/修改/新增/删除变量</p>
+<p> <a id="SET_FUNC" name="SET_FUNC" classtype="bookmark"></a><br>一：SET 设置/修改/新增/删除变量</p>
 <ol>
-<li><p>WENV SET [variable=[string]]
-variable 指定环境变量名,区分大小写 （目前最多允许用户定义60个变量）
-不超过8个字符.可以使用字母(a-z/A-Z)、数字(0-9)、下划线(_)。不可以使用数字开头。
-string 指定要指派给变量的一系列字符串。不能超过512字节。</p>
+<li><p>WENV SET [variable=[string]]<br>variable 指定环境变量名,区分大小写 （目前最多允许用户定义60个变量）<br>不超过8个字符.可以使用字母(a-z/A-Z)、数字(0-9)、下划线(_)。不可以使用数字开头。<br>string 指定要指派给变量的一系列字符串。不能超过512字节。</p>
 <p>无等号时显示指定名称的所有变量的值。  SET P</p>
 <p>会显示所有以字母 P 打头的变量</p>
 </li>
-<li><p>等号后面可以跟&quot;$U,&quot;或&quot;$L,&quot;
-$U，全转变为大写；
-$L，全转变为小写；</p>
+<li><p>等号后面可以跟”$U,”或”$L,”<br>$U，全转变为大写；<br>$L，全转变为小写；</p>
 <p>例子: WENV SET a=$U,aBcDeF 得到 a=ABCDEF</p>
 </li>
-<li><p>关键字 $input，来获取从键盘输入的字符。
-例子：获取从键盘输入的字符串，并转换为大写赋值给srspath
-WENV set srspath=$u,$input,please input SRS driver path:</p>
+<li><p>关键字 $input，来获取从键盘输入的字符。<br>例子：获取从键盘输入的字符串，并转换为大写赋值给srspath<br>WENV set srspath=$u,$input,please input SRS driver path:</p>
 </li>
-<li><p>一些组合例子:  WENV SET variable=$U,string
-WENV SET variable=$U,$input,Prompt</p>
+<li><p>一些组合例子:  WENV SET variable=$U,string<br>WENV SET variable=$U,$input,Prompt</p>
 </li>
 </ol>
 <p>二、 GET 显示变量/判断变是是否存在 GET 命令可以显示指定的变量,并设置?_GET为该变量的字符串长度。 <a id="GET_FUNC" name="GET_FUNC" classtype="bookmark"></a> </p>
@@ -331,8 +310,7 @@ abc==aBc 值为真.
 </code></pre><p>  5: ${VAR%%STRING}删除STRING后面的字符,贪婪模式</p>
 <pre><code>  WENV set a=ABCD;abcd;1234
   WENV set b=${a%%;} 得到b=ABCD
-</code></pre><p>  一些应用举例：
-  1) 根据提示从键盘输入，全转为大写后保存给srspath变量</p>
+</code></pre><p>  一些应用举例：<br>  1) 根据提示从键盘输入，全转为大写后保存给srspath变量</p>
 <pre><code>WENV set srspath=$u,$input,please input SRS driver path:
 </code></pre><p>  2) 设置变量a,并把值全转为大写</p>
 <pre><code>WENV set a=ABCDabcd1234
@@ -364,12 +342,7 @@ WENV reset sr* 清除sr开头的所有变量
     WENV check ${a}==123 &amp;&amp; echo ${a}=123
     WENV check ${a}&lt;=150 check ${a}&gt;=100 &amp;&amp; echo ${a}&gt;=100.and.${a}&lt;=150
 </code></pre><p>  上面实现了IF语句功能.  一些图片。</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/10/CA9906EAF8A41C7C6AF513A6E38A338DA3A7767B.png" alt=""> 
-<img src="http://c-dl.qiniudn.com/upload/2010/10/C4E5F5F595F1F6F46D4286A29A187A58FB24BFEF.png" alt="">
-<img src="http://c-dl.qiniudn.com/upload/2010/10/750D1B07FAB044ADD671FE61F718C1FFAA89A6C6.png" alt=""> 
-<img src="http://c-dl.qiniudn.com/upload/2010/10/C176EE65406D37204DD14D04126D882FCCE9F957.png" alt="">
-<img src="http://c-dl.qiniudn.com/upload/2010/10/886DDF981F317649CC0F06307908152F2C7B9F53.png" alt="">
-<img src="http://c-dl.qiniudn.com/upload/2010/10/E1ECFD0F1B74BDA5045D6EEA93A8B93012A1F557.png" alt="">  </p>
+<p><img src="http://c-dl.qiniudn.com/upload/2010/10/CA9906EAF8A41C7C6AF513A6E38A338DA3A7767B.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/C4E5F5F595F1F6F46D4286A29A187A58FB24BFEF.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/750D1B07FAB044ADD671FE61F718C1FFAA89A6C6.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/C176EE65406D37204DD14D04126D882FCCE9F957.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/886DDF981F317649CC0F06307908152F2C7B9F53.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/E1ECFD0F1B74BDA5045D6EEA93A8B93012A1F557.png" alt="">  </p>
 
       
     </div>
@@ -425,7 +398,7 @@ WENV reset sr* 清除sr开头的所有变量
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="127"  data-url="http://chenall.net/post/grub4dos_wenv/" data-title="[GRUB4DOS] 外部命令WENV [2010-10-17]"></div>
@@ -494,7 +467,7 @@ WENV reset sr* 清除sr开头的所有变量
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -510,14 +483,12 @@ WENV reset sr* 清除sr开头的所有变量
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -614,7 +585,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

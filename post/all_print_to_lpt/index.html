@@ -135,13 +135,12 @@ var _js2load = [];
 <p>一般情况下使用共享打印机都是直接输入计算机名或IP然后双击那个共享的打印机进行安装,这个方法比较简单.</p>
 <p>但是有一些软件它必须使用<code>LPT</code>端口来打印,这时就没有办法用共享了,这里介绍另一种安装方法,可以解决这类问题.如果你早就知道了可以跳过,因为可能是一样的方法.</p>
 <p>例子: 有一个条码打印机 OS-214的,使用佳为软件的标签打印,如果是本机的打印一切正常,但是如果使用上面的共享打印就不行了,因为它是直接写<code>LPT</code>端口的.</p>
-<h3 id="-">解决方法:</h3>
+<h3 id="解决方法:">解决方法:</h3>
 <ol>
 <li>在装有条码打印机的机子上把这个打印机设为共享比如名为<code>LABEL</code></li>
 <li>在需要使用的机子上映射并安装这个共享打印机<blockquote>
-<p>   例子,有装打印机的电脑IP是<code>192.168.0.5</code>,共享名为<code>LABEL</code>
- 在需要使用的机子上直接输入以下命令先进行共享映射.</p>
-<pre><code class="lang-bat"> net use LPT1: \\192.168.0.5\LABEL /PERSISTENT:YES
+<p>   例子,有装打印机的电脑IP是<code>192.168.0.5</code>,共享名为<code>LABEL</code><br> 在需要使用的机子上直接输入以下命令先进行共享映射.</p>
+<pre><code class="bat"> net use LPT1: \\192.168.0.5\LABEL /PERSISTENT:YES
 </code></pre>
 <p> 成功之后就可以把这个打印机当成本地的来使用了,只要再本地添加新打印机就行了,端口选择<code>LPT1</code>,驱动就是对应的驱动.</p>
 </blockquote>
@@ -206,7 +205,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版</a></li><li class="list-group-item"><a href="/post/cameyo_2-0-873/">单文件程序制作利器Cameyo更新</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/post54/">vi 编辑器使用指南</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="887"  data-url="http://chenall.net/post/all_print_to_lpt/" data-title="使用共享打印机的另一个方案"></div>
@@ -275,7 +274,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -291,14 +290,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -395,7 +392,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

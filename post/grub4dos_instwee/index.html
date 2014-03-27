@@ -138,41 +138,27 @@ var _js2load = [];
 <p>可以利用它来启动备用的或其它的引导程序,然后进行修复工作.</p>
 <p>英文好的可以看一下软件的说明和readme</p>
 <blockquote>
-<p>  This software initially aims to install on the MBR track of the hard drive,
-   though also possible to write to ROM by someone who is interested.</p>
-<p>  WEE access disk sectors only using EBIOS(int13/AH=42h), and never using
-   CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS
-   on a drive, then WEE will not be able to access that drive.</p>
-<p>  WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are
-   supported.</p>
-<p>  WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/
-   BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable
-   because it is of a valid Linux kernel format.</p>
-<p>  Any single sector boot record file(with 55 AA at offset 0x1FE) can boot
-   as well.</p>
+<p>  This software initially aims to install on the MBR track of the hard drive,<br>   though also possible to write to ROM by someone who is interested.</p>
+<p>  WEE access disk sectors only using EBIOS(int13/AH=42h), and never using<br>   CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS<br>   on a drive, then WEE will not be able to access that drive.</p>
+<p>  WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are<br>   supported.</p>
+<p>  WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/<br>   BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable<br>   because it is of a valid Linux kernel format.</p>
+<p>  Any single sector boot record file(with 55 AA at offset 0x1FE) can boot<br>   as well.</p>
 <p>  Besides, WEE can run 32-bit programs written for it.</p>
 </blockquote>
 <p> <a href="https://grubutils.googlecode.com/svn/grubutils/wee/README.txt" target="_blank">wee readme</a></p>
 <p>相关贴子:</p>
-<p>无忧启动论坛:   <a href="http://bbs.wuyou.com/viewthread.php?tid=167593" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=167593">http://bbs.wuyou.com/viewthread.php?tid=167593</a></a>
-时空论坛:  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a></p>
-<p><code>本代码只是为了测试还有示范一下GRUB4DOS的批处理功能</code>
-安装会比较麻烦,可以参考无忧启动论坛的贴子进行图形界面安装.</p>
+<p>无忧启动论坛:   <a href="http://bbs.wuyou.com/viewthread.php?tid=167593" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=167593</a><br>时空论坛:  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5838</a></p>
+<p><code>本代码只是为了测试还有示范一下GRUB4DOS的批处理功能</code><br>安装会比较麻烦,可以参考无忧启动论坛的贴子进行图形界面安装.</p>
 <p>我利用最新版GRUB4DOS的功能写了一个脚本,用于安装wee到硬盘上.可以把脚本和wee63.mbr放在u盘或光盘上用grub4dos启动来进行安装修复.</p>
 <p>使用方法:</p>
 <ol>
-<li><p>instwee NUM
-NUM是0-9的数字,代表着要安装到哪个磁盘.</p>
+<li><p>instwee NUM<br>NUM是0-9的数字,代表着要安装到哪个磁盘.</p>
 <p>比如安装到第一个硬盘</p>
 <p>instwee 0</p>
 </li>
-<li><p>instwee menu NUM
-显示指定硬盘已经安装wee的内置菜单</p>
+<li><p>instwee menu NUM<br>显示指定硬盘已经安装wee的内置菜单</p>
 </li>
-<li><p>instwee menu NUm weemenufile
-导入菜单
-例子: 导入/boot/grub/menu.wee菜单文件到第一硬盘已经安装的wee中.
-instwee menu 0 /boot/grub/menu.wee</p>
+<li><p>instwee menu NUm weemenufile<br>导入菜单<br>例子: 导入/boot/grub/menu.wee菜单文件到第一硬盘已经安装的wee中.<br>instwee menu 0 /boot/grub/menu.wee</p>
 </li>
 </ol>
 <p>[2010-12-30更新下载] (<a href="http://dl.dbank.com/c0at23wlxf" target="_blank">http://dl.dbank.com/c0at23wlxf</a>)</p>
@@ -359,7 +345,7 @@ exit 1
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/post23/">[原创]QQ自由幻想挂机过神医完美解决方案</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/post44/">[分享]超级解霸V9精简版(用来播放光蝶)</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="615"  data-url="http://chenall.net/post/grub4dos_instwee/" data-title="wee install script for grub4dos"></div>
@@ -428,7 +414,7 @@ exit 1
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -444,14 +430,12 @@ exit 1
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -548,7 +532,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

@@ -137,7 +137,7 @@ replace 变量名 字符串1 字符串2 [起始位置]</p><li class="list-group-
 可以在你的菜单中简单的加入一个分区选择模块.
 要求:  必须使用2011-08-09以后发布的GRUB4DOS
 使用方法:
-首先复制代码另存为hd_part.lst</p><li class="list-group-item"><h3><time datetime="2011-08-02T14:22:07.000Z">2011-08-02</time>  <a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></h3><p class="list-group-item-text">本附录按类列举出一些重要的系统信息在内存中物理地址，为直接访问内存读取相应信息提供方便。
+首先复制代码另存为hd_part.lst然后在你的批处理或菜单中直接调用.调用的方法有两种.</p><li class="list-group-item"><h3><time datetime="2011-08-02T14:22:07.000Z">2011-08-02</time>  <a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></h3><p class="list-group-item-text">本附录按类列举出一些重要的系统信息在内存中物理地址，为直接访问内存读取相应信息提供方便。
 了解的内容：了解计算机系统的一些重要信息在内存中的存放位置。需要时，可直接访问内存读取相应信息。
 本附录主要用于查阅，当使用时，知道在本附录中查阅。</p>
 
@@ -204,7 +204,7 @@ replace 变量名 字符串1 字符串2 [起始位置]</p><li class="list-group-
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -220,14 +220,12 @@ replace 变量名 字符串1 字符串2 [起始位置]</p><li class="list-group-
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:04</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -311,7 +309,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

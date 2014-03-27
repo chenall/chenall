@@ -138,25 +138,23 @@ var _js2load = [];
 <p>这是一个通用模块,可以通过参数直接调用或者通过预先设置变量的方法再调用,</p>
 <p>使用方法请参考本站另一贴子</p>
 <p><a href="/post/grub4dos_hdpart/">[原创] GRUB4DOS 通用模块之分区选择</a></p>
-<h3 id="2011-08-22-">2011-08-22 (最终版）</h3>
+<h3 id="2011-08-22_(最终版）">2011-08-22 (最终版）</h3>
 <ol>
 <li>优化了检测代码．</li>
 <li>filpre支持子目录的检测．</li>
 </ol>
-<h3 id="2011-08-21-">2011-08-21 (变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）</h3>
+<h3 id="2011-08-21_(变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）">2011-08-21 (变化比较大，请注意看更新说明，新的版本使用起来更加灵活．）</h3>
 <ol>
 <li>菜单标题自动居中显示</li>
 <li><p>cmd的语法改变</p>
 <p>旧的版本<code>cmd=echo</code>要改成<code>cmd=&quot;echo %1&quot;</code></p>
-<p>在批处理中调用需要使用<code>%%1</code>
-即，需要多一个<code>%1</code>的参数，这个参数用于接收文件参数．可以放在cmd参数的任意位置．
-并且支持类拟<code>%~dpnx1</code>的格式．</p>
+<p>在批处理中调用需要使用<code>%%1</code><br>即，需要多一个<code>%1</code>的参数，这个参数用于接收文件参数．可以放在cmd参数的任意位置．<br>并且支持类拟<code>%~dpnx1</code>的格式．</p>
 </li>
 <li><p>新增<code>filpre</code>参数,指定文件名前辍.</p>
 <p><del>注意:使用该参数时,<code>subdir</code>参数将不起作用,为了不影响其它情况下的检测速度,该参数只支持单级目录.</del></p>
 </li>
 </ol>
-<h3 id="2011-08-16-">2011-08-16 更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)</h3>
+<h3 id="2011-08-16_更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)">2011-08-16 更新:(新的版本处理的速度会慢一些,但精确度比较高,之前的版本会把带扩展名的目录当成文件显示在菜单上)</h3>
 <ol>
 <li><p>添加了一个参数root,指定要从哪个目录开始找.例子:</p>
 <p>root=()/boot</p>
@@ -168,7 +166,7 @@ var _js2load = [];
 <li><p>支持查找无扩展名的文件(之前的版本无扩展名的全部被当成一个子目录对待)</p>
 </li>
 <li>新的ext参数只查找无扩展名的文件.<code>ext=.</code>会查找无扩展名的文件.</li>
-<li>菜单的注释新增了文件大小的提示(因为新的版本使用cat --locate=0来检测是否一个文件,就顺便把这个也利用上了.)</li>
+<li>菜单的注释新增了文件大小的提示(因为新的版本使用cat —locate=0来检测是否一个文件,就顺便把这个也利用上了.)</li>
 </ol>
 <p>本模块支持的参数如下</p>
 <ul>
@@ -191,18 +189,18 @@ var _js2load = [];
 </ul>
 <p>以下是使用的效果截图,欢迎反馈BUG或建议.(图片原链接已失效,以后再抽空重新弄)</p>
 <ol>
-<li><h3 id="-">当前分区,根目录</h3>
+<li><h3 id="当前分区,根目录">当前分区,根目录</h3>
 </li>
-<li><h3 id="-3-">当前分区,3级目录</h3>
+<li><h3 id="当前分区,3级目录">当前分区,3级目录</h3>
 </li>
-<li><h3 id="-">当前分区,二级目录,</h3>
+<li><h3 id="当前分区,二级目录,">当前分区,二级目录,</h3>
 </li>
-<li><h3 id="-">二级目录,所有硬盘分区</h3>
+<li><h3 id="二级目录,所有硬盘分区">二级目录,所有硬盘分区</h3>
 </li>
-<li><h3 id="2011-08-16-">2011-08-16更新的版本效果图.</h3>
+<li><h3 id="2011-08-16更新的版本效果图-">2011-08-16更新的版本效果图.</h3>
 </li>
 </ol>
-<pre><code class="lang-bat">!BAT
+<pre><code class="bat">!BAT
 setlocal
 debug off
 checkrange 20110918:-1 read 0x8278 || echo Please use grub4dos-0.4.5b-2011-09-18 or above! &amp;&amp; exit 1
@@ -386,7 +384,7 @@ exit
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="754"  data-url="http://chenall.net/post/g4d_filelist/" data-title="[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]"></div>
@@ -455,7 +453,7 @@ exit
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -471,14 +469,12 @@ exit
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -575,7 +571,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

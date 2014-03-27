@@ -10,8 +10,7 @@
 <title>GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站) | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 例子:  
-
+<meta name="description" content="利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问例子:  
 说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.GRUB4DOS会把这个文件的内容作为一个磁盘分区(hd1,0).">
 
 
@@ -131,14 +130,12 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <p>利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问 
-例子:  </p>
+        <p>利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问<br>例子:  </p>
 <pre><code>map --mem /minipe/system.wim (hd1)
 map --hook
 </code></pre><p>说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.<code>GRUB4DOS</code>会把这个文件的内容作为一个磁盘分区(hd1,0).</p>
 <p>也就是把一个文件虚拟成一个分区.</p>
-<p>然后进到入DOS后,利用一个磁盘工具把上面的(hd1,0)分区保存为一个文件. 
-例子:用todisk</p>
+<p>然后进到入DOS后,利用一个磁盘工具把上面的(hd1,0)分区保存为一个文件.<br>例子:用todisk</p>
 <pre><code>todisk 2:1=q to (c:\system.wim)
 </code></pre><p>把第二磁盘的第一分区保存为system.wim(即还原过程).</p>
 <p>这个方法在某些情况下很有用处.由于1个磁盘扇区是512字节,所以最后得到的文件会是512字节的倍数(不足补00),所以只适用于对文件内容长度要求不是很严格的地方.</p>
@@ -197,7 +194,7 @@ map --hook
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/post23/">[原创]QQ自由幻想挂机过神医完美解决方案</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="40"  data-url="http://chenall.net/post/post40/" data-title="GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)"></div>
@@ -266,7 +263,7 @@ map --hook
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -282,14 +279,12 @@ map --hook
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -386,7 +381,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

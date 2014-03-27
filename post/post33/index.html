@@ -11,7 +11,6 @@
 <meta name="author" content="chenall">
 
 <meta name="description" content="今天在制作一个启动盘,时需要用EXTRACT来解压cab文件,却发现死活不行.总是提示 out of memory while processing cabinet file 错误
-
 查了相关文章 http://support.microsoft.com/kb/261758 还是没有用.">
 
 
@@ -131,14 +130,10 @@ var _js2load = [];
 </div></section>
     <div class="entry">
       
-        <p>今天在制作一个启动盘,时需要用EXTRACT来解压cab文件,却发现死活不行.
-总是提示 <em><code>out of memory while processing cabinet file</code></em> 错误</p>
-<p>查了相关文章 <a href="http://support.microsoft.com/kb/261758" target="_blank"><a href="http://support.microsoft.com/kb/261758">http://support.microsoft.com/kb/261758</a></a> 还是没有用.</p>
+        <p>今天在制作一个启动盘,时需要用EXTRACT来解压cab文件,却发现死活不行.<br>总是提示 <em><code>out of memory while processing cabinet file</code></em> 错误</p>
+<p>查了相关文章 <a href="http://support.microsoft.com/kb/261758" target="_blank">http://support.microsoft.com/kb/261758</a> 还是没有用.</p>
 <p>已经加载了himem.sys的内存管理,并且内存达到512MB.郁闷了半天.研究了WIN98的启动盘才发现问题所在.</p>
-<p>WIN98启动盘使用了XMSDSK内存盘.跟踪后发现,如果没有这个XMSDSK内存盘EXTRACT就会有上面的提示.
-经过多次测试才发现
-原来这个extract程序要求启动分区可用空间大于<code>2048KB</code>否则就会有上面的错误提示.
-而这个启动分区是根据环境变量<code>comspec</code>的值来确定的.而WIN98启动盘使用了XMSDSK内存盘后把这个变量指定的内存盘(COMMAND.COM也复制过去了),所以没这个问题.</p>
+<p>WIN98启动盘使用了XMSDSK内存盘.跟踪后发现,如果没有这个XMSDSK内存盘EXTRACT就会有上面的提示.<br>经过多次测试才发现<br>原来这个extract程序要求启动分区可用空间大于<code>2048KB</code>否则就会有上面的错误提示.<br>而这个启动分区是根据环境变量<code>comspec</code>的值来确定的.而WIN98启动盘使用了XMSDSK内存盘后把这个变量指定的内存盘(COMMAND.COM也复制过去了),所以没这个问题.</p>
 <p>不得已只好也使用XMSDSK来虚拟一个大于2048KB的内存盘来临时使用下.</p>
 
       
@@ -195,7 +190,7 @@ var _js2load = [];
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/s6/">[健康知识]  睡眠与养生</a></li><li class="list-group-item"><a href="/post/spanidc/">[转] 谈谈草根站长被中国垃圾主机商害惨的经历</a></li><li class="list-group-item"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li></ul></td></tr></table></div></section>    
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></li><li class="list-group-item"><a href="/post/alibaba/">[转载] 阿里巴巴的零知识证明</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></li><li class="list-group-item"><a href="/post/koging/">[推荐] 免费的云计算Koding</a></li></ul></td><td><ul class="list-group"><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/20100907/">[原创] 无聊贴一段代码</a></li></ul></td></tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
 <div class="ds-thread"  data-thread-key="33"  data-url="http://chenall.net/post/post33/" data-title="遭遇DOS下extract.exe 内存不足的问题."></div>
@@ -264,7 +259,7 @@ var _js2load = [];
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -280,14 +275,12 @@ var _js2load = [];
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -384,7 +377,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>

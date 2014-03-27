@@ -199,8 +199,8 @@ OPTIONS:
   -u Update.
   -b Backup mbr to second sector(default is nt6mbr).
   -l List all disks in system and exit.
-</code></pre><p>Report bugs to website:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank"><a href="http://code.google.com/p/grubutils/issues">http://code.google.com/p/grubutils/issues</a></a></p>
-<p>Thanks:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a><br>  wee63setup.c by SvOlli,xdio.c by bean  </p>
+</code></pre><p>Report bugs to website:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank">http://code.google.com/p/grubutils/issues</a></p>
+<p>Thanks:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5838</a><br>  wee63setup.c by SvOlli,xdio.c by bean  </p>
 <p>wee 安装程序v1.2</p>
 <p> 用法:</p>
 <p>  weesetup [参数] 磁盘</p>
@@ -213,14 +213,12 @@ OPTIONS:
 <p>  -u 更新wee.  </p>
 <p>  -b 备份旧的mbr到第二扇区（默认不备份，而是直接使用内置的nt6mbr）.  </p>
 <p>  -l 显示所在硬盘列表  </p>
-<p>请到以下网址报告BUG:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank"><a href="http://code.google.com/p/grubutils/issues">http://code.google.com/p/grubutils/issues</a></a></p>
-<p>感谢: 
-  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a><br>  wee63setup.c by SvOlli,xdio.c by bean </p>
-<p>更多资料请访问我的搏客:<br> <a href="http://chenall.net/post/weesetup/"><a href="http://chenall.net/post/weesetup/">http://chenall.net/post/weesetup/</a></a> </p>
+<p>请到以下网址报告BUG:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank">http://code.google.com/p/grubutils/issues</a></p>
+<p>感谢:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5838</a><br>  wee63setup.c by SvOlli,xdio.c by bean </p>
+<p>更多资料请访问我的搏客:<br> <a href="http://chenall.net/post/weesetup/">http://chenall.net/post/weesetup/</a> </p>
 <p>编译方法：</p>
 <ol>
-<li><p>首先从SVN下载GRUBUTILS源码 
-svn co svn://svn.gna.org/svn/grubutil grubutil</p>
+<li><p>首先从SVN下载GRUBUTILS源码<br>svn co svn://svn.gna.org/svn/grubutil grubutil</p>
 </li>
 <li><p>在grubutil目录下新建一个子目录weesetup，然后把weesetup的源码复制过去.</p>
 <p>在weesetup目录下执行make，就可以在bin目录中生成一个weesetup.exe</p>
@@ -300,7 +298,7 @@ title 3.Plop Boot Manager
 两者相等为0,不等为1.
 比如小写的&#39;a&#39;的ascii码为97
 </code></pre><p>二进制是:01100001</p>
-<p>它的大写&#39;A&#39;的ascii码为65</p>
+<p>它的大写’A’的ascii码为65</p>
 <p>二进制是：01000001</p>
 <p>由此可见大小写字母之间只是二进制第5位的区别。2的5次方＝32=0x20;</p>
 <p>使用异或运算:</p>
@@ -370,41 +368,27 @@ void case_convert(char *ch,char flag)
 <p>可以利用它来启动备用的或其它的引导程序,然后进行修复工作.</p>
 <p>英文好的可以看一下软件的说明和readme</p>
 <blockquote>
-<p>  This software initially aims to install on the MBR track of the hard drive,
-   though also possible to write to ROM by someone who is interested.</p>
-<p>  WEE access disk sectors only using EBIOS(int13/AH=42h), and never using
-   CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS
-   on a drive, then WEE will not be able to access that drive.</p>
-<p>  WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are
-   supported.</p>
-<p>  WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/
-   BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable
-   because it is of a valid Linux kernel format.</p>
-<p>  Any single sector boot record file(with 55 AA at offset 0x1FE) can boot
-   as well.</p>
+<p>  This software initially aims to install on the MBR track of the hard drive,<br>   though also possible to write to ROM by someone who is interested.</p>
+<p>  WEE access disk sectors only using EBIOS(int13/AH=42h), and never using<br>   CHS mode BIOS call(int13/AH=02h). So, if the BIOS does not support EBIOS<br>   on a drive, then WEE will not be able to access that drive.</p>
+<p>  WEE supports FAT12/16/32, NTFS and ext2/3/4, and no other file systems are<br>   supported.</p>
+<p>  WEE can boot up IO.SYS(Win9x), KERNEL.SYS(FreeDOS), VMLINUZ(Linux), NTLDR/<br>   BOOTMGR(Windows), GRLDR(grub4dos). And GRUB.EXE(grub4dos) is also bootable<br>   because it is of a valid Linux kernel format.</p>
+<p>  Any single sector boot record file(with 55 AA at offset 0x1FE) can boot<br>   as well.</p>
 <p>  Besides, WEE can run 32-bit programs written for it.</p>
 </blockquote>
 <p> <a href="https://grubutils.googlecode.com/svn/grubutils/wee/README.txt" target="_blank">wee readme</a></p>
 <p>相关贴子:</p>
-<p>无忧启动论坛:   <a href="http://bbs.wuyou.com/viewthread.php?tid=167593" target="_blank"><a href="http://bbs.wuyou.com/viewthread.php?tid=167593">http://bbs.wuyou.com/viewthread.php?tid=167593</a></a>
-时空论坛:  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank"><a href="http://bbs.znpc.net/viewthread.php?tid=5838">http://bbs.znpc.net/viewthread.php?tid=5838</a></a></p>
-<p><code>本代码只是为了测试还有示范一下GRUB4DOS的批处理功能</code>
-安装会比较麻烦,可以参考无忧启动论坛的贴子进行图形界面安装.</p>
+<p>无忧启动论坛:   <a href="http://bbs.wuyou.com/viewthread.php?tid=167593" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=167593</a><br>时空论坛:  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5838</a></p>
+<p><code>本代码只是为了测试还有示范一下GRUB4DOS的批处理功能</code><br>安装会比较麻烦,可以参考无忧启动论坛的贴子进行图形界面安装.</p>
 <p>我利用最新版GRUB4DOS的功能写了一个脚本,用于安装wee到硬盘上.可以把脚本和wee63.mbr放在u盘或光盘上用grub4dos启动来进行安装修复.</p>
 <p>使用方法:</p>
 <ol>
-<li><p>instwee NUM
-NUM是0-9的数字,代表着要安装到哪个磁盘.</p>
+<li><p>instwee NUM<br>NUM是0-9的数字,代表着要安装到哪个磁盘.</p>
 <p>比如安装到第一个硬盘</p>
 <p>instwee 0</p>
 </li>
-<li><p>instwee menu NUM
-显示指定硬盘已经安装wee的内置菜单</p>
+<li><p>instwee menu NUM<br>显示指定硬盘已经安装wee的内置菜单</p>
 </li>
-<li><p>instwee menu NUm weemenufile
-导入菜单
-例子: 导入/boot/grub/menu.wee菜单文件到第一硬盘已经安装的wee中.
-instwee menu 0 /boot/grub/menu.wee</p>
+<li><p>instwee menu NUm weemenufile<br>导入菜单<br>例子: 导入/boot/grub/menu.wee菜单文件到第一硬盘已经安装的wee中.<br>instwee menu 0 /boot/grub/menu.wee</p>
 </li>
 </ol>
 <p>[2010-12-30更新下载] (<a href="http://dl.dbank.com/c0at23wlxf" target="_blank">http://dl.dbank.com/c0at23wlxf</a>)</p>
@@ -569,16 +553,10 @@ exit 1
     
     <div class="entry">
       
-        <p>[说明]
-   QGHO是一个用于演示GRUB4DOS功能的小程序.
- 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).
- 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.
- BUG报告或其它资料请移步我的搏客
- <a href="http://chenall.net/post/qgho/"><a href="http://chenall.net/post/qgho/">http://chenall.net/post/qgho/</a></a></p>
-<h3 id="-">[注意事项]</h3>
+        <p>[说明]<br>   QGHO是一个用于演示GRUB4DOS功能的小程序.<br> 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).<br> 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.<br> BUG报告或其它资料请移步我的搏客<br> <a href="http://chenall.net/post/qgho/">http://chenall.net/post/qgho/</a></p>
+<h3 id="[注意事项]">[注意事项]</h3>
 <ol>
-<li>必须安装在硬盘上使用,因为默认是备份第一硬盘第一分区到第一硬盘最后分区的.
-如果U盘启动可能会备份到U盘中</li>
+<li>必须安装在硬盘上使用,因为默认是备份第一硬盘第一分区到第一硬盘最后分区的.<br>如果U盘启动可能会备份到U盘中</li>
 <li>如果需要修改默认设置请看QGHO.SET文件.里面有详细说明.</li>
 <li>文件列表:(所有文件都是必须的)<pre><code>GRUB4DOS.MOD  GRUB4DOS 外命模块(使用GZ压缩过了)
 QGHO.BIN  MSDOS软盘最小化镜像
@@ -593,8 +571,8 @@ QGHO.TXT  说明文件.
 <li><p>转载或修改请保留出处.</p>
 </li>
 </ol>
-<p>主要是为了展示GRUB4DOS的功能,,QGHO更多的扩展功能等待你去挖掘......</p>
-<h3 id="-">[使用方法]</h3>
+<p>主要是为了展示GRUB4DOS的功能,,QGHO更多的扩展功能等待你去挖掘……</p>
+<h3 id="[使用方法]">[使用方法]</h3>
 <p> 直接复制QGHO目录到某个硬盘的根目录下,在你的GRUB4DOS菜单中添加一个菜单</p>
 <pre><code>title QGHO
  find --set-root /QGHO/QGHO.BIN
@@ -602,9 +580,9 @@ QGHO.TXT  说明文件.
 </code></pre><p>一般情况下,你不需要修改任何东西即可直接使用.<br>默认自动备份第一硬盘第一分区数据到第一硬盘最后一个分区上.  </p>
 <p>你可以自己修改/QGHO/QGHO.SET来实现自定义的备份.<br> 比如设定备份任意分区到任意目录.  </p>
 <p>没有磁盘限制,只要你定义的分区没有错就可以了.  </p>
-<h3 id="-">[其它]</h3>
+<h3 id="[其它]">[其它]</h3>
 <p> 如果你对这个有兴趣的话,也可以编写一个GUI界面来修改QGHO.SET内容.<br> 因为我对GUI不感冒,所以这些事我就不做了.  </p>
-<p>懂得使用就用,不懂的就不要瞎折腾了,对GRUB4DOS不了解的朋友请直接略过吧.... </p>
+<p>懂得使用就用,不懂的就不要瞎折腾了,对GRUB4DOS不了解的朋友请直接略过吧…. </p>
 <p>写给使用QGHO作为系统一键备份恢复的朋友:  </p>
 <p>如果你已经把GRUB4DOS作为系统的第一引导,只要做如下操作就可以做到一键自动备份/恢复.</p>
 <p> 并且可以通过在系统中修改QGHO.SET的设置来实现下一次引导时自动进行的操作.</p>
@@ -613,7 +591,7 @@ QGHO.TXT  说明文件.
 </code></pre><p> 具体QGHO.SET的设置方法请用记事本打开QGHO.SET查看.</p>
 <p>下载地址:</p>
 <p><a href="http://dl.dbank.com/c0az9tcai0" title="QGHO 最新版快盘下载" target="_blank">QGHO 最新版下载</a></p>
-<h3 id="-">[更新内容]</h3>
+<h3 id="[更新内容]">[更新内容]</h3>
 <p>2010-01-02</p>
 <ol>
 <li>添加了选择指定GHO文件恢复到指定分区的功能，具体看后面的图片 </li>
@@ -624,18 +602,18 @@ QGHO.TXT  说明文件.
 <li>恢复模式时会自动检测GHO文件的密码.</li>
 <li>其它优化调整. </li>
 </ol>
-<h3 id="-">[截图]</h3>
+<h3 id="[截图]">[截图]</h3>
 <p>启动界面</p>
 <p>显示参数信息.</p>
 <p>开始备份.</p>
 <p>新功能，菜单3.</p>
 <p>选择要恢复的目的分区。</p>
 <p>选择要恢复的GHO文件。</p>
-<h3 id="-">[菜单文件]</h3>
-<p>注:这是老版的,新版已经改用批处理方式,想要查看批处理源码可以打开GRUB4DOS.MOD<br> 查找&quot;!BAT&quot;就可以看到了.(可能需要对GRUB4DOS.MOD进行解压)</p>
+<h3 id="[菜单文件]">[菜单文件]</h3>
+<p>注:这是老版的,新版已经改用批处理方式,想要查看批处理源码可以打开GRUB4DOS.MOD<br> 查找”!BAT”就可以看到了.(可能需要对GRUB4DOS.MOD进行解压)</p>
 <p>供想学习GRUB4DOS的朋友使用,大部份都有注释,有什么不明白的可以提出来.</p>
 <p>如果你有发现了错误麻烦通知我,谢谢.</p>
-<pre><code class="lang-bat">default=0
+<pre><code class="bat">default=0
 timeout=5
 #设置可执行程序的路径(外部命令)
 command --set-path=(fd0)/bin/
@@ -753,7 +731,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
 <p>附上两个增强的版本：</p>
 <p>zxw版： <a href="http://bbs.wuyou.com/viewthread.php?tid=183722&amp;extra=page%3D1" target="_blank">自动列表.数字启动</a></p>
 <p>sratlf版: <a href="http://bbs.wuyou.com/viewthread.php?tid=182793&amp;extra=page%3D1" target="_blank">198#新版测试;简单菜单,实现grub加载任意ISO/IMG/RAMOS/引导文件等</a></p>
-<pre><code class="lang-bat">!BAT
+<pre><code class="bat">!BAT
 ::GRUB4DOS 简易批处理脚本.
 ::用途: 在合盘时省去写大量菜单的麻烦.
 ::用法:
@@ -815,7 +793,7 @@ echo -e \n%~nx0 %2\nboot &gt;&gt; (md)0x3000+0x10
 <p>效果截图.</p>
 <p><img src="https://www.sugarsync.com/pf/D601052_6893493_11560" alt=""></p>
 <p>以下菜单为自动生成,</p>
-<p>其中Windows NT/2k/Xp/V....菜单对应的文件是NT-PASS.ISO</p>
+<p>其中Windows NT/2k/Xp/V….菜单对应的文件是NT-PASS.ISO</p>
 <p>同目录下NT-PASS.TXT的内容如下.</p>
 <p>title Windows NT/2k/XP/Vista Change Password / Registry Editor\n<a href="http://pogostick.net/~pnh/ntpasswd/" target="_blank">http://pogostick.net/~pnh/ntpasswd/</a></p>
 <p><img src="https://www.sugarsync.com/pf/D601052_6893493_11568" alt=""></p>
@@ -860,9 +838,9 @@ echo -e \n%~nx0 %2\nboot &gt;&gt; (md)0x3000+0x10
 <li>将以上文件放到U盘根目录下名为SCSI.IMG.</li>
 <li>把GRUB4DOS引导写入U盘.(只要使用U盘启动时可以用GRUB即可)</li>
 <li><p>GRUB4DOS的启动命令</p>
-<h3 id="-">相关文章:</h3>
+<h3 id="相关文章:">相关文章:</h3>
 <p><a href="http://bbs.wuyou.com/viewthread.php?tid=121630&amp;extra=page%3D1" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=121630&amp;extra=page%3D1</a><br><a href="http://bbs.wuyou.com/viewthread.php?tid=121630&amp;page=5#pid1349207" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=121630&amp;page=5#pid1349207</a><br><a href="http://bbs.znpc.net/viewthread.php?tid=4562" target="_blank">http://bbs.znpc.net/viewthread.php?tid=4562</a>  </p>
-<h3 id="grub4dos-">GRUB4DOS菜单内容</h3>
+<h3 id="GRUB4DOS菜单内容">GRUB4DOS菜单内容</h3>
 <pre><code>title 从光盘安装系统并自动加载S&amp;amp;R&amp;amp;S软盘驱动.
 find --set-root /SCSI.IMG
 map --mem (md)+2880 (fd0)
@@ -900,11 +878,11 @@ chainloader (cd)
  [BusExtenders]
  volsnap= &quot;Volume Shadow Copy Manager&quot;,files.none,volsnap`
 </code></pre><p>添加了以后就可以在启动PE之前将对应的驱动加载到fd1上然后再启动PE就可以自动识别了.</p>
-<p> 从此不再需要集成驱动的系统安装盘/PE了....</p>
+<p> 从此不再需要集成驱动的系统安装盘/PE了….</p>
 <p> 后记:此方法用于PE启动时使用(fd0)就可以加载了,用于系统安装时,一般使用(fd1)以实现免按F6安装.</p>
 <p>其中TXTSETUP.OEM里面的[default]字段下SCSI的值必须是你本机对应的驱动,否则不会自动加载.</p>
 <p>还有一种方式,使用GHOST像绿茶网吧版的.虽然也是GHOST方式,但是属于全新安装的.安装的时候如果出现7B蓝屏说明没有对应驱动,这时也可以使用这个方法来加载驱动后再重新启动安装就不会蓝屏了.(需要加载到(fd0)并按F6选择正确的驱动,最好同时加载到(fd1))</p>
-<p>从此不再需要集成驱动的系统安装盘/PE了....</p>
+<p>从此不再需要集成驱动的系统安装盘/PE了….</p>
 <p>2010-11-22 更新一些说明.</p>
 <p>2009-07-09 注:如果使用(fd0)不成功的朋友,可以尝试再加载一个非OEM F6镜像的IMG到(fd0),也就是(fd0)不要有TXTSETUP.OEM文件,一般就可以了.</p>
 
@@ -940,19 +918,12 @@ chainloader (cd)
     
     <div class="entry">
       
-        <h3 id="-">[功能说明]</h3>
-<p>GRUB4DOS菜单脚本命令增强.
-在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.
-可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能
-目前已经增加了许多的强大功能.具体见后面的介绍.
-推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p>
+        <h3 id="[功能说明]">[功能说明]</h3>
+<p>GRUB4DOS菜单脚本命令增强.<br>在GRUB4DOS还没有支持变量之前可以暂时代替着使用变量的功能.<br>可以让GRUB4DOS内部命令支持变量或动态参数(WENV run)功能<br>目前已经增加了许多的强大功能.具体见后面的介绍.<br>推荐使用高级GRUB4DOS应用菜单必备,可以简化许多命令.</p>
 <p> 注: <code>由于新版的GRUB4DOS的功能已经得到了增强,基本上WENV的功能GRUB4DOS都可以实现了,所以本程序已经不再维护更新,建议使用GRUB4DOS内置功能代替</code></p>
-<h3 id="-">[下载地址]</h3>
+<h3 id="[下载地址]">[下载地址]</h3>
 <p> <a href="http://grubutils.googlecode.com" target="_blank">http://grubutils.googlecode.com</a></p>
-<p> WENV 是一个基于GRUB4DOS的程序，可以用它来增强GRUB4DOS的脚本能力,来现一些不可思议的功能。
- WENV 最初只支持简单变量和运行GRUB4DOS命令。到了现在已经支持各式各样的处理。 可以把让它当成是GRUB4DOS的增强形SHELL，方便各位grub4dos fans编写高效强大的菜单。 在这里要感谢无论启动论坛上众多朋友的支持，如果没有你们，WENV还只是一个小玩具。
- <a href="http://bbs.wuyou.com/viewthread.php?tid=159851" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851</a> 取之于网络，共享于网络。 本说明文件来源于无忧论坛zhaohj提供的README.TXT,我经过修改整理而成。
- <a href="http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205</a> 如有发现错误，请通知我，谢谢。 WENV目前支持的命令列表(wenv-commands): </p>
+<p> WENV 是一个基于GRUB4DOS的程序，可以用它来增强GRUB4DOS的脚本能力,来现一些不可思议的功能。<br> WENV 最初只支持简单变量和运行GRUB4DOS命令。到了现在已经支持各式各样的处理。 可以把让它当成是GRUB4DOS的增强形SHELL，方便各位grub4dos fans编写高效强大的菜单。 在这里要感谢无论启动论坛上众多朋友的支持，如果没有你们，WENV还只是一个小玩具。<br> <a href="http://bbs.wuyou.com/viewthread.php?tid=159851" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851</a> 取之于网络，共享于网络。 本说明文件来源于无忧论坛zhaohj提供的README.TXT,我经过修改整理而成。<br> <a href="http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=159851&amp;page=46#pid2056205</a> 如有发现错误，请通知我，谢谢。 WENV目前支持的命令列表(wenv-commands): </p>
 <ul>
 <li><a href="#SET_FUNC">SET</a> 设置/修改/新增/删除变量</li>
 <li><a href="#GET_FUNC">GET</a> 显示变量/判断变是是否存在</li>
@@ -963,32 +934,21 @@ chainloader (cd)
 <li><a href="#READ_FUNC">READ</a> 分析一个文件并执行里面的命令（必须是WENV支持的命令），并且支持参数。</li>
 <li><a href="#CHECK_FUNC">CHECK</a> 判断/检测相当于if命令，后面可以跟WENV-COMMAND（当判断的返回值为真时执行）  </li>
 </ul>
-<h4 id="-other-"><a href="#OTHER">其它介绍，还有使用示例见文章尾。</a></h4>
-<p>两个内置变量:
- ?_WENV 保存上一次wenv call运行的返回值
- ?_GET 保存上一次wenv get variable变量的长度</p>
+<h4 id="<a_href="#OTHER">其它介绍，还有使用示例见文章尾。</a>"><a href="#OTHER">其它介绍，还有使用示例见文章尾。</a></h4>
+<p>两个内置变量:<br> ?_WENV 保存上一次wenv call运行的返回值<br> ?_GET 保存上一次wenv get variable变量的长度</p>
 <p><img src="http://c-dl.qiniudn.com/upload/2010/10/9EF3DCF527FD6D7A2A5886C0F661399E50C99DB0.png" alt=""></p>
-<p> <a id="SET_FUNC" name="SET_FUNC" classtype="bookmark"></a>
-一：SET 设置/修改/新增/删除变量</p>
+<p> <a id="SET_FUNC" name="SET_FUNC" classtype="bookmark"></a><br>一：SET 设置/修改/新增/删除变量</p>
 <ol>
-<li><p>WENV SET [variable=[string]]
-variable 指定环境变量名,区分大小写 （目前最多允许用户定义60个变量）
-不超过8个字符.可以使用字母(a-z/A-Z)、数字(0-9)、下划线(_)。不可以使用数字开头。
-string 指定要指派给变量的一系列字符串。不能超过512字节。</p>
+<li><p>WENV SET [variable=[string]]<br>variable 指定环境变量名,区分大小写 （目前最多允许用户定义60个变量）<br>不超过8个字符.可以使用字母(a-z/A-Z)、数字(0-9)、下划线(_)。不可以使用数字开头。<br>string 指定要指派给变量的一系列字符串。不能超过512字节。</p>
 <p>无等号时显示指定名称的所有变量的值。  SET P</p>
 <p>会显示所有以字母 P 打头的变量</p>
 </li>
-<li><p>等号后面可以跟&quot;$U,&quot;或&quot;$L,&quot;
-$U，全转变为大写；
-$L，全转变为小写；</p>
+<li><p>等号后面可以跟”$U,”或”$L,”<br>$U，全转变为大写；<br>$L，全转变为小写；</p>
 <p>例子: WENV SET a=$U,aBcDeF 得到 a=ABCDEF</p>
 </li>
-<li><p>关键字 $input，来获取从键盘输入的字符。
-例子：获取从键盘输入的字符串，并转换为大写赋值给srspath
-WENV set srspath=$u,$input,please input SRS driver path:</p>
+<li><p>关键字 $input，来获取从键盘输入的字符。<br>例子：获取从键盘输入的字符串，并转换为大写赋值给srspath<br>WENV set srspath=$u,$input,please input SRS driver path:</p>
 </li>
-<li><p>一些组合例子:  WENV SET variable=$U,string
-WENV SET variable=$U,$input,Prompt</p>
+<li><p>一些组合例子:  WENV SET variable=$U,string<br>WENV SET variable=$U,$input,Prompt</p>
 </li>
 </ol>
 <p>二、 GET 显示变量/判断变是是否存在 GET 命令可以显示指定的变量,并设置?_GET为该变量的字符串长度。 <a id="GET_FUNC" name="GET_FUNC" classtype="bookmark"></a> </p>
@@ -1139,8 +1099,7 @@ abc==aBc 值为真.
 </code></pre><p>  5: ${VAR%%STRING}删除STRING后面的字符,贪婪模式</p>
 <pre><code>  WENV set a=ABCD;abcd;1234
   WENV set b=${a%%;} 得到b=ABCD
-</code></pre><p>  一些应用举例：
-  1) 根据提示从键盘输入，全转为大写后保存给srspath变量</p>
+</code></pre><p>  一些应用举例：<br>  1) 根据提示从键盘输入，全转为大写后保存给srspath变量</p>
 <pre><code>WENV set srspath=$u,$input,please input SRS driver path:
 </code></pre><p>  2) 设置变量a,并把值全转为大写</p>
 <pre><code>WENV set a=ABCDabcd1234
@@ -1172,12 +1131,7 @@ WENV reset sr* 清除sr开头的所有变量
     WENV check ${a}==123 &amp;&amp; echo ${a}=123
     WENV check ${a}&lt;=150 check ${a}&gt;=100 &amp;&amp; echo ${a}&gt;=100.and.${a}&lt;=150
 </code></pre><p>  上面实现了IF语句功能.  一些图片。</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/10/CA9906EAF8A41C7C6AF513A6E38A338DA3A7767B.png" alt=""> 
-<img src="http://c-dl.qiniudn.com/upload/2010/10/C4E5F5F595F1F6F46D4286A29A187A58FB24BFEF.png" alt="">
-<img src="http://c-dl.qiniudn.com/upload/2010/10/750D1B07FAB044ADD671FE61F718C1FFAA89A6C6.png" alt=""> 
-<img src="http://c-dl.qiniudn.com/upload/2010/10/C176EE65406D37204DD14D04126D882FCCE9F957.png" alt="">
-<img src="http://c-dl.qiniudn.com/upload/2010/10/886DDF981F317649CC0F06307908152F2C7B9F53.png" alt="">
-<img src="http://c-dl.qiniudn.com/upload/2010/10/E1ECFD0F1B74BDA5045D6EEA93A8B93012A1F557.png" alt="">  </p>
+<p><img src="http://c-dl.qiniudn.com/upload/2010/10/CA9906EAF8A41C7C6AF513A6E38A338DA3A7767B.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/C4E5F5F595F1F6F46D4286A29A187A58FB24BFEF.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/750D1B07FAB044ADD671FE61F718C1FFAA89A6C6.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/C176EE65406D37204DD14D04126D882FCCE9F957.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/886DDF981F317649CC0F06307908152F2C7B9F53.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/E1ECFD0F1B74BDA5045D6EEA93A8B93012A1F557.png" alt="">  </p>
 
       
     </div>
@@ -1211,25 +1165,25 @@ WENV reset sr* 清除sr开头的所有变量
     
     <div class="entry">
       
-        <p> 在程序中经常会需要对字母的大小写进行转换，虽然有现成的upper/lower函数，但是有时因为各种原因，或想减小程序的体积，需要自己编写函数来实现。</p>
+        <p>在程序中经常会需要对字母的大小写进行转换，虽然有现成的upper/lower函数，但是有时因为各种原因，或想减小程序的体积，需要自己编写函数来实现。</p>
 <p> 这里来讨论一下各种转换的方法。</p>
 <p>根据ASCII码我们可以知道大写字母和小写字母相差32(20H)=100000B(二进制).</p>
 <p>根据这个原理我们可以方便的进行大小写的转换。如是是大写字母+32就变成小写。</p>
-<p> 例子: 大写字母&#39;A&#39; 它的ASCII码是65. &#39;a&#39;的ASCII码是97，看下面的等式。</p>
-<p> &#39;A&#39;+32=65+32=97 = &#39;a&#39;</p>
+<p> 例子: 大写字母’A’ 它的ASCII码是65. ‘a’的ASCII码是97，看下面的等式。</p>
+<p> ‘A’+32=65+32=97 = ‘a’</p>
 <p> 另外:</p>
 <ul>
-<li>&#39;a&#39;的二进制是<font color="#FF00FF">01</font><font color="#FF6800">1</font>00001B</li>
-<li>&#39;A&#39;的二进制是<font color="#FF00FF">01</font><font color="#FF6800">0</font>00001B</li>
+<li>‘a’的二进制是<font color="#FF00FF">01</font><font color="#FF6800">1</font>00001B</li>
+<li>‘A’的二进制是<font color="#FF00FF">01</font><font color="#FF6800">0</font>00001B</li>
 </ul>
 <p>也就是说小写和大写的区别就是100000B ，也就是bit 5的区别。</p>
 <p> 所以还可以通过与运算修改bit 5的值也可以达到转换的目的。</p>
-<p>把第5位置为1可以按位&quot;或&quot;操作，置为0 可以按位&quot;与&quot;操作<br> <font color="#FF00FF">00</font><font color="#FF6800">1</font>00000B = 32 = 20H<br> <font color="#FF00FF">11</font><font color="#FF6800">0</font>11111B = 223 = DFH  </p>
-<p>&#39;a&#39; &amp; 223 = &#39;A&#39;    &#39;A&#39; | 32 = &#39;a&#39;</p>
+<p>把第5位置为1可以按位”或”操作，置为0 可以按位”与”操作<br> <font color="#FF00FF">00</font><font color="#FF6800">1</font>00000B = 32 = 20H<br> <font color="#FF00FF">11</font><font color="#FF6800">0</font>11111B = 223 = DFH  </p>
+<p>‘a’ &amp; 223 = ‘A’    ‘A’ | 32 = ‘a’</p>
 <p>其实也就是字母的第5位（二进制位），如果它是1就是小写的，如果是0就是大写。</p>
 <p>另外在使用经典的代码比较时</p>
-<p>小写转大写 &gt;=&#39;a&#39; 并且 &lt;=&#39;z&#39;<br>大写转小写 &gt;=&#39;A&#39; 并且 &lt;=&#39;Z&#39;<br>可以把这两个比较的顺序对换一下。<br>改成&lt;=&#39;Z&#39; 并且 &gt;=&#39;A&#39; ,看起来没有什么区别，但是实际运行中效率会更高。   </p>
-<p> 原理: 因为比较时，只要第一个条件不符合，那就不会去比较第二个条件了，利用这一点可以加快比较速度。<br> 小写字母都是大于&#39;Z&#39;的，当然也大于&#39;A&#39;。<br> 比如转换aBCD为小写，a已经是小写了，如果按原来的方法比较&gt;=&#39;A&#39; &amp;&amp; &lt;=&#39;Z&#39; 需要比较两次。<br> 用后面的方法只需要比较一次。  </p>
+<p>小写转大写 &gt;=’a’ 并且 &lt;=’z’<br>大写转小写 &gt;=’A’ 并且 &lt;=’Z’<br>可以把这两个比较的顺序对换一下。<br>改成&lt;=’Z’ 并且 &gt;=’A’ ,看起来没有什么区别，但是实际运行中效率会更高。   </p>
+<p> 原理: 因为比较时，只要第一个条件不符合，那就不会去比较第二个条件了，利用这一点可以加快比较速度。<br> 小写字母都是大于’Z’的，当然也大于’A’。<br> 比如转换aBCD为小写，a已经是小写了，如果按原来的方法比较&gt;=’A’ &amp;&amp; &lt;=’Z’ 需要比较两次。<br> 用后面的方法只需要比较一次。  </p>
 <p> 下面是实现的代码.有两种方式。（转大写的）</p>
 <pre><code> void upper(char string)
 {
@@ -1290,13 +1244,11 @@ WENV reset sr* 清除sr开头的所有变量
       
         <p>经典的游戏贪吃蛇,GRUB4DOS版.比较简单的一个游戏.</p>
 <p>嘻嘻,界面不是很好看,没有使用图形模式,只是一个试验品.抛砖引玉.^_^</p>
-<p>关于这个游戏的相关信息请看搏客贴子:
- <a href="http://chenall.net/post/snake_idea/"><a href="http://chenall.net/post/snake_idea/">http://chenall.net/post/snake_idea/</a></a></p>
+<p>关于这个游戏的相关信息请看搏客贴子:<br> <a href="http://chenall.net/post/snake_idea/">http://chenall.net/post/snake_idea/</a></p>
 <p> 只是在学习过程中偶然想到的就尝试着去实现了它.</p>
 <p>重温经典,有兴趣可以下载玩玩看.</p>
 <p> 下载:</p>
-<p> 需要最新版本(如果有更新)还有源码(GRUB4DOS版)在这里找.
- <a href="http://code.google.com/p/grubutils/source/checkout" target="_blank"><a href="http://code.google.com/p/grubutils/source/checkout">http://code.google.com/p/grubutils/source/checkout</a></a></p>
+<p> 需要最新版本(如果有更新)还有源码(GRUB4DOS版)在这里找.<br> <a href="http://code.google.com/p/grubutils/source/checkout" target="_blank">http://code.google.com/p/grubutils/source/checkout</a></p>
 <p>一些说明:</p>
 <ul>
 <li>GRUB4DOS下只能在文本模式下运行.(TEXT MODE only).</li>
@@ -1331,7 +1283,7 @@ WENV reset sr* 清除sr开头的所有变量
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/5/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li class="active"><li><span class="page-number current">6</span></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><span class="space">&hellip;</span></li></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/7/">&raquo;</a></li>
+  <li><a class="extend prev" href="/page/5/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li><a class="page-number" href="/page/5/">5</a></li><li class="active"><li><span class="page-number current">6</span></li></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/7/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1396,7 +1348,7 @@ WENV reset sr* 清除sr开头的所有变量
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2014 chenall
+  &copy; 2008-2014 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
@@ -1412,14 +1364,12 @@ WENV reset sr* 清除sr开头的所有变量
 </script></span><span id='analytics-baidu'>
 <script>
 var _hmt = _hmt || [];
-_js2load.push({src:"//hm.baidu.com/hm.js?"});
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall</a></strong><span class="pull-right"> 更新时间: <em>2014-03-08 19:32:33</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:42:05</em></span></div>
 </div>
 <div class="clearfix"></div>
-
-
   </div>
   </footer>
   
@@ -1503,7 +1453,6 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 $('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
 $.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
 </script>
-
 
   <!--addons at end of body-->
 </body>
