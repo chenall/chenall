@@ -1,7 +1,7 @@
-
 <!DOCTYPE HTML>
-<html>
-<head>
+<html><head>
+<meta http-equiv="Cache-Control" content="max-age=7200" />
+
 <!--addons at start of head-->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,11 +42,7 @@
 <script src="/js/respond.proxy.js"></script>
    <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
 <![endif]-->
-<script type="text/javascript">
-function loadjs(c,d){var a=document.createElement("script");a.async=!0;a.type="text/javascript";a.src=c;a.charset=d||"gbk";(document.getElementsByTagName("HEAD")[0]||document.getElementsByTagName("BODY")[0]).appendChild(a)};
-var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-var _js2load = [];
-</script>
+<script type="text/javascript">var site = {BASE_URI: '/'};var _js2load = [];</script>
 
 <!--addons at end of head-->
 </head>
@@ -340,11 +336,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript">
-$('.ajax_widgets').each(function(){var src=$(this).attr('data-src');if(src)$(this).load('/widgets/'+src+'.html');});
-$.each(_js2load,function(index,obj){loadjs(obj.src,obj.charset)});
-</script>
-
+<script type="text/javascript" src="/js/chenall.js"></script>
   <!--addons at end of body-->
 </body>
 </html>
