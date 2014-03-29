@@ -111,7 +111,7 @@ widgets:
     - google_cse
     - category
     - latest_update_posts
-    - recent_posts
+    - random_posts
     - google_sidebar
     - tagcloud
     - sina_weiboshow
