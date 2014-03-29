@@ -39,7 +39,6 @@ description: hexo模块化主题,自由,强大,本主题还通过主题插件实
 - 允许在head或body的前面或尾部附加自定义内容.(相对1.0版改变,新版只使用`source/_modules`目录).
 - 独立脚本插件扩展(source_dir/_scripts目录里面的js文件会自动加载,效果和scripts目录里面一样)
 
-
 <!--more-->
 
 注: 上面的$SOURCE是hexo配置文件中在`source_dir`,$THEME是hexo配置文件中的`theme`,即 **hexo.source_dir + '_'+ hexo.config.theme+ '.yml'**;
@@ -94,6 +93,9 @@ npm install lodash --save
 cd themes/light
 git pull 或 svn up
 ```
+
+* 2014-03-28 升级到V2.0版,支持hexo 2.5.X版本,一些功能改进.
+* 2014-03-29 random_posts 实现真正的随机文章功能(使用js脚本加载).
 
 ## 自动设置目录 (V2.0)
 
