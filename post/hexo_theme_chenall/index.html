@@ -170,7 +170,11 @@ svn co https://github.com/chenall/hexo-theme-chenall/tags/V1.0 themes/chenall
 <p>通过以下命令来保持更新:</p>
 <pre><code>cd themes/light
 git pull 或 svn up
-</code></pre><h2 id="自动设置目录_(V2-0)">自动设置目录 (V2.0)</h2>
+</code></pre><ul>
+<li>2014-03-28 升级到V2.0版,支持hexo 2.5.X版本,一些功能改进.</li>
+<li>2014-03-29 random_posts 实现真正的随机文章功能(使用js脚本加载).</li>
+</ul>
+<h2 id="自动设置目录_(V2-0)">自动设置目录 (V2.0)</h2>
 <p><code>hexo</code>默认的<code>source</code>目录等虽然可以通过配置文件来指定,但由于必须使用固定的目录,使用起来不太灵活</p>
 <p>本主题对此进行了扩展,允许这些目录跟随配置文件自动变化,比如下面的配置,最终的source_dir是<code>$config/_config.yml</code></p>
 <pre><code>CustomDir:
@@ -475,7 +479,7 @@ widgets:
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-03-27 16:41:32"datetime="2014-03-27 16:41:32"> 2014-03-27</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/Node.js/">Node.js</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/html/">html</a></li></span></span> | <span class="tags">标签 <a href="/tags/hexo/" class="label label-primary">hexo</a><a href="/tags/主题/" class="label label-success">主题</a><a href="/tags/模块化/" class="label label-info">模块化</a><a href="/tags/内链/" class="label label-warning">内链</a></span> | <span class="time">最近更新:<time title="2014-03-29 09:07:09"datetime="2014-03-29 09:07:09"> 2014-03-29</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/hexo_theme_chenall/#comments" class="ds-thread-count comment-link" data-thread-key="1402132138" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -497,7 +501,7 @@ widgets:
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">搏客转移到hexo</a></li><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -586,7 +590,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 16:41:32</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-29 09:07:09</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
