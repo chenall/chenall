@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-03-29T05:07:27.279Z</updated>
+  <updated>2014-03-30T10:05:20.695Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Cameyo PackageEditor 简体中文版]]></title>
+    <title><![CDATA[Cameyo PackageEditor 简体中文版(增强版)]]></title>
     <link href="http://chenall.net/post/cameyo-packageeditor/"/>
     <id>http://chenall.net/post/cameyo-packageeditor/</id>
     <published>2014-03-08T08:41:55.000Z</published>
-    <updated>2014-03-08T11:32:03.000Z</updated>
+    <updated>2014-03-30T10:05:06.000Z</updated>
     <content type="html"><![CDATA[<h3 id="Cameyo_简介：">Cameyo 简介：</h3>
 <p>Cameyo 是一款完全免费的应用程序虚拟化 (Application Virtualization) 工具或者说单文件软件制作工具，支持 XP、Vista 、 Windows7、Windows8，支持32位和64位系统。应用程序虚拟化技术就是将完整的程序资源打包为一个单一的可执行文件，从而无需安装即可运行。以前，要制作绿色软件需要学习很多技术，一般用户难以入门，而 Cameyo 则将此绿化过程变得简单且傻瓜。</p>
 <p>Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相关资源打包成单个绿色文件，当执行这个“绿色软件”时，它会产生一个虚拟环境来执行，类似影子系统一样，一切涉及的操作都是在这个虚拟环境中完成，并不会去动原本的系统。所以使用 Cameyo 制作的绿色软件还有一个好处就是几乎不会对系统有害。</p>
@@ -34,14 +34,22 @@
 
 </li>
 </ul>
+<h4 id="2014-03-30_更新_<strong>最新2-6增强版</strong>">2014-03-30 更新 <strong>最新2.6增强版</strong></h4>
+<p>  修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会可以自动判断,若是打开旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.</p>
+<p>顺便说一下新旧格式的区别: 新版主要是支持<strong>内存运行模式</strong>,还有支持用户数据分离等特性,因为使用了新的压缩格式,速度会快一些,缺点就是产生的虚拟化程序会比较大.另外旧版可以直接用7Z打开看到里面的文件,新版的不行.</p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.1_base.png" alt="2.1版设置界面"></p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.1_adv.png" alt="2.1版高级设置界面"></p>
 <p>2.6版只是修改了简体中文资源文件.</p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.6_base.png" alt="2.6版设置界面"></p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.6_adv.png" alt="2.6版高级设置界面"></p>
+<p>普通用户的设置界面和前面的一样的,下图有多一些设置界面,这些是需要授权的</p>
+<p>授权申请网址: <a href="http://www.cameyo.com/upgrade" target="_blank">http://www.cameyo.com/upgrade</a></p>
+<p>里面有版本对比和升级申请,有需要的可以自己去申请,不一定能通过.</p>
+<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_Plus_adv.png" alt="高级版本设置界面"></p>
 <h3 id="相关下载">相关下载</h3>
 <p>2.1编辑器+2.0版核心: <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.1.rar" target="_blank">PackageEditor2.1简体中文版(内置2.0版组件)</a></p>
 <p>2.6编辑器(内存模式运行): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar" target="_blank">PackageEditor2.6简体中文版</a></p>
+<p>最新2.6增强版(推荐使用): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor.zip" target="_blank">PackageEditor 2.6增强版</a></p>
 <p>原版: <a href="http://d.chenall.net/1/虚拟化绿软/Cameyo-2.6.1191.rar" target="_blank">Cameyo 2.6.1191 官方原版</a></p>
 <h3 id="相关资料">相关资料</h3>
 <p>cameyo 官方文档（英文）: <a href="http://www.cameyo.com/doc/index.html" target="_blank">http://www.cameyo.com/doc/index.html</a></p>
@@ -617,13 +625,13 @@ widgets:
   </entry>
   
   <entry>
-    <title><![CDATA[搏客转移到hexo]]></title>
+    <title><![CDATA[博客转移到hexo]]></title>
     <link href="http://chenall.net/post/blog_to_hexo/"/>
     <id>http://chenall.net/post/blog_to_hexo/</id>
     <published>2014-01-26T15:50:48.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
-    <content type="html"><![CDATA[<p>经过一段时间的处理转换,大量的手工活,总体来说搬家还是挺顺利,整个转换过程使用了差不多1个月的时间.终算把搏客搬到<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>上了.</p>
-<p>前段时间在尝试静态搏客<!--[iLink[slug:jekyll_or_hexo]iLink]--><br>,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
+    <updated>2014-03-30T10:05:06.000Z</updated>
+    <content type="html"><![CDATA[<p>经过一段时间的处理转换,大量的手工活,总体来说搬家还是挺顺利,整个转换过程使用了差不多1个月的时间.终算把博客搬到<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>上了.</p>
+<p>前段时间在尝试静态博客<!--[iLink[slug:jekyll_or_hexo]iLink]--><br>,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
 <p>在这期间,学习到了很多新的知识.</p>
 <ul>
 <li>首次接触CSS/HTML</li>
@@ -640,7 +648,7 @@ widgets:
     
       <category term="hexo" scheme="http://chenall.net/tags/hexo/"/>
     
-      <category term="搏客" scheme="http://chenall.net/tags/%E6%90%8F%E5%AE%A2/"/>
+      <category term="博客" scheme="http://chenall.net/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="转移" scheme="http://chenall.net/tags/%E8%BD%AC%E7%A7%BB/"/>
     
