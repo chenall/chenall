@@ -1,4 +1,4 @@
-title: Cameyo PackageEditor 简体中文版
+title: Cameyo PackageEditor 简体中文版(增强版)
 date: 2014-03-08 16:41:55
 id: 1403081642
 tags:
@@ -27,6 +27,12 @@ Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相
   * 添加应用版本信息(这个功能其实用处不大,原版把这个功能隐藏了),我只是它显示出来,并且添加部份代码.
 <!--more--> 
 
+#### 2014-03-30 更新 **最新2.6增强版**
+  
+  修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会可以自动判断,若是打开旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.
+
+顺便说一下新旧格式的区别: 新版主要是支持**内存运行模式**,还有支持用户数据分离等特性,因为使用了新的压缩格式,速度会快一些,缺点就是产生的虚拟化程序会比较大.另外旧版可以直接用7Z打开看到里面的文件,新版的不行.
+
 ![2.1版设置界面]([CDN_URL]:/post/Cameyo_PackageEditor2.1_base.png)
 
 ![2.1版高级设置界面]([CDN_URL]:/post/Cameyo_PackageEditor2.1_adv.png)
@@ -37,11 +43,21 @@ Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相
 
 ![2.6版高级设置界面]([CDN_URL]:/post/Cameyo_PackageEditor2.6_adv.png)
 
+普通用户的设置界面和前面的一样的,下图有多一些设置界面,这些是需要授权的
+
+授权申请网址: <http://www.cameyo.com/upgrade>
+
+里面有版本对比和升级申请,有需要的可以自己去申请,不一定能通过.
+
+![高级版本设置界面]([CDN_URL]:/post/Cameyo_PackageEditor_Plus_adv.png)
+
 ### 相关下载
 
 2.1编辑器+2.0版核心: [PackageEditor2.1简体中文版(内置2.0版组件)](http://d.chenall.net/1/虚拟化绿软/PackageEditor2.1.rar)
 
 2.6编辑器(内存模式运行): [PackageEditor2.6简体中文版](http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar)
+
+最新2.6增强版(推荐使用): [PackageEditor 2.6增强版](http://d.chenall.net/1/虚拟化绿软/PackageEditor.zip)
 
 原版: [Cameyo 2.6.1191 官方原版](http://d.chenall.net/1/虚拟化绿软/Cameyo-2.6.1191.rar)
 
