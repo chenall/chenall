@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-03-30T10:09:44.376Z</updated>
+  <updated>2014-03-31T00:44:47.102Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -1452,7 +1452,7 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
     <link href="http://chenall.net/post/alrun-merry/"/>
     <id>http://chenall.net/post/alrun-merry/</id>
     <published>2013-03-31T02:32:00.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
+    <updated>2014-03-31T00:44:38.000Z</updated>
     <content type="html"><![CDATA[<p>ALMRun 修改自<a href="http://code.google.com/p/name5566-merry/" target="_blank">Merry</a> 是一个软件便捷启动工具,类似于<a href="https://code.google.com/p/altrun/" target="_blank">ALTRUN</a>等软件,功能更强,也是我所经手的第一个VC程序,同样是开源的.感谢原作者<a href="http://name5566.com/" title="ALMRun 的前身Merry作者" target="_blank">Name5566</a></p>
 <p>之前一直在使用<a href="https://code.google.com/p/altrun/" target="_blank">ALTRun</a>,只是这个好久没有更新了,有一些问题无法实现,所以我就在找同类的软件,  </p>
 <p>使用过像Launchy,Executor,FindAndRunRobot等软件,但各有各的缺点都不太顺手,直到有一天在GoogleCode上无意中发现了这个软件Merry,看了软件介绍,基本上就是我理想中的样子,很感兴趣就下载来测试了.</p>
@@ -1508,9 +1508,14 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <p><strong>注：ALMRun独立主页已经上线，以后请关注<a href="http://almrun.chenall.net" target="_blank">ALMRUN主页</a>获取更新。</strong></p>
 <p>软件下载:</p>
 <ul>
-<li><a href="https://github.com/chenall/ALMRun/archive/v1.2.0.55_BIN.zip" target="_blank">稳定版下载</a>  </li>
+<li><a href="https://github.com/chenall/ALMRun/archive/v1.2.0.57_BIN.zip" target="_blank">稳定版下载</a>  </li>
 <li><a href="https://github.com/chenall/ALMRun/archive/Build.zip" target="_blank">最新编译版本下载</a>  </li>
 <li><a href="http://almrun.chenall.net/update_log.html" target="_blank">历史版本下载</a>  </li>
+</ul>
+<p>七牛镜像下载:</p>
+<ul>
+<li><a href="//githubcdn.qiniudn.com/chenall/ALMRun/archive/v1.2.0.57_BIN.zip">稳定版下载</a></li>
+<li><a href="//githubcdn.qiniudn.com/chenall/ALMRun/archive/Build.zip">最新编译版本下载</a></li>
 </ul>
 ]]></content>
     <summary type="html"><![CDATA[<p>ALMRun 修改自<a href="http://code.google.com/p/name5566-merry/" target="_blank">Merry</a> 是一个软件便捷启动工具,类似于<a href="https://code.google.com/p/altrun/" target="_blank">ALTRUN</a>等软件,功能更强,也是我所经手的第一个VC程序,同样是开源的.感谢原作者<a href="http://name5566.com/" title="ALMRun 的前身Merry作者" target="_blank">Name5566</a></p>
