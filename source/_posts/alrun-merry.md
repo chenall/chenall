@@ -98,9 +98,13 @@ https://code.google.com/p/name5566-merry/
 **注：ALMRun独立主页已经上线，以后请关注[ALMRUN主页](http://almrun.chenall.net)获取更新。**
 
 软件下载:
- * [稳定版下载](https://github.com/chenall/ALMRun/archive/v1.2.0.55_BIN.zip)  
+ * [稳定版下载](https://github.com/chenall/ALMRun/archive/v1.2.0.57_BIN.zip)  
  * [最新编译版本下载](https://github.com/chenall/ALMRun/archive/Build.zip)  
  * [历史版本下载](http://almrun.chenall.net/update_log.html)  
+
+七牛镜像下载:
+  * [稳定版下载](//githubcdn.qiniudn.com/chenall/ALMRun/archive/v1.2.0.57_BIN.zip)
+  * [最新编译版本下载](//githubcdn.qiniudn.com/chenall/ALMRun/archive/Build.zip)
 
 [Merry]: http://code.google.com/p/name5566-merry/
 [Name5566]: http://name5566.com/ "ALMRun 的前身Merry作者"
