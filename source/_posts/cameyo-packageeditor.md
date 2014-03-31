@@ -63,6 +63,10 @@ Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相
 
 ### 相关资料
 
-cameyo 官方文档（英文）: <http://www.cameyo.com/doc/index.html>
+cameyo 官方文档（英文）: <http://www.cameyo.com/doc/index.html>  
+
+cameyo User Guide (英文): <http://www.cameyo.com/doc/index.html>
+
+cameyo User Guide (七牛镜像): <http://cameyo.qiniudn.com/doc/index.html>
 
 本站 Cameyo相关文章: {%iLink tag:cameyo%}
