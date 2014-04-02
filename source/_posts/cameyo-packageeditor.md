@@ -27,6 +27,7 @@ Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相
   * 添加应用版本信息(这个功能其实用处不大,原版把这个功能隐藏了),我只是它显示出来,并且添加部份代码.
 <!--more--> 
 
+#### 2014-04-02 更新 2.6增强版BUG修正
 #### 2014-03-30 更新 **最新2.6增强版**
   
   修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会自动判断,若是打开的是旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.
@@ -63,8 +64,10 @@ Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相
 
 ### 相关资料
 
-cameyo 官方文档（英文）: <http://www.cameyo.com/doc/index.html>  
+Cameyo 官方文档（英文）: <http://www.cameyo.com/doc/index.html>  
 
-cameyo User Guide (七牛镜像): <http://cameyo.qiniudn.com/doc/index.html>
+Cameyo User Guide (七牛镜像): <http://cameyo.qiniudn.com/doc/index.html>
 
 本站 Cameyo相关文章: {%iLink tag:cameyo%}
+
+Cameyo 官方资源库: <http://online.cameyo.com/public>
