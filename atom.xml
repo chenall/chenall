@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-03-31T05:30:36.244Z</updated>
+  <updated>2014-04-02T01:22:11.108Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/cameyo-packageeditor/"/>
     <id>http://chenall.net/post/cameyo-packageeditor/</id>
     <published>2014-03-08T08:41:55.000Z</published>
-    <updated>2014-03-31T05:30:29.000Z</updated>
+    <updated>2014-04-02T01:22:02.000Z</updated>
     <content type="html"><![CDATA[<h3 id="Cameyo_简介：">Cameyo 简介：</h3>
 <p>Cameyo 是一款完全免费的应用程序虚拟化 (Application Virtualization) 工具或者说单文件软件制作工具，支持 XP、Vista 、 Windows7、Windows8，支持32位和64位系统。应用程序虚拟化技术就是将完整的程序资源打包为一个单一的可执行文件，从而无需安装即可运行。以前，要制作绿色软件需要学习很多技术，一般用户难以入门，而 Cameyo 则将此绿化过程变得简单且傻瓜。</p>
 <p>Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相关资源打包成单个绿色文件，当执行这个“绿色软件”时，它会产生一个虚拟环境来执行，类似影子系统一样，一切涉及的操作都是在这个虚拟环境中完成，并不会去动原本的系统。所以使用 Cameyo 制作的绿色软件还有一个好处就是几乎不会对系统有害。</p>
@@ -34,6 +34,7 @@
 
 </li>
 </ul>
+<h4 id="2014-04-02_更新_2-6增强版BUG修正">2014-04-02 更新 2.6增强版BUG修正</h4>
 <h4 id="2014-03-30_更新_<strong>最新2-6增强版</strong>">2014-03-30 更新 <strong>最新2.6增强版</strong></h4>
 <p>  修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会自动判断,若是打开的是旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.</p>
 <p>顺便说一下新旧格式的区别: 新版主要是支持<strong>内存运行模式</strong>,还有支持用户数据分离等特性,因为使用了新的压缩格式,速度会快一些,缺点就是产生的虚拟化程序会比较大.另外旧版可以直接用7Z打开看到里面的文件,新版的不行.</p>
@@ -52,9 +53,10 @@
 <p>最新2.6增强版(推荐使用): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor.zip" target="_blank">PackageEditor 2.6增强版</a></p>
 <p>原版: <a href="http://d.chenall.net/1/虚拟化绿软/Cameyo-2.6.1191.rar" target="_blank">Cameyo 2.6.1191 官方原版</a></p>
 <h3 id="相关资料">相关资料</h3>
-<p>cameyo 官方文档（英文）: <a href="http://www.cameyo.com/doc/index.html" target="_blank">http://www.cameyo.com/doc/index.html</a>  </p>
-<p>cameyo User Guide (七牛镜像): <a href="http://cameyo.qiniudn.com/doc/index.html" target="_blank">http://cameyo.qiniudn.com/doc/index.html</a></p>
+<p>Cameyo 官方文档（英文）: <a href="http://www.cameyo.com/doc/index.html" target="_blank">http://www.cameyo.com/doc/index.html</a>  </p>
+<p>Cameyo User Guide (七牛镜像): <a href="http://cameyo.qiniudn.com/doc/index.html" target="_blank">http://cameyo.qiniudn.com/doc/index.html</a></p>
 <p>本站 Cameyo相关文章: <!--[iLink[tag:cameyo]iLink]--></p>
+<p>Cameyo 官方资源库: <a href="http://online.cameyo.com/public" target="_blank">http://online.cameyo.com/public</a></p>
 ]]></content>
     <summary type="html"><![CDATA[<h3 id="Cameyo_简介：">Cameyo 简介：</h3>
 <p>Cameyo 是一款完全免费的应用程序虚拟化 (Application Virtualization) 工具或者说单文件软件制作工具，支持 XP、Vista 、 Windows7、Windows8，支持32位和64位系统。应用程序虚拟化技术就是将完整的程序资源打包为一个单一的可执行文件，从而无需安装即可运行。以前，要制作绿色软件需要学习很多技术，一般用户难以入门，而 Cameyo 则将此绿化过程变得简单且傻瓜。</p>
