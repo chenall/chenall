@@ -130,19 +130,39 @@
 <p>Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相关资源打包成单个绿色文件，当执行这个“绿色软件”时，它会产生一个虚拟环境来执行，类似影子系统一样，一切涉及的操作都是在这个虚拟环境中完成，并不会去动原本的系统。所以使用 Cameyo 制作的绿色软件还有一个好处就是几乎不会对系统有害。</p>
 <h3 id="PackageEditor">PackageEditor</h3>
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
+<a id="more"></a> 
+
+<h4 id="2014-04-03_更新">2014-04-03 更新</h4>
+<ol>
+<li>支持使用快照的方式创建新的虚拟化程序包.</li>
+<li>支持自动更新(以后有上传新的版本时会有提示).</li>
+<li>汉化部份英文字符串.</li>
+</ol>
+<p>使用新的版本可以很方便的创建新的虚拟化程序,默认使用的是快照的方式(获取快照-&gt;安装软件-&gt;获取快照-&gt;对比生成虚拟化包).</p>
+<p>使用快照生成虚拟化包的方法:</p>
+<ol>
+<li>启动后选择 <strong>创建新的虚拟化程序</strong> 菜单,这时会出现如下界面,不要操作,等待抓取快照完成<br><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_1.png" alt=""></li>
+<li>抓取快照完成,等待用户安装程序<br><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_2.png" alt=""></li>
+<li>安装完成之后,再点击上图的 <strong>Install done</strong> 按钮,再次抓取快照.<br><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_3.png" alt=""></li>
+<li>等上面的快照完成.</li>
+</ol>
+<p>上面的方法生成的应用程序会较完整通用,还有另一个方法,速度比较快,但是很多程序不支持..</p>
+<p>进入命令行,执行以下命令,然后正常安装就行了.</p>
+<pre><code>PackageEditor.exe -exec #2 -GhostCapture 安装程序
+</code></pre><p>比如某个应用程序的安装文件Setup.exe在d:下</p>
+<pre><code>PackageEditor.exe -exec #2 -GhostCapture d:\Setup.exe
+</code></pre><h4 id="2014-04-02_更新_2-6增强版BUG修正,创新新程序包时允许选择新版或旧版-">2014-04-02 更新 2.6增强版BUG修正,创新新程序包时允许选择新版或旧版.</h4>
+<h4 id="2014-03-30_更新_<strong>最新2-6增强版</strong>">2014-03-30 更新 <strong>最新2.6增强版</strong></h4>
+<p>  修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会自动判断,若是打开的是旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.</p>
+<p>顺便说一下新旧格式的区别: 新版主要是支持<strong>内存运行模式</strong>,还有支持用户数据分离等特性,因为使用了新的压缩格式,速度会快一些,缺点就是产生的虚拟化程序会比较大.另外旧版可以直接用7Z打开看到里面的文件,新版的不行.</p>
 <p>2.1版修改内容:</p>
 <ul>
 <li>把修改图标功能移到扩展属性中,和最新版一样.</li>
 <li>修改部份中文资源文件,若有发现翻译错误,还请指出.</li>
 <li>修正原版 启动命令 显示的BUG,这个版本可以正常显示.</li>
-<li>添加应用版本信息(这个功能其实用处不大,原版把这个功能隐藏了),我只是它显示出来,并且添加部份代码.<a id="more"></a> 
-
-</li>
+<li>添加应用版本信息(这个功能其实用处不大,原版把这个功能隐藏了),我只是它显示出来,并且添加部份代码.</li>
 </ul>
-<h4 id="2014-04-02_更新_2-6增强版BUG修正">2014-04-02 更新 2.6增强版BUG修正</h4>
-<h4 id="2014-03-30_更新_<strong>最新2-6增强版</strong>">2014-03-30 更新 <strong>最新2.6增强版</strong></h4>
-<p>  修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会自动判断,若是打开的是旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.</p>
-<p>顺便说一下新旧格式的区别: 新版主要是支持<strong>内存运行模式</strong>,还有支持用户数据分离等特性,因为使用了新的压缩格式,速度会快一些,缺点就是产生的虚拟化程序会比较大.另外旧版可以直接用7Z打开看到里面的文件,新版的不行.</p>
+<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_menu.png" alt="最新版本启动界面"></p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.1_base.png" alt="2.1版设置界面"></p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.1_adv.png" alt="2.1版高级设置界面"></p>
 <p>2.6版只是修改了简体中文资源文件.</p>
@@ -153,8 +173,8 @@
 <p>里面有版本对比和升级申请,有需要的可以自己去申请,不一定能通过.</p>
 <p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_Plus_adv.png" alt="高级版本设置界面"></p>
 <h3 id="相关下载">相关下载</h3>
-<p>2.1编辑器+2.0版核心: <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.1.rar" target="_blank">PackageEditor2.1简体中文版(内置2.0版组件)</a></p>
-<p>2.6编辑器(内存模式运行): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar" target="_blank">PackageEditor2.6简体中文版</a></p>
+<p>不再更新 == 2.1编辑器+2.0版核心: <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.1.rar" target="_blank">PackageEditor2.1简体中文版(内置2.0版组件)</a></p>
+<p>不再更新 == 2.6编辑器(内存模式运行): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar" target="_blank">PackageEditor2.6简体中文版</a></p>
 <p>最新2.6增强版(推荐使用): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor.zip" target="_blank">PackageEditor 2.6增强版</a></p>
 <p>原版: <a href="http://d.chenall.net/1/虚拟化绿软/Cameyo-2.6.1191.rar" target="_blank">Cameyo 2.6.1191 官方原版</a></p>
 <h3 id="相关资料">相关资料</h3>
@@ -195,7 +215,7 @@
     
     
         <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C#/">C#</a></li></span><span class="breadcrumb"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/cameyo/" class="label label-primary">cameyo</a><a href="/tags/虚拟化/" class="label label-success">虚拟化</a></span> | <span class="time">最近更新:<time title="2014-04-02 09:22:02"datetime="2014-04-02 09:22:02"> 2014-04-02</time></span> | <span class="comment-link">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/C#/">C#</a></li></span><span class="breadcrumb"><li><a href="/categories/软件推荐/">软件推荐</a></li><li><a href="/categories/软件推荐/系统相关/">系统相关</a></li></span></span> | <span class="tags">标签 <a href="/tags/cameyo/" class="label label-primary">cameyo</a><a href="/tags/虚拟化/" class="label label-success">虚拟化</a></span> | <span class="time">最近更新:<time title="2014-04-03 10:34:15"datetime="2014-04-03 10:34:15"> 2014-04-03</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/cameyo-packageeditor/#comments" class="ds-thread-count comment-link" data-thread-key="1403081642" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -215,7 +235,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></li><li class="list-group-item"><a href="/post/alrun-merry/">[分享] ALMRun–小巧的快速启动工具</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版(增强版)</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/sandboxie/">善用SandBoxIE ,让你的系统更安全</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -304,7 +324,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-02 09:22:02</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-03 10:34:15</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
