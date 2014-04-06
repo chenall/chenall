@@ -115,6 +115,46 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/softether/">【分享】Softether 使用图文教程</a></h1>
+      
+        <span>发表于<time datetime="2009-10-31T11:14:58.000Z"> <a href="/post/softether/">2009-10-31</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <h3 id="软件简介">软件简介</h3>
+<p>该软件是一个能虚拟网卡和集线器（HUB）的工具，只要可以访问互联网，都可以使用它来组建远程局域网。在此虚拟的局域网上能进行所有物理局域网上的操作。可以互相访问，可以联网玩只支持局网的游戏（TCP/IP）。该软件能够突破防火墙拦截，信息包都经过加密，安全上不存在问题。<br>
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/softether/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/">系统相关</a></li><li><a href="/categories/系统相关/网络/">网络</a></li></span></span> | <span class="tags">标签 <a href="/tags/softether/" class="label label-primary">softether</a><a href="/tags/VPN/" class="label label-success">VPN</a><a href="/tags/教程/" class="label label-info">教程</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/softether/#comments" class="ds-thread-count comment-link" data-thread-key="106" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></h1>
       
         <span>发表于<time datetime="2009-10-29T08:27:05.000Z"> <a href="/post/win7_bcdfix/">2009-10-29</a></time></span>      
@@ -838,117 +878,6 @@ rem 附:每天定时自动执行的命令.使用管理员的权限执行就可�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></h1>
-      
-        <span>发表于<time datetime="2009-09-09T04:16:38.000Z"> <a href="/post/vbs_send_mail/">2009-09-09</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>利用<code>VBScript</code>发送邮件,以前从网上找的代码,不知原来的出处了.也不知作者是何人…..</p>
-<p>挺有用的脚本,我就一直在使用这个脚本来发邮件,还可以带附件.放在这里做个备份,免得到时又找不到了.</p>
-<p>目前我就通过批处理配合这个脚本来自动备份我的一些文件到邮箱里面.每天自动定时备份.</p>
-<p>反正许多邮件的空间是无限的,,用来作备份也是挺不错的.一般都可以上传30-50MB附件,基本上够用了.</p>
-<pre><code class="vb">&#39;code by NetPatch
-&#39;VBS发送邮件参数说明
-&#39;You_Account：你的邮件帐号
-&#39;You_Password:你的邮件密码
-&#39;Send_Email: 主要邮件地址
-&#39;Send_Email2: 备用邮件地址
-&#39;Send_Topic: 邮件主题
-&#39;Send_Body:邮件内容
-&#39;Send_Attachment:邮件附件
-function Send_mail(You_Account,You_Password,Send_Email,Send_Email2,Send_Topic,Send_Body,Send_Attachment) 
-    You_ID=Split(You_Account, &quot;@&quot;, -1, vbTextCompare) 
-    &#39;帐号和服务器分离
-    MS_Space = &quot;http://schemas.microsoft.com/cdo/configuration/&quot;
-    &#39;这个是必须要的，不过可以放心的事，不会通过微软发送邮件
-    Set Email = CreateObject(&quot;CDO.Message&quot;)
-    Email.From = You_Account
-    &#39;这个一定要和发送邮件的帐号一样
-    Email.To = Send_Email         &#39;主要邮件地址
-
-    If Send_Email2 &lt;&gt; &quot;&quot; Then
-    Email.CC = Send_Email2        &#39;备用邮件地址
-    End If
-
-    Email.Subject = Send_Topic        &#39;邮件主题
-    Email.Textbody = Send_Body        &#39;邮件内容
-
-    If Send_Attachment &lt;&gt; &quot;&quot; Then
-    Email.AddAttachment Send_Attachment     &#39;邮件附件
-    End If
-
-    With Email.Configuration.Fields
-    .Item(MS_Space&amp;&quot;sendusing&quot;) = 2       &#39;发信端口
-    .Item(MS_Space&amp;&quot;smtpserver&quot;) = &quot;smtp.&quot;&amp;You_ID(1) &#39;SMTP服务器地址
-    .Item(MS_Space&amp;&quot;smtpserverport&quot;) = 25     &#39;SMTP服务器端口
-    .Item(MS_Space&amp;&quot;smtpauthenticate&quot;) = 1     &#39;cdobasec
-    .Item(MS_Space&amp;&quot;sendusername&quot;) = You_ID(0)    &#39;你的邮件帐号
-    .Item(MS_Space&amp;&quot;sendpassword&quot;) = You_Password   &#39;你的邮件密码
-    .Update
-    End With
-    Email.Send
-    &#39;发送邮件
-    Set Email=Nothing
-    &#39;关闭组件
-
-    Send_Mail=True 
-    &#39;如果没有任何错误信息，则表示发送成功,否则发送失败 
-    If Err Then 
-    Err.Clear 
-    Send_Mail=False 
-    End If 
-End Function
-
-&#39;以下是利用上面的函数发送带附件的邮件例子
-
-Attachment=wscript.Arguments(0)
-Topic=&quot;chenall_soft;&quot;+Attachment
-Set objIE = CreateObject(&quot;InternetExplorer.Application&quot;) 
-objIE.Navigate(&quot;about:blank&quot;) 
-Body = objIE.document.parentwindow.clipboardData.GetData(&quot;text&quot;) 
-objIE.Quit
-set objie=nothing
-
-&#39;set oArgs = wscript.Arguments
-&#39;while iIndex &lt; oArgs.Count
-&#39;wscript.echo oArgs(iIndex)
-&#39;       iIndex = iIndex + 1
-&#39;wend
-
-If Send_Mail(&quot;USERNAME&quot;,&quot;PASSWORD&quot;,&quot;sendto&quot;,&quot;&quot;,Topic,Body,Attachment)=True Then
-    Wscript.Echo &quot;发送成功&quot;
-Else
-    Wscript.Echo &quot;发送失败&quot;
-End If
-</code></pre>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/VB/">VB</a></li><li><a href="/categories/程序设计/VB/VBScript/">VBScript</a></li></span></span> | <span class="tags">标签 <a href="/tags/VBScript/" class="label label-primary">VBScript</a><a href="/tags/VBS发邮件/" class="label label-success">VBS发邮件</a><a href="/tags/邮件附件/" class="label label-info">邮件附件</a><a href="/tags/转载/" class="label label-warning">转载</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/vbs_send_mail/#comments" class="ds-thread-count comment-link" data-thread-key="93" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1036,7 +965,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-03 10:34:51</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-06 21:07:36</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

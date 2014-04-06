@@ -115,6 +115,56 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></h1>
+      
+        <span>发表于<time datetime="2013-10-30T13:41:00.000Z"> <a href="/post/jekyll_or_hexo/">2013-10-30</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>Hexo 和 <em>jekyll</em> 都是简单的免费的Blog生成工具，只生成静态网页，不需要数据库支持，评论可以使用第三方服务像Disqus还有国内的多说。特别是由于github直接支持<em>jekyll</em>很多人已经使用<em>jekyll</em>写搏客了。</p>
+<p>我看了一下觉得真的很不错，真是太适合像我这样的懒人了，直接使用MarkDown语法写博客，使用一些简单的标记就可以实现一些排版等。</p>
+<p>比如 <a href="http://www.yonsm.net" target="_blank">Yonsm</a> 这个就是使用<em>jekyll</em>的，我也打算使用<em>jekyll</em>来写搏客，不过由于对这个还不太熟悉所以就先了解下情况，后来又发现了Hexo，它使用node.js 速度更快，不知用哪个好，所以就两个都试了。</p>
+<p>首先就是测试平台的搭建，想要在Windows上搭建还是有些麻烦的，虽然网上有很多教程，但是你一步一步下来还是会发现许多问题，我就碰到了好几个问题（主要还是程序版本问题嘿）。</p>
+<p>像Python要用2.x的，pygments插件要用0.5.0的。</p>
+<p>还有中文编码问题 </p>
+<p><code>... invalid byte sequence in GBK ..</code></p>
+<p>在网上找了一下，大多是说要修改<em>jekyll</em>程序的文件，本来我也想改，不过看了一下发现原来新版的已经不需要这样修改了</p>
+<p>直接在配置文件_config.yam中添加一行’encoding: UTF-8’就行了。</p>
+<p>经过各种折腾总算把测试平台建好了，我比较喜欢绿色化，所以顺便绿色化了一下，有需要的可以留言，我再上传（7z压缩后100MB左右，解压后400MB左右python27+ruyb193+nodejs+svn+git+XXX需要的基本都有了）</p>
+<p>再来说下经过我试用后的比较，个人比较喜欢Hexo，因为它的功能还有扩展性都比较强，速度也快。</p>
+<p><em>jekyll</em> 更新比较快，调试信息比较清楚，而且Github原生支持，只是产生的速度慢一些。</p>
+<p>另外<em>jekyll</em> 受限于<em>Liquid</em>语法对于修改模板来说真的很不方便，如果可以用其它语法就好了，当然如果你不需要修改模板就没有什么问题了。</p>
+<p>分别用<em>jekyll</em>和<em>Hexo</em>生成了两个网站，有兴趣可以去观赏下。</p>
+<p><em>jekyll</em> 托管在<em>github</em>上(作为ALMRUN程序的主页)  <a href="http://almrun.chenall.net" target="_blank">http://almrun.chenall.net</a></p>
+<p>hexo 托管在BAE上  <a href="http://hexo.chenall.net" target="_blank">http://hexo.chenall.net</a></p>
+<p>2014-01-10 经过测试比较后,最后我决定采用<a href="https://github.com/tommy351/hexo" target="_blank">Hexo</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/">个人日记</a></li></span></span> | <span class="tags">标签 <a href="/tags/github/" class="label label-primary">github</a><a href="/tags/hexo/" class="label label-success">hexo</a><a href="/tags/jekyll/" class="label label-info">jekyll</a><a href="/tags/静态搏客/" class="label label-warning">静态搏客</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/jekyll_or_hexo/#comments" class="ds-thread-count comment-link" data-thread-key="933" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></h1>
       
         <span>发表于<time datetime="2013-08-16T00:50:30.000Z"> <a href="/post/bandwagonhost/">2013-08-16</a></time></span>      
@@ -640,284 +690,6 @@ else
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></h1>
-      
-        <span>发表于<time datetime="2012-12-05T05:51:57.000Z"> <a href="/post/cs_smtp/">2012-12-05</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>最近由于需要发送（带大附件）的邮件，上网找了一下，像PHPMailer等试了一下，虽然封装得很好，但是用起来都不太顺手。</p>
-<p>像PHPMailer发送大附件时就会提示类似如下的错误:<br>    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)</p>
-<p>我分配了128MB的内存发送个20MB的附件都不行，把内存加到512可以了，说明这个PHPMailer太占用内存了。可能是和PHPMail的封装有关，因为数据要转来转去的，很占用内存。</p>
-<p>去看了一下SMTP协议，才发现原来用SMTP协议发送邮件是如此的简单。</p>
-<p>可以使用TELNET 命令验证<br>以下是使用TELNET命令发送一个邮件的过程记录，红色是输入的内容，绿色是注释。</p>
-<p><span style="color: #ff0000;">TELNET SMTP.QQ.COM 25</span></p>
-<p><span style="color: #3366ff;">220 smtp.qq.com Esmtp QQ Mail Server</span></p>
-<p><span style="color: #ff0000;">HELO LOCALHOST  <span style="color: #00ff00;">首先需要发送HELO或EHLO命令</span></span></p>
-<p><span style="color: #3366ff;">250 smtp.qq.com</span></p>
-<p><span style="color: #ff0000;">AUTH LOGIN  <span style="color: #00ff00;"> SMTP用户验证</span></span></p>
-<p><span style="color: #3366ff;">334 VXNlcm5hbWU6 <span style="color: #00ff00;">BASE64解码后： Username:就是告诉你要输入使用BASE64编码的用户名</span></span></p>
-<p><span style="color: #ff0000;">经过BASE64编码的用户名</span></p>
-<p><span style="color: #3366ff;">334 UGFzc3dvcmQ6 <span style="color: #00ff00;">BASE64解码后： Password:</span></span></p>
-<p><span style="color: #ff0000;">经过BASE64编码的密码</span></p>
-<p><span style="color: #3366ff;">235 Authentication successful <span style="color: #00ff00;">验证通过</span></span></p>
-<p><span style="color: #ff0000;">MAIL FROM: 发送者邮件地址要和上面的用户名一样</span></p>
-<p><span style="color: #3366ff;">250 Ok</span></p>
-<p><span style="color: #ff0000;">RCPT TO: 接收者邮件地址</span></p>
-<p><span style="color: #3366ff;">250 Ok</span></p>
-<p><span style="color: #ff0000;">DATA   <span style="color: #00ff00;">告诉服务器我要开始发送邮件数据了</span></span></p>
-<p><span style="color: #3366ff;">354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;  <span style="color: #00ff00;">告诉你要使用</span></span><span style="color: #00ff00;"> &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;即PHP的”\r\n.\r\n”来告之服务器已经完成了。这里只是简单的发送了一些字符信息，先输入一个回车，然后你要发送的内容，完成之后再按回车，接首输入”.”再回车完成数据发送。</span></p>
-<p><span style="color: #ff0000;">abcdtest</span></p>
-<p><span style="color: #ff0000;">aass</span></p>
-<p><span style="color: #ff0000;">.</span></p>
-<p><span style="color: #3366ff;">250 Ok: queued as</span></p>
-<p><span style="color: #ff0000;">QUIT</span></p>
-<p><span style="color: #00ff00;">退出</span></span></p>
-<p>然后就可以到你的邮箱中去看看有没有收到刚发送的邮件。<br>明白了发送原理就可以去写代码来实现了。这里用的是<code>fsock</code>方式。使用PHP写了一个很简单的SMTP类，可以发送带附件的邮件。需要的可以拿去用。</p>
-<p>使用<code>github</code>托管源码，可以从以下地方下载最新版本源码。<br><a href="https://github.com/chenall/chenall/tree/master/cs_smtp" target="_blank">https://github.com/chenall/chenall/tree/master/cs_smtp</a></p>
-<pre><code class="php">&lt;?php
-
-/*
-    简易的SMTP发送邮件类，代码比较少，有助于学习SMTP协议，
-    可以带附件，支持需要验证的SMTP服务器（目前的SMTP基本都需要验证）
-    编写: chenall
-    时间: 2012-12-04
-    网址: http://chenall.net/post/cs_smtp/
-    修订记录:
-        2012-12-08
-            添加AddURL函数，可以直接从某个网址上下载文件并作为附件发送。
-            修正由于发送人和接收人邮件地址没有使用&quot;&lt;&gt;&quot;126邮箱SMTP无法使用的问题。
-        2012-12-06
-            添加reset函数，重置连接，这样可以发送多个邮件。
-        2012-12-05
-           发送附件的代码整合到send函数中，减少变量的使用，快速输出，节省内存占用;
-        2012-12-04
-           第一个版本
-
-    使用方法:
-        1. 初始化：连接到服务器（默认是QQ邮箱）
-           $mail = new cs_smtp(&#39;smtp.qq.com&#39;,25)
-           if ($mail-&gt;errstr) //如果连接出错
-               die($mail-&gt;errstr;
-        2. 登录到服务器验证,如果失败返回FALSE;
-           if (!$mail-&gt;login(&#39;USERNAME&#39;,&#39;PASSWORD&#39;))
-                die($mail-&gt;errstr;
-        3. 添加附件如果不指定name自动从指定的文件中取文件名
-           $mail-&gt;AddFile($file,$name) //服务器上的文件，可以指定文件名;
-        4. 发送邮件
-            $mail-&gt;send($to,$subject,$body)
-            $to 收件人，多个使用&#39;,&#39;分隔
-            $subject 邮件主题，可选。
-            $body  邮件主体内容，可选
-*/
-class cs_smtp
-{
-    private $CRLF = &quot;\r\n&quot;;
-    private $from;
-    private $smtp = null;
-    private $attach = array();
-    public $debug = true;//调试开关
-    public $errstr = &#39;&#39;;
-
-    function __construct($host=&#39;smtp.qq.com&#39;,$port = 25) {
-        if (empty($host))
-            die(&#39;SMTP服务器未指定!&#39;);
-        $this-&gt;smtp = fsockopen($host,$port,$errno,$errstr,5);
-        if (empty($this-&gt;smtp))
-        {
-            $this-&gt;errstr = &#39;错误&#39;.$errno.&#39;:&#39;.$errstr;
-            return;
-        }
-        $this-&gt;smtp_log(fread($this-&gt;smtp, 515));
-        if (intval($this-&gt;smtp_cmd(&#39;EHLO &#39;.$host)) != 250 &amp;&amp; intval($this-&gt;smtp_cmd(&#39;HELO &#39;.$host)))
-            return $this-&gt;errstr = &#39;服务器不支持！&#39;;
-        $this-&gt;errstr = &#39;&#39;;
-    }
-
-    private function AttachURL($url,$name)
-    {
-        $info = parse_url($url);
-        isset($info[&#39;port&#39;]) || $info[&#39;port&#39;] = 80;
-        isset($info[&#39;path&#39;]) || $info[&#39;path&#39;] = &#39;/&#39;;
-        isset($info[&#39;query&#39;]) || $info[&#39;query&#39;] = &#39;&#39;;
-        $down = fsockopen($info[&#39;host&#39;],$info[&#39;port&#39;],$errno,$errstr,5);
-        if (!$down)
-            return false;
-        $out = &quot;GET &quot;.$info[&#39;path&#39;].&#39;?&#39;.$info[&#39;query&#39;].&quot; HTTP/1.1\r\n&quot;;
-        $out .=&quot;Host: &quot;.$info[&#39;host&#39;].&quot;\r\n&quot;;
-        $out .= &quot;Connection: Close\r\n\r\n&quot;;
-        fwrite($down, $out);
-        $filesize = 0;
-        while (!feof($down)) {
-            $a = fgets($down,515);
-            if ($a == &quot;\r\n&quot;)
-                break;
-            $a = explode(&#39;:&#39;,$a);
-            if (strcasecmp($a[0],&#39;Content-Length&#39;) == 0)
-                $filesize = intval($a[1]);
-        }
-        $sendsize = 0;
-        echo &quot;TotalSize: &quot;.$filesize.&quot;\r\n&quot;;
-        $i = 0;
-        while (!feof($down)) {
-            $data = fread($down,0x2000);
-            $sendsize += strlen($data);
-            if ($filesize)
-            {
-                echo &quot;$i Send:&quot;.$sendsize.&quot;\r&quot;;
-                ob_flush();
-                flush();
-            }
-            ++$i;
-            fwrite($this-&gt;smtp,chunk_split(base64_encode($data)));
-        }
-        echo &quot;\r\n&quot;;
-        fclose($down);
-        return ($filesize&gt;0)?$filesize==$sendsize:true;
-    }
-
-    function __destruct()
-    {
-        if ($this-&gt;smtp)
-            $this-&gt;smtp_cmd(&#39;QUIT&#39;);//发送退出命令
-    }
-
-    private function smtp_log($msg)//即时输出调试使用
-    {
-        if ($this-&gt;debug == false)
-            return;
-        echo $msg.&quot;\r\n&quot;;
-        ob_flush();
-        flush();
-    }
-
-    function reset()
-    {
-        $this-&gt;attach = null;
-        $this-&gt;smtp_cmd(&#39;RSET&#39;);
-    }
-
-    function smtp_cmd($msg)//SMTP命令发送和收收
-    {
-        fputs($this-&gt;smtp,$msg.$this-&gt;CRLF);
-        $this-&gt;smtp_log(&#39;SEND:&#39;. substr($msg,0,80));
-        $res = fread($this-&gt;smtp, 515);
-        $this-&gt;smtp_log($res);
-        $this-&gt;errstr = $res;
-        return $res;
-    }
-
-    function AddURL($url,$name)
-    {
-        $this-&gt;attach[$name] = $url;
-    }
-
-    function AddFile($file,$name = &#39;&#39;)//添加文件附件
-    {
-        if (file_exists($file))
-        {
-            if (!empty($name))
-                return $this-&gt;attach[$name] = $file;
-            $fn = pathinfo($file);
-            return $this-&gt;attach[$fn[&#39;basename&#39;]] = $file;
-        }
-        return false;
-    }
-
-    function send($to,$subject=&#39;&#39;,$body = &#39;&#39;)
-    {
-        $this-&gt;smtp_cmd(&quot;MAIL FROM: &lt;&quot;.$this-&gt;from.&#39;&gt;&#39;);
-        $mailto = explode(&#39;,&#39;,$to);
-        foreach($mailto as $email_to)
-            $this-&gt;smtp_cmd(&quot;RCPT TO: &lt;&quot;.$email_to.&quot;&gt;&quot;);
-        if (intval($this-&gt;smtp_cmd(&quot;DATA&quot;)) != 354)//正确的返回必须是354
-            return false;
-        fwrite($this-&gt;smtp,&quot;To:$to\nFrom: &quot;.$this-&gt;from.&quot;\nSubject: $subject\n&quot;);
-
-        $boundary = uniqid(&quot;--BY_CHENALL_&quot;,true);
-        $headers = &quot;MIME-Version: 1.0&quot;.$this-&gt;CRLF;
-        $headers .= &quot;From: &lt;&quot;.$this-&gt;from.&quot;&gt;&quot;.$this-&gt;CRLF;
-        $headers .= &quot;Content-type: multipart/mixed; boundary= $boundary\n\n&quot;.$this-&gt;CRLF;//headers结束要至少两个换行
-        fwrite($this-&gt;smtp,$headers);
-
-        $msg = &quot;--$boundary\nContent-Type: text/html;charset=\&quot;ISO-8859-1\&quot;\nContent-Transfer-Encoding: base64\n\n&quot;;
-        $msg .= chunk_split(base64_encode($body));
-        fwrite($this-&gt;smtp,$msg);
-        $files = &#39;&#39;;
-        $errinfo = &#39;&#39;;
-        foreach($this-&gt;attach as $name=&gt;$file)
-        {
-            $files .= $name;
-            $msg = &quot;--$boundary\n--$boundary\n&quot;;
-            $msg .= &quot;Content-Type: application/octet-stream; name=\&quot;&quot;.$name.&quot;\&quot;\n&quot;;
-            $msg .= &quot;Content-Disposition: attachment; filename=\&quot;&quot;.$name.&quot;\&quot;\n&quot;;
-            $msg .= &quot;Content-transfer-encoding: base64\n\n&quot;;
-            fwrite($this-&gt;smtp,$msg);
-            if (substr($file,4,1) == &#39;:&#39;)//URL like http:///file://
-            {
-                if (!$this-&gt;AttachURL($file,$name))
-                    $errinfo .= &#39;文件下载错误:&#39;.$name.&quot;,文件可能是错误的\r\n$file&quot;;
-            }
-            else
-                fwrite($this-&gt;smtp,chunk_split(base64_encode(file_get_contents($file))));//使用BASE64编码，再用chunk_split大卸八块（每行76个字符）
-        }
-        if (!empty($errinfo))
-        {
-            $msg = &quot;--$boundary\n--$boundary\n&quot;;
-            $msg .= &quot;Content-Type: application/octet-stream; name=Error.log\n&quot;;
-            $msg .= &quot;Content-Disposition: attachment; filename=Error.log\n&quot;;
-            $msg .= &quot;Content-transfer-encoding: base64\n\n&quot;;
-            fwrite($this-&gt;smtp,$msg);
-            fwrite($this-&gt;smtp,chunk_split(base64_encode($errinfo)));
-        }
-        return intval($this-&gt;smtp_cmd(&quot;--$boundary--\n\r\n.&quot;)) == 250;//结束DATA发送，服务器会返回执行结果，如果代码不是250则出错。
-    }
-
-    function login($su,$sp)
-    {
-        if (empty($this-&gt;smtp))
-            return false;
-        $res = $this-&gt;smtp_cmd(&quot;AUTH LOGIN&quot;);
-        if (intval($res)&gt;400)
-            return !$this-&gt;errstr = $res;
-        $res = $this-&gt;smtp_cmd(base64_encode($su));
-        if (intval($res)&gt;400)
-            return !$this-&gt;errstr = $res;
-        $res = $this-&gt;smtp_cmd(base64_encode($sp));
-        if (intval($res)&gt;400)
-            return !$this-&gt;errstr = $res;
-        $this-&gt;from = $su;
-        return true;
-    }
-}
-</code></pre>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/PHP/">PHP</a></li></span></span> | <span class="tags">标签 <a href="/tags/PHP/" class="label label-primary">PHP</a><a href="/tags/PHPMailer/" class="label label-success">PHPMailer</a><a href="/tags/SMTP/" class="label label-info">SMTP</a><a href="/tags/原创/" class="label label-warning">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/cs_smtp/#comments" class="ds-thread-count comment-link" data-thread-key="888" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1005,7 +777,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-03 10:34:51</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-06 21:07:36</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

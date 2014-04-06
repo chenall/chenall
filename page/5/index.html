@@ -115,6 +115,123 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></h1>
+      
+        <span>发表于<time datetime="2011-11-09T06:35:20.000Z"> <a href="/post/datatoexcel/">2011-11-09</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>日常工作中经常需要把某一部份数据导出到EXCEL,通常情况都有软件提供类似方案.</p>
+<p>但是这需要手工去打开软件然后导出,不能实现自动化.所以就编写了这个脚本方便实现自动化.</p>
+<p>本脚本采用VBSCRIPT语言编写.可以在VB或VBS脚本中使用.</p>
+<p>提供了两个过程调用方法rsToExcel,和sqltoexcel.</p>
+<p>以下例子就可以把一个文本文档(CSV格式),转为EXCEL</p>
+<pre><code>sqlToExcel &quot;TEXT;c:\test.txt&quot;,&quot;c:\test.xls&quot;,null
+</code></pre><p>以下可以从一个SQL数据库中提取数据并输出到excel文件中</p>
+<pre><code>sqlToExcel &quot;OLEDB;Provider=SQLOLEDB;data source=SQLSERVER;Initial Catalog=DB;User ID=sa;Password=pass&quot;,&quot;c:\test.xls&quot;,&quot;select * from mytable&quot;
+</code></pre><p>注:rstoexcel和sqltoexcel都可以生成EXCEL文件,可以看情况使用.一般情况下使用sqltoexcel就可以了,比较简单.</p>
+<p>以下是使用rstoexcel的方法,会麻烦一些</p>
+<pre><code>Dim Conn, StrConn, RS, SQL
+set Conn = CreateObject(&quot;ADODB.Connection&quot;)
+set RS = CreateObject(&quot;ADODB.Recordset&quot;)
+StrConn = &quot;Provider=SQLOLEDB;data source=SQLSERVER;Initial Catalog=DB;User ID=sa;Password=passwd&quot;
+SQL = &quot;select * from mytable&quot;
+Conn.Open StrConn
+RS.Open SQL,conn,1,1
+rstoexcel(RS,&quot;c:\sql.xls&quot;)
+</code></pre><p>参考资料: <a href="http://support.microsoft.com/kb/247412/zh-cn" target="_blank">http://support.microsoft.com/kb/247412/zh-cn</a></p>
+<pre><code class="VB">
+Dim Conn, StrConn, RS, SQL
+set Conn = CreateObject(&quot;ADODB.Connection&quot;)
+set RS = CreateObject(&quot;ADODB.Recordset&quot;)
+StrConn = &quot;Provider=SQLOLEDB;data source=SQLSERVER;Initial Catalog=DB;User ID=sa;Password=passwd&quot;
+SQL = &quot;select * from mytable&quot;
+Conn.Open StrConn
+RS.Open SQL,conn,1,1
+rstoexcel(RS,&quot;c:\sql.xls&quot;)
+
+&#39;sqltoexcel &quot;TEXT;c:\11.txt&quot;,&quot;c:\test.xls&quot;,null
+&#39;sqltoexcel &quot;URL;http://amupdate.nxt.ru/&quot;,&quot;c:\url.xls&quot;,null
+sqltoexcel &quot;OLEDB;&quot; &amp; StrConn ,&quot;c:\sql.xls&quot;,SQL
+
+&#39;RS记录导出到EXCEL文件 by chenall http://chenall.net
+&#39;使用方法
+&#39;rsToExcel Recordset,ExcelFileName
+&#39;rsToExcel rs,&quot;c:\test.xls&quot;
+sub rsToExcel(rs,file)
+    &#39;on error resume next
+    dim n,x
+    dim xlApp,xlBook,xlSheet
+    Set xlApp = CreateObject(&quot;Excel.Application&quot;)&#39;创建EXCEL对象
+    with xlApp.Workbooks.Add().Worksheets(1)&#39;创建新的工作表对像
+        n = 0
+        for each x in rs.Fields
+            n=n+1
+            .Cells(1,n) = x.name 
+            .Cells(1,n).Font.Bold   =   True &#39;加粗
+            .Cells(1,n).HorizontalAlignment=3 &#39;居中
+        next
+        .Range(&quot;A2&quot;).CopyFromRecordset rs
+        .Range(&quot;A1:&quot; &amp; chr(asc(&quot;A&quot;)+n-1) &amp; rs.recordcount+1).Borders.LineStyle = 1&#39;画表框
+        .Range(&quot;A1:&quot; &amp; chr(asc(&quot;A&quot;)+n-1) &amp; rs.recordcount+1).EntireColumn.AutoFit() &#39;自动调整列宽
+        xlApp.displayalerts=false&#39;不显示覆盖文件的提示
+        .SaveAs file&#39;另存为新的文件名
+        xlApp.displayalerts=true&#39;恢复显示
+    end with
+    xlApp.Quit&#39;退出excel
+    set xlApp=nothing
+end sub
+
+&#39;任意数据源导出到EXCEL文件 by chenall http://chenall.net
+&#39;使用方法,sql参数可以为null
+&#39;sqlToExcel conn,ExcelFileName,sql
+&#39;sqlToExcel conn,&quot;c:\test.xls&quot;,sql
+sub sqlToExcel(conn,file,sql)
+&#39;    on error resume next
+    dim xlApp,xlBook,xlSheet,QryTable
+    Set xlApp = CreateObject(&quot;Excel.Application&quot;)&#39;创建EXCEL对象
+    with xlApp.Workbooks.Add().Worksheets(1)&#39;创建新的工作表对像
+        if isnull(sql) then
+            set QryTable = .QueryTables.add(conn,.Range(&quot;A1&quot;)) &#39;导入数据
+        else
+            set QryTable = .QueryTables.add(conn,.Range(&quot;A1&quot;),sql) &#39;导入数据
+        end if
+        QryTable.Refresh false
+        xlApp.displayalerts=false&#39;不显示覆盖文件的提示
+        .SaveAs file&#39;另存为新的文件名
+        xlApp.displayalerts=true&#39;恢复显示
+    end with
+    xlApp.Quit&#39;退出excel
+    set xlApp=nothing
+end sub
+</code></pre>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/VB/">VB</a></li><li><a href="/categories/程序设计/VB/VBScript/">VBScript</a></li></span></span> | <span class="tags">标签 <a href="/tags/EXCEL/" class="label label-primary">EXCEL</a><a href="/tags/VBScript/" class="label label-success">VBScript</a><a href="/tags/原创/" class="label label-info">原创</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/datatoexcel/#comments" class="ds-thread-count comment-link" data-thread-key="787" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></h1>
       
         <span>发表于<time datetime="2011-10-17T15:36:28.000Z"> <a href="/post/grub4dos_biosint/">2011-10-17</a></time></span>      
@@ -1098,79 +1215,6 @@ exit
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></h1>
-      
-        <span>发表于<time datetime="2011-02-25T01:41:12.000Z"> <a href="/post/win_print_set/">2011-02-25</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>因为无忧里面以下贴子,</p>
-<p><a href="http://bbs.wuyou.com/viewthread.php?tid=187450" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=187450</a></p>
-<p>所以就抽空研究了一下整理了一个批处理出来.</p>
-<p>自己目前用不上,发在这里留一个底,万一自己以后碰到了就有现成的可用了.</p>
-<p>如果对您有用就支持一下吧,^_^</p>
-<pre><code>@echo off
-:::::::::::使用批处理修改打印机设置:::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::来源:   http://chenall.net/post/win_print_set
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-setlocal
-::指定打印机名称
-set print=Microsoft XPS Document Writer
-::设置默认的注册表路径
-set reg_path=HKLM\SYSTEM\CurrentControlSet\Control\Print\Printers\%print%
-::读取原来的设置
-for /f &quot;usebackq tokens=3&quot; %%i in (`reg query &quot;%reg_path%&quot; /v Attributes ^| find /i &quot;Attributes&quot;`) do set p_attr=%%i
-::0x0     立即开始打印(默认)
-::0x1     在后台处理完最后一页时开始打印
-::0x2     直接打印到打印机
-::::::::::以上设置只有一个会生效
-::0x80    挂起不匹配文档
-::0x100   保留打印的文档
-::0x200   首先打印后台文档
-::0x800   双向打印
-
-::修改设置
-::例子取消双向打印,使用与运算
-set /a &quot;p_attr &amp;= ~0x800&quot;
-::::若是要启用双向打印,使用或运算
-::set /a &quot;p_attr |= 0x800&quot;
-::设置首先打印后台文档
-set /a &quot;p_attr |= 0x80&quot;
-
-
-::最终执行
-reg add &quot;%reg_path%&quot; /v Attributes /t REG_DWORD /d %p_attr% /f
-::以下是必须的，刷新一下打印机的设置，否则需要重启后才可以看到效果。
-net stop spooler
-net start spooler
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/win_print_set/#comments" class="ds-thread-count comment-link" data-thread-key="652" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1258,7 +1302,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-03 10:34:51</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-06 21:07:36</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

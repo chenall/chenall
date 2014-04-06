@@ -115,6 +115,79 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></h1>
+      
+        <span>发表于<time datetime="2011-02-25T01:41:12.000Z"> <a href="/post/win_print_set/">2011-02-25</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>因为无忧里面以下贴子,</p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=187450" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=187450</a></p>
+<p>所以就抽空研究了一下整理了一个批处理出来.</p>
+<p>自己目前用不上,发在这里留一个底,万一自己以后碰到了就有现成的可用了.</p>
+<p>如果对您有用就支持一下吧,^_^</p>
+<pre><code>@echo off
+:::::::::::使用批处理修改打印机设置:::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::来源:   http://chenall.net/post/win_print_set
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+setlocal
+::指定打印机名称
+set print=Microsoft XPS Document Writer
+::设置默认的注册表路径
+set reg_path=HKLM\SYSTEM\CurrentControlSet\Control\Print\Printers\%print%
+::读取原来的设置
+for /f &quot;usebackq tokens=3&quot; %%i in (`reg query &quot;%reg_path%&quot; /v Attributes ^| find /i &quot;Attributes&quot;`) do set p_attr=%%i
+::0x0     立即开始打印(默认)
+::0x1     在后台处理完最后一页时开始打印
+::0x2     直接打印到打印机
+::::::::::以上设置只有一个会生效
+::0x80    挂起不匹配文档
+::0x100   保留打印的文档
+::0x200   首先打印后台文档
+::0x800   双向打印
+
+::修改设置
+::例子取消双向打印,使用与运算
+set /a &quot;p_attr &amp;= ~0x800&quot;
+::::若是要启用双向打印,使用或运算
+::set /a &quot;p_attr |= 0x800&quot;
+::设置首先打印后台文档
+set /a &quot;p_attr |= 0x80&quot;
+
+
+::最终执行
+reg add &quot;%reg_path%&quot; /v Attributes /t REG_DWORD /d %p_attr% /f
+::以下是必须的，刷新一下打印机的设置，否则需要重启后才可以看到效果。
+net stop spooler
+net start spooler
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/">系统相关</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/win_print_set/#comments" class="ds-thread-count comment-link" data-thread-key="652" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></h1>
       
         <span>发表于<time datetime="2011-02-21T06:09:45.000Z"> <a href="/post/linux_assembly/">2011-02-21</a></time></span>      
@@ -1225,57 +1298,6 @@ WENV reset sr* 清除sr开头的所有变量
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h1>
-      
-        <span>发表于<time datetime="2010-09-23T13:29:54.000Z"> <a href="/post/grub4dos_snake/">2010-09-23</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <p>经典的游戏贪吃蛇,GRUB4DOS版.比较简单的一个游戏.</p>
-<p>嘻嘻,界面不是很好看,没有使用图形模式,只是一个试验品.抛砖引玉.^_^</p>
-<p>关于这个游戏的相关信息请看搏客贴子:<br> <a href="http://chenall.net/post/snake_idea/">http://chenall.net/post/snake_idea/</a></p>
-<p> 只是在学习过程中偶然想到的就尝试着去实现了它.</p>
-<p>重温经典,有兴趣可以下载玩玩看.</p>
-<p> 下载:</p>
-<p> 需要最新版本(如果有更新)还有源码(GRUB4DOS版)在这里找.<br> <a href="http://code.google.com/p/grubutils/source/checkout" target="_blank">http://code.google.com/p/grubutils/source/checkout</a></p>
-<p>一些说明:</p>
-<ul>
-<li>GRUB4DOS下只能在文本模式下运行.(TEXT MODE only).</li>
-<li>使用四个方向键控制.</li>
-<li>按ESC键退出游戏.</li>
-<li>按P键暂停游戏.</li>
-<li><p>按S键开始游戏.</p>
-<p>附在GRUB4DOS下运行的截图.</p>
-</li>
-</ul>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/09/F7AC19FD201CD4D447B038BB1B5F3E8800F183ED.png" alt=""></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/">GRUB4DOS</a></li><li><a href="/categories/GRUB4DOS/扩展/">扩展</a></li></span></span> | <span class="tags">标签 <a href="/tags/游戏/" class="label label-primary">游戏</a><a href="/tags/GRUB4DOS/" class="label label-success">GRUB4DOS</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_snake/#comments" class="ds-thread-count comment-link" data-thread-key="576" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1363,7 +1385,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-03 10:34:51</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-06 21:07:36</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

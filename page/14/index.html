@@ -115,6 +115,54 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></h1>
+      
+        <span>发表于<time datetime="2008-12-02T18:04:20.000Z"> <a href="/post/post32/">2008-12-03</a></time></span>      
+    </header>
+    
+    
+    <div class="entry">
+      
+        <p>有时想用批处理登录邮箱,如果这个邮箱登录支持GET方式的话只要构造一个URL地址提交就可以了,如果不支持上URL提交就不行了,这时可以参考以下代码</p>
+<pre><code>@echo off
+::调用例子 call :登录 &lt;用户名&gt; &lt;密码&gt;
+goto :eof
+:登录 
+&gt;&quot;%temp%\eyou.hta&quot; echo  ^&lt;form id=&quot;login&quot; action=&quot;http://ssl.eyou.com/mail_login.php&quot; method=&quot;POST&quot;^&gt;
+&gt;&gt;&quot;%temp%\eyou.hta&quot;  echo ^&lt;input name=&quot;LoginName&quot; type=&quot;hidden&quot; value=&quot;%~1&quot; /^&gt;
+&gt;&gt;&quot;%temp%\eyou.hta&quot;  echo ^&lt;input name=&quot;Password&quot; type=&quot;hidden&quot; value=&quot;%~2&quot;/^&gt;
+&gt;&gt;&quot;%temp%\eyou.hta&quot;  echo ^&lt;script^&gt;
+&gt;&gt;&quot;%temp%\eyou.hta&quot;  echo login.submit()
+&gt;&gt;&quot;%temp%\eyou.hta&quot;  echo window.close()
+&gt;&gt;&quot;%temp%\eyou.hta&quot;  echo ^&lt;/script^&gt;
+&quot;%temp%\eyou.hta&quot;
+del /f &quot;%temp%\eyou.hta&quot;
+</code></pre><p>上面的HTA也可以改为HTM,如果你的电脑不支持HTA的话.原理很简单,从上面的代码就可以看到.当然了,这个方法并不一定是最好的.用VBS或其它的工具一样可以实现.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/">程序设计</a></li><li><a href="/categories/程序设计/批处理/">批处理</a></li></span></span> | <span class="tags">标签 <a href="/tags/eyou/" class="label label-primary">eyou</a><a href="/tags/自动登录/" class="label label-success">自动登录</a><a href="/tags/批处理/" class="label label-info">批处理</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post32/#comments" class="ds-thread-count comment-link" data-thread-key="32" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/freeime/">[软件推荐]  极点中文输入平台</a></h1>
       
         <span>发表于<time datetime="2008-11-01T08:10:51.000Z"> <a href="/post/freeime/">2008-11-01</a></time></span>      
@@ -672,47 +720,6 @@ qq.com/http_imgload.cgi?/rurl2=b4c3ce510d23a26f5b184663d47bb0c94f72fc700de121450
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></h1>
-      
-        <span>发表于<time datetime="2008-05-25T13:18:14.000Z"> <a href="/post/two-tips-mbox-and-notepad/">2008-05-25</a></time></span>      
-    </header>
-    
-    
-    <div class="entry">
-      
-        <h3 id="两个雕虫小技_-_MessageBox_&amp;_Notepad">两个雕虫小技 - MessageBox &amp; Notepad</h3>
-<p>不用其它工具快速复制对话框上的文字,使用记事本自动添加记录时间.快速截图.</p>
-
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/two-tips-mbox-and-notepad/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <span class="categories">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/">实用文集</a></li></span></span> | <span class="tags">标签 <a href="/tags/notepad/" class="label label-primary">notepad</a><a href="/tags/技巧/" class="label label-success">技巧</a><a href="/tags/转载/" class="label label-info">转载</a><a href="/tags/截图/" class="label label-warning">截图</a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/two-tips-mbox-and-notepad/#comments" class="ds-thread-count comment-link" data-thread-key="10" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -800,7 +807,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-03 10:34:51</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://zespia.tw/hexo/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-06 21:07:36</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
