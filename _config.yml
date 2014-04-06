@@ -110,5 +110,4 @@ deploy:
     github: git@github.com:chenall/chenall.git,gh-pages
     gitcafe: git@gitcafe.com:chenall/chenall.git,gitcafe-pages
     googlecode: https://code.google.com/p/hexo-chenall/,pages
-    baidu: https://git.duapp.com/appidgp7bt4y1oe
     heroku: git@heroku.com:chenall-blog.git
