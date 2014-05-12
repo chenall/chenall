@@ -22,6 +22,7 @@ Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相
 
 <!--more--> 
 
+#### 2014-05-12 更新，源码更新到SVN R290,导入为XML功能改进，导出的信息更全面。
 #### 2014-04-19 更新,源码和官方版本同步.2.6.1209版.
 
 #### 2014-04-03 更新
@@ -96,7 +97,7 @@ PackageEditor.exe -exec #2 -GhostCapture d:\Setup.exe
 
 不再更新 == 2.6编辑器(内存模式运行): [PackageEditor2.6简体中文版](http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar)
 
-最新2.6增强版(推荐使用): [PackageEditor 2.6增强版](http://d.chenall.net/1/虚拟化绿软/PackageEditor.zip)
+最新2.6增强版(推荐使用): [PackageEditor 2.6增强版](http://d.chenall.net/1/虚拟化绿软/PackageEditor.exe)
 
 原版: [Cameyo 2.6.1191 官方原版](http://d.chenall.net/1/虚拟化绿软/Cameyo-2.6.1191.rar)
 
