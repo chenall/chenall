@@ -133,7 +133,21 @@
 <p>另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
 <p>感谢<em>zw2312914</em>的推荐: <a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5742</a>,感谢软件作者karyonix的分享.</p>
 <p>以下内容摘自上面时空论坛的一些原文.</p>
-<blockquote><br> 谢谢 karyonix 。此驱动类似 windrv 大的wdsys。即可以在windows环境使用grub4dos（—mem方式）仿真的镜像（包括iso)。<br><br> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8804</a><br><br> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8168</a><br><br> 希望有更多的朋友能测试下。<br><br> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a><br><br> 看了一下，名叫firadisk。<br><br> 貌似已经超级强大了，可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。<br><br> 另外，也支持直接在boot.ini加载各种镜像，无488M限制。<br><br> 支持x86/x64系统，但对于64位系统，尚无法使用4GB以上的内存，grub4dos似乎也不行。内存盘上限大概是3.25GB<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">时空论坛</a></cite></footer></blockquote> 
+<blockquote>
+
+
+<p> 谢谢 karyonix 。此驱动类似 windrv 大的wdsys。即可以在windows环境使用grub4dos（—mem方式）仿真的镜像（包括iso)。</p>
+<p> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8804</a></p>
+<p> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8168</a></p>
+<p> 希望有更多的朋友能测试下。</p>
+<p> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a></p>
+<p> 看了一下，名叫firadisk。</p>
+<p> 貌似已经超级强大了，可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
+<p> 另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
+<p> 支持x86/x64系统，但对于64位系统，尚无法使用4GB以上的内存，grub4dos似乎也不行。内存盘上限大概是3.25GB</p>
+<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">时空论坛</a></cite></footer></blockquote>
+
+
 
 <p>我已经测试过了,很强大,0pe或Micrope直接用这个驱动替换里面的wdsys.sys驱动,可以正常使用.</p>
 <p>其它PE只需要在内核中加入这个驱动,就可以直接整体ISO来启动,再也不用担心ISO启动找不到外置的问题了.</p>
@@ -215,7 +229,7 @@ chainloader (0xff)
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -304,7 +318,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

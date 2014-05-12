@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-04-19T06:01:21.406Z</updated>
+  <updated>2014-05-12T08:11:24.589Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -85,7 +85,7 @@
     <link href="http://chenall.net/post/cameyo-packageeditor/"/>
     <id>http://chenall.net/post/cameyo-packageeditor/</id>
     <published>2014-03-08T08:41:55.000Z</published>
-    <updated>2014-04-19T06:01:07.000Z</updated>
+    <updated>2014-05-12T08:11:15.000Z</updated>
     <content type="html"><![CDATA[<h3 id="Cameyo_简介：">Cameyo 简介：</h3>
 <p>Cameyo 是一款完全免费的应用程序虚拟化 (Application Virtualization) 工具或者说单文件软件制作工具，支持 XP、Vista 、 Windows7、Windows8，支持32位和64位系统。应用程序虚拟化技术就是将完整的程序资源打包为一个单一的可执行文件，从而无需安装即可运行。以前，要制作绿色软件需要学习很多技术，一般用户难以入门，而 Cameyo 则将此绿化过程变得简单且傻瓜。</p>
 <p>Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相关资源打包成单个绿色文件，当执行这个“绿色软件”时，它会产生一个虚拟环境来执行，类似影子系统一样，一切涉及的操作都是在这个虚拟环境中完成，并不会去动原本的系统。所以使用 Cameyo 制作的绿色软件还有一个好处就是几乎不会对系统有害。</p>
@@ -93,6 +93,7 @@
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 <a id="more"></a> 
 
+<h4 id="2014-05-12_更新，源码更新到SVN_R290,导入为XML功能改进，导出的信息更全面。">2014-05-12 更新，源码更新到SVN R290,导入为XML功能改进，导出的信息更全面。</h4>
 <h4 id="2014-04-19_更新,源码和官方版本同步-2-6-1209版-">2014-04-19 更新,源码和官方版本同步.2.6.1209版.</h4>
 <h4 id="2014-04-03_更新">2014-04-03 更新</h4>
 <ol>
@@ -114,7 +115,7 @@
 </code></pre><p>比如某个应用程序的安装文件Setup.exe在d:下</p>
 <pre><code>PackageEditor.exe -exec #2 -GhostCapture d:\Setup.exe
 </code></pre><h4 id="2014-04-02_更新_2-6增强版BUG修正,创新新程序包时允许选择新版或旧版-">2014-04-02 更新 2.6增强版BUG修正,创新新程序包时允许选择新版或旧版.</h4>
-<h4 id="2014-03-30_更新_<strong>最新2-6增强版</strong>">2014-03-30 更新 <strong>最新2.6增强版</strong></h4>
+<h4 id="2014-03-30_更新_最新2-6增强版">2014-03-30 更新 <strong>最新2.6增强版</strong></h4>
 <p>  修改SDK API实现二合一,新的编辑器同时支持编辑新旧两种虚拟化包格式,会自动判断,若是打开的是旧版格式,会提示是否升级,不升级就保留旧版格式.另外使用这个编辑器创建新的虚拟化包时只能创建为旧版格式.需要用新格式的可以保存之后重新打开在提示转换是选择是就行了.</p>
 <p>顺便说一下新旧格式的区别: 新版主要是支持<strong>内存运行模式</strong>,还有支持用户数据分离等特性,因为使用了新的压缩格式,速度会快一些,缺点就是产生的虚拟化程序会比较大.另外旧版可以直接用7Z打开看到里面的文件,新版的不行.</p>
 <p>2.1版修改内容:</p>
@@ -137,12 +138,16 @@
 <h3 id="相关下载">相关下载</h3>
 <p>不再更新 == 2.1编辑器+2.0版核心: <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.1.rar" target="_blank">PackageEditor2.1简体中文版(内置2.0版组件)</a></p>
 <p>不再更新 == 2.6编辑器(内存模式运行): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar" target="_blank">PackageEditor2.6简体中文版</a></p>
-<p>最新2.6增强版(推荐使用): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor.zip" target="_blank">PackageEditor 2.6增强版</a></p>
+<p>最新2.6增强版(推荐使用): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor.exe" target="_blank">PackageEditor 2.6增强版</a></p>
 <p>原版: <a href="http://d.chenall.net/1/虚拟化绿软/Cameyo-2.6.1191.rar" target="_blank">Cameyo 2.6.1191 官方原版</a></p>
 <h3 id="相关资料">相关资料</h3>
 <p>Cameyo 官方文档（英文）: <a href="http://www.cameyo.com/doc/index.html" target="_blank">http://www.cameyo.com/doc/index.html</a>  </p>
 <p>Cameyo User Guide (七牛镜像): <a href="http://cameyo.qiniudn.com/doc/index.html" target="_blank">http://cameyo.qiniudn.com/doc/index.html</a></p>
-<p>本站 Cameyo相关文章: <!--[iLink[tag:cameyo]iLink]--></p>
+<p>本站 Cameyo相关文章: </p>
+<!--[iLink[tag:cameyo]iLink]-->
+
+
+
 <p>Cameyo 官方资源库: <a href="http://online.cameyo.com/public" target="_blank">http://online.cameyo.com/public</a></p>
 ]]></content>
     <summary type="html"><![CDATA[<h3 id="Cameyo_简介：">Cameyo 简介：</h3>
@@ -367,7 +372,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
 hexo server --config chenall.net/_config.yml
 </code></pre><p>注2: V2.0版适用的hexo版本为 2.5.3 以上(2.5.2版本有Bug会显示不正常).2.4.X版请下载V1.0版主题.</p>
-<h2 id="<strong>具体效果:</strong>_<a_href="http://hexo-chenall-net" target="_blank">demo</a>_或本站_<a_href="http://chenall-net" target="_blank">chenall-net</a>"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
+<h2 id="具体效果:_demo_或本站_chenall-net"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
 <h3 id="安装方法">安装方法</h3>
 <p>通过以下命令下载主题到您的theme目录，然后修改blog的<code>_config.yml</code>中<em>theme</em>为<code>chenall</code>。</p>
 <pre><code>git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
@@ -411,7 +416,12 @@ git pull 或 svn up
 return link_to(&#39;http://chenall.net&#39;,&#39;我的搏客&#39;);
 {% endijs %}
 </code></pre><p>以上通过hexo内置的<em>helper</em>插件<strong>link_to</strong>实现在文章中插入一个链接指向<code>http://chenall.net</code>.</p>
-<h2 id="效果:_<!--[ijs[(function(){return link_to('http://chenall.net','我的搏客');})();]ijs]-->">效果: <!--[ijs[(function(){return link_to('http://chenall.net','我的搏客');})();]ijs]--></h2>
+<h2 id="效果:">效果:</h2>
+<!--[ijs[(function(){return link_to('http://chenall.net','我的搏客');})();]ijs]-->
+
+
+
+
 <p>复杂一些的例子,在文章中插入最新的5篇文章列表.</p>
 <pre><code>{% ijs %}
 var str = &#39;&#39;;
@@ -436,6 +446,7 @@ if (site.posts.length){
 return str;})();]ijs]-->
 
 
+
 <h3 id="iLink_文章内链">iLink 文章内链</h3>
 <p><code>iLink</code> 是本主题内置的的<code>tag</code>插件,通过<strong>iLink</strong>可以很方便的在文章中插入文章链接.</p>
 <p>iLink 使用格式</p>
@@ -446,33 +457,65 @@ VALUE: 值
 <ul>
 <li><p><code>tag</code>  链接到标签  </p>
 <pre><code> {% iLink tag:GRUB4DOS %}
-</code></pre><p> 例: <!--[iLink[tag:GRUB4DOS]iLink]--></p>
+</code></pre><p> 例: </p>
 </li>
+</ul>
+<!--[iLink[tag:GRUB4DOS]iLink]-->
+
+
+<ul>
 <li><p><code>cat</code> 或 <code>category</code> 链接到分类<br> 例子: </p>
 <pre><code> {% iLink cat:程序设计 %}
-</code></pre><p> 例: <!--[iLink[cat:程序设计]iLink]--></p>
+</code></pre><p> 例: </p>
 </li>
+</ul>
+<!--[iLink[cat:程序设计]iLink]-->
+
+
+<ul>
 <li><p>其它值会根据提供的信息自动链接到指定文章<br>例子:</p>
 <ol>
 <li><p>链接到源文件名 </p>
 <pre><code>{% iLink source:_posts/grub4dos_dev.md %}
-</code></pre><p>例: <!--[iLink[source:_posts/grub4dos_dev.md]iLink]--></p>
-</li>
-<li><p>链接到文章标题 </p>
-<pre><code>{% iLink title:[推荐] 免费的云计算Koding %}
-</code></pre><p>例: <!--[iLink[title:[推荐] 免费的云计算Koding]iLink]--></p>
-</li>
-<li><p>若某个文章页有额外添加了一些信息比如<code>id: 596</code>  </p>
-<pre><code>{% iLink id:597 %}
-</code></pre><p>例: <!--[iLink[id:597]iLink]--></p>
-</li>
-<li><p>通过文章的slug  </p>
-<pre><code>{% iLink slug:jekyll_or_hexo %}
-</code></pre><p>例: <!--[iLink[slug:jekyll_or_hexo]iLink]--></p>
+</code></pre><p>例: </p>
 </li>
 </ol>
 </li>
 </ul>
+<!--[iLink[source:_posts/grub4dos_dev.md]iLink]-->
+
+
+<pre><code>2. 链接到文章标题 
+
+  ```
+  {% iLink title:[推荐] 免费的云计算Koding %} 
+  ```
+
+  例: 
+</code></pre><!--[iLink[title:[推荐] 免费的云计算Koding]iLink]-->
+
+
+<pre><code>3. 若某个文章页有额外添加了一些信息比如`id: 596`  
+
+  ```
+  {% iLink id:597 %}
+  ```
+
+  例: 
+</code></pre><!--[iLink[id:597]iLink]-->
+
+
+<pre><code>4. 通过文章的slug  
+
+  ```
+  {% iLink slug:jekyll_or_hexo %}
+  ```
+
+  例: 
+</code></pre><!--[iLink[slug:jekyll_or_hexo]iLink]-->
+
+
+
 <h3 id="附加自定义内容">附加自定义内容</h3>
 <p>如果你需要一些添加一些额外和主题无关的内容.这时就可以使用这个功能.<br>在<code>_modules</code>目录中(主题或source都可以)新建一个文件夹<code>partial</code>.</p>
 <p>然后就可以通过<code>partial</code>里面的特定文件添加额外内容.</p>
@@ -716,7 +759,10 @@ widgets:
     <published>2014-01-26T15:50:48.000Z</published>
     <updated>2014-03-30T10:05:06.000Z</updated>
     <content type="html"><![CDATA[<p>经过一段时间的处理转换,大量的手工活,总体来说搬家还是挺顺利,整个转换过程使用了差不多1个月的时间.终算把博客搬到<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>上了.</p>
-<p>前段时间在尝试静态博客<!--[iLink[slug:jekyll_or_hexo]iLink]--><br>,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
+<p>前段时间在尝试静态博客</p>
+<!--[iLink[slug:jekyll_or_hexo]iLink]-->
+
+<p>,之后决定使用<a href="http://zespia.tw/hexo" title="A fast, simple &amp; powerful blog framework, powered by Node.js." target="_blank">hexo</a>,然后就是一系列的折腾再折腾.设计完善本主题,对hexo进行改进(大部份改进已经并入到官方主源码分支).</p>
 <p>在这期间,学习到了很多新的知识.</p>
 <ul>
 <li>首次接触CSS/HTML</li>
@@ -1855,7 +1901,10 @@ $fs-&gt;ls();
     <published>2012-12-12T06:02:22.000Z</published>
     <updated>2014-02-26T11:52:59.000Z</updated>
     <content type="html"><![CDATA[<p>金山快盘开放平台 PHP SDK</p>
-<p>来源: <!--[iLink[id:890]iLink]--></p>
+<p>来源: </p>
+<!--[iLink[id:890]iLink]-->
+
+
 <p>时间: 2013-04-12<br>使用方法：</p>
 <p>有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php</p>
 <p>可以根据自己的需要选择使用。</p>

@@ -157,7 +157,7 @@
 svn co -r HEAD https://github.com/chenall/chenall/branches/site chenall.net
 hexo server --config chenall.net/_config.yml
 </code></pre><p>注2: V2.0版适用的hexo版本为 2.5.3 以上(2.5.2版本有Bug会显示不正常).2.4.X版请下载V1.0版主题.</p>
-<h2 id="<strong>具体效果:</strong>_<a_href="http://hexo-chenall-net" target="_blank">demo</a>_或本站_<a_href="http://chenall-net" target="_blank">chenall-net</a>"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
+<h2 id="具体效果:_demo_或本站_chenall-net"><strong>具体效果:</strong> <a href="http://hexo.chenall.net" target="_blank">demo</a> 或本站 <a href="http://chenall.net">chenall.net</a></h2>
 <h3 id="安装方法">安装方法</h3>
 <p>通过以下命令下载主题到您的theme目录，然后修改blog的<code>_config.yml</code>中<em>theme</em>为<code>chenall</code>。</p>
 <pre><code>git clone git://github.com/chenall/hexo-theme-chenall.git themes/chenall
@@ -201,7 +201,10 @@ git pull 或 svn up
 return link_to(&#39;http://chenall.net&#39;,&#39;我的搏客&#39;);
 {% endijs %}
 </code></pre><p>以上通过hexo内置的<em>helper</em>插件<strong>link_to</strong>实现在文章中插入一个链接指向<code>http://chenall.net</code>.</p>
-<h2 id="效果:_<a href="http://chenall.net" title="我的搏客">我的搏客</a>">效果: <a href="http://chenall.net" title="我的搏客">我的搏客</a></h2>
+<h2 id="效果:">效果:</h2>
+<a href="http://chenall.net" title="我的搏客">我的搏客</a>
+
+
 <p>复杂一些的例子,在文章中插入最新的5篇文章列表.</p>
 <pre><code>{% ijs %}
 var str = &#39;&#39;;
@@ -216,6 +219,7 @@ return str;
 {% endijs %}
 </code></pre><h2 id="效果如下:">效果如下:</h2>
 <ul class="list-group"><li class="list-group-item"><a href="/post/cameyo_packageeditor_01/">Cameyo PackageEditor 基本使用介绍</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版(增强版)</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li></ul>
+
 <h3 id="iLink_文章内链">iLink 文章内链</h3>
 <p><code>iLink</code> 是本主题内置的的<code>tag</code>插件,通过<strong>iLink</strong>可以很方便的在文章中插入文章链接.</p>
 <p>iLink 使用格式</p>
@@ -226,33 +230,53 @@ VALUE: 值
 <ul>
 <li><p><code>tag</code>  链接到标签  </p>
 <pre><code> {% iLink tag:GRUB4DOS %}
-</code></pre><p> 例: <a href="/tags/GRUB4DOS/" target="_blank">GRUB4DOS</a></p>
+</code></pre><p> 例: </p>
 </li>
+</ul>
+<a href="/tags/GRUB4DOS/" target="_blank">GRUB4DOS</a><br>
+<ul>
 <li><p><code>cat</code> 或 <code>category</code> 链接到分类<br> 例子: </p>
 <pre><code> {% iLink cat:程序设计 %}
-</code></pre><p> 例: <a href="/categories/程序设计/" target="_blank">程序设计</a></p>
+</code></pre><p> 例: </p>
 </li>
+</ul>
+<a href="/categories/程序设计/" target="_blank">程序设计</a><br>
+<ul>
 <li><p>其它值会根据提供的信息自动链接到指定文章<br>例子:</p>
 <ol>
 <li><p>链接到源文件名 </p>
 <pre><code>{% iLink source:_posts/grub4dos_dev.md %}
-</code></pre><p>例: <a href="/post/grub4dos_dev/" target="_blank">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></p>
-</li>
-<li><p>链接到文章标题 </p>
-<pre><code>{% iLink title:[推荐] 免费的云计算Koding %}
-</code></pre><p>例: <a href="/post/koging/" target="_blank">[推荐] 免费的云计算Koding</a></p>
-</li>
-<li><p>若某个文章页有额外添加了一些信息比如<code>id: 596</code>  </p>
-<pre><code>{% iLink id:597 %}
-</code></pre><p>例: <a href="/post/c_upper/" target="_blank">C语言的基础函数大小写转换</a></p>
-</li>
-<li><p>通过文章的slug  </p>
-<pre><code>{% iLink slug:jekyll_or_hexo %}
-</code></pre><p>例: <a href="/post/jekyll_or_hexo/" target="_blank">静态搏客 jekyll & Hexo</a></p>
+</code></pre><p>例: </p>
 </li>
 </ol>
 </li>
 </ul>
+<a href="/post/grub4dos_dev/" target="_blank">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a><br>
+<pre><code>2. 链接到文章标题 
+
+  ```
+  {% iLink title:[推荐] 免费的云计算Koding %} 
+  ```
+
+  例: 
+</code></pre><a href="/post/koging/" target="_blank">[推荐] 免费的云计算Koding</a><br>
+<pre><code>3. 若某个文章页有额外添加了一些信息比如`id: 596`  
+
+  ```
+  {% iLink id:597 %}
+  ```
+
+  例: 
+</code></pre><a href="/post/c_upper/" target="_blank">C语言的基础函数大小写转换</a><br>
+<pre><code>4. 通过文章的slug  
+
+  ```
+  {% iLink slug:jekyll_or_hexo %}
+  ```
+
+  例: 
+</code></pre><a href="/post/jekyll_or_hexo/" target="_blank">静态搏客 jekyll & Hexo</a><br>
+
 <h3 id="附加自定义内容">附加自定义内容</h3>
 <p>如果你需要一些添加一些额外和主题无关的内容.这时就可以使用这个功能.<br>在<code>_modules</code>目录中(主题或source都可以)新建一个文件夹<code>partial</code>.</p>
 <p>然后就可以通过<code>partial</code>里面的特定文件添加额外内容.</p>
@@ -502,7 +526,7 @@ widgets:
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li><li class="list-group-item"><a href="/post/scanpci/">[转] 遍历PCI设备</a></li><li class="list-group-item"><a href="/post/vbs_send_mail/">[转] Windows 下命令行/VBS脚本,发送带附件邮件.</a></li><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -591,7 +615,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-29 09:07:09</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-29 09:07:09</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

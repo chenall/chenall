@@ -276,7 +276,60 @@ bcdedit /set {current} osdevice boot
 <p><img src="http://c-dl.qiniudn.com/upload/2009/10/6F82F0AE06F64B8A257E871C7EC8E7EE73606F6C.png" alt=""></p>
 <p>想知道上面的文件夹是如何来的吗？</p>
 <p>首先大家都知道从WINDOWS 9X开始，在系统中经常可以看到desktop.ini的身影，通过它可以对一个文件夹进行自定义外观的操作。</p>
-<blockquote>以下内容来源于百度百科 <a href="http://baike.baidu.com/view/676737.html" target="_blank">http://baike.baidu.com/view/676737.html</a><br><br>### 一、文件夹图标<br><br>　　[.ShellClassInfo]<br><br>　　InfoTip=注释<br><br>　　IconFile=图标文件的路径<br><br>　　IconIndex=选择要使用文件中的第几个图标<br><br>　　自定义图标文件，其扩展名可以是.exe、.dll、.ico等。<br><br>### 二、文件夹<br><br>　　[ExtShellFolderViews]<br><br>　　{BE098140-A513-11D0-A3A4-00C04FD706EC}={BE098140-A513-11D0-A3A4-00C04FD706EC}<br><br>　　[{BE098140-A513-11D0-A3A4-00C04FD706EC}]<br><br>　　Attributes=1<br><br>　　IconArea_Image=11.jpg<br><br>　　[.ShellClassInfo]<br><br>　　ConfirmFileOp=50<br><br>　　其中11.jpg是图片，把以上内容用记事本保存为desktop.ini ，和背景图片一起放在要改变背景的文件夹内。为了防止误删，可以把desktop.ini和图片设为隐藏属性。<br><br>### 三、标示特殊文件夹<br><br>　　系统中有一些特殊的文件夹，如回收站、我的电脑、我的文档、网上邻居等。这些文件夹的标示有两种方法：<br><br>####1. 直接在文件夹名后续上一个<strong>.</strong>在加对应的CLSID<br><br>　　如：把一个文件夹取名为：新建文件夹.{20D04FE0-3AEA-1069-A2D8-08002B30309D}<br><br>　　（注意：新建文件夹后面有一个半角的句号）<br><br>　　那么这个文件夹的图标将变为我的电脑的图标，并且在双击该文件夹时将打开我的电脑。<br><br>　　在下面查看CLSID<br><br>　　在注册表中展开HKEY_CLASSES_ROOT\CLSID\，在CLSID分支下面就可以看到很多的ID，这些ID对应的都是系统里面不同的程序，文件，系统组件等<br><br>　　常见组件类对应的CLSID:<br><br>　　我的文档：450D8FBA-AD25-11D0-98A8-0800361B1103<br><br>　　我的电脑：20D04FE0-3AEA-1069-A2D8-08002B30309D<br><br>　　网上邻居：208D2C60-3AEA-1069-A2D7-08002B30309D<br><br>　　回收站：645FF040-5081-101B-9F08-00AA002F954E<br><br>　　Internet Explorer：871C5380-42A0-1069-A2EA-08002B30309D<br><br>　　控制面板：21EC2020-3AEA-1069-A2DD-08002B30309D<br><br>　　拨号网络/网络连接 :992CFFA0-F557-101A-88EC-00DD010CCC48<br><br>　　任务计划 :D6277990-4C6A-11CF-8D87-00AA0060F5BF<br><br>　　打印机(和传真):2227A280-3AEA-1069-A2DE-08002B30309D<br><br>　　历史文件夹:7BD29E00-76C1-11CF-9DD0-00A0C9034933<br><br>　　ActiveX缓存文件夹: 88C6C381-2E85-11D0-94DE-444553540000<br><br>　　公文包: 85BBD920-42A0-1069-A2E4-08002B30309D<br><br>#### 2. 第二种是通过一个desktop.ini文件<br><br>　　还以我的电脑为例:<br><br>　　新建一个文件夹,名字随便,然后在其下边建立desktop.ini文件,内容如下:<br><br>　　[.ShellClassInfo]<br><br>　　CLSID={相应的ID}<br><br>　　注:有部分病毒会建立这样的文件夹以达到隐藏自身的目的.另外这也是一种我们隐藏小秘密的方法.<br><br>### 四、标示文件夹所有者<br><br>　　这通常见于我的文档等如我的文档里就有这样一个文件，内容如下：<br><br>　　[DeleteOnCopy]<br><br>　　Owner=Administrator<br><br>　　Personalized=5<br><br>　　PersonalizedName=My Documents<footer><strong>百度百科</strong><cite><a href="http://baike.baidu.com/view/676737.html" target="_blank">baike.baidu.com/view/&hellip;</a></cite></footer></blockquote>
+<blockquote>
+
+<p>以下内容来源于百度百科 <a href="http://baike.baidu.com/view/676737.html" target="_blank">http://baike.baidu.com/view/676737.html</a></p>
+<h3 id="一、文件夹图标">一、文件夹图标</h3>
+<p>　　[.ShellClassInfo]</p>
+<p>　　InfoTip=注释</p>
+<p>　　IconFile=图标文件的路径</p>
+<p>　　IconIndex=选择要使用文件中的第几个图标</p>
+<p>　　自定义图标文件，其扩展名可以是.exe、.dll、.ico等。</p>
+<h3 id="二、文件夹">二、文件夹</h3>
+<p>　　[ExtShellFolderViews]</p>
+<p>　　{BE098140-A513-11D0-A3A4-00C04FD706EC}={BE098140-A513-11D0-A3A4-00C04FD706EC}</p>
+<p>　　[{BE098140-A513-11D0-A3A4-00C04FD706EC}]</p>
+<p>　　Attributes=1</p>
+<p>　　IconArea_Image=11.jpg</p>
+<p>　　[.ShellClassInfo]</p>
+<p>　　ConfirmFileOp=50</p>
+<p>　　其中11.jpg是图片，把以上内容用记事本保存为desktop.ini ，和背景图片一起放在要改变背景的文件夹内。为了防止误删，可以把desktop.ini和图片设为隐藏属性。</p>
+<h3 id="三、标示特殊文件夹">三、标示特殊文件夹</h3>
+<p>　　系统中有一些特殊的文件夹，如回收站、我的电脑、我的文档、网上邻居等。这些文件夹的标示有两种方法：</p>
+<h4 id="1-_直接在文件夹名后续上一个-在加对应的CLSID">1. 直接在文件夹名后续上一个<strong>.</strong>在加对应的CLSID</h4>
+<p>　　如：把一个文件夹取名为：新建文件夹.{20D04FE0-3AEA-1069-A2D8-08002B30309D}</p>
+<p>　　（注意：新建文件夹后面有一个半角的句号）</p>
+<p>　　那么这个文件夹的图标将变为我的电脑的图标，并且在双击该文件夹时将打开我的电脑。</p>
+<p>　　在下面查看CLSID</p>
+<p>　　在注册表中展开HKEY_CLASSES_ROOT\CLSID\，在CLSID分支下面就可以看到很多的ID，这些ID对应的都是系统里面不同的程序，文件，系统组件等</p>
+<p>　　常见组件类对应的CLSID:</p>
+<p>　　我的文档：450D8FBA-AD25-11D0-98A8-0800361B1103</p>
+<p>　　我的电脑：20D04FE0-3AEA-1069-A2D8-08002B30309D</p>
+<p>　　网上邻居：208D2C60-3AEA-1069-A2D7-08002B30309D</p>
+<p>　　回收站：645FF040-5081-101B-9F08-00AA002F954E</p>
+<p>　　Internet Explorer：871C5380-42A0-1069-A2EA-08002B30309D</p>
+<p>　　控制面板：21EC2020-3AEA-1069-A2DD-08002B30309D</p>
+<p>　　拨号网络/网络连接 :992CFFA0-F557-101A-88EC-00DD010CCC48</p>
+<p>　　任务计划 :D6277990-4C6A-11CF-8D87-00AA0060F5BF</p>
+<p>　　打印机(和传真):2227A280-3AEA-1069-A2DE-08002B30309D</p>
+<p>　　历史文件夹:7BD29E00-76C1-11CF-9DD0-00A0C9034933</p>
+<p>　　ActiveX缓存文件夹: 88C6C381-2E85-11D0-94DE-444553540000</p>
+<p>　　公文包: 85BBD920-42A0-1069-A2E4-08002B30309D</p>
+<h4 id="2-_第二种是通过一个desktop-ini文件">2. 第二种是通过一个desktop.ini文件</h4>
+<p>　　还以我的电脑为例:</p>
+<p>　　新建一个文件夹,名字随便,然后在其下边建立desktop.ini文件,内容如下:</p>
+<p>　　[.ShellClassInfo]</p>
+<p>　　CLSID={相应的ID}</p>
+<p>　　注:有部分病毒会建立这样的文件夹以达到隐藏自身的目的.另外这也是一种我们隐藏小秘密的方法.</p>
+<h3 id="四、标示文件夹所有者">四、标示文件夹所有者</h3>
+<p>　　这通常见于我的文档等如我的文档里就有这样一个文件，内容如下：</p>
+<p>　　[DeleteOnCopy]</p>
+<p>　　Owner=Administrator</p>
+<p>　　Personalized=5</p>
+<p>　　PersonalizedName=My Documents</p>
+<footer><strong>百度百科</strong><cite><a href="http://baike.baidu.com/view/676737.html" target="_blank">baike.baidu.com/view/&hellip;</a></cite></footer></blockquote>
+
+
 
 <p>好进入正题，其实上面的文件夹都是用到了一个参数<font style="background-color: transparent" color="#ff00ff" size="4">LocalizedResourceName</font><font color="#000000">（这个的意思自己翻译一下),通过它我们就可以为我们的文件夹重新定义名字。</font></p>
 <font style="background-color: transparent" color="#ff00ff" size="4"></font><font color="#000000">其它的我就不多说了，自己找下资料，上面的文件夹制作方法例子：</font>
@@ -966,7 +1019,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-19 14:01:46</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:11:49</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

@@ -207,7 +207,9 @@ write 可以在内存中写入一个数值使用如下命令就可以了
 
 保留视频功能.
 保留自动播放司服器
-修正原版自动播放司服器不能正常使用的问题.</p><li class="list-group-item"><h3><time datetime="2009-02-07T08:21:01.000Z">2009-02-07</time>  <a href="/post/post43/">[转]正则表达式30分钟入门教程</a></h3><p class="list-group-item-text">30分钟内让你明白正则表达式是什么，并对它有一些基本的了解，让你可以在自己的程序或网页里使用它。</p><li class="list-group-item"><h3><time datetime="2009-01-16T14:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。对于内存文件来讲，也是如此，(md)xxxxx+yyyyy 和 (rd)xxxxx+yyyyy 这类表达法都是表示扇区的整数倍，这样大小的文件。然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 image.gz 文件，如果你不指定这个文件的精确大小，那么grub 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。怎样指定扇区序列的精确长度呢？这可能是 GNU GRUB 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 466 个字节，就可以这样：cat --hex (hd0)+1,466其中 (hd0)+1 是扇区序列，466 表示只从扇区序列中取出 466 字节作为文件的长度。再举一例：cat --hex (hd0)+63,800+63,64400如果没有结尾的&ldquo;,64400&rdquo;，那么，&ldquo;(hd0)+63,800+63&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 63 个扇区，所以文件总共有 126 个扇区。文件的长度就是 126x512=64512 字节。加上了结尾的&ldquo;,64400&rdquo;之后，文件变小了，它表示的文件长度为 64400。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。不点时空论坛</p><li class="list-group-item"><h3><time datetime="2009-01-15T04:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问例子:  
+修正原版自动播放司服器不能正常使用的问题.</p><li class="list-group-item"><h3><time datetime="2009-02-07T08:21:01.000Z">2009-02-07</time>  <a href="/post/post43/">[转]正则表达式30分钟入门教程</a></h3><p class="list-group-item-text">30分钟内让你明白正则表达式是什么，并对它有一些基本的了解，让你可以在自己的程序或网页里使用它。</p><li class="list-group-item"><h3><time datetime="2009-01-16T14:12:50.000Z">2009-01-16</time>  <a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></h3><p class="list-group-item-text">我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。
+
+在 grub 中，我们可以用 (hd0)12345+8 或者 (hd0,0)2+20,33+5,87+300 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 512 的整数倍），也就是说，不可能表示一个256 字节的文件，也不可能表示一个 513 字节的文件。</p><li class="list-group-item"><h3><time datetime="2009-01-15T04:56:42.000Z">2009-01-15</time>  <a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></h3><p class="list-group-item-text">利用GRUB4DOS的map功能来中转文件.使得DOS下可以访问例子:  
 说明: 把/MINIPE.SYSTEM.WIM文件映射为(hd1)硬盘.GRUB4DOS会把这个文件的内容作为一个磁盘分区(hd1,0).</p>
 
 </div></div><!--wapper-->
@@ -292,7 +294,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-19 14:01:45</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:11:47</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

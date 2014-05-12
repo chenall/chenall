@@ -884,7 +884,24 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
     
     <div class="entry">
       
-        <blockquote><br>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。<br><br>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。<br><br>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。<br><br>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。<br><br>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：<br><code>cat --hex (hd0)+1,466</code><br>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。<br><br>再举一例：<br><code>cat --hex (hd0)+63,800+63,64400</code><br>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。<br><br>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。<br><br>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。<br><footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
+        <blockquote>
+
+
+<p>我觉得这是一个未公开的特性，因为我从未在其它地方见到过有关这一特性的描述。</p>
+<p>在 grub 中，我们可以用 <em>(hd0)12345+8</em> 或者 <em>(hd0,0)2+20,33+5,87+300</em> 之类的表达法来表示一个磁盘文件。这种表示法，就是扇区序列表示法。既然是扇区序列，那么这样的文件，就只能以扇区对齐（也即必须为 <code>512</code> 的整数倍），也就是说，不可能表示一个<code>256</code> 字节的文件，也不可能表示一个 <code>513</code> 字节的文件。</p>
+<p>对于内存文件来讲，也是如此，<em>(md)xxxxx+yyyyy</em> 和 <em>(rd)xxxxx+yyyyy</em> 这类表达法都是表示扇区的整数倍，这样大小的文件。</p>
+<p>然而有时候，我们确实需要精确到字节的扇区序列文件。比如在硬盘上（或内存中）有一个 <strong>image.gz</strong> 文件，如果你不指定这个文件的精确大小，那么<code>grub</code> 就不能正常解压这个文件，这是因为解压程序依赖于这个 gz 的精确长度，你多一个字节或少一个字节，都可能会失败的。</p>
+<p>怎样指定扇区序列的精确长度呢？这可能是 <code>GNU GRUB</code> 早期的开发者早就开发的功能了，只是没有公开，也许是因为开发者觉得这个功能的实现方法以后说不定会改变，就不适合公开了。扇区序列的精确长度（以字节计），是直接加在扇区序列表达法之后的，用逗号与扇区序列隔开。例如，你想打印出 MBR 中开头的 <code>466</code> 个字节，就可以这样：</p>
+<pre><code>cat --hex (hd0)+1,466
+</code></pre><p>其中 <em>(hd0)+1</em> 是扇区序列，<code>466</code> 表示只从扇区序列中取出 <code>466</code> 字节作为文件的长度。</p>
+<p>再举一例：</p>
+<pre><code>cat --hex (hd0)+63,800+63,64400
+</code></pre><p>如果没有结尾的&ldquo;<code>,64400</code>&rdquo;，那么，&ldquo;<code>(hd0)+63,800+63</code>&rdquo;就表示不连续的两个扇区序列所组成的文件，每个连续的序列都有 <code>63</code> 个扇区，所以文件总共有 <code>126</code> 个扇区。文件的长度就是 <em>126x512=64512</em> 字节。加上了结尾的&ldquo;<code>,64400</code>&rdquo;之后，文件变小了，它表示的文件长度为 <code>64400</code>。当然你不应该指定一个长度，使得它比扇区序列的总长度还要大。</p>
+<p>但是，如果你想只访问 MBR 中的分区表，那是不行的，这种表达法不支持从扇区序列的中间截取文件，只支持从扇区序列的最开头截取一定长度的文件。</p>
+<p>由于这种表达法也是有缺点的，因此我们也仍然不公开这一特性。今后说不定会出现一种更合理的表达方式。</p>
+<footer><strong>不点</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=4532" target="_blank">时空论坛</a></cite></footer></blockquote>
+
+
       
     </div>
     
@@ -959,13 +976,13 @@ map --hook
     
     <div class="entry">
       
-        <h2 id="此贴转自时空论坛_原贴:_<a_href="http://bbs-znpc-net/viewthread-php?tid=3304" target="_blank">http://bbs-znpc-net/viewthread-php?tid=3304</a>">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
+        <h2 id="此贴转自时空论坛_原贴:_http://bbs-znpc-net/viewthread-php?tid=3304">此贴转自时空论坛 原贴: <a href="http://bbs.znpc.net/viewthread.php?tid=3304" target="_blank">http://bbs.znpc.net/viewthread.php?tid=3304</a></h2>
 <p>   转到这里留个备份,以后再碰到这个问题比较好找.^_^</p>
-<h2 id="解决电脑远程登陆出现_<strong>远程计算机已结束连接</strong>">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
+<h2 id="解决电脑远程登陆出现_远程计算机已结束连接">解决电脑远程登陆出现 <strong>远程计算机已结束连接</strong></h2>
 <p>   此问题在远程系统是GHOST版的windowsxp时出现的比较普遍。</p>
-<h2 id="<strong>_现象描述：</strong>"><strong> 现象描述：</strong></h2>
+<h2 id="_现象描述："><strong> 现象描述：</strong></h2>
 <p>用windowsxp自带的<strong>远程桌面</strong>功能连接到另外一台windowsxp电脑时，在连接的瞬间便<br>弹出<em>远程计算机已结束连接</em>的出错窗口。</p>
-<h2 id="<strong>解决方法：</strong>"><strong>解决方法：</strong></h2>
+<h2 id="解决方法："><strong>解决方法：</strong></h2>
 <p>打开注册表<br>找到[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\RDPDR\<br>在左侧的 RDPDR 上右键-<strong>权限</strong>，选上<strong>完全控制</strong>,把以下注册表内容.复制到记事本保存为reg文件.<br>再导入注册表:</p>
 <pre><code>Windows Registry Editor Version 5.00
 
@@ -1432,7 +1449,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-19 14:01:46</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:11:49</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

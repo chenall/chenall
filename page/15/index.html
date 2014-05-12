@@ -227,19 +227,45 @@
 <p>这个内核除了具有<br><a href="http://bbs.wuyou.com/viewthread.php?tid=118886&amp;highlight=%2Bchenall" target="_blank">[原创&amp;分享]新型PE内核(无限扩展,无限可能).</a></p>
 <p>同样的功能外，另支持多种启动方式(首创)</p>
 <p>具体:  <a href="http://chenall.blog.163.com/blog/static/47400182200812735731923/" target="_blank">PE多功能内核</a>   ISO文件下载 <a href="http://www.bibidu.com/fileview-400319.html" target="_blank">=080303=多启PE演示.rar</a></p>
-<blockquote>PE内核多功能版演示<br><br>若只需使用其中一种方式WINPE.IMG可以压缩成相应格式.第1,2可以压缩成CAB格式(目前压缩后14MB左右)<br><br>第3,4可以压缩成GZIP格式(压缩后15.6MB).<br><br>多功能:<br><br>1. 可以使用RAMDISK方式启动(第1个.2个菜单)<br>   winnt.sif内容(注此ISO里面是WINNT.XPE)<br><code>[SetupData]
-  BootDevice=&quot;ramdisk(0)&quot;
-  BootPath=&quot;\WXPE\SYSTEM32\&quot;
-  OsLoadOptions=&quot;/minint /fastdetect /rdpath=WXPE\WinPE.IMG&quot;</code><br><br>  启动例子:<br><code>title 1. Micro Windows PE Without Sata/Raid/SCSI (ramdisk)
+<blockquote>
+
+<p>PE内核多功能版演示</p>
+<p>若只需使用其中一种方式WINPE.IMG可以压缩成相应格式.第1,2可以压缩成CAB格式(目前压缩后14MB左右)</p>
+<p>第3,4可以压缩成GZIP格式(压缩后15.6MB).</p>
+<p>多功能:</p>
+<ol>
+<li><p>可以使用RAMDISK方式启动(第1个.2个菜单)<br>winnt.sif内容(注此ISO里面是WINNT.XPE)</p>
+<pre><code>[SetupData]
+BootDevice=&quot;ramdisk(0)&quot;
+BootPath=&quot;\WXPE\SYSTEM32\&quot;
+OsLoadOptions=&quot;/minint /fastdetect /rdpath=WXPE\WinPE.IMG&quot;
+</code></pre><p>启动例子:</p>
+<pre><code>title 1. Micro Windows PE Without Sata/Raid/SCSI (ramdisk)
 chainloader ()/WXPE/SETUPLDR.BIN
 title 2. Micro Windows PE With Universal ATA driver (ramdisk)
-chainloader ()/WXPE/SETUPLDR.B2N</code><br>2. 可以直接独立启动,不依赖WINNT.SIF(第3,4个,只需一个WINPE.IMG)<br><br>  只需要一个WINPE.IMG即可,不需要其它文件(WINNT.SIF,SETUPLDR.BIN等都不需要)<br><br>  启动例子:<br><code>title 3. Micro Windows PE Without Sata/Raid/SCSI (WDSYS)
+chainloader ()/WXPE/SETUPLDR.B2N
+</code></pre></li>
+<li><p>可以直接独立启动,不依赖WINNT.SIF(第3,4个,只需一个WINPE.IMG)</p>
+<p>只需要一个WINPE.IMG即可,不需要其它文件(WINNT.SIF,SETUPLDR.BIN等都不需要)</p>
+<p>启动例子:</p>
+<pre><code>title 3. Micro Windows PE Without Sata/Raid/SCSI (WDSYS)
 map --mem --unsafe-boot ()/WXPE/WINPE.IMG (hd0)
 map --hook
 chainloader (hd0,0)/setupldr.bin
 title 4. Micro Windows PE With Universal ATA driver (WDSYS)
 map --mem --unsafe-boot ()/WXPE/WINPE.IMG (hd0)
-map --hook&lt;/font&gt;</code><br>3. 非RAMDISK方式启动,测试方法<br><br>  直接将里面的文件复制到系统盘根目录下(不需要改名)<br><br>  直接启动里面的<font color="#ff8c00">setupldr.bin</font><font color="#333333">即可</font><br><br>  注:这只是一个演示,更方便的用途在于使用PXE方式启动.可以有双重启动方式,一种不行就换另一种.而且不管使用哪种方式启动,使用的内存都是差不多的<br><br>所有使用RAMDISK启动的PE都可以改成这种方式<br><footer><strong>chenall</strong></footer></blockquote>
+map --hook&lt;/font&gt;
+</code></pre></li>
+<li><p>非RAMDISK方式启动,测试方法</p>
+<p>直接将里面的文件复制到系统盘根目录下(不需要改名)</p>
+<p>直接启动里面的<font color="#ff8c00">setupldr.bin</font><font color="#333333">即可</font></p>
+<p>注:这只是一个演示,更方便的用途在于使用PXE方式启动.可以有双重启动方式,一种不行就换另一种.而且不管使用哪种方式启动,使用的内存都是差不多的</p>
+</li>
+</ol>
+<p>所有使用RAMDISK启动的PE都可以改成这种方式</p>
+<footer><strong>chenall</strong></footer></blockquote>
+
+
 
 <p>以下的内容可以不用看了.只供参考</p>
 <h3 id="方式1-">方式1.</h3>
@@ -405,9 +431,25 @@ ComputerName = *
     
     <div class="entry">
       
-        <blockquote> 大家知道，ntldr只能执行之前编辑好的的boot.ini菜单选项，而无法像grub的menu.lst一样在启动时手动编辑和调整菜单，很缺乏灵活性。<br><br> 今天我在启动vista时，偶然按了一下F10，发现vista的bootmgr+winload.exe在此时可以手动编辑启动选项，故而查找了一些相关资料，发现微软竟然在ntldr中包含了显示启动选项和编辑启动菜单这两个隐藏功能，下面我就来说明如何实现这两个功能。<br><br> 在启动到操作系统选择菜单时，输入<strong>unsupporteddebug</strong>后，神奇的事出现了boot.ini启动项的标题、路径、启动选项居然能显示出来了：<br><br> 选中一个操作系统选项，按回车，在boot.ini满足一定的条件时，还能出现启动选项手动编辑菜单：<br><br> 要出现启动选项编辑菜单，要求boot.ini文件中[operating systems]下面的操作系统项中的<strong>任意一行</strong>，满足下面条件中<strong>任意一条</strong>：<br><br><em> 选项中包含<strong>/redirect</strong>参数，并且标题的引号中的字符长度超过57字节（用不了这么长，可以用彩色标题啊 <a href="http://www.cn-dos.net/forum/viewthread.php?tid=20816" target="_blank">http://www.cn-dos.net/forum/viewthread.php?tid=20816</a>)
-</em> 选项中包含<strong>/debug</strong>或<strong>/baudrate</strong>，并且路径开头不是<strong>C:\</strong><br><em> 选项中包含 <strong>/win95dos</strong>或<strong>/win95</strong>参数 
-</em> 操作系统路径是<strong>C:\</strong> （没有任何文件名）<br><br>有兴趣的，可以更进一步参考：<br> <a href="http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/unsupporteddebug.htm" target="_blank">http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/unsupporteddebug.htm</a><br><br> 另外，关于vista bootmgr的F10编辑菜单的使用可以参考：<br><br> <a href="http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/editoptions.htm" target="_blank">http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/editoptions.htm</a><br> <footer><strong>fujianabc</strong><cite><a href="http://www.cn-dos.net/forum/viewthread.php?tid=39644" target="_blank">中国DOS联盟论坛</a></cite></footer></blockquote>
+        <blockquote>
+
+<p> 大家知道，ntldr只能执行之前编辑好的的boot.ini菜单选项，而无法像grub的menu.lst一样在启动时手动编辑和调整菜单，很缺乏灵活性。</p>
+<p> 今天我在启动vista时，偶然按了一下F10，发现vista的bootmgr+winload.exe在此时可以手动编辑启动选项，故而查找了一些相关资料，发现微软竟然在ntldr中包含了显示启动选项和编辑启动菜单这两个隐藏功能，下面我就来说明如何实现这两个功能。</p>
+<p> 在启动到操作系统选择菜单时，输入<strong>unsupporteddebug</strong>后，神奇的事出现了boot.ini启动项的标题、路径、启动选项居然能显示出来了：</p>
+<p> 选中一个操作系统选项，按回车，在boot.ini满足一定的条件时，还能出现启动选项手动编辑菜单：</p>
+<p> 要出现启动选项编辑菜单，要求boot.ini文件中[operating systems]下面的操作系统项中的<strong>任意一行</strong>，满足下面条件中<strong>任意一条</strong>：</p>
+<ul>
+<li>选项中包含<strong>/redirect</strong>参数，并且标题的引号中的字符长度超过57字节（用不了这么长，可以用彩色标题啊 <a href="http://www.cn-dos.net/forum/viewthread.php?tid=20816" target="_blank">http://www.cn-dos.net/forum/viewthread.php?tid=20816</a>)</li>
+<li>选项中包含<strong>/debug</strong>或<strong>/baudrate</strong>，并且路径开头不是<strong>C:\</strong></li>
+<li>选项中包含 <strong>/win95dos</strong>或<strong>/win95</strong>参数 </li>
+<li>操作系统路径是<strong>C:\</strong> （没有任何文件名）</li>
+</ul>
+<p>有兴趣的，可以更进一步参考：<br> <a href="http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/unsupporteddebug.htm" target="_blank">http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/unsupporteddebug.htm</a></p>
+<p> 另外，关于vista bootmgr的F10编辑菜单的使用可以参考：</p>
+<p> <a href="http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/editoptions.htm" target="_blank">http://www.geoffchappell.com/viewer.htm?doc=notes/windows/boot/editoptions.htm</a></p>
+<footer><strong>fujianabc</strong><cite><a href="http://www.cn-dos.net/forum/viewthread.php?tid=39644" target="_blank">中国DOS联盟论坛</a></cite></footer></blockquote>
+
+
       
     </div>
     
@@ -514,7 +556,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.2 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-04-19 14:01:47</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:11:49</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
