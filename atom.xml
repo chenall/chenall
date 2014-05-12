@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-05-12T08:11:24.589Z</updated>
+  <updated>2014-05-12T08:18:13.367Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -85,7 +85,7 @@
     <link href="http://chenall.net/post/cameyo-packageeditor/"/>
     <id>http://chenall.net/post/cameyo-packageeditor/</id>
     <published>2014-03-08T08:41:55.000Z</published>
-    <updated>2014-05-12T08:11:15.000Z</updated>
+    <updated>2014-05-12T08:18:06.000Z</updated>
     <content type="html"><![CDATA[<h3 id="Cameyo_简介：">Cameyo 简介：</h3>
 <p>Cameyo 是一款完全免费的应用程序虚拟化 (Application Virtualization) 工具或者说单文件软件制作工具，支持 XP、Vista 、 Windows7、Windows8，支持32位和64位系统。应用程序虚拟化技术就是将完整的程序资源打包为一个单一的可执行文件，从而无需安装即可运行。以前，要制作绿色软件需要学习很多技术，一般用户难以入门，而 Cameyo 则将此绿化过程变得简单且傻瓜。</p>
 <p>Cameyo 的原理是利用沙盒（Sandbox）的虚拟化技术，先把所有相关资源打包成单个绿色文件，当执行这个“绿色软件”时，它会产生一个虚拟环境来执行，类似影子系统一样，一切涉及的操作都是在这个虚拟环境中完成，并不会去动原本的系统。所以使用 Cameyo 制作的绿色软件还有一个好处就是几乎不会对系统有害。</p>
@@ -93,7 +93,7 @@
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 <a id="more"></a> 
 
-<h4 id="2014-05-12_更新，源码更新到SVN_R290,导入为XML功能改进，导出的信息更全面。">2014-05-12 更新，源码更新到SVN R290,导入为XML功能改进，导出的信息更全面。</h4>
+<h4 id="2014-05-12_更新，源码更新到SVN_R290,导出XML功能改进，导出的信息更全面，并且支持旧版导出。">2014-05-12 更新，源码更新到SVN R290,导出XML功能改进，导出的信息更全面，并且支持旧版导出。</h4>
 <h4 id="2014-04-19_更新,源码和官方版本同步-2-6-1209版-">2014-04-19 更新,源码和官方版本同步.2.6.1209版.</h4>
 <h4 id="2014-04-03_更新">2014-04-03 更新</h4>
 <ol>
