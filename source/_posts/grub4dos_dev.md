@@ -1,4 +1,4 @@
-title: "[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]"
+title: "[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]"
 id: 804
 date: 2012-01-19 08:00:35
 tags: 
@@ -17,6 +17,18 @@ categories:
 好了，废话不多说了，直接开始了。如果想偷懒的话，有提供了可以直接使用的成品下载。
 
 说明: __内容比较乱,只是记录一下整这个的过程(从文件大小也从最初的几个G到整最后的`50MB`,偷懒的直接下载最新版本就行了,想自己折腾的可以继续看下去(按日期顺序从后往前看)__
+
+===========2014-06-25=============
+
+修正使用git下载源码时出现的问题.
+
+```
+cofuse: unsuppored request 6
+fatal: cannot symlink '/tmp/tcloop/git-1.6/usr/share/git-core/templates/info/exc
+lude' '/mnt/cofs/grub4dos/.git/info/exclude': Function not implemented
+```
+
+下载地址: [grub4dos_dev_2014-06-25.7z](http://dl.grub4dos.chenall.net/grub4dos_dev_2014-06-25.7z)
 
 ===========2013-03-02=============
 
