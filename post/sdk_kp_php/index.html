@@ -11,11 +11,7 @@
 <meta name="author" content="chenall">
 
 <meta name="description" content="金山快盘开放平台 PHP SDK
-来源: 
-
-
-
-时间: 2013-04-12使用方法：
+来源: 时间: 2013-04-12使用方法：
 有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php
 可以根据自己的需要选择使用。">
 
@@ -77,9 +73,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/sdk_kp_php/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/sdk_kp_php/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/sdk_kp_php/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -90,8 +86,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/sdk_kp_php/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/sdk_kp_php/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -131,12 +127,10 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>金山快盘开放平台 PHP SDK</p>
-<p>来源: </p>
-<a href="/post/sdk_kp_php/" target="_blank">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a><br>
-<p>时间: 2013-04-12<br>使用方法：</p>
+<p>来源: <a href="/post/sdk_kp_php/" target="_blank">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a><br>时间: 2013-04-12<br>使用方法：</p>
 <p>有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php</p>
 <p>可以根据自己的需要选择使用。</p>
 <ol>
@@ -172,7 +166,7 @@ $kp-&gt;upload_file(array(&#39;overwrite&#39;=&gt;&quot;true&quot;,&#39;root&#39
 <li>accessToken</li>
 </ul>
 <p>关于params参数可以自己上官网查看</p>
-<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank">http://www.kuaipan.cn/developers/document.htm</a></p>
+<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank" rel="external">http://www.kuaipan.cn/developers/document.htm</a></p>
 <h3 id="SDK简化版说明_kp-class-php">SDK简化版说明 kp.class.php</h3>
 <ol>
 <li>授权<pre><code>$oauth = $kp-&gt;OAuth();
@@ -206,7 +200,7 @@ else
 </ol>
 <p>可以看一下k_test.php里面的测试实例。</p>
 <p>最新SDK源码下载地址:</p>
-<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></p>
+<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank" rel="external">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></p>
 
       
     </div>
@@ -262,7 +256,7 @@ else
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/189_dl/">[原创] 电信天翼云盘直链效果测试</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -275,7 +269,7 @@ else
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -351,7 +345,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -435,18 +429,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

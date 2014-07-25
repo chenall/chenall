@@ -72,9 +72,9 @@ SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG�
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/setupldr/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/setupldr/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/setupldr/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -85,8 +85,8 @@ SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG�
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/setupldr/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/setupldr/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -126,7 +126,7 @@ SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG�
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>一般的PE光盘必须的文件列表如下</p>
 <pre><code> WINNT.SIF
@@ -224,7 +224,7 @@ SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG�
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/post52/">[快递] GRUB4DOS-0.4.4正式版发布</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -237,7 +237,7 @@ SETUPLDR.BIN是启动文件，WINNT.SIF指定启动参数信息比如WINPE.IMG�
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -313,7 +313,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -397,18 +397,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

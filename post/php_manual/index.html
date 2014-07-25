@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/php_manual/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/php_manual/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/php_manual/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/php_manual/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/php_manual/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,15 +124,15 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <ol>
 <li>PHP Curl 417 Expectation Failed<br>原因: 服务端使用lighttpd,而lighttp不支持返回”Expect: 100-continue”这样的header，就会以417 “Expectation failed” 来代替（lighttpd 1.5.0无此问题）。<br>解决方法:更新到新版或设置CURL头信息CURLOPT_HTTPHEADER=&gt;array(‘Expect:’);</li>
-<li>使用MYSQLI或PDO来代替MYSQL<br>相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a><br>通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
+<li>使用MYSQLI或PDO来代替MYSQL<br>相关文章,<a href="http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php" target="_blank" rel="external">http://php.sinaapp.com/manual/zh/mysqlinfo.api.choosing.php</a><br>通过对比可以发现使用MYSQLI或PDO_MYSQL更容易移植.操作起来也更方便.</li>
 <li>MYSQL数据库查询语句优化<br>如下例子第二句比第一句速度更快,当然了,两个命令显示的结果是不一样的,具体可以查一下相关资料,只是大部份情况下都可以用join命令来优化.<pre><code>select * from t1,t2 where t1.id=t2.id
 select * from t1 left join t2 using(id)
 </code></pre></li>
-<li>在线PHP手册国内镜像站点<br><a href="http://php.sinaapp.com/manual/zh/" target="_blank">http://php.sinaapp.com/manual/zh/</a><br>或<br><a href="http://cn2.php.net" target="_blank">http://cn2.php.net</a></li>
+<li>在线PHP手册国内镜像站点<br><a href="http://php.sinaapp.com/manual/zh/" target="_blank" rel="external">http://php.sinaapp.com/manual/zh/</a><br>或<br><a href="http://cn2.php.net" target="_blank" rel="external">http://cn2.php.net</a></li>
 <li>PHP使用CURL时显示上下传进度的方法<pre><code>function curl_progress($download_size, $downloaded, $upload_size,$uploaded)
 {//PHP手册上的说明有误，其实应该是四个参数。如本例。
     if ($download_size)
@@ -205,7 +205,7 @@ curl_close($curl);
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/lua_easy/">[转] Lua简明教程</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/kuaipan_dl/">金山快盘直链</a></li><li class="list-group-item"><a href="/post/fat/">FAT 文件系统原理</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -218,7 +218,7 @@ curl_close($curl);
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -294,7 +294,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -378,18 +378,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

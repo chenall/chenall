@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/hg320_64k/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/hg320_64k/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/hg320_64k/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/hg320_64k/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/hg320_64k/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,23 +124,23 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
-        <p><a href="http://item.taobao.com/item.htm?spm=a1z09.5.0.0.qCXaZs&amp;id=16255606413" target="_blank">HG320</a>是一款神器级的高性价比无线路由器，由于其厂家为“烽火通信科技股份有限公司”，这款产品更多的被叫做了“烽火HG320”。中国电信采购了这款设备，并作为安装业务时的标配产品，但这次中国电信难得厚道了一把。</p>
+        <p><a href="http://item.taobao.com/item.htm?spm=a1z09.5.0.0.qCXaZs&amp;id=16255606413" target="_blank" rel="external">HG320</a>是一款神器级的高性价比无线路由器，由于其厂家为“烽火通信科技股份有限公司”，这款产品更多的被叫做了“烽火HG320”。中国电信采购了这款设备，并作为安装业务时的标配产品，但这次中国电信难得厚道了一把。</p>
 <p>参数方面，这款与磊科的NR235W/NR236W以及热议的贝尔RG200E-CA非常接近，BCM5358 500MHz处理器，64MB RAM+16MB ROM的组合在其他品牌中算是高端配置了，接口包括1WAN+4LAN+1USB，算是齐全。</p>
 <p>这款机器可以刷包括TOMATO、DD-WRT、磊科双WAN等多种固件，而且由于内置了JTAG接口，因此即使刷出问题也有挽救方案。很多玩家基于这款机器进行了各种DIY，包括升级RAM，增加天线等，价格不高，折腾余地很大。</p>
 <p>这不我又开始折腾上了，由于默认情况下NVRAM只有32KB，平常的话使用起来倒是没有什么问题，不过若是你的配置的内容太多的超过32KB（像OpenVPN证书，一下就是10KB以上，很容易超），这时就会出现配置丢失的问题。</p>
 <a id="more"></a>
 
-<p>之前很早就发现了 <a href="http://hi.baidu.com/zengchen228" target="_blank">~╰独①儛②</a> 提供的 <a href="http://hi.baidu.com/zengchen228/item/1d0f673a03523af2e7bb7a17" target="_blank">HG320 64K CFE</a> 刷了这个之后配合64K的固件就可以使用64K的NVRAM了，一直没有去尝试，最近又买了几个路由器，就拿来试试。</p>
-<p>需要准备的软件ROM: <a href="http://pan.baidu.com/s/1CJPEm" target="_blank">点这里下载</a></p>
-<p>里面包括了 <a href="http://hi.baidu.com/zengchen228" target="_blank">~╰独①儛②</a> 提供的CFE，还有 <a href="http://pan.baidu.com/s/1cMsgd" target="_blank">bwq518 提供的支持64K NVRAM的固件</a>，还有TFTP、PUTTY等软件。</p>
+<p>之前很早就发现了 <a href="http://hi.baidu.com/zengchen228" target="_blank" rel="external">~╰独①儛②</a> 提供的 <a href="http://hi.baidu.com/zengchen228/item/1d0f673a03523af2e7bb7a17" target="_blank" rel="external">HG320 64K CFE</a> 刷了这个之后配合64K的固件就可以使用64K的NVRAM了，一直没有去尝试，最近又买了几个路由器，就拿来试试。</p>
+<p>需要准备的软件ROM: <a href="http://pan.baidu.com/s/1CJPEm" target="_blank" rel="external">点这里下载</a></p>
+<p>里面包括了 <a href="http://hi.baidu.com/zengchen228" target="_blank" rel="external">~╰独①儛②</a> 提供的CFE，还有 <a href="http://pan.baidu.com/s/1cMsgd" target="_blank" rel="external">bwq518 提供的支持64K NVRAM的固件</a>，还有TFTP、PUTTY等软件。</p>
 <p>为了方便使用，先把连接路由器的网卡IP改成固定192.168.1.2，准备好TTL数据线，然后就是拆机了，按照下面方法接好TTL数据线，然后接上网线，电源。</p>
 <p><img src="http://c-dl.qiniudn.com/post/hg320_ttl.jpg" alt=""></p>
 <p>首先要刷64K 的CFE，可以先刷DD的MINI版，然后在DD里面刷，或者在MINIWEB下刷，</p>
 <p>相关资料：</p>
-<p><a href="http://www.right.com.cn/forum/thread-79340-1-1.html" target="_blank">http://www.right.com.cn/forum/thread-79340-1-1.html</a></p>
-<p><a href="http://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=117002" target="_blank">不拆机刷CFE，不用TTL</a></p>
+<p><a href="http://www.right.com.cn/forum/thread-79340-1-1.html" target="_blank" rel="external">http://www.right.com.cn/forum/thread-79340-1-1.html</a></p>
+<p><a href="http://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=117002" target="_blank" rel="external">不拆机刷CFE，不用TTL</a></p>
 <p>我这里已经有TTL数据线了了，还是直接用TTL线刷比较快。</p>
 <p>但不知什么原因我的TTL接上去之后什么都不显示，但经过测试输入命令有反应，最简单的就是输入<code>reboot</code>之后路由器就会重启。所以本文介绍的是盲刷，只提供一个参考。</p>
 <p>首先要启动到CFE模式，最保险的方法</p>
@@ -237,7 +237,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/cameyo_packageeditor_01/">Cameyo PackageEditor 基本使用介绍</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/post54/">vi 编辑器使用指南</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -250,7 +250,7 @@
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -326,7 +326,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -410,18 +410,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

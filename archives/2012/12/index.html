@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='archives/2012/12/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='archives/2012/12/' class='active'><a href="/archives/" title="归档">归档</a></li>      
+        <li item='archives/2012/12/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='archives/2012/12/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='archives/2012/12/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -117,11 +117,7 @@
 <div class="archive">
 
   <ul class="list-group"><li class="list-group-item"><h3><time datetime="2012-12-12T06:02:22.000Z">2012-12-12</time>  <a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></h3><p class="list-group-item-text">金山快盘开放平台 PHP SDK
-来源: 
-
-
-
-时间: 2013-04-12使用方法：
+来源: 时间: 2013-04-12使用方法：
 有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php
 可以根据自己的需要选择使用。</p><li class="list-group-item"><h3><time datetime="2012-12-05T05:51:57.000Z">2012-12-05</time>  <a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></h3><p class="list-group-item-text">最近由于需要发送（带大附件）的邮件，上网找了一下，像PHPMailer等试了一下，虽然封装得很好，但是用起来都不太顺手。
 像PHPMailer发送大附件时就会提示类似如下的错误:    Allowed memory size of 16777216 bytes exhausted (tried to allocate 7355049 bytes)</p>
@@ -132,7 +128,7 @@
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -208,7 +204,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:18:36</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-07-25 16:48:06</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -279,18 +275,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

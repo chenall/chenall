@@ -71,9 +71,9 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/wssiscsi/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/wssiscsi/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/wssiscsi/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -84,8 +84,8 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/wssiscsi/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/wssiscsi/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -125,15 +125,15 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>一些介绍.</p>
 <p>Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标）技术将通过OEM以Windows Storage Server 2003 R2的功能包提供，命名为Microsoft iSCSI Software Target，可用于标准版（Standard Edition）或企业版（Enterprise Edition）的Windows Storage Server 2003 R2。通过将这个Microsoft iSCSI Software Target与OEM合作伙伴的硬件集成，微软表示部署块和文件存储设备的成本将下降25%之多。<br>Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一个高性价比的IP SAN解决方案，同时支持File（文件）和Block（块）级别的数据传输；无需改变现有系统架构，直接应用在现有网络结构中，安装、实施、维护、升级均不影响现有作业；其管理方式将被整合在Microsoft Management Console (MMC) 用户界面 中，实现快捷方便的操作；并可实现snapshots快照、backup备份及clustering集群应用；Microsoft iSCSI Software Target 目前只能用于Windows Storage Server 2003 R2 Standard或Enterprise版本上。</p>
 <p>根据介绍,它只能安装在Windows Storage Server 2003 R2 Standard或Enterprise版本上.</p>
 <p>如果是直接安装确实是不行的.图下面图示.会出现一个错误提示.</p>
-<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzZdbXTWI/AAAAAAAAAGE/w3ce_78V1tA/20090708222415242.jpg?imgmax=800" target="_blank"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzXPSMrwI/AAAAAAAAAGA/-_MSsLYoHSw/thumb_20090708222415242.jpg?imgmax=800" alt=""></a></p>
+<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzZdbXTWI/AAAAAAAAAGE/w3ce_78V1tA/20090708222415242.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzXPSMrwI/AAAAAAAAAGA/-_MSsLYoHSw/thumb_20090708222415242.jpg?imgmax=800" alt=""></a></p>
 <p>如果是其它系统就不行了吗?不死心就研究了一下安装程序里面的相关文件,后来在一个update_w03.inf文件中找到了关键所在具体在下图.</p>
-<p><a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzckTaqlI/AAAAAAAAAGM/63q9W3UTXns/20090708224023164.jpg?imgmax=800" target="_blank"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzaSX1dGI/AAAAAAAAAGI/kTr7wv9nBUo/thumb_20090708224023164.jpg?imgmax=800" alt=""></a></p>
+<p><a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzckTaqlI/AAAAAAAAAGM/63q9W3UTXns/20090708224023164.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzaSX1dGI/AAAAAAAAAGI/kTr7wv9nBUo/thumb_20090708224023164.jpg?imgmax=800" alt=""></a></p>
 <p>只要按照上面的要求修改注册表就可以安装了.</p>
 <ol>
 <li>修改[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion]<br><code>ProductName=&quot;Microsoft Windows Server 2003 R2&quot;</code></li>
@@ -149,9 +149,9 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
 </code></pre></li>
 </ol>
 <p> 导入后再运行安装程序,发现可以正常安装了.</p>
-<p> <a href="http://lh4.ggpht.com/_W5yZS95Sbuw/SlSzfWGu3zI/AAAAAAAAAGU/cp9ej-ntH1c/20090708222449148.jpg?imgmax=800" target="_blank"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzdYnn7FI/AAAAAAAAAGQ/CerVoaJxeEM/thumb_20090708222449148.jpg?imgmax=800" alt=""></a></p>
+<p> <a href="http://lh4.ggpht.com/_W5yZS95Sbuw/SlSzfWGu3zI/AAAAAAAAAGU/cp9ej-ntH1c/20090708222449148.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzdYnn7FI/AAAAAAAAAGQ/CerVoaJxeEM/thumb_20090708222449148.jpg?imgmax=800" alt=""></a></p>
 <p>安装后的效果图.</p>
-<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzjpbOkSI/AAAAAAAAAGc/Gw_SsppfWCs/20090708222520883.jpg?imgmax=800" target="_blank"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzgi0IRzI/AAAAAAAAAGY/vh_9Oy9W-lA/thumb_20090708222520883.jpg?imgmax=800" alt=""></a></p>
+<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzjpbOkSI/AAAAAAAAAGc/Gw_SsppfWCs/20090708222520883.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzgi0IRzI/AAAAAAAAAGY/vh_9Oy9W-lA/thumb_20090708222520883.jpg?imgmax=800" alt=""></a></p>
 <p>是从WSS安装盘中提取出来的3.0版,网上有一个3.2的版本,没下到,有下到的朋友麻烦发一个给我,谢!</p>
 
       
@@ -186,7 +186,7 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/ISCSI/" class="label label-primary" itemprop="url"><span itemprop="title">ISCSI</span></a><a href="/tags/Microsoft/" class="label label-success" itemprop="url"><span itemprop="title">Microsoft</span></a><a href="/tags/SCSI/" class="label label-info" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/Software/" class="label label-warning" itemprop="url"><span itemprop="title">Software</span></a><a href="/tags/Target 2003/" class="label label-primary" itemprop="url"><span itemprop="title">Target 2003</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/ISCSI/" class="label label-primary" itemprop="url"><span itemprop="title">ISCSI</span></a><a href="/tags/Microsoft/" class="label label-success" itemprop="url"><span itemprop="title">Microsoft</span></a><a href="/tags/SCSI/" class="label label-info" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/Software/" class="label label-warning" itemprop="url"><span itemprop="title">Software</span></a><a href="/tags/Target-2003/" class="label label-primary" itemprop="url"><span itemprop="title">Target 2003</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/wssiscsi/#comments" class="ds-thread-count comment-link" data-thread-key="69" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -208,7 +208,7 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/minipe/">[原创] 支持外置硬盘控制器驱动+最小巧最灵活的PE</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -221,7 +221,7 @@ Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -297,7 +297,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -381,18 +381,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

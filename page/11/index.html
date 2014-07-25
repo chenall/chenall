@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='page/11/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='page/11/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='page/11/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='page/11/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='page/11/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -122,7 +122,7 @@
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>利用<code>VBScript</code>发送邮件,以前从网上找的代码,不知原来的出处了.也不知作者是何人…..</p>
 <p>挺有用的脚本,我就一直在使用这个脚本来发邮件,还可以带附件.放在这里做个备份,免得到时又找不到了.</p>
@@ -233,27 +233,26 @@ End If
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>Windows 下 Grub4dos仿真盘的驱动.</p>
 <p>可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
 <p>另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
-<p>感谢<em>zw2312914</em>的推荐: <a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5742</a>,感谢软件作者karyonix的分享.</p>
+<p>感谢<em>zw2312914</em>的推荐: <a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank" rel="external">http://bbs.znpc.net/viewthread.php?tid=5742</a>,感谢软件作者karyonix的分享.</p>
 <p>以下内容摘自上面时空论坛的一些原文.</p>
 <blockquote>
 
 
 <p> 谢谢 karyonix 。此驱动类似 windrv 大的wdsys。即可以在windows环境使用grub4dos（—mem方式）仿真的镜像（包括iso)。</p>
-<p> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8804</a></p>
-<p> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank">http://www.boot-land.net/forums/index.php?showtopic=8168</a></p>
+<p> 详见：<a href="http://www.boot-land.net/forums/index.php?showtopic=8804" target="_blank" rel="external">http://www.boot-land.net/forums/index.php?showtopic=8804</a></p>
+<p> 参考：<a href="http://www.boot-land.net/forums/index.php?showtopic=8168" target="_blank" rel="external">http://www.boot-land.net/forums/index.php?showtopic=8168</a></p>
 <p> 希望有更多的朋友能测试下。</p>
-<p> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a></p>
+<p> 原帖由 <em>fujianabc</em> 于 2009-9-2 16:19 发表 <a href="http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742" target="_blank" rel="external">http://bbs.znpc.net/redirect.php?goto=findpost&amp;pid=41794&amp;ptid=5742</a></p>
 <p> 看了一下，名叫firadisk。</p>
 <p> 貌似已经超级强大了，可以支持grub4dos map—mem出来的光驱，软驱，硬盘，支持多个虚拟驱动器。</p>
 <p> 另外，也支持直接在boot.ini加载各种镜像，无488M限制。</p>
 <p> 支持x86/x64系统，但对于64位系统，尚无法使用4GB以上的内存，grub4dos似乎也不行。内存盘上限大概是3.25GB</p>
-<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank">时空论坛</a></cite></footer></blockquote>
-
+<footer><strong>zw2312914</strong><cite><a href="http://bbs.znpc.net/viewthread.php?tid=5742" target="_blank" rel="external">时空论坛</a></cite></footer></blockquote>
 
 
 <p>我已经测试过了,很强大,0pe或Micrope直接用这个驱动替换里面的wdsys.sys驱动,可以正常使用.</p>
@@ -277,10 +276,10 @@ chainloader (0xff)
 <li><p>制作Ram系统,应该是支持的了.只需要在WINDOWS系统中加入这个驱动,然后把系统打包成一个镜像,用GRUB4DOS的map —mem来加载启动.</p>
 </li>
 </ol>
-<p>也可以到这个贴子看看由无忧论坛 <a href="http://bbs.wuyou.com/space.php?uid=40023" target="_blank">天风</a> 制作的 <a href="http://bbs.wuyou.com/viewthread.php?tid=148670" target="_blank">RAM WINDOWS 7</a></p>
+<p>也可以到这个贴子看看由无忧论坛 <a href="http://bbs.wuyou.com/space.php?uid=40023" target="_blank" rel="external">天风</a> 制作的 <a href="http://bbs.wuyou.com/viewthread.php?tid=148670" target="_blank" rel="external">RAM WINDOWS 7</a></p>
 <p>后注:这个驱动还是持续更新中,希望越来越强大,<del>不知是否以后会支持非mem的磁盘,如果可以的话就更强大了</del>(新版已支持)…..让我们一起期待吧.</p>
 <p>上面的已经测试过,可以直接用于ISO启动安装WIN XP/2003系统,或PE.</p>
-<p>具体情况: <a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1</a></p>
+<p>具体情况: <a href="http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=148686&amp;extra=page%3D1</a></p>
 
       
     </div>
@@ -312,7 +311,7 @@ chainloader (0xff)
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>看起来可能有点乱^_^.实现起来也是挺麻烦的,暂时只是我的一个想法,仅供有兴趣的朋友研究尝试.放在这里做个记录,以后有兴趣再搞个成品.</p>
 <h2 id="最终的理想效果-">最终的理想效果.</h2>
@@ -373,7 +372,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>现在病毒木马横行,很多人的电脑经常被病毒所侵,从而造成资料密码被盗.如果防止这一现象呢?</p>
 <p>实际上除了一些主动传播的病毒以外,大部份的病毒都是用户自己不知不觉装上去的,所以要防毒,主要还是要靠用户自己小心,不要太相信杀毒软件,因为它不是万能的也不具有&quot;智慧&quot;,很多病毒只要稍微改变一下杀软就不认识它了,就可以在电脑上横行了.</p>
@@ -414,15 +413,15 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>一些介绍.</p>
 <p>Microsoft收购String Bean的WinTarget软件后，已将该iSCSI target（目标）技术将通过OEM以Windows Storage Server 2003 R2的功能包提供，命名为Microsoft iSCSI Software Target，可用于标准版（Standard Edition）或企业版（Enterprise Edition）的Windows Storage Server 2003 R2。通过将这个Microsoft iSCSI Software Target与OEM合作伙伴的硬件集成，微软表示部署块和文件存储设备的成本将下降25%之多。<br>Microsoft iSCSI Software Target 结合Windows Storage Server 2003 R2可提供一个高性价比的IP SAN解决方案，同时支持File（文件）和Block（块）级别的数据传输；无需改变现有系统架构，直接应用在现有网络结构中，安装、实施、维护、升级均不影响现有作业；其管理方式将被整合在Microsoft Management Console (MMC) 用户界面 中，实现快捷方便的操作；并可实现snapshots快照、backup备份及clustering集群应用；Microsoft iSCSI Software Target 目前只能用于Windows Storage Server 2003 R2 Standard或Enterprise版本上。</p>
 <p>根据介绍,它只能安装在Windows Storage Server 2003 R2 Standard或Enterprise版本上.</p>
 <p>如果是直接安装确实是不行的.图下面图示.会出现一个错误提示.</p>
-<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzZdbXTWI/AAAAAAAAAGE/w3ce_78V1tA/20090708222415242.jpg?imgmax=800" target="_blank"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzXPSMrwI/AAAAAAAAAGA/-_MSsLYoHSw/thumb_20090708222415242.jpg?imgmax=800" alt=""></a></p>
+<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzZdbXTWI/AAAAAAAAAGE/w3ce_78V1tA/20090708222415242.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzXPSMrwI/AAAAAAAAAGA/-_MSsLYoHSw/thumb_20090708222415242.jpg?imgmax=800" alt=""></a></p>
 <p>如果是其它系统就不行了吗?不死心就研究了一下安装程序里面的相关文件,后来在一个update_w03.inf文件中找到了关键所在具体在下图.</p>
-<p><a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzckTaqlI/AAAAAAAAAGM/63q9W3UTXns/20090708224023164.jpg?imgmax=800" target="_blank"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzaSX1dGI/AAAAAAAAAGI/kTr7wv9nBUo/thumb_20090708224023164.jpg?imgmax=800" alt=""></a></p>
+<p><a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzckTaqlI/AAAAAAAAAGM/63q9W3UTXns/20090708224023164.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzaSX1dGI/AAAAAAAAAGI/kTr7wv9nBUo/thumb_20090708224023164.jpg?imgmax=800" alt=""></a></p>
 <p>只要按照上面的要求修改注册表就可以安装了.</p>
 <ol>
 <li>修改[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion]<br><code>ProductName=&quot;Microsoft Windows Server 2003 R2&quot;</code></li>
@@ -438,9 +437,9 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
 </code></pre></li>
 </ol>
 <p> 导入后再运行安装程序,发现可以正常安装了.</p>
-<p> <a href="http://lh4.ggpht.com/_W5yZS95Sbuw/SlSzfWGu3zI/AAAAAAAAAGU/cp9ej-ntH1c/20090708222449148.jpg?imgmax=800" target="_blank"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzdYnn7FI/AAAAAAAAAGQ/CerVoaJxeEM/thumb_20090708222449148.jpg?imgmax=800" alt=""></a></p>
+<p> <a href="http://lh4.ggpht.com/_W5yZS95Sbuw/SlSzfWGu3zI/AAAAAAAAAGU/cp9ej-ntH1c/20090708222449148.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzdYnn7FI/AAAAAAAAAGQ/CerVoaJxeEM/thumb_20090708222449148.jpg?imgmax=800" alt=""></a></p>
 <p>安装后的效果图.</p>
-<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzjpbOkSI/AAAAAAAAAGc/Gw_SsppfWCs/20090708222520883.jpg?imgmax=800" target="_blank"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzgi0IRzI/AAAAAAAAAGY/vh_9Oy9W-lA/thumb_20090708222520883.jpg?imgmax=800" alt=""></a></p>
+<p> <a href="http://lh5.ggpht.com/_W5yZS95Sbuw/SlSzjpbOkSI/AAAAAAAAAGc/Gw_SsppfWCs/20090708222520883.jpg?imgmax=800" target="_blank" rel="external"><img src="http://lh3.ggpht.com/_W5yZS95Sbuw/SlSzgi0IRzI/AAAAAAAAAGY/vh_9Oy9W-lA/thumb_20090708222520883.jpg?imgmax=800" alt=""></a></p>
 <p>是从WSS安装盘中提取出来的3.0版,网上有一个3.2的版本,没下到,有下到的朋友麻烦发一个给我,谢!</p>
 
       
@@ -451,7 +450,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     
     
         <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/ISCSI/" class="label label-primary" itemprop="url"><span itemprop="title">ISCSI</span></a><a href="/tags/Microsoft/" class="label label-success" itemprop="url"><span itemprop="title">Microsoft</span></a><a href="/tags/SCSI/" class="label label-info" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/Software/" class="label label-warning" itemprop="url"><span itemprop="title">Software</span></a><a href="/tags/Target 2003/" class="label label-primary" itemprop="url"><span itemprop="title">Target 2003</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span><span class="breadcrumb"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/ISCSI/" class="label label-primary" itemprop="url"><span itemprop="title">ISCSI</span></a><a href="/tags/Microsoft/" class="label label-success" itemprop="url"><span itemprop="title">Microsoft</span></a><a href="/tags/SCSI/" class="label label-info" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/Software/" class="label label-warning" itemprop="url"><span itemprop="title">Software</span></a><a href="/tags/Target-2003/" class="label label-primary" itemprop="url"><span itemprop="title">Target 2003</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/wssiscsi/#comments" class="ds-thread-count comment-link" data-thread-key="69" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -473,7 +472,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>利用WINDOWS自身的功能通过修改注册表实现</p>
 <ol>
@@ -519,7 +518,7 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>把一个十进制转成2进制的常分规方法是,一直除2求余.</p>
 <p>这里介绍另一种方法,</p>
@@ -587,7 +586,7 @@ goto :eof
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>OpenVpn使用用户名和密码验证方法.本例为了方便使用是的批处理.</p>
 <p>方法如下.</p>
@@ -663,7 +662,7 @@ auth-nocache
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>经过几天的试用,发现OpenVPN的稳定性还是挺不错的,而且功能也很强大,可以丢掉<strong>SoftEther</strong>了.</p>
 <p>OpenVPN,可以在一些特定的情况下自动运行多种脚本,通过这些脚本,可以实现很多非常有用的功能.还可以提高安全性.</p>
@@ -734,7 +733,7 @@ auth-nocache
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <h3 id="[OpenVPN]_OpenVPN_独立配置文件">[OpenVPN] OpenVPN 独立配置文件</h3>
 <p>前言: OpenVPN使用证书连接可以加强安全性但是如果客户端多了要分发证书很不方便,还有如果一个客户端需要连接多个不同的服务器,一般情况下证书文件都使用默认的文件名</p>
@@ -772,7 +771,7 @@ auth-nocache
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/10/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li class="active"><li><span class="page-number current">11</span></li></li><li><a class="page-number" href="/page/12/">12</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/12/">&raquo;</a></li>
+  <li><a class="extend prev" rel="prev" href="/page/10/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li><a class="page-number" href="/page/10/">10</a></li><li class="active"><li><span class="page-number current">11</span></li></li><li><a class="page-number" href="/page/12/">12</a></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" rel="next" href="/page/12/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -780,7 +779,7 @@ auth-nocache
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -856,7 +855,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:18:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-07-25 16:48:07</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -927,18 +926,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

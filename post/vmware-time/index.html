@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/vmware-time/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/vmware-time/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/vmware-time/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/vmware-time/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/vmware-time/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,10 +124,10 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>有使用虚拟机的朋友应该就会发现在虚拟机上的时间是不准确的，往往会慢上许多。对于普通应用来说当然是没有问题的，但对于一些对时间控制要求比较高一点的场合就不行了，一般情况下可以通过安装虚拟机附加工具来解决，方法网上也有许多，这里就不再介绍了。</p>
-<p>最近安装了一个<a href="http://www.panabit.com/" target="_blank">Panabit</a>到虚拟机(vmware server)上，用于网络行为管理控制，定义了一些规则以后，我需要在某个时间段启用某个规则，发现时间不准不好控制，在网上找了许多方法，都不太管用。像装附加工具，由于使用的是精简的BSD系统无法安装TOOLS，所以这个方法也就没有用了。</p>
+<p>最近安装了一个<a href="http://www.panabit.com/" target="_blank" rel="external">Panabit</a>到虚拟机(vmware server)上，用于网络行为管理控制，定义了一些规则以后，我需要在某个时间段启用某个规则，发现时间不准不好控制，在网上找了许多方法，都不太管用。像装附加工具，由于使用的是精简的BSD系统无法安装TOOLS，所以这个方法也就没有用了。</p>
 <p>后来就找到了这个命令ntpdate命令可以同步ntp服务器上的时间。再结合系统的定时程序cron让它每隔一分钟就同步一次以保证时间的准确。</p>
 <p>具体方法：</p>
 <ol>
@@ -194,7 +194,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/anti-trojan-virus/">防病毒木马几则</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -207,7 +207,7 @@
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -283,7 +283,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -367,18 +367,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/post43/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/post43/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/post43/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/post43/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/post43/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,7 +124,7 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <style type="text/css">
 #body{font-size:100%;}#body h1{text-align:center;}#body h2{background-color:#eee;border-bottom:solid 1px gray;border-right:solid 1px gray;clear:both;}#body p{text-indent:2em;line-height:140%;margin:5px 20px;}#body span{margin:3px;}#body table{margin:auto;border-style:solid;border-width:1px 1px 0 0;border-color:gray;background:#eee;}#body td,#body th{border-style:solid;border-width:0 0 1px 1px;border-color:gray;}#body caption{margin:auto;font-weight:bold;}#body dl{margin-left:20px;}#body dt{font-weight:bold;}#body em{font-style:normal;font-weight:bold;}#body .note,#body .ad{float:right;width:300px;padding:5px;background-color:#eee;border:solid 1px gray;clear:right;}#body #meta{text-align:center;}#body .important{color:orange;}#body .name{font-weight:bold;}#body .code{color:blue;}#body .regex{color:red;}#body .part{color:green;}#body .string{font-style:italic;}#body .desc{text-decoration:underline;}#body #clearButton,#body #hideButton{text-decoration:none;border:solid 1px gray;background-color:#eee;}#body #top{background:#eee;line-height:200%;}#body #top a{text-decoration:none;vertical-align:middle;color:Black;display:block;display:inline-block;text-align:center;padding:3px 15px;}#body #top a:hover{background:#ccc;}
@@ -141,13 +141,13 @@ function showNotes(){var notes=document.getElementsByClassName('note');for(var i
 var button=document.getElementById("hideButton");button.innerHTML="隐藏边注";button.onclick=hideNotes;return false;}
 //]]>
 </script>
-<div id='body'>
+<div id="body">
 <div id="top">
-    <a href="/">首页</a> | <a href="common.htm">常用正则表达式</a> | <a href="http://deerchao.net/tools/regex_tester/index.htm" target="_blank">正则表达式测试工具</a>
+    <a href="/">首页</a> | <a href="common.htm">常用正则表达式</a> | <a href="http://deerchao.net/tools/regex_tester/index.htm" target="_blank" rel="external">正则表达式测试工具</a>
 </div>
 <h1>正则表达式30分钟入门教程</h1>
 
-<p id="meta">版本：v2.33 (2013-1-10) 作者：<a href="http://deerchao.net/" target="_blank">deerchao</a>  转载请注明<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank">来源</a></p>
+<p id="meta">版本：v2.33 (2013-1-10) 作者：<a href="http://deerchao.net/" target="_blank" rel="external">deerchao</a>  转载请注明<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">来源</a></p>
 
 <h2 id="contents">目录</h2>
 <p id="skipContents" class="note"><a href="#mission" title="转到正文内容">跳过目录</a></p>
@@ -215,14 +215,14 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 <div class="note">
     <p>其它可用的测试工具:</p>
     <ul>
-        <li><a href="http://www.regexbuddy.com/" target="_blank">RegexBuddy</a></li>
-        <li><a href="http://regexpal.com/" target="_blank">Javascript正则表达式在线测试工具</a></li>
+        <li><a href="http://www.regexbuddy.com/" target="_blank" rel="external">RegexBuddy</a></li>
+        <li><a href="http://regexpal.com/" target="_blank" rel="external">Javascript正则表达式在线测试工具</a></li>
     </ul>
 </div>
 <p>如果你不觉得正则表达式很难读写的话，要么你是一个天才，要么，你不是地球人。正则表达式的语法很令人头疼，即使对经常使用它的人来说也是如此。由于难于读写，容易出错，所以找一种工具对正则表达式进行测试是很有必要的。</p>
 <p>不同的环境下正则表达式的一些细节是不相同的，本教程介绍的是微软 .Net Framework 4.0 下正则表达式的行为，所以，我向你推荐我编写的.Net下的工具 <a title="转到RegexTester页面" href="../../tools/regex_tester/index.htm">正则表达式测试器</a>。请参考该页面的说明来安装和运行该软件。</p>
 <p>下面是Regex Tester运行时的截图：</p>
-<p><img src="http://c-dl.qiniudn.com/post/regex_tester.png" alt="正则表达式测试器运行截图"></a></p>
+<p><img src="http://c-dl.qiniudn.com/post/regex_tester.png" alt="正则表达式测试器运行截图"></p>
 
 <h2 id="metacode">元字符</h2>
 <p>现在你已经知道几个很有用的元字符了，如<span class="code">\b</span>,<span class="code">.</span>,<span class="code">*</span>，还有<span class="code">\d</span>.正则表达式里还有更多的元字符，比如<span class="code">\s</span>匹配<span class="desc">任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等</span>。<span class="code">\w</span>匹配<span class="desc">字母或数字或下划线或汉字等</span>。</p>
@@ -534,7 +534,7 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 </table>
 
 <h2 id="regexoptions">处理选项</h2>
-<p class="note">在C#中，你可以使用<a href="http://msdn2.microsoft.com/zh-cn/library/h5845fdz.aspx" title="MSDN 相关文档" target="_blank">Regex(String, RegexOptions)构造函数</a>来设置正则表达式的处理选项。如：Regex regex = new Regex(@"\ba\w{6}\b", RegexOptions.IgnoreCase);</p>
+<p class="note">在C#中，你可以使用<a href="http://msdn2.microsoft.com/zh-cn/library/h5845fdz.aspx" title="MSDN 相关文档" target="_blank" rel="external">Regex(String, RegexOptions)构造函数</a>来设置正则表达式的处理选项。如：Regex regex = new Regex(@"\ba\w{6}\b", RegexOptions.IgnoreCase);</p>
 <p>上面介绍了几个选项如忽略大小写，处理多行等，这些选项能用来改变处理正则表达式的方式。下面是.Net中常用的正则表达式选项：</p>
 <table cellspacing="0">
     <caption>表6.常用的处理选项</caption>
@@ -604,7 +604,7 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 <p>平衡组的一个最常见的应用就是匹配HTML,下面这个例子可以匹配<span class="desc">嵌套的&lt;div&gt;标签</span>：<span class="regex">&lt;div[^&gt;]*&gt;[^&lt;&gt;]*(((?'Open'&lt;div[^&gt;]*&gt;)[^&lt;&gt;]*)+((?'-Open'&lt;/div&gt;)[^&lt;&gt;]*)+)*(?(Open)(?!))&lt;/div&gt;</span>.</p>
 
 <h2 id="more">还有些什么东西没提到</h2>
-<p>上边已经描述了构造正则表达式的大量元素，但是还有很多没有提到的东西。下面是一些未提到的元素的列表，包含语法和简单的说明。你可以在网上找到更详细的参考资料来学习它们--当你需要用到它们的时候。如果你安装了MSDN Library,你也可以在里面找到.net下正则表达式详细的文档。这里的介绍很简略，如果你需要更详细的信息，而又没有在电脑上安装MSDN Library,可以查看<a href="http://msdn.microsoft.com/zh-cn/library/az24scfc.aspx" target="_blank">关于正则表达式语言元素的MSDN在线文档</a>。</p>
+<p>上边已经描述了构造正则表达式的大量元素，但是还有很多没有提到的东西。下面是一些未提到的元素的列表，包含语法和简单的说明。你可以在网上找到更详细的参考资料来学习它们--当你需要用到它们的时候。如果你安装了MSDN Library,你也可以在里面找到.net下正则表达式详细的文档。这里的介绍很简略，如果你需要更详细的信息，而又没有在电脑上安装MSDN Library,可以查看<a href="http://msdn.microsoft.com/zh-cn/library/az24scfc.aspx" target="_blank" rel="external">关于正则表达式语言元素的MSDN在线文档</a>。</p>
 <table cellspacing="0">
     <caption>表7.尚未详细讨论的语法</caption>
     <thead>
@@ -735,15 +735,15 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 
 <h2 id="contact">联系作者</h2>
 <p>好吧,我承认,我骗了你,读到这里你肯定花了不止30分钟.相信我,这是我的错,而不是因为你太笨.我之所以说"30分钟",是为了让你有信心,有耐心继续下去.既然你看到了这里,那证明我的阴谋成功了.被忽悠的感觉很爽吧？</p>
-<p>要投诉我,或者觉得我其实可以忽悠得更高明,欢迎来<a href="http://weibo.com/deerchao/" target="_blank"><img src="http://deerchao.net/images/weibo.png" alt="">我的微博</a>让我知道. 如果你有关于正则表达式的问题, 可以到 <a href="http://www.stackoverflow.com" target="_blank"><img src="../../images/stackoverflow.png" alt="">stackoverflow</a> 网站上提问, 记得要添加 regex 标签. 如果你更习惯于用中文交流, 可以到微博上用 #正则# 标签提出问题.</p>
+<p>要投诉我,或者觉得我其实可以忽悠得更高明,欢迎来<a href="http://weibo.com/deerchao/" target="_blank" rel="external"><img src="http://deerchao.net/images/weibo.png" alt="">我的微博</a>让我知道. 如果你有关于正则表达式的问题, 可以到 <a href="http://www.stackoverflow.com" target="_blank" rel="external"><img src="../../images/stackoverflow.png" alt="">stackoverflow</a> 网站上提问, 记得要添加 regex 标签. 如果你更习惯于用中文交流, 可以到微博上用 #正则# 标签提出问题.</p>
 
 <h2 id="resources">网上的资源及本文参考文献</h2>
 <ul>
-    <li><a href="http://book.360buy.com/11070361.html?sid=deerchao&amp;t=1" target="_blank">精通正则表达式（第3版）</a></li>
-    <li><a href="http://msdn.microsoft.com/library/chs/default.asp?url=/library/CHS/jscript7/html/jsreconintroductiontoregularexpressions.asp" target="_blank">微软的正则表达式教程</a></li>
-    <li><a href="http://msdn2.microsoft.com/zh-cn/library/system.text.regularexpressions.regex.aspx" target="_blank">System.Text.RegularExpressions.Regex类(MSDN)</a></li>
-    <li><a href="http://www.regular-expressions.info/" target="_blank">专业的正则表达式教学网站(英文)</a></li>
-    <li><a href="http://weblogs.asp.net/whaggard/archive/2005/02/20/377025.aspx" target="_blank">关于.Net下的平衡组的详细讨论（英文）</a></li>
+    <li><a href="http://book.360buy.com/11070361.html?sid=deerchao&amp;t=1" target="_blank" rel="external">精通正则表达式（第3版）</a></li>
+    <li><a href="http://msdn.microsoft.com/library/chs/default.asp?url=/library/CHS/jscript7/html/jsreconintroductiontoregularexpressions.asp" target="_blank" rel="external">微软的正则表达式教程</a></li>
+    <li><a href="http://msdn2.microsoft.com/zh-cn/library/system.text.regularexpressions.regex.aspx" target="_blank" rel="external">System.Text.RegularExpressions.Regex类(MSDN)</a></li>
+    <li><a href="http://www.regular-expressions.info/" target="_blank" rel="external">专业的正则表达式教学网站(英文)</a></li>
+    <li><a href="http://weblogs.asp.net/whaggard/archive/2005/02/20/377025.aspx" target="_blank" rel="external">关于.Net下的平衡组的详细讨论（英文）</a></li>
 </ul>
 
 <h2 id="updatelog">更新纪录</h2>
@@ -863,7 +863,7 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/two-tips-mbox-and-notepad/">[转载] 两个雕虫小技 - MessageBox & Notepad</a></li><li class="list-group-item"><a href="/post/aspfunc/">ASP函数语法速查表</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/linux_assembly/">[转]Linux 汇编语言开发指南</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/cameyo-packageeditor/">Cameyo PackageEditor 简体中文版(增强版)</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/snake_idea/">[原创] 也来谈谈经典游戏贪吃蛇的简易设计思路</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -876,7 +876,7 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -952,7 +952,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1036,18 +1036,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

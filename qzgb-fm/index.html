@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='qzgb-fm/index.html' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='qzgb-fm/index.html' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='qzgb-fm/index.html' class='active'><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='qzgb-fm/index.html' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='qzgb-fm/index.html' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -121,9 +121,9 @@
     </header>
     
     <section id='before_content_widget'></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
-        <p><div>当前频道:</p> <select id="gbpd" name="qzgb" onchange="qzgb(this.value);"><option selected="selected" value="1">刺桐之声 FM 1059</option><option value="2">音乐之声 FM 881</option><option value="3">新闻频道 FM 889</option><option value="4">交通之声 FM 904</option><option value="5">体育频道 FM 914</option><option value="6">都市之声 FM 923</option><option value="7">音像直播(志明和春娇)</option><option value="8">泉广网络电视直播</option> </select><p>&nbsp;<a href="http://www.qzgb.com/881/" id="pdzy" target="_blank">频道主页</a>&nbsp;<a href="http://www.qzgb.com/881/index_time.shtml" id="play_list" target="_blank">节目时间表</a></p></div><div><a href="javascript:;" id="qz_1059" onclick="qzgb('1')">FM1059</a> <a href="javascript:;" id="qz_881" onclick="qzgb('2')">FM881</a> <a href="javascript:;" id="qz_889" onclick="qzgb('3')">FM889</a> <a href="javascript:;" id="qz_904" onclick="qzgb('4')">FM904</a> <a href="javascript:;" id="qz_914" onclick="qzgb('5')">FM914</a> <a href="javascript:;" id="qz_923" onclick="qzgb('6')">FM923</a> <a href="javascript:;" id="qz_914" onclick="qzgb('7')">音像直播</a> <a href="javascript:;" id="qz_914" onclick="qzgb('8')">视频直播</a></div><div id="VJMS">&nbsp;</div><p></p>
+        <p><div>当前频道:</div></p> <select id="gbpd" name="qzgb" onchange="qzgb(this.value);"><option selected="selected" value="1">刺桐之声 FM 1059</option><option value="2">音乐之声 FM 881</option><option value="3">新闻频道 FM 889</option><option value="4">交通之声 FM 904</option><option value="5">体育频道 FM 914</option><option value="6">都市之声 FM 923</option><option value="7">音像直播(志明和春娇)</option><option value="8">泉广网络电视直播</option> </select><p>&nbsp;<a href="http://www.qzgb.com/881/" id="pdzy" target="_blank">频道主页</a>&nbsp;<a href="http://www.qzgb.com/881/index_time.shtml" id="play_list" target="_blank">节目时间表</a></p><div><a href="javascript:;" id="qz_1059" onclick="qzgb('1')" target="_blank" rel="external">FM1059</a> <a href="javascript:;" id="qz_881" onclick="qzgb('2')" target="_blank" rel="external">FM881</a> <a href="javascript:;" id="qz_889" onclick="qzgb('3')" target="_blank" rel="external">FM889</a> <a href="javascript:;" id="qz_904" onclick="qzgb('4')" target="_blank" rel="external">FM904</a> <a href="javascript:;" id="qz_914" onclick="qzgb('5')" target="_blank" rel="external">FM914</a> <a href="javascript:;" id="qz_923" onclick="qzgb('6')" target="_blank" rel="external">FM923</a> <a href="javascript:;" id="qz_914" onclick="qzgb('7')" target="_blank" rel="external">音像直播</a> <a href="javascript:;" id="qz_914" onclick="qzgb('8')" target="_blank" rel="external">视频直播</a></div><div id="VJMS">&nbsp;</div><p></p>
 <script type="text/javascript">
 function detectPlugin(CLSID,functionName)
 {
@@ -226,7 +226,7 @@ vjms_add();
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -302,7 +302,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -373,18 +373,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

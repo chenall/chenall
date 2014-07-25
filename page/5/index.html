@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='page/5/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='page/5/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='page/5/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='page/5/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='page/5/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -122,7 +122,7 @@
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>日常工作中经常需要把某一部份数据导出到EXCEL,通常情况都有软件提供类似方案.</p>
 <p>但是这需要手工去打开软件然后导出,不能实现自动化.所以就编写了这个脚本方便实现自动化.</p>
@@ -142,7 +142,7 @@ SQL = &quot;select * from mytable&quot;
 Conn.Open StrConn
 RS.Open SQL,conn,1,1
 rstoexcel(RS,&quot;c:\sql.xls&quot;)
-</code></pre><p>参考资料: <a href="http://support.microsoft.com/kb/247412/zh-cn" target="_blank">http://support.microsoft.com/kb/247412/zh-cn</a></p>
+</code></pre><p>参考资料: <a href="http://support.microsoft.com/kb/247412/zh-cn" target="_blank" rel="external">http://support.microsoft.com/kb/247412/zh-cn</a></p>
 <pre><code class="VB">
 Dim Conn, StrConn, RS, SQL
 set Conn = CreateObject(&quot;ADODB.Connection&quot;)
@@ -239,7 +239,7 @@ end sub
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>本程序可以在GRUB4DOS中直接调用BIOS中断和读写指定端口，从而获取一些功能和需要的数据。</p>
 <p>可以方便开发人员临时调试某个功能时使用。</p>
@@ -294,7 +294,7 @@ unsigned long eflags; // as input and output
 </ol>
 <p>这个程序只是为了方便测试而编写,使用者需自己注意。</p>
 <p>下载地址（带源码）：</p>
-<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank">http://code.google.com/p/grubutils/downloads/list</a></p>
+<p><a href="http://code.google.com/p/grubutils/downloads/list" target="_blank" rel="external">http://code.google.com/p/grubutils/downloads/list</a></p>
 
       
     </div>
@@ -326,7 +326,7 @@ unsigned long eflags; // as input and output
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>修改系统日期有很多种方法，比如直接进入BIOS修改，或者进入系统后修改。</p>
 <p>如果我想每次开机都改成一个固定的时间，进入系统后自动更新为正确的时间（一般用于过期软件破解）</p>
@@ -414,7 +414,7 @@ AL=声音源
 =03H——声音产生芯片
 出口参数：无
 </code></pre><p>C语言版的代码在这里</p>
-<p><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c" target="_blank">http://code.google.com/p/grubutils/source/browse/trunk/src/date.c</a></p>
+<p><a href="http://code.google.com/p/grubutils/source/browse/trunk/src/date.c" target="_blank" rel="external">http://code.google.com/p/grubutils/source/browse/trunk/src/date.c</a></p>
 <p>批处理版源码:</p>
 <pre><code>!BAT
 ::datefunc for grub4dos by chenall 2011-10-08
@@ -509,7 +509,7 @@ exit
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>本模块是一个GRUB4DOS的批处理</p>
 <p>可用于搜索N级目录下的指定类型文件,并显示于菜单上</p>
@@ -738,7 +738,7 @@ exit
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>本程序使用GRUB4DOS批处理编写.</p>
 <p>实现了以下功能.</p>
@@ -822,7 +822,7 @@ endlocal &amp;&amp; set %1=%%%1%%
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>通用Grub4dos硬盘分区选择接口模块,</p>
 <p>供有需要的朋友使用.</p>
@@ -937,23 +937,23 @@ exit
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>本附录按类列举出一些重要的系统信息在内存中物理地址，为直接访问内存读取相应信息提供方便。</p>
 <p>了解的内容：了解计算机系统的一些重要信息在内存中的存放位置。需要时，可直接访问内存读取相应信息。</p>
 <p>本附录主要用于查阅，当使用时，知道在本附录中查阅。</p>
 <ol>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.691ovk8rxabp" target="_blank">系统时钟地址</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.ju3bywo5blfr" target="_blank">显示特性数据地址</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.1o39sz3d5gq7" target="_blank">显示缓冲区地址</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.wzud1d7998jm" target="_blank">键盘地址</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.kfn7clasa1bp" target="_blank">中断向量表</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.ao7mzrloc4q1" target="_blank">系统配置</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.7qpem0o65sr7" target="_blank">硬盘驱动器</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.9q45zbcktzsz" target="_blank">ROM数据</a></li>
-<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.w29nkjwberks" target="_blank">其它内容的地址</a> </li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.691ovk8rxabp" target="_blank" rel="external">系统时钟地址</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.ju3bywo5blfr" target="_blank" rel="external">显示特性数据地址</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.1o39sz3d5gq7" target="_blank" rel="external">显示缓冲区地址</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.wzud1d7998jm" target="_blank" rel="external">键盘地址</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.kfn7clasa1bp" target="_blank" rel="external">中断向量表</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.ao7mzrloc4q1" target="_blank" rel="external">系统配置</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.7qpem0o65sr7" target="_blank" rel="external">硬盘驱动器</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.9q45zbcktzsz" target="_blank" rel="external">ROM数据</a></li>
+<li><a href="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM#h.w29nkjwberks" target="_blank" rel="external">其它内容的地址</a> </li>
 </ol>
-<p>来源:<br> <a href="http://www.feiesoft.com/asm/appendix6.html" target="_blank">http://www.feiesoft.com/asm/appendix6.html</a><br> <a href="http://blog.csdn.net/wenweimin/article/details/105559" target="_blank">http://blog.csdn.net/wenweimin/article/details/105559</a></p>
+<p>来源:<br> <a href="http://www.feiesoft.com/asm/appendix6.html" target="_blank" rel="external">http://www.feiesoft.com/asm/appendix6.html</a><br> <a href="http://blog.csdn.net/wenweimin/article/details/105559" target="_blank" rel="external">http://blog.csdn.net/wenweimin/article/details/105559</a></p>
 <iframe style="WIDTH: 100%; HEIGHT: 800px" src="https://docs.google.com/document/pub?id=17xKQCzxfJm6zbvv-ICuMvFvQ1PV1LOC20XFQ2M8KNoM&amp;embedded=true"></iframe>
 
       
@@ -986,7 +986,7 @@ exit
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>使用此方法可以解决由于WINSOCK错误造成DNS无法解析，还有和WINSOCK相关的程序无法正常使用的问题。</p>
 <p>只需要一个命令就可以搞定了：</p>
@@ -1034,12 +1034,12 @@ exit
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>MODBOOT是何物？</p>
 <p>MODBOOT是一个模块化的DOS启动控制中心。</p>
 <p>基于以下网站的MODBOOT改进而成的，配合GRUB4DOS启动，实现真正的模块化</p>
-<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank">http://nu2.nu/bootdisk/modboot/</a></p>
+<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank" rel="external">http://nu2.nu/bootdisk/modboot/</a></p>
 <p>优点：快速，方便，小巧、可扩展。</p>
 <ol>
 <li>快速：以最快速的方式启动。</li>
@@ -1073,11 +1073,11 @@ boot
 <p>注：使用LEVEL3里面的模块直接启动时，默认不显示这个菜单，可以在启动时快速按F8显示。</p>
 <p>本工具的最新版本不再单独上传,请关注我的<a href="/post/g4d\_hd\_tools/" title="[分享] 基于GRUB4DOS的硬盘工具箱[2011-08-02更新]">GRUB4DOS硬盘工具箱</a>. 将会随工具箱一起更新. </p>
 <p>演示版下载：(2011-05-03 更新）<br>文件名称: modboot.iso<br>文件大小: 13.42 MB (14,075,904 字节)<br>修改时间: 2011年05月25日，19:52:41<br>MD5: 73D2905E2E00F8EC4F0336AAAF58F6FB<br>SHA1: F54FC61E074B0960FB85A5705EF8163398EB03B8  </p>
-<p>下载：<a href="http://yunfile.com/file/chenall/e95e35f4/" target="_blank">modboot.iso</a></p>
+<p>下载：<a href="http://yunfile.com/file/chenall/e95e35f4/" target="_blank" rel="external">modboot.iso</a></p>
 <p>演示用的ISO里面有带一个<a href="/post/qgho/">QGHO</a>（快速备份还原工具），这是一个比较复杂的模块。<br>如果要自己制作一个可以用于MODBOOT的模块，请查看里面的使用说明。或以下站点（英文）</p>
-<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank">http://nu2.nu/bootdisk/modboot/</a></p>
+<p><a href="http://nu2.nu/bootdisk/modboot/" target="_blank" rel="external">http://nu2.nu/bootdisk/modboot/</a></p>
 <p>无忧启动论坛相关贴子：</p>
-<p><a href="http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1" target="_blank">http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1</a></p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=184842&amp;extra=page%3D1</a></p>
 <p>有什么疑问可以直接论坛回复或本文章后面评论。</p>
 
       
@@ -1110,7 +1110,7 @@ boot
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>VHD_MNT 是使用批处理写的一个小程序 ,</p>
 <p>可以在WIN7以上的系统中使用.</p>
@@ -1219,7 +1219,7 @@ exit
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/4/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><li><span class="page-number current">5</span></li></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/6/">&raquo;</a></li>
+  <li><a class="extend prev" rel="prev" href="/page/4/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><li><span class="page-number current">5</span></li></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" rel="next" href="/page/6/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -1227,7 +1227,7 @@ exit
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -1303,7 +1303,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:18:37</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-07-25 16:48:07</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1374,18 +1374,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

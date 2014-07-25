@@ -79,9 +79,9 @@ replace 变量名 字符串1 字符串2 [起始位置]">
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/grub4dos_replace/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/grub4dos_replace/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/grub4dos_replace/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -92,8 +92,8 @@ replace 变量名 字符串1 字符串2 [起始位置]">
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/grub4dos_replace/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/grub4dos_replace/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -133,7 +133,7 @@ replace 变量名 字符串1 字符串2 [起始位置]">
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>本程序使用GRUB4DOS批处理编写.</p>
 <p>实现了以下功能.</p>
@@ -241,7 +241,7 @@ endlocal &amp;&amp; set %1=%%%1%%
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/post32/">批处理脚本整理之邮箱自动登录示范(亿邮首页eyou)</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -254,7 +254,7 @@ endlocal &amp;&amp; set %1=%%%1%%
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -330,7 +330,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -414,18 +414,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

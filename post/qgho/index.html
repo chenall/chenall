@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/qgho/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/qgho/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/qgho/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/qgho/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/qgho/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,9 +124,9 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
-        <p>[说明]<br>   QGHO是一个用于演示GRUB4DOS功能的小程序.<br> 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).<br> 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.<br> BUG报告或其它资料请移步我的搏客<br> <a href="http://chenall.net/post/qgho/">http://chenall.net/post/qgho/</a></p>
+        <p>[说明]<br>   QGHO是一个用于演示GRUB4DOS功能的小程序.<br> 可以快速全自动/手动 备份恢复分区.(使用GHOST内核).<br> 目前为止最快速/最小巧的基于DOS+GHOST的备份恢复程序.<br> BUG报告或其它资料请移步我的搏客<br> <a href="http://chenall.net/post/qgho/" target="_blank" rel="external">http://chenall.net/post/qgho/</a></p>
 <h3 id="[注意事项]">[注意事项]</h3>
 <ol>
 <li>必须安装在硬盘上使用,因为默认是备份第一硬盘第一分区到第一硬盘最后分区的.<br>如果U盘启动可能会备份到U盘中</li>
@@ -163,7 +163,7 @@ QGHO.TXT  说明文件.
 <pre><code>find --set-root --devices=h /QGHO/QGHO.SET &amp;&amp; cat --length=2 /QGHO/QGHO.SET &amp;gt; (md)0x300+1 &amp;&amp; checkrange 0x3A3A read 0x60000 || configfile /QGHO/QGHO.LST
 </code></pre><p> 具体QGHO.SET的设置方法请用记事本打开QGHO.SET查看.</p>
 <p>下载地址:</p>
-<p><a href="http://dl.dbank.com/c0az9tcai0" title="QGHO 最新版快盘下载" target="_blank">QGHO 最新版下载</a></p>
+<p><a href="http://dl.dbank.com/c0az9tcai0" title="QGHO 最新版快盘下载" target="_blank" rel="external">QGHO 最新版下载</a></p>
 <h3 id="[更新内容]">[更新内容]</h3>
 <p>2010-01-02</p>
 <ol>
@@ -319,7 +319,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2013-02-03]</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/case_convert/">[原创] 大小写转换函数简化版</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -332,7 +332,7 @@ pause --wait=6 &amp;&amp; chainloader (fd0)/io.sys
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -408,7 +408,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -492,18 +492,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

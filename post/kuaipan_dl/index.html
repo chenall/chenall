@@ -71,9 +71,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/kuaipan_dl/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/kuaipan_dl/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/kuaipan_dl/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -84,8 +84,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/kuaipan_dl/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/kuaipan_dl/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -125,7 +125,7 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>使用快盘API写了一个直链的应用测试.. 以后可以把文件或图片直接上传到快盘中,然后直链. API有调用限制,好像是一天5000次,对于我等小站来说足够用了,</p>
 <p>另外好像快盘的文件下载速度没有华为网盘的给力啊.速度相对比较慢,可以对比一下我的另一个文章关于华为网盘直链的测试,显示图片的速度更快.</p>
@@ -134,11 +134,11 @@
 <p>2012-08-29 更新<br>现在的授权可以直接用于子域名.<br>例: 授权域名 chenall.net<br>则a.chenall.net或www.a.chenall.net等都可以直接使用.<br>当然了也可以直接单独对a.chenall.net授权.  </p>
 <p>有兴趣的话可以申请使用,申请比较简单,只要通过认证就可以了.根据域名进行认证的.方法</p>
 <p>打开以下网址,把chenall.net换成你的域名,然后会跳出一个快盘的授权,确认了之后就可以使用了.</p>
-<p><a href="http://chenall.net/kuaipan/?ru=`chenall.net`">http://chenall.net/kuaipan/?ru=`chenall.net`</a></p>
+<p><a href="http://chenall.net/kuaipan/?ru=`chenall.net`" target="_blank" rel="external">http://chenall.net/kuaipan/?ru=`chenall.net`</a></p>
 <p>把你要直链的文件传到快盘的&lt;我的应用\直链&gt;目录下,然后在你的网站上就可以直接使用了</p>
-<p><a href="http://chenall.net/kuaipan/?path=`FILEPATH`">http://chenall.net/kuaipan/?path=`FILEPATH`</a></p>
+<p><a href="http://chenall.net/kuaipan/?path=`FILEPATH`" target="_blank" rel="external">http://chenall.net/kuaipan/?path=`FILEPATH`</a></p>
 <p>比如:以下会直接下载你的帐号直链应用目录下的test.txt 文件.</p>
-<p><a href="http://chenall.net/kuaipan/?path=`test.txt`">http://chenall.net/kuaipan/?path=`test.txt`</a></p>
+<p><a href="http://chenall.net/kuaipan/?path=`test.txt`" target="_blank" rel="external">http://chenall.net/kuaipan/?path=`test.txt`</a></p>
 <p>注,网站域名要和你授权的域名一致,否则无法使用,如果需要访问中文的文件,需要用UTF-8编码.</p>
 <p>因为这个应用未通过申核,目前只能自用.</p>
 <p>今天去看了一下,发现已经通过了,只要你有快盘帐号,现在就可以开始使用了.</p>
@@ -149,10 +149,10 @@
 <p><img src="http://d.chenall.net/kuaipan/imgs/Img222951204.jpg" alt=""></p>
 </li>
 <li><p>音乐直链播放</p>
-<audio width="300" height="32" autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/kuaipan/爱情总在幻灭时最美.mp3" type="audio/mpeg" /> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
+<audio width="300" height="32" autoplay="autoplay" controls="controls" loop="loop"><source src="http://d.chenall.net/kuaipan/爱情总在幻灭时最美.mp3" type="audio/mpeg"> 你的浏览器不给力呀，要支持html5的才行喔。建议试试chrome。 </audio>
 </li>
 <li><p>文件直链下载</p>
-<p><a href="http://d.chenall.net/kuaipan/网盘自动签到2012-07-25.rar" target="_blank">网盘自动签到2012-07-25</a></p>
+<p><a href="http://d.chenall.net/kuaipan/网盘自动签到2012-07-25.rar" target="_blank" rel="external">网盘自动签到2012-07-25</a></p>
 </li>
 </ul>
 
@@ -210,7 +210,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/alrun-merry/">[分享] ALMRun–小巧的快速启动工具</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/keybd_event/">[整理] Windows Api 调用 keybd_event 相关资料(VB)</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/asm_addr/">[整理] 汇编几个重要内存单元地址</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]</a></li><li class="list-group-item"><a href="/post/netdisk_referer/">网盘外链的简单破解</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -223,7 +223,7 @@
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -299,7 +299,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 10:04:07</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-03-27 10:04:07</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -383,18 +383,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

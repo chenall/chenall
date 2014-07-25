@@ -72,9 +72,9 @@ weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/weesetup/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/weesetup/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/weesetup/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -85,8 +85,8 @@ weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/weesetup/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/weesetup/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -126,7 +126,7 @@ weesetup是为了方便安装wee63.mbr而写的程序。支持自定义脚本。
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>wee 是一个微型的grub4dos用于安装到硬盘mbr上，可以用来代替之前的grldr.mbr方案。</p>
 <p>支持的文件系统： FAT12/16/32/NTFS EXT2/3/4</p>
@@ -167,8 +167,8 @@ OPTIONS:
   -u Update.
   -b Backup mbr to second sector(default is nt6mbr).
   -l List all disks in system and exit.
-</code></pre><p>Report bugs to website:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank">http://code.google.com/p/grubutils/issues</a></p>
-<p>Thanks:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5838</a><br>  wee63setup.c by SvOlli,xdio.c by bean  </p>
+</code></pre><p>Report bugs to website:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank" rel="external">http://code.google.com/p/grubutils/issues</a></p>
+<p>Thanks:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank" rel="external">http://bbs.znpc.net/viewthread.php?tid=5838</a><br>  wee63setup.c by SvOlli,xdio.c by bean  </p>
 <p>wee 安装程序v1.2</p>
 <p> 用法:</p>
 <p>  weesetup [参数] 磁盘</p>
@@ -181,9 +181,9 @@ OPTIONS:
 <p>  -u 更新wee.  </p>
 <p>  -b 备份旧的mbr到第二扇区（默认不备份，而是直接使用内置的nt6mbr）.  </p>
 <p>  -l 显示所在硬盘列表  </p>
-<p>请到以下网址报告BUG:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank">http://code.google.com/p/grubutils/issues</a></p>
-<p>感谢:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank">http://bbs.znpc.net/viewthread.php?tid=5838</a><br>  wee63setup.c by SvOlli,xdio.c by bean </p>
-<p>更多资料请访问我的搏客:<br> <a href="http://chenall.net/post/weesetup/">http://chenall.net/post/weesetup/</a> </p>
+<p>请到以下网址报告BUG:<br>  <a href="http://code.google.com/p/grubutils/issues" target="_blank" rel="external">http://code.google.com/p/grubutils/issues</a></p>
+<p>感谢:<br>  wee63.mbr (minigrub for mbr by tinybit)<br>  <a href="http://bbs.znpc.net/viewthread.php?tid=5838" target="_blank" rel="external">http://bbs.znpc.net/viewthread.php?tid=5838</a><br>  wee63setup.c by SvOlli,xdio.c by bean </p>
+<p>更多资料请访问我的搏客:<br> <a href="http://chenall.net/post/weesetup/" target="_blank" rel="external">http://chenall.net/post/weesetup/</a> </p>
 <p>编译方法：</p>
 <ol>
 <li><p>首先从SVN下载GRUBUTILS源码<br>svn co svn://svn.gna.org/svn/grubutil grubutil</p>
@@ -274,7 +274,7 @@ title 3.Plop Boot Manager
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/grub4dos_fontfile/">[GRUB4DOS] 新外部命令 fontfile</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/grub4dos_wenv/">[GRUB4DOS] 外部命令WENV [2010-10-17]</a></li><li class="list-group-item"><a href="/post/post36/">[推荐]MSDOS 网络启动软盘镜像</a></li><li class="list-group-item"><a href="/post/grub4dos_date_bat/">[分享] 直接在GRUB4DOS环境中修改系统时间</a></li><li class="list-group-item"><a href="/post/grub4dos_root/">[GRUB4DOS] root 命令介绍</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -287,7 +287,7 @@ title 3.Plop Boot Manager
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -363,7 +363,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -447,18 +447,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

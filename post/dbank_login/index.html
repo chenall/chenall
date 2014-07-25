@@ -73,9 +73,9 @@ post 的地址是 http://login.dbank.com/loginauth.php?nsp_app=48049">
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/dbank_login/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/dbank_login/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/dbank_login/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -86,8 +86,8 @@ post 的地址是 http://login.dbank.com/loginauth.php?nsp_app=48049">
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/dbank_login/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/dbank_login/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -127,18 +127,18 @@ post 的地址是 http://login.dbank.com/loginauth.php?nsp_app=48049">
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>因为最近在折腾的自动签到程序，之前使用模拟的方法登录，速度慢，而且很容易出错。</p>
 <p>所以就想使用post的方法快速登录。</p>
 <p>经过抓包分析终于搞定了，以下是原理。</p>
-<p>post 的地址是 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a></p>
+<p>post 的地址是 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank" rel="external">http://login.dbank.com/loginauth.php?nsp_app=48049</a></p>
 <p>参数如下:</p>
 <ul>
 <li>response 最关键的参数，经过一系列计算得到</li>
 </ul>
 <ol>
-<li>用户名+”:NSP Passport:”+密码 进行32位md5计算。（小写）<br>测试时可以利用以下地址的在线工具进行计算<br><a href="http://app.baidu.com/yiten_md5?keyword=MD5" target="_blank">http://app.baidu.com/yiten_md5?keyword=MD5</a></li>
+<li>用户名+”:NSP Passport:”+密码 进行32位md5计算。（小写）<br>测试时可以利用以下地址的在线工具进行计算<br><a href="http://app.baidu.com/yiten_md5?keyword=MD5" target="_blank" rel="external">http://app.baidu.com/yiten_md5?keyword=MD5</a></li>
 <li>上面的结果再 + “:” + nonce 进行32位md5计算.(小写)，得到的就是response的值。</li>
 </ol>
 <ul>
@@ -149,10 +149,10 @@ post 的地址是 http://login.dbank.com/loginauth.php?nsp_app=48049">
 </ul>
 <p>提交以上参数之后如果参数正确的话返回json数据里面包含了一个k的数据。</p>
 <p>最终再提交一下以下地址就行了。k的值从上面的返回中获取，如果没有看到k的值肯定是你前面提交的参数错了。</p>
-<p><a href="http://login.dbank.com/loginauth.php?k=K的参数" target="_blank">http://login.dbank.com/loginauth.php?k=K的参数</a></p>
+<p><a href="http://login.dbank.com/loginauth.php?k=K的参数" target="_blank" rel="external">http://login.dbank.com/loginauth.php?k=K的参数</a></p>
 <p>附，测试登录过程。</p>
 <p>测试帐号 test@chenall.tk 密码： wMtA8HscF6G0Zv6V</p>
-<p>打开 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank">http://login.dbank.com/loginauth.php?nsp_app=48049</a><br>提取到需要的数据</p>
+<p>打开 <a href="http://login.dbank.com/loginauth.php?nsp_app=48049" target="_blank" rel="external">http://login.dbank.com/loginauth.php?nsp_app=48049</a><br>提取到需要的数据</p>
 <pre><code>&lt;input type=&quot;hidden&quot; id=&quot;nonce&quot; name=&quot;nonce&quot; value=&quot;4fdf0b700b0052.91924864&quot;&gt;
 &lt;input type=&quot;hidden&quot; id=&quot;nsp_cid&quot; name=&quot;nsp_cid&quot; value=&quot;802fdd1049992984cf49a1cd0fc7545c&quot;&gt;
 </code></pre><p>2012-08-21 更新: 发现上面这一步可以省略,nonce是一个随机值,你可以自己随便生成一个随机数就行了.nsp_cid参数可以省略,不需要.</p>
@@ -165,13 +165,13 @@ post 的地址是 http://login.dbank.com/loginauth.php?nsp_app=48049">
 <p>得到</p>
 <p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
 <p>现在参数全部有了直接提交（用get或post都可以）</p>
-<p><a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#104;&#x74;&#x74;&#112;&#x3a;&#47;&#x2f;&#108;&#111;&#103;&#x69;&#110;&#46;&#x64;&#x62;&#97;&#x6e;&#x6b;&#46;&#x63;&#111;&#109;&#47;&#x6c;&#x6f;&#x67;&#105;&#x6e;&#97;&#117;&#116;&#x68;&#46;&#x70;&#104;&#x70;&#x3f;&#x6e;&#x73;&#112;&#95;&#97;&#x70;&#x70;&#61;&#x34;&#x38;&#x30;&#x34;&#57;&#38;&#x6d;&#61;&#49;&#38;&#110;&#x6f;&#110;&#99;&#x65;&#61;&#x34;&#102;&#x64;&#102;&#48;&#x62;&#x37;&#x30;&#48;&#x62;&#48;&#x30;&#53;&#50;&#46;&#57;&#x31;&#57;&#50;&#x34;&#x38;&#x36;&#52;&#38;&#x6e;&#x73;&#112;&#x5f;&#99;&#x69;&#x64;&#x3d;&#56;&#x30;&#x32;&#102;&#100;&#100;&#49;&#48;&#52;&#x39;&#x39;&#57;&#50;&#x39;&#x38;&#x34;&#x63;&#x66;&#x34;&#57;&#97;&#x31;&#x63;&#100;&#48;&#102;&#x63;&#55;&#x35;&#52;&#x35;&#99;&#38;&#x6e;&#x73;&#112;&#x5f;&#x75;&#x73;&#x65;&#114;&#x3d;&#116;&#x65;&#115;&#x74;&#x40;&#x63;&#x68;&#101;&#110;&#x61;&#108;&#108;&#x2e;&#x74;&#107;&#x26;&#x72;&#x65;&#x73;&#x70;&#111;&#x6e;&#115;&#x65;&#x3d;&#x39;&#x63;&#100;&#x38;&#52;&#x63;&#x32;&#x35;&#48;&#x30;&#x61;&#54;&#x30;&#49;&#51;&#101;&#102;&#x33;&#x62;&#100;&#x31;&#52;&#52;&#49;&#x39;&#x31;&#57;&#49;&#51;&#50;&#x62;&#54;">&#104;&#x74;&#x74;&#112;&#x3a;&#47;&#x2f;&#108;&#111;&#103;&#x69;&#110;&#46;&#x64;&#x62;&#97;&#x6e;&#x6b;&#46;&#x63;&#111;&#109;&#47;&#x6c;&#x6f;&#x67;&#105;&#x6e;&#97;&#117;&#116;&#x68;&#46;&#x70;&#104;&#x70;&#x3f;&#x6e;&#x73;&#112;&#95;&#97;&#x70;&#x70;&#61;&#x34;&#x38;&#x30;&#x34;&#57;&#38;&#x6d;&#61;&#49;&#38;&#110;&#x6f;&#110;&#99;&#x65;&#61;&#x34;&#102;&#x64;&#102;&#48;&#x62;&#x37;&#x30;&#48;&#x62;&#48;&#x30;&#53;&#50;&#46;&#57;&#x31;&#57;&#50;&#x34;&#x38;&#x36;&#52;&#38;&#x6e;&#x73;&#112;&#x5f;&#99;&#x69;&#x64;&#x3d;&#56;&#x30;&#x32;&#102;&#100;&#100;&#49;&#48;&#52;&#x39;&#x39;&#57;&#50;&#x39;&#x38;&#x34;&#x63;&#x66;&#x34;&#57;&#97;&#x31;&#x63;&#100;&#48;&#102;&#x63;&#55;&#x35;&#52;&#x35;&#99;&#38;&#x6e;&#x73;&#112;&#x5f;&#x75;&#x73;&#x65;&#114;&#x3d;&#116;&#x65;&#115;&#x74;&#x40;&#x63;&#x68;&#101;&#110;&#x61;&#108;&#108;&#x2e;&#x74;&#107;&#x26;&#x72;&#x65;&#x73;&#x70;&#111;&#x6e;&#115;&#x65;&#x3d;&#x39;&#x63;&#100;&#x38;&#52;&#x63;&#x32;&#x35;&#48;&#x30;&#x61;&#54;&#x30;&#49;&#51;&#101;&#102;&#x33;&#x62;&#100;&#x31;&#52;&#52;&#49;&#x39;&#x31;&#57;&#49;&#51;&#50;&#x62;&#54;</a></p>
+<p><a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#104;&#116;&#116;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#x67;&#x69;&#x6e;&#x2e;&#x64;&#x62;&#x61;&#x6e;&#x6b;&#x2e;&#99;&#x6f;&#x6d;&#47;&#108;&#111;&#103;&#105;&#x6e;&#97;&#x75;&#x74;&#104;&#46;&#112;&#x68;&#112;&#63;&#110;&#x73;&#x70;&#95;&#97;&#112;&#112;&#x3d;&#x34;&#x38;&#48;&#x34;&#x39;&#x26;&#109;&#x3d;&#49;&#38;&#110;&#111;&#x6e;&#99;&#101;&#x3d;&#x34;&#x66;&#x64;&#102;&#x30;&#x62;&#55;&#48;&#x30;&#x62;&#48;&#x30;&#53;&#x32;&#46;&#57;&#49;&#57;&#50;&#52;&#56;&#x36;&#x34;&#x26;&#110;&#115;&#x70;&#95;&#99;&#105;&#x64;&#x3d;&#56;&#x30;&#50;&#102;&#x64;&#x64;&#x31;&#48;&#52;&#57;&#57;&#57;&#x32;&#57;&#56;&#52;&#99;&#102;&#x34;&#x39;&#97;&#49;&#99;&#x64;&#x30;&#102;&#x63;&#55;&#x35;&#x34;&#53;&#x63;&#38;&#110;&#x73;&#x70;&#x5f;&#117;&#115;&#x65;&#114;&#61;&#116;&#101;&#115;&#116;&#64;&#x63;&#104;&#101;&#x6e;&#x61;&#x6c;&#108;&#46;&#x74;&#107;&#x26;&#114;&#101;&#x73;&#x70;&#111;&#110;&#x73;&#x65;&#61;&#x39;&#x63;&#x64;&#56;&#x34;&#x63;&#x32;&#x35;&#x30;&#48;&#x61;&#54;&#x30;&#49;&#x33;&#x65;&#102;&#51;&#98;&#100;&#x31;&#52;&#52;&#49;&#x39;&#x31;&#57;&#x31;&#x33;&#50;&#x62;&#54;">&#104;&#116;&#116;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#x67;&#x69;&#x6e;&#x2e;&#x64;&#x62;&#x61;&#x6e;&#x6b;&#x2e;&#99;&#x6f;&#x6d;&#47;&#108;&#111;&#103;&#105;&#x6e;&#97;&#x75;&#x74;&#104;&#46;&#112;&#x68;&#112;&#63;&#110;&#x73;&#x70;&#95;&#97;&#112;&#112;&#x3d;&#x34;&#x38;&#48;&#x34;&#x39;&#x26;&#109;&#x3d;&#49;&#38;&#110;&#111;&#x6e;&#99;&#101;&#x3d;&#x34;&#x66;&#x64;&#102;&#x30;&#x62;&#55;&#48;&#x30;&#x62;&#48;&#x30;&#53;&#x32;&#46;&#57;&#49;&#57;&#50;&#52;&#56;&#x36;&#x34;&#x26;&#110;&#115;&#x70;&#95;&#99;&#105;&#x64;&#x3d;&#56;&#x30;&#50;&#102;&#x64;&#x64;&#x31;&#48;&#52;&#57;&#57;&#57;&#x32;&#57;&#56;&#52;&#99;&#102;&#x34;&#x39;&#97;&#49;&#99;&#x64;&#x30;&#102;&#x63;&#55;&#x35;&#x34;&#53;&#x63;&#38;&#110;&#x73;&#x70;&#x5f;&#117;&#115;&#x65;&#114;&#61;&#116;&#101;&#115;&#116;&#64;&#x63;&#104;&#101;&#x6e;&#x61;&#x6c;&#108;&#46;&#x74;&#107;&#x26;&#114;&#101;&#x73;&#x70;&#111;&#110;&#x73;&#x65;&#61;&#x39;&#x63;&#x64;&#56;&#x34;&#x63;&#x32;&#x35;&#x30;&#48;&#x61;&#54;&#x30;&#49;&#x33;&#x65;&#102;&#51;&#98;&#100;&#x31;&#52;&#52;&#49;&#x39;&#x31;&#57;&#x31;&#x33;&#50;&#x62;&#54;</a></p>
 <p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
 <pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
-</code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
+</code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank" rel="external">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
 <p>另外要说一点，看起来挺安全的，因为没有传输密码。但是好像有一个问题。最终的登录地址目前没有任何的限制。只要得到这个地址，你换一台电脑直接提交这个地址就可以登录了，这也是一个安全隐患。不知有没有时间限制，我试了昨天生成的地址，今天还能用。<br>大家可以试试点击上面的链接，看看是不是还能正常登录。<br>2012-06-21  经测试修改了密码之后，上面的自动登录链接依然有效。<br>2012-06-25  一个星期过去了，依旧。<br>2012-06-26  发现其它的也是一样，只要获取到最终的API参数，无需登录或密码都可以操作。比如签到不需要登录就行了。<br>2012-08-21  登录的第一步获取nonce等值的过程可以省略了.具本看前面的介绍<br>            题外话，本来想把网盘签到的post方法也找出来，里面最重要的参数是nsp<em>key，这个是把很多的数据整在一起进行MD5计算，看了好久还没有找全所有的需要的数据。无奈只能放弃，如果您有已经研究出了计算的方法，不妨分享一下。<br>2012-06-26 已经找出计算方法，现在可以直接快速签到了。^</em>^，chrome真是强大，调试一下很快就找出来了，以前还傻傻的慢慢看JS源码。。</p>
 <h3 id="快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录,"><em>快速自动签到方法，只需点击一个链接就可以自动签到无需密码,无需登录</em>,</h3>
-<p>本文测试帐号的自动签到链接如下:<br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp</a><br>如何获取到上面的链接呢？最简单的方法直接抓包就行了，用chrome就可以直接抓包了。<br>当然可以手工打造一个链接，要生成这个链接首先要知道各个参数是如何得来的。<br>上面的链接参数解释(其中不重要的参数可以不要)</p>
+<p>本文测试帐号的自动签到链接如下:<br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank" rel="external">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp</a><br>如何获取到上面的链接呢？最简单的方法直接抓包就行了，用chrome就可以直接抓包了。<br>当然可以手工打造一个链接，要生成这个链接首先要知道各个参数是如何得来的。<br>上面的链接参数解释(其中不重要的参数可以不要)</p>
 <ul>
 <li>nsp_svc是固定的，表示要进行签到 <code>nsp_svc=com.dbank.signin.signin</code></li>
 <li>anticache 是一个随机数字，不重要</li>
@@ -198,13 +198,13 @@ nsp_ts=1341032380236
 </ol>
 <p>PS: 请继续看本文尾部，有更新的方法哦。</p>
 <p>整理一下本文的自动登录和签到链接</p>
-<p><a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank">自动登录测试</a><br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank">自动签到测试</a></p>
-<p>大家有兴趣可以试试点击以上这两个链接，看看可以用多久，，目前自动登录的链接在本文发表日期6月18日获取的，目前6月30号，依然有效。<br>EDIT: 发现现在的签到的链接是有限制的（前几天我测试时好像没有限制），所以。。。只好每次都重新生成了,也简单，只需要获取登录之后cookie里面的<code>secret</code>和<code>session</code>的值替换进去就行了，其它的都不需要变。<br>我算是知道为什么华为网盘的页面打开速度反应偏慢了。你想啊，每打开一个页面，都需要调用10个以上的API，每个都需要经过一系列的MD5计算能不慢吗。而且经过这么复杂的计算个人认为没有增加什么安全性可言，只是人为增加客户端和服务端的计算量。<br>建议参考一下其它的网盘，登录后可以直接调用API，而不需要这么麻烦。像天翼网盘，登录之后直接<br><a href="http://cloud.189.cn/userInfoJson.action" target="_blank">http://cloud.189.cn/userInfoJson.action</a> 就可以获取用户信息<br><a href="http://cloud.189.cn/userSign.action" target="_blank">http://cloud.189.cn/userSign.action</a>  签到<br>看起来又直观，又简单，真搞不明白华为为什么要搞得这么复杂，我猜测可能是为了和其它API的调用保持一致吧。</p>
+<p><a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank" rel="external">自动登录测试</a><br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;anticache=383&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_ts=1341032380236&amp;nsp_key=9AC41E0B0DD240F97361F87483131667&amp;nsp_fmt=JS&amp;nsp_cb=_jqjsp" target="_blank" rel="external">自动签到测试</a></p>
+<p>大家有兴趣可以试试点击以上这两个链接，看看可以用多久，，目前自动登录的链接在本文发表日期6月18日获取的，目前6月30号，依然有效。<br>EDIT: 发现现在的签到的链接是有限制的（前几天我测试时好像没有限制），所以。。。只好每次都重新生成了,也简单，只需要获取登录之后cookie里面的<code>secret</code>和<code>session</code>的值替换进去就行了，其它的都不需要变。<br>我算是知道为什么华为网盘的页面打开速度反应偏慢了。你想啊，每打开一个页面，都需要调用10个以上的API，每个都需要经过一系列的MD5计算能不慢吗。而且经过这么复杂的计算个人认为没有增加什么安全性可言，只是人为增加客户端和服务端的计算量。<br>建议参考一下其它的网盘，登录后可以直接调用API，而不需要这么麻烦。像天翼网盘，登录之后直接<br><a href="http://cloud.189.cn/userInfoJson.action" target="_blank" rel="external">http://cloud.189.cn/userInfoJson.action</a> 就可以获取用户信息<br><a href="http://cloud.189.cn/userSign.action" target="_blank" rel="external">http://cloud.189.cn/userSign.action</a>  签到<br>看起来又直观，又简单，真搞不明白华为为什么要搞得这么复杂，我猜测可能是为了和其它API的调用保持一致吧。</p>
 <p>EDIT2: 经测试，那些参数中有一些是可以不要的。重新整理一下必备参数如下.只有需要两个参数了。</p>
 <pre><code>nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED
 nsp_svc=com.dbank.signin.signin
 nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
-</code></pre><p>最终的链接地址为因为参数少了，链接里面的参数也要相应的减少.<br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348" target="_blank">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348</a></p>
+</code></pre><p>最终的链接地址为因为参数少了，链接里面的参数也要相应的减少.<br><a href="http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348" target="_blank" rel="external">http://api.dbank.com/rest.php?nsp_svc=com.dbank.signin.signin&amp;nsp_ts=&amp;nsp_sid=wuTubNKuCQi1muaOXx-uu4FjnYp182zozF58ZBk1HSNkFwED&amp;nsp_key=501171C21D5EDB90BFF7080F2002F348</a></p>
 <p>EDIT3: 2014-01-15 由于搏客转移到HEXO,文章重新整理了下,新的API有改变 nsp_ts是必须的而且不能和服务器的时间差太多,在php中可以用time()获取.<br>由于API有了一些变化,另外华为网盘已经有相关的API文档了,上面的计算方法大部份都可以从API文档中找到,估计上面的链接应该都失效了,懒得重新获取了.留本文作为研究记录,</p>
 
       
@@ -261,7 +261,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/g4d_filelist/">[原创] GRUB4DOS 通用模块之文件选择模块[2011-10-01 更新]</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/dbank_dl/">[分享] 华为网盘的直链测试(免费版)</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[2012-02-13]</a></li><li class="list-group-item"><a href="/post/datatoexcel/">将数据输出到Excel的方法</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/mail/">[原创]网易邮箱通用自动登录批处理脚本[2010-05-23更新]</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -274,7 +274,7 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -350,7 +350,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -434,18 +434,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

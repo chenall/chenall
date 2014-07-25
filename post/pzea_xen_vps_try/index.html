@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/pzea_xen_vps_try/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/pzea_xen_vps_try/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/pzea_xen_vps_try/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/pzea_xen_vps_try/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/pzea_xen_vps_try/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,9 +124,9 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
-        <p>最近从PzEA入手一个xen VPS，从网上搜到的优惠链接（<a href="http://www.uuvps.com/vps/4919.html" target="_blank">PzEa给力特价VPS 256M Xen VPS 2.5美元 洛杉矶和圣何塞机房</a>）购买的，以下是购买时可以看到的配置信息。实际上硬盘是10G的。够用了</p>
+        <p>最近从PzEA入手一个xen VPS，从网上搜到的优惠链接（<a href="http://www.uuvps.com/vps/4919.html" target="_blank" rel="external">PzEa给力特价VPS 256M Xen VPS 2.5美元 洛杉矶和圣何塞机房</a>）购买的，以下是购买时可以看到的配置信息。实际上硬盘是10G的。够用了</p>
 <ul>
 <li>CPU：单核</li>
 <li>内存：256M</li>
@@ -138,16 +138,16 @@
 </ul>
 <p>用人民币购买1年是162.5元，用美元是$25,按照目前的汇率(太概是155人民币)用美元购买会便宜一些,如果有双币种信用卡可以用美元,否则还是老老实实用支付宝,这个价格比一般的虚拟主机还划算,付完款之后就立即开通了,</p>
 <p>开通之后只安装了一个系统,其它的都需要自己配置.</p>
-<p>为了方便先装一个管理面板,从网上搜了一下感觉<a href="http://amysql.com/AMH.htm" target="_blank">AMH</a>挺不错的就它了.很方便,装上之后基本就可以使用了.</p>
-<p>用SSH连接VPS的IP地址,然后按照<a href="http://amysql.com/AMH/doc.htm" target="_blank">官方的安装方法</a></p>
+<p>为了方便先装一个管理面板,从网上搜了一下感觉<a href="http://amysql.com/AMH.htm" target="_blank" rel="external">AMH</a>挺不错的就它了.很方便,装上之后基本就可以使用了.</p>
+<p>用SSH连接VPS的IP地址,然后按照<a href="http://amysql.com/AMH/doc.htm" target="_blank" rel="external">官方的安装方法</a></p>
 <pre><code>wget http://amysql.com/file/AMH/3.1/amh.sh; chmod 775 amh.sh; ./amh.sh 2&gt;&amp;1 | tee amh.log;
 </code></pre><p>然后就是漫长的等待了.太概20分钟左右的样子.完成之后再用</p>
-<p><strong><a href="http://ip:8888" target="_blank">http://ip:8888</a></strong> 进入管理面板</p>
+<p><strong><a href="http://ip:8888" target="_blank" rel="external">http://ip:8888</a></strong> 进入管理面板</p>
 <p>里面可以管理虚拟主机,FTP/MYSQL等.挺方便的.</p>
 <p>然后想怎么折腾就怎么折腾吧,别忘了VPS安全,使用iptables设置一下规则.(都可以从Google上找到)</p>
 <p>这个比较适合有一定LINUX基础的人练手,有独立IP可以做很多事情….</p>
 <p>申请了一个免费的tk域名先装一个typecho来测试一下.</p>
-<p><a href="http://xvps.tk/" target="_blank">http://xvps.tk/</a></p>
+<p><a href="http://xvps.tk/" target="_blank" rel="external">http://xvps.tk/</a></p>
 <p>嘿嘿,有了这个就相当于有了一台属于自己的永不断电的电脑了.以后又有得折腾了.^_^</p>
 
       
@@ -204,7 +204,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/post37/">[分享]成功利用GPXE启动无盘WINDOWS 2003.</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">博客转移到hexo</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/not_2345/">关于2345网址导航</a></li><li class="list-group-item"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/hexo_theme_chenall/">Hexo 模块化主题</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/bandwagonhost/">[分享] 手贱再次入手一个便宜的VPS $9.99/年</a></li><li class="list-group-item"><a href="/post/blog_to_hexo/">博客转移到hexo</a></li><li class="list-group-item"><a href="/post/jekyll_or_hexo/">静态搏客 jekyll & Hexo</a></li><li class="list-group-item"><a href="/post/cardrom/">卡蝶机</a></li><li class="list-group-item"><a href="/post/sae_devlevel/">最近通过了新浪云计算SAE高级开发者认证</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -217,7 +217,7 @@
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -293,7 +293,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -377,18 +377,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

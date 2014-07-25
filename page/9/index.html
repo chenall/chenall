@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='page/9/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='page/9/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='page/9/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='page/9/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='page/9/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -122,12 +122,12 @@
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>研究FAT文件系统的好文.</p>
-<p>来源：<a href="http://www.sjhf.net/Article/Index.html" target="_blank">http://www.sjhf.net/Article/Index.html</a></p>
+<p>来源：<a href="http://www.sjhf.net/Article/Index.html" target="_blank" rel="external">http://www.sjhf.net/Article/Index.html</a></p>
 <p>如果看不到请点击以下链接查看</p>
-<p><a href="http://docs.google.com/leaf?id=0B8aIaAn15FyKZjMxYmU3N2UtMGRjZC00NmFkLTg0YTQtMGE1M2IwZThhYWRl&amp;sort=name&amp;layout=list&amp;num=50" target="_blank">FAT 文件系统原理</a></p>
+<p><a href="http://docs.google.com/leaf?id=0B8aIaAn15FyKZjMxYmU3N2UtMGRjZC00NmFkLTg0YTQtMGE1M2IwZThhYWRl&amp;sort=name&amp;layout=list&amp;num=50" target="_blank" rel="external">FAT 文件系统原理</a></p>
 <iframe src="https://docs.google.com/file/d/0B8aIaAn15FyKZjMxYmU3N2UtMGRjZC00NmFkLTg0YTQtMGE1M2IwZThhYWRl/preview?pli=1" width="100%" height="600"></iframe>
 
 
@@ -161,7 +161,7 @@
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>grub4dos外部命令编写尝试</p>
 <p> read.o</p>
@@ -207,7 +207,7 @@
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>grub4dos从0.4.5版开始可以运行用户自己写的外部命令了。</p>
 <p>以下是例子是echo命令也就是相当于c语言的printf函数。</p>
@@ -248,7 +248,7 @@
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>一、基本概念。</p>
 <blockquote>
@@ -318,7 +318,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>以下需要先设置好GRUB4DOS作为引导。</p>
 <ol>
@@ -350,7 +350,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
  chainloader (fd0)+1
  rootnoverify
 </code></pre></li>
-<li><p>从网络启动（PXE），代替网卡的PXE模块。<br>首先从<a href="http://rom-o-matic.net/" target="_blank">http://rom-o-matic.net/</a>下载GPXE或Etherboot的启动镜像<br>选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的<br>到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)<br>比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
+<li><p>从网络启动（PXE），代替网卡的PXE模块。<br>首先从<a href="http://rom-o-matic.net/" target="_blank" rel="external">http://rom-o-matic.net/</a>下载GPXE或Etherboot的启动镜像<br>选择对应的网卡，如果不清楚，可以找一下看有没有all的（所有网卡），或UNDI的<br>到Choose ROM output format时选择GRUB KERNEL FORMAT (.zlilo)<br>比如文件名为gpxe.zlilo或etherboot.zlilo把它们放到BOOT目录下</p>
 <pre><code> title Gpxe 从网络启动
  kernel /boot/gpxe.zlilo
 
@@ -389,7 +389,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>一般的PE光盘必须的文件列表如下</p>
 <pre><code> WINNT.SIF
@@ -443,7 +443,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.</p>
 <p>有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。</p>
@@ -485,12 +485,12 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p><strong>批处理读取INI文件,以前无聊时写的.当时只是觉得好玩就尝试写了一下，原贴请看DOS联盟论坛</strong></p>
-<p><a href="http://www.cn-dos.net/forum/viewthread.php?tid=25789" target="_blank">http://www.cn-dos.net/forum/viewthread.php?tid=25789</a></p>
+<p><a href="http://www.cn-dos.net/forum/viewthread.php?tid=25789" target="_blank" rel="external">http://www.cn-dos.net/forum/viewthread.php?tid=25789</a></p>
 <p>最早的版本，发现了许多错误，而且使用了许多的SETLOCAL，经常会出错。后来优化了下，可以运行了，就一直都没有再去改过了。</p>
-<p>最近DOS联盟论坛的朋友<a href="http://www.cn-dos.net/forum/viewpro.php?uid=154086" target="_blank">blacksheep2000</a> 在使用时发现了一些问题，我就再查了一下代码，不查不知道，一查真是吓一跳，呵呵。</p>
+<p>最近DOS联盟论坛的朋友<a href="http://www.cn-dos.net/forum/viewpro.php?uid=154086" target="_blank" rel="external">blacksheep2000</a> 在使用时发现了一些问题，我就再查了一下代码，不查不知道，一查真是吓一跳，呵呵。</p>
 <p>所以就重新整理了一下，这下应该可以用了。主要用于学习，由于批处理的执行效率比较低，正常情况下，请使用同类INIFILE.EXE代替。</p>
 <p>欢迎有兴趣的朋友一起继续优化。相比第1个版本，执行效率提升了许多。</p>
 
@@ -530,7 +530,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>基于Quick Ghost的一个应用 <a href="/post/Qgho/">Quick Ghost 快速一键还原</a> CQGHOST</p>
 <p>Ghost硬盘安装器，可以在你熟悉的Windows环境下恢复GHO文件（设定还原参数，重启系统后自动恢复指定GHO），需要先自行复制GHO文件到硬盘上（位置随意，不要放在系统盘就可以了）</p>
@@ -538,7 +538,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
 <p>注意：只支持单硬盘（手工调整参数就可以支持比较复杂的多硬盘环境，适合高级用户使用），并且只支持VISTA以下系统（XP/2K/2003)</p>
 <p>因为偷懒，直接替换了NTLDR为自带的引导器，启动后直接进入还原。</p>
 <p>本程序无版权，使用自由，本人不承担一切后果.^_^</p>
-<p>下载地址:brsbox网盘下载，<a href="http://www.brsbox.com/filebox/down/fc/357d7c5ac6e97103fca91d4add2c0535" target="_blank">CQGhost</a>,</p>
+<p>下载地址:brsbox网盘下载，<a href="http://www.brsbox.com/filebox/down/fc/357d7c5ac6e97103fca91d4add2c0535" target="_blank" rel="external">CQGhost</a>,</p>
 
       
     </div>
@@ -570,7 +570,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
     </header>
     
     
-    <div class="entry">
+    <div class="entry" >
       
         <p>1、用途: 连锁超市，卖场，酒店，等。总部与各个分店之间的连接，实现实时连锁经营。</p>
 <p>2、最终效果：各个分店与总部之前通过VPN连接，形成一个大的局域网络，所有电脑之间均可互连互访。 </p>
@@ -603,7 +603,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
 
 
 <ul id="pagination" class="pagination pagination-lg">
-  <li><a class="extend prev" href="/page/8/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li class="active"><li><span class="page-number current">9</span></li></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><a class="page-number" href="/page/12/">12</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" href="/page/10/">&raquo;</a></li>
+  <li><a class="extend prev" rel="prev" href="/page/8/">&laquo;</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li><a class="page-number" href="/page/8/">8</a></li><li class="active"><li><span class="page-number current">9</span></li></li><li><a class="page-number" href="/page/10/">10</a></li><li><a class="page-number" href="/page/11/">11</a></li><li><a class="page-number" href="/page/12/">12</a></li><li><span class="space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li><a class="extend next" rel="next" href="/page/10/">&raquo;</a></li>
   <div class="clearfix"></div>
 </ul></div><!--wapper-->
        </div><!-- ID main-col END -->
@@ -611,7 +611,7 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -687,7 +687,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-05-12 16:18:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-07-25 16:48:07</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -758,18 +758,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>

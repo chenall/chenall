@@ -70,9 +70,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
   
-        <li><a href="/about/" title="关于">关于</a></li>      
-        <li><a href="/archives/" title="归档">归档</a></li>      
-        <li><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+        <li item='post/netdisk_sdk/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/netdisk_sdk/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/netdisk_sdk/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
       <li class='dropdown'>
         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
         <ul class='dropdown-menu'>
@@ -83,8 +83,8 @@
         </ul>
       </li>
     
-        <li><a href="/guestbook/" title="留言板">留言板</a></li>      
-        <li><a href="/tags/GRUB4DOS/" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/netdisk_sdk/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/netdisk_sdk/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
@@ -124,11 +124,11 @@
     <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
 <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
 </div></section>
-    <div class="entry">
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>目前有N多的网络硬盘,各有各的好处和优缺点.另外基本上都有开放API.只是API调用方法都不一样.若是可以让所有网盘的调用方法变得一致.这样一来如是要开发什么的都很方便了.一个网盘不行了就换一个,什么代码都不用改.</p>
 <p>HOHO~~~应该有搞头吧,</p>
-<p>这里的金山快盘SDK就是一个原型<a href="http://chenall.net/post/sdk_kp_php/">http://chenall.net/post/sdk_kp_php/</a></p>
+<p>这里的金山快盘SDK就是一个原型<a href="http://chenall.net/post/sdk_kp_php/" target="_blank" rel="external">http://chenall.net/post/sdk_kp_php/</a></p>
 <p>最终我希望所有的网盘都可以这样子来调用</p>
 <pre><code>$disk = &#39;kuaipan&#39;;
 $fs = new $disk(CONSUMER_KEY,CONSUMER_SECRET);
@@ -191,7 +191,7 @@ $fs-&gt;ls();
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></li><li class="list-group-item"><a href="/post/virtual_keys/">[整理] Windows API 调用常量声明之按键篇</a></li><li class="list-group-item"><a href="/post/php_manual/">PHP相关记录</a></li><li class="list-group-item"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/php_gb2312_2_pinyin/">[PHP] 中文转拼音首字母简易实现方案</a></li><li class="list-group-item"><a href="/post/cs_smtp/">[PHP] 简易的SMTP邮件发送类</a></li><li class="list-group-item"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -204,7 +204,7 @@ $fs-&gt;ls();
 <div id="widget_swiftype" class="widget panel panel-primary">
     
 <form class="input-group">
-<input type="text" id="st-search-input" class="form-control" placeholder="search" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
 <span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
 </form></div>
 
@@ -280,7 +280,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.5.7 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.0</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -364,18 +364,16 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
     $(this).find('img').each(function(){
       var alt = this.alt;
 
-      if (alt){
-        $(this).before('<span class="caption">' + alt + '</span>');
-      }
-
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
   });
 
   $('.fancybox').fancybox();
 })(jQuery);
 </script>    
-<script type="text/javascript" src="/js/chenall.js"></script>
+<script src="/js/chenall.js" type="text/javascript"></script>
   <!--addons at end of body-->
 </body>
 </html>
