@@ -1,4 +1,4 @@
-title: "[分享] Windows NT 系列通用启动盘[2012-02-13]"
+title: "[分享] Windows NT 系列通用启动盘[204-08-31]"
 id: 117
 date: 2012-02-13 10:40:00
 tags: 
@@ -131,23 +131,21 @@ categories:
 
 ###【下载地址】
 
-﻿文件名称: [NTBOOT-2012-02-13.iso](http://www.ctdisk.com/file/4630256)  
-文件大小: 2.97 MB (3,117,056 字节)  
-修改时间: 2012年02月13日，16:05:37  
-MD5: 3B256FAD32B3A1654277C8F6A0235080  
-SHA1: A1778884375526CF118EBE92248C8E4F253C26CC  
-
-﻿文件名称: [NTBOOT-2012-02-13_DPMS.iso](http://www.ctdisk.com/file/4630255)  
-文件大小: 48.97 MB (51,347,456 字节)  
-修改时间: 2012年02月13日，16:06:02  
-MD5: 778EC7E14CC9203656D7E114272CC4C6  
-SHA1: 3C075C7ABC28CBE86D8CE070DDAAE714E9D35E0E  
+[NTBOOT-2014-08-31](http://c-dl.qiniudn.com/dl/NTBOOT.rar)
 
 最新版请关注我的GRUB4DOS硬盘工具箱.将会随工具箱一起更新.
 
 {% iLink source:_posts/g4d_hd_tools.md %}
 
 ### 【部份更新历史】
+
+#### 2014-08-31
+* 支持VHDX
+* 支持WIN8
+* 支持GPT分区(NT6)
+* 新增参数NTLDR可以指定启动文件
+
+    ntboot nt6=/test.vhd NTLDR=(hd0,4)/boot/bootmgr
 
 #### 2011-12-14
 * 使用新的GRUB4DOS。
