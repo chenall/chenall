@@ -137,10 +137,10 @@ tag_minium: 3
 ## https://www.google.com/tagmanager/
 ## ID 就是对应容器的ID
 ## GoogleTagManagerID: GTM-ABCDEF
-GTM_ID: GTM-TVFS32
+#GTM_ID: GTM-TVFS32
 
 ## 设置一个CDN_URL地址,在文章中使用'[CDN_URL]:'字符串会自动替换
-CDN_URL: http://c-dl.qiniudn.com
+CDN_URL: http://qiniu.chenall.net
 
 Beian: 闽ICP备14002519号
 

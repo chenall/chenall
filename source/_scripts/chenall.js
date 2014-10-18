@@ -11,6 +11,14 @@ extend.generator.register(function(locals, render, callback){
   callback();
 });
 
+
+
+extend.filter.register('pre', function(data,next){
+  var baseuri = usercfg.themeconfig.CDN_URL + "/post/" + data.id + "_";
+  data.content = data.content.replace(/\(@@POST@@:(.+?)\)/ig,"(" + baseuri + "$1)");
+  next();
+});
+
 extend.tag.register('imgL',function(args, content){
   return '<img src="http://c-dl.qiniudn.com/post/' + args.shift() + '">';
 });
