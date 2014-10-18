@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
-<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
 <!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
 <!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
 
@@ -31,7 +32,9 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 <!--[if lt IE 9]>
    <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
    <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -47,15 +50,6 @@
 </head>
 <body>
   <!--addons at start of body-->
-    <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
-  <!-- End Google Tag Manager -->
     <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -116,6 +110,83 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></h1>
+      
+        <span>发表于<time datetime="2010-10-12T07:27:51.000Z"> <a href="/post/c_upper/">2010-10-12</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p> 在程序中经常会需要对字母的大小写进行转换，虽然有现成的upper/lower函数，但是有时因为各种原因，或想减小程序的体积，需要自己编写函数来实现。</p>
+<p> 这里来讨论一下各种转换的方法。</p>
+<p>根据ASCII码我们可以知道大写字母和小写字母相差32(20H)=100000B(二进制).</p>
+<p>根据这个原理我们可以方便的进行大小写的转换。如是是大写字母+32就变成小写。</p>
+<p> 例子: 大写字母’A’ 它的ASCII码是65. ‘a’的ASCII码是97，看下面的等式。</p>
+<p> ‘A’+32=65+32=97 = ‘a’</p>
+<p> 另外:</p>
+<ul>
+<li>‘a’的二进制是<font color="#FF00FF">01</font><font color="#FF6800">1</font>00001B</li>
+<li>‘A’的二进制是<font color="#FF00FF">01</font><font color="#FF6800">0</font>00001B</li>
+</ul>
+<p>也就是说小写和大写的区别就是100000B ，也就是bit 5的区别。</p>
+<p> 所以还可以通过与运算修改bit 5的值也可以达到转换的目的。</p>
+<p>把第5位置为1可以按位”或”操作，置为0 可以按位”与”操作<br> <font color="#FF00FF">00</font><font color="#FF6800">1</font>00000B = 32 = 20H<br> <font color="#FF00FF">11</font><font color="#FF6800">0</font>11111B = 223 = DFH  </p>
+<p>‘a’ &amp; 223 = ‘A’    ‘A’ | 32 = ‘a’</p>
+<p>其实也就是字母的第5位（二进制位），如果它是1就是小写的，如果是0就是大写。</p>
+<p>另外在使用经典的代码比较时</p>
+<p>小写转大写 &gt;=’a’ 并且 &lt;=’z’<br>大写转小写 &gt;=’A’ 并且 &lt;=’Z’<br>可以把这两个比较的顺序对换一下。<br>改成&lt;=’Z’ 并且 &gt;=’A’ ,看起来没有什么区别，但是实际运行中效率会更高。   </p>
+<p> 原理: 因为比较时，只要第一个条件不符合，那就不会去比较第二个条件了，利用这一点可以加快比较速度。<br> 小写字母都是大于’Z’的，当然也大于’A’。<br> 比如转换aBCD为小写，a已经是小写了，如果按原来的方法比较&gt;=’A’ &amp;&amp; &lt;=’Z’ 需要比较两次。<br> 用后面的方法只需要比较一次。  </p>
+<p> 下面是实现的代码.有两种方式。（转大写的）</p>
+<pre><code> void upper(char string)
+{
+  while(string)
+  {
+    #if 0
+    //第一种方式比较经典的方法
+      if (string &gt;=&#39;a&#39; &amp;&amp; string &lt;=&#39;z&#39;)
+        string &amp;= 0xDF;
+    #else
+    /*
+    好像网上还没有见过这种用法，算是一个意外发现吧.
+    减去&#39;a&#39;，如果它的值在0-25之前则它肯定是小写字母。因为是无符号数.
+    如果这个字符小于a那会得到负数（&gt;128)
+    */
+      if ((unsigned char)(string - &#39;a&#39;) &lt; 26)
+          string -= 32;
+    //大写转小写只要把&#39;a&#39;改为&#39;A&#39;，转换的方式为`+= 32`或` |= 32`
+    #endif
+      ++string;
+  }
+  return;
+}
+</code></pre><p>两种不同的方式的汇编代码比较，用经典的方法执行效率可能会高一点儿。<br> 用新的方法生成的文件小一点（少几个字节，在程序空间比较紧张的情况下可以用）.</p>
+<p><img src="http://qiniu.chenall.net/upload/2010/10/1EEC7B5D67C99ACAD6F65CEB18DAD7A607AAAB5D.png" alt=""></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/C/" itemprop="url">C</a></li></span></div> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary" itemprop="url"><span itemprop="title">c语言</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/c_upper/#comments" class="ds-thread-count comment-link" data-thread-key="597" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></h1>
       
         <span>发表于<time datetime="2010-09-23T13:29:54.000Z"> <a href="/post/grub4dos_snake/">2010-09-23</a></time></span>      
@@ -141,7 +212,7 @@
 <p>附在GRUB4DOS下运行的截图.</p>
 </li>
 </ul>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/09/F7AC19FD201CD4D447B038BB1B5F3E8800F183ED.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/09/F7AC19FD201CD4D447B038BB1B5F3E8800F183ED.png" alt=""></p>
 
       
     </div>
@@ -229,7 +300,7 @@
 </ol>
 <p>新的截图:(HOH,有兴趣可以下载玩玩看,看看你能挺多久.)</p>
 <p> WIN下可玩,用DOS效果会比较好(可以试试DOSBOX)</p>
-<p> <img src="http://c-dl.qiniudn.com/upload/2010/09/CB80560132AD3CF62ADB81CF831F1D88BC096E3D.png" alt=""></p>
+<p> <img src="http://qiniu.chenall.net/upload/2010/09/CB80560132AD3CF62ADB81CF831F1D88BC096E3D.png" alt=""></p>
 
       
     </div>
@@ -271,7 +342,7 @@
 <p>echo [-n] [-P:XXYY] MESSAGE<br> 其中MESSAGE中可以使用$[ABCD]来指定后面显示的字符使用的颜色.<br> A 值为1时闪烁 (blinking foreground color).<br> B 值为1时高亮(light)<br> C [0-7]背景色(background color)<br> D [0-7]前景色-字体颜色(foreground color)</p>
 <p>截图效果.(随便弄的,对外观不是很感冒)_:)</p>
 <p>注:图片就是附件执行的效果,未修改添加.<br> 嘻嘻,对于某些喜欢修改XXXX的爱好者来说可能会有用,因为你可以自定义整个屏幕上显示的信息.</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/09/B6860606576903B7DADE22718F1B8DA060588955.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/09/B6860606576903B7DADE22718F1B8DA060588955.png" alt=""></p>
 
       
     </div>
@@ -332,7 +403,7 @@ echo.You can use any of the above password,,(⊙o⊙)
 echo.
 pause
 </code></pre>
-<p>运行的结果演示:<br> <img src="http://c-dl.qiniudn.com/upload/2010/09/8B8D0CDF9DFF0A2AD4B9CA2AC793323D2C331CEA.jpg" alt=""></p>
+<p>运行的结果演示:<br> <img src="http://qiniu.chenall.net/upload/2010/09/8B8D0CDF9DFF0A2AD4B9CA2AC793323D2C331CEA.jpg" alt=""></p>
 
       
     </div>
@@ -374,7 +445,7 @@ pause
 </li>
 </ol>
 <h2 id="[用法]">[用法]</h2>
-<p>直接在GRUB4DOS下运行,可以加一个PCI信息库文件参数.<a href="http://c-dl.qiniudn.com/upload/PCIDEVS.gz">PCI信息库文件</a></p>
+<p>直接在GRUB4DOS下运行,可以加一个PCI信息库文件参数.<a href="http://qiniu.chenall.net/upload/PCIDEVS.gz">PCI信息库文件</a></p>
 <p>另: 因为GRUB4DOS是支持自动解压的.所以这个信息库文件可以使用GZIP压缩再调用(加快读取速度).</p>
 <p>注意: 目前库文件限制在1MB以内(一般来说也够用了)</p>
 <p>其它说明: 使用库文件时,会把库文件读取到内存6M-8M之间,使用时请注意不要冲突</p>
@@ -425,11 +496,11 @@ pause
 <p><table border="1"><tbody><tr><th>Class</th><th>Description</th></tr><tr><td>0x00</td><td>Devices built before class codes</td></tr><tr><td>0x01</td><td>Mass storage controller</td></tr><tr><td>0x02</td><td>Network controller</td></tr><tr><td>0x03</td><td>Display controller</td></tr><tr><td>0x04</td><td>Multimedia device</td></tr><tr><td>0x05</td><td>Memory Controller</td></tr><tr><td>0x06</td><td>Bridge Device</td></tr><tr><td>0x07</td><td>Simple communications controllers</td></tr><tr><td>0x08</td><td>Base system peripherals</td></tr><tr><td>0x09</td><td>Inupt devices</td></tr><tr><td>0x0A</td><td>Docking Stations</td></tr><tr><td>0x0B</td><td>Processorts</td></tr><tr><td>0x0C</td><td>Serial bus controllers</td></tr><tr><td>0x0D-0xFE</td><td>Reserved</td></tr><tr><td>0xFF</td><td>Misc</td></tr></tbody></table><br>更多资料请点这里查看</p>
 <p><a href="https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk" target="_blank" rel="external">https://docs.google.com/document/pub?id=1peDTGBLgsGa-qaX0JSeZUuI2Pu9Sl0FkCCk27cNi-wk</a></p>
 <p>[截图]</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/08/158B5714E04F16AD5C39EF2BE35C76E70E0FAEA1.png" alt="首先是帮助信息"></p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/08/AE12A9F981EA2C70F956A931B6A3108D5FCA6710.png" alt="不加参数,只列出PCI设备信息."></p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/08/C73AE3560675211E38BA59F2CFEA75033D8569D3.png" alt="指定PCI信息库文件,按这个库文件显示详细的信息(呵呵,也不是很详细)."></p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/08/7CD00677B3EE4AEB967363AC49674B066C62F6E0.png" alt="只显示指定类型设备."></p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/09/299DAA5B941BF396391CF607F2FFD92B58E5891B.png" alt="新的PCI格式截图"></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/08/158B5714E04F16AD5C39EF2BE35C76E70E0FAEA1.png" alt="首先是帮助信息"></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/08/AE12A9F981EA2C70F956A931B6A3108D5FCA6710.png" alt="不加参数,只列出PCI设备信息."></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/08/C73AE3560675211E38BA59F2CFEA75033D8569D3.png" alt="指定PCI信息库文件,按这个库文件显示详细的信息(呵呵,也不是很详细)."></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/08/7CD00677B3EE4AEB967363AC49674B066C62F6E0.png" alt="只显示指定类型设备."></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/09/299DAA5B941BF396391CF607F2FFD92B58E5891B.png" alt="新的PCI格式截图"></p>
 
       
     </div>
@@ -590,7 +661,7 @@ pause
     
     
         <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/mssql/" class="label label-primary" itemprop="url"><span itemprop="title">mssql</span></a><a href="/tags/sp_addlinkedserver/" class="label label-success" itemprop="url"><span itemprop="title">sp_addlinkedserver</span></a><a href="/tags/链接/" class="label label-info" itemprop="url"><span itemprop="title">链接</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/mssql/" class="label label-primary" itemprop="url"><span itemprop="title">mssql</span></a><a href="/tags/sp-addlinkedserver/" class="label label-success" itemprop="url"><span itemprop="title">sp_addlinkedserver</span></a><a href="/tags/链接/" class="label label-info" itemprop="url"><span itemprop="title">链接</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/mssql_addlinkedserver/#comments" class="ds-thread-count comment-link" data-thread-key="486" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -617,7 +688,7 @@ pause
         <p>　　由于最近在测试GRUB4DOS的网络启动,因为要测试不同TFTP服务器的情况.所以需要来回切换两个TFTP服务器.刚开始时还是使用比较保守的方法，即修改DHCP服务器的配置，指定TFTP服务器地址，然后重启PXE客户端．</p>
 <p>　　每次修改服务器的配置很麻烦，而且也影响了其它机器的启动，后来突然想到，GRUB4DOS　PXE启动时的服务器IP地址在内存中保存的位置是已知的．是不是可以直接修改这个IP地址来实现切换TFTP服务器的功能呢，经过测试是成功的，分享一下，也许在某些情况下你也用得上．^_^</p>
 <p>具体效果看图片．．．．</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/06/BD825164772A2EE4EDE97353B2A955423D61BC96.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/06/BD825164772A2EE4EDE97353B2A955423D61BC96.png" alt=""></p>
 <p>启动时使用的是192.168.0.253服务器．</p>
 <p>通过修改内存地址<code>0x8288</code>位置的值来改来服务器IP地址．</p>
 <p>其中<code>0x3200a8c0</code>就是<code>192.168.0.50</code>转换过来的．</p>
@@ -641,59 +712,6 @@ pause
         <footer id="post-meta">
         <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/技巧/" itemprop="url">技巧</a></li></span></div> | <span class="tags">标签 <a href="/tags/TFTP/" class="label label-primary" itemprop="url"><span itemprop="title">TFTP</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_tftp/#comments" class="ds-thread-count comment-link" data-thread-key="452" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></h1>
-      
-        <span>发表于<time datetime="2010-05-22T16:03:13.000Z"> <a href="/post/sina_micoblog_sync/">2010-05-23</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>介绍一新很简单的同步其它微搏到<a href="http://t.sina.com/" target="_blank" rel="external">新浪微搏</a>的方法，基本上可以自动从任何微搏同步到新浪，不需要再去苦苦找其它同步工具了，由于使用的是新浪微搏自带的功能，安全可靠，只是同步延迟时间长了一些而已．</p>
-<p>之前可以使用<a href="http://www.digusync.com/" target="_blank" rel="external">嘀神</a>的同步功能，但最近新浪限制了嘀神的同步功能．</p>
-<p>许多人都转而求其它方法，后来我经过测试发现其实新浪很早就提供了从其它微搏同步到新浪的方法了．</p>
-<p>只要使用关联搏客的功能就可以实现自动把其它微搏同步过来了．</p>
-<p>比如自动从同步<a href="http://digu.com/chenall" target="_blank" rel="external">嘀咕</a>．</p>
-<p>只要在关联搏客中输入你要同步的地址比如<a href="http://digu.com/chenall" target="_blank" rel="external">我的嘀咕</a>页面是：<a href="http://chenall.net/" target="_blank" rel="external">http://chenall.net/</a></p>
-<p>OK，关联成功．以后你在嘀咕发的微搏就会自动同步到新浪了．</p>
-<p>怎么样是不是很简单．</p>
-<p>如果上面的同步方法失败了（只要关联成功一般就可以的了），还可以使用另一个方法，利用google reader还可以同时把多个来源同步到新浪．</p>
-<p>比如可以把你的搏客还有微搏等整合在一起供给新浪微搏自动同步．</p>
-<p>使用<a href="http://reader.google.com/" title="Google 阅读器" target="_blank" rel="external">Google reader</a>的方法也很简单</p>
-<ol>
-<li>在reader中新建一个文件夹．把要同步的来源RSS或WEB网址都添加到这个文件夹下面</li>
-<li>把这个文件夹设为共享（在管理订阅功能中的文件夹和标签中设置为公共的）</li>
-<li>上面的设置成功以后旁边会多出一个＂<font color="#FF00FF">查看公共网页的链接</font>＂，直接右键复制这个链接地址（地址很长哦）</li>
-<li>在新浪微搏的关联搏客中粘贴这个地址再点击关联，提示关联成功．</li>
-<li>等着它自动同步吧，延迟时间会比较长． </li>
-</ol>
-<p>希望这个文章对想同步微搏到新浪的朋友有用，我已经用了好几天了，一切正常．因为我有多个来源要同步，所以我是使用<a href="http://reader.google.com/" title="Google 阅读器" target="_blank" rel="external"><font color="#0000FF">Google reader</font></a>合烧同步的方法．</p>
-<p>然后还可以把这个整合后的源地址放到<a href="http://feedburner.google.com/" target="_blank" rel="external">feedburner</a>，它让自动同步到<a href="http://www.twitter.com/" target="_blank" rel="external">twitter</a>上.</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/" itemprop="url"><span itemprop="title" >杂七杂八</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/同步/" class="label label-primary" itemprop="url"><span itemprop="title">同步</span></a><a href="/tags/微搏/" class="label label-success" itemprop="url"><span itemprop="title">微搏</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/sina_micoblog_sync/#comments" class="ds-thread-count comment-link" data-thread-key="350" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -794,7 +812,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-08-31 18:40:48</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-10-18 23:10:04</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -804,17 +822,6 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
-            <script type="text/javascript">
-var duoshuoQuery = {short_name:"chenall"};
-_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
-</script>
-    
-            <!--wumii_relatedItems-->
-    
-            
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-    
             
 <div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
 <script type="text/javascript">
@@ -824,6 +831,11 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 </script>
     
             <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
@@ -875,6 +887,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 })(jQuery);
 </script>    
 <script src="/js/chenall.js" type="text/javascript"></script>
+
   <!--addons at end of body-->
 </body>
 </html>

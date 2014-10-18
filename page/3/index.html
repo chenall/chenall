@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
-<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
 <!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
 <!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
 
@@ -31,7 +32,9 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 <!--[if lt IE 9]>
    <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
    <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -47,15 +50,6 @@
 </head>
 <body>
   <!--addons at start of body-->
-    <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
-  <!-- End Google Tag Manager -->
     <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -112,6 +106,111 @@
        <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
       <section id='header_widget'></section>
           <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/sdk_kp_php/">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a></h1>
+      
+        <span>发表于<time datetime="2012-12-12T06:02:22.000Z"> <a href="/post/sdk_kp_php/">2012-12-12</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>金山快盘开放平台 PHP SDK</p>
+<p>来源: <a href="/post/sdk_kp_php/" target="_blank">金山快盘PHP SDK(普通版+简化版)[2013-04-12]</a><br>时间: 2013-04-12<br>使用方法：</p>
+<p>有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php</p>
+<p>可以根据自己的需要选择使用。</p>
+<ol>
+<li>首先初化始一个类.<pre><code>kp = new KuaiPan(CONSUMER_KEY,CONSUMER_SECRET);
+</code></pre></li>
+<li>通用API调用方法<pre><code>$kp-&gt;APINAME($params,$path)
+</code></pre></li>
+</ol>
+<p>其中<code>$params</code>是参数列表，可以使用字符串方式也可以使用组数的方式。不需要参数可以留空。<br><code>$path</code>，路径，部份API需要带路径信息，可以加上，该参数可以省略。<br>如果不需要参数直接留空就行了。<br>例子:</p>
+<pre><code>$kp-&gt;metadata()
+$kp-&gt;metadata(&#39;&#39;,&#39;/mytest&#39;);
+$kp-&gt;upload_file(array(&#39;overwrite&#39;=&gt;&quot;true&quot;,&#39;root&#39;=&gt;&#39;app_folder&#39;,&#39;path&#39;=&gt;&#39;/test.txt&#39;),array(&#39;file&#39;=&gt;&#39;@/test.php;filename=test.txt&#39;));
+</code></pre><p>调用API正常的话返回一个<strong>JSON OBJECT</strong>数据，否则会设置变量<strong>$kp-&gt;errstr</strong>.<br>只要判断<strong>$kp-&gt;errstr</strong>是否为空就可以知道调用是否成功了。</p>
+<p>目前可使用API，按官方SDK的命名方式</p>
+<ul>
+<li>account_info</li>
+<li>metadata</li>
+<li>history</li>
+<li>shares</li>
+<li>create_folder</li>
+<li>delete</li>
+<li>move</li>
+<li>copy</li>
+<li>copy_ref</li>
+<li>upload_locate</li>
+<li>download_file</li>
+<li>download_file_by_id</li>
+<li>upload_file</li>
+<li>upload_file_by_id</li>
+<li>thumbnail</li>
+<li>documentView</li>
+<li>requestToken</li>
+<li>accessToken</li>
+</ul>
+<p>关于params参数可以自己上官网查看</p>
+<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank" rel="external">http://www.kuaipan.cn/developers/document.htm</a></p>
+<h3 id="SDK简化版说明_kp-class-php">SDK简化版说明 kp.class.php</h3>
+<ol>
+<li>授权<pre><code>$oauth = $kp-&gt;OAuth();
+</code></pre>打开一个窗口供用户信息授权信息，然后返回。<br>授权成功后自己请保存以下OAUTH信息，下次可以直接使用。<pre><code>$oauth-&gt;oauth_token
+$oauth-&gt;oauth_token_secret
+</code></pre>以后可以直接使用下面的方法不需要再次授权。<pre><code>$kp-&gt;oauth_token = $oauth-&gt;oauth_token
+$kp-&gt;oauth_token_secret = $oauth-&gt;oauth_token_secret
+</code></pre></li>
+<li>创建文件夹<pre><code>$ret = $kp-&gt;md(PATH)
+</code></pre></li>
+<li>删除文件（夹）<br>彻底删除<pre><code>$ret = $kp-&gt;rm(PATH)
+</code></pre>删除到回收站<pre><code>$ret = $kp-&gt;rm(PATH,&quot;false&quot;)
+</code></pre></li>
+<li>复制文件（夹）<pre><code>$ret = $kp-&gt;cp(FROM_PATH,TO_PATH);
+</code></pre></li>
+<li>移动文件（夹）<pre><code>$ret = $kp-&gt;mv(FROM_PATH,TO_PATH);
+</code></pre></li>
+<li>下载文件<br>直接下载  <pre><code>$ret= $kp-&gt;download(PATH);
+</code></pre>手动下载，返回一个地址<pre><code>$ret= $kp-&gt;download(PATH,false);
+</code></pre></li>
+<li>上传文件<pre><code>$ret= $kp-&gt;upload(PATH,FILE);
+</code></pre>如果<code>PATH</code>路径最后字符是’/‘，认为是一个目录，上传到该目录，上传后的文件名从<code>FILE</code>中提取。如果<code>PATH</code>路径最后字符不是’/‘，认为是一个文件，上传后的文件名就是<code>PATH</code>指定的文件名。<pre><code>$ret= $kp-&gt;upload(PATH,FILE,true);//显示上传进度百分比
+</code></pre></li>
+<li>列出文件夹内容<pre><code>$ret= $kp-&gt;ls(PATH);
+</code></pre></li>
+<li>判断操作是否成功可以使用变量<strong>errstr</strong><pre><code>if (empty($kp-&gt;errstr))
+    echo &#39;成功&#39;;
+else
+    echo &#39;失败&#39;.$kp-&gt;errstr;
+</code></pre></li>
+</ol>
+<p>可以看一下k_test.php里面的测试实例。</p>
+<p>最新SDK源码下载地址:</p>
+<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank" rel="external">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/PHP/" itemprop="url">PHP</a></li></span></div> | <span class="tags">标签 <a href="/tags/PHP/" class="label label-primary" itemprop="url"><span itemprop="title">PHP</span></a><a href="/tags/SDK/" class="label label-success" itemprop="url"><span itemprop="title">SDK</span></a><a href="/tags/优化/" class="label label-info" itemprop="url"><span itemprop="title">优化</span></a><a href="/tags/快盘/" class="label label-warning" itemprop="url"><span itemprop="title">快盘</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/sdk_kp_php/#comments" class="ds-thread-count comment-link" data-thread-key="890" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
 <div id="post" class="post well">
   <div class="post-content">
     <header class="well-sm">
@@ -753,47 +852,6 @@ curl_close($curl);
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/kuaipan_dl/">金山快盘直链</a></h1>
-      
-        <span>发表于<time datetime="2012-07-25T06:42:04.000Z"> <a href="/post/kuaipan_dl/">2012-07-25</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>使用快盘API写了一个直链的应用测试.. 以后可以把文件或图片直接上传到快盘中,然后直链. API有调用限制,好像是一天5000次,对于我等小站来说足够用了,</p>
-<p>另外好像快盘的文件下载速度没有华为网盘的给力啊.速度相对比较慢,可以对比一下我的另一个文章关于华为网盘直链的测试,显示图片的速度更快.</p>
-<p>
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/kuaipan_dl/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/PHP/" itemprop="url">PHP</a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/综合/" itemprop="url">综合</a></li></span></div> | <span class="tags">标签 <a href="/tags/直链/" class="label label-primary" itemprop="url"><span itemprop="title">直链</span></a><a href="/tags/金山快盘/" class="label label-success" itemprop="url"><span itemprop="title">金山快盘</span></a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/kuaipan_dl/#comments" class="ds-thread-count comment-link" data-thread-key="848" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -885,7 +943,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-08-31 18:40:48</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-10-18 23:10:03</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -895,17 +953,6 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
-            <script type="text/javascript">
-var duoshuoQuery = {short_name:"chenall"};
-_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
-</script>
-    
-            <!--wumii_relatedItems-->
-    
-            
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-    
             
 <div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
 <script type="text/javascript">
@@ -915,6 +962,11 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 </script>
     
             <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
@@ -966,6 +1018,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 })(jQuery);
 </script>    
 <script src="/js/chenall.js" type="text/javascript"></script>
+
   <!--addons at end of body-->
 </body>
 </html>

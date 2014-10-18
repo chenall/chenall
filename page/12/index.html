@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
-<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
 <!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
 <!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
 
@@ -31,7 +32,9 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 <!--[if lt IE 9]>
    <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
    <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -47,15 +50,6 @@
 </head>
 <body>
   <!--addons at start of body-->
-    <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
-  <!-- End Google Tag Manager -->
     <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -112,6 +106,52 @@
        <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
       <section id='header_widget'></section>
           <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></h1>
+      
+        <span>发表于<time datetime="2009-05-17T09:47:03.000Z"> <a href="/post/openvpn_inlinefile/">2009-05-17</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <h3 id="[OpenVPN]_OpenVPN_独立配置文件">[OpenVPN] OpenVPN 独立配置文件</h3>
+<p>前言: OpenVPN使用证书连接可以加强安全性但是如果客户端多了要分发证书很不方便,还有如果一个客户端需要连接多个不同的服务器,一般情况下证书文件都使用默认的文件名</p>
+<p>例子对于<strong>CA</strong>根证书一般使用如下语句:</p>
+<pre><code>ca ca.crt
+</code></pre><p>由于不同的服务器需要的证书是不一样的,所以只能改名这样一来也很麻烦</p>
+<p>OpenVPN 2.1 版新增功能,可以把证书文件等内置到配置文件中(Inline files)</p>
+<p>需要 OpenVPN 2.1-beta7 以上的版本才支持..!!!</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/openvpn_inlinefile/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li><li><a href="/categories/系统相关/OpenVPN/" itemprop="url">OpenVPN</a></li></span></div> | <span class="tags">标签 <a href="/tags/inline/" class="label label-primary" itemprop="url"><span itemprop="title">inline</span></a><a href="/tags/openvpn/" class="label label-success" itemprop="url"><span itemprop="title">openvpn</span></a><a href="/tags/tls-auth/" class="label label-info" itemprop="url"><span itemprop="title">tls-auth</span></a><a href="/tags/内置证书/" class="label label-warning" itemprop="url"><span itemprop="title">内置证书</span></a><a href="/tags/证书/" class="label label-primary" itemprop="url"><span itemprop="title">证书</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/openvpn_inlinefile/#comments" class="ds-thread-count comment-link" data-thread-key="62" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
 <div id="post" class="post well">
   <div class="post-content">
     <header class="well-sm">
@@ -503,9 +543,9 @@ goto :eof
     <div class="entry" >
       
         <p>可以点击链接直接下载，或者进入网络硬盘下载。共享密码是:chenall</p>
-<p><a href="http://c-dl.qiniudn.com/upload/2009/1/外置驱动说明.txt">外置驱动使用说明.txt</a></p>
-<p><a href="http://c-dl.qiniudn.com/upload/2009/1/请先读我.txt">请先读我.txt</a></p>
-<p><a href="http://c-dl.qiniudn.com/upload/2009/1/更新历史.txt">更新历史.txt</a></p>
+<p><a href="http://qiniu.chenall.net/upload/2009/1/外置驱动说明.txt">外置驱动使用说明.txt</a></p>
+<p><a href="http://qiniu.chenall.net/upload/2009/1/请先读我.txt">请先读我.txt</a></p>
+<p><a href="http://qiniu.chenall.net/upload/2009/1/更新历史.txt">更新历史.txt</a></p>
 <p>2009-05-01 修正版ISO下载[2009-05-03]</p>
 <p><a href="http://chenall.liondrive.com/MicroPE/MicroPE.rar?action=download/download" target="_blank" rel="external">http://chenall.liondrive.com/MicroPE/MicroPE.rar?action=download/download</a></p>
 <p>如果没有看到请</p>
@@ -759,50 +799,6 @@ pause 15.
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></h1>
-      
-        <span>发表于<time datetime="2009-03-02T05:43:03.000Z"> <a href="/post/post45/">2009-03-02</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>熟悉GRUB4DOS的都知道.</p>
-<p><code>write</code> 可以在内存中写入一个数值使用如下命令就可以了</p>
-<pre><code>write 0x60000 1
-</code></pre><p>在内存地址<code>0x60000中</code>写入<code>1</code>.</p>
-<p>如果想写入的是一个字符串呢?用上面的方法肯定行不通.</p>
-<p>因为需要我想在内存固定位置中写入一个字符串,在另一个菜单中读取.之前考虑了使用dd命令,虽可以实现但不太方便.</p>
-<p>后来突然想到<em>write</em> 只能对文件写入字符串</p>
-<p>而<code>grub4dos</code>中可以用<em>(xx)xxxx+n</em>的方式来表达一个文件.是不是可以使用这个来写入呢,后来的测试是成功的.</p>
-<p>比如我要在内存<em>0x60000</em>中写入一个字符串<em>/BOOT</em>这时就可以使用以下命令来写入</p>
-<pre><code>write (md)0x300+1 /boot
-</code></pre><p>其中:0x300*512=0x60000</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/介绍/" itemprop="url">介绍</a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post45/#comments" class="ds-thread-count comment-link" data-thread-key="45" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -894,7 +890,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-08-31 18:40:48</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-10-18 23:10:04</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -904,17 +900,6 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
-            <script type="text/javascript">
-var duoshuoQuery = {short_name:"chenall"};
-_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
-</script>
-    
-            <!--wumii_relatedItems-->
-    
-            
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-    
             
 <div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
 <script type="text/javascript">
@@ -924,6 +909,11 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 </script>
     
             <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
@@ -975,6 +965,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 })(jQuery);
 </script>    
 <script src="/js/chenall.js" type="text/javascript"></script>
+
   <!--addons at end of body-->
 </body>
 </html>

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-08-31T10:40:21.415Z</updated>
+  <updated>2014-10-18T15:09:54.707Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -13,6 +13,56 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[DriveDroid 让安卓手机变成系统启动盘]]></title>
+    <link href="http://chenall.net/post/android_DriveDroid/"/>
+    <id>http://chenall.net/post/android_DriveDroid/</id>
+    <published>2014-10-18T13:06:00.000Z</published>
+    <updated>2014-10-18T15:09:36.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="说明">说明</h2>
+<p>  <strong>This application requires root</strong>(需要手机有Root权限)</p>
+<p>  DriveDroid allows you to boot your PC from ISO/IMG files stored on your phone. This is ideal for trying Linux distributions or always having a rescue-system on the go… without the need to burn different CDs or USB pendrives.</p>
+<p>  DriveDroid also includes a convenient download menu where you can download USB-images of a number of operating systems from your phone (like Mint, Ubuntu, Fedora, OpenSUSE and Arch Linux). Around 35 different systems are available at this moment.</p>
+<p>  You can also create blank USB-images which allows you to have a blank USB-drive. From your PC you can store files onto the USB-drive, but also use tools on your PC to write images to the drive.<br><a id="more"></a></p>
+<h3 id="Notes">Notes</h3>
+<ul>
+<li>This application uses features of the kernel that may or may not be available/stable on your phone. Tests have shown most phones work without problems, but please keep in mind yours might not (yet) work out-of-the-box.</li>
+<li>Most kernels support emulating USB drives, some support emulating CD-rom drives and kernels with the right patches support both.</li>
+<li>Most Linux-related ISOs can be booted from USB drives, but some ISOs can only be booted from CD-rom drives or require some kind of conversion.</li>
+</ul>
+<h3 id="Paid_version">Paid version</h3>
+<ul>
+<li>No ads.</li>
+<li>Resizing of images.</li>
+<li>Add your own download repositories. Nice for companies or groups that want to share custom or licensed images.</li>
+</ul>
+<p>More info: <a href="http://softwarebakery.com/projects/drivedroid" target="_blank" rel="external">http://softwarebakery.com/projects/drivedroid</a></p>
+<p>以上是原文介绍,看不懂没有关系,简单来说,就是可以让Root的Android设备可以直接加载ISO/IMG等文件直接变身为一个启动盘(可以变成U盘/光盘/软盘),系统安装盘,等,也就是说一个手机加上一条数据线就可作为随身或应急维护U盘了.</p>
+<h4 id="来个软件截图先">来个软件截图先</h4>
+<p><img src="http://qiniu.chenall.net/post/2014101821_01.png" alt=""></p>
+<h4 id="可以直接创建一个空白的IMG文件(虚拟U盘),挂载这个镜像文件之后,连上电脑之后就可以看到一个”空白的U盘”,你想怎么折腾就怎么折腾吧-">可以直接创建一个空白的IMG文件(虚拟U盘),挂载这个镜像文件之后,连上电脑之后就可以看到一个”空白的U盘”,你想怎么折腾就怎么折腾吧..</h4>
+<p><img src="http://qiniu.chenall.net/post/2014101821_02.png" alt=""></p>
+<p>点击<code>+</code>号出现如上菜单,第一个是创建空白镜像,第二个,从镜像库下载,第三个,从系统中加载已经做好的镜像.</p>
+<h4 id="软件还内置了一个镜像库,提供一些可以启动的镜像(比如Linux系统发行版)等,直接下载就可以使用了-">软件还内置了一个镜像库,提供一些可以启动的镜像(比如Linux系统发行版)等,直接下载就可以使用了.</h4>
+<p><img src="http://qiniu.chenall.net/post/2014101821_03.png" alt=""></p>
+<p>除了可以挂载IMG/ISO文件之后,还可以挂载整个SD卡/某个SD卡分区,系统分区的哦..看截图(要挂载这些需要对ANDROID/linux系统有一定的了解)</p>
+<p><img src="http://qiniu.chenall.net/post/2014101821_04.png" alt=""></p>
+<p>从Google Play 下载安装:(<a href="https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result</a>)</p>
+]]></content>
+    <summary type="html"><![CDATA[<h2 id="说明">说明</h2>
+<p>  <strong>This application requires root</strong>(需要手机有Root权限)</p>
+<p>  DriveDroid allows you to boot your PC from ISO/IMG files stored on your phone. This is ideal for trying Linux distributions or always having a rescue-system on the go… without the need to burn different CDs or USB pendrives.</p>
+<p>  DriveDroid also includes a convenient download menu where you can download USB-images of a number of operating systems from your phone (like Mint, Ubuntu, Fedora, OpenSUSE and Arch Linux). Around 35 different systems are available at this moment.</p>
+<p>  You can also create blank USB-images which allows you to have a blank USB-drive. From your PC you can store files onto the USB-drive, but also use tools on your PC to write images to the drive.<br>]]></summary>
+    
+      <category term="android" scheme="http://chenall.net/tags/android/"/>
+    
+      <category term="软件" scheme="http://chenall.net/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="实用文集" scheme="http://chenall.net/categories/%E5%AE%9E%E7%94%A8%E6%96%87%E9%9B%86/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Cameyo PackageEditor 基本使用介绍]]></title>
@@ -27,16 +77,16 @@
 <p>这里以 <a href="http://www.zdfans.com/674.html" target="_blank" rel="external">百度云管家绿色版</a> 转换为Cameyo虚拟化包为例,因为这个相对比较简单,不需要更多设置,可以直接运行:</p>
 <ul>
 <li><p>首先打开 <a href="http://chenall.net/post/cameyo-packageeditor/" target="_blank" rel="external">PackageEditor</a> 启动编辑器,创建新的虚拟程序包(本例用的是2.X的版本).到了如下界面,在这里可以进行一些基本的设置,像运行模式之类的,还有扩展属性(本例最终的设置效果在后面).</p>
-<p><img src="http://c-dl.qiniudn.com/post/cameyo_packageeditor_use_01.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/cameyo_packageeditor_use_01.png" alt=""></p>
 </li>
 <li><p>现在开始添加所有需要的文件进去.</p>
-<p><img src="http://c-dl.qiniudn.com/post/cameyo_packageeditor_use_filesystem.png" alt=""><br><img src="http://c-dl.qiniudn.com/post/cameyo_packageeditor_use_filesystem01.png" alt=""><br><img src="http://c-dl.qiniudn.com/post/cameyo_packageeditor_use_filesystem02.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/cameyo_packageeditor_use_filesystem.png" alt=""><br><img src="http://qiniu.chenall.net/post/cameyo_packageeditor_use_filesystem01.png" alt=""><br><img src="http://qiniu.chenall.net/post/cameyo_packageeditor_use_filesystem02.png" alt=""></p>
 </li>
 <li><p>添加完文件之后再设置一下主程序,如里有多个可以使用菜单.</p>
-<p><img src="http://c-dl.qiniudn.com/post/cameyo_packageeditor_use_02.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/cameyo_packageeditor_use_02.png" alt=""></p>
 </li>
 <li><p>使用更改图标功能设置应用的图标(会同时设置应用属性),直接在弹出的窗口中选择百度云管家的主程序就行了,,最终的设置效果图</p>
-<p><img src="http://c-dl.qiniudn.com/post/cameyo_packageeditor_use_03.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/cameyo_packageeditor_use_03.png" alt=""></p>
 </li>
 <li><p>现在把它保存起来.比如保存为 <strong>BaiduYunGuanjia</strong> 最终的文件名是 <strong>BaiduYunGuanjia.cameyo.exe</strong>,双击就可以直接启动百度云管家了.</p>
 </li>
@@ -104,9 +154,9 @@
 <p>使用新的版本可以很方便的创建新的虚拟化程序,默认使用的是快照的方式(获取快照-&gt;安装软件-&gt;获取快照-&gt;对比生成虚拟化包).</p>
 <p>使用快照生成虚拟化包的方法:</p>
 <ol>
-<li>启动后选择 <strong>创建新的虚拟化程序</strong> 菜单,这时会出现如下界面,不要操作,等待抓取快照完成<br><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_1.png" alt=""></li>
-<li>抓取快照完成,等待用户安装程序<br><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_2.png" alt=""></li>
-<li>安装完成之后,再点击上图的 <strong>Install done</strong> 按钮,再次抓取快照.<br><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_3.png" alt=""></li>
+<li>启动后选择 <strong>创建新的虚拟化程序</strong> 菜单,这时会出现如下界面,不要操作,等待抓取快照完成<br><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor_1.png" alt=""></li>
+<li>抓取快照完成,等待用户安装程序<br><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor_2.png" alt=""></li>
+<li>安装完成之后,再点击上图的 <strong>Install done</strong> 按钮,再次抓取快照.<br><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor_3.png" alt=""></li>
 <li>等上面的快照完成.</li>
 </ol>
 <p>上面的方法生成的应用程序会较完整通用,还有另一个方法,速度比较快,但是很多程序不支持..</p>
@@ -125,16 +175,16 @@
 <li>修正原版 启动命令 显示的BUG,这个版本可以正常显示.</li>
 <li>添加应用版本信息(这个功能其实用处不大,原版把这个功能隐藏了),我只是它显示出来,并且添加部份代码.</li>
 </ul>
-<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_menu.png" alt="最新版本启动界面"></p>
-<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.1_base.png" alt="2.1版设置界面"></p>
-<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.1_adv.png" alt="2.1版高级设置界面"></p>
+<p><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor_menu.png" alt="最新版本启动界面"></p>
+<p><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor2.1_base.png" alt="2.1版设置界面"></p>
+<p><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor2.1_adv.png" alt="2.1版高级设置界面"></p>
 <p>2.6版只是修改了简体中文资源文件.</p>
-<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.6_base.png" alt="2.6版设置界面"></p>
-<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor2.6_adv.png" alt="2.6版高级设置界面"></p>
+<p><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor2.6_base.png" alt="2.6版设置界面"></p>
+<p><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor2.6_adv.png" alt="2.6版高级设置界面"></p>
 <p>普通用户的设置界面和前面的一样的,下图有多一些设置界面,这些是需要授权的</p>
 <p>授权申请网址: <a href="http://www.cameyo.com/upgrade" target="_blank" rel="external">http://www.cameyo.com/upgrade</a></p>
 <p>里面有版本对比和升级申请,有需要的可以自己去申请,不一定能通过.</p>
-<p><img src="http://c-dl.qiniudn.com/post/Cameyo_PackageEditor_Plus_adv.png" alt="高级版本设置界面"></p>
+<p><img src="http://qiniu.chenall.net/post/Cameyo_PackageEditor_Plus_adv.png" alt="高级版本设置界面"></p>
 <h3 id="相关下载">相关下载</h3>
 <p>不再更新 == 2.1编辑器+2.0版核心: <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.1.rar" target="_blank" rel="external">PackageEditor2.1简体中文版(内置2.0版组件)</a></p>
 <p>不再更新 == 2.6编辑器(内存模式运行): <a href="http://d.chenall.net/1/虚拟化绿软/PackageEditor2.6.rar" target="_blank" rel="external">PackageEditor2.6简体中文版</a></p>
@@ -266,7 +316,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 <p>需要准备的软件ROM: <a href="http://pan.baidu.com/s/1CJPEm" target="_blank" rel="external">点这里下载</a></p>
 <p>里面包括了 <a href="http://hi.baidu.com/zengchen228" target="_blank" rel="external">~╰独①儛②</a> 提供的CFE，还有 <a href="http://pan.baidu.com/s/1cMsgd" target="_blank" rel="external">bwq518 提供的支持64K NVRAM的固件</a>，还有TFTP、PUTTY等软件。</p>
 <p>为了方便使用，先把连接路由器的网卡IP改成固定192.168.1.2，准备好TTL数据线，然后就是拆机了，按照下面方法接好TTL数据线，然后接上网线，电源。</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_ttl.jpg" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_ttl.jpg" alt=""></p>
 <p>首先要刷64K 的CFE，可以先刷DD的MINI版，然后在DD里面刷，或者在MINIWEB下刷，</p>
 <p>相关资料：</p>
 <p><a href="http://www.right.com.cn/forum/thread-79340-1-1.html" target="_blank" rel="external">http://www.right.com.cn/forum/thread-79340-1-1.html</a></p>
@@ -275,11 +325,11 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 <p>但不知什么原因我的TTL接上去之后什么都不显示，但经过测试输入命令有反应，最简单的就是输入<code>reboot</code>之后路由器就会重启。所以本文介绍的是盲刷，只提供一个参考。</p>
 <p>首先要启动到CFE模式，最保险的方法</p>
 <p>打开TFTP程序</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_tftp.jpg" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_tftp.jpg" alt=""></p>
 <p>打开路由器，直到变绿.</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_tftp_ok.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_tftp_ok.png" alt=""></p>
 <p>这时<code>ping 192.168.1.1</code>测试正常。并且TTL=100</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_ttl_100.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_ttl_100.png" alt=""></p>
 <p>说明这时已经停在了CFE界面。（如果一直没有办法进入，可以进入路由器管理界面，直接刷ddwrt固件重启之后一般就能行了）</p>
 <p>可以开工了，直接运行tftpd32，不用管它，放着。</p>
 <p>运行putty,选择对应的COM端口，和速度一般是（115200)，然后连接。</p>
@@ -307,7 +357,7 @@ test ALL=(ALL) NOPASSWD: /sbin/reboot
 </ol>
 </li>
 <li><p>一切正常的话，等待路由器重启完成之后就可以看到支持64K NVRAM的固件已经刷好了。 </p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_64k_nvram.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_64k_nvram.png" alt=""></p>
 </li>
 <li><p>以后可以直接在路由器的固件升级功能中直接升级或刷其它固件。</p>
 </li>
@@ -701,7 +751,7 @@ widgets:
     
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="Node.js" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/Nodejs/"/>
+      <category term="Node.js" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/Node-js/"/>
     
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
@@ -1583,11 +1633,11 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <p>其它的不多说了,不管我觉得如何,<span style="color: #800000;">适合自己的</span>,<span style="color: #800000;">用得顺手的</span>才是最好的,各有所好.</p>
 <p>有兴趣的可以下载测试,有问题或建议同样欢迎反馈…</p>
 <p>截图</p>
-<p><img src="http://c-dl.qiniudn.com/img/ALMRunMain.png" alt="软件界面截图" title="软件界面截图"></p>
+<p><img src="http://qiniu.chenall.net/img/ALMRunMain.png" alt="软件界面截图" title="软件界面截图"></p>
 <p>选定命令之后按TAB键可以添加参数</p>
-<p><img src="http://c-dl.qiniudn.com/img/merry_args.png" alt="直接输入参数" title="可以直接输入参数"></p>
+<p><img src="http://qiniu.chenall.net/img/merry_args.png" alt="直接输入参数" title="可以直接输入参数"></p>
 <p>在命令列表按Insert键添加新命令</p>
-<p><img src="http://c-dl.qiniudn.com/img/ALMRun_AddCmd.png" alt="按Insert键添加新命令" title="按Insert键添加新命令"></p>
+<p><img src="http://qiniu.chenall.net/img/ALMRun_AddCmd.png" alt="按Insert键添加新命令" title="按Insert键添加新命令"></p>
 <p>支持拼音首字母识别,比如:列表中有”宽带连接”,可以输入 “<code>kdlj</code>“<br>这是根据区位表匹配的,比较节省代码,只支持GB2312字符,也没有处理多音字,碰到多音字,一个不行可以换另一个.如果有兴趣帮助我一起开发的可以联系我,或者直接提交补丁文件给我.</p>
 <p>主页地址： <a href="http://almrun.chenall.net" target="_blank" rel="external">http://almrun.chenall.net</a><br>更新记录: <a href="http://almrun.chenall.net/update_log.html" target="_blank" rel="external">http://almrun.chenall.net/update_log.html</a><br>修改版源码: <a href="https://github.com/chenall/ALMRun" target="_blank" rel="external">https://github.com/chenall/ALMRun</a><br>更多功能介绍: <a href="http://almrun.chenall.net/" target="_blank" rel="external">http://almrun.chenall.net/</a><br>扩展功能介绍: <a href="https://github.com/chenall/ALMRun/blob/master/doc/config_api.md" target="_blank" rel="external">https://github.com/chenall/ALMRun/blob/master/doc/config_api.md</a>  </p>
 <p><strong>注：ALMRun独立主页已经上线，以后请关注<a href="http://almrun.chenall.net" target="_blank" rel="external">ALMRUN主页</a>获取更新。</strong></p>
@@ -1616,13 +1666,13 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
     
       <category term="编程" scheme="http://chenall.net/tags/%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="C++" scheme="http://chenall.net/tags/C++/"/>
+      <category term="C++" scheme="http://chenall.net/tags/C/"/>
     
       <category term="wxWidgets" scheme="http://chenall.net/tags/wxWidgets/"/>
     
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
-      <category term="C++" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/C++/"/>
+      <category term="C++" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/C/"/>
     
   </entry>
   
@@ -1845,101 +1895,6 @@ $fs-&gt;ls();
       <category term="单文件" scheme="http://chenall.net/tags/%E5%8D%95%E6%96%87%E4%BB%B6/"/>
     
       <category term="软件推荐" scheme="http://chenall.net/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[金山快盘PHP SDK(普通版+简化版)[2013-04-12]]]></title>
-    <link href="http://chenall.net/post/sdk_kp_php/"/>
-    <id>http://chenall.net/post/sdk_kp_php/</id>
-    <published>2012-12-12T06:02:22.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
-    <content type="html"><![CDATA[<p>金山快盘开放平台 PHP SDK</p>
-<p>来源: <!--[iLink[id:890]iLink]--><br>时间: 2013-04-12<br>使用方法：</p>
-<p>有两个版本，一个是普通版kuaipan.class.php，一个是简化版（简化操作）kp.class.php</p>
-<p>可以根据自己的需要选择使用。</p>
-<ol>
-<li>首先初化始一个类.<pre><code>kp = new KuaiPan(CONSUMER_KEY,CONSUMER_SECRET);
-</code></pre></li>
-<li>通用API调用方法<pre><code>$kp-&gt;APINAME($params,$path)
-</code></pre></li>
-</ol>
-<p>其中<code>$params</code>是参数列表，可以使用字符串方式也可以使用组数的方式。不需要参数可以留空。<br><code>$path</code>，路径，部份API需要带路径信息，可以加上，该参数可以省略。<br>如果不需要参数直接留空就行了。<br>例子:</p>
-<pre><code>$kp-&gt;metadata()
-$kp-&gt;metadata(&#39;&#39;,&#39;/mytest&#39;);
-$kp-&gt;upload_file(array(&#39;overwrite&#39;=&gt;&quot;true&quot;,&#39;root&#39;=&gt;&#39;app_folder&#39;,&#39;path&#39;=&gt;&#39;/test.txt&#39;),array(&#39;file&#39;=&gt;&#39;@/test.php;filename=test.txt&#39;));
-</code></pre><p>调用API正常的话返回一个<strong>JSON OBJECT</strong>数据，否则会设置变量<strong>$kp-&gt;errstr</strong>.<br>只要判断<strong>$kp-&gt;errstr</strong>是否为空就可以知道调用是否成功了。</p>
-<p>目前可使用API，按官方SDK的命名方式</p>
-<ul>
-<li>account_info</li>
-<li>metadata</li>
-<li>history</li>
-<li>shares</li>
-<li>create_folder</li>
-<li>delete</li>
-<li>move</li>
-<li>copy</li>
-<li>copy_ref</li>
-<li>upload_locate</li>
-<li>download_file</li>
-<li>download_file_by_id</li>
-<li>upload_file</li>
-<li>upload_file_by_id</li>
-<li>thumbnail</li>
-<li>documentView</li>
-<li>requestToken</li>
-<li>accessToken</li>
-</ul>
-<p>关于params参数可以自己上官网查看</p>
-<p><a href="http://www.kuaipan.cn/developers/document.htm" target="_blank" rel="external">http://www.kuaipan.cn/developers/document.htm</a></p>
-<h3 id="SDK简化版说明_kp-class-php">SDK简化版说明 kp.class.php</h3>
-<ol>
-<li>授权<pre><code>$oauth = $kp-&gt;OAuth();
-</code></pre>打开一个窗口供用户信息授权信息，然后返回。<br>授权成功后自己请保存以下OAUTH信息，下次可以直接使用。<pre><code>$oauth-&gt;oauth_token
-$oauth-&gt;oauth_token_secret
-</code></pre>以后可以直接使用下面的方法不需要再次授权。<pre><code>$kp-&gt;oauth_token = $oauth-&gt;oauth_token
-$kp-&gt;oauth_token_secret = $oauth-&gt;oauth_token_secret
-</code></pre></li>
-<li>创建文件夹<pre><code>$ret = $kp-&gt;md(PATH)
-</code></pre></li>
-<li>删除文件（夹）<br>彻底删除<pre><code>$ret = $kp-&gt;rm(PATH)
-</code></pre>删除到回收站<pre><code>$ret = $kp-&gt;rm(PATH,&quot;false&quot;)
-</code></pre></li>
-<li>复制文件（夹）<pre><code>$ret = $kp-&gt;cp(FROM_PATH,TO_PATH);
-</code></pre></li>
-<li>移动文件（夹）<pre><code>$ret = $kp-&gt;mv(FROM_PATH,TO_PATH);
-</code></pre></li>
-<li>下载文件<br>直接下载  <pre><code>$ret= $kp-&gt;download(PATH);
-</code></pre>手动下载，返回一个地址<pre><code>$ret= $kp-&gt;download(PATH,false);
-</code></pre></li>
-<li>上传文件<pre><code>$ret= $kp-&gt;upload(PATH,FILE);
-</code></pre>如果<code>PATH</code>路径最后字符是’/‘，认为是一个目录，上传到该目录，上传后的文件名从<code>FILE</code>中提取。如果<code>PATH</code>路径最后字符不是’/‘，认为是一个文件，上传后的文件名就是<code>PATH</code>指定的文件名。<pre><code>$ret= $kp-&gt;upload(PATH,FILE,true);//显示上传进度百分比
-</code></pre></li>
-<li>列出文件夹内容<pre><code>$ret= $kp-&gt;ls(PATH);
-</code></pre></li>
-<li>判断操作是否成功可以使用变量<strong>errstr</strong><pre><code>if (empty($kp-&gt;errstr))
-    echo &#39;成功&#39;;
-else
-    echo &#39;失败&#39;.$kp-&gt;errstr;
-</code></pre></li>
-</ol>
-<p>可以看一下k_test.php里面的测试实例。</p>
-<p>最新SDK源码下载地址:</p>
-<p><a href="https://github.com/chenall/chenall/tree/master/sdks/kuaipan" target="_blank" rel="external">https://github.com/chenall/chenall/tree/master/sdks/kuaipan</a></p>
-]]></content>
-    
-    
-      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
-    
-      <category term="SDK" scheme="http://chenall.net/tags/SDK/"/>
-    
-      <category term="优化" scheme="http://chenall.net/tags/%E4%BC%98%E5%8C%96/"/>
-    
-      <category term="快盘" scheme="http://chenall.net/tags/%E5%BF%AB%E7%9B%98/"/>
-    
-      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
     
   </entry>
   

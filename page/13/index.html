@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
-<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
 <!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
 <!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
 
@@ -31,7 +32,9 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 <!--[if lt IE 9]>
    <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
    <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -47,15 +50,6 @@
 </head>
 <body>
   <!--addons at start of body-->
-    <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
-  <!-- End Google Tag Manager -->
     <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -116,6 +110,50 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></h1>
+      
+        <span>发表于<time datetime="2009-03-02T05:43:03.000Z"> <a href="/post/post45/">2009-03-02</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>熟悉GRUB4DOS的都知道.</p>
+<p><code>write</code> 可以在内存中写入一个数值使用如下命令就可以了</p>
+<pre><code>write 0x60000 1
+</code></pre><p>在内存地址<code>0x60000中</code>写入<code>1</code>.</p>
+<p>如果想写入的是一个字符串呢?用上面的方法肯定行不通.</p>
+<p>因为需要我想在内存固定位置中写入一个字符串,在另一个菜单中读取.之前考虑了使用dd命令,虽可以实现但不太方便.</p>
+<p>后来突然想到<em>write</em> 只能对文件写入字符串</p>
+<p>而<code>grub4dos</code>中可以用<em>(xx)xxxx+n</em>的方式来表达一个文件.是不是可以使用这个来写入呢,后来的测试是成功的.</p>
+<p>比如我要在内存<em>0x60000</em>中写入一个字符串<em>/BOOT</em>这时就可以使用以下命令来写入</p>
+<pre><code>write (md)0x300+1 /boot
+</code></pre><p>其中:0x300*512=0x60000</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/介绍/" itemprop="url">介绍</a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post45/#comments" class="ds-thread-count comment-link" data-thread-key="45" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post44/">[分享]超级解霸V9精简版(用来播放光蝶)</a></h1>
       
         <span>发表于<time datetime="2009-02-26T01:25:02.000Z"> <a href="/post/post44/">2009-02-26</a></time></span>      
@@ -135,7 +173,7 @@
 </ol>
 <p>精简版下载 <a href="http://ishare.iask.sina.com.cn/cgi-bin/fileid.cgi?fileid=4855424" target="_blank" rel="external">新浪共享</a></p>
 <p>附,皮肤截图</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2009/2/20090226093206625.jpg" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2009/2/20090226093219781.jpg" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2009/2/20090226093233109.jpg" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2009/2/20090226093510687.jpg" alt="">  </p>
+<p><img src="http://qiniu.chenall.net/upload/2009/2/20090226093206625.jpg" alt=""><br><img src="http://qiniu.chenall.net/upload/2009/2/20090226093219781.jpg" alt=""><br><img src="http://qiniu.chenall.net/upload/2009/2/20090226093233109.jpg" alt=""><br><img src="http://qiniu.chenall.net/upload/2009/2/20090226093510687.jpg" alt="">  </p>
 
       
     </div>
@@ -265,7 +303,7 @@ var button=document.getElementById("hideButton");button.innerHTML="隐藏边注"
 <p>如果你不觉得正则表达式很难读写的话，要么你是一个天才，要么，你不是地球人。正则表达式的语法很令人头疼，即使对经常使用它的人来说也是如此。由于难于读写，容易出错，所以找一种工具对正则表达式进行测试是很有必要的。</p>
 <p>不同的环境下正则表达式的一些细节是不相同的，本教程介绍的是微软 .Net Framework 4.0 下正则表达式的行为，所以，我向你推荐我编写的.Net下的工具 <a title="转到RegexTester页面" href="../../tools/regex_tester/index.htm">正则表达式测试器</a>。请参考该页面的说明来安装和运行该软件。</p>
 <p>下面是Regex Tester运行时的截图：</p>
-<p><img src="http://c-dl.qiniudn.com/post/regex_tester.png" alt="正则表达式测试器运行截图"></p>
+<p><img src="http://qiniu.chenall.net/post/regex_tester.png" alt="正则表达式测试器运行截图"></p>
 
 <h2 id="metacode">元字符</h2>
 <p>现在你已经知道几个很有用的元字符了，如<span class="code">\b</span>,<span class="code">.</span>,<span class="code">*</span>，还有<span class="code">\d</span>.正则表达式里还有更多的元字符，比如<span class="code">\s</span>匹配<span class="desc">任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等</span>。<span class="code">\w</span>匹配<span class="desc">字母或数字或下划线或汉字等</span>。</p>
@@ -1234,7 +1272,7 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
 #define FILE_NOT_EXIST 10
 #define FILE_SEEK_ERROR 11
 #define STRING_NOT_FOUND 12
-</code></pre><p><a href="http://c-dl.qiniudn.com/upload/2008/12/200812192314097256.rar">200812192314097256.rar</a></p>
+</code></pre><p><a href="http://qiniu.chenall.net/upload/2008/12/200812192314097256.rar">200812192314097256.rar</a></p>
 
       
     </div>
@@ -1277,7 +1315,7 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
 <p>2.把这个SYS文件设为服务并启动.</p>
 <p>3.好了,如果服务正常启动,那系统中就会显示出你的SCSI硬盘.</p>
 <p>附上测试效果图.使用VMSARE测试.</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2008/12/0.JPG" alt=""><img src="http://c-dl.qiniudn.com/upload/2008/12/1.JPG" alt=""><img src="http://c-dl.qiniudn.com/upload/2008/12/2.JPG" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2008/12/0.JPG" alt=""><img src="http://qiniu.chenall.net/upload/2008/12/1.JPG" alt=""><img src="http://qiniu.chenall.net/upload/2008/12/2.JPG" alt=""></p>
 <p>附件为下面批处理脚本,可用在PE下</p>
 <pre><code class="bat">@echo off
 title 在PE下安装硬盘控制器驱动简单脚本 by chenall 2008-12-14
@@ -1302,7 +1340,7 @@ rundll32.exe setupapi,InstallHinfSection DefaultInstall 132  %temp%\scsi_serv.in
 if not errorlevel 1 (echo. %~nX1驱动安装成功 ! &amp; pecmd serv %~n1 &amp; pause) else (echo.安装失败 !&amp;pause)
 del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
 </code></pre>
-<p><a href="http://c-dl.qiniudn.com/upload/2008/12/PE_SCSI.rar">PE_SCSI.rar</a></p>
+<p><a href="http://qiniu.chenall.net/upload/2008/12/PE_SCSI.rar">PE_SCSI.rar</a></p>
 
       
     </div>
@@ -1314,44 +1352,6 @@ del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
         <footer id="post-meta">
         <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/SCSI/" class="label label-success" itemprop="url"><span itemprop="title">SCSI</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/post34/#comments" class="ds-thread-count comment-link" data-thread-key="34" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></h1>
-      
-        <span>发表于<time datetime="2008-12-10T09:18:35.000Z"> <a href="/post/post33/">2008-12-10</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>今天在制作一个启动盘,时需要用EXTRACT来解压cab文件,却发现死活不行.<br>总是提示 <em><code>out of memory while processing cabinet file</code></em> 错误</p>
-<p>查了相关文章 <a href="http://support.microsoft.com/kb/261758" target="_blank" rel="external">http://support.microsoft.com/kb/261758</a> 还是没有用.</p>
-<p>已经加载了himem.sys的内存管理,并且内存达到512MB.郁闷了半天.研究了WIN98的启动盘才发现问题所在.</p>
-<p>WIN98启动盘使用了XMSDSK内存盘.跟踪后发现,如果没有这个XMSDSK内存盘EXTRACT就会有上面的提示.<br>经过多次测试才发现<br>原来这个extract程序要求启动分区可用空间大于<code>2048KB</code>否则就会有上面的错误提示.<br>而这个启动分区是根据环境变量<code>comspec</code>的值来确定的.而WIN98启动盘使用了XMSDSK内存盘后把这个变量指定的内存盘(COMMAND.COM也复制过去了),所以没这个问题.</p>
-<p>不得已只好也使用XMSDSK来虚拟一个大于2048KB的内存盘来临时使用下.</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/杂七杂八/" itemprop="url"><span itemprop="title" >杂七杂八</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/extract/" class="label label-primary" itemprop="url"><span itemprop="title">extract</span></a><a href="/tags/DOS/" class="label label-success" itemprop="url"><span itemprop="title">DOS</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post33/#comments" class="ds-thread-count comment-link" data-thread-key="33" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -1452,7 +1452,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-08-31 18:40:48</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-10-18 23:10:04</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1462,17 +1462,6 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
-            <script type="text/javascript">
-var duoshuoQuery = {short_name:"chenall"};
-_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
-</script>
-    
-            <!--wumii_relatedItems-->
-    
-            
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-    
             
 <div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
 <script type="text/javascript">
@@ -1482,6 +1471,11 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 </script>
     
             <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
@@ -1533,6 +1527,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 })(jQuery);
 </script>    
 <script src="/js/chenall.js" type="text/javascript"></script>
+
   <!--addons at end of body-->
 </body>
 </html>

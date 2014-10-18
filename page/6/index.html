@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
-<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
 <!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
 <!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
 
@@ -31,7 +32,9 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 <!--[if lt IE 9]>
    <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
    <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -47,15 +50,6 @@
 </head>
 <body>
   <!--addons at start of body-->
-    <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
-  <!-- End Google Tag Manager -->
     <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -112,6 +106,123 @@
        <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
       <section id='header_widget'></section>
           <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></h1>
+      
+        <span>发表于<time datetime="2011-04-28T16:38:14.000Z"> <a href="/post/vhd_mnt/">2011-04-29</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>VHD_MNT 是使用批处理写的一个小程序 ,</p>
+<p>可以在WIN7以上的系统中使用.</p>
+<p>用于快速挂载/卸载VHD虚拟磁盘.</p>
+<p>依赖程序: 系统自带的diskpart,reg,find三个命令.</p>
+<p>特点: 不使用第三方工具,不生成临时文件.使用方便.你需要做的只是双击.</p>
+<p>2011-04-29 新增支持右键快速创建<code>差异磁盘</code>功能.</p>
+<p>【使用方法】很简单两个关键字<code>双击</code></p>
+<ul>
+<li>使用了智能检测代码,所以需要做的就是<code>双击</code>.</li>
+<li>安装: 直接<code>双击</code>运行本程序.</li>
+<li>卸载: 直接<code>双击</code>运行本程序.</li>
+<li>使用: 直接<code>双击</code>要挂载/分离的VHD文件. </li>
+</ul>
+<p>【批处理代码】</p>
+<pre><code>@echo off
+if &quot;%~n1&quot;==&quot;&quot; goto :install
+set &quot;diskpart=echo exit|%ComSpec%/kprompt %%dsc%%$_|diskpart&quot;
+if &quot;%~1&quot;==&quot;PARENT&quot; goto :PARENT
+
+:attach
+title ====VHD_MNT by chenall======正在自动检测....
+set dsc=list$Svdisk
+%diskpart%|find /i &quot;%~1&quot; &gt;nul &amp;&amp; goto :detach
+title ====VHD_MNT by chenall====@@附加VHD@@ %*
+set dsc=select$Svdisk$Sfile=&quot;%~f1&quot;$_attach$Svdisk$S%2$_
+goto :diskpart
+
+:detach
+title ====VHD_MNT by chenall====@@分离VHD文件@@%*
+set dsc=select$Svdisk$Sfile=&quot;%~f1&quot;$_detach$Svdisk$_
+goto :diskpart
+
+:PARENT
+shift
+for /l %%i in (1,1,99) do if not exist &quot;%~dpn1_s%%i.vhd&quot; (set &quot;file=%~n1_s%%i.vhd&quot;&amp;goto :create)
+
+exit /b
+
+:create
+title ====VHD_MNT by chenall====@@创建差异VHD文件@@
+echo.
+echo.
+echo. VHD_MNT 创建一个差异VHD镜像文件.
+echo. 来源: %1
+echo.
+echo. 请输入要创建的差异VHD文件名.直接回车使用%file%
+echo. 注:不要输入路径名.
+echo.
+set /pfile=差异VHD:
+set dsc=create$Svdisk$Sfile=&quot;%~dp1%file%&quot;$SPARENT=&quot;%~f1&quot;$_
+title ====VHD_MNT by chenall====@@创建差异VHD文件@@%file%
+
+:diskpart
+%diskpart%
+pause
+exit /b
+
+:install
+reg query &quot;HKCR\.vhd\shell\@附加/分离\command&quot; /ve 1&gt;nul 2&gt;nul &amp;&amp; goto :uninstall
+reg add &quot;HKCR\.vhd\shell\@附加/分离\command&quot; /d &quot;vhd_mnt.cmd %%1&quot; /f &gt;nul
+reg add &quot;HKCR\.vhd\shell\创建差异VHD\command&quot; /d &quot;vhd_mnt.cmd PARENT=%%1&quot; /f &gt;nul
+reg add &quot;HKCR\.vhd\DefaultIcon&quot; /d &quot;%%SystemRoot%%\\system32\\shell32.dll,8&quot; /f &gt;nul
+copy /y &quot;%~f0&quot; &quot;%SystemRoot%\system32\vhd_mnt.cmd&quot; &gt;nul
+echo.
+echo. .VHD文件默认文件设置完成.
+echo.
+echo. 现在可以直接双击.VHD文件来自动挂载/卸载了(如果已经挂载再次双击该文件时自动卸载)
+echo. 
+echo. VHD文件快速挂载/卸载工具 by chenall 2011-04-29
+echo.                http://chenall.net/post/vhd_mnt
+pause
+exit
+
+:uninstall
+echo.
+reg delete &quot;HKCR\.vhd\shell&quot; /f &gt;nul
+del /f &quot;%SystemRoot%\system32\vhd_mnt.cmd&quot;
+echo.
+echo. 已经取消.VHD的默认关联,如果需要双击VHD自动挂载/卸载请再次执行本程序.
+echo.
+echo. VHD文件快速挂载/卸载工具 by chenall 2011-04-29
+echo.                http://chenall.net/post/vhd_mnt
+pause
+exit
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/vhd/" class="label label-primary" itemprop="url"><span itemprop="title">vhd</span></a><a href="/tags/vhdmount/" class="label label-success" itemprop="url"><span itemprop="title">vhdmount</span></a><a href="/tags/系统相关/" class="label label-info" itemprop="url"><span itemprop="title">系统相关</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/vhd_mnt/#comments" class="ds-thread-count comment-link" data-thread-key="667" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
 <div id="post" class="post well">
   <div class="post-content">
     <header class="well-sm">
@@ -964,7 +1075,7 @@ chainloader (cd)
     
     
         <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/实用/" itemprop="url">实用</a></li></span></div> | <span class="tags">标签 <a href="/tags/F6/" class="label label-primary" itemprop="url"><span itemprop="title">F6</span></a><a href="/tags/GRUB/" class="label label-success" itemprop="url"><span itemprop="title">GRUB</span></a><a href="/tags/GRUB4DOS/" class="label label-info" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/SCSI/" class="label label-warning" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/TXTSETUPOEM/" class="label label-primary" itemprop="url"><span itemprop="title">TXTSETUP.OEM</span></a><a href="/tags/服务器/" class="label label-success" itemprop="url"><span itemprop="title">服务器</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/实用/" itemprop="url">实用</a></li></span></div> | <span class="tags">标签 <a href="/tags/F6/" class="label label-primary" itemprop="url"><span itemprop="title">F6</span></a><a href="/tags/GRUB/" class="label label-success" itemprop="url"><span itemprop="title">GRUB</span></a><a href="/tags/GRUB4DOS/" class="label label-info" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/SCSI/" class="label label-warning" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/TXTSETUP-OEM/" class="label label-primary" itemprop="url"><span itemprop="title">TXTSETUP.OEM</span></a><a href="/tags/服务器/" class="label label-success" itemprop="url"><span itemprop="title">服务器</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows_f6/#comments" class="ds-thread-count comment-link" data-thread-key="70" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -1006,7 +1117,7 @@ chainloader (cd)
 </ul>
 <h4 id="其它介绍，还有使用示例见文章尾。"><a href="#OTHER">其它介绍，还有使用示例见文章尾。</a></h4>
 <p>两个内置变量:<br> ?_WENV 保存上一次wenv call运行的返回值<br> ?_GET 保存上一次wenv get variable变量的长度</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/10/9EF3DCF527FD6D7A2A5886C0F661399E50C99DB0.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2010/10/9EF3DCF527FD6D7A2A5886C0F661399E50C99DB0.png" alt=""></p>
 <p> <a id="SET_FUNC" name="SET_FUNC" classtype="bookmark"></a><br>一：SET 设置/修改/新增/删除变量</p>
 <ol>
 <li><p>WENV SET [variable=[string]]<br>variable 指定环境变量名,区分大小写 （目前最多允许用户定义60个变量）<br>不超过8个字符.可以使用字母(a-z/A-Z)、数字(0-9)、下划线(_)。不可以使用数字开头。<br>string 指定要指派给变量的一系列字符串。不能超过512字节。</p>
@@ -1201,7 +1312,7 @@ WENV reset sr* 清除sr开头的所有变量
     WENV check ${a}==123 &amp;&amp; echo ${a}=123
     WENV check ${a}&lt;=150 check ${a}&gt;=100 &amp;&amp; echo ${a}&gt;=100.and.${a}&lt;=150
 </code></pre><p>  上面实现了IF语句功能.  一些图片。</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/10/CA9906EAF8A41C7C6AF513A6E38A338DA3A7767B.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/C4E5F5F595F1F6F46D4286A29A187A58FB24BFEF.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/750D1B07FAB044ADD671FE61F718C1FFAA89A6C6.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/C176EE65406D37204DD14D04126D882FCCE9F957.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/886DDF981F317649CC0F06307908152F2C7B9F53.png" alt=""><br><img src="http://c-dl.qiniudn.com/upload/2010/10/E1ECFD0F1B74BDA5045D6EEA93A8B93012A1F557.png" alt="">  </p>
+<p><img src="http://qiniu.chenall.net/upload/2010/10/CA9906EAF8A41C7C6AF513A6E38A338DA3A7767B.png" alt=""><br><img src="http://qiniu.chenall.net/upload/2010/10/C4E5F5F595F1F6F46D4286A29A187A58FB24BFEF.png" alt=""><br><img src="http://qiniu.chenall.net/upload/2010/10/750D1B07FAB044ADD671FE61F718C1FFAA89A6C6.png" alt=""><br><img src="http://qiniu.chenall.net/upload/2010/10/C176EE65406D37204DD14D04126D882FCCE9F957.png" alt=""><br><img src="http://qiniu.chenall.net/upload/2010/10/886DDF981F317649CC0F06307908152F2C7B9F53.png" alt=""><br><img src="http://qiniu.chenall.net/upload/2010/10/E1ECFD0F1B74BDA5045D6EEA93A8B93012A1F557.png" alt="">  </p>
 
       
     </div>
@@ -1213,83 +1324,6 @@ WENV reset sr* 清除sr开头的所有变量
         <footer id="post-meta">
         <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_wenv/#comments" class="ds-thread-count comment-link" data-thread-key="127" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/c_upper/">C语言的基础函数大小写转换</a></h1>
-      
-        <span>发表于<time datetime="2010-10-12T07:27:51.000Z"> <a href="/post/c_upper/">2010-10-12</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p> 在程序中经常会需要对字母的大小写进行转换，虽然有现成的upper/lower函数，但是有时因为各种原因，或想减小程序的体积，需要自己编写函数来实现。</p>
-<p> 这里来讨论一下各种转换的方法。</p>
-<p>根据ASCII码我们可以知道大写字母和小写字母相差32(20H)=100000B(二进制).</p>
-<p>根据这个原理我们可以方便的进行大小写的转换。如是是大写字母+32就变成小写。</p>
-<p> 例子: 大写字母’A’ 它的ASCII码是65. ‘a’的ASCII码是97，看下面的等式。</p>
-<p> ‘A’+32=65+32=97 = ‘a’</p>
-<p> 另外:</p>
-<ul>
-<li>‘a’的二进制是<font color="#FF00FF">01</font><font color="#FF6800">1</font>00001B</li>
-<li>‘A’的二进制是<font color="#FF00FF">01</font><font color="#FF6800">0</font>00001B</li>
-</ul>
-<p>也就是说小写和大写的区别就是100000B ，也就是bit 5的区别。</p>
-<p> 所以还可以通过与运算修改bit 5的值也可以达到转换的目的。</p>
-<p>把第5位置为1可以按位”或”操作，置为0 可以按位”与”操作<br> <font color="#FF00FF">00</font><font color="#FF6800">1</font>00000B = 32 = 20H<br> <font color="#FF00FF">11</font><font color="#FF6800">0</font>11111B = 223 = DFH  </p>
-<p>‘a’ &amp; 223 = ‘A’    ‘A’ | 32 = ‘a’</p>
-<p>其实也就是字母的第5位（二进制位），如果它是1就是小写的，如果是0就是大写。</p>
-<p>另外在使用经典的代码比较时</p>
-<p>小写转大写 &gt;=’a’ 并且 &lt;=’z’<br>大写转小写 &gt;=’A’ 并且 &lt;=’Z’<br>可以把这两个比较的顺序对换一下。<br>改成&lt;=’Z’ 并且 &gt;=’A’ ,看起来没有什么区别，但是实际运行中效率会更高。   </p>
-<p> 原理: 因为比较时，只要第一个条件不符合，那就不会去比较第二个条件了，利用这一点可以加快比较速度。<br> 小写字母都是大于’Z’的，当然也大于’A’。<br> 比如转换aBCD为小写，a已经是小写了，如果按原来的方法比较&gt;=’A’ &amp;&amp; &lt;=’Z’ 需要比较两次。<br> 用后面的方法只需要比较一次。  </p>
-<p> 下面是实现的代码.有两种方式。（转大写的）</p>
-<pre><code> void upper(char string)
-{
-  while(string)
-  {
-    #if 0
-    //第一种方式比较经典的方法
-      if (string &gt;=&#39;a&#39; &amp;&amp; string &lt;=&#39;z&#39;)
-        string &amp;= 0xDF;
-    #else
-    /*
-    好像网上还没有见过这种用法，算是一个意外发现吧.
-    减去&#39;a&#39;，如果它的值在0-25之前则它肯定是小写字母。因为是无符号数.
-    如果这个字符小于a那会得到负数（&gt;128)
-    */
-      if ((unsigned char)(string - &#39;a&#39;) &lt; 26)
-          string -= 32;
-    //大写转小写只要把&#39;a&#39;改为&#39;A&#39;，转换的方式为`+= 32`或` |= 32`
-    #endif
-      ++string;
-  }
-  return;
-}
-</code></pre><p>两种不同的方式的汇编代码比较，用经典的方法执行效率可能会高一点儿。<br> 用新的方法生成的文件小一点（少几个字节，在程序空间比较紧张的情况下可以用）.</p>
-<p><img src="http://c-dl.qiniudn.com/upload/2010/10/1EEC7B5D67C99ACAD6F65CEB18DAD7A607AAAB5D.png" alt=""></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/C/" itemprop="url">C</a></li></span></div> | <span class="tags">标签 <a href="/tags/c语言/" class="label label-primary" itemprop="url"><span itemprop="title">c语言</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/c_upper/#comments" class="ds-thread-count comment-link" data-thread-key="597" data-count-type="comments">暂无评论</a></span>
         </footer>
     
     <div class="clearfix"></div>
@@ -1390,7 +1424,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-08-31 18:40:48</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-10-18 23:10:04</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1400,17 +1434,6 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
-            <script type="text/javascript">
-var duoshuoQuery = {short_name:"chenall"};
-_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
-</script>
-    
-            <!--wumii_relatedItems-->
-    
-            
-<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-    
             
 <div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
 <script type="text/javascript">
@@ -1420,6 +1443,11 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 </script>
     
             <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
@@ -1471,6 +1499,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 })(jQuery);
 </script>    
 <script src="/js/chenall.js" type="text/javascript"></script>
+
   <!--addons at end of body-->
 </body>
 </html>

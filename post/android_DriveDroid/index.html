@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta http-equiv="Cache-Control" content="max-age=7200" />
+
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DriveDroid 让安卓手机变成系统启动盘 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="说明  This application requires root(需要手机有Root权限)
+
+  DriveDroid allows you to boot your PC from ISO/IMG files stored on your phone. This is ideal for trying Linux distributions or always having a rescue-system on the go… without the need to burn different CDs or USB pendrives.">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="DriveDroid 让安卓手机变成系统启动盘"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link rel="author" href="https://plus.google.com/100700322385676715564" />
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+<!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+<script type="text/javascript">var site = {BASE_URI: '/'};var _js2load = [];</script>
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+  
+        <li item='post/android_DriveDroid/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/android_DriveDroid/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/android_DriveDroid/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li item='post/android_DriveDroid/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/android_DriveDroid/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">DriveDroid 让安卓手机变成系统启动盘</h1>
+      
+        <span>发表于<time datetime="2014-10-18T13:06:00.000Z"> <a href="/post/android_DriveDroid/">2014-10-18</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div>
+</div></section>
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
+      
+        <h2 id="说明">说明</h2>
+<p>  <strong>This application requires root</strong>(需要手机有Root权限)</p>
+<p>  DriveDroid allows you to boot your PC from ISO/IMG files stored on your phone. This is ideal for trying Linux distributions or always having a rescue-system on the go… without the need to burn different CDs or USB pendrives.</p>
+<p>  DriveDroid also includes a convenient download menu where you can download USB-images of a number of operating systems from your phone (like Mint, Ubuntu, Fedora, OpenSUSE and Arch Linux). Around 35 different systems are available at this moment.</p>
+<p>  You can also create blank USB-images which allows you to have a blank USB-drive. From your PC you can store files onto the USB-drive, but also use tools on your PC to write images to the drive.<br><a id="more"></a></p>
+<h3 id="Notes">Notes</h3>
+<ul>
+<li>This application uses features of the kernel that may or may not be available/stable on your phone. Tests have shown most phones work without problems, but please keep in mind yours might not (yet) work out-of-the-box.</li>
+<li>Most kernels support emulating USB drives, some support emulating CD-rom drives and kernels with the right patches support both.</li>
+<li>Most Linux-related ISOs can be booted from USB drives, but some ISOs can only be booted from CD-rom drives or require some kind of conversion.</li>
+</ul>
+<h3 id="Paid_version">Paid version</h3>
+<ul>
+<li>No ads.</li>
+<li>Resizing of images.</li>
+<li>Add your own download repositories. Nice for companies or groups that want to share custom or licensed images.</li>
+</ul>
+<p>More info: <a href="http://softwarebakery.com/projects/drivedroid" target="_blank" rel="external">http://softwarebakery.com/projects/drivedroid</a></p>
+<p>以上是原文介绍,看不懂没有关系,简单来说,就是可以让Root的Android设备可以直接加载ISO/IMG等文件直接变身为一个启动盘(可以变成U盘/光盘/软盘),系统安装盘,等,也就是说一个手机加上一条数据线就可作为随身或应急维护U盘了.</p>
+<h4 id="来个软件截图先">来个软件截图先</h4>
+<p><img src="http://qiniu.chenall.net/post/2014101821_01.png" alt=""></p>
+<h4 id="可以直接创建一个空白的IMG文件(虚拟U盘),挂载这个镜像文件之后,连上电脑之后就可以看到一个”空白的U盘”,你想怎么折腾就怎么折腾吧-">可以直接创建一个空白的IMG文件(虚拟U盘),挂载这个镜像文件之后,连上电脑之后就可以看到一个”空白的U盘”,你想怎么折腾就怎么折腾吧..</h4>
+<p><img src="http://qiniu.chenall.net/post/2014101821_02.png" alt=""></p>
+<p>点击<code>+</code>号出现如上菜单,第一个是创建空白镜像,第二个,从镜像库下载,第三个,从系统中加载已经做好的镜像.</p>
+<h4 id="软件还内置了一个镜像库,提供一些可以启动的镜像(比如Linux系统发行版)等,直接下载就可以使用了-">软件还内置了一个镜像库,提供一些可以启动的镜像(比如Linux系统发行版)等,直接下载就可以使用了.</h4>
+<p><img src="http://qiniu.chenall.net/post/2014101821_03.png" alt=""></p>
+<p>除了可以挂载IMG/ISO文件之后,还可以挂载整个SD卡/某个SD卡分区,系统分区的哦..看截图(要挂载这些需要对ANDROID/linux系统有一定的了解)</p>
+<p><img src="http://qiniu.chenall.net/post/2014101821_04.png" alt=""></p>
+<p>从Google Play 下载安装:(<a href="https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result</a>)</p>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="https://plus.google.com/100700322385676715564">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/android_DriveDroid/">DriveDroid 让安卓手机变成系统启动盘</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/android/" class="label label-primary" itemprop="url"><span itemprop="title">android</span></a><a href="/tags/软件/" class="label label-success" itemprop="url"><span itemprop="title">软件</span></a></span> | <span class="time">最近更新:<time title="2014-10-18 23:09:36"datetime="2014-10-18 23:09:36"> 2014-10-18</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/android_DriveDroid/#comments" class="ds-thread-count comment-link" data-thread-key="2014101821" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  
+  <li class="next"><a href="/post/cameyo_packageeditor_01/" title="Cameyo PackageEditor 基本使用介绍">Cameyo PackageEditor 基本使用介绍 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+</tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="2014101821"  data-url="http://chenall.net/post/android_DriveDroid/" data-title="DriveDroid 让安卓手机变成系统启动盘"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_swiftype" class="widget panel panel-primary">
+    
+<form class="input-group">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
+</form></div>
+
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_aliyun_sidebar" class="widget panel panel-primary">
+    
+<a href='http://s.click.taobao.com/t?e=m%3D2%26s%3Df8OlSBzu18scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAtz4eT3bpot%2BUjTuFP33mm8byuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9K%2BnbtOD3UdznPV1H2z0iQv9NkKVMHClW0QbMqOpFMIvnvjQXzzpXdTHGJe8N%2FwNpGw%3D%3D'><img src='http://c-dl.qiniudn.com/aliyun/250x250.jpg'></a></div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_random_posts" class="widget panel panel-primary">
+  <div class="panel-heading">随机文章</div>  <div class='hexo_random_posts' data-count=8></div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2008-2014 chenall
+  
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号</a></span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+  _js2load.push({src:('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'});
+</script></span><span id='analytics-baidu'>
+<script>
+var _hmt = _hmt || [];
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
+</script>
+</span>  </div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-10-18 23:09:36</em></span></div>
+</div>
+<div class="clearfix"></div>
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            
+<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
+<script type="text/javascript">
+var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
+_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
+$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
+</script>
+    
+            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/android_DriveDroid/";
+    var wumiiTitle = "DriveDroid 让安卓手机变成系统启动盘";
+    var wumiiTags = "android,软件";
+    var wumiiCategories = ["实用文集"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+    _js2load.push({src:'http://widget.wumii.cn/ext/relatedItemsWidget'});
+</script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
+    "java", "js", "m", "mxml", "perl", "pl", "pm", "py", "rb", "sh",
+    "xhtml", "xml", "xsl"];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script src="/js/chenall.js" type="text/javascript"></script>
+
+  <!--addons at end of body-->
+</body>
+</html>

@@ -19,7 +19,8 @@
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
-<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css"><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
 <!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
 <!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
 
@@ -31,7 +32,9 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 <!--[if lt IE 9]>
    <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
    <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -47,15 +50,6 @@
 </head>
 <body>
   <!--addons at start of body-->
-    <!-- Google Tag Manager -->
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TVFS32"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVFS32');</script>
-  <!-- End Google Tag Manager -->
     <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -136,7 +130,7 @@
 <p>需要准备的软件ROM: <a href="http://pan.baidu.com/s/1CJPEm" target="_blank" rel="external">点这里下载</a></p>
 <p>里面包括了 <a href="http://hi.baidu.com/zengchen228" target="_blank" rel="external">~╰独①儛②</a> 提供的CFE，还有 <a href="http://pan.baidu.com/s/1cMsgd" target="_blank" rel="external">bwq518 提供的支持64K NVRAM的固件</a>，还有TFTP、PUTTY等软件。</p>
 <p>为了方便使用，先把连接路由器的网卡IP改成固定192.168.1.2，准备好TTL数据线，然后就是拆机了，按照下面方法接好TTL数据线，然后接上网线，电源。</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_ttl.jpg" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_ttl.jpg" alt=""></p>
 <p>首先要刷64K 的CFE，可以先刷DD的MINI版，然后在DD里面刷，或者在MINIWEB下刷，</p>
 <p>相关资料：</p>
 <p><a href="http://www.right.com.cn/forum/thread-79340-1-1.html" target="_blank" rel="external">http://www.right.com.cn/forum/thread-79340-1-1.html</a></p>
@@ -145,11 +139,11 @@
 <p>但不知什么原因我的TTL接上去之后什么都不显示，但经过测试输入命令有反应，最简单的就是输入<code>reboot</code>之后路由器就会重启。所以本文介绍的是盲刷，只提供一个参考。</p>
 <p>首先要启动到CFE模式，最保险的方法</p>
 <p>打开TFTP程序</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_tftp.jpg" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_tftp.jpg" alt=""></p>
 <p>打开路由器，直到变绿.</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_tftp_ok.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_tftp_ok.png" alt=""></p>
 <p>这时<code>ping 192.168.1.1</code>测试正常。并且TTL=100</p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_ttl_100.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_ttl_100.png" alt=""></p>
 <p>说明这时已经停在了CFE界面。（如果一直没有办法进入，可以进入路由器管理界面，直接刷ddwrt固件重启之后一般就能行了）</p>
 <p>可以开工了，直接运行tftpd32，不用管它，放着。</p>
 <p>运行putty,选择对应的COM端口，和速度一般是（115200)，然后连接。</p>
@@ -177,7 +171,7 @@
 </ol>
 </li>
 <li><p>一切正常的话，等待路由器重启完成之后就可以看到支持64K NVRAM的固件已经刷好了。 </p>
-<p><img src="http://c-dl.qiniudn.com/post/hg320_64k_nvram.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/post/hg320_64k_nvram.png" alt=""></p>
 </li>
 <li><p>以后可以直接在路由器的固件升级功能中直接升级或刷其它固件。</p>
 </li>
@@ -237,7 +231,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/mssql_addlinkedserver/">MSSQL 链接服务器 sp_addlinkedserver</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/post54/">vi 编辑器使用指南</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/dbank_login/">[原创]华为网盘免密码一键登录(2012-08-21更新)</a></li><li class="list-group-item"><a href="/post/cameyo_packageeditor_01/">Cameyo PackageEditor 基本使用介绍</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/reg2cmd/">[原创] 将REG文件转换成CMD/BAT文件（REG与CMD混合编程）</a></li><li class="list-group-item"><a href="/post/post43/">[转]正则表达式30分钟入门教程</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -330,7 +324,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.7.1 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-02-26 19:52:59</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -340,6 +334,16 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
                 
+            
+<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
+<script type="text/javascript">
+var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
+_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
+$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
+</script>
+    
+            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
             <script type="text/javascript">
 var duoshuoQuery = {short_name:"chenall"};
 _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
@@ -363,16 +367,6 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
             
 <script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
 <a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-    
-            
-<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
-<script type="text/javascript">
-var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
-_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
-$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
-</script>
-    
-            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
     
         <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
    var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
@@ -424,6 +418,7 @@ $(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('
 })(jQuery);
 </script>    
 <script src="/js/chenall.js" type="text/javascript"></script>
+
   <!--addons at end of body-->
 </body>
 </html>
