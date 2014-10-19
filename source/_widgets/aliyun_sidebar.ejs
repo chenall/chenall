@@ -1,2 +1,24 @@
-<%if (!cache) return;%>
-<a href='http://s.click.taobao.com/t?e=m%3D2%26s%3Df8OlSBzu18scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAtz4eT3bpot%2BUjTuFP33mm8byuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9K%2BnbtOD3UdznPV1H2z0iQv9NkKVMHClW0QbMqOpFMIvnvjQXzzpXdTHGJe8N%2FwNpGw%3D%3D'><img src='http://c-dl.qiniudn.com/aliyun/250x250.jpg'></a>
+<%
+var ali_item = [{url:"http://s.click.taobao.com/t?e=m%3D2%26s%3Df8OlSBzu18scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAtz4eT3bpot%2BUjTuFP33mm8byuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9K%2BnbtOD3UdznPV1H2z0iQv9NkKVMHClW0QbMqOpFMIvnvjQXzzpXdTHGJe8N%2FwNpGw%3D%3D",
+		img:"http://qiniu.chenall.net/aliyun/250x250_01.jpg"},
+		{url:"http://s.click.taobao.com/t?e=m%3D2%26s%3DWx1%2FUd2Xu9scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAgqxYtC30UH57li5%2BwaNkRMbyuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9Kw%2Byb%2BmDZlm0PV1H2z0iQv9eY%2By0blbhscYl7w3%2FA2kb",
+		img:"http://qiniu.chenall.net/aliyun/250x250_02.jpg"},
+		{img:"http://gtms03.alicdn.com/tps/i3/TB1fzjZGpXXXXcnXpXXQO4D5VXX-440-180.jpg",
+		url:"http://s.click.taobao.com/t?e=m%3D2%26s%3DuCDvgQyg10EcQipKwQzePCperVdZeJviK7Vc7tFgwiFRAdhuF14FMeusUcBRWrz68sviUM61dt2J1yP6rKGALir5l%2BK2kfSTErms4YATpTXXc6u8BDv1oKUuZxIcp9pfUIgVEmFmgnbDX0%2BHH2IEVeOhxeU7PAMffjxl6AIniNq2NuRO0YvGxWDg6Uw6J4%2Fplpa1ptKO5BKn1GHnsRyADB8mVZkeJZr6Ke66u3HlzztBug3u65UROKJn5AyUbPoV"},
+		{url:"http://s.click.taobao.com/t?e=m%3D2%26s%3DienAeqM6f0scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAnLgecJ4ZbBLhfF8cP%2Fi%2F9obyuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9K2Zg%2BdzdQFOwfMRvoxSVDSdLyrb2g0H2G5JcxXijM%2BwneEHpPTskRHlFYAAV9gnNuPTL%2BS6jTvPzN7YQp05KcLcunFBf1wJnpg%3D%3D",
+		img:"http://qiniu.chenall.net/aliyun/d.png"},
+		{url:"http://s.click.taobao.com/t?e=m%3D2%26s%3DcrAECBB8ycEcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAuXwr7OH7D%2BIyO%2FjmuN7jksbyuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAX7uq6sLYIqu0Q7QOybCaQy9AmARIwX9K9E0MBlxnM%2FDnaYpFBIfC%2F2orLd93QuCUMYOae24fhW0",
+		img:"http://gtms03.alicdn.com/tps/i3/TB119uIGpXXXXcaXVXXjf1M_VXX-240-180.png"},
+]
+%>
+<div style="width:250px,height:250px" id="ali-carousel-captions" class="carousel slide" data-interval='3000' data-carousel=0 data-ride="carousel">
+  <div class="carousel-inner">
+    <%ali_item.forEach(function(item,index){ -%>
+    <div class="item<%- index==0?' active':''%>">
+      <a href="<%- item.url -%>"><img src="<%- item.img -%>"></a>
+    </div>
+    <%}); -%>
+  </div>
+  <a class="left carousel-control" href="#ali-carousel-captions" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+  <a class="right carousel-control" href="#ali-carousel-captions" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+</div>

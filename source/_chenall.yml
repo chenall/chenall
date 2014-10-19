@@ -115,7 +115,7 @@ widgets:
     - random_posts
     - google_sidebar
     - tagcloud
-    - sina_weiboshow
+#    - sina_weiboshow
     - recent_comments
   before_content: # 文章内容前
     - google_before_content
