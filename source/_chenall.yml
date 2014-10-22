@@ -62,7 +62,7 @@ modules:
 #
 # 
 comments:
-    provider: duoshuo
+    provider: 
     show_count: true
     short_name: chenall
 
@@ -85,14 +85,14 @@ analytics:
 
 # 站点顶部菜单,支持子菜单
 menu:
-  About: about/
+#  About: about/
   Archives: archives/
-  泉州广播: qzgb-fm/
-  在线电视:
-    在线直播: tv/
-    直播线路1: http://tv1.chenall.tk
-    直播线路2: http://tv2.chenall.tk
-  留言板: guestbook/
+#  泉州广播: qzgb-fm/
+#  在线电视:
+#    在线直播: tv/
+#    直播线路1: http://tv1.chenall.tk
+#    直播线路2: http://tv2.chenall.tk
+#  留言板: guestbook/
   GRUB4DOS: http://grub4dos.chenall.net
 
 # ajax_widgets是否使用jquery.load动态加载widget的内容,
@@ -116,7 +116,7 @@ widgets:
     - google_sidebar
     - tagcloud
 #    - sina_weiboshow
-    - recent_comments
+#    - recent_comments
   before_content: # 文章内容前
     - google_before_content
   after_content:  # 文章内容后
