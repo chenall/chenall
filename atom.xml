@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-10-22T05:29:07.818Z</updated>
+  <updated>2014-10-22T06:50:39.564Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -116,7 +116,7 @@
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -203,7 +203,7 @@
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
@@ -1890,7 +1890,7 @@ $fs-&gt;ls();
 ]]></content>
     
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="单文件" scheme="http://chenall.net/tags/%E5%8D%95%E6%96%87%E4%BB%B6/"/>
     
