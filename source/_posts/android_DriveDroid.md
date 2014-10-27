@@ -50,5 +50,12 @@ More info: http://softwarebakery.com/projects/drivedroid
 
 ![](@@POST@@:04.png)
 
+本人的手机对这个支持的效果挺不错的，可以有三个LUN，可以同时支持软盘、光盘、U盘。效果图，lun0虚拟出一个软盘，lun1是光盘，lun2是可移动磁盘
+
+![](@@POST@@:05.png)
+
+![](@@POST@@:06.png)
 
 从Google Play 下载安装:(https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&feature=nav_result)
+
+百度网盘下载： [com.softwarebakery.drivedroid.ver.0.9.15.build.46.apk](http://pan.baidu.com/s/1qWluroS)
