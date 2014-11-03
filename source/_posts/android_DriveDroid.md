@@ -54,6 +54,8 @@ More info: http://softwarebakery.com/projects/drivedroid
 
 ![](@@POST@@:05.png)
 
+注意看上图,左边有三个点,代表该设备支持三个LUN,你可以在每个LUN上都测试挂载一下 光盘,软盘等镜像,看看电脑上能不能正确显示出挂载内容,这样就可以知道是否有支持虚拟光盘,软盘了.
+
 ![](@@POST@@:06.png)
 
 从Google Play 下载安装:(https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&feature=nav_result)

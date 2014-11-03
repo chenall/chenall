@@ -62,7 +62,7 @@ modules:
 #
 # 
 comments:
-    provider: 
+    provider: duoshuo
     show_count: true
     short_name: chenall
 
@@ -85,15 +85,16 @@ analytics:
 
 # 站点顶部菜单,支持子菜单
 menu:
-#  About: about/
+  About: about/
   Archives: archives/
-#  泉州广播: qzgb-fm/
-#  在线电视:
-#    在线直播: tv/
-#    直播线路1: http://tv1.chenall.tk
-#    直播线路2: http://tv2.chenall.tk
-#  留言板: guestbook/
-#  GRUB4DOS: http://grub4dos.chenall.net
+  泉州广播: qzgb-fm/
+  在线电视:
+    在线直播: tv/
+    直播线路1: http://tv1.chenall.tk
+    直播线路2: http://tv2.chenall.tk
+  留言板: guestbook/
+  GRUB4DOS: http://grub4dos.chenall.net
+  ALMRUN: http://almrun.chenall.net
 
 # ajax_widgets是否使用jquery.load动态加载widget的内容,
 # 注: 部份小工具,像标签,分类,最近文章等,这些工具的内容在所有页面都是一样的,这时它就支持动态加载
@@ -110,17 +111,17 @@ widgets:
     - swiftype
     - google_cse
     - category
-#    - aliyun_sidebar
+    - aliyun_sidebar
     - latest_update_posts
     - random_posts
-#    - google_sidebar
+    - google_sidebar
     - tagcloud
-#    - sina_weiboshow
-#    - recent_comments
+    - sina_weiboshow
+    - recent_comments
   before_content: # 文章内容前
-#    - google_before_content
+    - google_before_content
   after_content:  # 文章内容后
-#    - google_after_content
+    - google_after_content
     - wumiiRelatedItems
     - post_footer_info
     - ujian
@@ -142,7 +143,7 @@ tag_minium: 3
 ## 设置一个CDN_URL地址,在文章中使用'[CDN_URL]:'字符串会自动替换
 CDN_URL: http://qiniu.chenall.net
 
-Beian: 闽ICP备14002519号
+Beian: 闽ICP备14002519号-1
 
 twitter_id: chenall
 facebook_id:
