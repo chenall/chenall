@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-10-27T02:42:35.328Z</updated>
+  <updated>2014-11-03T10:08:35.849Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/android_DriveDroid/"/>
     <id>http://chenall.net/post/android_DriveDroid/</id>
     <published>2014-10-18T13:06:00.000Z</published>
-    <updated>2014-10-27T02:42:23.000Z</updated>
+    <updated>2014-11-03T10:08:24.000Z</updated>
     <content type="html"><![CDATA[<h2 id="说明">说明</h2>
 <p>  <strong>This application requires root</strong>(需要手机有Root权限)</p>
 <p>  DriveDroid allows you to boot your PC from ISO/IMG files stored on your phone. This is ideal for trying Linux distributions or always having a rescue-system on the go… without the need to burn different CDs or USB pendrives.</p>
@@ -50,6 +50,7 @@
 <p><img src="http://qiniu.chenall.net/post/2014101821_04.png" alt=""></p>
 <p>本人的手机对这个支持的效果挺不错的，可以有三个LUN，可以同时支持软盘、光盘、U盘。效果图，lun0虚拟出一个软盘，lun1是光盘，lun2是可移动磁盘</p>
 <p><img src="http://qiniu.chenall.net/post/2014101821_05.png" alt=""></p>
+<p>注意看上图,左边有三个点,代表该设备支持三个LUN,你可以在每个LUN上都测试挂载一下 光盘,软盘等镜像,看看电脑上能不能正确显示出挂载内容,这样就可以知道是否有支持虚拟光盘,软盘了.</p>
 <p><img src="http://qiniu.chenall.net/post/2014101821_06.png" alt=""></p>
 <p>从Google Play 下载安装:(<a href="https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result</a>)</p>
 <p>百度网盘下载： <a href="http://pan.baidu.com/s/1qWluroS" target="_blank" rel="external">com.softwarebakery.drivedroid.ver.0.9.15.build.46.apk</a></p>
