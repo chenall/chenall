@@ -15,7 +15,7 @@ extend.generator.register(function(locals, render, callback){
 
 extend.filter.register('pre', function(data,next){
   var baseuri = usercfg.themeconfig.CDN_URL + "/post/" + data.id + "_";
-  data.content = data.content.replace(/\(@@POST@@:(.+?)\)/ig,"(" + baseuri + "$1)");
+  data.content = data.content.replace(/\(@@POST@@:(.+?(img|png|jpeg|jpg))\)/ig,"(" + baseuri + "$1/w400.png)");
   next();
 });
 
