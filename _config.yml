@@ -31,7 +31,7 @@ max_open_file: 150
 multi_thread: true
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 highlight:
   enable: false
   backtick_code_block: true
@@ -109,5 +109,5 @@ deploy:
   repo:
     github: git@github.com:chenall/chenall.git,gh-pages
     gitcafe: git@gitcafe.com:chenall/chenall.git,gitcafe-pages
-    googlecode: https://code.google.com/p/hexo-chenall/,pages
-    heroku: git@heroku.com:chenall-blog.git
+#    googlecode: https://code.google.com/p/hexo-chenall/,pages
+#    heroku: git@heroku.com:chenall-blog.git
