@@ -111,6 +111,50 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_initrdfs/">[grub4dos] grub4dos 最新版本initrdfs功能介绍</a></h1>
+      
+        <span>发表于<time datetime="2014-11-27T00:14:58.000Z"> <a href="/post/grub4dos_initrdfs/">2014-11-27</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>在<a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-11-26.cc7664c0/" target="_blank" rel="external">最新版本grub4dos</a>中,支持读写<code>linux initramfs</code>,另外为了方便使用还支持了自定义的批处理续尾格式.这些在grub4dos被识别为<code>initrdfs</code>,都是在内存中使用的.</p>
+<p>目前grub4dos initrdfs文件系统仅支持<code>cpio new</code>格式和grub4dos自定义格式,</p>
+<p>批处理续尾格式支持整合多个批处理和一块非批处理的数据块.</p>
+<p> 主批处理<em>[+批处理1][+批处理2][+批处理N][+数据块1]</em></p>
+<p>除了主批处理程序之后其它附加的内容都可以在主批处理中直接访问.访问方法 <code>%~m0/N</code> N是顺序号(注:当有附加了多个批处理时才可以这样子访问),详见后面更多介绍.</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/grub4dos_initrdfs/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/initrdfs/" class="label label-success" itemprop="url"><span itemprop="title">initrdfs</span></a></span> | <span class="time">最近更新:<time title="2014-11-27 11:50:22"datetime="2014-11-27 11:50:22"> 2014-11-27</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_initrdfs/#comments" class="ds-thread-count comment-link" data-thread-key="20141127" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/android_DriveDroid/">DriveDroid 让安卓手机变成系统启动盘</a></h1>
       
         <span>发表于<time datetime="2014-10-18T13:06:00.000Z"> <a href="/post/android_DriveDroid/">2014-10-18</a></time></span>      
@@ -504,49 +548,6 @@
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/luajit_ffi/">[分享] LuaJIT的FFI调用WINDOWS API功能示例</a></h1>
-      
-        <span>发表于<time datetime="2013-12-15T10:12:05.000Z"> <a href="/post/luajit_ffi/">2013-12-15</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <h1 id="关于LuaJIT,以下是官网的介绍-">关于LuaJIT,以下是官网的介绍.</h1>
-<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT is a </span><strong>Just-In-Time Compiler</strong><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> (JIT) for the </span><a href="http://www.lua.org/" target="_blank" rel="external">Lua</a><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;"> programming language. Lua is a powerful, dynamic and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone language.</span></p>
-<p>LuaJIT is Copyright © 2005-2013 Mike Pall, released under the <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank" rel="external">MIT open source license</a>.</p>
-<p><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px;">LuaJIT对原版LUA进行了一些扩展,功能更强大,实用,速度也更快.本文主要介绍一下</span><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small;"><span style="line-height: 20px;">FFI扩展功能.</span></span></p>
-<p>
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/luajit_ffi/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/LUA/" itemprop="url">LUA</a></li></span></div> | <span class="tags">标签 <a href="/tags/FFI/" class="label label-primary" itemprop="url"><span itemprop="title">FFI</span></a><a href="/tags/LUA/" class="label label-success" itemprop="url"><span itemprop="title">LUA</span></a><a href="/tags/WINDOWS/" class="label label-info" itemprop="url"><span itemprop="title">WINDOWS</span></a><a href="/tags/API/" class="label label-warning" itemprop="url"><span itemprop="title">API</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/luajit_ffi/#comments" class="ds-thread-count comment-link" data-thread-key="939" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -659,7 +660,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-25 09:36:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:37</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

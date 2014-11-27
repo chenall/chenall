@@ -111,6 +111,46 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></h1>
+      
+        <span>发表于<time datetime="2009-11-03T10:09:13.000Z"> <a href="/post/cqghost/">2009-11-03</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>基于Quick Ghost的一个应用 <a href="/post/Qgho/">Quick Ghost 快速一键还原</a> CQGHOST</p>
+<p>Ghost硬盘安装器，可以在你熟悉的Windows环境下恢复GHO文件（设定还原参数，重启系统后自动恢复指定GHO），需要先自行复制GHO文件到硬盘上（位置随意，不要放在系统盘就可以了）</p>
+<p>呵呵，做着玩的，并不比别人的好。但是很小巧，功能单一，很简单。有兴趣的可以下载研究。</p>
+<p>注意：只支持单硬盘（手工调整参数就可以支持比较复杂的多硬盘环境，适合高级用户使用），并且只支持VISTA以下系统（XP/2K/2003)</p>
+<p>因为偷懒，直接替换了NTLDR为自带的引导器，启动后直接进入还原。</p>
+<p>本程序无版权，使用自由，本人不承担一切后果.^_^</p>
+<p>下载地址:brsbox网盘下载，<a href="http://www.brsbox.com/filebox/down/fc/357d7c5ac6e97103fca91d4add2c0535" target="_blank" rel="external">CQGhost</a>,</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/综合/" itemprop="url">综合</a></li></span></div> | <span class="tags">标签 <a href="/tags/CQghost/" class="label label-primary" itemprop="url"><span itemprop="title">CQghost</span></a><a href="/tags/GHOST/" class="label label-success" itemprop="url"><span itemprop="title">GHOST</span></a><a href="/tags/硬盘安装/" class="label label-info" itemprop="url"><span itemprop="title">硬盘安装</span></a><a href="/tags/原创/" class="label label-warning" itemprop="url"><span itemprop="title">原创</span></a><a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/cqghost/#comments" class="ds-thread-count comment-link" data-thread-key="108" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></h1>
       
         <span>发表于<time datetime="2009-10-31T15:31:57.000Z"> <a href="/post/soft_vpn/">2009-10-31</a></time></span>      
@@ -826,55 +866,6 @@ goto :eof
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></h1>
-      
-        <span>发表于<time datetime="2009-09-16T15:40:45.000Z"> <a href="/post/windows_no_usbstor/">2009-09-16</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>有时候为了安全着想,需要禁用U盘,USB硬盘等储存设备,一般可以通过以下两种方式.</p>
-<ol>
-<li>在BIOS中禁用</li>
-<li>使用软件禁用</li>
-</ol>
-<p>在BIOS中禁用比较麻烦,而且一般情况下不能只禁用U盘,会连其它USB设备都用不了.用软件一般都比较强大(未用过).</p>
-<p>其实一般情况下,可以通过禁止安装USB驱动来实现(网上的资料有许多,通过删除U盘驱动来实现具体删除的文件名USBSTOR.*)</p>
-<p>为了方便我自己一般使用一个命令来实现,只要禁用一个驱动服务就可以了.</p>
-<p>命令如下.</p>
-<pre><code>sc config usbstor start= demand
-</code></pre><p>注意:<code>=</code>后面有一个空格.</p>
-<p>功能:把usbstor的服务设为手工启动.这样系统重启后,如果没有启用这个服务之前插上U盘等都是不能使用的.</p>
-<p>需要使用时可以使用以下命令开启服务就可以了.(开启了就不能再关闭,用完了就重启系统,这样就可以防止一般人使用U盘了)</p>
-<p>临时开启的命令如下:</p>
-<pre><code>net start usbstor
-</code></pre><p>说明:上面的<span style="color: #ff00ff">demand</span>如果改成<span style="color: #ff00ff">disabled</span>就是直接禁用了,不能直接使用net start usbstor来临时开启.</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/USBSTOR/" class="label label-primary" itemprop="url"><span itemprop="title">USBSTOR</span></a><a href="/tags/USB硬盘/" class="label label-success" itemprop="url"><span itemprop="title">USB硬盘</span></a><a href="/tags/禁用U盘/" class="label label-info" itemprop="url"><span itemprop="title">禁用U盘</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/windows_no_usbstor/#comments" class="ds-thread-count comment-link" data-thread-key="96" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -987,7 +978,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-25 09:36:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

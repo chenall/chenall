@@ -111,6 +111,55 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></h1>
+      
+        <span>发表于<time datetime="2010-06-21T09:32:01.000Z"> <a href="/post/grub4dos_tftp/">2010-06-21</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>　　由于最近在测试GRUB4DOS的网络启动,因为要测试不同TFTP服务器的情况.所以需要来回切换两个TFTP服务器.刚开始时还是使用比较保守的方法，即修改DHCP服务器的配置，指定TFTP服务器地址，然后重启PXE客户端．</p>
+<p>　　每次修改服务器的配置很麻烦，而且也影响了其它机器的启动，后来突然想到，GRUB4DOS　PXE启动时的服务器IP地址在内存中保存的位置是已知的．是不是可以直接修改这个IP地址来实现切换TFTP服务器的功能呢，经过测试是成功的，分享一下，也许在某些情况下你也用得上．^_^</p>
+<p>具体效果看图片．．．．</p>
+<p><img src="http://qiniu.chenall.net/upload/2010/06/BD825164772A2EE4EDE97353B2A955423D61BC96.png" alt=""></p>
+<p>启动时使用的是192.168.0.253服务器．</p>
+<p>通过修改内存地址<code>0x8288</code>位置的值来改来服务器IP地址．</p>
+<p>其中<code>0x3200a8c0</code>就是<code>192.168.0.50</code>转换过来的．</p>
+<p><code>0x3200a8c0</code>在内存中显示的是</p>
+<p><code>C0 A8 00 32</code>对应的十进制<code>192 168 0 50</code></p>
+<p>怎么样，应该看懂了吧．如果看不懂也没有关系．可以使用目前<code>GRUB4DOS</code>的内置命令calc来计算</p>
+<pre><code>calc 50&lt;&lt;8+0&lt;&lt;8+168&lt;&lt;8+192
+</code></pre><p>然后用write命令修改，也可以直接修改</p>
+<pre><code>calc *0x8288 = 50&lt;&lt;8+0&lt;&lt;8+168&lt;&lt;8+192
+</code></pre><p>只要把IP地址反序代替上面的相对应的数字就可以了．</p>
+<p>注：这里的计算器是简单计算，从左到右依次计算的．</p>
+<p>通过显示服务器上的一个文件可以看到已经成功改变了．</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/技巧/" itemprop="url">技巧</a></li></span></div> | <span class="tags">标签 <a href="/tags/TFTP/" class="label label-primary" itemprop="url"><span itemprop="title">TFTP</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_tftp/#comments" class="ds-thread-count comment-link" data-thread-key="452" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/sina_micoblog_sync/">分享］自动同步其它微搏到新浪微搏的方法</a></h1>
       
         <span>发表于<time datetime="2010-05-22T16:03:13.000Z"> <a href="/post/sina_micoblog_sync/">2010-05-23</a></time></span>      
@@ -627,137 +676,6 @@ title 2.title 2
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></h1>
-      
-        <span>发表于<time datetime="2010-01-29T12:23:05.000Z"> <a href="/post/grub4dos_fat/">2010-01-29</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <h2 id="[使用方法]">[使用方法]</h2>
-<p>下载后解压得到FAT文件复制到<a href="http://chenall.cn:82/categories/GRUB4DOS/" target="_blank" rel="external">GRUB4DOS</a>启动盘的/BOOT/GRUB目录下。</p>
-<p>或直接使用全路径比如这个文件放在(hd0,1)/boot目录下。</p>
-<p>则(hd0,1)/boot/fat xxxx</p>
-<h2 id="[命令参数]">[命令参数]</h2>
-<p><img src="http://qiniu.chenall.net/upload/2010/01/fat_help.png" alt=""></p>
-<p>FAT命令的目标对象必须是FAT12/16/32分区的目录和文件,目前只支持8.3格式</p>
-<ol>
-<li><p>FAT mkdir <directory></directory></p>
-<p>创建一个目录，只能一级一级建立目录，不可以同时建立多级目录；</p>
-<p>例子：FAT mkdir (hd1,0)/SRS</p>
-</li>
-<li><p>FAT copy [/o] <source file=""> <destination file=""></destination></p>
-<p>从源文件拷贝到目标文件，/o  参数用于覆盖操作。</p>
-<p>来源文件可以是任意GRUB4DOS可以访问的路径；</p>
-<p>目标文件必须是FAT分区;并且目标目录必须存在否则会提示错误；</p>
-<p>如果不指定目标文件名，自动使用源文件名；</p>
-<p>例子: fat copy (hd0,0)/file.ext (hd1,0)/file.ext</p>
-</li>
-<li><p>FAT ren <file directory=""> <new></new></file></p>
-<p>文件或目录更名/移动</p>
-<p>例子：</p>
-<p>1、修改当前ROOT分区下的abc.txt文件为abc.ini</p>
-<p>fat ren /abc.txt abc.ini</p>
-<p>2、移动文件，把abc.txt移到test目录下（test目录必须已经存在）</p>
-<p>fat ren /abc.txt /test/abc.txt</p>
-</li>
-<li><p>FAT del <file directory=""></file></p>
-<p>删除文件或目录（只能删除空目录同DOS）</p>
-<p>例子：<br>删除一个文件<br>fat del /abc.txt</p>
-<p>删除一个目录同删除文件一样，但要求这个目录是空目录，你必须先删除这个目录下的文件才能删除这个目录</p>
-<p>注意：不要删除根目录</p>
-</li>
-<li><p>FAT mkfile size=SIZE|* file</p>
-<p>创建新文件</p>
-<p>SIZE是文件大小，可以直接用*代替，大小等于上一个cat —length=0命令的结果。</p>
-<p>注:<code>cat --length=0 file</code>命令在<code>GRUB4DOS</code>中用于获取指定文件的大小。</p>
-</li>
-<li><p>FAT mkfs [/A:unit-size] <drive></drive></p>
-<p>格式化磁盘</p>
-</li>
-<li><p>FAT dir [/a*] <path></p>
-<p>列出路径下所有文件及目录。</p>
-<p>dir加了按属性显示的参数（同DOS的dir)</p>
-<p>d 目录</p>
-<p>s 系统属性</p>
-<p>r 只性属性</p>
-<p>h 隐藏属性</p>
-<p>- 表示<code>否</code>的前辍</p>
-<p>例子：</p>
-<p>dir /ad #只显示目录</p>
-<p>dir /as #只显示有带系统属性的文件或目录</p>
-<p>dir /ads #只显示带系统属性的目录</p>
-<p>dir /a-d #不显示目录。</p>
-</li>
-</ol>
-<ul>
-<li><p>2012-03-15</p>
-<p>新的版本介绍。</p>
-</li>
-<li><p>2010-02-09</p>
-<ol>
-<li><p>BUG修正,修改文件复制方式,加快复制的速度.</p>
-</li>
-<li><p>修正当内存低于128MB时不能正常使用的问题.</p>
-</li>
-</ol>
-</li>
-<li><p>2010-02-05</p>
-<ol>
-<li>修正写文件分配表的BUG(会导致文件读取失败).</li>
-</ol>
-</li>
-<li><p>2010-01-30</p>
-<ol>
-<li><p>修正FAT dir命令显示的问题。</p>
-</li>
-<li><p>添加了一些帮助信息。fat 或 fat help都可以显示帮助信息。</p>
-</li>
-<li><p>优化的创建文件分配表的代码。</p>
-</li>
-</ol>
-</li>
-<li><p>2010-01-29</p>
-<ol>
-<li>支持FAT32。</li>
-</ol>
-</li>
-<li><p>2010-01-13</p>
-<p>修正一个可用簇数计算方法的错误，导致写FAT表错误。</p>
-</li>
-<li><p>2010-01-12</p>
-<p>预览版。</p>
-</li>
-</ul>
-<h2 id="[下载地址]">[下载地址]</h2>
-<p>源码和程序下载:</p>
-<p><a href="http://code.google.com/p/grubutils" target="_blank" rel="external">http://code.google.com/p/grubutils/</a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/fat/" class="label label-primary" itemprop="url"><span itemprop="title">fat</span></a><a href="/tags/GRUB/" class="label label-success" itemprop="url"><span itemprop="title">GRUB</span></a><a href="/tags/GRUB4DOS/" class="label label-info" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/外部命令/" class="label label-warning" itemprop="url"><span itemprop="title">外部命令</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_fat/#comments" class="ds-thread-count comment-link" data-thread-key="124" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -870,7 +788,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-25 09:36:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

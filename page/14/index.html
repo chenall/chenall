@@ -111,6 +111,74 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></h1>
+      
+        <span>发表于<time datetime="2008-12-14T06:53:38.000Z"> <a href="/post/post34/">2008-12-14</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>在PE下安装硬盘控制器驱动都是失败的,因为都是使用DEVCON类.</p>
+<p>由我之前发的贴子<a href="http://bbs.wuyou.com/viewthread.php?tid=133135" target="_blank" rel="external"><font color="#333333">[原创]让你的PE/XP/2003系统支持EXFAT.</font></a></p>
+<p>我突然想到,SCSI驱动是不是也可以使用类似的方法呢,实验证明我的想法有一定的可行性(因无条件进行全面测试)</p>
+<p>具体安装方法.</p>
+<p>1.把这个驱动的SYS文件复制到DRIVERS目录,其它文件复制到(不需要INF文件)SYSTEM32.</p>
+<p>注:一般都是只有一个SYS文件的所以只要把这个SYS文件复制到DRIVERS目录就好了.</p>
+<p>2.把这个SYS文件设为服务并启动.</p>
+<p>3.好了,如果服务正常启动,那系统中就会显示出你的SCSI硬盘.</p>
+<p>附上测试效果图.使用VMSARE测试.</p>
+<p><img src="http://qiniu.chenall.net/upload/2008/12/0.JPG" alt=""><img src="http://qiniu.chenall.net/upload/2008/12/1.JPG" alt=""><img src="http://qiniu.chenall.net/upload/2008/12/2.JPG" alt=""></p>
+<p>附件为下面批处理脚本,可用在PE下</p>
+<pre><code class="bat">@echo off
+title 在PE下安装硬盘控制器驱动简单脚本 by chenall 2008-12-14
+rem 使用方法: 1.可直接拖放,即把对应驱动的SYS文件拖放到这个程序的图标上.
+rem  2.使用命令行pe_scsi.cmd [你的SYS文件]
+rem http://chenall.net
+if &quot;%1&quot;==&quot;&quot; goto :eof
+&gt;&quot;%temp%\scsi_serv.inf&quot; echo.
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.[Version]
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.signature = &quot;$Windows NT$&quot;
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.[DefaultInstall.Services]
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.AddService =  %~n1,,Service
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.[Service]
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.DisplayName = &quot;%~n1 Service&quot;
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.Description = &quot;%~1&quot;
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.ServiceType = 2
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.StartType = 2
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.ErrorControl = 1
+&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.ServiceBinary =  %%12%%\%~nx1
+copy  /y  %1  %WinDir%\system32\drivers &gt;nul
+rundll32.exe setupapi,InstallHinfSection DefaultInstall 132  %temp%\scsi_serv.inf
+if not errorlevel 1 (echo. %~nX1驱动安装成功 ! &amp; pecmd serv %~n1 &amp; pause) else (echo.安装失败 !&amp;pause)
+del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
+</code></pre>
+<p><a href="http://qiniu.chenall.net/upload/2008/12/PE_SCSI.rar">PE_SCSI.rar</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/SCSI/" class="label label-success" itemprop="url"><span itemprop="title">SCSI</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post34/#comments" class="ds-thread-count comment-link" data-thread-key="34" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post33/">遭遇DOS下extract.exe 内存不足的问题.</a></h1>
       
         <span>发表于<time datetime="2008-12-10T09:18:35.000Z"> <a href="/post/post33/">2008-12-10</a></time></span>      
@@ -635,90 +703,6 @@ qq.com/http_imgload.cgi?/rurl2=b4c3ce510d23a26f5b184663d47bb0c94f72fc700de121450
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/cmd2exe/">[转载]CMD 批处理转 EXE，仅17K。</a></h1>
-      
-        <span>发表于<time datetime="2008-06-04T07:14:29.000Z"> <a href="/post/cmd2exe/">2008-06-04</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <blockquote>
-
-
-<p>2008.06.04测试版</p>
-<ol>
-<li>修正了转换小体积批处理脚本出现的问题；</li>
-<li>修正了在16位色彩系统中显示主程序图标出现的问题；</li>
-<li><p>增加了自动填写EXE文件扩展名的功能。</p>
-<p>至此，cmd2exe 除了保护脚本(cmd2exe界面变灰的那一项)功能没有完成外，其余功能已经实现。<br>附件内有两个 CMD 及转换成的 EXE，其中一个 CMD 很小(5个字节)，别一个较大(6K)。</p>
-</li>
-</ol>
-<p>2008.06.03测试版</p>
-<ol>
-<li>增加了 BAT 文件的支持；</li>
-<li>加入了鼠标拖放操作支持；</li>
-<li>修正了隐藏CMD执行界面的BUG；</li>
-</ol>
-<p>其它问题可能还存在，测试时注意：</p>
-<ol>
-<li>加入图标时不要用大体积的图标，最好是32*32或48*48规格的图标。<br>有些从网上下载的图标是图标组，一个文件中含有多个图标，体积也很大(多达几百K)，<br>这样的图标先用工具提取出32*32或48*48单个图标后，再用到 cmd2exe 中(如果这样的<br>图标组中含有这两种规格的图标 cmd2exe 是可以处理的)。</li>
-<li>不要用太小的 CMD 来试验，太小的CMD转成EXE后内存解压出错(本人也在找原因)。</li>
-<li>吸引人的关键功能，隐藏临时目录的CMD还没有实现。</li>
-</ol>
-<p>CMD2EXE - V2.8.6.1版</p>
-<ol>
-<li>修正了不能插入超大图标的BUG；</li>
-<li>修正了转成的EXE不能隐藏执行的BUG；</li>
-<li>修正了转成的EXE不能自动结束的BUG；</li>
-<li>所有中文字符串做入了资源文件；</li>
-<li>CMD批处理文件体积理论上无限(变态的16M，够用了！)。</li>
-</ol>
-<p>正式版的 CMD2EXE 同样是17K，建议：</p>
-<ol>
-<li>尽可能不要插入太大的图标；</li>
-<li>有空的鸟人尽可能多作测试，功能测试和杀毒工具测试。</li>
-</ol>
-<p>很顺利，总算完成，还有些特色：</p>
-<ol>
-<li>绿色单文件，超小，才17K；</li>
-<li>转换出来的EXE体积也很小；</li>
-<li>具有基本的常用功能，加图标. 隐藏执行. 完毕删除等。</li>
-</ol>
-<p>大家先测试一些日子，发现问题再完善，主要测试两方面：</p>
-<ol>
-<li>功能测试，看看现有的功能是否正常；</li>
-<li>避杀测试，看看会不会被杀毒工具查杀。</li>
-</ol>
-<footer><strong>lx1638,无忧启动 </strong><cite><a href="http://bbs.wuyou.com/forum.php?mod=viewthread&tid=126328" target="_blank" rel="external">批处理转 可执行文件的工具。</a></cite></footer></blockquote>
-
-<p><img src="http://qiniu.chenall.net/upload/2008/6/cmd2exe.JPG" alt=""></p>
-<p><a href="http://qiniu.chenall.net/upload/2008/6/cmd2exe.gz">cmd2exe.gz</a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/cmd2exe/" class="label label-primary" itemprop="url"><span itemprop="title">cmd2exe</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/cmd2exe/#comments" class="ds-thread-count comment-link" data-thread-key="12" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -831,7 +815,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-25 09:36:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

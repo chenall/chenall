@@ -111,6 +111,55 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></h1>
+      
+        <span>发表于<time datetime="2009-09-16T15:40:45.000Z"> <a href="/post/windows_no_usbstor/">2009-09-16</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>有时候为了安全着想,需要禁用U盘,USB硬盘等储存设备,一般可以通过以下两种方式.</p>
+<ol>
+<li>在BIOS中禁用</li>
+<li>使用软件禁用</li>
+</ol>
+<p>在BIOS中禁用比较麻烦,而且一般情况下不能只禁用U盘,会连其它USB设备都用不了.用软件一般都比较强大(未用过).</p>
+<p>其实一般情况下,可以通过禁止安装USB驱动来实现(网上的资料有许多,通过删除U盘驱动来实现具体删除的文件名USBSTOR.*)</p>
+<p>为了方便我自己一般使用一个命令来实现,只要禁用一个驱动服务就可以了.</p>
+<p>命令如下.</p>
+<pre><code>sc config usbstor start= demand
+</code></pre><p>注意:<code>=</code>后面有一个空格.</p>
+<p>功能:把usbstor的服务设为手工启动.这样系统重启后,如果没有启用这个服务之前插上U盘等都是不能使用的.</p>
+<p>需要使用时可以使用以下命令开启服务就可以了.(开启了就不能再关闭,用完了就重启系统,这样就可以防止一般人使用U盘了)</p>
+<p>临时开启的命令如下:</p>
+<pre><code>net start usbstor
+</code></pre><p>说明:上面的<span style="color: #ff00ff">demand</span>如果改成<span style="color: #ff00ff">disabled</span>就是直接禁用了,不能直接使用net start usbstor来临时开启.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/USBSTOR/" class="label label-primary" itemprop="url"><span itemprop="title">USBSTOR</span></a><a href="/tags/USB硬盘/" class="label label-success" itemprop="url"><span itemprop="title">USB硬盘</span></a><a href="/tags/禁用U盘/" class="label label-info" itemprop="url"><span itemprop="title">禁用U盘</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/windows_no_usbstor/#comments" class="ds-thread-count comment-link" data-thread-key="96" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></h1>
       
         <span>发表于<time datetime="2009-09-14T05:43:59.000Z"> <a href="/post/batch_email_backup/">2009-09-14</a></time></span>      
@@ -737,77 +786,6 @@ auth-nocache
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></h1>
-      
-        <span>发表于<time datetime="2009-05-19T01:29:43.000Z"> <a href="/post/openvpn_script_pre/">2009-05-19</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>经过几天的试用,发现OpenVPN的稳定性还是挺不错的,而且功能也很强大,可以丢掉<strong>SoftEther</strong>了.</p>
-<p>OpenVPN,可以在一些特定的情况下自动运行多种脚本,通过这些脚本,可以实现很多非常有用的功能.还可以提高安全性.</p>
-<p>例子.</p>
-<p>验证证书的时候,<em>tls-verify</em> </p>
-<p>用户和密码验证脚本.<em>auth-user-pass-verify </em></p>
-<p>使用好这些脚本,可以实现OpenVPN的统一管理,证书密码,权限之类的.</p>
-<p>例举几个比较实用的功能,</p>
-<ol>
-<li><p>可以通过这些脚本来管理证书.<br> 一般情况下证书如果丢失了需要吊销(使用<span style="background-color: yellow; color: #ee6600" id="Mark">REVOKE-full.bat</span>脚本来处理),这样子吊销可能比较麻烦.<br>其实通过一些自动运行的脚本同样可以达到这种目的,还可以通过数据库统一管理,在脚本里面自动连接数据库,根据数据库里面的内容来确定这个证书是否充许使用.<br><em>tls-verify</em> <strong>cmd</strong>  </p>
-<p>注:也可以在其它地方验证.(一般情况下还是使用这个来验证.因为这个是每一个小时自动验证一次的,验证通过就保持连接,否则就断开连接)</p>
-</li>
-<li><p>使用用户名和密码验证.<br> <em>auth-user-pass-verify</em> <strong>cmd [via_env|via-file]</strong></p>
-<p> 同样的可以通过脚本连接到数据库来管理用户. </p>
-</li>
-<li><p>禁止某个IP登录./只充许部份指定的IP进行登录.<br>在大部份自动运行的脚本中都可以应用.</p>
-</li>
-<li><p>在连接或断开时自动运行.<br><em>up</em> <strong>cmd</strong>(在连接上以后执行,可以用于处理路由等)<br><em>down-pre</em> <strong>cmd</strong> (在断开之时执行,)<br><em>down</em> <strong>cmd</strong>(在断开之后执行)  </p>
-</li>
-</ol>
-<p>要注意的是.<br>在OpenVPN 2.1_rc9.以后的版本中配置文件中要使用如下语句</p>
-<p><em>script-security</em> 2 system(不保存密码在环境变量中)或<em>script-security</em> <strong>3</strong> system(保存密码在环境变量中)</p>
-<p>当使用</p>
-<p><em>auth-user-pass-verify</em> cmd via_env</p>
-<p>验证密码时,如果<em>script-security</em> <strong>2</strong>时就不能验证密码了,需要使用<em>script-security</em> <strong>3</strong></p>
-<p>后面SYSTEM参数的作用是,</p>
-<p>The <strong>method</strong> parameter indicates how OpenVPN should call external commands and scripts. Settings for <strong>method:</strong></p>
-<ul>
-<li><strong>execve</strong> — (default) Use execve() function on Unix family OSes and CreateProcess() on Windows.   </li>
-<li><strong>system</strong> — Use system() function (deprecated and less safe since the external program command line is subject to shell expansion).</li>
-</ul>
-<p>如果不加这个参数使用默认的(<strong>execve</strong>),那在执行脚本时一般情况下只能使用内置命令.</p>
-<p>(当然了这个环境也可以说比较安全).可以通过指定路径来运行外部程序,但不一定都是可以运行成功的.</p>
-<p>使用<strong>SYSTEM</strong>参数后,就可以得到一个比较完整的环境</p>
-<p>例子.脚本是一个批处理文件.</p>
-<pre><code>up test.cmd
-</code></pre><p>test.cmd内容就以下一句话  </p>
-<pre><code>@set&gt;test.log
-</code></pre><p>使用加SYSTEM参数前后对比生成文件的内容就可以发现其中的区别.<br>```</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li><li><a href="/categories/系统相关/OpenVPN/" itemprop="url">OpenVPN</a></li></span></div> | <span class="tags">标签 <a href="/tags/openvpn/" class="label label-primary" itemprop="url"><span itemprop="title">openvpn</span></a><a href="/tags/脚本/" class="label label-success" itemprop="url"><span itemprop="title">脚本</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/openvpn_script_pre/#comments" class="ds-thread-count comment-link" data-thread-key="63" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -920,7 +898,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-25 09:36:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-11-25T01:35:58.529Z</updated>
+  <updated>2014-11-27T03:50:32.473Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -13,6 +13,85 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[[grub4dos] grub4dos 最新版本initrdfs功能介绍]]></title>
+    <link href="http://chenall.net/post/grub4dos_initrdfs/"/>
+    <id>http://chenall.net/post/grub4dos_initrdfs/</id>
+    <published>2014-11-27T00:14:58.000Z</published>
+    <updated>2014-11-27T03:50:22.000Z</updated>
+    <content type="html"><![CDATA[<p>在<a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-11-26.cc7664c0/" target="_blank" rel="external">最新版本grub4dos</a>中,支持读写<code>linux initramfs</code>,另外为了方便使用还支持了自定义的批处理续尾格式.这些在grub4dos被识别为<code>initrdfs</code>,都是在内存中使用的.</p>
+<p>目前grub4dos initrdfs文件系统仅支持<code>cpio new</code>格式和grub4dos自定义格式,</p>
+<p>批处理续尾格式支持整合多个批处理和一块非批处理的数据块.</p>
+<p> 主批处理<em>[+批处理1][+批处理2][+批处理N][+数据块1]</em></p>
+<p>除了主批处理程序之后其它附加的内容都可以在主批处理中直接访问.访问方法 <code>%~m0/N</code> N是顺序号(注:当有附加了多个批处理时才可以这样子访问),详见后面更多介绍.</p>
+<a id="more"></a>
+
+<p>以下摘抄一些资料</p>
+<blockquote>
+<h2 id="initrd与initramfs">initrd与initramfs</h2>
+<p>Linux 的 <code>initrd</code> 技术是一个非常普遍使用的机制，linux2.6 内核的 initrd 的文件格式由原来的文件系统镜像文件转变成了 cpio 格式，变化不仅反映在文件格式上， linux 内核对这两种格式的 initrd 的处理有着截然的不同。</p>
+<h3 id="initrd:">initrd:</h3>
+<p>ram disk是一个基于ram的块设备，因此它占据了一块固定的内存，而且事先要使用特定的工具比如mke2fs格式化，还需要一个文件系统驱动来读写其上的文件。<br>如果这个disk上的空间没有用完，这些未用的内存就浪费掉了，并且这个disk的空间固定导致容量有限，要想装入更多的文件就需要重新格式化。<br>由于Linux的块设备缓冲特性, ram disk上的数据被拷贝到page cache(对于文件数据)和dentry cache(对于目录项), 这个也导致内存浪费.</p>
+<h3 id="initramfs:">initramfs:</h3>
+<p>最初的想法是Linus提出的: 把cache当作文件系统装载。</p>
+<p>他在一个叫ramfs的cache实现上加了一层很薄的封装，其他内核开发人员编写了一个改进版tmpfs，这个文件系统上的数据可以写出到交换分区，而且可以设定一个tmpfs装载点的最大尺寸以免耗尽内存。initramfs就是tmpfs的一个应用。</p>
+<p>优点：  </p>
+<ul>
+<li>tmpfs随着其中数据的增减自动增减容量.  </li>
+<li>在tmpfs和<em>page cache/dentry cache</em>之间没有重复数据.  </li>
+<li>tmpfs重复利用了Linux caching的代码, 因此几乎没有增加内核尺寸, 而caching的代码已经经过良好测试, 所以tmpfs的代码质量也有保证.  </li>
+<li>不需要额外的文件系统驱动.  </li>
+</ul>
+<p>另外, <code>initrd</code>机制被设计为旧的”root=”机制的前端，而非其替代物，它假设真正的根设备是一个块设备， 而且也假设了自己不是真正的根设备，这样不便将NFS等作为根文件系统。最后<code>/linuxrc</code>不是以<code>PID=1</code>执行的, 因为<code>1</code>这个进程<code>ID</code>是给<code>/sbin/init</code>保留的。 <code>initrd</code>机制找到真正的根设备后将其设备号写入<em>/proc/sys/kernel/real-root-dev</em>， 然后控制转移到内核由其装载根文件系统并启动<em>/sbin/init</em>。<br><code>initramfs</code>则去掉了上述假设， 而且<code>/init</code>以<code>PID=1</code>执行， 由<code>init</code>装载根文件系统并用<code>exec</code>转到真正的<em>/sbin/init</em>， 这样也导致一个更为干净漂亮的设计。</p>
+<h3 id="生成initramfs镜像命令">生成initramfs镜像命令</h3>
+<p>若镜像根目录为/initrd，执行下面命令在当前用户主文件夹中生成myinitramfs.gz镜像。</p>
+<pre><code class="bat">cd /initrd 
+find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
+</code></pre>
+<p>注1: 以上生成的镜像文件是gzip压缩过的。如果不加<code>|gzip</code>则就是原始的cpio档.<br>注2: windows下可以使用以下命令行成<br>   dir /b | cpio -o -H newc &gt; myinitramfs.cpio</p>
+</blockquote>
+<h2 id="GRUB4DOS_initrdfs介绍">GRUB4DOS initrdfs介绍</h2>
+<h3 id="格式限制">格式限制</h3>
+<ol>
+<li>多个批处理附加时,使用<code>NULL</code>字符分隔每个批处理(必须的,而且只能有一个<code>NULL</code>字符),并且附加的批处理文件不能压缩(暂不支持压缩).  </li>
+<li>如果是只附加一个数据文件,建议不要压缩,这样才可以直接访问.  </li>
+</ol>
+<h2 id="其它说明">其它说明</h2>
+<h3 id="只附加一个数据文件">只附加一个数据文件</h3>
+<p>如果这个数据文件没有压缩,而且是GRUB4DOS可以识别的格式那可以直接用设备<code>%~m0</code>来访问里面的文件.</p>
+<p>建议只附加一个CPIO/ISO格式,这样子使用起来最方便,也最节省空间(附加的文件同样不要压缩). </p>
+<p>批处理加附一个CPIO文件(CPIO里面的文件可以压缩)<br>则在批处理中可以直接使用<code>%~m0/FILE</code>访问<code>File</code>就是CPIO包里面对应的文件.</p>
+<p>ISO/IMG等格式也是一样的.</p>
+<h3 id="如果单纯附加了批处理文件">如果单纯附加了批处理文件</h3>
+<p> 访问方式: <code>%~m0/1</code>是第一个文件,<code>%~m0/2</code>是第二个文件,以此类推.并且可以直接运行</p>
+<h3 id="如果附加了批处理和数据文件">如果附加了批处理和数据文件</h3>
+<p> 根据附加顺序<code>%~m0/1</code> <code>%~m0/2</code>来访问/</p>
+<p> 若附加的数据文件是CPIO等GRUB4DOS可识别的格式,而且没有压缩的话,那可以通过以下方法访问里面的文件</p>
+<pre><code class="bat"> set rdev=
+ blocklist %~m0/1 | call :get_dev=
+ ls %rdev%/
+ cat %rdev%/file
+ goto :eof
+ :get_dev
+ set rdev=%~d1
+ goto :eof
+</code></pre>
+]]></content>
+    <summary type="html"><![CDATA[<p>在<a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-11-26.cc7664c0/" target="_blank" rel="external">最新版本grub4dos</a>中,支持读写<code>linux initramfs</code>,另外为了方便使用还支持了自定义的批处理续尾格式.这些在grub4dos被识别为<code>initrdfs</code>,都是在内存中使用的.</p>
+<p>目前grub4dos initrdfs文件系统仅支持<code>cpio new</code>格式和grub4dos自定义格式,</p>
+<p>批处理续尾格式支持整合多个批处理和一块非批处理的数据块.</p>
+<p> 主批处理<em>[+批处理1][+批处理2][+批处理N][+数据块1]</em></p>
+<p>除了主批处理程序之后其它附加的内容都可以在主批处理中直接访问.访问方法 <code>%~m0/N</code> N是顺序号(注:当有附加了多个批处理时才可以这样子访问),详见后面更多介绍.</p>
+]]></summary>
+    
+      <category term="GRUB4DOS" scheme="http://chenall.net/tags/GRUB4DOS/"/>
+    
+      <category term="initrdfs" scheme="http://chenall.net/tags/initrdfs/"/>
+    
+      <category term="GRUB4DOS" scheme="http://chenall.net/categories/GRUB4DOS/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[DriveDroid 让安卓手机变成系统启动盘]]></title>
@@ -1866,46 +1945,6 @@ $fs-&gt;ls();
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
       <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[单文件程序制作利器Cameyo更新]]></title>
-    <link href="http://chenall.net/post/cameyo_2-0-873/"/>
-    <id>http://chenall.net/post/cameyo_2-0-873/</id>
-    <published>2013-02-05T08:33:52.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
-    <content type="html"><![CDATA[<p>本站的软件大部份是使用该软件制作的.</p>
-<h2 id="Cameyo_News">Cameyo News</h2>
-<h3 id="Version_2-0-873_is_out">Version 2.0.873 is out</h3>
-<ul>
-<li>Improved Windows 8 support</li>
-<li>Automatically notifies about new Cameyo versions</li>
-<li><p>New languages</p>
-<p>If you don’t already have it, <a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ1/cameyo.com/download.aspx" target="_blank" rel="external">download it now</a></p>
-</li>
-</ul>
-<h3 id="Coming_soon(看到以下内容了吗?太赞了-期待新的版本)">Coming soon(看到以下内容了吗?太赞了.期待新的版本)</h3>
-<p> Our upcoming major version will:</p>
-<ul>
-<li>Be FAST</li>
-<li>Include execute-from-memory mode (no files pre-extraction)</li>
-<li>Store program files separately from data / modified files</li>
-<li>Support auto-updating for virtual applications</li>
-<li>Allow password protection against package editing</li>
-<li>Be Terminal Servers friendly</li>
-<li>Contain many more things we can’t tell you just yet!</li>
-</ul>
-<h3 id="Useful_links_to_remember:">Useful links to remember:</h3>
-<p><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ3/online.cameyo.com/library.aspx" target="_blank" rel="external">Online App Library</a><br><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ4/online.cameyo.com/library.aspx" target="_blank" rel="external">Access your personal Favorite apps, from anywhere</a><br><a href="http://eqt.r.mailjet.com/3ddde796/2oXYNz/nYYBJ5/online.cameyo.com/submit.aspx" target="_blank" rel="external">Our unique online packager</a>  </p>
-]]></content>
-    
-    
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
-    
-      <category term="单文件" scheme="http://chenall.net/tags/%E5%8D%95%E6%96%87%E4%BB%B6/"/>
-    
-      <category term="软件推荐" scheme="http://chenall.net/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
     
   </entry>
   

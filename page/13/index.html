@@ -111,6 +111,66 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></h1>
+      
+        <span>发表于<time datetime="2009-03-08T09:14:21.000Z"> <a href="/post/grub4dos_menu/">2009-03-08</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>大家都知道GRLDR中的内置菜单不能超过4KB,如果超过就会被截断.</p>
+<p>如果超过4KB的菜单想要内置怎么办呢?</p>
+<p>之前有想过使用GZ压缩,可是内置菜单不支持GZ压缩的格式.</p>
+<p>后来得知启动后内置菜单的位置在内存中是固定的0X800处.</p>
+<p>所以就想了个折中的办法.在内置的菜单中加入GZ压缩的菜单文件.</p>
+<p>原理我就不多说了,贴上代码.</p>
+<p>使用方法,</p>
+<p>把以下代码另存为批处理文件,把你的菜单文件用GZ压缩(压缩后不能超过3KB)</p>
+<p>然后使用批处理加参数执行(或直接把压缩后的菜单文件拖放到批处理文件图标上)</p>
+<p>再用GRUBMENU导入生成的menu.lst就可以了.</p>
+<p>注意使用grubmenu导入时要加-r参数如下.</p>
+<p>grubmenu -r import grldr menu.lst</p>
+<pre><code class="bat">@echo off
+setlocal
+cd /d &quot;%~dp0&quot;
+if not exist &quot;%~1&quot; (
+  echo.参数错误!!
+  pause
+  goto :eof
+)
+for %%i in (%1) do echo.configfile (md)5+7,%%~zi&gt;menu.lst
+for %%i in (menu.lst) do set /a ns=512-%%~zi
+fsutil file createnew menu_ex.lst %ns%
+copy /y /b menu.lst /b + menu_ex.lst /b + %1 /b
+del menu_ex.lst
+pause 15.
+</code></pre>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/菜单/" class="label label-success" itemprop="url"><span itemprop="title">菜单</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_menu/#comments" class="ds-thread-count comment-link" data-thread-key="47" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></h1>
       
         <span>发表于<time datetime="2009-03-02T05:43:03.000Z"> <a href="/post/post45/">2009-03-02</a></time></span>      
@@ -1294,74 +1354,6 @@ DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></h1>
-      
-        <span>发表于<time datetime="2008-12-14T06:53:38.000Z"> <a href="/post/post34/">2008-12-14</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>在PE下安装硬盘控制器驱动都是失败的,因为都是使用DEVCON类.</p>
-<p>由我之前发的贴子<a href="http://bbs.wuyou.com/viewthread.php?tid=133135" target="_blank" rel="external"><font color="#333333">[原创]让你的PE/XP/2003系统支持EXFAT.</font></a></p>
-<p>我突然想到,SCSI驱动是不是也可以使用类似的方法呢,实验证明我的想法有一定的可行性(因无条件进行全面测试)</p>
-<p>具体安装方法.</p>
-<p>1.把这个驱动的SYS文件复制到DRIVERS目录,其它文件复制到(不需要INF文件)SYSTEM32.</p>
-<p>注:一般都是只有一个SYS文件的所以只要把这个SYS文件复制到DRIVERS目录就好了.</p>
-<p>2.把这个SYS文件设为服务并启动.</p>
-<p>3.好了,如果服务正常启动,那系统中就会显示出你的SCSI硬盘.</p>
-<p>附上测试效果图.使用VMSARE测试.</p>
-<p><img src="http://qiniu.chenall.net/upload/2008/12/0.JPG" alt=""><img src="http://qiniu.chenall.net/upload/2008/12/1.JPG" alt=""><img src="http://qiniu.chenall.net/upload/2008/12/2.JPG" alt=""></p>
-<p>附件为下面批处理脚本,可用在PE下</p>
-<pre><code class="bat">@echo off
-title 在PE下安装硬盘控制器驱动简单脚本 by chenall 2008-12-14
-rem 使用方法: 1.可直接拖放,即把对应驱动的SYS文件拖放到这个程序的图标上.
-rem  2.使用命令行pe_scsi.cmd [你的SYS文件]
-rem http://chenall.net
-if &quot;%1&quot;==&quot;&quot; goto :eof
-&gt;&quot;%temp%\scsi_serv.inf&quot; echo.
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.[Version]
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.signature = &quot;$Windows NT$&quot;
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.[DefaultInstall.Services]
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.AddService =  %~n1,,Service
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.[Service]
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.DisplayName = &quot;%~n1 Service&quot;
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.Description = &quot;%~1&quot;
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.ServiceType = 2
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.StartType = 2
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.ErrorControl = 1
-&gt;&gt;&quot;%temp%\scsi_serv.inf&quot; echo.ServiceBinary =  %%12%%\%~nx1
-copy  /y  %1  %WinDir%\system32\drivers &gt;nul
-rundll32.exe setupapi,InstallHinfSection DefaultInstall 132  %temp%\scsi_serv.inf
-if not errorlevel 1 (echo. %~nX1驱动安装成功 ! &amp; pecmd serv %~n1 &amp; pause) else (echo.安装失败 !&amp;pause)
-del  /f  /q &quot;%temp%\scsi_serv.inf&quot;
-</code></pre>
-<p><a href="http://qiniu.chenall.net/upload/2008/12/PE_SCSI.rar">PE_SCSI.rar</a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span><span class="breadcrumb"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/批处理/" class="label label-primary" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/SCSI/" class="label label-success" itemprop="url"><span itemprop="title">SCSI</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post34/#comments" class="ds-thread-count comment-link" data-thread-key="34" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1474,7 +1466,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-25 09:36:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
