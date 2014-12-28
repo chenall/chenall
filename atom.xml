@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-12-28T13:46:45.040Z</updated>
+  <updated>2014-12-28T13:52:50.004Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,16 +19,18 @@
     <link href="http://chenall.net/post/grub4dos_ipxe/"/>
     <id>http://chenall.net/post/grub4dos_ipxe/</id>
     <published>2014-12-27T16:00:00.000Z</published>
-    <updated>2014-12-28T13:46:35.000Z</updated>
+    <updated>2014-12-28T13:52:41.000Z</updated>
     <content type="html"><![CDATA[<p>  <a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-12-27/" target="_blank" rel="external">最新版本grub4dos</a>的发行包里面有一个<code>ipxegrldr</code>文件,这个文件其实是整合了<code>undionly.kpxe</code>和<code>grldr</code>的文件,可以作为PXE的启动文件.</p>
 <h2 id="新的功能">新的功能</h2>
 <ul>
 <li>使用该文件启动可以完整支持<code>ipxe</code>的所有功能调用,通过它允许直接在<code>grub4dos</code>下访问<code>WEB</code>或<code>SAN</code>上面的文件.</li>
 <li><p>另外相对应的增加了一个命令<code>ipxe</code>,使用它可以调用各种<a href="http://ipxe.org/cmd" target="_blank" rel="external">ipxe命令</a></p>
-<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong><br><a id="more"></a></p>
-<h2 id="相关用法介绍">相关用法介绍</h2>
+<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong></p>
+<a id="more"></a>
+
 </li>
 </ul>
+<h2 id="相关用法介绍">相关用法介绍</h2>
 <ol>
 <li><p>可以直接访问网络上的文件.</p>
 <pre><code>cat http://b.chenall.net/menu.ipxe
@@ -85,7 +87,8 @@ ipxe sanunhook -d 0xff
 <ul>
 <li>使用该文件启动可以完整支持<code>ipxe</code>的所有功能调用,通过它允许直接在<code>grub4dos</code>下访问<code>WEB</code>或<code>SAN</code>上面的文件.</li>
 <li><p>另外相对应的增加了一个命令<code>ipxe</code>,使用它可以调用各种<a href="http://ipxe.org/cmd" target="_blank" rel="external">ipxe命令</a></p>
-<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong><br>]]></summary>
+<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong></p>
+]]></summary>
     
       <category term="GRUB4DOS" scheme="http://chenall.net/tags/GRUB4DOS/"/>
     
