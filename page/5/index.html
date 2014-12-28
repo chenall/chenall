@@ -111,6 +111,244 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]</a></h1>
+      
+        <span>发表于<time datetime="2012-01-19T00:00:35.000Z"> <a href="/post/grub4dos_dev/">2012-01-19</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>因为经常使用WINDOWS系统，为了方便直接在WINDOWS下搭建。</p>
+<p>使用Colinux可以很方便的在WINDOWS中运行一直真实的Linux环境。</p>
+<p>好了，废话不多说了，直接开始了。如果想偷懒的话，有提供了可以直接使用的成品下载。</p>
+<p>说明: <strong>内容比较乱,只是记录一下整这个的过程(从文件大小也从最初的几个G到整最后的<code>50MB</code>,偷懒的直接下载最新版本就行了,想自己折腾的可以继续看下去(按日期顺序从后往前看)</strong></p>
+<p>===========2014-06-25=============</p>
+<p>修正使用git下载源码时出现的问题.</p>
+<pre><code>cofuse: unsuppored request 6
+fatal: cannot symlink &#39;/tmp/tcloop/git-1.6/usr/share/git-core/templates/info/exc
+lude&#39; &#39;/mnt/cofs/grub4dos/.git/info/exclude&#39;: Function not implemented
+</code></pre><p>下载地址: <a href="http://dl.grub4dos.chenall.net/grub4dos_dev_2014-06-25.7z" target="_blank" rel="external">grub4dos_dev_2014-06-25.7z</a></p>
+<p>===========2013-03-02=============</p>
+<p>由于gcc4.7编译出来的和版本启动memtest86有问题,<br>gcc换成4.8版.<br>git 换成1.6版.<br>下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-02-03.zip" target="_blank" rel="external">grub4dos_dev-gcc-4.8</a></p>
+<p>===========2013-01-14=============<br>更新了一下,使用最新的tinycolinux内核 4.7.3<br>svn 1.7.5<br>git 1.8.0<br>gcc 4.7.2</p>
+<p>下载地址1:  <a href="http://code.google.com/p/grub4dos-chenall/downloads/detail?name=grub4dos_dev_2013-01-14.zip" target="_blank" rel="external">grub4dos_dev</a><br>MD5: F41AF644B3DA6C133A35C45278047C24<br>===========2012-02-27 ====================<br>今天roy修正了gcc4.6下编译的问题 ，重新做了一个gcc4.6的版本。<br>linux核心tinycore4.3<br>gcc4.6+git1.6+svn1.6+7z+grub4dos-dev<br><a href="http://www.ctdisk.com/file/4946481" target="_blank" rel="external">Colinux_TinyCoreLinux_grub4dos_dev.7z</a><br>MD5: FA11D60B45FEF4282DD9E0B640F39CF0</p>
+<h2 id="===========2012-02-13_====================">===========2012-02-13 ====================</h2>
+<p>With the new version, you only need three steps to get started.<br>(1) Download file <a href="http://www.ctdisk.com/file/4551969" target="_blank" rel="external">Colinux_tinyslat_grub4dos_Dev.7z</a><br>(2) use 7-ZIP  extract to the location you want to install.<br>(3) after decompression files run quick start.cmd in TinyDev directory</p>
+<p>Node: /mnt/cofs ——&gt; e:\colinux</p>
+<ol>
+<li><p>Default cofs directory is e:\colinux so you must create this directory first for use cofs.</p>
+<p>To use a different location you can modifying the file TinyDev\tinyslat\tinyslat.ini and then restart <code>quick start.cmd</code></p>
+</li>
+<li><p>You can add a virtual disk for colinux use below steps</p>
+<pre><code>::create new file sda_1g.fs with 1Gb
+
+fsutil file createnew sda_1g.fs 1073741824
+
+modify tinyslat.ini file add line
+
+sda=tinyslat\sda_1g.fs
+
+and change home=ram0 to home=sda
+</code></pre><p>Restart Colinux and enter</p>
+<p> mke2fs -j /dev/sda</p>
+<p>Restart Colinux again</p>
+<p>Now<br> /mnt/sda —&gt; sda_1g.fs</p>
+</li>
+</ol>
+<p>==================2012-02-07==================<br>结合Tinycore和slatiz优点的版本。使用了tinycore的核心+slatiz软件包管理器。相对完美版本，有以下优点</p>
+<ul>
+<li>小巧（解开后才70MB不到，使用MSYS/CYGWIN等至少也得100MB以上吧）。</li>
+<li>方便，移动性，直接解压到电脑上就可以运行了（不要放在中文目录下）。</li>
+<li>默认开启多终端支持（可以按Alt+Fn切换）。</li>
+<li>可以自由添加安装软件（基于tinycore的软件包可自动保存）。使用slatiz的软件包目前不能保存。但是有提供了一个工具可以把tazpkg转为tcz。</li>
+<li>可选保存用户配置（默认不保存）</li>
+<li>自带的软件包gcc 4.5+svn1.6+git1.7+7z+……。总之下载后就可以直接编译GRUB4DOS相关程序。当然了也可以作为一个桌面linux来使用。</li>
+</ul>
+<p>使用方法：</p>
+<p>只要三步就可以开始启动 下载－〉解压-&gt;执行。<br>  下载<br>  2012-02-08更新cofs权限问题<br>  2012-02-09因为git新的版本不可以在COFS上用git下载源码,所以GIT换成1.6版.<br>  <a href="http://www.ctdisk.com/file/4551969" target="_blank" rel="external">Colinux_tinyslat_grub4dos_Dev.7z</a><br>  增加软件方法：</p>
+<ol>
+<li>tinycore方案（推荐）<br>  tce-load -wi packname<br>  默认使用了163的镜像，可以通过修改opt目录下的tcemirror文件改成使用其它镜像。</li>
+<li>slatiz方案（备用）<br>  tczpkg get-install packname<br>  这个只是作为备用。下载安装的软件不会被保存。</li>
+<li><p>slatiz方案+tinycore<br>为了解决有时tinycore的软件源没有提供相应软件，而slatiz有提供时，可以使用该方法。<br>首先通过taz2tcz下载slatiz软件并转换为tcz格式。<br>taz2tcz packname<br>软件安装<br>tce-load -i packname<br>注意：</p>
+<ol>
+<li>你需要自己处理软件包的依赖关系（depends），可以使用tazpkg depends packname 查看。然后依次下载并转换所有包。</li>
+<li>执行tce-load 时请注意查看上一步最终的软件包名。比如以下是下载xz程序的输出,注意看我们要安装的是xz，最终的名字是xz-4.999.9beta</li>
+</ol>
+<pre><code>tc@box:~$ taz2tcz xz
+xz-4.999.9beta
+Connecting to mirror.slitaz.org (94.23.209.91:80)
+xz-4.999.9beta.tazpk 100% |*******************************| 21096   0:00:00 ETA
+tazpkg(slatiz) to tcz (tinycorelinux) packages convert by chenall
+Please wait....
+42 blocks
+91 blocks
+xz-4.999.9beta converted. you can type tce-load -i xz-4.999.9beta to install.
+tc@box:~$ tce-load -i xz-4.999.9beta
+/etc/sysconfig/tcedir/optional/xz-4.999.9beta.tcz: OK
+</code></pre></li>
+</ol>
+<p>==================2012-02-05==================<br>因为目前用GCC4.6编译出来的GRLDR无法启动，所以重新整了一个GCC4.4的。</p>
+<p>相关下载：</p>
+<p>Colinux 主程序 ：<a href="http://www.ctdisk.com/file/4499842" target="_blank" rel="external">colinux_mini.7z</a></p>
+<p>系统镜像包： <a href="http://www.ctdisk.com/file/4499927" target="_blank" rel="external">tinycore_colinux_60M_GCC4.4.7z</a></p>
+<h2 id="==================2012-02-04==================">==================2012-02-04==================</h2>
+<p>整合了02-03版tinycore的两个版本优点，完善了一下。新的版本有以下优点</p>
+<ul>
+<li>占用空间小。</li>
+<li>需要的内存也小。</li>
+<li><p>配置灵活，可以选择保存数据。</p>
+<p>目前提供了以下配置文件</p>
+</li>
+</ul>
+<ol>
+<li>tinydev.ini  相当于之前的60M版本，不保存数据。</li>
+<li><p>tinydev_tce_cofs.ini  用户数据保存到tinycore.gz同目录的home目录下使用该配置文件需要先把grubdev.iso解开到同目录下。把配置文件名改为tinydev.ini 之后再启动，会自动建立HOME目录。需要的文件列表如下：tce 目录</p>
+<p>tinycore.gz 文件</p>
+<p>tinydev.ini 配置文件</p>
+<p>启动之后可以使用tce-load命令下载新的软件并且可以保存。如果你对tinycore比较了解，直接添加软件到TCE目录就行了。<br>下载地址： tinycore_colinux_60M.7z</p>
+</li>
+</ol>
+<p>==================2012-02-03==================</p>
+<p>之前的版本使用了比较完整的Linux来搭建，占用空间比较大，我用<a href="http://distro.ibiblio.org" target="_blank" rel="external">tinycorelinux</a>重新定制了一个比较小巧的版本，有兴趣的可以下载试用</p>
+<p>使用方法：</p>
+<ol>
+<li><p>先下载Colinux主程序和系统包。</p>
+</li>
+<li><p>在E:新建一个Colinux目录，用于和Linux共享，或方便存放文件。</p>
+</li>
+<li><p>Colinux解压到非中文目录下，系统包直接解压到Colinux目录中。</p>
+</li>
+<li><p>使用Colinux目录下的“快速启动.cmd”来直接启动。</p>
+</li>
+<li><p>你也可以安装为服务使用“安装服务.cmd”就行了。</p>
+</li>
+</ol>
+<h1 id="相关文件下载：">相关文件下载：</h1>
+<ol>
+<li>Colinux 主程序  <a href="http://code.google.com/p/grubutils/downloads/detail?name=colinux_mini.7z&amp;can=1&amp;q=" target="_blank" rel="external">colinux_mini</a>直接解压到非中文的目录即可使用</li>
+<li><p>定制好的系统包（选择其中一个就行了），解压到Colinux安装目录下。1.最小巧只需要60MB空间，缺点：不可保存用户配置完全在内存中运行。tinycore_colinux_dev.7z2.中等，需要160MB，缺点：占用空间比较大，但是可以保存用户配置。</p>
+<p>tinycore_colinux_fs.7z</p>
+<p>3.之前的版本重新打包的文件需要2G+128MB空间</p>
+<p><a href="http://code.google.com/p/grubutils/downloads/detail?name=Debian_colinux.7z&amp;can=1&amp;q=" target="_blank" rel="external">Debian_colinux.7</a></p>
+<p>基于tinycore的两个版本所安装的程序都是一样的包含以下主要和相关联的程序。</p>
+<p>GCC 4.6 + GIT + SVN</p>
+<p>区别是，一个是RAM版本，一个非RAM版本。</p>
+<p>建议使用非RAM版本，这样可以保存你的配置文件。默认的COFS目录是E:\COLINUX，你需要先在WINDOWS中建立以上目录。然后就开始操作了</p>
+<p>在linux中使用以下命令就可以编译一个GRUB4DOS</p>
+<pre><code>cd /mnt/cofs
+
+svn co http://grub4dos-chenall.googlecode.com/svn/trunk grub4dos-src
+
+cd grub4dos-src
+
+make
+</code></pre><p>如果你习惯用git也可以用git来下载源码<br>``<br>git clone git://github.com/chenall/GRUB4DOS.git<br>cd GRUB4DOS<br>make<br>```<br>其它说明：tinycore默认是超级用户，可以用exit命令退出。用sudo su进入超级用户模式。要增加软件可以使用tce-load命令比如以下命令就可以下载并安装xterm</p>
+</li>
+</ol>
+<p>tce-load -wi xterm</p>
+<p>另外已经重定向X的显示到主机。只要主机有安装X SERVER在LINUX下启动X程序就会在主机上显示。</p>
+<h2 id="2012-01-19">2012-01-19</h2>
+<p>首先要准备的文件列表</p>
+<p>以下软件都在这里<a href="http://sourceforge.net/projects/colinux/files/" target="_blank" rel="external">http://sourceforge.net/projects/colinux/files/</a> 可以自己选择其它版本下载</p>
+<ol>
+<li>Colinux我选用最新的版本  <a href="http://sourceforge.net/projects/colinux/files/Snapshots/devel-20110807-Snapshot/devel-coLinux-20110807.exe/download" target="_blank" rel="external">devel-coLinux-20110807.exe</a></li>
+<li>用于colinux的linux镜像     <a href="http://sourceforge.net/projects/colinux/files/Images%202.6.x%20Debian/Debian%206.0%20Squeeze/Debian-6.0.1-squeeze.7z/download" target="_blank" rel="external">Debian-6.0.1-squeeze</a><br>安装Colinux，直接默认安装就行了。</li>
+</ol>
+<p>安装完之后，解压Debian-6.0.1的压缩包到Colinux安装目录下。会多出几个文件。</p>
+<p>直接运行解压出来的squeeze.bat就可以启动一个debian了。</p>
+<p>启动后直接输入用户名root登录</p>
+<p>wee需要在gcc 4.5的环境中编译，否则生成的文件太大超过了32KB。如果你不需要编译wee可以略过以下内容。</p>
+<p>目前debian的gcc 4.5软件包需要用测试版才能直接安装。所以需要修改软件源，增加一个测试版的源。</p>
+<p>============分隔线，增加debian软件源开始======================</p>
+<p>修改源列表文件</p>
+<p>vi /etc/apt/sources.list</p>
+<p>看看里面有没有包含 testing的行，如果有就不用改了。</p>
+<p>像这个只有一行</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank" rel="external">http://ftp.debian.org/debian</a> squeeze main</p>
+<p>要增加一个testing的源。</p>
+<p>懂得VI的可以略过以下内容.开始修改。</p>
+<p>首先复制当前行（直输入’yy’即连按两次’y’）</p>
+<p>然后直接粘贴（直接按’p’键）现在有两行了</p>
+<p>修改其中一行的”squeeze”为”testing”（光标移到’s’处输入’dw’，再按’I’输入”testing “。)</p>
+<p>最终就是</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank" rel="external">http://ftp.debian.org/debian</a> squeeze main</p>
+<p>deb <a href="http://ftp.debian.org/debian" target="_blank" rel="external">http://ftp.debian.org/debian</a> testing main</p>
+<p>保存并退出（先按一下”Esc”键再输入”:x”回车即可）</p>
+<p>好了现在更新一下源信息。</p>
+<p>apt-get update</p>
+<p>============分隔线，增加debian软件源完成======================</p>
+<p>安装GRUB4DOS编译需要的软件包。</p>
+<p>注：如果不需要编译wee可以安装gcc-4.3或gcc-4.4会比较稳定。</p>
+<p>apt-get install gcc-4.5 autoconf automake make patch git subversion</p>
+<p>注：git和subversion是源码管理工具，用于下载源码的，可以安装其中一个就行了。</p>
+<p>所有的提示直接按’Y’或回车确认。坐着泡一杯茶再过来，差不多装好了。</p>
+<p>如果网络环境很给力的话，几分钟就行了。否则可能得等上半个小时吧。</p>
+<p>电脑：俺正在努力下载安装软件，没空陪你了，你自己玩去吧。</p>
+<p>………………………………………..</p>
+<p>半个小时后。</p>
+<p>好像差不多了。。继续工作。</p>
+<p>等等，还少了压缩软件，如果你只是玩玩，不要也罢。</p>
+<p>apt-get install p7zip-full zip</p>
+<p>现在已经万事具备，只欠东风了。</p>
+<p>只要下载源码然后就可以编译了。新手请最好看完后面内容再下载编译测试。</p>
+<p>下载源码方法:</p>
+<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank" rel="external">http://grub4dos-chenall.googlecode.com/svn/trunk</a> grub4dos-src</p>
+<p>或</p>
+<p>git clone git://github.com/chenall/grub4dos.git grub4dos-src</p>
+<p>编译：</p>
+<p>cd grub4dos-src</p>
+<p>make</p>
+<p>如果你对linux的操作不熟悉，你可以在WINDOWS中修改源码，改完之后再进入LINUX去编译。</p>
+<p>colinux支持cofs文件系统，可以和WINDOWS进行文件夹共享。</p>
+<p>添加cofs文件系统方法.</p>
+<p>在d:新建一个文件夹名字就叫做cofs,用记事本打开squeeze.conf</p>
+<p>添加一行</p>
+<p>cofs0=d:\cofs</p>
+<p>先关闭linux，输入halt就行了。</p>
+<p>再次双击squeeze.bat启动debian，登录</p>
+<p>输入以下命令挂载cofs</p>
+<p>mkdir /mnt/cofs</p>
+<p>mount -t cofs cofs0 /mnt/cofs</p>
+<p>cd /mnt/cofs</p>
+<p>mkdir test</p>
+<p>要让它启动时自动挂载可以添加一行内容到/etc/fstab文件中</p>
+<p>/dev/cofs0 /mnt/cofs cofs</p>
+<p>直接用echo添加就行了，也可以用VI修改</p>
+<p>echo /dev/cofs0 /mnt/cofs cofs &gt;&gt; /etc/fstab</p>
+<p>如果电脑d:\cofs目录下有生成一个test文件夹，则证明成功挂载</p>
+<p>cd /mnt/cofs</p>
+<p>svn co <a href="http://grub4dos-chenall.googlecode.com/svn/trunk" target="_blank" rel="external">http://grub4dos-chenall.googlecode.com/svn/trunk</a> grub4dos-src</p>
+<p>cd grub4dos-src</p>
+<p>make</p>
+<p>以后你就可以在WINDOWS中打开d:\cofs这个目录，修改里面的源码，然后再到linux里面去编译就行了。</p>
+<p>懒人可以直接下载绿色包，解压后就可以直接使用。</p>
+<p><a href="http://grubutils.googlecode.com/files/grub4dos_colinux_debian.7z" target="_blank" rel="external">grub4dos_colinux_debian.7z</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/综合/" itemprop="url">综合</a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/实用/" itemprop="url">实用</a></li></span></div> | <span class="tags">标签 <a href="/tags/colinux/" class="label label-primary" itemprop="url"><span itemprop="title">colinux</span></a><a href="/tags/debian/" class="label label-success" itemprop="url"><span itemprop="title">debian</span></a><a href="/tags/GRUB4DOS/" class="label label-info" itemprop="url"><span itemprop="title">GRUB4DOS</span></a></span> | <span class="time">最近更新:<time title="2014-07-25 16:47:29"datetime="2014-07-25 16:47:29"> 2014-07-25</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_dev/#comments" class="ds-thread-count comment-link" data-thread-key="804" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></h1>
       
         <span>发表于<time datetime="2012-01-11T13:36:32.000Z"> <a href="/post/newext/">2012-01-11</a></time></span>      
@@ -1094,54 +1332,6 @@ exit
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></h1>
-      
-        <span>发表于<time datetime="2011-05-23T17:23:39.000Z"> <a href="/post/winsock_fix/">2011-05-24</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>使用此方法可以解决由于WINSOCK错误造成DNS无法解析，还有和WINSOCK相关的程序无法正常使用的问题。</p>
-<p>只需要一个命令就可以搞定了：</p>
-<pre><code>netsh winsock reset
-</code></pre><p>说下我碰到这个问题的情况，如果有人碰到和我类似的也可以试试。</p>
-<p>因为平常使用youku(优酷)看视频，本来我一般是不下载什么加速客户端之类的，昨天就兴起下载了一个IKU（爱酷）的软件。</p>
-<p>初步使用感觉很不错，可以快速查找下载，感觉是挺方便的。</p>
-<p>然后下载完了就退出程序，就发现了这个程序居然有两个后台程序(<font color="#0000FF">ikuacc.exe</font> 和 <font color="#0000FF">ikucmc.exe</font>)在运行而且没有任何的提示。</p>
-<p>好吧，因为大部份的国产软件都是这样子的，已经见怪不怪了。</p>
-<p>不过我还是忍受不了不受控制的程序，所以晚上就删除了它。</p>
-<p>然后问题就来了，发现居然网页打不开了，提示DNS错误。</p>
-<p>在CMD下用ping命令任何域名都无法解析，但QQ可以正常使用。</p>
-<p>好在之前曾经有过类似的情况，我想应该是WINSOCK的问题，所以就尝试修复了一下（用前面的语句），不需要重启，直接就可以使用了。</p>
-<p>唉，现在装个国产的软件还是真不能让人放心啊。<br> 安装的时候得小心翼翼的，就怕它的送给你一堆你用不上的赠品<br> 删除的时候也得睁大眼晴，一不小心也有赠送的。<br> 或者送走大哥来个小弟，再送走小弟它又把大哥给请回来了。  </p>
-<p> 许多软件为了防止你删除，软件作者可以花了许多的心思。<br> 比如XX压，删除的时候，如果你已经习惯了正常软件的删除过程，那不好意思，你可能没有办法删除它。可是你又不能去说它，因为它没有错。错在你没有看仔细。 </p>
-<p>总之这些软件，我只要用过一次，就绝对不会再装第二次。</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/DNS/" class="label label-primary" itemprop="url"><span itemprop="title">DNS</span></a><a href="/tags/WINSOCK/" class="label label-success" itemprop="url"><span itemprop="title">WINSOCK</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/winsock_fix/#comments" class="ds-thread-count comment-link" data-thread-key="687" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1254,7 +1444,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:46:50</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1318,8 +1508,9 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
   $('.entry').each(function(i){
     $(this).find('img').each(function(){
       var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
      
       if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });

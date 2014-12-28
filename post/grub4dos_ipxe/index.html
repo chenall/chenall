@@ -1,0 +1,450 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta http-equiv="Cache-Control" content="max-age=7200" />
+
+<!--addons at start of head-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍 | chenall&#39;s Blog</title>
+<meta name="author" content="chenall">
+
+<meta name="description" content="grub4dos 0.4.6a ipxegrldr 支持ipxe完整功能调用,ipxe相关介绍">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta property="og:title" content="[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍"/>
+<meta property="og:site_name" content="chenall&#39;s Blog"/>
+
+<!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" type="text/css">
+<![endif]-->
+<!--[if (lt IE 9)&(gt IE 7)]><style>.testIE.IE8{display:inline;}</style><![endif]-->
+<!--[if gt IE 8]><style>.testIE.IE9{display:inline;}</style><![endif]-->
+
+<link rel="author" href="https://plus.google.com/100700322385676715564" />
+<link href="/favicon.png" rel="icon">
+<link rel="alternate" href="/atom.xml" title="chenall&#39;s Blog Feed" type="application/atom+xml">
+
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.min.css" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+<!--[if lt IE 9]>
+   <style>article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}</style>
+   <script src="http://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+   <script src="http://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link href="http://cdn.staticfile.org/respond.js/1.4.2/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/js/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/js/respond.proxy.js"></script>
+   <script src="http://cdn.bootcss.com/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+<script type="text/javascript">var site = {BASE_URI: '/'};var _js2load = [];</script>
+
+<!--addons at end of head-->
+</head>
+<body>
+  <!--addons at start of body-->
+    <header id="header" class="container"><nav id="main-nav" class="navbar navbar-default navbar-fixed-top " role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">chenall's Blog</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav dropdown-hover">
+  
+        <li item='post/grub4dos_ipxe/' ><a href="/about/" title="关于">关于</a></li>      
+        <li item='post/grub4dos_ipxe/' ><a href="/archives/" title="归档">归档</a></li>      
+        <li item='post/grub4dos_ipxe/' ><a href="/qzgb-fm/" title="泉州广播">泉州广播</a></li>      
+      <li class='dropdown'>
+        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>在线电视<b class='caret'></b></a>
+        <ul class='dropdown-menu'>
+    
+          <li><a href="/tv/" title="在线直播">在线直播</a></li>    
+          <li><a href="http://tv1.chenall.tk" title="直播线路1">直播线路1</a></li>    
+          <li><a href="http://tv2.chenall.tk" title="直播线路2">直播线路2</a></li>    
+        </ul>
+      </li>
+    
+        <li item='post/grub4dos_ipxe/' ><a href="/guestbook/" title="留言板">留言板</a></li>      
+        <li item='post/grub4dos_ipxe/' ><a href="http://grub4dos.chenall.net" title="GRUB4DOS">GRUB4DOS</a></li>      
+        <li item='post/grub4dos_ipxe/' ><a href="http://almrun.chenall.net" title="ALMRUN">ALMRUN</a></li>      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      
+        <li><a href="https://twitter.com/chenall">twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://github.com/chenall">github</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id='content' class="container">
+     <div class="page-header-wrapper">
+      <!--[if lt IE 9]><div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>提示:</strong>您的浏览器版本太低了,建议升级到 <strong><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" title="IE9">IE9</a></strong> 以上,本站使用<a href="https://www.google.com/intl/zh-CN/chrome/">Chrome浏览器</a>可以获得最好的显示效果.</div><![endif]-->
+      <div class="page-header"><h1>chenall's Blog <small>走自己的路,让别人说去吧</small></h1></div>
+     </div>
+     <div class="row">
+       <div id="main-col" class="alignleft col-sx-12 col-sm-8 col-md-9 col-lg-9">
+      <section id='header_widget'></section>
+          <div id="wrapper"><article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title">[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍</h1>
+      
+        <span>发表于<time datetime="2014-12-27T16:00:00.000Z"> <a href="/post/grub4dos_ipxe/">2014-12-28</a></time></span>      
+    </header>
+    
+    <section id='before_content_widget'><div class="widget" id="widget_before_content_google_before_content>">
+<div><a data-type="8" data-tmpl="527x25" data-tmplid="224" data-style="2" data-border="1" biz-g_lgo="0" biz-g_hot_x="11" biz-g_hot_site="14" biz-g_hot_space="0" biz-g_hot_color="#000" href="#">支持本站</a></div>
+<div><a data-type="13" data-tmpl="628x100" data-tmplid="213" data-rd="2" data-style="2" data-border="1" href="#"></a></div>
+<!-- <div style="float:right;margin:12px;"><a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="1" data-style="2" data-border="1" biz-category="" biz-keyword="" href="#"></a></div> -->
+</div></section>
+    <div class="entry"  data-spy="scroll" data-target="#toc" >
+      
+        <p>  <a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-12-27/" target="_blank" rel="external">最新版本grub4dos</a>的发行包里面有一个<code>ipxegrldr</code>文件,这个文件其实是整合了<code>undionly.kpxe</code>和<code>grldr</code>的文件,可以作为PXE的启动文件.</p>
+<h2 id="新的功能">新的功能</h2>
+<ul>
+<li>使用该文件启动可以完整支持<code>ipxe</code>的所有功能调用,通过它允许直接在<code>grub4dos</code>下访问<code>WEB</code>或<code>SAN</code>上面的文件.</li>
+<li><p>另外相对应的增加了一个命令<code>ipxe</code>,使用它可以调用各种<a href="http://ipxe.org/cmd" target="_blank" rel="external">ipxe命令</a></p>
+<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong><br><a id="more"></a></p>
+<h2 id="相关用法介绍">相关用法介绍</h2>
+</li>
+</ul>
+<ol>
+<li><p>可以直接访问网络上的文件.</p>
+<pre><code>cat http://b.chenall.net/menu.ipxe
+map --mem http://b.chenall.net/ntboot.iso (0xff)
+map --hook
+ls (0xff)
+</code></pre><p><img src="http://qiniu.chenall.net/post/20141228_01.png/w400.png" alt=""></p>
+</li>
+<li><p>利用<code>ipxe</code>命令来实现更多功能</p>
+<p>使用ipxe命令时需要注意一点,最好在文本模式下运行(terminal console)运行ipxe,特别是像<code>ipxe chain</code>或<code>ipxe boot</code>之类的,否则会看不到ipxe的回显.看起来就像是假死状态.</p>
+<ul>
+<li><p>可以直接调用ipxe的各种命令,例子<br><img src="http://qiniu.chenall.net/post/20141228_02.png/w400.png" alt=""></p>
+</li>
+<li><p>直接调用ipxe菜单(注:在ipxe菜单中可以用exit命令返回)  </p>
+<pre><code>ipxe chain http://b.chenall.net/menu.ipxe
+</code></pre></li>
+<li><p>直接使用ipxe启动网络上的文件  </p>
+<pre><code>ipxe chain http://b.chenall.net/grldr
+</code></pre></li>
+<li><p>直接使用ipxe启动网络上的镜像文件例子  </p>
+<pre><code>ipxe sanboot http://b.chenall.net/ntboot.img
+ipxe sanboot iscsi:10.0.4.1:::1:iqn.2010-04.org.ipxe.dolphin:storage
+</code></pre></li>
+<li><p>高级用法,通过sanhook来直接把网络上的镜像映射为一个本地设备.<br>sanhook 可以把映射一个网络镜像相当于grub4dos的map,只是这个是直接映射,读写都是通过网络完成的.<br>sanunhook 删除一个映射.</p>
+<pre><code>ipxe sanhook -d 0xff http://b.chenall.net/ntboot.iso
+ipxe sanunhook -d 0xff
+</code></pre><p><img src="http://qiniu.chenall.net/post/20141228_03.png/w400.png" alt=""><br><img src="http://qiniu.chenall.net/post/20141228_04.png/w400.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="iSCSI_SAN_URI">iSCSI SAN URI</h2>
+<blockquote>
+<p>The format of an iSCSI SAN URI is defined by <a href="http://tools.ietf.org/html/rfc4173" target="_blank" rel="external">RFC 4173</a>. The general syntax is:</p>
+<pre><code>  iscsi:&lt;servername&gt;:&lt;protocol&gt;:&lt;port&gt;:&lt;LUN&gt;:&lt;targetname&gt;
+</code></pre><p>For example:</p>
+<pre><code>  iscsi:10.0.4.1:::1:iqn.2010-04.org.ipxe.dolphin:storage
+  iscsi:boot.ipxe.org::::iqn.2010-04.org.ipxe.boot:public
+  iscsi:192.168.0.1::::iqn.1991-05.com.microsoft:msdos622-target
+  iscsi:opensolaris.home::::iqn.1986-03.com.sun:02:e9abf4cd-714b-c6ec-d017-eea5a56252ed
+</code></pre><ul>
+<li><code>&lt;servername&gt;</code> is the DNS name or IP address of the iSCSI target.</li>
+<li><code>&lt;protocol&gt;</code> is ignored and can be left empty.1)</li>
+<li><code>&lt;port&gt;</code> is the TCP port of the iSCSI target. It can be left empty, in which case the default port (3260) will be used.</li>
+<li><code>&lt;LUN&gt;</code> is the SCSI LUN of the boot disk, in hexadecimal. It can be left empty, in which case the default LUN (0) will be used.</li>
+<li><code>&lt;targetname&gt;</code> is the iSCSI target IQN.</li>
+</ul>
+<p>If you are using iSCSI authentication, then you will need to configure the username and password settings (and possibly also the reverse-username and reverse-password settings) before attempting to connect to the SAN target. There is no way to specify usernames and passwords directly within the iSCSI SAN URI.</p>
+</blockquote>
+<p>后记: 使用<code>ipxegrldr</code>作为PXE启动文件还有另一个好处,就是如果网络正常的话,使用<code>ipxegrldr</code>总是会优先使用 <a href="http://b.chenall.net/grldr" target="_blank" rel="external">http://b.chenall.net/grldr</a> 来启动,也就是说总是使用最新的版本.当然了如果网络不通的话就使用内置的版本.如果你不需要这个功能的话可以直接使用undionly.kpxe自己写菜单来启动grldr</p>
+
+      
+    </div>
+    <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:15px"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5803735783"></ins>
+ <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="5531017666"
+     data-ad-format="horizontal"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><div class="widget" id="widget_after_content_wumiiRelatedItems>">
+<script type="text/javascript" id="wumiiRelatedItems"></script>
+</div><div class="widget" id="widget_after_content_post_footer_info>">
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
+    <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="https://plus.google.com/100700322385676715564">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
+    <div class="panel-body">本文链接: <a href="/post/grub4dos_ipxe/">[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍</a></div>
+</div></div><div class="widget" id="widget_after_content_ujian>">
+<div class="ujian-hook"></div>
+</div></section>
+    
+    
+        <footer id="post-meta">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/ipxe/" class="label label-success" itemprop="url"><span itemprop="title">ipxe</span></a></span> | <span class="time">最近更新:<time title="2014-12-28 21:46:35"datetime="2014-12-28 21:46:35"> 2014-12-28</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_ipxe/#comments" class="ds-thread-count comment-link" data-thread-key="20141228" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+    <section id='after_post_widget'><div class="widget" id="widget_after_post_post_pageNav>">
+<ul class="pager">
+  
+  
+  <li class="next"><a href="/post/grub4dos_initrdfs/" title="[grub4dos] grub4dos 最新版本initrdfs功能介绍">[grub4dos] grub4dos 最新版本initrdfs功能介绍 &rarr;</a></li>
+  
+</ul></div><div class="widget" id="widget_after_post_more_posts>"><table class="table table-striped" style="table-layout:fixed">
+<tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
+<tr>
+
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+</tr></table></div></section>    
+	<div id="comments"><!-- Duoshuo Comment BEGIN -->
+
+<div class="ds-thread"  data-thread-key="20141228"  data-url="http://chenall.net/post/grub4dos_ipxe/" data-title="[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍"></div>
+<!-- Duoshuo Comment END -->
+
+</div></div><!--wapper-->
+       </div><!-- ID main-col END -->
+       <aside id="sidebar" class="alignright col-sx-6 col-sm-4 col-md-3 col-lg-3">
+<div id="widget_swiftype" class="widget panel panel-primary">
+    
+<form class="input-group">
+<input type="text" id="st-search-input" class="form-control" placeholder="搜索" autocomplete="off" autocorrect="off" autocapitalize="off" style="outline: none;">
+<span class="input-group-btn"><button class="btn btn-default" type="search"><i class="fa fa-search"></i></button></span>
+</form></div>
+
+<div id="widget_google_cse" class="widget panel panel-primary">
+    
+<gcse:searchbox-only defaultToRefinement="chenall.net" resultsUrl="/search/" newWindow="false"></gcse:searchbox-only>
+</div>
+
+<div id="widget_category" class="widget panel panel-primary">
+  <div class="panel-heading">分类</div>  <div data-src='category' class='ajax_widgets'>正在加载...</div>
+</div>
+
+<div id="widget_aliyun_sidebar" class="widget panel panel-primary">
+    
+<div style="width:250px,height:250px" id="ali-carousel-captions" class="carousel slide" data-interval='5000' data-carousel=0 data-ride="carousel">
+  <div class="carousel-inner">
+        <div class="item active">
+            <a href="http://s.click.taobao.com/t?e=m%3D2%26s%3Df8OlSBzu18scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAtz4eT3bpot%2BUjTuFP33mm8byuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9K%2BnbtOD3UdznPV1H2z0iQv9NkKVMHClW0QbMqOpFMIvnvjQXzzpXdTHGJe8N%2FwNpGw%3D%3D"><img src="http://qiniu.chenall.net/aliyun/250x250_01.jpg"></a>      
+    </div>
+        <div class="item">
+            <a href="http://s.click.taobao.com/t?e=m%3D2%26s%3DWx1%2FUd2Xu9scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAgqxYtC30UH57li5%2BwaNkRMbyuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9Kw%2Byb%2BmDZlm0PV1H2z0iQv9eY%2By0blbhscYl7w3%2FA2kb"><img src="http://qiniu.chenall.net/aliyun/250x250_02.jpg"></a>      
+    </div>
+        <div class="item">
+            <a href="http://s.click.taobao.com/t?e=m%3D2%26s%3DienAeqM6f0scQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAnLgecJ4ZbBLhfF8cP%2Fi%2F9obyuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAedn1BbglxZYxUhy8exlzcq9AmARIwX9K2Zg%2BdzdQFOwfMRvoxSVDSdLyrb2g0H2G5JcxXijM%2BwneEHpPTskRHlFYAAV9gnNuPTL%2BS6jTvPzN7YQp05KcLcunFBf1wJnpg%3D%3D"><img src="http://qiniu.chenall.net/aliyun/d.png"></a>      
+    </div>
+        <div class="item">
+            <a href="http://s.click.taobao.com/t?e=m%3D2%26s%3DcrAECBB8ycEcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAuXwr7OH7D%2BIyO%2FjmuN7jksbyuxaD%2BeNy7E3m70uR7JIB3Dh1oz4f5NqjzRl4PJsAX7uq6sLYIqu0Q7QOybCaQy9AmARIwX9K9E0MBlxnM%2FDnaYpFBIfC%2F2orLd93QuCUMYOae24fhW0"><img src="http://gtms03.alicdn.com/tps/i3/TB119uIGpXXXXcaXVXXjf1M_VXX-240-180.png"></a>      
+    </div>
+        <div class="item">
+      <a data-type="3" data-tmpl="250x250" data-tmplid="185" data-rd="2" data-style="2" data-border="1" href="#"></a>
+    </div>
+      </div>
+  <a class="left carousel-control" href="#ali-carousel-captions" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+  <a class="right carousel-control" href="#ali-carousel-captions" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+</div>
+</div>
+
+<div id="widget_latest_update_posts" class="widget panel panel-primary">
+  <div class="panel-heading">最近更新</div>  <div data-src='latest_update_posts' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_random_posts" class="widget panel panel-primary">
+  <div class="panel-heading">随机文章</div>  <div class='hexo_random_posts' data-count=8></div></div>
+
+<div id="widget_google_sidebar" class="widget panel panel-primary">
+  <div class="panel-heading">赞助商</div>  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0028617410393728"
+     data-ad-slot="2577551260"
+     data-ad-format="rectangle"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<div id="widget_tagcloud" class="widget panel panel-primary">
+  <div class="panel-heading">标签云</div>  <div data-src='tagcloud' class='ajax_widgets'>正在加载...</div></div>
+
+<div id="widget_sina_weiboshow" class="widget panel panel-primary">
+  <div class="panel-heading">新浪微搏秀</div>  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=0&ptype=0&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=0&uid=1082888172&verifier=1a4946c5&dpc=1"></iframe>
+</div>
+
+<div id="widget_recent_comments" class="widget panel panel-primary">
+  <div class="panel-heading">最近评论</div>  
+
+<div class="list-group-item ds-recent-comments" data-num-items="6" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="50"></div>
+
+
+
+</div>
+
+</aside>
+       <div class="clearfix"></div>
+     </div><!-- row END -->
+  </div>
+  <footer id="footer" class="container">
+  <div class="panel panel-info">
+  <section id='footer_widget'></section>  <div class="panel-footer">
+  <div id="site-info">
+    <span class='author'>
+  
+  &copy; 2008-2014 chenall
+  
+    &nbsp;&nbsp;</span>
+  <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号-1</a></span>
+  <span id='analytics-51la'>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/3214078.js"></script>
+<noscript><a href="http://www.51.la/?3214078" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/3214078.asp" style="border:none" /></a></noscript>
+</span><span id='analytics-google'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30310093-1']);
+  _gaq.push(['_trackPageview']);
+  _js2load.push({src:('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'});
+</script></span><span id='analytics-baidu'>
+<script>
+var _hmt = _hmt || [];
+_js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
+</script>
+</span>  </div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:46:35</em></span></div>
+</div>
+<div class="clearfix"></div>
+  </div>
+  </footer>
+  
+        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
+        <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
+            <script type="text/javascript"> (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);</script>    
+                
+            
+<div id='swiftype-searchinfo' style='display: none;'><div class="alert alert-info"> 正在搜索中，稍后将在这里显示结果。。。。</div></div>
+<script type="text/javascript">
+var Swiftype = window.Swiftype || {key:'P473Cjp95e3bFhiCP88w',renderStyle: 'inline' };
+_js2load.push({src:"//s.swiftypecdn.com/embed.js"});
+$(function(){$('#main-col').prepend('<div id="st-results-container"></div>');$('form').has('#st-search-input').submit(function(){$('#st-results-container').html($('#swiftype-searchinfo').html());})});
+</script>
+    
+            <script>_js2load.push({src:(document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=013748367689400048621:dmsqkhtcvbm'});</script>
+    
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"chenall"};
+_js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
+</script>
+    
+            <!--wumii_relatedItems-->
+
+<script type="text/javascript">
+    var wumiiPermaLink = "http://chenall.net/post/grub4dos_ipxe/";
+    var wumiiTitle = "[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍";
+    var wumiiTags = "GRUB4DOS,ipxe";
+    var wumiiCategories = ["GRUB4DOS"];
+    var wumiiSitePrefix = "http://chenall.net";
+    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+    _js2load.push({src:'http://widget.wumii.cn/ext/relatedItemsWidget'});
+</script>
+<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+<img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+</a>
+    
+            
+<script type="text/javascript">var ujian_config = {num:6,showType:0,picSize:84,textHeight:45};_js2load.push({src:'http://v1.ujian.cc/code/ujian.js?uid=1880458'});</script>
+<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+    
+        <script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>    <script type="text/javascript">
+   var lang=["bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html",
+    "java", "js", "m", "mxml", "perl", "pl", "pm", "py", "rb", "sh",
+    "xhtml", "xml", "xsl"];
+   var pretty_base='';
+   $('script').each(function(){
+	var c = $(this).attr('src');
+	if (!c)
+	    return;
+	if (c.match(/(\/)?prettify(\.min)?\.js/i))
+	{
+	    var index = c.lastIndexOf('/');
+	    if (index != -1)
+		pretty_base = c.substr(0,index + 1);
+	    return false;
+	}
+   })
+   $('pre code').each(function(){
+	var c = $(this).attr('class')
+	if (!c)
+	    return;
+	c = c.match(/\s?(lang\-\w+)/i);
+	if (c && lang.indexOf(c[1]) == -1)
+	{
+	    lang.push(c[1]);
+	    $.getScript(pretty_base + c[1] + '.min.js');
+	}
+   })
+
+    $(window).load(function(){
+       $("pre").addClass("prettyprint");
+       prettyPrint();
+    })
+</script>    
+        <script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>    <script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
+
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>    
+<script src="/js/chenall.js" type="text/javascript"></script>
+
+  <!--addons at end of body-->
+</body>
+</html>

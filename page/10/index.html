@@ -111,6 +111,51 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></h1>
+      
+        <span>发表于<time datetime="2009-11-06T11:19:32.000Z"> <a href="/post/batch_inifile/">2009-11-06</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p><strong>批处理读取INI文件,以前无聊时写的.当时只是觉得好玩就尝试写了一下，原贴请看DOS联盟论坛</strong></p>
+<p><a href="http://www.cn-dos.net/forum/viewthread.php?tid=25789" target="_blank" rel="external">http://www.cn-dos.net/forum/viewthread.php?tid=25789</a></p>
+<p>最早的版本，发现了许多错误，而且使用了许多的SETLOCAL，经常会出错。后来优化了下，可以运行了，就一直都没有再去改过了。</p>
+<p>最近DOS联盟论坛的朋友<a href="http://www.cn-dos.net/forum/viewpro.php?uid=154086" target="_blank" rel="external">blacksheep2000</a> 在使用时发现了一些问题，我就再查了一下代码，不查不知道，一查真是吓一跳，呵呵。</p>
+<p>所以就重新整理了一下，这下应该可以用了。主要用于学习，由于批处理的执行效率比较低，正常情况下，请使用同类INIFILE.EXE代替。</p>
+<p>欢迎有兴趣的朋友一起继续优化。相比第1个版本，执行效率提升了许多。</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/batch_inifile/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary" itemprop="url"><span itemprop="title">batch</span></a><a href="/tags/inifile/" class="label label-success" itemprop="url"><span itemprop="title">inifile</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/batch_inifile/#comments" class="ds-thread-count comment-link" data-thread-key="109" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/cqghost/">【测试】CQGhost 硬盘安装器</a></h1>
       
         <span>发表于<time datetime="2009-11-03T10:09:13.000Z"> <a href="/post/cqghost/">2009-11-03</a></time></span>      
@@ -617,255 +662,6 @@ exit /b 0       http://www.chenall.net
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></h1>
-      
-        <span>发表于<time datetime="2009-09-25T00:35:56.000Z"> <a href="/post/batch_fangkuai/">2009-09-25</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>绝对经典的批处理游戏！！！</p>
-<p>本游戏需要三方choice.exe支持，请自行搜索下载</p>
-<p>来源:<a href="http://www.cn-dos.net/forum/viewthread.php?tid=48950&amp;fpage=1" target="_blank" rel="external">批处理写的俄罗斯方块游戏</a></p>
-<pre><code class="bat">@echo off&amp;rem 俄罗斯方块游戏，由netbenton编写，在bathome首发，完成时间：2009年9月25日 ver 2.0
-if &quot;%1&quot; equ &quot;para2&quot; goto :para2
-
-set        &quot;d-v=for %%a in (!str!) do set/a one=0x%%a,x=one/4+n,y=one%%4+m&amp;(for %%b in (&quot;r!x!.!y!&quot;) do if &quot;!%%~b!&quot; equ &quot;　&quot; (set r!x!.!y!=■) else (set err=1))&quot;
-::函数d-v，把str中的图标数据，放置到总坐标空间中，如果有覆盖，则err=1。调用方法：(%d-v%)
-::变量使用：one  x  y
-
-set &quot;d-e=set aec=!cr!!cr!        ┌───────────┐!cr!&amp;(for /l %%a in (2,1,#) do for %%b in (&quot;│!ebuf:@=%%a!│　　!ebu%%a!&quot;) do set aec=!aec!        %%~b!cr!)&amp;cls&amp;echo;!aec!        └───────────┘&quot;
-::函数d-e，把总坐标空间显示出来，调用方法：(%d-e:#=行数%)
-set ebu4=第!guan!关
-set ebu6=总分：!fen!
-set cr=^
-
-
-::各种图标定义
-set ga1=0 1 5 6
-set ga2=1 4 5 8
-::■■
-::  ■■
-set gb1=1 2 4 5
-set gb2=0 4 5 9
-::  ■■
-::■■
-
-set za1=4 5 6 7
-set za2=1 5 9 d
-::■■■■
-
-set qa1=1 5 9 8
-set qa2=0 4 5 6
-set qa3=0 1 4 8
-set qa4=0 1 2 6
-::■■
-::  ■
-::  ■
-
-set qb1=0 4 8 9
-set qb2=0 1 2 4
-set qb3=0 1 5 9
-set qb4=2 4 5 6
-::■■
-::■
-::■
-
-set ta1=0 1 4 5
-::■■
-::■■
-
-set sa1=0 1 2 5
-set sa2=1 4 5 9
-set sa3=1 4 5 6
-set sa4=0 4 5 8
-::  ■
-::■■■
-set tw1=0 1
-set tw2=0 4
-
-set on1=0
-set on2=0
-
-set sh1=1 4 5 6 9
-set sh2=1 4 5 6 9
-
-set ao1=0 1 2 4 6
-set ao2=0 1 4 8 9
-set ao3=0 4 5 6 2
-set ao4=0 1 5 8 9
-
-set tt1=0 1 2 5 9
-set tt2=0 4 8 5 6
-set tt3=1 5 8 9 a
-set tt4=2 4 5 6 a
-
-
-::cdef
-::89ab
-::4567
-::0123
-
-echo 0 2 &gt;%~n0.tmp
-start &quot;aswd&quot; %0 para2
-::起动控制窗口
-
-set k3=k%%=mx,k+
-set k4=down
-set k1=m-
-set k2=m+
-set k5=t+
-::按键定义
-
-setlocal enabledelayedexpansion
-for /l %%a in (0,1,10) do (set &quot;ebuf=!ebuf!^!r@.%%a^!&quot;)
-for %%a in (sa_4 ta_1 qb_4 qa_4 za_2 ga_2 gb_2 tw_2 on_2 sh_2 ao_4 tt_4) do (
-        for /f &quot;tokens=1,2 delims=_&quot; %%b in (&quot;%%a&quot;) do (
-                set _%%b=%%c
-                for /l %%d in (1,1,%%c) do set/a nx+=1&amp;set ran!nx!=%%b%%d
-        )
-)
-::定义各种图型的可变型数，及单个图的随机号        
-
-:restart
-for /l %%a in (0,1,18) do (for /l %%b in (0,1,10) do set r%%a.%%b=　)
-set/a fen=0,guan=1
-::初始化坐标空间18行，10列
-
-
-:loop
-set/a &quot;m=4,t=2,n=1,down=450/(guan&lt;&lt;2),bti=0&quot;
-set/a r=!random!%%nx+1
-set err=
-
-set ttr=!_ttr!
-set _ttr=!ran%r%!
-::随机取一个图标，
-
-if not defined ttr goto :loop
-
-set mx=!_%ttr:~,2%!
-set k=%ttr:~2%
-set str=!%ttr%!
-
-set _str=!%_ttr%!
-
-
-setlocal enabledelayedexpansion
-for %%a in (!_str!) do set/a one=0x%%a,x=one/4+8,y=one%%4&amp;set kk!x!.!y!=■
-for /l %%a in (8,1,11) do for /l %%b in (0,1,3) do (
-        if defined kk%%a.%%b (set kk%%a=!kk%%a!!kk%%a.%%b!) else (set kk%%a=!kk%%a!　)
-)
-endlocal&amp;set ebu8=%kk8%&amp;set ebu9=%kk9%&amp;set ebu10=%kk10%&amp;set ebu11=%kk11%
-::对预备图标的处理
-
-
-:cont
-for /f &quot;tokens=1,2&quot; %%a in (%~n0.tmp) do (
-        if %%b geq 6 (call :error %%b&amp;exit)
-        if %%a neq !test! (
-                set bs=!str!&amp;set/a bm=m,bk=k
-                set/a !k%%b!=1
-                if &quot;%%b&quot; equ &quot;3&quot; (for %%b in (&quot;!ttr:~,2!!k!&quot;) do set str=!%%~b!)
-                setlocal enabledelayedexpansion
-                (%d-v:#=3%)
-                rem 调用函数把图标点放置到总坐标空间
-                if defined err (
-                        endlocal
-                        set/a m=bm,k=bk
-                        set str=!bs!
-                        if &quot;%%b&quot; equ &quot;4&quot; goto :jmpout
-                ) else (
-                        (%d-e:#=18%)
-                        rem 调用显示函数
-                        endlocal
-                )
-        )
-        set test=%%a
-)
-
-
-set ti=1!time:~7,1!!time:~9,2!
-if !ti! lss !bti! (set /a tn=ti-bti+1000) else (set /a tn=ti-bti)
-if !tn! gtr !down! (
-        set/a bti=ti,n+=1
-        setlocal enabledelayedexpansion
-        (%d-v:#=3%)
-        if defined err (
-                endlocal
-                goto :jmpout
-        ) else (
-                (%d-e:#=18%)
-                endlocal
-        )
-)
-
-goto :cont
-
-:jmpout
-set/a n-=1
-(%d-v:#=3%)
-set m=18
-
-for /l %%a in (18,-1,2) do for %%b in (&quot;!ebuf:@=%%a!&quot;) do if &quot;%%~b&quot; neq &quot;■■■■■■■■■■■&quot; (set e!m!=%%~b&amp;set/a m-=1)
-
-if !m! neq 1 (
-        for /l %%a in (!m!,-1,2) do set &quot;e%%a=　　　　　　　　　　　&quot;
-        for /l %%a in (18,-1,2) do (
-                for /l %%b in (0,1,10) do set r%%a.%%b=!e%%a:~%%b,1!
-        )
-        set/a &quot;fen=fen+(m-1)*10,guan=fen/150+1&quot;
-)
-
-if !n! leq 2 (
-        echo 游戏结束！
-        ping -n 3 127.1 &gt;nul
-        goto :restart
-)
-goto :loop
-
-:para2
-mode con: cols=30 lines=2
-echo a左 d右 w转 s加速 q退出
-:p_lp
-set/a n=n%%10+1
-choice /c adwsgq /n &gt;nul
-&gt;%~n0.tmp echo;%n% %errorlevel%
-if %errorlevel% geq 6 exit
-goto :p_lp
-
-:error
-if %1 equ 6 echo 谢谢使用，再见。。。
-if %1 gtr 6 echo 对不起！choice.exe 文件不存在，不能运行。。。
-ping -n 3 127.1 &gt;nul
-goto :eof
-</code></pre>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary" itemprop="url"><span itemprop="title">batch</span></a><a href="/tags/批处理/" class="label label-success" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/游戏/" class="label label-info" itemprop="url"><span itemprop="title">游戏</span></a><a href="/tags/转载/" class="label label-warning" itemprop="url"><span itemprop="title">转载</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/batch_fangkuai/#comments" class="ds-thread-count comment-link" data-thread-key="98" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -978,7 +774,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:46:51</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1042,8 +838,9 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
   $('.entry').each(function(i){
     $(this).find('img').each(function(){
       var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
      
       if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });

@@ -111,6 +111,131 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/post35/">一个文件处理的小工具</a></h1>
+      
+        <span>发表于<time datetime="2008-12-19T15:04:37.000Z"> <a href="/post/post35/">2008-12-19</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>STR [File] [Start] [Bytes] [/C|/I] [dstFile] [Address]</p>
+<pre><code>     File: A File to be Processed data.  //文件
+
+    Start: Offset to Process data.  //文件中处理数据的起始位置  （文件的开头位置为0）
+
+    Bytes: Bytes to Process. //要处理的字节数量 （如果输入0，则表示从Start开始到文件末尾）
+
+       /C: Copy Bytes from File to dstFile.  //从源文件向目标文件复制数据
+
+       /I: Insert Bytes to dstFile from File. //从源文件向目标文件插入数据，插入数据后目标文件增加 Bytes个字节
+
+  dstFile: A File to Write Result data.  //目标文件
+
+  Address: Offset to Write Result data.  //目标文件中要复制或插入数据的位置 （如果目标文件不存在，该值被忽略）
+</code></pre><p>STR [File] [Start] [Bytes] [/D] [dstFile]</p>
+<pre><code>       /D: Delete Bytes from File &amp;amp; Write Result to dstFile.  //从源文件删除数据并结果写入目标文件
+</code></pre><p>STR [File] [Start] [Bytes] [/V] [/A] [/P]</p>
+<pre><code>       /V: View File In Hex Style.  //十六进制方式查看文件
+
+       /A: Show ASCII Value. //显示ASCII码
+
+       /P: Pause Echo Screen.  //满屏暂停
+</code></pre><p>STR [File] [Start] [Bytes] [/F] [/Hex|/Asc]:[Value] [/I] [/A]</p>
+<pre><code>    Bytes: Must be 0.  //必须为0
+
+       /F: Find String in File.  //在文件中查找字符串
+
+     /Hex: Hex Style. //十六进制方式
+
+     /Asc: ASCII Style.  //ASCII码方式
+
+    Value: Hex_Digital/ASCII String (40 Characters Maximum).  //字符传真的值，最长40个字符 （如果是十六进制串长度应为双数）
+
+       /I: Ignore Case. //忽略大小写 
+
+       /A: Process All Value in File. //在文件中查找所有满足要求的字符串（默认查找1次）
+</code></pre><p>STR [File] [Start] [Bytes] [/E] [/Hex|/Asc]:[Value]</p>
+<pre><code>    Bytes: Must be 0.  //必须为0
+
+       /E: Edit File.  //编辑文件
+</code></pre><p>STR [File] [Start] [Bytes] [/R] [SrcString] [DstString] [/I] [/A]</p>
+<pre><code>    Bytes: Must be 0.  //必须为0
+
+       /R: Relace SrcString with DstString.  //字符常替换
+
+SrcString: [/Hex|/Asc]:[Value].   //源串，可以使用十六进制或ASCII码串
+
+DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII码串
+
+       /A: Process All SrcString in File.  //在文件中查找所有源字符串（默认替换1次）
+</code></pre><p>说明：</p>
+<pre><code>1.  使用 /C 和 /I 命令时，如果目的文件不存在，Adress 的值将被忽略，直接执行将源文件从 Start 开始的 Bytes 个字节写入到新创建的目的文件中
+
+2.  使用 /C 和 /I 命令时，如果目的文件存在，并且不输入 Address，则Address 默认为0，也就是文件的起始位置。
+
+3.  目前处理的单个文件大小不超过 2G
+</code></pre><p>例子：</p>
+<p>str  1.exe 0x100  0x10 /d 2.bin  执行将文件1.exe 从位置256开始的16个字节删除，并将结果写入到2.bin，文件2.bin的长度将比1.exe长度小16</p>
+<p>str  1.exe 0x100  0x10 /c 2.bin 20  执行将文件1.exe 从位置256开始的16个字节写入到2.bin的20位置,也就是文件2.bin从位置20开始的16字节被覆盖</p>
+<p>str  1.exe 0x100  0x10 /i 2.bin 20  执行将文件1.exe 从位置256开始的16个字节插入到2.bin的20位置，结果文件2.bin的长度将增加16字节</p>
+<p>str  1.exe 0x100  0 /v /p /a  从文件偏移位置256开始在屏幕上显示文件内容，如果Bytes输入为0，则表示从Start开始至文件末尾。</p>
+<p>str  1.exe 0x100  0 /e /hex:11223344  将文件偏移位置256开始的4个字节修改为，0x11,0x22,0x33,0x44。</p>
+<p>str  1.exe 0x100  0 /e /asc:1234  将文件偏移位置256开始的4个字节修改为，1234, 也就是0x31,0x32,0x33,0x34</p>
+<p>查找替换算法使用的是 KMP 算法，不重复计数，如文件 1.txt 的内容为10个字符0：<br>0000000000</p>
+<p>如执行命令： str 1.txt 0 0 /f /asc:0000 /a</p>
+<p>则执行结果为：</p>
+<p>   Find string At:</p>
+<p>   0  0x0</p>
+<p>   4  0x4</p>
+<p>不会是：<br>   Find string At:<br>   0  0x0</p>
+<p>   1  0x1</p>
+<p>   2  0x2</p>
+<p>   3  0x3</p>
+<p>   4  0x4</p>
+<p>   5  0x5</p>
+<p>   6  0x6</p>
+<p>压缩包中包含dos版本和win32版本</p>
+<p>程序处理返回值:</p>
+<pre><code>#define SUCCESS 0
+#define COMMON_USE_ERROR 1
+#define OPEN_FILE_ERROR 2
+#define PRG_MODIFIED 3
+#define FILE_READ_ERROR 4
+#define PARAMETER_ERROR 5
+#define CREATE_FILE_ERROR 6
+#define FILE_WRITE_ERROR 7
+#define SRCFILE_DSTFILE_SAME 8
+#define USER_CANCEL 9
+#define FILE_NOT_EXIST 10
+#define FILE_SEEK_ERROR 11
+#define STRING_NOT_FOUND 12
+</code></pre><p><a href="http://qiniu.chenall.net/upload/2008/12/200812192314097256.rar">200812192314097256.rar</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li><li><a href="/categories/软件推荐/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/软件/" class="label label-primary" itemprop="url"><span itemprop="title">软件</span></a><a href="/tags/str/" class="label label-success" itemprop="url"><span itemprop="title">str</span></a><a href="/tags/strw/" class="label label-info" itemprop="url"><span itemprop="title">strw</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/post35/#comments" class="ds-thread-count comment-link" data-thread-key="35" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></h1>
       
         <span>发表于<time datetime="2008-12-14T06:53:38.000Z"> <a href="/post/post34/">2008-12-14</a></time></span>      
@@ -660,49 +785,6 @@ del /f &quot;%temp%\eyou.hta&quot;
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/ff0_02/">FFO宠物技能[转]</a></h1>
-      
-        <span>发表于<time datetime="2008-06-05T16:47:30.000Z"> <a href="/post/ff0_02/">2008-06-06</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <font size="2"></font><font color="#ff0000">杂食类宠物 加强攻击类的技能都不能领悟&nbsp;&nbsp;&nbsp; 喂养：钢铁 、石盾 、魔甲、厚皮、驱毒、阳春、活筋、解封、祛病、醒脑<br><br></font>★<font size="2"><br></font><font color="#00ff00">下面就是具体的宝宝技能列表了：</font> 
-
-<p><a href="http://bbs.qq.com/allphoto.shtml?url=http://bbsimg1.qq.com/2007/02/15/000/192.gif" target="_blank" rel="external"><font size="2"><img src="http://bbsimg1.qq.com/2007/02/15/000/192.gif" alt="网友贴图"></font></a><font size="2"><br></font><font color="#009999"></font><font size="2">首先是物理系的</font><font color="#ff0000">肉食力量型</font>宝宝： </p>
-<p>夭夭:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、神力、饥渴、愚笨、 忠诚、刚力、蛮力<br>山狼:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、神力、饥渴、愚笨、 忠诚、刚力、蛮力<br>地藏小妖:&nbsp;&nbsp;&nbsp; 收集、灵通、神力、饥渴、愚笨、 忠诚、刚力<br>苍狼皇:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 坐骑、收集、灵通、神力、饥渴、逃逸、愚笨、 忠诚、刚力、蛮力<br>毒蜘蛛:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 坐骑、收集、灵通、神力、饥渴、逃逸、愚笨、 忠诚、刚力、蛮力<br>地翼魔:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 坐骑、收集、灵通、神力、饥渴、逃逸、愚笨、 忠诚、刚力、蛮力<br>甜蜜粉粉兔： 收集、灵通、神力、饥渴、愚笨、 忠诚、逃逸、刚力、蛮力<br>甜蜜妖精：&nbsp;&nbsp; 收集、灵通、神力、饥渴、愚笨、 忠诚、逃逸、刚力、蛮力&nbsp;</p>
-<font size="2"><br><br></font><a href="http://bbs.qq.com/allphoto.shtml?url=http://bbsimg1.qq.com/2007/02/15/000/192.gif" target="_blank" rel="external"><font size="2"><img src="http://bbsimg1.qq.com/2007/02/15/000/192.gif" alt="网友贴图"></font></a><font size="2"><br>下面的是法系的</font><font color="#00ff00">草食智力型</font>宝宝：<br><br>海龟:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、回魂、霹雳、灵悟<br>大蜗牛怪:&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、回魂、霹雳、<br>木制小飞兔: 收集、灵通、饥渴、愚笨、 忠诚、回魂、霹雳、灵悟<br>雪女:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、回魂、霹雳、灵悟<br>水母球:&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、回魂、霹雳、灵悟<br>火鸟:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 坐骑、 收集、灵通、饥渴、愚笨、 忠诚、逃逸、回魂、霹雳、灵悟<br>浪漫妖精：&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、神力、逃逸、回魂、霹雳、灵悟<br>浪漫粉粉兔：收集、灵通、饥渴、愚笨、 忠诚、神力、逃逸、回魂、霹雳、灵悟&nbsp;<br><br><a href="http://bbs.qq.com/allphoto.shtml?url=http://bbsimg1.qq.com/2007/02/15/000/192.gif" target="_blank" rel="external"><font size="2"><img src="http://bbsimg1.qq.com/2007/02/15/000/192.gif" alt="网友贴图"></font></a><font size="2"><br>还有就是通用的</font><font color="#ffcc33">杂食敏捷型</font>宝宝：<br><br>鬼火：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、忠诚、逃逸、护主、钢铁<br>风精灵：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、护主<br>独角兽：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 坐骑、收集、灵通、饥渴、愚笨、忠诚、逃逸、护主、钢铁<br>大闸蟹：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 坐骑、收集、灵通、饥渴、愚笨、忠诚、逃逸、神力、护主、钢铁、石盾<br>沙漠幻蝶：&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、忠诚、逃逸、神力、护主、钢铁、石盾<br>干尸守卫：&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、忠诚、逃逸、神力、回魂、护主、钢铁、石盾&nbsp;<br><br><font size="2"><br></font><a href="http://bbs.qq.com/allphoto.shtml?url=http://bbsimg1.qq.com/2007/02/15/000/192.gif" target="_blank" rel="external"><font size="2"><img src="http://bbsimg1.qq.com/2007/02/15/000/192.gif" alt="网友贴图"></font></a><font size="2"><br>当然少不了我们</font><font color="#660066">&ldquo;十一&rdquo;的珍宠</font>哦：<br><br>妖狐：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、神力、饥渴、逃逸、愚笨、 忠诚、回魂、霹雳、灵悟<br>QQ糖：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、神力、饥渴、逃逸、愚笨、 忠诚、神力、刚力、蛮力<br>闪电鼠:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、护主、钢铁、石盾<br>牛魔王：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、神力、刚力、蛮力<br>人鱼公主：&nbsp;&nbsp;&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、神力、护主、钢铁、石盾<br>魔王飞天猪：&nbsp;&nbsp; 收集、灵通、饥渴、愚笨、 忠诚、逃逸、神力、回魂、霹雳、灵悟&nbsp;<br><br><a href="http://bbs.qq.com/allphoto.shtml?url=http://bbsimg1.qq.com/2007/02/15/000/192.gif" target="_blank" rel="external"><img src="http://bbsimg1.qq.com/2007/02/15/000/192.gif" alt="网友贴图"></a><br><font color="#009999"></font><font style="font-size: 12px"><br>以上未提到的厚皮、魔甲、祛病、解封、活筋、醒脑、阳春宠物均可以在30时学到。由于QGG和QMM现存数量比较少，希望拥用的几位可以和我们说明下技能，方便大家了解。以上即为智囊团为大家奉上的宠物技能帖。。如有错误望及时指正。。也希望大家可以继续支持智囊团的工作。。</font>
-
-<font style="font-size: 12px">于QGG QMM 小囧 金小囧 吉祥鼠 如意鼠 葵乡仙子 红萼仙子 冰之火和兔王现存数量比较少，希望拥用的几位可以和我们说明下技能，方便大家了解<br><br><img src="http://bbsimg.qq.com/2005/06/12/005/446.gif" alt="网友贴图"><strong>宠物的技能</strong><br><br>&nbsp;技能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最低学习等级&nbsp;&nbsp;&nbsp; 技能作用<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=02691ed6d57080dc15264d93cb13418e3a682af3460ca61ef12bdf75c532187614383d965d1688633c80c95d552808e55c06c42890c42913fd77d64cb8c4e17cb942aedecb2f53bb66af126df3ef4af67b5f6555.jpg" alt="网友贴图">收集&nbsp; 1&nbsp; 拥有自动拾取玩家周围半径75像素内物品的能力，等级每提高1级，收集半径提高5像素，各主城和新手村不能使用该技能，物品掉落1秒之后才开始收集，且每间隔1秒收集1个道具（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=24515b44bb63dd0e90aaa3beb35710774eacb9c0e0ada5c5b8ebc5acf470b4f966fa2f055347ef18000264c0d0dfa96c2a0d08d2d04af74ea6fdff5d4c421f946290b785abee486cda40738bbfff2219909f20ea.jpg" alt="网友贴图">回魂&nbsp; 1&nbsp; 可以帮助玩家回复气血，每次回复消耗精气，直到玩家气血补满或精气完全消耗为止，升级回复量增加（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=0a4de4d76fe602a433bfe124fa8a4d8dacde43b6f5cf4571fb15585ee912ee5d4f3740999b93088e9de6a1f3f88bff850e407ca7206caa89f27c92900a4a0b8372f6ef95265c0c2ef913532c0bc401e74384c504.jpg" alt="">护主&nbsp; 1&nbsp; 以自己的气血抵御玩家所受伤害的30%，损血比为300%，直到气血为1。技能等级每提升一级，损血比减少7%，最高30级（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=34897e43b10bc38c9b44e09b69d13c5713dbb582c1c140d396e513b04d2fb4a721f456fbf7023fca8800cf7a4e4bd5e851dcd768824975c42c6e43ef09e44bbba322cf9df6add9366dcf0972210a7ddde0a283a1.jpg" alt="网友贴图">神力&nbsp; 1&nbsp; 增加玩家负重，宠物每1点体质增加10点负重，升级无意义（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=5e9e5c6559a6c8b238aff6f84074016f78e42b5c240e79c301a05f5a80581b3667fb77d6ad61f1a97e0f569b3e6080c5a43ae614319f8905dc3d21bb1092c2a065084548f0e05cbb2beeeba2460b43d052fe4c48.jpg" alt="网友贴图">灵通&nbsp; 1&nbsp; 一定几率提高玩家所获得的经验值20%，升级几率增加（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=5954cad556dcd1bbb1f8dbdd70d9946b298cb65001611d16fd2f2e33461d513842d33f979d3584643ab1ebc4d80e9e862bd8bae76a0e2f7aef9c3cdf529f91c317adde6da02edacc3df002076d102be1c617f58b.jpg" alt="网友贴图">逃逸&nbsp; 1&nbsp; 宠物自身体力低于10%时离开战斗回到玩家背包且不降低信赖度（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=453453b3f7e9f28e0f5d122721a8ea22bc912d8d71779331231d031d5193bd69350ed96e719e5488b8b063194ceb87d2b7aa2e78ed0f52eedcaf32d64d6df6cadacfa81f6910559acfb5a55b340e395ff56375cf.jpg" alt="网友贴图">忠诚&nbsp; 1&nbsp; 拥有此天赋的宠物信赖度比其他宠物信赖度减少缓慢一倍，增长迅速一倍（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=3605c156fc5a63421dda52a0569930fb5723411e09e9cfb4005c89a711ce1b42a9cc455130b19c1567f6f82170f0fbaa110e1df83e6ce4af5f32abfa3b25a2c68e532faa6492c487b6ead9f19878f8eacac74506.jpg" alt="网友贴图">坐骑&nbsp; 5&nbsp; 可以被作为坐骑，成为骑宠，骑后移动速度增加，技能升级移动速度增加，16级可以达到最高移动速度，再升级无意义（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=2cc22a792005a1c71db29ac6ecc56f50b7ec6736a644646d5e4ff4a8fbe691e01b21c926bf50e0396511e31cca01ca64f0c1453eb3d50acb186de23452801b559c1e89b5edfda4ae0f86d639ac80cb3666efefd7.jpg" alt="网友贴图">刚力&nbsp; 5&nbsp; 玩家物理攻击时18%几率造成额外伤害，效果为宠物每10点力量增加伤害6点。技能等级每提升一级，10点力量的伤害效果+1（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=7733d94303f517dcbae5e8e3c1bfbfad7f065c852278479fc60c649840d0ed106ae1e895f71c882f7c782bb1d4fda2b636471228e9f64b25ef17ae45d75beb1549e4b8295654c8a1790ee3c93aeb97952f07423a.jpg" alt="网友贴图">霹雳&nbsp; 5&nbsp; 玩家魔法攻击时18几率造成额外伤害，效果为宠物每10点智慧增加伤害6点。技能等级每提升一级，10点智慧的伤害效果+1（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=687c9e19c9dbdcc74afe5803593a51ee73a5eec732b86e4a8423dffd68e518be256268d85776c038c3017b2800b2c4ec69b5525fbb333c19f33171979b66ef6064396f88fe4b2e6a8de25fe65f18030d3a0c4108.jpg" alt="网友贴图">饥渴的学子&nbsp; 5&nbsp; 宠物饥渴速度比普通宠物加快一倍，对所有技能领悟几率提高，升级无意义（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=d2daecb44581cc242252fb068d0f84d459ec1e2dbfc6d78fd0efc49ad3dc725fd9f03ba76802d9a4428eeb13bc2ab12cdcb832472094fdc5242f1d0410e29ecc2d30c2eeb07e1513f1f89e3087b8405ebf6bcc08.jpg" alt="网友贴图">愚笨&nbsp; 5&nbsp; 宠物领悟任何技能的几率都略有降低，所有战斗技能等级提升1级`升级无意义（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=933967af45e8dce021c782b65f30edb0f8a5062f9d3ea7435a28ca6cf417b1d65681e476b7a2658dd7b313faf3009f1dd0632fc18ea8d01d375eac54ef4cbddc29ffa2d675d1dcabad887994097071e9c559e7e6.jpg" alt="网友贴图">钢铁&nbsp; 30&nbsp; 玩家受到物理攻击时，18%几率减少伤害，效果为宠物每10点敏捷减少3点伤害。技能等级每提升一级，10点敏捷的减伤效果+1（主动） </font>
-
-<font style="font-size: 12px">&nbsp;</font><font style="font-size: 12px"><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=15e8b0bc99dd3cb4658fa4bb435da8b8fb0c69194502ae553e85eae0e69a89df2be6f8ee9d0dbba1719d5ec10355fc0cbeeb39bf2859011a0cff2d27b03ce099be2eef0eef8f327a31612f04e7b3757144606b08.jpg" alt="网友贴图">石盾&nbsp; 30&nbsp; 玩家受到魔法攻击时，18%几率减少伤害，效果为宠物每10点精神减少3点伤害。技能等级每提升一级，10点精神的减伤效果+1（主动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=b3526a1b918d4e2f5720ce4b411f288c206d126bb1a9b5ebab3ce22372aab30b8d56ecfb6a03e20169ae28bac0a83c443d965e05d17ef74ff371b5a12156884c77fc757811b474531a63459f5ddf397abeb24ef5.jpg" alt="网友贴图">驱毒&nbsp; 30&nbsp; 5%几率清除玩家身上的中毒效果。技能等级每提升一级，几率增加1%（被动)<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=f6eef79a4cda85508efec7dab3fca351af18663b7a8f45a2c9ab5d41cd192861cdc7568afe2993ab86ab788591ac8bb3b8ece6ec0dff25c028436604e5f600eceadbf350fb3615eba5df9d58d77c6287b1b767db.jpg" alt="网友贴图">阳春&nbsp; 30&nbsp; 5%几率清除玩家身上的冰冻效果。技能等级每提升一级，几率增加1%（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=5e652e5d51df4a3ef2924711adbe5d09e6a1cf6ed329abd59b022a6ee877ae60f05479e7fcfa2da259765dc128bd9a5a3c89edc0e116562774202197847422db860fb13ba8febcb34695195e99a0acabb6397632.jpg" alt="网友贴图"> 活筋&nbsp; 30&nbsp; 5%几率清除玩家身上的石化效果。技能等级每提升一级，几率增加1%（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=fc1a515dacfc6aeb19898af043f47203c4760b8e044db814463085221ad23a7631508c72b5422e6ff1c98e05bf4b3f46e29f0a0842630deef70e56e267811d44872bb7c05dc3a443d205acf738a5144f029d7e82.jpg" alt="网友贴图">解封&nbsp; 30&nbsp; 5%几率清除玩家身上的封印效果。技能等级每提升一级，几率增加1%（被动）<br><img src="http://photo.store.
-qq.com/http_imgload.cgi?/rurl2=b4c3ce510d23a26f5b184663d47bb0c94f72fc700de121450153ca41d5e7e17f4f746fb415d8feb4ad147e1d78265a9b23c5ca25bf1b116f9b211cdda4fe721a8f51e76f242444453d0701b82a74af7fb64c7d01.jpg" alt="网友贴图">祛病&nbsp; 30&nbsp; 5%几率清除玩家身上的衰弱效果。技能等级每提升一级，几率增加1%（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=2287798f993dfd877f603b8200fa0406ede30028dc16765547879534ca754d794ab9769da8e10ff0d96227913f2cdefbc8216bdea59b5841026fa8d91a5d27e86dd81e77d30566bd76a38964f4ee77aff441e604.jpg" alt="网友贴图">醒脑&nbsp; 30&nbsp; 5%几率清除玩家身上的昏迷效果。技能等级每提升一级，几率增加1%（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=5f44c6c6a57e99a558696168953561654d9f0b106ae16ae866834f6c7ffb334ec7c521fb2f2a45028286c9f6628179ad22a8e0d48d91fada70cd592c287fdb8e308f7086028be040429936f2f69544958cf31d30.jpg" alt="网友贴图">蛮力&nbsp; 30&nbsp; 额外造成玩家物理攻击力3%的伤害。技能等级每提升一级，伤害提升1%（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=c38c06b057d5cd5439bb294f3e102725c5d1d1e604df001d6cf0c287f4bb0482be355e6a60e3ce53f35bc5ff8b2b20026afa29f90fc67f371b386c188306a45fbd984d8b3401943f99b29da28ed66f3b7a1a53ce.jpg" alt="网友贴图">灵悟&nbsp; 30&nbsp; 额外造成玩家魔法攻击力3%的伤害。技能等级每提升一级，伤害提升1%（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=482100d3434198f51eadf8c7265128e7eb0f05b33bb9788a5ea5a5543cee771d39beafc42ea96be2bd82bf6ec81872b56804683740fe28c7f21555ac1380f195f916bc942c87e8e1925a8b538e3221bf5bbbee97.jpg" alt="网友贴图">厚皮&nbsp; 30&nbsp; 提高物理吸收15点，技能等级每提升一级，吸收能力提升2点（被动）<br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=bc20f8747b7a01ec1f235cca0affa8239ebbd88a9f2ceca1f8c24abd2a27191ae406878580edc66fd9b1a572fbc97d8a92a9e54c713a8d05a0cdbaf9bf58e632572e0bcd9c6d752e5ac9bf989be02595838f1379.jpg" alt="网友贴图">魔甲&nbsp; 30&nbsp; 提高魔法吸收15点，技能等级每提升一级，吸收能力提升3点（被动）<br><br><img src="http://bbsimg.qq.com/2005/06/12/005/446.gif" alt="网友贴图"><strong>宠物的坐骑速度</strong><br><img src="http://photo.store.qq.com/http_imgload.cgi?/rurl2=73f9ba66fea699f84e8bb8959255dc7c8f08845361ba00d316bf7bfd0c58490418db704cbf8aa5bcd68154672a2eb71c04e472b955dd59e08a9feb3dbde9032c896a678451a069a383b5ae215b55f1af2743efc8.jpg" alt="网友贴图"><br><br><img src="http://bbsimg.qq.com/2005/06/12/005/446.gif" alt="网友贴图">六大热门宠物<br><br>通天魔虎和通天妖虎:降灵鞍速度:260,御灵鞍速度:375<br><br>仙麒麟和圣麒麟:降灵鞍速度:260,御灵鞍速度:325<br><br>天麒麟和地麒麟:降灵鞍速度:260,御灵鞍速度:375<br></font>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/游戏人生/" itemprop="url"><span itemprop="title" >游戏人生</span></a></li><li><a href="/categories/游戏人生/转载资料/" itemprop="url">转载资料</a></li></span></div> | <span class="tags">标签 <a href="/tags/FFO/" class="label label-primary" itemprop="url"><span itemprop="title">FFO</span></a><a href="/tags/宠物/" class="label label-success" itemprop="url"><span itemprop="title">宠物</span></a><a href="/tags/技能/" class="label label-info" itemprop="url"><span itemprop="title">技能</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/ff0_02/#comments" class="ds-thread-count comment-link" data-thread-key="15" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -815,7 +897,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:46:51</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -879,8 +961,9 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
   $('.entry').each(function(i){
     $(this).find('img').each(function(){
       var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
      
       if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });

@@ -111,6 +111,77 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></h1>
+      
+        <span>发表于<time datetime="2010-01-30T06:15:53.000Z"> <a href="/post/grub4dos_goto/">2010-01-30</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <h2 id="[功能说明]">[功能说明]</h2>
+<p>用于菜单中，可以直接跳到另一个菜单项执行.</p>
+<p>注：因为是调用<code>fallback</code>命令的功能</p>
+<p>所以如果有使用<code>fallback</code>则使用这个命令之后之前的<code>fallback</code>设置就失效。</p>
+<p>注: <em>这个只是演示一下GRUB4DOS外部命令的编写,在新版GRUB4DOS中已经直接支持</em></p>
+<h2 id="[下载地址]">[下载地址]</h2>
+<p>  <a href="http://grub4dos-chenall.googlecode.com/files/goto.zip" target="_blank" rel="external">http://grub4dos-chenall.googlecode.com/files/goto.zip</a></p>
+<p>  GRUB4DOS最新版本下载</p>
+<p>  <a href="http://code.google.com/p/grub4dos-chenall/" target="_blank" rel="external">http://code.google.com/p/grub4dos-chenall/</a></p>
+<h2 id="[使用方法]">[使用方法]</h2>
+<h3 id="例子：">例子：</h3>
+<pre><code>default 1
+ timeout 5
+
+title 0.title 0
+ pause title 0
+#跳到菜单1.
+ goto 1
+
+title 1.title 1
+ pause title 1
+ #如果xxx.xxx文件存在跳到菜单2.
+ ls /xxx.xxx &amp;amp;&amp;amp; goto 2
+
+title 2.title 2
+ pause title 2
+</code></pre><p> [其它说明]<br> 必须配合grub4dos 0.4.5a 2010-01-21以后的版本使用.<br>很简单的一个功能。</p>
+<p>源码只有两行^_^够简单吧。</p>
+<pre><code>  builtin_cmd(&quot;fallback&quot;,arg,flags);
+  return !(errnum = MAX_ERR_NUM);
+</code></pre><p>这里顺便解释一下GRUB4DOS中fallback命令的用法</p>
+<blockquote>
+<p>fallback<br>  fallback NUM 进入无人干预启动模式：如果默认启动入口项出错失败，立即用入口项 NUM 来启动（这里的“入口项”与 default 命令中的“入口项”意义相同）。</p>
+</blockquote>
+<p>可以指定多个入口项比如<br> fallback 1 2 3 4<br> 这样当启动出错失败就跳到第1个菜单处执行，第一个菜单执行过程中出错失败就继续进入第2个菜单….<br>如果到第4个菜单还是执行失败则，提示出错信息。</p>
+<p> 不加任何参数的<code>fallback</code>命令代表取消<code>fallback</code>的设置。</p>
+<p><code>fallback</code>可以用于智能控制<code>GRUB4DOS</code>的菜单的执行过程。</p>
+<p><code>goto</code>命令就是利用了<code>fallback</code>的原理。先指定一个入口，然后再返回一个失败信息。这样菜单指行时就会跳过去了。</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/外部命令/" class="label label-success" itemprop="url"><span itemprop="title">外部命令</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_goto/#comments" class="ds-thread-count comment-link" data-thread-key="125" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></h1>
       
         <span>发表于<time datetime="2010-01-29T12:23:05.000Z"> <a href="/post/grub4dos_fat/">2010-01-29</a></time></span>      
@@ -666,51 +737,6 @@ find --set-root --ignore-floppies --ignore-cd /boot/bcd # 不找光盘和软盘�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></h1>
-      
-        <span>发表于<time datetime="2009-11-06T11:19:32.000Z"> <a href="/post/batch_inifile/">2009-11-06</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p><strong>批处理读取INI文件,以前无聊时写的.当时只是觉得好玩就尝试写了一下，原贴请看DOS联盟论坛</strong></p>
-<p><a href="http://www.cn-dos.net/forum/viewthread.php?tid=25789" target="_blank" rel="external">http://www.cn-dos.net/forum/viewthread.php?tid=25789</a></p>
-<p>最早的版本，发现了许多错误，而且使用了许多的SETLOCAL，经常会出错。后来优化了下，可以运行了，就一直都没有再去改过了。</p>
-<p>最近DOS联盟论坛的朋友<a href="http://www.cn-dos.net/forum/viewpro.php?uid=154086" target="_blank" rel="external">blacksheep2000</a> 在使用时发现了一些问题，我就再查了一下代码，不查不知道，一查真是吓一跳，呵呵。</p>
-<p>所以就重新整理了一下，这下应该可以用了。主要用于学习，由于批处理的执行效率比较低，正常情况下，请使用同类INIFILE.EXE代替。</p>
-<p>欢迎有兴趣的朋友一起继续优化。相比第1个版本，执行效率提升了许多。</p>
-
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/batch_inifile/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/batch/" class="label label-primary" itemprop="url"><span itemprop="title">batch</span></a><a href="/tags/inifile/" class="label label-success" itemprop="url"><span itemprop="title">inifile</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/batch_inifile/#comments" class="ds-thread-count comment-link" data-thread-key="109" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -823,7 +849,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:46:51</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -887,8 +913,9 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
   $('.entry').each(function(i){
     $(this).find('img').each(function(){
       var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
      
       if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });

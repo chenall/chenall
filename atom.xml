@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2014-11-27T03:50:32.473Z</updated>
+  <updated>2014-12-28T13:46:45.040Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -13,6 +13,87 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍]]></title>
+    <link href="http://chenall.net/post/grub4dos_ipxe/"/>
+    <id>http://chenall.net/post/grub4dos_ipxe/</id>
+    <published>2014-12-27T16:00:00.000Z</published>
+    <updated>2014-12-28T13:46:35.000Z</updated>
+    <content type="html"><![CDATA[<p>  <a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-12-27/" target="_blank" rel="external">最新版本grub4dos</a>的发行包里面有一个<code>ipxegrldr</code>文件,这个文件其实是整合了<code>undionly.kpxe</code>和<code>grldr</code>的文件,可以作为PXE的启动文件.</p>
+<h2 id="新的功能">新的功能</h2>
+<ul>
+<li>使用该文件启动可以完整支持<code>ipxe</code>的所有功能调用,通过它允许直接在<code>grub4dos</code>下访问<code>WEB</code>或<code>SAN</code>上面的文件.</li>
+<li><p>另外相对应的增加了一个命令<code>ipxe</code>,使用它可以调用各种<a href="http://ipxe.org/cmd" target="_blank" rel="external">ipxe命令</a></p>
+<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong><br><a id="more"></a></p>
+<h2 id="相关用法介绍">相关用法介绍</h2>
+</li>
+</ul>
+<ol>
+<li><p>可以直接访问网络上的文件.</p>
+<pre><code>cat http://b.chenall.net/menu.ipxe
+map --mem http://b.chenall.net/ntboot.iso (0xff)
+map --hook
+ls (0xff)
+</code></pre><p><img src="http://qiniu.chenall.net/post/20141228_01.png/w400.png" alt=""></p>
+</li>
+<li><p>利用<code>ipxe</code>命令来实现更多功能</p>
+<p>使用ipxe命令时需要注意一点,最好在文本模式下运行(terminal console)运行ipxe,特别是像<code>ipxe chain</code>或<code>ipxe boot</code>之类的,否则会看不到ipxe的回显.看起来就像是假死状态.</p>
+<ul>
+<li><p>可以直接调用ipxe的各种命令,例子<br><img src="http://qiniu.chenall.net/post/20141228_02.png/w400.png" alt=""></p>
+</li>
+<li><p>直接调用ipxe菜单(注:在ipxe菜单中可以用exit命令返回)  </p>
+<pre><code>ipxe chain http://b.chenall.net/menu.ipxe
+</code></pre></li>
+<li><p>直接使用ipxe启动网络上的文件  </p>
+<pre><code>ipxe chain http://b.chenall.net/grldr
+</code></pre></li>
+<li><p>直接使用ipxe启动网络上的镜像文件例子  </p>
+<pre><code>ipxe sanboot http://b.chenall.net/ntboot.img
+ipxe sanboot iscsi:10.0.4.1:::1:iqn.2010-04.org.ipxe.dolphin:storage
+</code></pre></li>
+<li><p>高级用法,通过sanhook来直接把网络上的镜像映射为一个本地设备.<br>sanhook 可以把映射一个网络镜像相当于grub4dos的map,只是这个是直接映射,读写都是通过网络完成的.<br>sanunhook 删除一个映射.</p>
+<pre><code>ipxe sanhook -d 0xff http://b.chenall.net/ntboot.iso
+ipxe sanunhook -d 0xff
+</code></pre><p><img src="http://qiniu.chenall.net/post/20141228_03.png/w400.png" alt=""><br><img src="http://qiniu.chenall.net/post/20141228_04.png/w400.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="iSCSI_SAN_URI">iSCSI SAN URI</h2>
+<blockquote>
+<p>The format of an iSCSI SAN URI is defined by <a href="http://tools.ietf.org/html/rfc4173" target="_blank" rel="external">RFC 4173</a>. The general syntax is:</p>
+<pre><code>  iscsi:&lt;servername&gt;:&lt;protocol&gt;:&lt;port&gt;:&lt;LUN&gt;:&lt;targetname&gt;
+</code></pre><p>For example:</p>
+<pre><code>  iscsi:10.0.4.1:::1:iqn.2010-04.org.ipxe.dolphin:storage
+  iscsi:boot.ipxe.org::::iqn.2010-04.org.ipxe.boot:public
+  iscsi:192.168.0.1::::iqn.1991-05.com.microsoft:msdos622-target
+  iscsi:opensolaris.home::::iqn.1986-03.com.sun:02:e9abf4cd-714b-c6ec-d017-eea5a56252ed
+</code></pre><ul>
+<li><code>&lt;servername&gt;</code> is the DNS name or IP address of the iSCSI target.</li>
+<li><code>&lt;protocol&gt;</code> is ignored and can be left empty.1)</li>
+<li><code>&lt;port&gt;</code> is the TCP port of the iSCSI target. It can be left empty, in which case the default port (3260) will be used.</li>
+<li><code>&lt;LUN&gt;</code> is the SCSI LUN of the boot disk, in hexadecimal. It can be left empty, in which case the default LUN (0) will be used.</li>
+<li><code>&lt;targetname&gt;</code> is the iSCSI target IQN.</li>
+</ul>
+<p>If you are using iSCSI authentication, then you will need to configure the username and password settings (and possibly also the reverse-username and reverse-password settings) before attempting to connect to the SAN target. There is no way to specify usernames and passwords directly within the iSCSI SAN URI.</p>
+</blockquote>
+<p>后记: 使用<code>ipxegrldr</code>作为PXE启动文件还有另一个好处,就是如果网络正常的话,使用<code>ipxegrldr</code>总是会优先使用 <a href="http://b.chenall.net/grldr" target="_blank" rel="external">http://b.chenall.net/grldr</a> 来启动,也就是说总是使用最新的版本.当然了如果网络不通的话就使用内置的版本.如果你不需要这个功能的话可以直接使用undionly.kpxe自己写菜单来启动grldr</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>  <a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-12-27/" target="_blank" rel="external">最新版本grub4dos</a>的发行包里面有一个<code>ipxegrldr</code>文件,这个文件其实是整合了<code>undionly.kpxe</code>和<code>grldr</code>的文件,可以作为PXE的启动文件.</p>
+<h2 id="新的功能">新的功能</h2>
+<ul>
+<li>使用该文件启动可以完整支持<code>ipxe</code>的所有功能调用,通过它允许直接在<code>grub4dos</code>下访问<code>WEB</code>或<code>SAN</code>上面的文件.</li>
+<li><p>另外相对应的增加了一个命令<code>ipxe</code>,使用它可以调用各种<a href="http://ipxe.org/cmd" target="_blank" rel="external">ipxe命令</a></p>
+<p><strong>ipxe 命令语法:  ipxe [cmd] [params]</strong><br>]]></summary>
+    
+      <category term="GRUB4DOS" scheme="http://chenall.net/tags/GRUB4DOS/"/>
+    
+      <category term="ipxe" scheme="http://chenall.net/tags/ipxe/"/>
+    
+      <category term="GRUB4DOS" scheme="http://chenall.net/categories/GRUB4DOS/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[[grub4dos] grub4dos 最新版本initrdfs功能介绍]]></title>
@@ -206,7 +287,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -293,7 +374,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
@@ -1914,37 +1995,6 @@ a:sub(1,-3) -- 1234
       <category term="xen" scheme="http://chenall.net/tags/xen/"/>
     
       <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[[PHP] 打算整合多个网盘资源]]></title>
-    <link href="http://chenall.net/post/netdisk_sdk/"/>
-    <id>http://chenall.net/post/netdisk_sdk/</id>
-    <published>2013-02-07T03:22:28.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
-    <content type="html"><![CDATA[<p>目前有N多的网络硬盘,各有各的好处和优缺点.另外基本上都有开放API.只是API调用方法都不一样.若是可以让所有网盘的调用方法变得一致.这样一来如是要开发什么的都很方便了.一个网盘不行了就换一个,什么代码都不用改.</p>
-<p>HOHO~~~应该有搞头吧,</p>
-<p>这里的金山快盘SDK就是一个原型<a href="http://chenall.net/post/sdk_kp_php/" target="_blank" rel="external">http://chenall.net/post/sdk_kp_php/</a></p>
-<p>最终我希望所有的网盘都可以这样子来调用</p>
-<pre><code>$disk = &#39;kuaipan&#39;;
-$fs = new $disk(CONSUMER_KEY,CONSUMER_SECRET);
-$fs-&gt;ls();
-</code></pre><p>这样一来,批量管理网盘就变得容易了.一个文件可以同时上传到N个网盘. 不知有没有支持的?</p>
-<p>以后有空再放个DEMO出来.</p>
-<p>EDIT: 由于时间还有个人精力有限,搁浅了…</p>
-]]></content>
-    
-    
-      <category term="API" scheme="http://chenall.net/tags/API/"/>
-    
-      <category term="网盘" scheme="http://chenall.net/tags/%E7%BD%91%E7%9B%98/"/>
-    
-      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
-    
-      <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="PHP" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/PHP/"/>
     
   </entry>
   

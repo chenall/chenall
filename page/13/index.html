@@ -111,6 +111,216 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></h1>
+      
+        <span>发表于<time datetime="2009-03-26T15:22:45.000Z"> <a href="/post/minipe_update/">2009-03-26</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>可以点击链接直接下载，或者进入网络硬盘下载。共享密码是:chenall</p>
+<p><a href="http://qiniu.chenall.net/upload/2009/1/外置驱动说明.txt">外置驱动使用说明.txt</a></p>
+<p><a href="http://qiniu.chenall.net/upload/2009/1/请先读我.txt">请先读我.txt</a></p>
+<p><a href="http://qiniu.chenall.net/upload/2009/1/更新历史.txt">更新历史.txt</a></p>
+<p>2009-05-01 修正版ISO下载[2009-05-03]</p>
+<p><a href="http://chenall.liondrive.com/MicroPE/MicroPE.rar?action=download/download" target="_blank" rel="external">http://chenall.liondrive.com/MicroPE/MicroPE.rar?action=download/download</a></p>
+<p>如果没有看到请</p>
+<p>2009-05-01成品ISO下载测试</p>
+<p><a href="http://dl.getdropbox.com/u/835279/MicroPE.ISO" target="_blank" rel="external">http://dl.getdropbox.com/u/835279/MicroPE.ISO</a></p>
+<p>基本上不会再更新,除非有重大问题.</p>
+<p>目前自用,一般也就更新一下驱动或解决一些小BUG,优化之类的.</p>
+<p>目前本PE已经传到了我的live mesh网盘,和我的电脑上进行同步.如果有使用live mesh并且需要得到最新版的PE的朋友可以留下live id.</p>
+<p>我将把这个共享给你,就可以同步更新了.关于live mesh的资料请上网查找.</p>
+<h3 id="2014-01-21_注:_本PE已经早就不更新了,本文只保留作为研究的记录-">2014-01-21 注: 本PE已经早就不更新了,本文只保留作为研究的记录.</h3>
+<h3 id="类似的PE推荐使用_pseudo的0PE"><strong>类似的PE推荐使用 <a href="http://bbs.wuyou.com/viewpro.php?uid=195661" target="_blank" rel="external">pseudo</a>的<a href="http://bbs.wuyou.com/forum.php?mod=forumdisplay&amp;fid=82" target="_blank" rel="external">0PE</a></strong></h3>
+<h3 id="本PE特色:">本PE特色:</h3>
+<ol>
+<li>首创支持直接使用ISO启动,而且不影响任何功能. 使用ISO启动可以自动找到ISO里面的外置程序<br>需求: 启动ISO文件必须为 /BOOT/MICROPE.ISO</li>
+<li>首创支持外置硬盘控制器(S&amp;R&amp;S)驱动.遇到新的主板进入PE后没有找到硬盘可以方便的添加驱动而不需要重新修改启动镜像内容.</li>
+<li>首创支持多重启动,任意启动,想怎么启动都可以.启动加载的IMG只有15MB.</li>
+<li>启动核心最小并且保持功能完整.启动后如果缺什么功能都可以通过外置程序来添加.</li>
+<li>首创支持iSCSI启动,也是首个支持iSCSI客户端连接的XP PE</li>
+<li>首创充许把核心IMG里面的文件直接解开放在U盘或硬盘上进行启动.(不建议使用)</li>
+<li>外置程序模块化,傻瓜化添加,基本上只需复制粘贴就可以了.</li>
+<li>本地/光盘/iSCSI/网络PXE等,随意启动.</li>
+</ol>
+<p>2009-01-19 ,具体请看更新历史.txt</p>
+<p>PE090115出现失误,请自行修改[PE定制]目录下的批处理把以下语句后面的Micrope.lst改为menu.lst</p>
+<pre><code>grubmenu.exe import boot\grldr boot\MicroPE.lst
+</code></pre><p>2009-01-16</p>
+<p>不再整个ISO文件上传,使用了可定制的方式上传所有需要的文件,加了一些说明.</p>
+<p>可根据需要自己生成ISO文件.</p>
+<p>其它请查看更新历史页面.</p>
+<p>下载地址:</p>
+<p><a href="http://www.brsbox.com/chenall" target="_blank" rel="external">http://www.brsbox.com/chenall</a></p>
+<p>PE090115.rar</p>
+<p>这个版本已经支持ISCSI启动,只要手工内置SYSTEM.WIM和NET.WIM就可以了.</p>
+<p>SYSTEM.WIM内置到WXPE\SYSTEM\SYSTEM.WIM</p>
+<p>NET.WIM内置到WXPE\NET\NET.WIM.</p>
+<p>说明书尚未添加ISCSI启动的资料,.有关ISCSI启动请查看无忧论坛相关贴子.</p>
+<p>2009-01-08.</p>
+<p>细微调整,整个ISO文件上传146MB.</p>
+<p>[MicroPE.iso]</p>
+<p>注意:</p>
+<ol>
+<li><p>如果要解开ISO请使用IsoBuster否则解开的文件不完整.</p>
+</li>
+<li><p>硬盘控制器驱动直接使用了<a href="http://bbs.wuyou.com/viewpro.php?uid=195661" target="_blank" rel="external">pseudo</a> 的OPE 1230版本的驱动.</p>
+</li>
+<li><p>因为我是维护用的,内置RADMIN服务端,启动网络后会自动运行.方便进行远程控制.</p>
+</li>
+<li><p>此版核心支持ISCSI启动,</p>
+</li>
+</ol>
+<p>方法,把NET.WIM和SYSTEM.WIM内置到WINPE.IMG里面即可.</p>
+<p>目录限制.内置NET.WIM放在WXPE\NET目录下.SYSTEM.WIM放在WXPE\SYSTEM目录下.否则无效.</p>
+<p>然后在WINPE.IMG根目录下新建一个文件夹DRIVERS里面放网卡驱动.</p>
+<p>2008-12-03.</p>
+<p>由于我没有使用光盘测试而是直接用硬盘启动,所以一直没有发现一个问题.今天用光盘启动才发现.</p>
+<p>当使用光盘启动时,驱动目录的设置可能会出错,造成驱动安装失败.</p>
+<p>解决方法:</p>
+<p>修改MINIPE\AUTORUN.INF文件</p>
+<p>把以下语句修改一下即可.</p>
+<p>ENVI $Drivers=%curdrv%\minipe\Drivers</p>
+<p>改成如下.</p>
+<p>ENVI $Drivers=%curdir%\Drivers</p>
+<p>说明:虽然两句要表达的意思是一样的,但是用后面那一句通用性比较高..</p>
+<p>因为%curdrv%无法识别\\?\cdrom0,所以失败.</p>
+<p>2008-11-24.</p>
+<ol>
+<li>添加了最新版的PECMD.EXE．　</li>
+<li>更新了UNIATA驱动到最新版．</li>
+<li>更新了启动文件GRLDR到最新版（调整了启动菜单MENU.LST）</li>
+<li>内置了EXFAT文件系统驱动．</li>
+</ol>
+<p>还有一些细微修改，其中某些文件参考了<a href="http://bbs.wuyou.com/space.php?uid=195661" target="_blank" rel="external">pseudo</a> </p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=104242" target="_blank" rel="external">【无忧首发】零体积全能可扩展PE(软盘装得下的PE，11.01)</a>的版本进行修改．</p>
+<p>2008-05-14</p>
+<p>1.新版<a href="/blog/getfile.asp?did=1&amp;fid=1381864">SCSI.IMG</a>测试 带完整驱动。从根据以下贴子的资料整理</p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=107172" target="_blank" rel="external">[4月12日]基于毛桃PE的SATA、RAID驱动补充优化1.3修正版(新内核测试4+新问题)</a></p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=122156" target="_blank" rel="external">[待测]Intel、SIS、VIA、ULI/ALI、AMD、ATI、NV南桥磁盘驱动BETA版[5月13日]</a></p>
+<p>2008-05-11</p>
+<p>1.添加了极点中文输入法(带86五笔)精简版(用于PE).<a href="/blog/getfile.asp?did=1&amp;fid=1381812">@1#FreeIme_.WIM</a> 极点6.2CCF专版</p>
+<p>2008-05-10</p>
+<p>1.<a href="/blog/getfile.asp?did=1&amp;fid=1381799">磁盘分区表医生 PTDD</a> 使用了无忧<a href="http://bbs.wuyou.com/space.php?uid=124412" target="_blank" rel="external">玄天</a>发表的汉化破解版,</p>
+<p><a href="http://bbs.wuyou.com/viewthread.php?tid=120397&amp;page=77#pid1390729" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=120397&amp;page=77#pid1390729</a></p>
+<p>2.<a href="/blog/getfile.asp?did=1&amp;fid=1381798">PE定制包</a>, 更新</p>
+<p>GRLDR更新到05-07版,修改了HIDE.TXT内容(隐藏所有启动相关的文件,使得光盘上的文件在WINDOWS下看起来比较整洁)</p>
+<p>修改了默认的菜单,</p>
+<p>2008-05-05</p>
+<p>1.<a href="/blog/getfile.asp?did=1&amp;fid=1381670">SCSI.IMG</a>测试,使用了新的检测方式.</p>
+<p>2008-05-04 </p>
+<p>1.<a href="/blog/getfil
+e.asp?did=1&amp;fid=1381648">WINPE.IMG</a>更新,自动挂载支持自动运行（挂载时运行，方便作一些前期设定文件WIM里面的+AutoRun.cmd）</p>
+<p>2008-04-30</p>
+<p>1.网络<a href="/blog/getfile.asp?did=1&amp;fid=1381652">@net.wim</a>更新.</p>
+<p> 1).支持启动网络后自动运行脚本(启动网络自动运行.cmd,可使用其它批处理或程序来生成,如果文件存在启动网络后会自动运行).</p>
+<p> 2).连接后在通知区域显示图标 by pseudo (<a href="http://bbs.wuyou.com/viewthread.php?tid=123874" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=123874</a>)</p>
+<p>2.<a href="/blog/getfile.asp?did=1&amp;fid=1381653">haneWIN DHCP</a>升级到3.0.20版</p>
+<p>3.<a href="/blog/getfile.asp?did=1&amp;fid=1381630">DiskGenius</a>更新为3.0.418 b2版</p>
+<p>2008-04-15</p>
+<p>外置更新</p>
+<p>1.外置驱动SCSI.IMG更新,使用了新版的GRUB.EXE.修改了里面的一些驱动.</p>
+<p>注：目前的SCSI.IMG加载驱动时，在有些主板上会检测不到。暂时先用着，下次更新将使用新的检测方法。</p>
+<p>2.外置<a href="/blog/getfile.asp?did=1&amp;fid=1381732">SYSTEM.WIM</a>更新:修改了SYSTEM_.CMD批处理的语法错误.</p>
+<p>2008-04-14</p>
+<p>WINPE.IMG更新</p>
+<p>1.替换了XP_TOOLS.WIM为新版.</p>
+<p>2.修改了PELOGON.EXE的托盘菜单.直接使用以下贴子文件替换(另修改了热键按CTRL+ALT+A的刷新率为60,原文件没有改这个)</p>
+<p>原贴:<a href="http://bbs.wuyou.com/viewthread.php?tid=121168&amp;page=48#pid1373269" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=121168&amp;page=48#pid1373269</a></p>
+<p>3.加入了VIA PCI潜伏期补丁</p>
+<p>原贴:<a href="http://bbs.wuyou.com/viewthread.php?tid=122156&amp;page=2#pid1358101" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=122156&amp;page=2#pid1358101</a></p>
+<p>4.批处理Bug修正.</p>
+<p>2008-03-24</p>
+<p>1.修改了PE定制包里面的MENU.LST菜单,加上容错语句.由无忧yiyaxuan发现并解决问题</p>
+<p>2008-03-21</p>
+<p>1.替换了SCSI.IMG里面的GRUB.EXE为最新版,解决有些电脑启动失败的问题.</p>
+<p>2.修改了MENU.LST启动菜单,使用1,2都支持外置的OEM_SCSI.IMG驱动.</p>
+<p>3.把WINPE.IMG分别压缩成WINPE.IM_和WINPE.GZ两个文件.</p>
+<p>2008-03-19</p>
+<p>1.替换内置的RAMDISK为IMDISK.在使用复制SYSTEM.WIM到内存盘时,所需的时间更少</p>
+<p>2.加了一个外置SCSI驱动工具(目录SCSI),使用方法内详</p>
+<p> 功能:可以把某个SCSI驱动由TXTSETUP.OEM格式转为txtsetup.sif格式,并生成对应的驱动信息文件(可直接复制添加到SCSI.MAP中)</p>
+<p> 注:此为方便添加外置SCSI驱动而作,生成的文件不保证完全可靠.完成后请自行检查.</p>
+<p>2008-03-18</p>
+<p>1.修改了WINPE.IMG,加入了免按F6自动加载S&amp;R&amp;S驱动的支持.</p>
+<p>2.修改了启动菜单,使之支持以上方法的外置SCSI驱动(镜像路径为/OEM_SCSI.IMG,有存在的话就自动加载驱动)</p>
+<p>用途:</p>
+<p> 只需制作一个文件名为OEM_SCSI.IMG(可以用GZIP压缩),放到U盘或硬盘的根目录(只要GRUB4DOS可以找到的都可以)</p>
+<p> 启动PE时就会自动加载这个里面的驱动. 驱动文件和传统的按F6加载的软盘的文件一样.</p>
+<p>2008-03-17</p>
+<p>1.为外置SCSI.IMG加入了ryvius提供的Intel 和 Nvidia 驱动(本人未测试)</p>
+<p> 具体请看由无忧ryvius发表的贴子</p>
+<p> NVIDIA nForce SATA RAID/AHCI解决方案</p>
+<p> <a href="http://bbs.wuyou.com/viewthread.php?tid=11273" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=11273</a></p>
+<p> Intel芯片组IDE、RAID/AHCI解决方案</p>
+<p> <a href="http://bbs.wuyou.com/viewthread.php?tid=116417" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=116417</a></p>
+<p>2008-03-16</p>
+<p>*修改了小错误,还是谢谢pz的提醒</p>
+<p>*根据pseudo提供的资料,在IMG里面加入PORTCLS.SYS文件,解决声音问题.顺便修改了一下XP资源利用.</p>
+<p>*添加了一些注释,以方便他人YY.</p>
+<p>*为了防止恶意修改启动脚本造成启动失败,在AUTORUNS_.CMD内加了简单的校验</p>
+<p>修改了这个文件就会进不了PE,启动到CMD后就直接重启.</p>
+<p>当然了懂得批处理的人要修改自然是很简单的(知道了也请不要张扬).</p>
+<p>如非特殊需要,不建议修改WINPE.IMG的内容,一般来说都可以通过外置的方式来解决.</p>
+<p>.不带其它外置,请自备.以后会提供专门的外置程序下载.</p>
+<p>2008-03-14,更新</p>
+<p>*.修改了GRUB启动菜单,只保留一个RAMDISK启动菜单,默认不显示菜单.5秒后自动使用自动检测SCSI驱动的菜单.</p>
+<p>*.SCSI.IMG的GRUB菜单也有相应的修改,同时GRUB换上了新版的0314版. SYSTEM.WIM改了一下,强制开启FBWF和一些文本错误.</p>
+<p>*.加入了之前外置工具,完整上传,需要的可下载测试,在将来一段时间内可能不会再更新了.</p>
+<p>2008-03-13,更新</p>
+<p>*.加入了XP资源利用的NV网卡补丁，由pseudo提供（无忧）</p>
+<p>*.再修改了一个自启动的批处理，影响不大</p>
+<p>2008-03-12,更新</p>
+<p>*去掉RAMDISK的启动菜单,使用单IMG文件来启动.</p>
+<p>*修改IMG的启动批处理,之前的版本还是不可以直接使用非RAMDISK来启动(有问题)</p>
+<p>*修改SCSI.IMG,改正了一些可能出现的错误.</p>
+<p>*不论如何强制开启FBWF</p>
+<p>*IMG改为28MB,虚拟机测试80MB可进桌面(用WDSYS)</p>
+<p>以下根据pz(无忧)的建议修改.</p>
+<p>*修改了一些界面显示的文本错误,</p>
+<p>*启动时自动关闭小键盘(方便本本用户).</p>
+<p>*改了一些文本错误(无优==&gt;无忧)谢谢qdaijchf(无忧)的提醒</p>
+<p>发现我的错别字挺多的,呵呵一直都没有注意这些细节.以后还是仔细一点好.</p>
+<p>08-03-11,修改</p>
+<p>*修改默认菜单为第5条(自动加载适配的SCSI/RAID驱动)</p>
+<p>*修改第5条菜单的内容，如果找不到SCSI.IMG就自动转到第4菜单执行</p>
+<p>*修改SCSI.IMG的GRUB启动菜单，启动之前删除多余的映射防止启动蓝屏．</p>
+<p>*修改IMG的Autoruns_.cmd批处理,使得适合使用非RAMDISK启动(之前的版本,如果直接用非RAMDISK启动会删除一些启动文件,下次就不能启动了.)</p>
+<p>*注:若修改了IMG,这个IMG的卷标必须为MICROPE,否则启动时就不删除像TXTSETUP.SI?之类的文件.(原因同上).</p>
+<p>若要使用非RAMDISK启动,则该磁盘磁标不能为MICROPE,否则启动一次后就不能再使用了(因为启动必须的文件会被删).</p>
+<p>08-03-10,修改</p>
+<p>新增菜单0</p>
+<p> 功能:和第2个菜单一样,但是不加载无盘天使驱动(测试,因为有些加了会蓝屏)</p>
+<p> 其它:该项不能使用下面的第二种方法来启动,因为没有带天使驱动.只是作为备用菜单</p>
+<p>删除了DRIVERS目录下的一些文件(参考无忧uepon 20Mb的Vista美化PE).</p>
+<p>相关贴子:<a href="http://bbs.wuyou.com/viewthread.php?tid=121708&amp;extra=page%3D2" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=121708&amp;extra=page%3D2</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/MINIPE/" class="label label-success" itemprop="url"><span itemprop="title">MINIPE</span></a><a href="/tags/SCSI/" class="label label-info" itemprop="url"><span itemprop="title">SCSI</span></a><a href="/tags/WXPE/" class="label label-warning" itemprop="url"><span itemprop="title">WXPE</span></a><a href="/tags/外置/" class="label label-primary" itemprop="url"><span itemprop="title">外置</span></a><a href="/tags/原创/" class="label label-success" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/minipe_update/#comments" class="ds-thread-count comment-link" data-thread-key="49" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></h1>
       
         <span>发表于<time datetime="2009-03-08T09:14:21.000Z"> <a href="/post/grub4dos_menu/">2009-03-08</a></time></span>      
@@ -1229,131 +1439,6 @@ initrd (pd)/undi.img
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post35/">一个文件处理的小工具</a></h1>
-      
-        <span>发表于<time datetime="2008-12-19T15:04:37.000Z"> <a href="/post/post35/">2008-12-19</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>STR [File] [Start] [Bytes] [/C|/I] [dstFile] [Address]</p>
-<pre><code>     File: A File to be Processed data.  //文件
-
-    Start: Offset to Process data.  //文件中处理数据的起始位置  （文件的开头位置为0）
-
-    Bytes: Bytes to Process. //要处理的字节数量 （如果输入0，则表示从Start开始到文件末尾）
-
-       /C: Copy Bytes from File to dstFile.  //从源文件向目标文件复制数据
-
-       /I: Insert Bytes to dstFile from File. //从源文件向目标文件插入数据，插入数据后目标文件增加 Bytes个字节
-
-  dstFile: A File to Write Result data.  //目标文件
-
-  Address: Offset to Write Result data.  //目标文件中要复制或插入数据的位置 （如果目标文件不存在，该值被忽略）
-</code></pre><p>STR [File] [Start] [Bytes] [/D] [dstFile]</p>
-<pre><code>       /D: Delete Bytes from File &amp;amp; Write Result to dstFile.  //从源文件删除数据并结果写入目标文件
-</code></pre><p>STR [File] [Start] [Bytes] [/V] [/A] [/P]</p>
-<pre><code>       /V: View File In Hex Style.  //十六进制方式查看文件
-
-       /A: Show ASCII Value. //显示ASCII码
-
-       /P: Pause Echo Screen.  //满屏暂停
-</code></pre><p>STR [File] [Start] [Bytes] [/F] [/Hex|/Asc]:[Value] [/I] [/A]</p>
-<pre><code>    Bytes: Must be 0.  //必须为0
-
-       /F: Find String in File.  //在文件中查找字符串
-
-     /Hex: Hex Style. //十六进制方式
-
-     /Asc: ASCII Style.  //ASCII码方式
-
-    Value: Hex_Digital/ASCII String (40 Characters Maximum).  //字符传真的值，最长40个字符 （如果是十六进制串长度应为双数）
-
-       /I: Ignore Case. //忽略大小写 
-
-       /A: Process All Value in File. //在文件中查找所有满足要求的字符串（默认查找1次）
-</code></pre><p>STR [File] [Start] [Bytes] [/E] [/Hex|/Asc]:[Value]</p>
-<pre><code>    Bytes: Must be 0.  //必须为0
-
-       /E: Edit File.  //编辑文件
-</code></pre><p>STR [File] [Start] [Bytes] [/R] [SrcString] [DstString] [/I] [/A]</p>
-<pre><code>    Bytes: Must be 0.  //必须为0
-
-       /R: Relace SrcString with DstString.  //字符常替换
-
-SrcString: [/Hex|/Asc]:[Value].   //源串，可以使用十六进制或ASCII码串
-
-DstString: [/Hex|/Asc]:[Value].  //目标串，可以使用十六进制或ASCII码串
-
-       /A: Process All SrcString in File.  //在文件中查找所有源字符串（默认替换1次）
-</code></pre><p>说明：</p>
-<pre><code>1.  使用 /C 和 /I 命令时，如果目的文件不存在，Adress 的值将被忽略，直接执行将源文件从 Start 开始的 Bytes 个字节写入到新创建的目的文件中
-
-2.  使用 /C 和 /I 命令时，如果目的文件存在，并且不输入 Address，则Address 默认为0，也就是文件的起始位置。
-
-3.  目前处理的单个文件大小不超过 2G
-</code></pre><p>例子：</p>
-<p>str  1.exe 0x100  0x10 /d 2.bin  执行将文件1.exe 从位置256开始的16个字节删除，并将结果写入到2.bin，文件2.bin的长度将比1.exe长度小16</p>
-<p>str  1.exe 0x100  0x10 /c 2.bin 20  执行将文件1.exe 从位置256开始的16个字节写入到2.bin的20位置,也就是文件2.bin从位置20开始的16字节被覆盖</p>
-<p>str  1.exe 0x100  0x10 /i 2.bin 20  执行将文件1.exe 从位置256开始的16个字节插入到2.bin的20位置，结果文件2.bin的长度将增加16字节</p>
-<p>str  1.exe 0x100  0 /v /p /a  从文件偏移位置256开始在屏幕上显示文件内容，如果Bytes输入为0，则表示从Start开始至文件末尾。</p>
-<p>str  1.exe 0x100  0 /e /hex:11223344  将文件偏移位置256开始的4个字节修改为，0x11,0x22,0x33,0x44。</p>
-<p>str  1.exe 0x100  0 /e /asc:1234  将文件偏移位置256开始的4个字节修改为，1234, 也就是0x31,0x32,0x33,0x34</p>
-<p>查找替换算法使用的是 KMP 算法，不重复计数，如文件 1.txt 的内容为10个字符0：<br>0000000000</p>
-<p>如执行命令： str 1.txt 0 0 /f /asc:0000 /a</p>
-<p>则执行结果为：</p>
-<p>   Find string At:</p>
-<p>   0  0x0</p>
-<p>   4  0x4</p>
-<p>不会是：<br>   Find string At:<br>   0  0x0</p>
-<p>   1  0x1</p>
-<p>   2  0x2</p>
-<p>   3  0x3</p>
-<p>   4  0x4</p>
-<p>   5  0x5</p>
-<p>   6  0x6</p>
-<p>压缩包中包含dos版本和win32版本</p>
-<p>程序处理返回值:</p>
-<pre><code>#define SUCCESS 0
-#define COMMON_USE_ERROR 1
-#define OPEN_FILE_ERROR 2
-#define PRG_MODIFIED 3
-#define FILE_READ_ERROR 4
-#define PARAMETER_ERROR 5
-#define CREATE_FILE_ERROR 6
-#define FILE_WRITE_ERROR 7
-#define SRCFILE_DSTFILE_SAME 8
-#define USER_CANCEL 9
-#define FILE_NOT_EXIST 10
-#define FILE_SEEK_ERROR 11
-#define STRING_NOT_FOUND 12
-</code></pre><p><a href="http://qiniu.chenall.net/upload/2008/12/200812192314097256.rar">200812192314097256.rar</a></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li><li><a href="/categories/软件推荐/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/软件/" class="label label-primary" itemprop="url"><span itemprop="title">软件</span></a><a href="/tags/str/" class="label label-success" itemprop="url"><span itemprop="title">str</span></a><a href="/tags/strw/" class="label label-info" itemprop="url"><span itemprop="title">strw</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post35/#comments" class="ds-thread-count comment-link" data-thread-key="35" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1466,7 +1551,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:38</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:46:51</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -1530,8 +1615,9 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
   $('.entry').each(function(i){
     $(this).find('img').each(function(){
       var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
      
       if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
     });
