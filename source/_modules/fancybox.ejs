@@ -1,0 +1,16 @@
+<script type="text/javascript">
+(function($){
+  $('.entry').each(function(i){
+    $(this).find('img').each(function(){
+      var alt = this.alt;
+      var imgsrc = /^.+?(png|bmp|jpeg)/.exec(this.src);
+
+      $(this).wrap('<a href="' + (imgsrc?imgsrc[0]:this.src) + '" title="' + alt + '" class="fancybox" rel="fancybox' + i + '" />').wrap('<div class="img_block"></div>');
+     
+      if(alt){$(this).after('<span class="caption">' + alt + '</span>')};
+    });
+  });
+
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
