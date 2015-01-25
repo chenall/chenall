@@ -82,4 +82,43 @@ For example:
 
 >If you are using iSCSI authentication, then you will need to configure the username and password settings (and possibly also the reverse-username and reverse-password settings) before attempting to connect to the SAN target. There is no way to specify usernames and passwords directly within the iSCSI SAN URI.
 
+## wimboot
+
+grub4dos下也可能直接通过ipxe来加载[wimboot](http://ipxe.org/wimboot),但是有一些需要注意,否则会启动失败.
+
+例子: 有一个boot.ipxe文件在服务器上
+
+```
+#!ipxe
+  imgfree
+  imgfree
+  imgfree
+  kernel wimboot
+  initrd boot/bcd         BCD
+  initrd boot/boot.sdi    boot.sdi
+  initrd boot/bootmgr     bootmgr
+  initrd boot/boot.wim boot.wim
+  boot
+```
+注: 几个imgfree的命令是保证当前ipxe加载的镜像内容为空,也就是让使用imgstat命令显示的内容为空.
+
+然后直接使用GRUB4DOS的ipxe命令加载
+
+```
+## terminal console 是必须的,切换到文本模式,否则启动可能会不显示(假死状态).
+terminal console
+## -a 参数也是必须的,自动释放boot.ipxe镜像,否则有可能会失败.
+ipxe chain -a http://192.168.0.1/boot.ipxe
+```
+
+以上是ipxe的原生方法来启动wimboot,也可以使用grub4dos内置的用法(目前不稳定有时会导致重启).
+
+```
+title Wimboot
+kernel /wimboot
+initrd @bcd=/boot/bcd @bootmgr=/boot/bootmgr @boot.sdi=/boot/boot.sdi @boot.wim=/boot/boot.wim
+boot
+```
+
+
 后记: 使用`ipxegrldr`作为PXE启动文件还有另一个好处,就是如果网络正常的话,使用`ipxegrldr`总是会优先使用 http://b.chenall.net/grldr 来启动,也就是说总是使用最新的版本.当然了如果网络不通的话就使用内置的版本.如果你不需要这个功能的话可以直接使用undionly.kpxe自己写菜单来启动grldr
