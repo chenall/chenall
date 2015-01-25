@@ -183,7 +183,31 @@ ipxe sanunhook -d 0xff
 </ul>
 <p>If you are using iSCSI authentication, then you will need to configure the username and password settings (and possibly also the reverse-username and reverse-password settings) before attempting to connect to the SAN target. There is no way to specify usernames and passwords directly within the iSCSI SAN URI.</p>
 </blockquote>
-<p>后记: 使用<code>ipxegrldr</code>作为PXE启动文件还有另一个好处,就是如果网络正常的话,使用<code>ipxegrldr</code>总是会优先使用 <a href="http://b.chenall.net/grldr" target="_blank" rel="external">http://b.chenall.net/grldr</a> 来启动,也就是说总是使用最新的版本.当然了如果网络不通的话就使用内置的版本.如果你不需要这个功能的话可以直接使用undionly.kpxe自己写菜单来启动grldr</p>
+<h2 id="wimboot">wimboot</h2>
+<p>grub4dos下也可能直接通过ipxe来加载<a href="http://ipxe.org/wimboot" target="_blank" rel="external">wimboot</a>,但是有一些需要注意,否则会启动失败.</p>
+<p>例子: 有一个boot.ipxe文件在服务器上</p>
+<pre><code>#!ipxe
+  imgfree
+  imgfree
+  imgfree
+  kernel wimboot
+  initrd boot/bcd         BCD
+  initrd boot/boot.sdi    boot.sdi
+  initrd boot/bootmgr     bootmgr
+  initrd boot/boot.wim boot.wim
+  boot
+</code></pre><p>注: 几个imgfree的命令是保证当前ipxe加载的镜像内容为空,也就是让使用imgstat命令显示的内容为空.</p>
+<p>然后直接使用GRUB4DOS的ipxe命令加载</p>
+<pre><code>## terminal console 是必须的,切换到文本模式,否则启动可能会不显示(假死状态).
+terminal console
+## -a 参数也是必须的,自动释放boot.ipxe镜像,否则有可能会失败.
+ipxe chain -a http://192.168.0.1/boot.ipxe
+</code></pre><p>以上是ipxe的原生方法来启动wimboot,也可以使用grub4dos内置的用法(目前不稳定有时会导致重启).</p>
+<pre><code>title Wimboot
+kernel /wimboot
+initrd @bcd=/boot/bcd @bootmgr=/boot/bootmgr @boot.sdi=/boot/boot.sdi @boot.wim=/boot/boot.wim
+boot
+</code></pre><p>后记: 使用<code>ipxegrldr</code>作为PXE启动文件还有另一个好处,就是如果网络正常的话,使用<code>ipxegrldr</code>总是会优先使用 <a href="http://b.chenall.net/grldr" target="_blank" rel="external">http://b.chenall.net/grldr</a> 来启动,也就是说总是使用最新的版本.当然了如果网络不通的话就使用内置的版本.如果你不需要这个功能的话可以直接使用undionly.kpxe自己写菜单来启动grldr</p>
 
       
     </div>
@@ -217,7 +241,7 @@ ipxe sanunhook -d 0xff
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/ipxe/" class="label label-success" itemprop="url"><span itemprop="title">ipxe</span></a></span> | <span class="time">最近更新:<time title="2014-12-28 21:52:41"datetime="2014-12-28 21:52:41"> 2014-12-28</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/ipxe/" class="label label-success" itemprop="url"><span itemprop="title">ipxe</span></a></span> | <span class="time">最近更新:<time title="2015-01-25 11:03:19"datetime="2015-01-25 11:03:19"> 2015-01-25</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_ipxe/#comments" class="ds-thread-count comment-link" data-thread-key="20141228" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -237,7 +261,7 @@ ipxe sanunhook -d 0xff
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/1key/">一键GHOST备份恢复,GHOST安装器设计新思路</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/post41/">[GRUB4DOS] 未公开特性：扇区序列文件的长度指定，精确到字节</a></li><li class="list-group-item"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></li><li class="list-group-item"><a href="/post/grub4dos_chkpci/">[GRUB4DOS] chkpci for grub4dos</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/grub4dos_goto/">[GRUB4DOS] 一个很简单的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_unifont/">[GRUB4DOS] 多国语言菜单支持[2010-04-20]</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -332,7 +356,7 @@ ipxe sanunhook -d 0xff
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2008-2014 chenall
+  &copy; 2008-2015 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号-1</a></span>
@@ -351,7 +375,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-12-28 21:52:41</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-01-25 11:03:19</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
