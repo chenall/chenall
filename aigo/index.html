@@ -10,8 +10,7 @@
 <title>购省钱-淘宝购物省钱 | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="淘宝搜索
-爱淘宝聚划算猜您喜欢">
+<meta name="description" content=".search-field{background-color:#fff;border:3px solid #ff8b00;height:40px;line-height:30px;margin:0;padding:2px 5px;vertical-align:middle;width:520px}">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -119,8 +118,26 @@
     <section id='before_content_widget'></section>
     <div class="entry"  data-spy="scroll" data-target="#toc" >
       
-        <p><a data-type="6" data-tmpl="573x66" data-tmplid="140" data-style="2" data-border="0" biz-s_logo="1" biz-s_hot="1" href="#">淘宝搜索</a></p>
-<p><div id="tbuy-data"><a data-type="4" data-tmpl="390x460" data-tmplid="134" data-style="2" data-border="1" biz-s_logo="1" biz-s_hot="1" href="#">爱淘宝</a></div><br><a data-type="13" data-tmpl="628x100" data-tmplid="213" data-rd="2" data-style="2" data-border="1" href="#">聚划算</a><br><a data-type="3" data-tmpl="600x90" data-tmplid="193" data-rd="2" data-style="2" data-border="1" href="#">猜您喜欢</a></p>
+        <style type="text/css">
+.search-field{background-color:#fff;border:3px solid #ff8b00;height:40px;line-height:30px;margin:0;padding:2px 5px;vertical-align:middle;width:520px}
+.search-submit{background:#ff8b00;color:#fff;border:0;font-size:16px;margin-left:-5px;*margin-left:-10px;vertical-align:middle;cursor:pointer;font-size:16px;width:115px;height:40px}
+</style>
+
+<p><form method="get" onsubmit="checktbuy();" accept-charset="utf-8"><input id="buyid" name="tbuy" type="hidden"><input id="fdata" class="search-field" placeholder="复制淘宝商品的链接到这里省钱购"><button class="search-submit" type="submit">省钱购</button></form><br><a data-type="6" data-tmpl="573x66" data-tmplid="140" data-style="2" data-border="0" biz-s_logo="1" biz-s_hot="1" href="#">淘宝搜索</a><br><br><br><br></p>
+<p><div id="tbuy-data"><a data-type="4" data-tmpl="390x460" data-tmplid="134" data-style="2" data-border="1" biz-s_logo="1" biz-s_hot="1" href="#">爱淘宝</a></div><br><br><br><br><br><a data-type="13" data-tmpl="628x100" data-tmplid="213" data-rd="2" data-style="2" data-border="1" href="#">聚划算</a></p>
+<script type="text/javascript">
+function checktbuy()
+{
+var d=document.getElementById('fdata').value;
+var b=new RegExp("([?]|&)id=([^&]+)(&|$)");
+d=b.exec(d);
+if (d)
+{
+var a=document.getElementById('buyid');
+a.value=d[2];
+}
+}
+</script>
 
       
     </div>
@@ -170,7 +187,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-01-26 16:01:34</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-01-27 15:35:44</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -179,8 +196,8 @@ _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
         <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>        
         <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>        
             <script type="text/javascript"> 
-function getUrlParam(a){var b=new RegExp("(^|&)"+a+"=([^&]*)(&|$)"),c=window.location.search.substr(1).match(b);return null!=c?unescape(c[2]):null}
-var e,s,tbuyid=getUrlParam("tbuy");tbuyid&&(e=document.getElementById("tbuy-data"),e&&(s='<div><a data-type="0" biz-itemid="'+tbuyid+'" data-tmpl="470x190" data-tmplid="635" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id='+tbuyid+'">http://item.taobao.com/item.htm?id='+tbuyid+"</a></div>",s+='<div><a data-type="0" biz-itemid="'+tbuyid+'" data-tmpl="230x45" data-tmplid="225" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id='+tbuyid+'">http://item.taobao.com/item.htm?id='+tbuyid+"</a></div>",e.innerHTML=s));
+function getUrlParam(a,url){var b=new RegExp("(^|&)"+a+"=([^&]*)(&|$)"),c=url.search.substr(1).match(b);return null!=c?unescape(c[2]):null}
+var e,s,tbuyid=getUrlParam("tbuy",window.location);tbuyid&&(e=document.getElementById("tbuy-data"),e&&(s='<div><a data-type="0" biz-itemid="'+tbuyid+'" data-tmpl="470x190" data-tmplid="635" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id='+tbuyid+'">http://item.taobao.com/item.htm?id='+tbuyid+"</a></div>",s+='<div><a data-type="0" biz-itemid="'+tbuyid+'" data-tmpl="230x45" data-tmplid="225" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id='+tbuyid+'">http://item.taobao.com/item.htm?id='+tbuyid+"</a></div>",e.innerHTML=s));
 (function(win,doc){ var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0]; if (!win.alimamatk_show) { s.charset = "gbk"; s.async = true; s.src = "http://a.alimama.cn/tkapi.js"; h.insertBefore(s, h.firstChild); }; var o = { pid: "mm_14266497_2425855_13670245",}; win.alimamatk_onload = win.alimamatk_onload || []; win.alimamatk_onload.push(o); })(window,document);
 </script>    
                 
