@@ -67,6 +67,10 @@ More info: http://softwarebakery.com/projects/drivedroid
 
 ![](@@POST@@:06.png)
 
+挂载之后卸载的方法见图示,通过状态栏可以方便卸载某个虚拟设备
+
+![](@@POST@@:07.png)
+
 从Google Play 下载安装:(https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&feature=nav_result)
 
 百度网盘下载： [com.softwarebakery.drivedroid.ver.0.9.15.build.46.apk](http://pan.baidu.com/s/1qWluroS)
