@@ -167,13 +167,19 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>批处理加附一个CPIO文件(CPIO里面的文件可以压缩)<br>则在批处理中可以直接使用<code>%~m0/FILE</code>访问<code>File</code>就是CPIO包里面对应的文件.</p>
 <p>ISO/IMG等格式也是一样的.</p>
 <h3 id="如果单纯附加了批处理文件">如果单纯附加了批处理文件</h3>
-<p> 访问方式: <code>%~m0/1</code>是第一个文件,<code>%~m0/2</code>是第二个文件,以此类推.并且可以直接运行</p>
+<p> 访问方式: <code>%~m0/0</code>是第一个文件,<code>%~m0/1</code>是第二个文件,以此类推.并且可以直接运行</p>
 <h3 id="如果附加了批处理和数据文件">如果附加了批处理和数据文件</h3>
-<p> 根据附加顺序<code>%~m0/1</code> <code>%~m0/2</code>来访问/</p>
+<p>注: 只允许最多一个数据文件并且只能附加在最后面,中间只能附加批处理文件</p>
+<p> 根据附加顺序<code>%~m0/0</code> <code>%~m0/1</code>来访问</p>
 <p> 若附加的数据文件是CPIO等GRUB4DOS可识别的格式,而且没有压缩的话,那可以通过以下方法访问里面的文件</p>
-<pre><code class="bat"> set rdev=
+<pre><code class="bat"> ::本例子附加了一个批处理和一个数据文件(可以是cpio/iso/img等grub4dos可访问的文件系统格式)
+ set rdev=
+ ::使用%~m0/1访问第二个文件(数据文件),通过blocklist命令获取该文件的扇区序列(或在内存中的位置)
+ ::以下这一个命令获取指定文件在内存中的位置(md,X,Y)的格式保存在变量rdev中.
  blocklist %~m0/1 | call :get_dev=
+ ::现在可以直接访问这个rdev的内容.例子*ls (md,0x1600000,0x12000)/*这样的格式
  ls %rdev%/
+ ::查看内存设备`%rdev%`里面的文件`file`的内容.
  cat %rdev%/file
  goto :eof
  :get_dev
@@ -213,7 +219,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/initrdfs/" class="label label-success" itemprop="url"><span itemprop="title">initrdfs</span></a></span> | <span class="time">最近更新:<time title="2014-11-27 11:50:22"datetime="2014-11-27 11:50:22"> 2014-11-27</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/initrdfs/" class="label label-success" itemprop="url"><span itemprop="title">initrdfs</span></a></span> | <span class="time">最近更新:<time title="2015-02-18 10:39:50"datetime="2015-02-18 10:39:50"> 2015-02-18</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_initrdfs/#comments" class="ds-thread-count comment-link" data-thread-key="20141127" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -235,7 +241,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_tftp/">[GRUB4DOS] 网络启动时可以使用的小技巧一则</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/weesetup/">weesetup 微型grub安装工具 V1.3</a></li><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_initrdfs/">[grub4dos] grub4dos 最新版本initrdfs功能介绍</a></li><li class="list-group-item"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></li><li class="list-group-item"><a href="/post/firadisk/">[分享]FiraDisk Grub4dos虚拟磁盘的WIN驱动</a></li><li class="list-group-item"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_run/">[GRUB4DOS] GRUB4DOS 批处理脚本示范</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/grub4dos_dev/">[分享] 自己动手，在WINDOWS系统中搭建GRUB4DOS编译环境[2014-06-25]</a></li><li class="list-group-item"><a href="/post/grub4dos_echo/">[GRUB4DOS] 测试功能增强版ECHO</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -349,7 +355,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2014-11-27 11:50:22</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-02-18 10:39:50</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-02-11T01:51:29.565Z</updated>
+  <updated>2015-02-18T02:39:59.953Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -127,7 +127,7 @@ boot
     <link href="http://chenall.net/post/grub4dos_initrdfs/"/>
     <id>http://chenall.net/post/grub4dos_initrdfs/</id>
     <published>2014-11-27T00:14:58.000Z</published>
-    <updated>2014-11-27T03:50:22.000Z</updated>
+    <updated>2015-02-18T02:39:50.000Z</updated>
     <content type="html"><![CDATA[<p>在<a href="http://grub4dos.chenall.net/downloads/grub4dos-0.4.6a-2014-11-26.cc7664c0/" target="_blank" rel="external">最新版本grub4dos</a>中,支持读写<code>linux initramfs</code>,另外为了方便使用还支持了自定义的批处理续尾格式.这些在grub4dos被识别为<code>initrdfs</code>,都是在内存中使用的.</p>
 <p>目前grub4dos initrdfs文件系统仅支持<code>cpio new</code>格式和grub4dos自定义格式,</p>
 <p>批处理续尾格式支持整合多个批处理和一块非批处理的数据块.</p>
@@ -172,13 +172,19 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>批处理加附一个CPIO文件(CPIO里面的文件可以压缩)<br>则在批处理中可以直接使用<code>%~m0/FILE</code>访问<code>File</code>就是CPIO包里面对应的文件.</p>
 <p>ISO/IMG等格式也是一样的.</p>
 <h3 id="如果单纯附加了批处理文件">如果单纯附加了批处理文件</h3>
-<p> 访问方式: <code>%~m0/1</code>是第一个文件,<code>%~m0/2</code>是第二个文件,以此类推.并且可以直接运行</p>
+<p> 访问方式: <code>%~m0/0</code>是第一个文件,<code>%~m0/1</code>是第二个文件,以此类推.并且可以直接运行</p>
 <h3 id="如果附加了批处理和数据文件">如果附加了批处理和数据文件</h3>
-<p> 根据附加顺序<code>%~m0/1</code> <code>%~m0/2</code>来访问/</p>
+<p>注: 只允许最多一个数据文件并且只能附加在最后面,中间只能附加批处理文件</p>
+<p> 根据附加顺序<code>%~m0/0</code> <code>%~m0/1</code>来访问</p>
 <p> 若附加的数据文件是CPIO等GRUB4DOS可识别的格式,而且没有压缩的话,那可以通过以下方法访问里面的文件</p>
-<pre><code class="bat"> set rdev=
+<pre><code class="bat"> ::本例子附加了一个批处理和一个数据文件(可以是cpio/iso/img等grub4dos可访问的文件系统格式)
+ set rdev=
+ ::使用%~m0/1访问第二个文件(数据文件),通过blocklist命令获取该文件的扇区序列(或在内存中的位置)
+ ::以下这一个命令获取指定文件在内存中的位置(md,X,Y)的格式保存在变量rdev中.
  blocklist %~m0/1 | call :get_dev=
+ ::现在可以直接访问这个rdev的内容.例子*ls (md,0x1600000,0x12000)/*这样的格式
  ls %rdev%/
+ ::查看内存设备`%rdev%`里面的文件`file`的内容.
  cat %rdev%/file
  goto :eof
  :get_dev
