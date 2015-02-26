@@ -71,6 +71,31 @@ More info: http://softwarebakery.com/projects/drivedroid
 
 ![](@@POST@@:07.png)
 
+### 挂载系统设备方法
+
+  也可以直接使用该软件挂载系统设备比如系统的DATA分区/SYSTEM分区等.如上面的截图里面的设备,对Linux系统比较了解的朋友应该就懂得.在Android中每个设备在`/dev`目录中都有一个对应的设备文件名,比如SD卡(在很多ANDROID设备中使用`/dev/block/vold/179:27`),那我们是否可以在`DriveDroid`中直接加载该文件来实现挂载直接SD卡设备呢?答案是可行的,不过因为系统的限制你并不能直接在软件中的直接选择添加,需要手工填写文件名称才行.
+
+  首先是要找到你想要添加的设备的文件名,一般情况下通过`mount`命令就可以看到对应设备的挂载点.*可以在`adb shell`或android终端软件中输入*如下图
+
+  ![](@@POST@@:08.png)
+
+  注意看上面红色框的内容,本手机`179:27`是`sdcard0`(内置sd卡),`179:65`是`sdcard1`(外置SD卡)
+
+  好了找到了对应的设备文件名,现在就可以开始添加了.点软件右下角的`+`号,选择**Add image from file...**开始添加,出现如下图界面,输入对应的信息然后点右上角的**SAVE**保存就行了.
+
+  ![](@@POST@@:09.png)
+
+  具体效果可以看前面的介绍截图,另外挂载这设设备时,为了避免出现问题,最好使用只读挂载(Read Only),比如你可以只读挂载一下`SYSTEM`分区,然后在`Windows`下就可以备份这个分区的内容.
+
+  附: 更多可挂载的设备.
+
+  ![](@@POST@@:10.png)
+  
+  注: 除了使用`/dev/block/vold/179:27`之外也可以使用`/dev/block/mmcblk0p27`两个是一样的,具体可以看上面的图片
+
+  1. `mmcblk0`   是系统内置的储存设备使用时需要小心,`mmcblk1`一般是外置的tf卡设备.
+  2. `mmcblkXpY` 对应**X**储存的**Y**分区,比如`mmcblk1p1`就是外置tf卡的第一个分区
+
 从Google Play 下载安装:(https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&feature=nav_result)
 
 百度网盘下载： [com.softwarebakery.drivedroid.ver.0.9.15.build.46.apk](http://pan.baidu.com/s/1qWluroS)
