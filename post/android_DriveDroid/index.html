@@ -180,6 +180,11 @@
 <li><code>mmcblk0</code>   是系统内置的储存设备使用时需要小心,<code>mmcblk1</code>一般是外置的tf卡设备.</li>
 <li><code>mmcblkXpY</code> 对应<strong>X</strong>储存的<strong>Y</strong>分区,比如<code>mmcblk1p1</code>就是外置tf卡的第一个分区</li>
 </ol>
+<h3 id="后记">后记</h3>
+<p>   发现很多朋友认为使用软件会影响读写速度,如果你了解这个软件的原理就明白了,无非就是修改了android的默认宿主usb挂载点.</p>
+<p>   比如系统自带的U盘模式其实效果和用这个软件挂载整个SD卡是一样的.</p>
+<p>   用ISO之类的文件的话因为需要多一层读写,效率会低一点,但影响不是很大,关建是用ISO/IMG文件使用起来更方便.我觉得使用一点点的效率去换取这些更方便功能是值得的.</p>
+<p>   在没有发现这个软件之前,我通过手工修改Android的默认的usb挂载点来实现这些功能,使用软件需要使用工具就加载什么,还可以使用只读模式,防病毒最有效的就是只读模式了,很方便不是吗?</p>
 <p>从Google Play 下载安装:(<a href="https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&amp;feature=nav_result</a>)</p>
 <p>百度网盘下载： <a href="http://pan.baidu.com/s/1qWluroS" target="_blank" rel="external">com.softwarebakery.drivedroid.ver.0.9.15.build.46.apk</a></p>
 
@@ -215,7 +220,7 @@
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/android/" class="label label-primary" itemprop="url"><span itemprop="title">android</span></a><a href="/tags/软件/" class="label label-success" itemprop="url"><span itemprop="title">软件</span></a></span> | <span class="time">最近更新:<time title="2015-02-26 11:56:40"datetime="2015-02-26 11:56:40"> 2015-02-26</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/android/" class="label label-primary" itemprop="url"><span itemprop="title">android</span></a><a href="/tags/软件/" class="label label-success" itemprop="url"><span itemprop="title">软件</span></a></span> | <span class="time">最近更新:<time title="2015-02-26 14:38:12"datetime="2015-02-26 14:38:12"> 2015-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/android_DriveDroid/#comments" class="ds-thread-count comment-link" data-thread-key="2014101821" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -237,7 +242,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/post40/">GRUB4DOS一个比较变态的用法(利用GRUB4DOS作为文件中转站)</a></li><li class="list-group-item"><a href="/post/android_DriveDroid/">DriveDroid 让安卓手机变成系统启动盘</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/post44/">[分享]超级解霸V9精简版(用来播放光蝶)</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/hg320_64k/">[分享] HG320路由器盲刷64K CFE NVRAM固件</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/windows_no_usbstor/">一个命令禁用U盘,USB硬盘设备</a></li><li class="list-group-item"><a href="/post/grub4dos_menu/">[grub4dos]在GRLDR中内置超过4KB菜单的方法</a></li><li class="list-group-item"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/vim/">[转] Vim入门图解说明.</a></li><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/post35/">一个文件处理的小工具</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -351,7 +356,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-02-26 11:56:40</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-02-26 14:38:12</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
