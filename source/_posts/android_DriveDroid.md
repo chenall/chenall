@@ -96,6 +96,16 @@ More info: http://softwarebakery.com/projects/drivedroid
   1. `mmcblk0`   是系统内置的储存设备使用时需要小心,`mmcblk1`一般是外置的tf卡设备.
   2. `mmcblkXpY` 对应**X**储存的**Y**分区,比如`mmcblk1p1`就是外置tf卡的第一个分区
 
+### 后记
+
+   发现很多朋友认为使用软件会影响读写速度,如果你了解这个软件的原理就明白了,无非就是修改了android的默认宿主usb挂载点.
+
+   比如系统自带的U盘模式其实效果和用这个软件挂载整个SD卡是一样的.
+
+   用ISO之类的文件的话因为需要多一层读写,效率会低一点,但影响不是很大,关建是用ISO/IMG文件使用起来更方便.我觉得使用一点点的效率去换取这些更方便功能是值得的.
+
+   在没有发现这个软件之前,我通过手工修改Android的默认的usb挂载点来实现这些功能,使用软件需要使用工具就加载什么,还可以使用只读模式,防病毒最有效的就是只读模式了,很方便不是吗?
+
 从Google Play 下载安装:(https://play.google.com/store/apps/details?id=com.softwarebakery.drivedroid&feature=nav_result)
 
 百度网盘下载： [com.softwarebakery.drivedroid.ver.0.9.15.build.46.apk](http://pan.baidu.com/s/1qWluroS)
