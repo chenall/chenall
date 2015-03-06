@@ -111,7 +111,6 @@ widgets:
     - swiftype
     - google_cse
     - category
-    - aliyun_sidebar
     - latest_update_posts
     - random_posts
     - google_sidebar
