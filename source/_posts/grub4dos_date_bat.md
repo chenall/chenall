@@ -139,7 +139,7 @@ set ds=0x6002c
 set ss=0x60030
 set eip=0x60034
 set cs=0x60038
-set eflags=0x60003c
+set eflags=0x6003c
 ::时钟服务(Clock Service——INT 1AH) 
 ::04H —读取日期
 call :BIOS_INT 1A ax=0x400
