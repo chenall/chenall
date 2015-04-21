@@ -111,6 +111,82 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></h1>
+      
+        <span>发表于<time datetime="2009-09-29T13:29:21.000Z"> <a href="/post/cmd_if_exist/">2009-09-29</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>编写批处理时经常需要用到外部命令,一些常用的命令一般的系统都会有,但是一些精简的系统上可能就没有了,如果没有做判断就可能导致程序出现未知的错误.</p>
+<p>一般检测文件是否存在可以使用</p>
+<blockquote>
+<p>IF EXIST filename 执行某个命令…</p>
+</blockquote>
+<p>但是这样只能检测当前目录下或指定目录的,而批处理的外部命令通过PATH变量来确定位置的.正常情况下可以通过以下命令来确定这个外部命令是否存在,</p>
+<blockquote>
+<p>for %I in (find.exe) do if “%~$PATH:I”==”” echo find 命令不存在</p>
+</blockquote>
+<p>为了以后方便就写了一个模块,用于判断命令是否存在.</p>
+<pre><code>@echo off
+cls&amp;echo.IF_EXIST.cmd by chenall 2009-09-29 http://www.chenall.net
+echo.
+echo.功能:
+echo.   从环境变量PATH,当前目录,程序所在目录中查找指定的文件,如果找到就显示并返回值0,否则就返回1
+echo.
+echo.使用方法:
+echo.   直接复制下面::模块开始::到::模块结束::之间的代码到你的批处理程序中.然后使用以下命令调用.
+echo.   CALL :IF_EXIST xxxx.xxx
+echo.
+echo.使用例子:
+echo.   CALL :IF_EXIST find.exe || echo.find.exe 不存在
+echo.
+echo.注:只是简单查找,并且不支持查找子目录.主要用于批处理中判断某个外部命是否存在.
+echo.   实际应用中可以删除echo %~$PATH:1语句删除输出显示,或者在调用时加一个&gt;nul
+echo.
+echo.
+ECHO.以下是测试命令.
+ECHO.查找FIND.EXE
+CALL :IF_EXIST FIND.EXE || ECHO.FIND.EXE 不存在
+CALL :IF_EXIST FIND.EXE &gt;nul ||echo.出错了,find.exe不存在.
+ECHO.查找noEXIST.FILE
+CALL :IF_EXIST noEXIST.FILE || ECHO.noEXIST.FILE 不存在
+PAUSE
+GOTO :EOF
+
+::::::::::::::::::::::::模块开始::::::::::::::::::::::::
+:IF_EXIST       BY chenall QQ:366840202     2009-09-29
+SETLOCAL&amp;PATH %PATH%;%~dp0;%cd%
+if &quot;%~$PATH:1&quot;==&quot;&quot; exit /b 1
+echo %~$PATH:1
+exit /b 0       http://www.chenall.net
+:::::::::::::::::::::::模块结束:::::::::::::::::::::::::
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/IF-EXIST/" class="label label-primary" itemprop="url"><span itemprop="title">IF_EXIST</span></a><a href="/tags/批处理/" class="label label-success" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/cmd_if_exist/#comments" class="ds-thread-count comment-link" data-thread-key="99" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/batch_fangkuai/">[转]批处理写的俄罗斯方块游戏</a></h1>
       
         <span>发表于<time datetime="2009-09-25T00:35:56.000Z"> <a href="/post/batch_fangkuai/">2009-09-25</a></time></span>      
@@ -891,74 +967,6 @@ config.INI        配置文件,里面定义了所有的操作.同样由GRUB4DOS�
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/post67/">[分享]在CMD中使用位运算转换目标数字到二进制数.</a></h1>
-      
-        <span>发表于<time datetime="2009-07-01T15:11:54.000Z"> <a href="/post/post67/">2009-07-01</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>把一个十进制转成2进制的常分规方法是,一直除2求余.</p>
-<p>这里介绍另一种方法,</p>
-<p>一个把数值转换成二进制数的批处理脚本.</p>
-<p>批处理加参数使用.支持把10,16,或8进制数转成二进制,其中16进制以0X开头,8进制以0开头.</p>
-<pre><code>@echo off
-::来源:        http://chenall.net
-SETLOCAL
-::初使化变量并检测输入的数字是否合法
-::VV最终结果保留值,N从0开始的值
-
-set/A VV=0x7fffffff-%1 || goto :eof
-IF %VV% lss 0 (echo.无效数字.目前只支持32位正整数的计算.&amp;goto :eof)
-set VV=
-SET N=0
-
-::生成二进制数的函数.
-:LOOP
-:: 原理很简单.通过位运算符&quot;或&quot;对比来确定某位的值.
-:: 例子:
-:: 9的二进制: 1001
-:: 分别和1,2,4,8进行&quot;或运算&quot;确定对应位的值.
-:: 其中1,2,4,8,分别对应二进制1,10,100,1000
-::
-set /a a=&quot;(%1|(1&lt;&lt;%N%))-%1&quot;
-if %a% GTR %1 goto :完成
-if %a% EQU 0 (set VV=1%VV%) ELSE (SET VV=0%VV%)
-SET /AN+=1
-GOTO :LOOP
-
-:完成
-echo.输入的数字:        %1
-echo.得到二进制:        %VV%
-ENDLOCAL
-goto :eof
-</code></pre><p>以上系原创脚本,如有雷同,纯属巧合..</p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/进制转换/" class="label label-primary" itemprop="url"><span itemprop="title">进制转换</span></a><a href="/tags/批处理/" class="label label-success" itemprop="url"><span itemprop="title">批处理</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/post67/#comments" class="ds-thread-count comment-link" data-thread-key="67" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1046,7 +1054,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-03-24 11:14:05</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:46:01</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

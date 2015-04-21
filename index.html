@@ -111,6 +111,68 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/windows7_wimboot/">【分享】成功实现WIN7的WIMBOOT功能</a></h1>
+      
+        <span>发表于<time datetime="2015-04-21T09:28:00.000Z"> <a href="/post/windows7_wimboot/">2015-04-21</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
+<p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
+<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢,先上来秀一下,过一段时间有空了再继续写.</p>
+<pre><code> BOOTMGR ==&gt;启动文件
+├─boot  ==&gt;启动文件目录
+│  │  memtest.exe
+│  │  
+│  ├─Fonts ==&gt;启动界面字体
+│  │      chs_boot.ttf
+│  │      cht_boot.ttf
+│  │      jpn_boot.ttf
+│  │      kor_boot.ttf
+│  │      wgl4_boot.ttf
+│  │      
+│  │      
+│  └─zh-CN
+│        bootmgr.exe.mui
+│        memtest.exe.mui
+│          
+└─wimboot ==&gt;系统文件夹
+    │  wimboot.wim  ==&gt;系统WIM WINDOWS 7 x86/x64二合一镜像 占用14G空间
+    │  
+    ├─x64  ==&gt;64位系统所使用的VHD
+    │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G
+    │      win7.vhd  ==&gt;64位系列主VHD文件      ==&gt;400MB左右
+    │      
+    └─x86 ==&gt;32位系统使用的VHD
+            wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G
+            Win7.vhd ==&gt;32位系统主VHD文件      ==&gt;400MB左右
+</code></pre>
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-04-21 17:45:44"datetime="2015-04-21 17:45:44"> 2015-04-21</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/grub4dos_ipxe/">[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍</a></h1>
       
         <span>发表于<time datetime="2014-12-27T16:00:00.000Z"> <a href="/post/grub4dos_ipxe/">2014-12-28</a></time></span>      
@@ -267,7 +329,7 @@
     
     
         <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/cameyo/" class="label label-primary" itemprop="url"><span itemprop="title">cameyo</span></a><a href="/tags/PackageEditor/" class="label label-success" itemprop="url"><span itemprop="title">PackageEditor</span></a><a href="/tags/虚拟化/" class="label label-info" itemprop="url"><span itemprop="title">虚拟化</span></a><a href="/tags/绿色/" class="label label-warning" itemprop="url"><span itemprop="title">绿色</span></a></span> | <span class="time">最近更新:<time title="2014-04-06 21:06:52"datetime="2014-04-06 21:06:52"> 2014-04-06</time></span> | <span class="comment-link">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li></span><span class="breadcrumb"><li><a href="/categories/实用文集/" itemprop="url"><span itemprop="title" >实用文集</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/Cameyo/" class="label label-primary" itemprop="url"><span itemprop="title">Cameyo</span></a><a href="/tags/PackageEditor/" class="label label-success" itemprop="url"><span itemprop="title">PackageEditor</span></a><a href="/tags/虚拟化/" class="label label-info" itemprop="url"><span itemprop="title">虚拟化</span></a><a href="/tags/绿色/" class="label label-warning" itemprop="url"><span itemprop="title">绿色</span></a></span> | <span class="time">最近更新:<time title="2014-04-06 21:06:52"datetime="2014-04-06 21:06:52"> 2014-04-06</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/cameyo_packageeditor_01/#comments" class="ds-thread-count comment-link" data-thread-key="1404061501" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -311,7 +373,7 @@
     
     
         <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/C/" itemprop="url">C#</a></li></span><span class="breadcrumb"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li><li><a href="/categories/软件推荐/系统相关/" itemprop="url">系统相关</a></li></span></div> | <span class="tags">标签 <a href="/tags/cameyo/" class="label label-primary" itemprop="url"><span itemprop="title">cameyo</span></a><a href="/tags/虚拟化/" class="label label-success" itemprop="url"><span itemprop="title">虚拟化</span></a></span> | <span class="time">最近更新:<time title="2014-05-12 16:18:06"datetime="2014-05-12 16:18:06"> 2014-05-12</time></span> | <span class="comment-link">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/C/" itemprop="url">C#</a></li></span><span class="breadcrumb"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li><li><a href="/categories/软件推荐/系统相关/" itemprop="url">系统相关</a></li></span></div> | <span class="tags">标签 <a href="/tags/Cameyo/" class="label label-primary" itemprop="url"><span itemprop="title">Cameyo</span></a><a href="/tags/虚拟化/" class="label label-success" itemprop="url"><span itemprop="title">虚拟化</span></a></span> | <span class="time">最近更新:<time title="2014-05-12 16:18:06"datetime="2014-05-12 16:18:06"> 2014-05-12</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/cameyo-packageeditor/#comments" class="ds-thread-count comment-link" data-thread-key="1403081642" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -511,46 +573,6 @@
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></h1>
-      
-        <span>发表于<time datetime="2014-01-20T09:00:00.000Z"> <a href="/post/pretty_auto/">2014-01-20</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>pretty是一个Javascript模块和CSS文件，可以实现文章中代码的高亮显示.<br>在网上找到的使用方法都是差不多的,</p>
-<p>首先就是加载css和js文件<br>
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/pretty_auto/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/html/" itemprop="url">html</a></li></span></div> | <span class="tags">标签 <a href="/tags/pretty/" class="label label-primary" itemprop="url"><span itemprop="title">pretty</span></a><a href="/tags/原创/" class="label label-success" itemprop="url"><span itemprop="title">原创</span></a><a href="/tags/代码/" class="label label-info" itemprop="url"><span itemprop="title">代码</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/pretty_auto/#comments" class="ds-thread-count comment-link" data-thread-key="pretty_auto" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -638,7 +660,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-03-24 11:14:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:46:01</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

@@ -111,6 +111,50 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></h1>
+      
+        <span>发表于<time datetime="2012-08-13T07:20:14.000Z"> <a href="/post/sina_curl_login/">2012-08-13</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>有时候我们获取一些新浪微博的数据,但又不想使用API,只好使用模拟登录了.</p>
+<p>发现以前可以使用的CURL模拟登录代码失效了,Google一下,发现有很多人碰到这个问题.但是没有找到解决方法,所以就自己研究了一下,发现了原因.</p>
+<p>可能是因为新浪限制了不允许模拟登录,同样的登录参数,用网页登录一切正常,用CURL登录,返回的<span style="color:#800000;">COOKIES</span>竟然是<span style="color:#ff0000;">临时</span>的.</p>
+<p>所以看起来是登录成功了,并且获取到了用户信息,但是再次访问还是未登录状态.我的解决方法比较简单,直接修改COOKIES的时效这样就行了.</p>
+<p>附上我自己测试通过的PHP代码如下,希望有对有同样问题的朋友有用,如果你有更好的方案欢迎分享一下.</p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/sina_curl_login/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/PHP/" itemprop="url">PHP</a></li></span></div> | <span class="tags">标签 <a href="/tags/curl/" class="label label-primary" itemprop="url"><span itemprop="title">curl</span></a><a href="/tags/新浪/" class="label label-success" itemprop="url"><span itemprop="title">新浪</span></a><a href="/tags/登录/" class="label label-info" itemprop="url"><span itemprop="title">登录</span></a><a href="/tags/PHP/" class="label label-warning" itemprop="url"><span itemprop="title">PHP</span></a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/sina_curl_login/#comments" class="ds-thread-count comment-link" data-thread-key="854" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/onlinedown_no_check/">[分享]华军软件园免验证码下载</a></h1>
       
         <span>发表于<time datetime="2012-08-11T00:00:30.000Z"> <a href="/post/onlinedown_no_check/">2012-08-11</a></time></span>      
@@ -415,7 +459,7 @@
 <p>得到</p>
 <p><span style="color:#ff00ff;">9cd84c2500a6013ef3bd1441919132b6</span></p>
 <p>现在参数全部有了直接提交（用get或post都可以）</p>
-<p><a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x68;&#x74;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#x6c;&#111;&#103;&#x69;&#110;&#x2e;&#x64;&#x62;&#x61;&#110;&#x6b;&#46;&#x63;&#x6f;&#109;&#47;&#x6c;&#x6f;&#x67;&#105;&#110;&#97;&#x75;&#116;&#104;&#x2e;&#x70;&#x68;&#112;&#x3f;&#110;&#115;&#112;&#95;&#x61;&#112;&#x70;&#61;&#x34;&#56;&#48;&#x34;&#x39;&#x26;&#x6d;&#x3d;&#x31;&#38;&#x6e;&#111;&#110;&#x63;&#x65;&#x3d;&#52;&#x66;&#x64;&#102;&#x30;&#98;&#55;&#48;&#x30;&#x62;&#x30;&#48;&#53;&#x32;&#x2e;&#x39;&#49;&#x39;&#x32;&#52;&#x38;&#54;&#52;&#x26;&#110;&#115;&#112;&#95;&#x63;&#x69;&#x64;&#x3d;&#56;&#48;&#x32;&#x66;&#100;&#x64;&#49;&#48;&#x34;&#57;&#x39;&#57;&#50;&#x39;&#56;&#52;&#99;&#102;&#52;&#x39;&#x61;&#49;&#x63;&#100;&#48;&#102;&#x63;&#x37;&#53;&#x34;&#x35;&#99;&#x26;&#110;&#115;&#112;&#95;&#x75;&#x73;&#x65;&#114;&#x3d;&#116;&#101;&#x73;&#x74;&#x40;&#x63;&#104;&#101;&#x6e;&#x61;&#108;&#108;&#46;&#x74;&#x6b;&#38;&#x72;&#x65;&#115;&#x70;&#111;&#110;&#115;&#x65;&#x3d;&#x39;&#x63;&#x64;&#x38;&#52;&#x63;&#x32;&#53;&#48;&#48;&#97;&#x36;&#x30;&#49;&#x33;&#x65;&#102;&#x33;&#x62;&#x64;&#49;&#x34;&#x34;&#49;&#x39;&#x31;&#x39;&#49;&#x33;&#x32;&#x62;&#x36;">&#x68;&#x74;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#x6c;&#111;&#103;&#x69;&#110;&#x2e;&#x64;&#x62;&#x61;&#110;&#x6b;&#46;&#x63;&#x6f;&#109;&#47;&#x6c;&#x6f;&#x67;&#105;&#110;&#97;&#x75;&#116;&#104;&#x2e;&#x70;&#x68;&#112;&#x3f;&#110;&#115;&#112;&#95;&#x61;&#112;&#x70;&#61;&#x34;&#56;&#48;&#x34;&#x39;&#x26;&#x6d;&#x3d;&#x31;&#38;&#x6e;&#111;&#110;&#x63;&#x65;&#x3d;&#52;&#x66;&#x64;&#102;&#x30;&#98;&#55;&#48;&#x30;&#x62;&#x30;&#48;&#53;&#x32;&#x2e;&#x39;&#49;&#x39;&#x32;&#52;&#x38;&#54;&#52;&#x26;&#110;&#115;&#112;&#95;&#x63;&#x69;&#x64;&#x3d;&#56;&#48;&#x32;&#x66;&#100;&#x64;&#49;&#48;&#x34;&#57;&#x39;&#57;&#50;&#x39;&#56;&#52;&#99;&#102;&#52;&#x39;&#x61;&#49;&#x63;&#100;&#48;&#102;&#x63;&#x37;&#53;&#x34;&#x35;&#99;&#x26;&#110;&#115;&#112;&#95;&#x75;&#x73;&#x65;&#114;&#x3d;&#116;&#101;&#x73;&#x74;&#x40;&#x63;&#104;&#101;&#x6e;&#x61;&#108;&#108;&#46;&#x74;&#x6b;&#38;&#x72;&#x65;&#115;&#x70;&#111;&#110;&#115;&#x65;&#x3d;&#x39;&#x63;&#x64;&#x38;&#52;&#x63;&#x32;&#53;&#48;&#48;&#97;&#x36;&#x30;&#49;&#x33;&#x65;&#102;&#x33;&#x62;&#x64;&#49;&#x34;&#x34;&#49;&#x39;&#x31;&#x39;&#49;&#x33;&#x32;&#x62;&#x36;</a></p>
+<p><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;&#104;&#x74;&#x74;&#112;&#x3a;&#x2f;&#47;&#x6c;&#x6f;&#103;&#105;&#x6e;&#x2e;&#100;&#98;&#97;&#110;&#107;&#46;&#99;&#x6f;&#109;&#47;&#x6c;&#x6f;&#103;&#x69;&#110;&#x61;&#117;&#x74;&#104;&#46;&#x70;&#x68;&#112;&#63;&#110;&#x73;&#112;&#95;&#97;&#x70;&#x70;&#x3d;&#52;&#x38;&#48;&#x34;&#57;&#38;&#x6d;&#x3d;&#x31;&#38;&#x6e;&#111;&#110;&#99;&#x65;&#x3d;&#x34;&#x66;&#x64;&#102;&#x30;&#x62;&#x37;&#x30;&#48;&#98;&#x30;&#48;&#53;&#x32;&#46;&#x39;&#49;&#x39;&#x32;&#52;&#x38;&#x36;&#x34;&#x26;&#x6e;&#x73;&#x70;&#95;&#x63;&#105;&#x64;&#61;&#56;&#48;&#50;&#102;&#x64;&#x64;&#49;&#48;&#52;&#x39;&#57;&#57;&#x32;&#57;&#x38;&#x34;&#99;&#102;&#52;&#x39;&#x61;&#49;&#x63;&#100;&#x30;&#102;&#x63;&#55;&#53;&#x34;&#53;&#x63;&#38;&#110;&#115;&#112;&#x5f;&#x75;&#x73;&#101;&#114;&#x3d;&#116;&#x65;&#x73;&#x74;&#x40;&#99;&#x68;&#x65;&#110;&#x61;&#108;&#x6c;&#46;&#116;&#107;&#38;&#114;&#101;&#x73;&#112;&#x6f;&#110;&#115;&#x65;&#x3d;&#x39;&#99;&#100;&#56;&#x34;&#x63;&#50;&#53;&#48;&#48;&#97;&#54;&#x30;&#x31;&#x33;&#x65;&#102;&#x33;&#x62;&#100;&#49;&#x34;&#x34;&#49;&#x39;&#49;&#x39;&#x31;&#51;&#x32;&#98;&#54;">&#104;&#x74;&#x74;&#112;&#x3a;&#x2f;&#47;&#x6c;&#x6f;&#103;&#105;&#x6e;&#x2e;&#100;&#98;&#97;&#110;&#107;&#46;&#99;&#x6f;&#109;&#47;&#x6c;&#x6f;&#103;&#x69;&#110;&#x61;&#117;&#x74;&#104;&#46;&#x70;&#x68;&#112;&#63;&#110;&#x73;&#112;&#95;&#97;&#x70;&#x70;&#x3d;&#52;&#x38;&#48;&#x34;&#57;&#38;&#x6d;&#x3d;&#x31;&#38;&#x6e;&#111;&#110;&#99;&#x65;&#x3d;&#x34;&#x66;&#x64;&#102;&#x30;&#x62;&#x37;&#x30;&#48;&#98;&#x30;&#48;&#53;&#x32;&#46;&#x39;&#49;&#x39;&#x32;&#52;&#x38;&#x36;&#x34;&#x26;&#x6e;&#x73;&#x70;&#95;&#x63;&#105;&#x64;&#61;&#56;&#48;&#50;&#102;&#x64;&#x64;&#49;&#48;&#52;&#x39;&#57;&#57;&#x32;&#57;&#x38;&#x34;&#99;&#102;&#52;&#x39;&#x61;&#49;&#x63;&#100;&#x30;&#102;&#x63;&#55;&#53;&#x34;&#53;&#x63;&#38;&#110;&#115;&#112;&#x5f;&#x75;&#x73;&#101;&#114;&#x3d;&#116;&#x65;&#x73;&#x74;&#x40;&#99;&#x68;&#x65;&#110;&#x61;&#108;&#x6c;&#46;&#116;&#107;&#38;&#114;&#101;&#x73;&#112;&#x6f;&#110;&#115;&#x65;&#x3d;&#x39;&#99;&#100;&#56;&#x34;&#x63;&#50;&#53;&#48;&#48;&#97;&#54;&#x30;&#x31;&#x33;&#x65;&#102;&#x33;&#x62;&#100;&#49;&#x34;&#x34;&#49;&#x39;&#49;&#x39;&#x31;&#51;&#x32;&#98;&#54;</a></p>
 <p>返回的数据如下(如果是其它信息肯定是你的参数有误或用户密码错误改正之后重新提交)</p>
 <pre><code>{&quot;retcode&quot;:0,&quot;k&quot;:&quot;IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D&quot;}
 </code></pre><p>再提交一次就成功登录了 <a href="http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D" target="_blank" rel="external">http://login.dbank.com/loginauth.php?k=IFi6cylxBlRZsRw21JIiDtxO6ORZGun5VLViD52OOuj3dN0ylLoeHDw3ruaa1S4RFTP1Y0q8vazTvjDUjJiSu0aFSWIQ9lEgIbPSdcKCCDo%3D</a></p>
@@ -730,52 +774,6 @@ nsp_ts 参数后面的值可以不要，但nsp_ts字符串须要有
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></h1>
-      
-        <span>发表于<time datetime="2012-02-13T02:40:00.000Z"> <a href="/post/ntboot/">2012-02-13</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <h2 id="【说明】">【说明】</h2>
-<ul>
-<li>本启动盘可以用于直接启动硬盘上的NT系统.可以从任意地方加载这个镜像文件进行启动。</li>
-<li>可以通过本镜像启动硬盘上的Windows系统,不依赖硬盘上的系统引导文件.</li>
-<li>也可以用于U盘或光盘启动时,直接启动硬盘上的其它系统.</li>
-<li>一盘在手,启动无优.</li>
-</ul>
-
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/ntboot/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/ntboot/" class="label label-success" itemprop="url"><span itemprop="title">ntboot</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-08-31 18:40:12"datetime="2014-08-31 18:40:12"> 2014-08-31</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/ntboot/#comments" class="ds-thread-count comment-link" data-thread-key="117" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -863,7 +861,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-03-24 11:14:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:46:01</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

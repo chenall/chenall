@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-03-24T03:13:59.166Z</updated>
+  <updated>2015-04-21T09:45:55.610Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -13,6 +13,54 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[【分享】成功实现WIN7的WIMBOOT功能]]></title>
+    <link href="http://chenall.net/post/windows7_wimboot/"/>
+    <id>http://chenall.net/post/windows7_wimboot/</id>
+    <published>2015-04-21T09:28:00.000Z</published>
+    <updated>2015-04-21T09:45:44.000Z</updated>
+    <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
+<p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
+<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢,先上来秀一下,过一段时间有空了再继续写.</p>
+<pre><code> BOOTMGR ==&gt;启动文件
+├─boot  ==&gt;启动文件目录
+│  │  memtest.exe
+│  │  
+│  ├─Fonts ==&gt;启动界面字体
+│  │      chs_boot.ttf
+│  │      cht_boot.ttf
+│  │      jpn_boot.ttf
+│  │      kor_boot.ttf
+│  │      wgl4_boot.ttf
+│  │      
+│  │      
+│  └─zh-CN
+│        bootmgr.exe.mui
+│        memtest.exe.mui
+│          
+└─wimboot ==&gt;系统文件夹
+    │  wimboot.wim  ==&gt;系统WIM WINDOWS 7 x86/x64二合一镜像 占用14G空间
+    │  
+    ├─x64  ==&gt;64位系统所使用的VHD
+    │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G
+    │      win7.vhd  ==&gt;64位系列主VHD文件      ==&gt;400MB左右
+    │      
+    └─x86 ==&gt;32位系统使用的VHD
+            wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G
+            Win7.vhd ==&gt;32位系统主VHD文件      ==&gt;400MB左右
+</code></pre>]]></content>
+    
+    
+      <category term="windows7" scheme="http://chenall.net/tags/windows7/"/>
+    
+      <category term="WIMBOOT" scheme="http://chenall.net/tags/WIMBOOT/"/>
+    
+      <category term="vhd" scheme="http://chenall.net/tags/vhd/"/>
+    
+      <category term="系统相关" scheme="http://chenall.net/categories/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[[grub4dos] grub4dos 0.4.6a ipxegrldr 功能介绍]]></title>
@@ -342,7 +390,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -429,7 +477,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
@@ -2004,50 +2052,6 @@ a:sub(1,-3) -- 1234
       <category term="sae" scheme="http://chenall.net/tags/sae/"/>
     
       <category term="云计算" scheme="http://chenall.net/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[[记录] VPS 初步接触]]></title>
-    <link href="http://chenall.net/post/pzea_xen_vps_try/"/>
-    <id>http://chenall.net/post/pzea_xen_vps_try/</id>
-    <published>2013-03-17T06:28:36.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
-    <content type="html"><![CDATA[<p>最近从PzEA入手一个xen VPS，从网上搜到的优惠链接（<a href="http://www.uuvps.com/vps/4919.html" target="_blank" rel="external">PzEa给力特价VPS 256M Xen VPS 2.5美元 洛杉矶和圣何塞机房</a>）购买的，以下是购买时可以看到的配置信息。实际上硬盘是10G的。够用了</p>
-<ul>
-<li>CPU：单核</li>
-<li>内存：256M</li>
-<li>硬盘：10G</li>
-<li>流量：250G</li>
-<li>IPs：1IPv4</li>
-<li>架构：xen</li>
-<li>可选系统：linux</li>
-</ul>
-<p>用人民币购买1年是162.5元，用美元是$25,按照目前的汇率(太概是155人民币)用美元购买会便宜一些,如果有双币种信用卡可以用美元,否则还是老老实实用支付宝,这个价格比一般的虚拟主机还划算,付完款之后就立即开通了,</p>
-<p>开通之后只安装了一个系统,其它的都需要自己配置.</p>
-<p>为了方便先装一个管理面板,从网上搜了一下感觉<a href="http://amysql.com/AMH.htm" target="_blank" rel="external">AMH</a>挺不错的就它了.很方便,装上之后基本就可以使用了.</p>
-<p>用SSH连接VPS的IP地址,然后按照<a href="http://amysql.com/AMH/doc.htm" target="_blank" rel="external">官方的安装方法</a></p>
-<pre><code>wget http://amysql.com/file/AMH/3.1/amh.sh; chmod 775 amh.sh; ./amh.sh 2&gt;&amp;1 | tee amh.log;
-</code></pre><p>然后就是漫长的等待了.太概20分钟左右的样子.完成之后再用</p>
-<p><strong><a href="http://ip:8888" target="_blank" rel="external">http://ip:8888</a></strong> 进入管理面板</p>
-<p>里面可以管理虚拟主机,FTP/MYSQL等.挺方便的.</p>
-<p>然后想怎么折腾就怎么折腾吧,别忘了VPS安全,使用iptables设置一下规则.(都可以从Google上找到)</p>
-<p>这个比较适合有一定LINUX基础的人练手,有独立IP可以做很多事情….</p>
-<p>申请了一个免费的tk域名先装一个typecho来测试一下.</p>
-<p><a href="http://xvps.tk/" target="_blank" rel="external">http://xvps.tk/</a></p>
-<p>嘿嘿,有了这个就相当于有了一台属于自己的永不断电的电脑了.以后又有得折腾了.^_^</p>
-]]></content>
-    
-    
-      <category term="amh" scheme="http://chenall.net/tags/amh/"/>
-    
-      <category term="pzea" scheme="http://chenall.net/tags/pzea/"/>
-    
-      <category term="vps" scheme="http://chenall.net/tags/vps/"/>
-    
-      <category term="xen" scheme="http://chenall.net/tags/xen/"/>
     
       <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
     

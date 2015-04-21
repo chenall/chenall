@@ -111,6 +111,81 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/distributed_queries/">分布式查询</a></h1>
+      
+        <span>发表于<time datetime="2010-08-12T14:45:12.000Z"> <a href="/post/distributed_queries/">2010-08-12</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>分布式查询从多异类数据源中访问数据。这些数据源可以存储在同一台计算机或不同的计算机上。Microsoft SQL Server 通过使用 OLE DB 来支持分布式查询。</p>
+<p>SQL Server 用户可以使用分布式查询访问以下内容：</p>
+<ul>
+<li>存储在多个 SQL Server 实例中的分布式数据。</li>
+<li>存储在各种可以使用 OLE DB 访问接口访问的关系和非关系数据源中的异类数据。</li>
+</ul>
+<p>OLE DB 访问接口将在称为行集的表格格式对象中公开数据。SQL Server 允许在 Transact-SQL 语句中像引用 SQL Server 表一样引用 OLE DB 访问接口中的行集。</p>
+<p>外部数据源中的表和视图可以在 SELECT、INSERT、UPDATE 和 DELETE Transact-SQL 语句中直接引用。因为分布式查询使用 OLE DB 作为基本接口，因此它们不仅可以访问带有 SQL 查询处理器的传统 DBMS 系统，也可以访问复杂的、具有不同功能的数据源所管理的数据。只要拥有数据的软件通过 OLE DB 访问接口在表格格式行集中公开其数据，就可在分布式查询中使用此数据。</p>
+<p> 注意： 在 SQL Server 中使用分布式查询与通过 ODBC 使用链接表功能相似。此功能先前受 Microsoft Access 支持，现在已将 OLE DB 作为外部数据的接口构建到 SQL Server 中。</p>
+<p>下图显示了 SQL Server 实例的客户端计算机与 OLE DB 访问接口之间的连接。</p>
+<p> <img src="http://i.msdn.microsoft.com/dynimg/IC53346.gif" alt="客户端到 SQL Server 到 OLE DB 访问接口"></p>
+<p> 有关分布式查询的重要主题<br>下表列出的主题提供了有助于理解和使用分布式查询来访问数据的信息，这些数据或者是在单独的 SQL Server 实例中或者在除 SQL Server 之外的其他数据源中。</p>
+<table class="table table-bordered"><tbody><br><tr><th>有关信息</th> <th>请参阅</th></tr><tr> <td>配置 OLE DB 访问接口和链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188279.aspx" target="_blank" rel="external"><font color="#1364C4">配置链接服务器</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms190918.aspx" target="_blank" rel="external"><font color="#1364C4">为分布式查询配置 OLE DB 访问接口</font></a></td> </tr><br><tr><td>分布式事务中的分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms177403.aspx" target="_blank" rel="external"><font color="#1364C4">分布式查询和分布式事务</font></a></td></tr><br><tr><td>特定的 OLE DB 访问接口</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187072.aspx" target="_blank" rel="external"><font color="#1364C4">用 SQL Server 测试过的 OLE DB 访问接口</font></a></td></tr><br><tr><td>OLE DB 访问接口的语言支持</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms187442.aspx" target="_blank" rel="external"><font color="#1364C4">OLE DB 访问接口的 SQL 方言要求</font></a></td> </tr><br><tr> <td>链接服务器</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms188313.aspx" target="_blank" rel="external"><font color="#1364C4">访问外部数据</font></a></td></tr><br><tr><td>ODBC 和分布式查询</td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms131368.aspx" target="_blank" rel="external"><font color="#1364C4">支持分布式查询的架构函数</font></a></td></tr><br><tr><td> 性能问题 </td><td><a href="http://msdn.microsoft.com/zh-cn/library/ms180972.aspx" target="_blank" rel="external"><font color="#1364C4">优化分布式查询</font></a></td></tr><br><tr> <td> OLE DB 访问接口开发人员参考</td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms179468.aspx" target="_blank" rel="external"><font color="#1364C4">用于分布式查询的 OLE DB 访问接口参考</font></a></td></tr><br><tr> <td> 统计要求 </td> <td> <a href="http://msdn.microsoft.com/zh-cn/library/ms186237.aspx" target="_blank" rel="external"><font color="#1364C4">OLE DB 访问接口的分布统计要求</font></a> </td></tr><br><tr> <td> 分布式查询、链接服务器和允许的 Transact-SQL 语句的规则和限制。 </td><td> <a href="http://msdn.microsoft.com/zh-cn/library/ms175129.aspx" target="_blank" rel="external"><font color="#1364C4">分布式查询的准则</font></a><a href="http://msdn.microsoft.com/zh-cn/library/ms187961.aspx" target="_blank" rel="external"><font color="#1364C4">系统存储过程</font></a></td> </tr><br></tbody></table>
+
+<hr>
+<p>例子:</p>
+<p>商场使用佳为软件,使用的是MSSQL数据库,需要在两个分店之间传数据.</p>
+<ol>
+<li><p>首先就是建立服务器之间的链接.<br>使用以下命令添加(具体命令参数,请查看对应链接的详细介绍.<br> <a href="http://msdn.microsoft.com/zh-cn/library/ms190479.aspx" target="_blank" rel="external">sp_addlinkedserver&gt;&gt;</a></p>
+<pre><code>  sp_addlinkedserver &#39;srv01&#39;,&#39;&#39;,&#39;SQLOLEDB&#39;,&#39;192.168.0.1&#39;,&#39;pos&#39;
+</code></pre><p> <a href="http://msdn.microsoft.com/zh-cn/library/ms189811.aspx" target="_blank" rel="external">sp_addlinkedsrvlogin&gt;&gt;</a>设置连接参数密码</p>
+<pre><code>  sp_addlinkedsrvlogin &#39;srv01&#39;,&#39;false&#39;,NULL,&#39;sa&#39;,&#39;password&#39;
+</code></pre></li>
+<li><p>创建好了就可以直接使用了.<br><em>格式<br>server_name</em><strong>.</strong>[<em>database_name</em>]<strong>.</strong>[<em>schema_name</em>]<strong>.</strong><em>object_name<br>具体点击这里查看</em><a href="http://msdn.microsoft.com/zh-cn/library/ms177563.aspx" target="_blank" rel="external"><font color="#960BB4">Transact-SQL 语法约定</font></a></p>
+</li>
+</ol>
+<p>使用的例子:<br> 查询员工用户信息表</p>
+<pre><code> select * from srv01.pos.dbo.jygtab&lt;/font&gt;
+ 或
+ select * from openquery(&#39;srv01&#39;,&#39;select * from jygtab&#39;)
+</code></pre><p>当然同样可以加条件查询,或者更新都是可以的.<br> 几个例子:</p>
+<pre><code> 查询1号员工的资料:
+ select * from srv01.pos.dbo.jygtab where yx#=1
+ 修改资料:
+ update srv01.pos.dbo.jygtab set xm=&#39;chenall&#39; where yx#=1
+ 联合查询:
+ select yx#,xm,lqm from jygtab,srv01.pos.dbo.jlqtab where ysn=lb and lb=2
+ 把srv01服务器pos数据库的jygtab表内容插入到当前服务器:
+ insert into jygtab select * from srv01.pos.dbo.jygtab
+</code></pre><hr>
+<p>也可以连接到一个文本文件,EXCEL,ACCESS,等其它支持的类型.</p>
+<p>嘿,最近刚好需要用到这些东西,所以查了一下资料写在这里备忘.</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/SQL/" itemprop="url">SQL</a></li></span></div> | <span class="tags">标签 <a href="/tags/mssql/" class="label label-primary" itemprop="url"><span itemprop="title">mssql</span></a><a href="/tags/分布式/" class="label label-success" itemprop="url"><span itemprop="title">分布式</span></a><a href="/tags/链接/" class="label label-info" itemprop="url"><span itemprop="title">链接</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/distributed_queries/#comments" class="ds-thread-count comment-link" data-thread-key="490" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="http://msdn.microsoft.com/zh-cn/library/ms190479.aspx" target="_blank">MSSQL 链接服务器 sp_addlinkedserver</a></h1>
       
         <span>发表于<time datetime="2010-08-11T10:00:35.000Z"> <a href="/post/mssql_addlinkedserver/">2010-08-11</a></time></span>      
@@ -589,56 +664,6 @@
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_calc/">[GRUB4DOS] 外部命令 calc 简单计算器</a></h1>
-      
-        <span>发表于<time datetime="2010-02-01T13:37:56.000Z"> <a href="/post/grub4dos_calc/">2010-02-01</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <h2 id="[程序说明]">[程序说明]</h2>
-<p>   GRUB4DOS 下运行的简单双目计算器.</p>
-<p>注: <strong>最新版<code>GRUB4DOS</code>已经内置本功能</strong></p>
-<h2 id="[下载地址]">[下载地址]</h2>
-<p>   程序下载: <a href="http://grub4dos-chenall.googlecode.com/files/calc.zip" target="_blank" rel="external">http://grub4dos-chenall.googlecode.com/files/calc.zip</a><br>   最新版grub4dos下载:  <a href="http://grub4dos-chenall.googlecode.com/" target="_blank" rel="external">http://grub4dos-chenall.googlecode.com/</a></p>
-<p>[使用说明]</p>
-<p><img src="http://qiniu.chenall.net/upload/2010/2/E1FC915B87938DBE7AD7581D63D3837316CE9FD0.png" alt=""></p>
-<p>GRUB4DOS 简单双目计算器.<br> 使用方式:</p>
-<ol>
-<li>calc 数值 [运算符] 数值</li>
-<li><p>calc 数值 = 数值 运算符 数值</p>
-<p> 如果数值前面有前导<code>*</code>代表这是一个内存地址,<br> 计算时会从这个内存地址中读取32位整数进行计算.<br> 第一个参数如果有前导<code>*</code>,会将计算结果写入这个内存地址中.<br> 可使用运算符列表:<br> 递减 —<br> 递增 ++<br> 加法 +<br> 除法 /<br> 取余 %<br> 乘法 *<br> 减法 -<br> 按位与 &amp;<br> 按位或 |<br> 按位异或 ^<br> 按位左移 &lt;&lt;<br> 按位右移 &gt;&gt;</p>
-</li>
-</ol>
-<p>注:本程序不考虑小数点还有负数等计算.</p>
-<p>[使用截图]</p>
-<p><img src="http://qiniu.chenall.net/upload/2010/2/4264B928F381C5B0FCA5FAB4E5043184716D0784.png" alt=""><br><img src="http://qiniu.chenall.net/upload/2010/2/C2746EFDBC33213B6C5A91296C5B831F7D36336D.png" alt=""></p>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/calc/" class="label label-primary" itemprop="url"><span itemprop="title">calc</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/外部命令/" class="label label-info" itemprop="url"><span itemprop="title">外部命令</span></a><a href="/tags/计算器/" class="label label-warning" itemprop="url"><span itemprop="title">计算器</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_calc/#comments" class="ds-thread-count comment-link" data-thread-key="126" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -726,7 +751,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-03-24 11:14:05</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:46:01</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

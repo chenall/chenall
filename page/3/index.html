@@ -111,6 +111,62 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/pzea_xen_vps_try/">[记录] VPS 初步接触</a></h1>
+      
+        <span>发表于<time datetime="2013-03-17T06:28:36.000Z"> <a href="/post/pzea_xen_vps_try/">2013-03-17</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>最近从PzEA入手一个xen VPS，从网上搜到的优惠链接（<a href="http://www.uuvps.com/vps/4919.html" target="_blank" rel="external">PzEa给力特价VPS 256M Xen VPS 2.5美元 洛杉矶和圣何塞机房</a>）购买的，以下是购买时可以看到的配置信息。实际上硬盘是10G的。够用了</p>
+<ul>
+<li>CPU：单核</li>
+<li>内存：256M</li>
+<li>硬盘：10G</li>
+<li>流量：250G</li>
+<li>IPs：1IPv4</li>
+<li>架构：xen</li>
+<li>可选系统：linux</li>
+</ul>
+<p>用人民币购买1年是162.5元，用美元是$25,按照目前的汇率(太概是155人民币)用美元购买会便宜一些,如果有双币种信用卡可以用美元,否则还是老老实实用支付宝,这个价格比一般的虚拟主机还划算,付完款之后就立即开通了,</p>
+<p>开通之后只安装了一个系统,其它的都需要自己配置.</p>
+<p>为了方便先装一个管理面板,从网上搜了一下感觉<a href="http://amysql.com/AMH.htm" target="_blank" rel="external">AMH</a>挺不错的就它了.很方便,装上之后基本就可以使用了.</p>
+<p>用SSH连接VPS的IP地址,然后按照<a href="http://amysql.com/AMH/doc.htm" target="_blank" rel="external">官方的安装方法</a></p>
+<pre><code>wget http://amysql.com/file/AMH/3.1/amh.sh; chmod 775 amh.sh; ./amh.sh 2&gt;&amp;1 | tee amh.log;
+</code></pre><p>然后就是漫长的等待了.太概20分钟左右的样子.完成之后再用</p>
+<p><strong><a href="http://ip:8888" target="_blank" rel="external">http://ip:8888</a></strong> 进入管理面板</p>
+<p>里面可以管理虚拟主机,FTP/MYSQL等.挺方便的.</p>
+<p>然后想怎么折腾就怎么折腾吧,别忘了VPS安全,使用iptables设置一下规则.(都可以从Google上找到)</p>
+<p>这个比较适合有一定LINUX基础的人练手,有独立IP可以做很多事情….</p>
+<p>申请了一个免费的tk域名先装一个typecho来测试一下.</p>
+<p><a href="http://xvps.tk/" target="_blank" rel="external">http://xvps.tk/</a></p>
+<p>嘿嘿,有了这个就相当于有了一台属于自己的永不断电的电脑了.以后又有得折腾了.^_^</p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/" itemprop="url"><span itemprop="title" >个人日记</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/amh/" class="label label-primary" itemprop="url"><span itemprop="title">amh</span></a><a href="/tags/pzea/" class="label label-success" itemprop="url"><span itemprop="title">pzea</span></a><a href="/tags/vps/" class="label label-info" itemprop="url"><span itemprop="title">vps</span></a><a href="/tags/xen/" class="label label-warning" itemprop="url"><span itemprop="title">xen</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/pzea_xen_vps_try/#comments" class="ds-thread-count comment-link" data-thread-key="901" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/netdisk_sdk/">[PHP] 打算整合多个网盘资源</a></h1>
       
         <span>发表于<time datetime="2013-02-07T03:22:28.000Z"> <a href="/post/netdisk_sdk/">2013-02-07</a></time></span>      
@@ -194,7 +250,7 @@ $fs-&gt;ls();
     
     
         <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/cameyo/" class="label label-primary" itemprop="url"><span itemprop="title">cameyo</span></a><a href="/tags/单文件/" class="label label-success" itemprop="url"><span itemprop="title">单文件</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/软件推荐/" itemprop="url"><span itemprop="title" >软件推荐</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/Cameyo/" class="label label-primary" itemprop="url"><span itemprop="title">Cameyo</span></a><a href="/tags/单文件/" class="label label-success" itemprop="url"><span itemprop="title">单文件</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/cameyo_2-0-873/#comments" class="ds-thread-count comment-link" data-thread-key="896" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -823,50 +879,6 @@ curl_close($curl);
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/sina_curl_login/">[分享] 使用 PHP CURL 模拟登录新浪微博</a></h1>
-      
-        <span>发表于<time datetime="2012-08-13T07:20:14.000Z"> <a href="/post/sina_curl_login/">2012-08-13</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>有时候我们获取一些新浪微博的数据,但又不想使用API,只好使用模拟登录了.</p>
-<p>发现以前可以使用的CURL模拟登录代码失效了,Google一下,发现有很多人碰到这个问题.但是没有找到解决方法,所以就自己研究了一下,发现了原因.</p>
-<p>可能是因为新浪限制了不允许模拟登录,同样的登录参数,用网页登录一切正常,用CURL登录,返回的<span style="color:#800000;">COOKIES</span>竟然是<span style="color:#ff0000;">临时</span>的.</p>
-<p>所以看起来是登录成功了,并且获取到了用户信息,但是再次访问还是未登录状态.我的解决方法比较简单,直接修改COOKIES的时效这样就行了.</p>
-<p>附上我自己测试通过的PHP代码如下,希望有对有同样问题的朋友有用,如果你有更好的方案欢迎分享一下.</p>
-
-      
-    </div>
-    
-    
-      
-      <div id='more-link'>
-        <div align="left">
-          <a href="/post/sina_curl_login/#more" class="more-link fa fa-play">阅读全文</a>
-        </div>
-      </div>
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/PHP/" itemprop="url">PHP</a></li></span></div> | <span class="tags">标签 <a href="/tags/curl/" class="label label-primary" itemprop="url"><span itemprop="title">curl</span></a><a href="/tags/新浪/" class="label label-success" itemprop="url"><span itemprop="title">新浪</span></a><a href="/tags/登录/" class="label label-info" itemprop="url"><span itemprop="title">登录</span></a><a href="/tags/PHP/" class="label label-warning" itemprop="url"><span itemprop="title">PHP</span></a></span> | <span class="time">最近更新:<time title="2014-03-27 10:04:07"datetime="2014-03-27 10:04:07"> 2014-03-27</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/sina_curl_login/#comments" class="ds-thread-count comment-link" data-thread-key="854" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -954,7 +966,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-03-24 11:14:04</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:46:01</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

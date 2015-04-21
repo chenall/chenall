@@ -111,6 +111,48 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/grub4dos_micrope/">[Grub4dos] grub4dos高级应用菜单示范</a></h1>
+      
+        <span>发表于<time datetime="2009-11-11T16:08:01.000Z"> <a href="/post/grub4dos_micrope/">2009-11-12</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>grub4dos是一个很强大的引导器，想学习使用Grub4dos的朋友不要错过了，马上订阅本文章吧，目前只加了一部份注释.</p>
+<p>有看不懂的可以回复哦，我会尽快加上注释。欢迎有兴趣的朋友一起研究。</p>
+<p><strong>2014-01-21</strong>  <strong>注:</strong> <em>这个菜单使用到了大部份的GRUB4DOS常用功能,新版本的GRUB4DOS功能更加强大,下面很多复杂的功能,使用最新版GRUB4DOS,可能只需要两三个语句就可以实现了</em></p>
+
+      
+    </div>
+    
+    
+      
+      <div id='more-link'>
+        <div align="left">
+          <a href="/post/grub4dos_micrope/#more" class="more-link fa fa-play">阅读全文</a>
+        </div>
+      </div>
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/个人日记/" itemprop="url"><span itemprop="title" >个人日记</span></a></li></span><span class="breadcrumb"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/菜单/" class="label label-success" itemprop="url"><span itemprop="title">菜单</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/grub4dos_micrope/#comments" class="ds-thread-count comment-link" data-thread-key="110" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/batch_inifile/">【原创】批处理读取INI格式文件</a></h1>
       
         <span>发表于<time datetime="2009-11-06T11:19:32.000Z"> <a href="/post/batch_inifile/">2009-11-06</a></time></span>      
@@ -586,82 +628,6 @@ bcdedit /set {current} osdevice boot
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></h1>
-      
-        <span>发表于<time datetime="2009-09-29T13:29:21.000Z"> <a href="/post/cmd_if_exist/">2009-09-29</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>编写批处理时经常需要用到外部命令,一些常用的命令一般的系统都会有,但是一些精简的系统上可能就没有了,如果没有做判断就可能导致程序出现未知的错误.</p>
-<p>一般检测文件是否存在可以使用</p>
-<blockquote>
-<p>IF EXIST filename 执行某个命令…</p>
-</blockquote>
-<p>但是这样只能检测当前目录下或指定目录的,而批处理的外部命令通过PATH变量来确定位置的.正常情况下可以通过以下命令来确定这个外部命令是否存在,</p>
-<blockquote>
-<p>for %I in (find.exe) do if “%~$PATH:I”==”” echo find 命令不存在</p>
-</blockquote>
-<p>为了以后方便就写了一个模块,用于判断命令是否存在.</p>
-<pre><code>@echo off
-cls&amp;echo.IF_EXIST.cmd by chenall 2009-09-29 http://www.chenall.net
-echo.
-echo.功能:
-echo.   从环境变量PATH,当前目录,程序所在目录中查找指定的文件,如果找到就显示并返回值0,否则就返回1
-echo.
-echo.使用方法:
-echo.   直接复制下面::模块开始::到::模块结束::之间的代码到你的批处理程序中.然后使用以下命令调用.
-echo.   CALL :IF_EXIST xxxx.xxx
-echo.
-echo.使用例子:
-echo.   CALL :IF_EXIST find.exe || echo.find.exe 不存在
-echo.
-echo.注:只是简单查找,并且不支持查找子目录.主要用于批处理中判断某个外部命是否存在.
-echo.   实际应用中可以删除echo %~$PATH:1语句删除输出显示,或者在调用时加一个&gt;nul
-echo.
-echo.
-ECHO.以下是测试命令.
-ECHO.查找FIND.EXE
-CALL :IF_EXIST FIND.EXE || ECHO.FIND.EXE 不存在
-CALL :IF_EXIST FIND.EXE &gt;nul ||echo.出错了,find.exe不存在.
-ECHO.查找noEXIST.FILE
-CALL :IF_EXIST noEXIST.FILE || ECHO.noEXIST.FILE 不存在
-PAUSE
-GOTO :EOF
-
-::::::::::::::::::::::::模块开始::::::::::::::::::::::::
-:IF_EXIST       BY chenall QQ:366840202     2009-09-29
-SETLOCAL&amp;PATH %PATH%;%~dp0;%cd%
-if &quot;%~$PATH:1&quot;==&quot;&quot; exit /b 1
-echo %~$PATH:1
-exit /b 0       http://www.chenall.net
-:::::::::::::::::::::::模块结束:::::::::::::::::::::::::
-</code></pre>
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/程序设计/" itemprop="url"><span itemprop="title" >程序设计</span></a></li><li><a href="/categories/程序设计/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/IF-EXIST/" class="label label-primary" itemprop="url"><span itemprop="title">IF_EXIST</span></a><a href="/tags/批处理/" class="label label-success" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/cmd_if_exist/#comments" class="ds-thread-count comment-link" data-thread-key="99" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -749,7 +715,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-03-24 11:14:05</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:46:01</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
