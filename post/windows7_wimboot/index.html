@@ -126,7 +126,10 @@
       
         <p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
-<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢,先上来秀一下,过一段时间有空了再继续写.</p>
+<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢!</p>
+<a id="more"></a>
+
+<p>首先看秀一下最终的文件列表,很简洁.</p>
 <pre><code> BOOTMGR ==&gt;启动文件
 ├─boot  ==&gt;启动文件目录
 │  │  memtest.exe
@@ -148,12 +151,34 @@
     │  
     ├─x64  ==&gt;64位系统所使用的VHD
     │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G
-    │      win7.vhd  ==&gt;64位系列主VHD文件      ==&gt;400MB左右
+    │      win7.vhd  ==&gt;64位系统主VHD文件      ==&gt;400MB左右
     │      
     └─x86 ==&gt;32位系统使用的VHD
             wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G
             Win7.vhd ==&gt;32位系统主VHD文件      ==&gt;400MB左右
-</code></pre>
+</code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
+<p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
+<p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
+<ol>
+<li>首先从以下地址下载我修改优化的WIMBOOT辅助工具</li>
+</ol>
+<p>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
+<ol>
+<li><p>解压上面下载的压缩包.</p>
+<ul>
+<li>若是WIN7 32位的系统直接运行 <code>1.安装wof驱动</code></li>
+<li>若是WIN7 64位的系统需先打一个补丁<code>KB3033929</code>上面的下载地址中有,使用这个补丁就可以解决64位驱动签名的问题(<strong>首发</strong>).</li>
+<li>若是WIN8.1及以上的系统因为已经有支持了,所以不需要运行.</li>
+</ul>
+</li>
+<li><p>确认上面的驱动已经安装完成,重启系统进入WINPE,直接执行<code>2.进入PE再执行</code>根据提示输入原系统的磁盘号和WIM文件存放位置然后就等待自动处理.</p>
+</li>
+<li><p>根据你的电脑运行速度,一般半个小时左右就会有提示,出现提示成功完成后就说明已经把原来的系统转换成了WIMBOOT了,现在可以重启进入全新的系统了.^_^</p>
+</li>
+</ol>
+<p>当然了以上是直接在原系统上直接转换的,比较简单.如果需要放到VHD文件中,那会麻烦一些,我会再找些时间来更新一下让它可以直接转换成VHD格式.</p>
+
       
     </div>
     <section id='after_content_widget'><div class="widget" id="widget_after_content_google_after_content>">
@@ -186,7 +211,7 @@
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-04-21 17:45:44"datetime="2015-04-21 17:45:44"> 2015-04-21</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-04-25 12:14:04"datetime="2015-04-25 12:14:04"> 2015-04-25</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -206,7 +231,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/windows7_wimboot/">【分享】成功实现WIN7的WIMBOOT功能</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -295,7 +320,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-21 17:45:44</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-25 12:14:04</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

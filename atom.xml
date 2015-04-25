@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-04-21T09:45:55.610Z</updated>
+  <updated>2015-04-25T04:14:18.077Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,10 +19,13 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-04-21T09:45:44.000Z</updated>
+    <updated>2015-04-25T04:14:04.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
-<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢,先上来秀一下,过一段时间有空了再继续写.</p>
+<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢!</p>
+<a id="more"></a>
+
+<p>首先看秀一下最终的文件列表,很简洁.</p>
 <pre><code> BOOTMGR ==&gt;启动文件
 ├─boot  ==&gt;启动文件目录
 │  │  memtest.exe
@@ -44,13 +47,38 @@
     │  
     ├─x64  ==&gt;64位系统所使用的VHD
     │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G
-    │      win7.vhd  ==&gt;64位系列主VHD文件      ==&gt;400MB左右
+    │      win7.vhd  ==&gt;64位系统主VHD文件      ==&gt;400MB左右
     │      
     └─x86 ==&gt;32位系统使用的VHD
             wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G
             Win7.vhd ==&gt;32位系统主VHD文件      ==&gt;400MB左右
-</code></pre>]]></content>
-    
+</code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
+<p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
+<p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
+<ol>
+<li>首先从以下地址下载我修改优化的WIMBOOT辅助工具</li>
+</ol>
+<p>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
+<ol>
+<li><p>解压上面下载的压缩包.</p>
+<ul>
+<li>若是WIN7 32位的系统直接运行 <code>1.安装wof驱动</code></li>
+<li>若是WIN7 64位的系统需先打一个补丁<code>KB3033929</code>上面的下载地址中有,使用这个补丁就可以解决64位驱动签名的问题(<strong>首发</strong>).</li>
+<li>若是WIN8.1及以上的系统因为已经有支持了,所以不需要运行.</li>
+</ul>
+</li>
+<li><p>确认上面的驱动已经安装完成,重启系统进入WINPE,直接执行<code>2.进入PE再执行</code>根据提示输入原系统的磁盘号和WIM文件存放位置然后就等待自动处理.</p>
+</li>
+<li><p>根据你的电脑运行速度,一般半个小时左右就会有提示,出现提示成功完成后就说明已经把原来的系统转换成了WIMBOOT了,现在可以重启进入全新的系统了.^_^</p>
+</li>
+</ol>
+<p>当然了以上是直接在原系统上直接转换的,比较简单.如果需要放到VHD文件中,那会麻烦一些,我会再找些时间来更新一下让它可以直接转换成VHD格式.</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
+<p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
+<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢!</p>
+]]></summary>
     
       <category term="windows7" scheme="http://chenall.net/tags/windows7/"/>
     
