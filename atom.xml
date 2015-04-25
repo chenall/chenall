@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-04-25T04:14:18.077Z</updated>
+  <updated>2015-04-25T05:59:51.446Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,13 +19,13 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-04-25T04:14:04.000Z</updated>
+    <updated>2015-04-25T05:59:41.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢!</p>
 <a id="more"></a>
 
-<p>首先看秀一下最终的文件列表,很简洁.</p>
+<p>首先来秀一下最终的文件列表,很简洁.</p>
 <pre><code> BOOTMGR ==&gt;启动文件
 ├─boot  ==&gt;启动文件目录
 │  │  memtest.exe
@@ -55,20 +55,28 @@
 </code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
 <p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
+<h3 id="先来介绍一下WIMBOOT">先来介绍一下<code>WIMBOOT</code></h3>
+<p>  <a href="https://msdn.microsoft.com/zh-cn/library/dn594399.aspx" target="_blank" rel="external">WIMBoot</a>是Windows image file boot的简称，是Windows 8.1 的一项新型启动方式。这种启动方式让电脑从一个高度压缩的文件启动，大大减少了磁盘空间的占有，还具有快速升级、快速恢复出厂设置等优点.</p>
+<ul>
+<li>Windows 映像文件启动 (WIMBoot) 使你可以设置电脑以便它从压缩的 Windows 映像文件 (WIM file) 直接运行。</li>
+<li>WIMBoot 可以大幅减少 Windows 文件使用的空间量。这有助于你为用户提供更多可用空间，并且帮助你在带有较小驱动器的电脑上部署 Windows。  </li>
+</ul>
+<h3 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h3>
 <p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
 <ol>
-<li>首先从以下地址下载我修改优化的WIMBOOT辅助工具</li>
+<li>首先从以下地址下载我修改优化的WIMBOOT辅助批处理文件(有兴趣的可以自己修改成图形模式界面的)</li>
 </ol>
 <p>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
 <ol>
 <li><p>解压上面下载的压缩包.</p>
 <ul>
 <li>若是WIN7 32位的系统直接运行 <code>1.安装wof驱动</code></li>
-<li>若是WIN7 64位的系统需先打一个补丁<code>KB3033929</code>上面的下载地址中有,使用这个补丁就可以解决64位驱动签名的问题(<strong>首发</strong>).</li>
+<li>若是WIN7 64位的系统需先打一个补丁<code>KB3033929</code>上面的下载地址中有,使用这个补丁就可以解决64位驱动签名的问题(<strong>首发</strong>),安装完补丁重启后再执行<code>1.安装wof驱动</code>  </li>
 <li>若是WIN8.1及以上的系统因为已经有支持了,所以不需要运行.</li>
 </ul>
 </li>
 <li><p>确认上面的驱动已经安装完成,重启系统进入WINPE,直接执行<code>2.进入PE再执行</code>根据提示输入原系统的磁盘号和WIM文件存放位置然后就等待自动处理.</p>
+<p>注: 如果你对这些提示不是很了解,请不需要输入任何信息,直接按回车即可.程序会自动检测您的系统盘符和比较适合的WIM文件存放路径</p>
 </li>
 <li><p>根据你的电脑运行速度,一般半个小时左右就会有提示,出现提示成功完成后就说明已经把原来的系统转换成了WIMBOOT了,现在可以重启进入全新的系统了.^_^</p>
 </li>
@@ -418,7 +426,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -505,7 +513,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
