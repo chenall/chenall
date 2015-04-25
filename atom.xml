@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-04-25T05:59:51.446Z</updated>
+  <updated>2015-04-25T06:44:30.556Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-04-25T05:59:41.000Z</updated>
+    <updated>2015-04-25T06:44:21.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢!</p>
@@ -79,6 +79,8 @@
 <p>注: 如果你对这些提示不是很了解,请不需要输入任何信息,直接按回车即可.程序会自动检测您的系统盘符和比较适合的WIM文件存放路径</p>
 </li>
 <li><p>根据你的电脑运行速度,一般半个小时左右就会有提示,出现提示成功完成后就说明已经把原来的系统转换成了WIMBOOT了,现在可以重启进入全新的系统了.^_^</p>
+</li>
+<li><p>成功制作成了WIMBOOT启动方式之后,也就相当于有了一个当前系统的备份,以后可以随时启动PE,执行<code>2.进入PE再执行</code>进行系统恢复.</p>
 </li>
 </ol>
 <p>当然了以上是直接在原系统上直接转换的,比较简单.如果需要放到VHD文件中,那会麻烦一些,我会再找些时间来更新一下让它可以直接转换成VHD格式.</p>
@@ -1880,7 +1882,7 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
 ]]></summary>
     
-      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
     
       <category term="拼音" scheme="http://chenall.net/tags/%E6%8B%BC%E9%9F%B3/"/>
     
