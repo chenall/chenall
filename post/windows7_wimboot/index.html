@@ -11,7 +11,7 @@
 <meta name="author" content="chenall">
 
 <meta name="description" content="把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.
-最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.">
+使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有WIM文件的特性,比如增量备份,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到每个更新点的状态.">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -125,11 +125,13 @@
     <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
-<p>最终的文件列表如下,很简洁,两个系统总共才占用40GB左右的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面.</p>
-<p>正常安装的话一个64位的系统就差不多需要40GB了,现在两个系统才40GB,是不是很心动呢!</p>
+<p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
+<p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
 <a id="more"></a>
 
-<p>首先来秀一下最终的文件列表,很简洁.</p>
+<p>首先来秀一下最终的文件列表,很简洁.两个系统最多才占用40GB的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面</p>
+<p>另外这两个系统还是打完了所有补丁再安装了所有需要的常用软件的,还包括了好几个G的VS2012,因为WIM文件相同的文件只会占用一个空间,所以我两个系统的所有的软件都装C盘.</p>
+<p>注: 这个<code>40G</code>是指<strong>最多</strong>会占用空间,实际上只使用了<code>15G</code>左右,考虑到以后要安装软件还有更新什么的,64位(非启动占用的空间很小)保留15G,32位保留10G.</p>
 <pre><code> BOOTMGR ==&gt;启动文件
 ├─boot  ==&gt;启动文件目录
 │  │  memtest.exe
@@ -150,12 +152,12 @@
     │  wimboot.wim  ==&gt;系统WIM WINDOWS 7 x86/x64二合一镜像 占用14G空间
     │  
     ├─x64  ==&gt;64位系统所使用的VHD
-    │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G
-    │      win7.vhd  ==&gt;64位系统主VHD文件      ==&gt;400MB左右
+    │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G(非启动占用的空间很小)
+    │      win7.vhd  ==&gt;64位系统主15G VHD文件  ==&gt;400MB左右
     │      
     └─x86 ==&gt;32位系统使用的VHD
-            wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G
-            Win7.vhd ==&gt;32位系统主VHD文件      ==&gt;400MB左右
+            wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G(非启动占用的空间很小)
+            Win7.vhd ==&gt;32位系统主10G VHD文件  ==&gt;400MB左右
 </code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
 <p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
@@ -221,7 +223,7 @@
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-04-25 14:44:21"datetime="2015-04-25 14:44:21"> 2015-04-25</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-04-26 08:43:33"datetime="2015-04-26 08:43:33"> 2015-04-26</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -241,7 +243,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -330,7 +332,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-25 14:44:21</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-04-26 08:43:33</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
