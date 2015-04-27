@@ -49,9 +49,9 @@ modules:
     js: http://cdn.bootcss.com/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML
     #js: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   uyan: #有言评论系统
-    uid: 1880458
+    uid: 1526458
   ujian: #友荐：为网站添加'猜你喜欢'功能
-    uid: 1880458
+    uid: 1526458
   swiftype: #Swiftype配置，详情访问https://swiftype.com
     key: P473Cjp95e3bFhiCP88w
 
