@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-04-27T07:26:58.996Z</updated>
+  <updated>2015-05-01T09:11:51.029Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-04-26T00:48:58.000Z</updated>
+    <updated>2015-05-01T09:11:38.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -28,7 +28,17 @@
 <p>首先来秀一下最终的文件列表,很简洁.两个系统最多才占用40GB的空间.我使用用一个60G的固态硬盘.启动速度飞快.7秒左右进桌面</p>
 <p>另外这两个系统还是打完了所有补丁再安装了所有需要的常用软件的,还包括了好几个G的VS2012,因为WIM文件相同的文件只会占用一个空间,所以我两个系统的所有的软件都装C盘.</p>
 <p>注: 这个<code>40G</code>是指<strong>最多</strong>会占用空间,实际上只使用了<code>15G</code>左右,考虑到以后要安装软件还有更新什么的,64位保留15G,32位保留10G.</p>
-<pre><code> BOOTMGR ==&gt;启动文件
+<pre><code>注：1. 以下只是我的系统情况演示，只供参考
+    2. 2015-05-01 感觉差分VHD是不必要的，以后更新的话只要更新主VHD就行了。并且由于我的内存有8G所以重新制作了一下，增加了一个5G的内存系统(win7.ram)。
+
+有三个系统，并且以后可以随时增加
+
+1. win7 x86 wimboot              ==&gt;x86\win7.vhd
+2. win7 x86 wimboot(内存模式)    ==&gt;x86\win7.ram
+3. win7 x64 wimboot                ==&gt;x64\win7.vhd
+
+ BOOTMGR ==&gt;启动文件
+ wimboot.wim ==&gt;和wimboot目录下的一样,只是为了方便更新系统
 ├─boot  ==&gt;启动文件目录
 │  │  memtest.exe
 │  │  
@@ -47,13 +57,12 @@
 └─wimboot ==&gt;系统文件夹
     │  wimboot.wim  ==&gt;系统WIM WINDOWS 7 x86/x64二合一镜像 占用14G空间
     │  
-    ├─x64  ==&gt;64位系统所使用的VHD
-    │      wimboot.vhd ==&gt;差分VHD启动使用      ==&gt;启动后15G(非启动占用的空间很小)
-    │      win7.vhd  ==&gt;64位系统主15G VHD文件  ==&gt;400MB左右
+    ├─x64  ==&gt;64位系统
+    │      win7.vhd  ==&gt;64位系统主15G VHD文件  ==&gt;使用非固实模式只占用400MB左右
     │      
-    └─x86 ==&gt;32位系统使用的VHD
-            wimboot.vhd ==&gt;32位差分启动使用    ==&gt;启动后10G(非启动占用的空间很小)
-            Win7.vhd ==&gt;32位系统主10G VHD文件  ==&gt;400MB左右
+    └─x86    ==&gt;32位系统
+            Win7.vhd ==&gt;32位系统主10G VHD文件  ==&gt;使用非固实模式只占用400MB左右
+            Win7.ram ==&gt;32位系统RAM模式镜像40MB(使用grub4dos map --mem --top来启动)
 </code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
 <p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
@@ -86,6 +95,40 @@
 </li>
 </ol>
 <p>当然了以上是直接在原系统上直接转换的,比较简单.如果需要放到VHD文件中,那会麻烦一些,我会再找些时间来更新一下让它可以直接转换成VHD格式.</p>
+<h3 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h3>
+<ol>
+<li><p>需要准备的文件 下载: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
+<ul>
+<li>WIMBOOT.WIM  (上面有提供)<br>这个从<a href="http://twm000.blog.163.com/blog/static/179786475201502792756980/" target="_blank" rel="external">三蛋win7</a>提取修改的,包含了32位和64位两个版本.</li>
+<li>WinNTSetup   (上面有提供)</li>
+<li>一个顺手的PE  (自备)</li>
+</ul>
+</li>
+<li><p>先创建wimboot目录列表,并复制wimboot.wim到wimboot目录下和根目录下(备用).</p>
+</li>
+<li>进入PE用WinNTSetup分别安装两个系统到VHD中  <ul>
+<li>在WinNTSetup的标题栏上右键先修改WIM API为wimlib. </li>
+<li>注意要勾选 <strong>Windows 映像文件启动(WIMBoot)</strong>.</li>
+<li>使用WinNTSetup的安装到VHD功能分别安装两个系统到<code>x64\win7.vhd</code>和<code>x86\win7.vhd</code>并安装.</li>
+</ul>
+</li>
+<li>分别安装x86和x64的系统要安装的驱动和软件.</li>
+<li>现在可以重新更新一下WIMBOOT文件.<ul>
+<li>进入x86系统挂载x64的VHD文件.使用以下命令捕获x64的新系统(y:是x64系统的分区号,#是wimboot系统分区号).<br>wimlib-imagex append y:\ #:\wimboot.wim x64new —wimboot</li>
+<li>进入x64系统挂载x86的VHD文件,捕获x86的新系统同上<br>wimlib-imagex append y:\ #:\wimboot.wim x86new —wimboot</li>
+</ul>
+</li>
+<li>进入PE把根目录下的wimboot.wim覆盖到wimboot目录下,用WinNTSetup把系统用wimboot方式安装到x86\win7.vhd和x64\win7.vhd中.</li>
+<li>搞定收工.</li>
+</ol>
+<p>一些需要注意的事项:  </p>
+<ol>
+<li>必须使用NTFS文件系统.  </li>
+<li>为了方便更新系统WIMBOOT.WIM需要有两个,像我就是根目录一个(备用),WIMBOOT目录一个(主要).  </li>
+<li>更新系统就是使用一个系统挂载另一个系统的VHD文件用wimlib-imagex append进行更新,这个注意要更新到备用的WIMBOOT.WIM中.  </li>
+<li>重新安装必须进入PE先把备用的WIMBOOT.WIM复制到WIMBOOT目录下覆盖,然后重新用新的镜像进行安装.  </li>
+<li>个人比较懒,就不上图了,有兴趣看得懂的可以自己搞.有不明白的地方可以留言,我会抽时间回复.  </li>
+</ol>
 ]]></content>
     <summary type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
