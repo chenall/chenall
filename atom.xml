@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-01T09:11:51.029Z</updated>
+  <updated>2015-05-06T01:24:51.350Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-01T09:11:38.000Z</updated>
+    <updated>2015-05-06T01:24:38.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -129,6 +129,9 @@
 <li>重新安装必须进入PE先把备用的WIMBOOT.WIM复制到WIMBOOT目录下覆盖,然后重新用新的镜像进行安装.  </li>
 <li>个人比较懒,就不上图了,有兴趣看得懂的可以自己搞.有不明白的地方可以留言,我会抽时间回复.  </li>
 </ol>
+<blockquote>
+<p>﻿文件名称: wimboot.wim<br>文件大小: 3.71 GB (3,979,257,171 字节)<br>修改时间: 2015年04月30日，23:47:38<br>MD5: 1A98B453AB3F516FAC5C084D85028F42<br>SHA1: DD3701475BF7F4C478A9A0A7AF485157EFB48BE7  </p>
+</blockquote>
 ]]></content>
     <summary type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
