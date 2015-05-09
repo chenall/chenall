@@ -179,8 +179,6 @@
 <h3 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h3>
 <p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
 <p>更新了一下，现在可以直接在PE下一步到位进行安装更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
-<p>截图</p>
-<p><img src="http://qiniu.chenall.net/post/2015042_02.png/w400.png" alt=""></p>
 <ol>
 <li>首先从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z</li>
 </ol>
@@ -191,14 +189,26 @@
 <li><p>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</p>
 </li>
 </ol>
-<p>新的功能：</p>
+<p>新的功能： </p>
 <ol>
-<li>支持恢复系统。</li>
-<li>支持更新镜像（需要SYSTEM用户权限或WIN8PE）</li>
-<li>自己去发现吧。</li>
+<li>支持恢复系统。 </li>
+<li>支持更新镜像（需要SYSTEM用户权限或WIN8PE）  </li>
+<li>自己去发现吧。  </li>
 </ol>
 <p>注： 更新镜像功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。</p>
 <p>当然了以上是直接在原系统上直接转换的,比较简单.如果需要放到VHD文件中,那会麻烦一些,我会再找些时间来更新一下让它可以直接转换成VHD格式.</p>
+<h3 id="相关截图">相关截图</h3>
+<ol>
+<li><p>增量更新功能</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_02.png/w400.png" alt=""></p>
+</li>
+<li><p>系统恢复功能</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_03.png/w400.png" alt=""></p>
+</li>
+<li><p>首次使用的情况</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_04.png/w400.png" alt=""></p>
+</li>
+</ol>
 <h3 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h3>
 <ol>
 <li><p>需要准备的文件 下载: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
@@ -269,7 +279,7 @@
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-09 17:51:08"datetime="2015-05-09 17:51:08"> 2015-05-09</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-09 18:01:52"datetime="2015-05-09 18:01:52"> 2015-05-09</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -289,7 +299,7 @@
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/windows7_wimboot/">【分享】成功实现WIN7的WIMBOOT功能</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/openvpn_userpw_author/">[OpenVPN] OpenVPN简单用户密码验证实例.</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -378,7 +388,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-09 17:51:08</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-09 18:01:52</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>

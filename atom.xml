@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-09T09:51:20.985Z</updated>
+  <updated>2015-05-09T10:02:01.394Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-09T09:51:08.000Z</updated>
+    <updated>2015-05-09T10:01:52.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -75,8 +75,6 @@
 <h3 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h3>
 <p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
 <p>更新了一下，现在可以直接在PE下一步到位进行安装更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
-<p>截图</p>
-<p><img src="http://qiniu.chenall.net/post/2015042_02.png/w400.png" alt=""></p>
 <ol>
 <li>首先从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z</li>
 </ol>
@@ -87,14 +85,26 @@
 <li><p>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</p>
 </li>
 </ol>
-<p>新的功能：</p>
+<p>新的功能： </p>
 <ol>
-<li>支持恢复系统。</li>
-<li>支持更新镜像（需要SYSTEM用户权限或WIN8PE）</li>
-<li>自己去发现吧。</li>
+<li>支持恢复系统。 </li>
+<li>支持更新镜像（需要SYSTEM用户权限或WIN8PE）  </li>
+<li>自己去发现吧。  </li>
 </ol>
 <p>注： 更新镜像功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。</p>
 <p>当然了以上是直接在原系统上直接转换的,比较简单.如果需要放到VHD文件中,那会麻烦一些,我会再找些时间来更新一下让它可以直接转换成VHD格式.</p>
+<h3 id="相关截图">相关截图</h3>
+<ol>
+<li><p>增量更新功能</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_02.png/w400.png" alt=""></p>
+</li>
+<li><p>系统恢复功能</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_03.png/w400.png" alt=""></p>
+</li>
+<li><p>首次使用的情况</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_04.png/w400.png" alt=""></p>
+</li>
+</ol>
 <h3 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h3>
 <ol>
 <li><p>需要准备的文件 下载: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
@@ -476,7 +486,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -563,7 +573,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
