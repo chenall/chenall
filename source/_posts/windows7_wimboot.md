@@ -120,6 +120,8 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
     2. 找到你之前的WIMBOOT.WIM复制一份到System Volume Information目录（你想存放WIM文件的磁盘分区下）.再启动WIMBoot.exe，程序会自动检测到这个新的WIMBOOT.WIM并且可以使用增量更新功能，如果没有自动检测到，可以手工选择一下你的WIM文件存放磁盘。
 
+  *下一个版本我会尝试解决这个问题，只要自动识别目标是否WIMBoot的系统，然后自动判断该系统使用的WIM文件，自动使用该文件,也就是智能识别。*
+
 * Couldn't set WIMBoot pointer data
 
 	```
