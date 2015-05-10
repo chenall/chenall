@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-10T09:32:11.888Z</updated>
+  <updated>2015-05-10T12:08:36.551Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-10T09:32:03.000Z</updated>
+    <updated>2015-05-10T12:08:27.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -113,6 +113,7 @@ Could not read data from a file.
 <li><p>找到你之前的WIMBOOT.WIM复制一份到System Volume Information目录（你想存放WIM文件的磁盘分区下）.再启动WIMBoot.exe，程序会自动检测到这个新的WIMBOOT.WIM并且可以使用增量更新功能，如果没有自动检测到，可以手工选择一下你的WIM文件存放磁盘。</p>
 </li>
 </ol>
+<p><em>下一个版本我会尝试解决这个问题，只要自动识别目标是否WIMBoot的系统，然后自动判断该系统使用的WIM文件，自动使用该文件,也就是智能识别。</em></p>
 </li>
 <li><p>Couldn’t set WIMBoot pointer data</p>
 <pre><code>  [WARNING] Retrying after 100ms...
@@ -524,7 +525,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -611,7 +612,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
@@ -1978,7 +1979,7 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
 ]]></summary>
     
-      <category term="php" scheme="http://chenall.net/tags/php/"/>
+      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
     
       <category term="拼音" scheme="http://chenall.net/tags/%E6%8B%BC%E9%9F%B3/"/>
     
