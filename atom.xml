@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-10T04:02:09.854Z</updated>
+  <updated>2015-05-10T09:14:17.607Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-10T04:02:01.000Z</updated>
+    <updated>2015-05-10T09:14:08.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -66,38 +66,40 @@
 </code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
 <p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
-<h3 id="先来介绍一下WIMBOOT">先来介绍一下<code>WIMBOOT</code></h3>
+<h2 id="先来介绍一下WIMBOOT">先来介绍一下<code>WIMBOOT</code></h2>
 <p>  <a href="https://msdn.microsoft.com/zh-cn/library/dn594399.aspx" target="_blank" rel="external">WIMBoot</a>是Windows image file boot的简称，是Windows 8.1 的一项新型启动方式。这种启动方式让电脑从一个高度压缩的文件启动，大大减少了磁盘空间的占有，还具有快速升级、快速恢复出厂设置等优点.</p>
 <ul>
 <li>Windows 映像文件启动 (WIMBoot) 使你可以设置电脑以便它从压缩的 Windows 映像文件 (WIM file) 直接运行。</li>
 <li>WIMBoot 可以大幅减少 Windows 文件使用的空间量。这有助于你为用户提供更多可用空间，并且帮助你在带有较小驱动器的电脑上部署 Windows。  </li>
 </ul>
-<h3 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h3>
-<p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
-<p>更新了一下，现在可以直接在PE下一步到位进行安装更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
-<ol>
-<li>首先从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z</li>
-</ol>
-<p>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
-<ol>
-<li><p>启动进入PE，如果原系统是VHD的，需先挂载VHD。</p>
-</li>
-<li><p>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</p>
-</li>
-</ol>
-<p>新的功能： </p>
+<h2 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h2>
+<p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤，现在不需要任何输入，一键就可以实现了。</p>
+<p>新的功能：  </p>
 <ol>
 <li>支持恢复系统。  </li>
 <li>支持直接增量更新（增量更新功能请看下面的注意提示）  </li>
 <li>支持WINDOWS 7全系列包括WES7（未完全测试）  </li>
 <li>自己去发现吧。  </li>
 </ol>
-<p>提示：</p>
+<p>提示：  </p>
 <ul>
-<li>增量更新功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。 </li>
-<li>增量更新功能需要使用SYSTEM权限否则应用的时候可能会出现错误.</li>
-<li>更新或捕获镜像名字格式为 <code>Win_系统版本_日期时间</code>，例子: Win_6.1_201505101200</li>
+<li>增量更新功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。  </li>
+<li>增量更新功能需要使用SYSTEM权限否则应用的时候可能会出现错误.（最新版应该解决了这个问题，不需要SYSTEM权限了）  </li>
+<li>更新或捕获镜像名字格式为 <code>Win_系统版本_日期时间</code>，例子: Win_6.1_201505101200  </li>
+<li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
+<h3 id="更新记录">更新记录</h3>
+<blockquote>
+<p>2015-05-10 更新： v1.1 使用我自己修改编译的WIMLIB程序，现在终于实现一步到位的更新操作，不再需要SYSTEM权限，修复了上个版本的两个小BUG。</p>
+<p>2015-05-09 更新： 现在可以直接在PE下一步到位进行转换或更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
+<p>2015-04-21 第一版，使用了两个批处理脚本来实现，需要两步来实现。</p>
+</blockquote>
+<h3 id="操作方法">操作方法</h3>
+<ol>
+<li>从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z<br>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</li>
+<li>启动进入PE，如果原系统是VHD的，需先挂载VHD。</li>
+<li>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</li>
+</ol>
 <pre><code>[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
 0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
 d4085f6b00000000
@@ -122,6 +124,7 @@ ERROR: Exiting with error code 75:
 <p>使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  </p>
 <p>或  </p>
 <p>直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。</p>
+<p><strong>以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复</strong></p>
 <h3 id="相关截图">相关截图</h3>
 <ol>
 <li><p>增量更新功能</p>

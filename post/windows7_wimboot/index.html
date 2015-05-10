@@ -170,38 +170,40 @@
 </code></pre><p>再来一张截图对比(整个系统有16G实际只占用了703MB的空间)</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_01.png/w400.png" alt=""></p>
 <p>看了上面的简单介绍是不是很心动,也想自己改造一个呢?别急慢慢来.</p>
-<h3 id="先来介绍一下WIMBOOT">先来介绍一下<code>WIMBOOT</code></h3>
+<h2 id="先来介绍一下WIMBOOT">先来介绍一下<code>WIMBOOT</code></h2>
 <p>  <a href="https://msdn.microsoft.com/zh-cn/library/dn594399.aspx" target="_blank" rel="external">WIMBoot</a>是Windows image file boot的简称，是Windows 8.1 的一项新型启动方式。这种启动方式让电脑从一个高度压缩的文件启动，大大减少了磁盘空间的占有，还具有快速升级、快速恢复出厂设置等优点.</p>
 <ul>
 <li>Windows 映像文件启动 (WIMBoot) 使你可以设置电脑以便它从压缩的 Windows 映像文件 (WIM file) 直接运行。</li>
 <li>WIMBoot 可以大幅减少 Windows 文件使用的空间量。这有助于你为用户提供更多可用空间，并且帮助你在带有较小驱动器的电脑上部署 Windows。  </li>
 </ul>
-<h3 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h3>
-<p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤,最终只需要依次执行两个批处理就可以了.</p>
-<p>更新了一下，现在可以直接在PE下一步到位进行安装更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
-<ol>
-<li>首先从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z</li>
-</ol>
-<p>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
-<ol>
-<li><p>启动进入PE，如果原系统是VHD的，需先挂载VHD。</p>
-</li>
-<li><p>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</p>
-</li>
-</ol>
-<p>新的功能： </p>
+<h2 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h2>
+<p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤，现在不需要任何输入，一键就可以实现了。</p>
+<p>新的功能：  </p>
 <ol>
 <li>支持恢复系统。  </li>
 <li>支持直接增量更新（增量更新功能请看下面的注意提示）  </li>
 <li>支持WINDOWS 7全系列包括WES7（未完全测试）  </li>
 <li>自己去发现吧。  </li>
 </ol>
-<p>提示：</p>
+<p>提示：  </p>
 <ul>
-<li>增量更新功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。 </li>
-<li>增量更新功能需要使用SYSTEM权限否则应用的时候可能会出现错误.</li>
-<li>更新或捕获镜像名字格式为 <code>Win_系统版本_日期时间</code>，例子: Win_6.1_201505101200</li>
+<li>增量更新功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。  </li>
+<li>增量更新功能需要使用SYSTEM权限否则应用的时候可能会出现错误.（最新版应该解决了这个问题，不需要SYSTEM权限了）  </li>
+<li>更新或捕获镜像名字格式为 <code>Win_系统版本_日期时间</code>，例子: Win_6.1_201505101200  </li>
+<li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
+<h3 id="更新记录">更新记录</h3>
+<blockquote>
+<p>2015-05-10 更新： v1.1 使用我自己修改编译的WIMLIB程序，现在终于实现一步到位的更新操作，不再需要SYSTEM权限，修复了上个版本的两个小BUG。</p>
+<p>2015-05-09 更新： 现在可以直接在PE下一步到位进行转换或更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
+<p>2015-04-21 第一版，使用了两个批处理脚本来实现，需要两步来实现。</p>
+</blockquote>
+<h3 id="操作方法">操作方法</h3>
+<ol>
+<li>从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z<br>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</li>
+<li>启动进入PE，如果原系统是VHD的，需先挂载VHD。</li>
+<li>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</li>
+</ol>
 <pre><code>[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
 0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
 d4085f6b00000000
@@ -226,6 +228,7 @@ ERROR: Exiting with error code 75:
 <p>使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  </p>
 <p>或  </p>
 <p>直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。</p>
+<p><strong>以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复</strong></p>
 <h3 id="相关截图">相关截图</h3>
 <ol>
 <li><p>增量更新功能</p>
@@ -308,7 +311,7 @@ ERROR: Exiting with error code 75:
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-10 12:02:01"datetime="2015-05-10 12:02:01"> 2015-05-10</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-10 17:14:08"datetime="2015-05-10 17:14:08"> 2015-05-10</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -328,7 +331,7 @@ ERROR: Exiting with error code 75:
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/wssiscsi/">[分享]Hack Microsoft iSCSI Software Target 安装</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -417,7 +420,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-10 12:02:01</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-10 17:14:08</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
