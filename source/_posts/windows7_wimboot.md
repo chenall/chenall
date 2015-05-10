@@ -107,38 +107,42 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
 
 ### 部份错误参考解决方案
-```
-[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
-0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
-d4085f6b00000000
-[WARNING] Retrying after 100ms...
-[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
-0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
-d4085f6b00000000
-[WARNING] Retrying after 100ms...
-[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
-0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
-d4085f6b00000000
-[WARNING] Retrying after 100ms...
-[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
-0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
-d4085f6b00000000
-[WARNING] Too many retries; returning failure
-[ERROR] "f:\test\WIMBOOT\Readme.TXT": Couldn't set WIMBoot pointer data (err=131
-4):
-ERROR: Exiting with error code 75:
-       Failed to set WIMBoot pointer data.
-```
 
-出现类似以上的错误提示说明需要SYSTEM权限，目前可以使用以下两种方法解决。
+* Error reading data (status=c000046e): %2 0x%1
+  ```
+  [ERROR] "E:\MSOCache\All Users\{90150000-0011-0000-1000-0000000FF1CE}-C\OWOW32WW.cab": Error reading data (status=c000046e): %2 0x%1 
+  ERROR: Exiting with error code 50:
+  Could not read data from a file.
+  ```
+  出现上面错误的原因是由于在已经是WIMBOOT方式目标系统上用了原地转换功能，这是不受支持的。 
+  解决方法：  
+    1. 在PE中安装WOF驱动，或使用WIN8PE(一般会有带WOF驱动)，再使用原地转换功能。  
 
-使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  
+    2. 找到你之前的WIMBOOT.WIM复制一份到System Volume Information目录（你想存放WIM文件的磁盘分区下）.再启动WIMBoot.exe，程序会自动检测到这个新的WIMBOOT.WIM并且可以使用增量更新功能，如果没有自动检测到，可以手工选择一下你的WIM文件存放磁盘。
 
-或  
+* Couldn't set WIMBoot pointer data
 
-直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。
+	```
+	[WARNING] Retrying after 100ms...
+	[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
+	0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
+	d4085f6b00000000
+	[WARNING] Too many retries; returning failure
+	[ERROR] "f:\test\WIMBOOT\Readme.TXT": Couldn't set WIMBoot pointer data (err=131
+	4):
+	ERROR: Exiting with error code 75:
+	       Failed to set WIMBoot pointer data.
+	```
 
-**以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复**
+	出现类似以上的错误提示说明需要SYSTEM权限，目前可以使用以下两种方法解决。
+
+	使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  
+
+	或  
+
+	直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。
+
+	**以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复**
 
 ### 相关截图
 
