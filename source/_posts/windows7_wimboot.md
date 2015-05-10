@@ -94,10 +94,41 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 3. 支持WINDOWS 7全系列包括WES7（未完全测试）  
 4. 自己去发现吧。  
 
-注： * 更新镜像功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。 
-     * 增加更新功能需要使用SYSTEM权限否则会应用错误，解决方法两种：  
-       1. 使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  
-       2. 最后出现应用错误不管它，重启系统进入PE运行WIMBOOT.EXE选中刚才捕获的镜像直接应用。 
+提示：
+* 增量更新功能需要格式化目标系统磁盘，所以如果WIM文件和系统同盘无法使用该功能。 
+* 增量更新功能需要使用SYSTEM权限否则应用的时候可能会出现错误.
+* 更新或捕获镜像名字格式为 `Win_系统版本_日期时间`，例子: Win_6.1_201505101200
+
+```
+[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
+0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
+d4085f6b00000000
+[WARNING] Retrying after 100ms...
+[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
+0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
+d4085f6b00000000
+[WARNING] Retrying after 100ms...
+[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
+0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
+d4085f6b00000000
+[WARNING] Retrying after 100ms...
+[WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
+0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
+d4085f6b00000000
+[WARNING] Too many retries; returning failure
+[ERROR] "f:\test\WIMBOOT\Readme.TXT": Couldn't set WIMBoot pointer data (err=131
+4):
+ERROR: Exiting with error code 75:
+       Failed to set WIMBoot pointer data.
+```
+
+出现类似以上的错误提示说明需要SYSTEM权限，目前可以使用以下两种方法解决。
+
+使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  
+
+或  
+
+直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。
 
 ### 相关截图
 
