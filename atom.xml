@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-10T12:08:36.551Z</updated>
+  <updated>2015-05-11T14:50:20.239Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-10T12:08:27.000Z</updated>
+    <updated>2015-05-11T14:50:07.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -89,12 +89,14 @@
 <li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
 <h3 id="更新记录">更新记录</h3>
-<blockquote>
-<p>2015-05-10 更新： v1.1 使用我自己修改编译的WIMLIB程序，现在终于实现一步到位的更新操作，不再需要SYSTEM权限，修复了上个版本的两个小BUG。</p>
-<p>2015-05-09 更新： 现在可以直接在PE下一步到位进行转换或更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位</p>
-<p>2015-04-21 第一版，使用了两个批处理脚本来实现，需要两步来实现。</p>
-</blockquote>
-<h3 id="操作方法">操作方法</h3>
+<pre><code>2015-05-11 v1.2版
+    1. 禁用精简捕获模式，只使用完整捕获模式。
+    2. 选择目标系统会自动判断是否已经是WIMBoot的，是的话会自动查找对应的WIM文件（目前不是很准确，先将就着）.
+
+2015-05-10 更新： v1.1 使用我自己修改编译的WIMLIB程序，现在终于实现一步到位的更新操作，不再需要SYSTEM权限，修复了上个版本的两个小BUG。
+2015-05-09 更新： 现在可以直接在PE下一步到位进行转换或更新操作（更新操作需要SYSTEM权限或WIN8PE），并且支持WES7 64位
+2015-04-21 第一版，使用了两个批处理脚本来实现，需要两步来实现。
+</code></pre><h3 id="操作方法">操作方法</h3>
 <ol>
 <li>从以下地址下载我修改优化的WIMBOOT辅助工具 WIMBOOT.7Z<br>链接: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</li>
 <li>启动进入PE，如果原系统是VHD的，需先挂载VHD。</li>
@@ -113,7 +115,7 @@ Could not read data from a file.
 <li><p>找到你之前的WIMBOOT.WIM复制一份到System Volume Information目录（你想存放WIM文件的磁盘分区下）.再启动WIMBoot.exe，程序会自动检测到这个新的WIMBOOT.WIM并且可以使用增量更新功能，如果没有自动检测到，可以手工选择一下你的WIM文件存放磁盘。</p>
 </li>
 </ol>
-<p><em>下一个版本我会尝试解决这个问题，只要自动识别目标是否WIMBoot的系统，然后自动判断该系统使用的WIM文件，自动使用该文件,也就是智能识别。</em></p>
+<p><em>最新V1.2会已经实现自动识别目标分区并且自动查找对应的WIM文件</em></p>
 </li>
 <li><p>Couldn’t set WIMBoot pointer data</p>
 <pre><code>  [WARNING] Retrying after 100ms...
@@ -142,6 +144,9 @@ Could not read data from a file.
 </li>
 <li><p>首次使用的情况</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_04.png/w400.png" alt=""></p>
+</li>
+<li><p>V1.2版本界面</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_05.png/w400.png" alt=""></p>
 </li>
 </ol>
 <h3 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h3>
@@ -525,7 +530,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -612,7 +617,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
+      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
