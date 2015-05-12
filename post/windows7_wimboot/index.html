@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>【分享】成功实现WIN7的WIMBOOT功能 | chenall&#39;s Blog</title>
+<title>【分享】WIMBoot辅助工具 For Windows 7/8 | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
 <meta name="description" content="把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.
@@ -16,7 +16,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<meta property="og:title" content="【分享】成功实现WIN7的WIMBOOT功能"/>
+<meta property="og:title" content="【分享】WIMBoot辅助工具 For Windows 7/8"/>
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
@@ -112,7 +112,7 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title">【分享】成功实现WIN7的WIMBOOT功能</h1>
+      <h1 class="title">【分享】WIMBoot辅助工具 For Windows 7/8</h1>
       
         <span>发表于<time datetime="2015-04-21T09:28:00.000Z"> <a href="/post/windows7_wimboot/">2015-04-21</a></time></span>      
     </header>
@@ -193,7 +193,12 @@
 <li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
 <h3 id="更新记录">更新记录</h3>
-<pre><code>2015-05-11 v1.2版
+<pre><code>2015-05-12 v1.3版
+    1. 修正部份PE检测Wof驱动失败的问题。
+    2. WIMBoot.exe同目录下有存在WimBootCompress.ini捕获时会自动使用该配置。
+    3. 几个小BUG修正，继续完善.
+
+2015-05-11 v1.2版
     1. 禁用精简捕获模式，只使用完整捕获模式。
     2. 选择目标系统会自动判断是否已经是WIMBoot的，是的话会自动查找对应的WIM文件（目前不是很准确，先将就着）.
 
@@ -316,14 +321,14 @@ Could not read data from a file.
 <div class="panel panel-success">
     <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
     <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="https://plus.google.com/100700322385676715564">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
-    <div class="panel-body">本文链接: <a href="/post/windows7_wimboot/">【分享】成功实现WIN7的WIMBOOT功能</a></div>
+    <div class="panel-body">本文链接: <a href="/post/windows7_wimboot/">【分享】WIMBoot辅助工具 For Windows 7/8</a></div>
 </div></div><div class="widget" id="widget_after_content_ujian>">
 <div class="ujian-hook"></div>
 </div></section>
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-11 22:50:07"datetime="2015-05-11 22:50:07"> 2015-05-11</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-12 20:44:45"datetime="2015-05-12 20:44:45"> 2015-05-12</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -343,11 +348,11 @@ Could not read data from a file.
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/windows7_wimboot/">【分享】成功实现WIN7的WIMBOOT功能</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/ntldr_unsupporteddebug/">[转载] ntldr隐藏大秘密——启动时手动编辑调整菜单选项</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/win_print_set/">[分享] 在使用批处理修改WINDOWS的打印机设置</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/minipe_update/">[原创] 无限扩展,多功能PE_更新与下载(2009-05-01)最终版</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
-<div class="ds-thread"  data-thread-key="2015042"  data-url="http://chenall.net/post/windows7_wimboot/" data-title="【分享】成功实现WIN7的WIMBOOT功能"></div>
+<div class="ds-thread"  data-thread-key="2015042"  data-url="http://chenall.net/post/windows7_wimboot/" data-title="【分享】WIMBoot辅助工具 For Windows 7/8"></div>
 <!-- Duoshuo Comment END -->
 
 </div></div><!--wapper-->
@@ -432,7 +437,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-11 22:50:07</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-12 20:44:45</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -461,7 +466,7 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
 
 <script type="text/javascript">
     var wumiiPermaLink = "http://chenall.net/post/windows7_wimboot/";
-    var wumiiTitle = "【分享】成功实现WIN7的WIMBOOT功能";
+    var wumiiTitle = "【分享】WIMBoot辅助工具 For Windows 7/8";
     var wumiiTags = "windows7,WIMBOOT,vhd";
     var wumiiCategories = ["系统相关"];
     var wumiiSitePrefix = "http://chenall.net";
