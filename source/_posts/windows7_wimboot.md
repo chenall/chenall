@@ -93,6 +93,15 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 ### 更新记录
 
 ```
+2015-05-14 v1.4版
+  1. 再次修改NTFS分区识别错误的问题
+  2. 其它BUG修正
+  3. 支持拖放操作，基本参数框内可以拖放WIM文件或WimBootCompress.ini文件
+  4. 支持使用命令行修改默认的WIM文件存放目录, 格式如下:  
+     WIMBoot.exe -WIMPATH:目录名  
+	 例子:使用WIMBOOT目录
+     WIMBoot.exe -WIMPATH:\WIMBOOT
+
 2015-05-12 v1.3版
 	1. 修正部份PE检测Wof驱动失败的问题。
 	2. WIMBoot.exe同目录下有存在WimBootCompress.ini捕获时会自动使用该配置。
