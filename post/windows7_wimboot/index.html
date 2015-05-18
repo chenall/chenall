@@ -193,7 +193,13 @@
 <li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
 <h3 id="更新记录">更新记录</h3>
-<pre><code>2015-05-14 v1.4版
+<pre><code>2015-05-18 v1.5版
+  1. 新增仅捕获选项
+  2. 新版本对于部份操作不再强制要求格式化。
+  3. 对于已经是WIMBOOT的系统，现在可以正确识别该系统所使用的WIM文件，并自动选择该WIM文件
+  4. BUG修正，界面调整。
+
+2015-05-14 v1.4版
   1. 再次修改NTFS分区识别错误的问题
   2. 其它BUG修正
   3. 支持拖放操作，基本参数框内可以拖放WIM文件或WimBootCompress.ini文件
@@ -245,7 +251,8 @@ Could not read data from a file.
   4):
   ERROR: Exiting with error code 75:
          Failed to set WIMBoot pointer data.
-</code></pre><p>  出现类似以上的错误提示说明需要SYSTEM权限，目前可以使用以下两种方法解决。</p>
+</code></pre><p>  注： v1.1以上版本出现以上问题，请选中格式化功能，在应用的时候格式化目标系统分区就可以解决该问题。</p>
+<p>  出现类似以上的错误提示说明需要SYSTEM权限，目前可以使用以下两种方法解决。</p>
 <p>  使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  </p>
 <p>  或  </p>
 <p>  直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。</p>
@@ -263,8 +270,8 @@ Could not read data from a file.
 <li><p>首次使用的情况</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_04.png/w400.png" alt=""></p>
 </li>
-<li><p>V1.2版本界面</p>
-<p><img src="http://qiniu.chenall.net/post/2015042_05.png/w400.png" alt=""></p>
+<li><p>最新版本界面和相关介绍.</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_06.png/w400.png" alt=""></p>
 </li>
 </ol>
 <h3 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h3>
@@ -337,7 +344,7 @@ Could not read data from a file.
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-14 21:02:45"datetime="2015-05-14 21:02:45"> 2015-05-14</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-18 16:58:24"datetime="2015-05-18 16:58:24"> 2015-05-18</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -357,7 +364,7 @@ Could not read data from a file.
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></li><li class="list-group-item"><a href="/post/freenas_tftp_case/">[记录] 创建不区分大小写的ZFS卷方便使用FreeNas的TFTP服务器</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/winsock_fix/">[分享] 解决由于DNS不正常导致不能上网的问题</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -446,7 +453,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-14 21:02:45</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-18 16:58:24</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
