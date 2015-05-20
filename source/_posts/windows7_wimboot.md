@@ -129,7 +129,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 3. 启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。
 
 
-### 部份错误参考解决方案
+### 部份错误参考和问题解答
 
 * Error reading data (status=c000046e): %2 0x%1
   ```
@@ -170,6 +170,81 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 	直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。
 
 	**以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复**
+
+* 为什么使用该工具应用之后很多文件件无法读取？
+
+  这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，
+  另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。
+  
+* 程序是如何获取到WIMBoot系统对应的WIM文件的?
+
+  如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置
+  如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID
+
+  我编写了一个小程序(自己提取资源 EXEDATA#1023)，你可以通过它来快速读取这些信息，例子：
+
+	```
+	fwim c:\System Volume Information\WimOverlay.dat
+	168 32768 661951F1
+	```
+
+	第一个数字168是WIM文件路径在文件中的位置，可以通过PECMD的GETF来读取完整路径信息
+
+	```	
+	GETF# x:\System Volume Information\WimOverlay.dat,168#*,SYSWIM
+	```
+
+  然后再通过分区偏移和磁盘签名等信息就可以获取到对应的盘符。
+
+	```
+	_SUB GetALLPartInfo
+	    PART list disk,&&全部磁盘
+	    forx * %全部磁盘%,&磁盘,
+	    {
+	        PART list disk %磁盘%,&&磁盘信息
+	        MSTR * &磁盘签名=<8>&&磁盘信息
+	        PART list part %磁盘%,&&全部分区
+	        forx * %全部分区%,&分区,
+	        {
+	            IFEX #%&分区%<0,EXIT CONTINUE
+	        	PART  -hextp -phy# -fill list part %磁盘%#%分区%,&&分区信息
+	            SED &&GPT=?,GPT,,%&&分区信息%
+	            IFEX #%GPT%>0,MSTR * &&偏移,&&盘符,&&DN=<-3><-1><-2>&&分区信息 ! MSTR * &&偏移,&&盘符,&&DN=<4><-1><-2>&&分区信息
+	            SET. 所有分区=%所有分区%%盘符% %偏移% %&磁盘签名% \Device\Harddisk%磁盘%\Partition%&&DN%\n
+	        }
+	    }
+	_END
+
+	SET-def 所有分区=
+	CALL GetALLPartInfo
+
+	EXEC* &&N=!fwim "c:\System Volume Information\WimOverlay.dat"
+	CALL GetWoCf c: %&&N%
+
+	_SUB GetWoCf
+	    IFEX #%2<0,EXIT _SUB
+	    ENVI &P=
+	    FORX *NL &所有分区,&T,
+	    {
+	        SED &&a=?,%3 %4,,%T%
+	        IFEX #%&&a%>0,
+	        {
+	            LSTR &P=2,%T%
+	            FIND $%&P%=*,
+	            {
+			//对应的分区未分配盘符，临时分配一个@:
+	                SUBJ &- @:
+	                MSTR$ * &p=<-1>T
+	                SUBJ & @:,%&P%
+	                ENVI &P=@:
+	            }
+	            EXIT FORX
+	        }
+	    }
+	    GETF# %1\System Volume Information\WimOverlay.dat,%2#*,SYSWIM
+	    ENVI SYSWIM=%&p%%SYSWIM%
+	_END
+	```
 
 ### 相关截图
 
