@@ -90,7 +90,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 * 更新或捕获镜像名字格式为 `Win_系统版本_日期时间`，例子: Win_6.1_201505101200  
 * 本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。
 
-### 更新记录
+## 更新记录
 
 ```
 2015-05-18 v1.5版
@@ -137,7 +137,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
   ERROR: Exiting with error code 50:
   Could not read data from a file.
   ```
-  出现上面错误的原因是由于在已经是WIMBOOT方式目标系统上用了原地转换功能，这是不受支持的。 
+  出现上面错误的原因是由于在已经是WIMBOOT启动的目标系统上用了原地转换功能，这是不受支持的。 
   解决方法：  
     1. 在PE中安装WOF驱动，或使用WIN8PE(一般会有带WOF驱动)，再使用原地转换功能。  
 
@@ -163,7 +163,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
 	出现类似以上的错误提示说明需要SYSTEM权限，目前可以使用以下两种方法解决。
 
-	使用NSudo这个软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  
+	使用[NSudo](https://github.com/MouriNaruto/NSudo/)或[psexec](https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx)软件来获取SYSTEM权限，用SYSTEM权限运行WIMBOOT.EXE  
 
 	或  
 
@@ -171,13 +171,13 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
 	**以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复**
 
-* ### 为什么使用该工具应用之后很多文件件无法读取？
+* ### 为什么使用该工具应用之后很多文件无法读取？
 
-  这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。
+  这是正常的，因为使用WIMBoot大部份的系统文件其实只是一个指向WIM文件的指针，需要安装WOF驱动才可以正常访问，另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。
   
 * ### 程序是如何获取到WIMBoot系统对应的WIM文件的?
 
-  如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置,如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID
+  如果在WIMBoot启动的，那在系统盘的*System Volume Information*目录下有一个文件**WimOverlay.dat**,这个文件记录了对应WIM文件的位置信息,如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID
 
   我编写了一个小程序(自己提取资源 EXEDATA#1023)，你可以通过它来快速读取这些信息，例子：
 
@@ -192,7 +192,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 	GETF# x:\System Volume Information\WimOverlay.dat,168#*,SYSWIM
 	```
 
-  然后再通过分区偏移和磁盘签名等信息就可以获取到对应的盘符。
+  然后再通过分区偏移和磁盘签名等信息就可以获取到对应的盘符，以下是相关代码
 
 	```
 	_SUB GetALLPartInfo
