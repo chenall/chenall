@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-20T04:12:45.323Z</updated>
+  <updated>2015-05-20T04:19:58.287Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-20T04:12:31.000Z</updated>
+    <updated>2015-05-20T04:19:50.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -122,9 +122,9 @@
 <li>启动进入PE，如果原系统是VHD的，需先挂载VHD。</li>
 <li>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</li>
 </ol>
-<h3 id="部份错误参考和问题解答">部份错误参考和问题解答</h3>
+<h2 id="部份错误参考和问题解答">部份错误参考和问题解答</h2>
 <ul>
-<li><p>Error reading data (status=c000046e): %2 0x%1</p>
+<li><h3 id="Error_reading_data_(status=c000046e):_%2_0x%1">Error reading data (status=c000046e): %2 0x%1</h3>
 <pre><code>[ERROR] &quot;E:\MSOCache\All Users\{90150000-0011-0000-1000-0000000FF1CE}-C\OWOW32WW.cab&quot;: Error reading data (status=c000046e): %2 0x%1 
 ERROR: Exiting with error code 50:
 Could not read data from a file.
@@ -137,7 +137,7 @@ Could not read data from a file.
 </ol>
 <p><em>最新V1.2会已经实现自动识别目标分区并且自动查找对应的WIM文件</em></p>
 </li>
-<li><p>Couldn’t set WIMBoot pointer data</p>
+<li><h3 id="Couldn’t_set_WIMBoot_pointer_data">Couldn’t set WIMBoot pointer data</h3>
 <pre><code>  [WARNING] Retrying after 100ms...
   [WARNING] FSCTL_SET_EXTERNAL_BACKING failed (err=1314); data was 48 bytes:
   0100000001000000010000000000000001000000000000008ccd4ce7b554c8f11c8a5fd5231de42e
@@ -154,11 +154,11 @@ Could not read data from a file.
 <p>  直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。</p>
 <p>  <strong>以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复</strong></p>
 </li>
-<li><p>为什么使用该工具应用之后很多文件件无法读取？</p>
-<p>这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，<br>另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。</p>
+<li><h3 id="为什么使用该工具应用之后很多文件件无法读取？">为什么使用该工具应用之后很多文件件无法读取？</h3>
+<p>这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。</p>
 </li>
-<li><p>程序是如何获取到WIMBoot系统对应的WIM文件的?</p>
-<p>如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置<br>如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID</p>
+<li><h3 id="程序是如何获取到WIMBoot系统对应的WIM文件的?">程序是如何获取到WIMBoot系统对应的WIM文件的?</h3>
+<p>如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置,如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID</p>
 <p>我编写了一个小程序(自己提取资源 EXEDATA#1023)，你可以通过它来快速读取这些信息，例子：</p>
 <pre><code>  fwim c:\System Volume Information\WimOverlay.dat
   168 32768 661951F1
@@ -214,7 +214,7 @@ Could not read data from a file.
   _END
 </code></pre></li>
 </ul>
-<h3 id="相关截图">相关截图</h3>
+<h2 id="相关截图">相关截图</h2>
 <ol>
 <li><p>增量更新功能</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_02.png/w400.png" alt=""></p>
@@ -229,7 +229,7 @@ Could not read data from a file.
 <p><img src="http://qiniu.chenall.net/post/2015042_06.png/w400.png" alt=""></p>
 </li>
 </ol>
-<h3 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h3>
+<h2 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h2>
 <ol>
 <li><p>需要准备的文件 下载: <a href="http://pan.baidu.com/s/1mgIbMyc" target="_blank" rel="external">http://pan.baidu.com/s/1mgIbMyc</a> 密码: 83qe</p>
 <ul>
