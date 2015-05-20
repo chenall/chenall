@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-05-18T08:58:39.001Z</updated>
+  <updated>2015-05-20T04:12:45.323Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-05-18T08:58:24.000Z</updated>
+    <updated>2015-05-20T04:12:31.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -122,7 +122,7 @@
 <li>启动进入PE，如果原系统是VHD的，需先挂载VHD。</li>
 <li>启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。</li>
 </ol>
-<h3 id="部份错误参考解决方案">部份错误参考解决方案</h3>
+<h3 id="部份错误参考和问题解答">部份错误参考和问题解答</h3>
 <ul>
 <li><p>Error reading data (status=c000046e): %2 0x%1</p>
 <pre><code>[ERROR] &quot;E:\MSOCache\All Users\{90150000-0011-0000-1000-0000000FF1CE}-C\OWOW32WW.cab&quot;: Error reading data (status=c000046e): %2 0x%1 
@@ -154,6 +154,65 @@ Could not read data from a file.
 <p>  直接重启系统进入PE运行WIMBOOT.EXE使用系统恢复功能进行恢复最新的镜像就行了。</p>
 <p>  <strong>以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复</strong></p>
 </li>
+<li><p>为什么使用该工具应用之后很多文件件无法读取？</p>
+<p>这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，<br>另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。</p>
+</li>
+<li><p>程序是如何获取到WIMBoot系统对应的WIM文件的?</p>
+<p>如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置<br>如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID</p>
+<p>我编写了一个小程序(自己提取资源 EXEDATA#1023)，你可以通过它来快速读取这些信息，例子：</p>
+<pre><code>  fwim c:\System Volume Information\WimOverlay.dat
+  168 32768 661951F1
+</code></pre><p>  第一个数字168是WIM文件路径在文件中的位置，可以通过PECMD的GETF来读取完整路径信息</p>
+<pre><code>  GETF# x:\System Volume Information\WimOverlay.dat,168#*,SYSWIM
+</code></pre><p>然后再通过分区偏移和磁盘签名等信息就可以获取到对应的盘符。</p>
+<pre><code>  _SUB GetALLPartInfo
+      PART list disk,&amp;&amp;全部磁盘
+      forx * %全部磁盘%,&amp;磁盘,
+      {
+          PART list disk %磁盘%,&amp;&amp;磁盘信息
+          MSTR * &amp;磁盘签名=&lt;8&gt;&amp;&amp;磁盘信息
+          PART list part %磁盘%,&amp;&amp;全部分区
+          forx * %全部分区%,&amp;分区,
+          {
+              IFEX #%&amp;分区%&lt;0,EXIT CONTINUE
+              PART  -hextp -phy# -fill list part %磁盘%#%分区%,&amp;&amp;分区信息
+              SED &amp;&amp;GPT=?,GPT,,%&amp;&amp;分区信息%
+              IFEX #%GPT%&gt;0,MSTR * &amp;&amp;偏移,&amp;&amp;盘符,&amp;&amp;DN=&lt;-3&gt;&lt;-1&gt;&lt;-2&gt;&amp;&amp;分区信息 ! MSTR * &amp;&amp;偏移,&amp;&amp;盘符,&amp;&amp;DN=&lt;4&gt;&lt;-1&gt;&lt;-2&gt;&amp;&amp;分区信息
+              SET. 所有分区=%所有分区%%盘符% %偏移% %&amp;磁盘签名% \Device\Harddisk%磁盘%\Partition%&amp;&amp;DN%\n
+          }
+      }
+  _END
+
+  SET-def 所有分区=
+  CALL GetALLPartInfo
+
+  EXEC* &amp;&amp;N=!fwim &quot;c:\System Volume Information\WimOverlay.dat&quot;
+  CALL GetWoCf c: %&amp;&amp;N%
+
+  _SUB GetWoCf
+      IFEX #%2&lt;0,EXIT _SUB
+      ENVI &amp;P=
+      FORX *NL &amp;所有分区,&amp;T,
+      {
+          SED &amp;&amp;a=?,%3 %4,,%T%
+          IFEX #%&amp;&amp;a%&gt;0,
+          {
+              LSTR &amp;P=2,%T%
+              FIND $%&amp;P%=*,
+              {
+          //对应的分区未分配盘符，临时分配一个@:
+                  SUBJ &amp;- @:
+                  MSTR$ * &amp;p=&lt;-1&gt;T
+                  SUBJ &amp; @:,%&amp;P%
+                  ENVI &amp;P=@:
+              }
+              EXIT FORX
+          }
+      }
+      GETF# %1\System Volume Information\WimOverlay.dat,%2#*,SYSWIM
+      ENVI SYSWIM=%&amp;p%%SYSWIM%
+  _END
+</code></pre></li>
 </ul>
 <h3 id="相关截图">相关截图</h3>
 <ol>
@@ -551,7 +610,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -638,7 +697,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
