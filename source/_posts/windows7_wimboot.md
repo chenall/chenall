@@ -129,9 +129,9 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 3. 启动wimboot.exe选择系统盘和WIM文件存放磁盘。根据提示操作。
 
 
-### 部份错误参考和问题解答
+## 部份错误参考和问题解答
 
-* Error reading data (status=c000046e): %2 0x%1
+* ### Error reading data (status=c000046e): %2 0x%1
   ```
   [ERROR] "E:\MSOCache\All Users\{90150000-0011-0000-1000-0000000FF1CE}-C\OWOW32WW.cab": Error reading data (status=c000046e): %2 0x%1 
   ERROR: Exiting with error code 50:
@@ -145,7 +145,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
   *最新V1.2会已经实现自动识别目标分区并且自动查找对应的WIM文件*
 
-* Couldn't set WIMBoot pointer data
+* ### Couldn't set WIMBoot pointer data
 
 	```
 	[WARNING] Retrying after 100ms...
@@ -171,15 +171,13 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
 	**以上是旧版本才会出现的问题，如果使用V1.1版本也有这些问题请留言回复**
 
-* 为什么使用该工具应用之后很多文件件无法读取？
+* ### 为什么使用该工具应用之后很多文件件无法读取？
 
-  这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，
-  另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。
+  这是正常的，因为是使用WIMBoot的，大部份的系统文件其实只是一个指向WIM文件的指针，需要有安装WOF驱动才可以正常访问，另外程序在应用之前也会禁用该分区的Wof所以即使是已经安装了wof驱动应用之后也是不能直接访问的，重启系统只要有WOF驱动就可以正常访问。
   
-* 程序是如何获取到WIMBoot系统对应的WIM文件的?
+* ### 程序是如何获取到WIMBoot系统对应的WIM文件的?
 
-  如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置
-  如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID
+  如果在WIMBoot启动的，那在系统盘的System Volume Information目录下有一个文件WimOverlay.dat,这个文件记录了对应WIM文件的位置,如果目标WIM文件在MBR磁盘上，则记录了分区偏移和磁盘签名信息,若是GPT磁盘记则记录分区GUID和磁盘GUID
 
   我编写了一个小程序(自己提取资源 EXEDATA#1023)，你可以通过它来快速读取这些信息，例子：
 
@@ -246,7 +244,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 	_END
 	```
 
-### 相关截图
+## 相关截图
 
 1. 增量更新功能
 
@@ -264,7 +262,7 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 
   ![](@@POST@@:06.png)
   
-### 附我上面演示系统的制作方法（仅供参考）
+## 附我上面演示系统的制作方法（仅供参考）
 
 1. 需要准备的文件 下载: http://pan.baidu.com/s/1mgIbMyc 密码: 83qe
 	* WIMBOOT.WIM  (上面有提供)  
