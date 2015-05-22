@@ -178,12 +178,14 @@
 </ul>
 <h2 id="让Windows_7支持WIMBOOT方式启动">让Windows 7支持<code>WIMBOOT</code>方式启动</h2>
 <p>WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部份操作起来都比较复杂,经过我的改造,现在简化了一些步骤，现在不需要任何输入，一键就可以实现了。</p>
-<p>新的功能：  </p>
+<p>功能：  </p>
 <ol>
-<li>支持恢复系统。  </li>
-<li>支持直接增量更新（增量更新功能请看下面的注意提示）  </li>
-<li>支持WINDOWS 7全系列包括WES7（未完全测试）  </li>
-<li>自己去发现吧。  </li>
+<li>可以备份或恢复系统。 </li>
+<li>支持直接增量更新. </li>
+<li>支持WINDOWS 7及以上系统包括win10(未完全测试)  </li>
+<li>可以作为系统备份工具来使用。  </li>
+<li>自动识别WIMBoot系统WIM文件。 </li>
+<li>自己去发现.</li>
 </ol>
 <p>提示：  </p>
 <ul>
@@ -193,7 +195,14 @@
 <li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
 <h2 id="更新记录">更新记录</h2>
-<pre><code>2015-05-18 v1.5版
+<pre><code>2015-05-22 v1.6版
+  1. 支持Windows 10
+  2. 增量备份支持单独存放（不合并）
+  3. 捕获或恢复时可以选择不使用WIMBoot.
+  4. 界面调整程序优化并增加一些操作提示信息。
+  5. 新的wimlib-imagex程序，支持显示中文镜像名称。
+
+2015-05-18 v1.5版
   1. 新增仅捕获选项
   2. 新版本对于部份操作不再强制要求格式化。
   3. 对于已经是WIMBOOT的系统，现在可以正确识别该系统所使用的WIM文件，并自动选择该WIM文件
@@ -329,8 +338,11 @@ Could not read data from a file.
 <li><p>首次使用的情况</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_04.png/w400.png" alt=""></p>
 </li>
-<li><p>最新版本界面和相关介绍.</p>
+<li><p>界面和相关介绍.</p>
 <p><img src="http://qiniu.chenall.net/post/2015042_06.png/w400.png" alt=""></p>
+</li>
+<li><p>最新版本界面截图</p>
+<p><img src="http://qiniu.chenall.net/post/2015042_07.png/w400.png" alt=""></p>
 </li>
 </ol>
 <h2 id="附我上面演示系统的制作方法（仅供参考）">附我上面演示系统的制作方法（仅供参考）</h2>
@@ -403,7 +415,7 @@ Could not read data from a file.
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-20 14:29:00"datetime="2015-05-20 14:29:00"> 2015-05-20</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-05-22 15:12:57"datetime="2015-05-22 15:12:57"> 2015-05-22</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -423,7 +435,7 @@ Could not read data from a file.
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/pxe_ris/">[转载] 从网络启动安装Windows</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/openvpn_inlinefile/">[OpenVPN] OpenVPN独立配置文件</a></li><li class="list-group-item"><a href="/post/openvpn_script_pre/">[OpenVPN] OpenVPN脚本应用之--简介.</a></li><li class="list-group-item"><a href="/post/vmware-time/">解决虚拟机系统时间不准的问题</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -512,7 +524,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-20 14:29:00</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-05-22 15:12:57</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
