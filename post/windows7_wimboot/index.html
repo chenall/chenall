@@ -197,7 +197,7 @@
 <h2 id="更新记录">更新记录</h2>
 <pre><code>2015-06-16 v1.8版
   1. 修正一个BUG.
-  2. 驱动更新,解决NTFS软硬链接的问题.(已经有装过的,可以删除原系统drivers目录下的wof.sys文件,然后使用增量更新来原地转换功能即可更新为最新版驱动)
+  2. 驱动更新,解决NTFS软硬链接的问题.(已经有装过的,可以删除原系统drivers目录下的wof.sys文件,然后再使用增量更新或原地转换功能即可更新为最新版驱动)
 
 2015-05-29 v1.7版
   1. 支持修改WIM信息(wim info)(新版的E按钮)
@@ -429,7 +429,7 @@ Could not read data from a file.
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-06-16 17:14:18"datetime="2015-06-16 17:14:18"> 2015-06-16</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/系统相关/" itemprop="url"><span itemprop="title" >系统相关</span></a></li></span></div> | <span class="tags">标签 <a href="/tags/windows7/" class="label label-primary" itemprop="url"><span itemprop="title">windows7</span></a><a href="/tags/WIMBOOT/" class="label label-success" itemprop="url"><span itemprop="title">WIMBOOT</span></a><a href="/tags/vhd/" class="label label-info" itemprop="url"><span itemprop="title">vhd</span></a></span> | <span class="time">最近更新:<time title="2015-06-16 17:24:34"datetime="2015-06-16 17:24:34"> 2015-06-16</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/windows7_wimboot/#comments" class="ds-thread-count comment-link" data-thread-key="2015042" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -449,7 +449,7 @@ Could not read data from a file.
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/windows7_folder_tips/">【分享】神奇的DESKTOP.INI文件，系统自带的文件保护功能。</a></li><li class="list-group-item"><a href="/post/post38/">解决电脑远程登陆出现 “远程计算机已结束连接”</a></li><li class="list-group-item"><a href="/post/newext/">[分享]电脑防毒小技巧一则</a></li><li class="list-group-item"><a href="/post/all_print_to_lpt/">使用共享打印机的另一个方案</a></li><li class="list-group-item"><a href="/post/openvpn/">[分享] WINDOWS OpenVPN安装实战</a></li><li class="list-group-item"><a href="/post/post68/">无需第三方工具Windows下隐藏限制磁盘访问.</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/post34/">非内置SCSI驱动在PE下的安装过程</a></li><li class="list-group-item"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></li><li class="list-group-item"><a href="/post/vhd_mnt/">[原创] VHD_MNT VHD文件快速挂载/卸载工具</a></li><li class="list-group-item"><a href="/post/soft_vpn/">【分享】免费安全纯软件连锁VPN解决方案 （简版）</a></li><li class="list-group-item"><a href="/post/win7_bcdfix/">【分享】小技巧，两条命令解决WIN7安装后改MBR启动失败问题</a></li><li class="list-group-item"><a href="/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></li><li class="list-group-item"><a href="/post/softether/">【分享】Softether 使用图文教程</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -538,7 +538,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-06-16 17:14:18</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-06-16 17:24:34</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
