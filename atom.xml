@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-06-17T02:12:25.055Z</updated>
+  <updated>2015-06-18T13:54:53.876Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenall.net/post/windows7_wimboot/"/>
     <id>http://chenall.net/post/windows7_wimboot/</id>
     <published>2015-04-21T09:28:00.000Z</published>
-    <updated>2015-06-17T02:12:12.000Z</updated>
+    <updated>2015-06-18T13:54:39.000Z</updated>
     <content type="html"><![CDATA[<p>把WINDOWS 8的WIMBOOT功能应用到WINDOWS 7上,目前使用一切正常.</p>
 <p>使用WIMBOOT可以节省大量的磁盘空间,特别是多系统的情况下更是明显.另外还具有<code>WIM</code>文件的特性,比如<strong>增量备份</strong>,如果每隔一段时间就使用增量更新一下WIM那以后就可以随时恢复到<strong>每个更新点</strong>的状态.</p>
 <p>正常安装的话一个64位的系统就差不多需要40GB了,我现在两个系统最多也才40GB,是不是很心动呢!</p>
@@ -91,7 +91,12 @@
 <li>本程序只在WIN7系统测试通过，如果你有WIN8的系统也可以测试一下估计应该也是可以使用的。</li>
 </ul>
 <h2 id="更新记录">更新记录</h2>
-<pre><code>2015-06-17 v1.9版
+<pre><code>2015-06-18 v2.0版
+  1. BUG修正(长路径名恢复失败).
+  2. 界面调整,改成了使用进度条(之前是直接显示WIMLIB执行的所有信息)
+  3. 添加压缩率选项.
+
+2015-06-17 v1.9版
   1. BUG修正.
   2. 盘符重置功能修改,增加自动判断.
 
@@ -640,7 +645,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
     <summary type="html"><![CDATA[<p>  <a href="http://www.cameyo.com/" target="_blank" rel="external">Cameyo</a> 是一款可以媲美 thinstall 的虚拟化软件,可以把整个应用程序虚拟化为单文件版,虚拟化后的软件不需要安装可以在任意电脑上运行,这里简单介绍一下通过 Cameyo PackageEditor 把一个绿色软件制作成单文件版的方法.</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="PackageEditor" scheme="http://chenall.net/tags/PackageEditor/"/>
     
@@ -727,7 +732,7 @@ find .|cpio -o -H newc|gzip&gt;~/myinitramfs.gz
 <p>由于官方原版的翻译一直有问题,为了方便就自己修改编译一个,这个 PackageEditor 是基于<a href="https://code.google.com/p/cameyo/" target="_blank" rel="external">官方源码</a>，修改中文资源之后重新编译的，使用2.1版的源码主是要因为这个版本是个过渡版本，同时支持旧版和新的版本的编辑（<strong>只需要把不同版本的dll文件放进去就行了</strong>）。</p>
 ]]></summary>
     
-      <category term="cameyo" scheme="http://chenall.net/tags/cameyo/"/>
+      <category term="Cameyo" scheme="http://chenall.net/tags/Cameyo/"/>
     
       <category term="虚拟化" scheme="http://chenall.net/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/"/>
     
