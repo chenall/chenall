@@ -95,6 +95,11 @@ WINDOWS 7 使用WIMBOOT的方法在网上论坛上有很多介绍,不过太部�
 ## 更新记录
 
 ```
+2015-07-17 v2.3版
+  1. 驱动更新到10240版,服务改为wofadk.
+  2. 修正局域网打印机安装问题和浏览器DLL错误问题(感谢无论[2012liujingxion](http://bbs.wuyou.net/forum.php?mod=viewthread&tid=367490))
+  3. BUG修正.
+
 2015-06-29 v2.2版
   1. 修正增量更新的一个BUG。
   2. 自适合DPI
