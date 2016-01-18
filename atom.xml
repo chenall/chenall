@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2016-01-18T03:39:48.963Z</updated>
+  <updated>2016-01-18T06:26:11.801Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -15,27 +15,28 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[UMBR 通用于MBR引导程序]]></title>
+    <title><![CDATA[[GRUB4DOS] Universal Master Boot Record]]></title>
     <link href="http://chenall.net/post/grub4dos_umbr/"/>
     <id>http://chenall.net/post/grub4dos_umbr/</id>
     <published>2016-01-18T02:25:28.000Z</published>
-    <updated>2016-01-18T03:39:35.000Z</updated>
+    <updated>2016-01-18T06:26:02.000Z</updated>
     <content type="html"><![CDATA[<h3 id="[功能说明]">[功能说明]</h3>
-<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).</p>
-<p>使用创新的方案,和磁盘分区格式无关,所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).</p>
+<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
 <a id="more"></a>
 
 <h2 id="[使用方法]">[使用方法]</h2>
 <p>  目前该程序只能在<a href="http://grub4dos.chenall.net" target="_blank" rel="external">GRUB4DOS</a>环境下运行,请在最新版本GRUB4DOS环境下使用.</p>
 <p>参数介绍:</p>
 <pre><code>umbr [-d=D] [-p=P] [--test] [file1] [file2] [file3]
-    -d=D            指定要安装的磁盘默认是当前ROOT磁盘
+    -d=D            指定要安装的磁盘默认是当前ROOT的磁盘
     -p=D            启动失败后要启动的分区默认是第一个分区.
     --test            测试模式,不写入磁盘,加这个参数会进入安装效果测试.
     file1-3            可以指定三个启动文件位置以防止启动失败.
 
 注: 这个filex    可以是任意GRUB4DOS可以识别的文件格式(必须连续存放).比如(hdx,y)/path/file或(hdx)xxxx+yyyy/(hdx,y)xxx+yyy之类的.
-
+    file1-file3 必须在同一磁盘上并且和-d指定的磁盘一致.
+    file1-2    也可以是一是一个PBR比如(hd0,3)+1
 file1是主启动文件,如果检验失败了会再尝试file2...
 </code></pre><p>说明:</p>
 <ol>
@@ -65,15 +66,16 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 　　WORD BlockCount;　　// 启动代码块数(以扇区为单位)
 　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
 　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
-</code></pre><p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
+</code></pre><p>BufferAddr    的值为0x07c00000(07c0:0000)时固定为PBR引导,启动时会自动修改0x7c1c处的值.其它值直接从该位置启动.</p>
+<p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
 <p>具体的校验代码可以参考源码有ASM/C语言两个版本.</p>
 <h2 id="[源码下载]">[源码下载]</h2>
 <p>源代码: <a href="https://github.com/chenall/grubutils" target="_blank" rel="external">https://github.com/chenall/grubutils</a></p>
 <p>应用下载: <a href="http://b.chenall.net/boot/grub/umbr" target="_blank" rel="external">http://b.chenall.net/boot/grub/umbr</a> </p>
 ]]></content>
     <summary type="html"><![CDATA[<h3 id="[功能说明]">[功能说明]</h3>
-<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).</p>
-<p>使用创新的方案,和磁盘分区格式无关,所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).</p>
+<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
 ]]></summary>
     
       <category term="umbr" scheme="http://chenall.net/tags/umbr/"/>

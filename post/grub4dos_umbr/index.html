@@ -7,15 +7,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UMBR 通用于MBR引导程序 | chenall&#39;s Blog</title>
+<title>[GRUB4DOS] Universal Master Boot Record | chenall&#39;s Blog</title>
 <meta name="author" content="chenall">
 
-<meta name="description" content="[功能说明]  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).">
+<meta name="description" content="[功能说明]  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<meta property="og:title" content="UMBR 通用于MBR引导程序"/>
+<meta property="og:title" content="[GRUB4DOS] Universal Master Boot Record"/>
 <meta property="og:site_name" content="chenall&#39;s Blog"/>
 
 <!--[if IE]><style>.testIE.IE{display:inline;}</style><![endif]-->
@@ -111,7 +111,7 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title">UMBR 通用于MBR引导程序</h1>
+      <h1 class="title">[GRUB4DOS] Universal Master Boot Record</h1>
       
         <span>发表于<time datetime="2016-01-18T02:25:28.000Z"> <a href="/post/grub4dos_umbr/">2016-01-18</a></time></span>      
     </header>
@@ -124,21 +124,22 @@
     <div class="entry"  data-spy="scroll" data-target="#toc" >
       
         <h3 id="[功能说明]">[功能说明]</h3>
-<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).</p>
-<p>使用创新的方案,和磁盘分区格式无关,所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).</p>
+<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
 <a id="more"></a>
 
 <h2 id="[使用方法]">[使用方法]</h2>
 <p>  目前该程序只能在<a href="http://grub4dos.chenall.net" target="_blank" rel="external">GRUB4DOS</a>环境下运行,请在最新版本GRUB4DOS环境下使用.</p>
 <p>参数介绍:</p>
 <pre><code>umbr [-d=D] [-p=P] [--test] [file1] [file2] [file3]
-    -d=D            指定要安装的磁盘默认是当前ROOT磁盘
+    -d=D            指定要安装的磁盘默认是当前ROOT的磁盘
     -p=D            启动失败后要启动的分区默认是第一个分区.
     --test            测试模式,不写入磁盘,加这个参数会进入安装效果测试.
     file1-3            可以指定三个启动文件位置以防止启动失败.
 
 注: 这个filex    可以是任意GRUB4DOS可以识别的文件格式(必须连续存放).比如(hdx,y)/path/file或(hdx)xxxx+yyyy/(hdx,y)xxx+yyy之类的.
-
+    file1-file3 必须在同一磁盘上并且和-d指定的磁盘一致.
+    file1-2    也可以是一是一个PBR比如(hd0,3)+1
 file1是主启动文件,如果检验失败了会再尝试file2...
 </code></pre><p>说明:</p>
 <ol>
@@ -168,7 +169,8 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 　　WORD BlockCount;　　// 启动代码块数(以扇区为单位)
 　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
 　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
-</code></pre><p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
+</code></pre><p>BufferAddr    的值为0x07c00000(07c0:0000)时固定为PBR引导,启动时会自动修改0x7c1c处的值.其它值直接从该位置启动.</p>
+<p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
 <p>具体的校验代码可以参考源码有ASM/C语言两个版本.</p>
 <h2 id="[源码下载]">[源码下载]</h2>
 <p>源代码: <a href="https://github.com/chenall/grubutils" target="_blank" rel="external">https://github.com/chenall/grubutils</a></p>
@@ -199,14 +201,14 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 <div class="panel panel-success">
     <div class="panel-heading" align="center">希望本站内容对您有点用处,有什么疑问或建议请在后面留言评论</div>
     <div align="center" class="panel-body">若无特别注明，本站内容均属原创,转载请注明作者(<a href="https://plus.google.com/100700322385676715564">chenall</a>)和出处 <a href="http://chenall.net">chenall's Blog</a> ，请勿用于任何商业用途</div>
-    <div class="panel-body">本文链接: <a href="/post/grub4dos_umbr/">UMBR 通用于MBR引导程序</a></div>
+    <div class="panel-body">本文链接: <a href="/post/grub4dos_umbr/">[GRUB4DOS] Universal Master Boot Record</a></div>
 </div></div><div class="widget" id="widget_after_content_ujian>">
 <div class="ujian-hook"></div>
 </div></section>
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/umbr/" class="label label-primary" itemprop="url"><span itemprop="title">umbr</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2016-01-18 11:39:35"datetime="2016-01-18 11:39:35"> 2016-01-18</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/umbr/" class="label label-primary" itemprop="url"><span itemprop="title">umbr</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2016-01-18 14:26:02"datetime="2016-01-18 14:26:02"> 2016-01-18</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_umbr/#comments" class="ds-thread-count comment-link" data-thread-key="20160118" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -226,11 +228,11 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_fat/">[GRUB4DOS] 外部命令FAT（在FAT分区上复制创建文件）</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/modboot/">MODBOOT DOS程序最后的辉煌[2011-05-03更新]</a></li><li class="list-group-item"><a href="/post/grub4dos_initrdfs/">[grub4dos] grub4dos 最新版本initrdfs功能介绍</a></li><li class="list-group-item"><a href="/post/post45/">[GRUB4DOS] 利用WRITE命令写字符串到内存中</a></li><li class="list-group-item"><a href="/post/grub4dos_sysapp/">[Grub4DOS] 系统维护简单应用举例</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
-<div class="ds-thread"  data-thread-key="20160118"  data-url="http://chenall.net/post/grub4dos_umbr/" data-title="UMBR 通用于MBR引导程序"></div>
+<div class="ds-thread"  data-thread-key="20160118"  data-url="http://chenall.net/post/grub4dos_umbr/" data-title="[GRUB4DOS] Universal Master Boot Record"></div>
 <!-- Duoshuo Comment END -->
 
 </div></div><!--wapper-->
@@ -315,7 +317,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2016-01-18 11:39:35</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2016-01-18 14:26:02</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
@@ -344,7 +346,7 @@ _js2load.push({src:'http://static.duoshuo.com/embed.js',charset:'UTF-8'});
 
 <script type="text/javascript">
     var wumiiPermaLink = "http://chenall.net/post/grub4dos_umbr/";
-    var wumiiTitle = "UMBR 通用于MBR引导程序";
+    var wumiiTitle = "[GRUB4DOS] Universal Master Boot Record";
     var wumiiTags = "umbr,GRUB4DOS,原创";
     var wumiiCategories = ["GRUB4DOS","扩展"];
     var wumiiSitePrefix = "http://chenall.net";
