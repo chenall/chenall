@@ -1,4 +1,4 @@
-title: "UMBR 通用于MBR引导程序"
+title: "[GRUB4DOS] Universal Master Boot Record"
 id: 20160118
 date: 2016-01-18 10:25:28
 tags: 
@@ -12,9 +12,9 @@ categories:
 
 ### [功能说明]
 
-  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).
+  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).
 
-使用创新的方案,和磁盘分区格式无关,所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.
+使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.
 
 <!--more-->
 
@@ -26,13 +26,14 @@ categories:
 
 ```
 umbr [-d=D] [-p=P] [--test] [file1] [file2] [file3]
-	-d=D			指定要安装的磁盘默认是当前ROOT磁盘
+	-d=D			指定要安装的磁盘默认是当前ROOT的磁盘
 	-p=D			启动失败后要启动的分区默认是第一个分区.
 	--test			测试模式,不写入磁盘,加这个参数会进入安装效果测试.
 	file1-3			可以指定三个启动文件位置以防止启动失败.
 
 注: 这个filex	可以是任意GRUB4DOS可以识别的文件格式(必须连续存放).比如(hdx,y)/path/file或(hdx)xxxx+yyyy/(hdx,y)xxx+yyy之类的.
-
+    file1-file3 必须在同一磁盘上并且和-d指定的磁盘一致.
+	file1-2	也可以是一是一个PBR比如(hd0,3)+1
 file1是主启动文件,如果检验失败了会再尝试file2...
 ```
 
@@ -87,6 +88,8 @@ UMBR 相关说明
 　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
 　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
 ```
+
+BufferAddr	的值为0x07c00000(07c0:0000)时固定为PBR引导,启动时会自动修改0x7c1c处的值.其它值直接从该位置启动.
 
 校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.
 
