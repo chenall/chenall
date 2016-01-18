@@ -14,7 +14,7 @@ categories:
 
   UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).
 
-使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.
+使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT分区格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.
 
 <!--more-->
 
@@ -45,9 +45,9 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 
 一个实用的例子:
 
-磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处是WEE63.
+磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP分区(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处有一个WEE63
 
-装有系统的分区是(hd0,1).
+装有系统的分区是(hd0,1)
 
 这时就可以通过UMBR默认加载ESP分区的GRLDR或普通分区上的GRLDR,失败了再尝试WEE63,还是失败就直接启动(hd0,1)分区.
 
@@ -62,7 +62,7 @@ umbr -d=0 -p=1 (hd0,3)/boot/grub/grldr (hd0,0)/grldr (hd0)6554433+63
 umbr -d=0 -p=1 (hd0)6554433+63 (hd0,3)/boot/grub/grldr (hd0,0)/grldr 
 ```
 
-当然了也可以直接启动指定分区而不通过其它引导程序当分区,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr
+当然了也可以直接启动指定分区而不通过其它引导程序,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr
 
 ```
 umbr -d=0 -p=1 (hd0,1)+1 (hd0)6554433+63 (hd0,0)/grldr 
@@ -85,7 +85,7 @@ UMBR 相关说明
 ```
     WORD CRC;			//启动项校验
 　　WORD BlockCount;　　// 启动代码块数(以扇区为单位)
-　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
+　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也就是启动地址
 　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
 ```
 
