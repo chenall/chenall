@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2015-09-07T04:02:49.612Z</updated>
+  <updated>2016-01-18T03:39:48.963Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -13,6 +13,80 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[UMBR 通用于MBR引导程序]]></title>
+    <link href="http://chenall.net/post/grub4dos_umbr/"/>
+    <id>http://chenall.net/post/grub4dos_umbr/</id>
+    <published>2016-01-18T02:25:28.000Z</published>
+    <updated>2016-01-18T03:39:35.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="[功能说明]">[功能说明]</h3>
+<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).</p>
+<p>使用创新的方案,和磁盘分区格式无关,所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<a id="more"></a>
+
+<h2 id="[使用方法]">[使用方法]</h2>
+<p>  目前该程序只能在<a href="http://grub4dos.chenall.net" target="_blank" rel="external">GRUB4DOS</a>环境下运行,请在最新版本GRUB4DOS环境下使用.</p>
+<p>参数介绍:</p>
+<pre><code>umbr [-d=D] [-p=P] [--test] [file1] [file2] [file3]
+    -d=D            指定要安装的磁盘默认是当前ROOT磁盘
+    -p=D            启动失败后要启动的分区默认是第一个分区.
+    --test            测试模式,不写入磁盘,加这个参数会进入安装效果测试.
+    file1-3            可以指定三个启动文件位置以防止启动失败.
+
+注: 这个filex    可以是任意GRUB4DOS可以识别的文件格式(必须连续存放).比如(hdx,y)/path/file或(hdx)xxxx+yyyy/(hdx,y)xxx+yyy之类的.
+
+file1是主启动文件,如果检验失败了会再尝试file2...
+</code></pre><p>说明:</p>
+<ol>
+<li>由于是直接使用绝对扇区位置来启动的,所以和文件系统无关.</li>
+<li>使用指定文件也会被转换为绝对扇区位置,正常情况下改名不影响启动,删除了如果文件内容没有被覆盖之前也是可以启动的.</li>
+<li>启动失败时会暂停并等待按键,这时按任意键可以尝试下一个.</li>
+</ol>
+<p>一个实用的例子:</p>
+<p>磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处是WEE63.</p>
+<p>装有系统的分区是(hd0,1).</p>
+<p>这时就可以通过UMBR默认加载ESP分区的GRLDR或普通分区上的GRLDR,失败了再尝试WEE63,还是失败就直接启动(hd0,1)分区.</p>
+<p>进入GRUB4DOS执行以下命令就可以了</p>
+<pre><code>umbr -d=0 -p=1 (hd0,3)/boot/grub/grldr (hd0,0)/grldr (hd0)6554433+63
+</code></pre><p>也可以默认wee63,通过wee63来控制启动过程,因为本例wee63是写到分区间隙的,出问题的几率比较小</p>
+<pre><code>umbr -d=0 -p=1 (hd0)6554433+63 (hd0,3)/boot/grub/grldr (hd0,0)/grldr
+</code></pre><p>当然了也可以直接启动指定分区而不通过其它引导程序当分区,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr</p>
+<pre><code>umbr -d=0 -p=1 (hd0,1)+1 (hd0)6554433+63 (hd0,0)/grldr
+</code></pre><h2 id="[其它参考]">[其它参考]</h2>
+<p>UMBR 相关说明</p>
+<pre><code>0x8            4个字节        UMBR标志
+0xC            1个字节        UMBR版本号
+0x10-0X3F    48个字节    用户定义的启动区
+0x40-0X4F    16个字节    保留的启动区(当用户定义的启动都失败时启动的分区)
+0x40-0x1B7                启动代码.
+</code></pre><p>启动区说明,目前0x10-0x4F,每一个启动项占用16个字节,为了编程方便使用的是和DiskAddressPacket一样的格式.</p>
+<pre><code>    WORD CRC;            //启动项校验
+　　WORD BlockCount;　　// 启动代码块数(以扇区为单位)
+　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
+　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
+</code></pre><p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
+<p>具体的校验代码可以参考源码有ASM/C语言两个版本.</p>
+<h2 id="[源码下载]">[源码下载]</h2>
+<p>源代码: <a href="https://github.com/chenall/grubutils" target="_blank" rel="external">https://github.com/chenall/grubutils</a></p>
+<p>应用下载: <a href="http://b.chenall.net/boot/grub/umbr" target="_blank" rel="external">http://b.chenall.net/boot/grub/umbr</a> </p>
+]]></content>
+    <summary type="html"><![CDATA[<h3 id="[功能说明]">[功能说明]</h3>
+<p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子,大部份都有支持).</p>
+<p>使用创新的方案,和磁盘分区格式无关,所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+]]></summary>
+    
+      <category term="umbr" scheme="http://chenall.net/tags/umbr/"/>
+    
+      <category term="GRUB4DOS" scheme="http://chenall.net/tags/GRUB4DOS/"/>
+    
+      <category term="原创" scheme="http://chenall.net/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="GRUB4DOS" scheme="http://chenall.net/categories/GRUB4DOS/"/>
+    
+      <category term="扩展" scheme="http://chenall.net/categories/GRUB4DOS/%E6%89%A9%E5%B1%95/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[【分享】WIMBoot辅助工具 For Windows 7/8]]></title>
@@ -2301,34 +2375,6 @@ a:sub(1,-3) -- 1234
       <category term="程序设计" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
       <category term="LUA" scheme="http://chenall.net/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/LUA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[最近通过了新浪云计算SAE高级开发者认证]]></title>
-    <link href="http://chenall.net/post/sae_devlevel/"/>
-    <id>http://chenall.net/post/sae_devlevel/</id>
-    <published>2013-03-18T02:41:08.000Z</published>
-    <updated>2014-02-26T11:52:59.000Z</updated>
-    <content type="html"><![CDATA[<p>从申请到拿到证书,完成认证,将近一个月的时间.</p>
-<p>通过高级认证之后每个月会自动把云豆补满到1.5万,也就是说我以后基本上可以完全免费使用SAE的资源了,嘿嘿.</p>
-<p>支持JAVA,PYTHON,PHP等语言,相当于一个免费的虚拟主机,但比虚拟主机更加强大.</p>
-<p>也可以绑米,可惜我的域名没有备案,绑定之后访问速度太慢,也许以后要想个法子去备个案.这样就方便多了.</p>
-<p>SAE的访问速度也很快,关键是稳定,安全.</p>
-<p>更多关于SAE的资料可以去官网查看一下,</p>
-<p><a href="http://sae.sina.com.cn/" target="_blank" rel="external">http://sae.sina.com.cn/</a></p>
-<p>另外SAE是根据资源使用情况计费的,可以针对每个应用设置每天的限额.</p>
-<p>根据我的使用情况,访问量不大的个人主页,一个月大概300云豆就足够了.也就是3元.一年才36,顶多就50元.比虚拟主机靠普多了.</p>
-<p>我最早接触的是GAE,也就是Google的,大家都知道的,在国内想正常使用Google的服务是不太可能的而且很麻烦的,所以以前只是申请了没有怎么用.</p>
-<p>现在云计算是一个趋势,像百度云,阿里云,等,大家都在云上飘,我也要顺风而上,体验一下云.^_^</p>
-]]></content>
-    
-    
-      <category term="sae" scheme="http://chenall.net/tags/sae/"/>
-    
-      <category term="云计算" scheme="http://chenall.net/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="个人日记" scheme="http://chenall.net/categories/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   

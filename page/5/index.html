@@ -111,6 +111,217 @@
   <div class="post-content">
     <header class="well-sm">
       <i class="fa icon fa-5x pull-left"></i>
+      <h1 class="title"><a href="/post/g4d_hd_tools/">[分享] 基于GRUB4DOS的硬盘工具箱[2012-06-27DP更新]</a></h1>
+      
+        <span>发表于<time datetime="2012-02-13T08:00:55.000Z"> <a href="/post/g4d_hd_tools/">2012-02-13</a></time></span>      
+    </header>
+    
+    
+    <div class="entry" >
+      
+        <p>自用的硬盘工具箱，可以方便进行系统维护工作。</p>
+<p>引导程序WEE+GRUB4DOS。</p>
+<p>自带基于MODBOOT的一键恢复程序QGHO，可以随时进行备份恢复系统。</p>
+<p>可以方便的进行功能扩展，一切皆有可能。</p>
+<h3 id="说明：">说明：</h3>
+<ul>
+<li>默认情况下不显示任何菜单，只有在需要的时候才会显示（按对应的按键，或使用了自定义的菜单接口）</li>
+<li>自带MODBOOT和NTBOOT两个组件。</li>
+<li>可以通过很简单的方法进行功能扩展。</li>
+<li>恢复系统使用的是QGHO（基于MODBOOT）。</li>
+<li><p>启动时如果不按任何按键或按了无效按键则使用默认的方式启动系统（启动第一激活的主分区上）</p>
+<p>如果有存在SYS_MENU.LST文件则会调用该菜单。<br>可以通过按指定的按键进入对应的系统。</p>
+</li>
+<li><p>所以的东西都可以自己修改（当然了前提是你熟悉GRUB4DOS，知道要改的东西。）</p>
+</li>
+<li>因为是使用WEE作为主引导的，安装、修复都很方便，双击一下就搞定了。</li>
+<li>一些文件目录说明。<br>ADDONS　　　附加工具目录，下载附加的工具直接解压到该目录下就可以了。<br>BIN　　　　　　一些应用程序，用于修复系统引导。<br>MODBOOT　　MODBOOT模块程序<br>NTBOOT　　　NTBOOT模块程序<br>grub　　　　　GRUB4DOS程序目录。<br>以上目录一般情况下你可以不必理会它里面的内容。<br>PRELOAD.BAT　主引导界面还有快捷键的定义批处理（GRUB4DOS专用）<br>preload.fnt　　主引导界面使用的字体库。<br>SYS_MENU.LST　自定义的默认引导菜单（公开的菜单，自己创建，如果有的话默认就会显示这个菜单内容）</li>
+</ul>
+<h2 id="【更新历史】">【更新历史】</h2>
+<h3 id="2014-01-13">2014-01-13</h3>
+<ul>
+<li>删作本页面的部份失效图片</li>
+</ul>
+<h3 id="2012-06-27">2012-06-27</h3>
+<ul>
+<li>DPMS 驱动更新到1206版</li>
+<li>GRUB4DOS更新到最新版本。</li>
+<li>NTBOOT 的NT6启动文件改成WINDOWS 8的BOOTMGR。</li>
+<li>绝对PE工具箱更新</li>
+<li>更新的文件</li>
+</ul>
+<h3 id="2012-03-18">2012-03-18</h3>
+<ul>
+<li>DPMS驱动更新</li>
+</ul>
+<h3 id="2012-02-28">2012-02-28</h3>
+<ul>
+<li>GRUB4DOS更新到最新版本</li>
+<li>NTBOOT更新（NT6使用了WINDOWS 8的BOOTMGR）</li>
+<li>通用PE工具箱V3.0 （AbsolutePE），来源：<a href="http://hi.baidu.com/uepon/blog" target="_blank" rel="external">http://hi.baidu.com/uepon/blog</a></li>
+</ul>
+<h3 id="2012-02-13">2012-02-13</h3>
+<ul>
+<li>DPMS驱动更新到1201版。</li>
+<li>GRUB4DOS版本更新到最新版。</li>
+<li>NTBOOT更新。</li>
+</ul>
+<h3 id="2011-12-12">2011-12-12</h3>
+<ul>
+<li>DPMS驱动更新。</li>
+<li>NTBOOT更新。</li>
+<li>GRUB4DOS版本升级。</li>
+</ul>
+<h3 id="2011-11-06">2011-11-06</h3>
+<ul>
+<li>GRUB4DOS更新.</li>
+<li>BUG修正.</li>
+<li>新的启动界面,增加了从USB/CDROM/NET启动的功能.</li>
+</ul>
+<h3 id="2011-10-07">2011-10-07</h3>
+<ul>
+<li>﻿QGHO修正</li>
+<li>GRUB4DOS更新</li>
+<li>新增支持自动检测多操作系统功能<br>按F8就可以显示支持的系统菜单<br>按Ctrl+F8重新检测<br>比如你硬盘第一个分区安装WINDOWS 2003,第二个分区安装WINDOWS XP<br>第三分分区安装WINDOWS 7，启动时按F8可以自动检测到，按菜单选择启动。<br>其它说明:<ol>
+<li>支持VBOOT启动的VHD/VMDK系统，把这些文件放在放在任意硬盘的VBOOT目录下就可以自动检测</li>
+<li>支持NT6的VHD启动功能。把VHD文件放在任意硬盘的WIN_VHD目录中就可以自动检测.</li>
+<li>以上两个系统的文件名必须以@开头才会自动检测。</li>
+</ol>
+</li>
+</ul>
+<h3 id="2011-09-29">2011-09-29</h3>
+<ul>
+<li>QGHO修正调整,</li>
+<li>NTBOOT更新,支持调用DPMS生成驱动</li>
+<li>DPMS更新.</li>
+<li>GRUB4DOS更新到最新版本.</li>
+</ul>
+<h3 id="2011-09-19">2011-09-19</h3>
+<ul>
+<li>修正QGHO备份失败的问题.</li>
+</ul>
+<h3 id="2011-09-18">2011-09-18</h3>
+<ol>
+<li>升级GRLDR到最新版,更新WEESETUP程序.</li>
+<li>修正上一个版本QGHO的BUG</li>
+</ol>
+<h3 id="2011-09-14">2011-09-14</h3>
+<ol>
+<li><a href="http://chenall.net/post/modboot_qgho/" target="_blank" rel="external">全新的QGHO一键恢复程序.</a></li>
+<li>升级GRLDR</li>
+<li>更新DPMS驱动包到最新版本</li>
+</ol>
+<h3 id="2011-09-05">2011-09-05</h3>
+<ol>
+<li>QGHO更新,全新设计的QGHO,测试版.</li>
+<li>GRLDR升级到最新版本.</li>
+<li>addons内置DPMS.BAT脚本.</li>
+</ol>
+<h3 id="2011-08-30">2011-08-30</h3>
+<ol>
+<li><strong>﻿此版本内置的QGHO有问题,不能正常使用,请更新或使用旧版本</strong><br>更新NTBOOT/MODBOOT脚本.<br>更新GRUB4DOS到最新版本.</li>
+</ol>
+<h3 id="2011-08-11">2011-08-11</h3>
+<ol>
+<li>主程序更新,修正PRELOAD.BAT一个BUG.</li>
+</ol>
+<h3 id="2011-08-09">2011-08-09</h3>
+<ol>
+<li>DPMS更新.<strong>修正了一个小错误.</strong></li>
+<li>GRUB4DOS更新到2011-08-09版.</li>
+<li>NTBOOT更新.<strong>PE1添加了一个ntpath参数,具体用法请查看tangope.rar里面的#TangoPE.txt</strong>.</li>
+<li>MODBOOT更新.<strong>批处理脚本修改优化.</strong></li>
+<li><p>QGHO一键恢复程序更新.<br>重新设计了自定义恢复过程,初次启动时自动查找所有硬盘分区根目录下的GHO文件并列在菜单上.</p>
+<p>可以选择指定分区再次查找(默认找2级目录) ,可以修改支持查找N级目录</p>
+<p>打开MODBOOT\LEVEL3\QGHO.BAT查找Q.S.SUB=2,要找几级就改成2,建议不要太大,否则查找的过程很慢.</p>
+</li>
+<li>添加了一个新的下载地址.Dbank下载.</li>
+<li>其它小调整 .</li>
+</ol>
+<h3 id="2011-08-02">2011-08-02</h3>
+<ol>
+<li><p>添加<a href="http://bbs.wuyou.com/viewthread.php?tid=197550" target="_blank" rel="external">DPMS模块</a>(动态生成SRS驱动),供PE1.X调用.</p>
+</li>
+<li><p>更新GRLDR到最新版本.</p>
+</li>
+<li><p>添加<a href="http://bbs.wuyou.com/viewthread.php?tid=179738" target="_blank" rel="external">SRSF6N</a>模块.</p>
+</li>
+<li><p>添加模块 <a href="http://hi.baidu.com/nictense/blog/item/d833fe26f6b64414918f9dc4.html" target="_blank" rel="external">MINI TangoPE 2011 Native</a>.</p>
+</li>
+<li><p>重新设计了模块菜单加载方法,新的方案只要在第一次使用或删改了模块时才需要重新生成菜单.</p>
+</li>
+</ol>
+<p>不需要每次启动都动态生成菜单,加快了启动速度.</p>
+<p>注: 因为使用了新的菜单方案,所以必须更新所有的ADDONS菜单脚本.请重新下载所有模块进行更新.</p>
+<h3 id="2011-07-29">2011-07-29</h3>
+<ol>
+<li>更新GRUB4DOS和WEESETUP.其它小更新.</li>
+</ol>
+<h3 id="2011-07-13">2011-07-13</h3>
+<ol>
+<li><p>修正一些小问题。</p>
+</li>
+<li><p>使用最新版GRUB4DOS。</p>
+</li>
+<li><p>NTXPPE模块更新。</p>
+</li>
+</ol>
+<h3 id="2011-07-09">2011-07-09</h3>
+<ol>
+<li><p>更新NTBOOT到最新版。</p>
+</li>
+<li><p>更新MODBOOT到最新版.</p>
+</li>
+<li><p>QGHO（快速恢复）增强。</p>
+</li>
+</ol>
+<p>支持简单快速恢复。</p>
+<p>使用方法：&nbsp;创建一个QGHO.###到你要恢复到的分区根目录下（必须是激活的主分区）</p>
+<p>QGHO.###文件内容指定了GHO文件的路径。</p>
+<p>4.GRUB4DOS升级到最新版。</p>
+<p>5.支持修改默认的一键恢复密码。</p>
+<p>安装方法：</p>
+<p>下载SYS_TOOLS.RAR并解压到你电脑的任意磁盘根目录下。注： 解压完成后会多出一个BOOT目录（隐藏的）。<br>进入BOOT\BIN目录，双击setup_hd0.cmd就行了。</p>
+<p>注：如果有杀毒软件可能会有警报，否则不会有什么提示，重启系统即可。如果安装失败可以尝试使用BOOTICE进行安装</p>
+<p>BOOTICE 下载地址: <a href="http://bbs.wuyou.com/viewthread.php?tid=57675" target="_blank" rel="external">http://bbs.wuyou.com/viewthread.php?tid=57675</a></p>
+<p>用BOOTICE进行第二步的安装方法</p>
+<p><img src="http://qiniu.chenall.net/upload/2011/05/31AAE4E9668FEC052E0BF3DB7B4FD8FD4A46CA6A.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2011/05/8112D8AD5D88D0D09C2F16C21C5C6A8EDDDC6301.png" alt=""></p>
+<p><img src="http://qiniu.chenall.net/upload/2011/05/57DFB415C94B3DCBFB4DFB69843744865EB8742A.png" alt=""></p>
+<p>基本模块 ： 直接解压到任意磁盘的根目录下，然后运行BOOT\BIN\setup_hd0.cmd就可以了（也可以自己使用BOOTICE安装WEE引导，使用WEE的默认菜单就行）</p>
+<p>SYSTOOLS.RAR是主模块,必须的,其它的是附加模块,解压到ADDONS目录下就行了.</p>
+<p>ADDONS目录是存放其它模块的，该目录下的#xxxxx.txt是对应模块的菜单内容。</p>
+<p>第一行固定为菜单标题，不需要title，后面的是该菜单要执行的命令。</p>
+<p>可以自己参考以上模块自己添加其它模块，也欢迎共享你的模块。</p>
+<p>默认是启动第一个激活分区上面的系统，你可以自己写一个菜单文件改名为SYS_MENU.LST放到BOOT目录下，默认就会调用该菜单。</p>
+<p>进入一键恢复的密码默认是qgho，在启动时按F9输入正确的密码之后可以修改.</p>
+<h2 id="【下载地址】">【下载地址】</h2>
+<p><a href="http://pan.baidu.com/s/1o6sS1Xg" target="_blank" rel="external">百度网盘下载</a></p>
+
+      
+    </div>
+    
+    
+      
+    
+    
+        <footer id="post-meta">
+        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/实用/" itemprop="url">实用</a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/工具箱/" class="label label-success" itemprop="url"><span itemprop="title">工具箱</span></a></span> | <span class="time">最近更新:<time title="2015-01-31 09:13:26"datetime="2015-01-31 09:13:26"> 2015-01-31</time></span> | <span class="comment-link">
+<a href="http://chenall.net/post/g4d_hd_tools/#comments" class="ds-thread-count comment-link" data-thread-key="700" data-count-type="comments">暂无评论</a></span>
+        </footer>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+</article>
+
+
+
+  <article>
+<div id="post" class="post well">
+  <div class="post-content">
+    <header class="well-sm">
+      <i class="fa icon fa-5x pull-left"></i>
       <h1 class="title"><a href="/post/ntboot/">[分享] Windows NT 系列通用启动盘[204-08-31]</a></h1>
       
         <span>发表于<time datetime="2012-02-13T02:40:00.000Z"> <a href="/post/ntboot/">2012-02-13</a></time></span>      
@@ -1214,121 +1425,6 @@ endlocal &amp;&amp; set %1=%%%1%%
 
 
 
-  <article>
-<div id="post" class="post well">
-  <div class="post-content">
-    <header class="well-sm">
-      <i class="fa icon fa-5x pull-left"></i>
-      <h1 class="title"><a href="/post/grub4dos_hdpart/">[GRUB4DOS] 通用模块之分区选择</a></h1>
-      
-        <span>发表于<time datetime="2011-08-09T08:07:36.000Z"> <a href="/post/grub4dos_hdpart/">2011-08-09</a></time></span>      
-    </header>
-    
-    
-    <div class="entry" >
-      
-        <p>通用Grub4dos硬盘分区选择接口模块,</p>
-<p>供有需要的朋友使用.</p>
-<p>可以在你的菜单中简单的加入一个分区选择模块.</p>
-<p>要求:  必须使用2011-08-09以后发布的GRUB4DOS</p>
-<p>使用方法:</p>
-<p>首先复制代码另存为hd_part.lst<br>然后在你的批处理或菜单中直接调用.调用的方法有两种.</p>
-<p>1.简单调用,直接在执行模块的时候加参数例子:<br><img src="http://photo.staticsdo.com/a1/486/458/0/60809-49499083-8.png" alt=""><br>效果图.根据你硬盘的分区情况列出菜单.</p>
-<p><img src="http://photo.staticsdo.com/a1/422/278/391/60810-49499083-8.png" alt=""></p>
-<p>2.如果你需要多次调用,建议使用此方法(先设置好需要的变量后再执行模块)<br>如实现上面的例子:</p>
-<pre><code>set m.cmd=&quot;pause test cmd&quot;
-set m.return=&quot;pause test return&quot;
-hd_part.lst
-</code></pre><p>注:使用方法1时,将不会使用变量参数即1,2不能混用.</p>
-<pre><code class="bat">!BAT
-::::通用Grub4dos硬盘分区选择接口模块.
-::1.程序占用内存地址(md)0x20A+22
-::2.首先设置好参数,然后直接执行本批处理调用.
-::3.参数设置.(变量)m.cmd必须设置,其它的可选
-::  m.cmd    选择指定分区时要执行的命令接口执行是附加参数分区号例 set m.cmd=echo时,执行(hd0,0)的菜单就相当于执行echo (hd0,0).
-::  m.title  菜单主标题
-::  m.return 返回菜单时要执行的命令(如果没有设置,则不会出现返回菜单)
-::  m.init   菜单初始化脚本(自动生成的菜单title命令之前的内容)
-::4.使用方法.两种方式,自己根据情况选择.
-::    1.直接通过批处理传递以上参数(用批处理传递参数时不要加前面的m.)例:
-::      hd_part.lst cmd=&quot;echo&quot; return=&quot;configfile (md)4+8&quot;
-::    2.先设置变量再调用
-::      set m.cmd=echo
-::      set m.return=&quot;configfile (md)4+8&quot;
-::      hd_part.lst
-::
-::    chenall 编写于 2011-08-09. http://chenall.net 
-setlocal
-debug off
-checkrange 20110809:-1 read 0x8278 || echo Please use grub4dos-0.4.5b-2011-08-09 or above! &amp;&amp; exit 1
-if &quot;%1&quot;==&quot;&quot; goto :参数检测
-set *
-::set m.cmd=
-::set m.title=
-::set m.init=
-::set m.return=
-:获取参数
-if /i &quot;%1&quot;==&quot;&quot; &amp;&amp; goto :参数检测
-set m.%~1=%~2
-shift 1
-shift 1
-goto :获取参数
-
-:参数检测
-if not exist m.cmd exit 1
-if not exist m.title set m.title=屯屯屯屯屯屯屯屯 Please select a partition 屯屯屯屯屯屯屯屯
-set m.menu=(md)0x210+16
-::自动生成菜单
-echo default 1 &gt; %m.menu%
-echo -e debug off\n%m.init% &gt;&gt; %m.menu%
-echo title %m.title% &gt;&gt; %m.menu%
-echo pause Partition list menu for grub4dos by chenall . http://chenall.net &gt;&gt; %m.menu%
-set n=1
-set skip=0
-find --devices=h root &gt; (md)0x20A+6
-call :分区信息
-echo -e clear\ntitle 屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯屯\npause Partition list menu for grub4dos by chenall . http://chenall.net  &gt;&gt; %m.menu%
-if not exist m.return &amp;&amp; configfile %m.menu%
-echo title  0. Return &gt;&gt;  %m.menu%
-echo %m.return%  &gt;&gt;  %m.menu%
-echo boot &gt;&gt; %m.menu%
-configfile %m.menu%
-exit
-
-:分区信息
-cat --locate=\xa --number=1 --skip=%skip% (md)0x20A+6 || exit
-set /a length=%?%-%skip%
-cat --skip=%skip% --length=%length% (md)0x20A+6 | call :add_list=
-set /a skip=%length%+%skip%+1
-goto :分区信息
-:add_list
-set m=1   %n%
-echo title %m:~-2%. %* &gt;&gt; %m.menu%
-echo %m.cmd% %1 &gt;&gt; %m.menu%
-echo boot &gt;&gt; %m.menu%
-set /a n=%n%+1
-exit
-</code></pre>
-
-      
-    </div>
-    
-    
-      
-    
-    
-        <footer id="post-meta">
-        <div class="categories"style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/批处理/" itemprop="url">批处理</a></li></span></div> | <span class="tags">标签 <a href="/tags/GRUB4DOS/" class="label label-primary" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/批处理/" class="label label-success" itemprop="url"><span itemprop="title">批处理</span></a><a href="/tags/模块/" class="label label-info" itemprop="url"><span itemprop="title">模块</span></a><a href="/tags/原创/" class="label label-warning" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2014-02-26 19:52:59"datetime="2014-02-26 19:52:59"> 2014-02-26</time></span> | <span class="comment-link">
-<a href="http://chenall.net/post/grub4dos_hdpart/#comments" class="ds-thread-count comment-link" data-thread-key="738" data-count-type="comments">暂无评论</a></span>
-        </footer>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-</article>
-
-
-
 
 
 <ul id="pagination" class="pagination pagination-lg">
@@ -1397,7 +1493,7 @@ exit
   <div id="site-info">
     <span class='author'>
   
-  &copy; 2008-2015 chenall
+  &copy; 2008-2016 chenall
   
     &nbsp;&nbsp;</span>
   <a href='http://www.miibeian.gov.cn/'>闽ICP备14002519号-1</a></span>
@@ -1416,7 +1512,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2015-09-07 12:02:55</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2016-01-18 11:39:54</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
