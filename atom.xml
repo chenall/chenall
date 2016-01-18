@@ -4,7 +4,7 @@
   <subtitle><![CDATA[走自己的路,让别人说去吧]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenall.net/"/>
-  <updated>2016-01-18T06:26:11.801Z</updated>
+  <updated>2016-01-18T07:04:41.207Z</updated>
   <id>http://chenall.net/</id>
   
   <author>
@@ -19,10 +19,10 @@
     <link href="http://chenall.net/post/grub4dos_umbr/"/>
     <id>http://chenall.net/post/grub4dos_umbr/</id>
     <published>2016-01-18T02:25:28.000Z</published>
-    <updated>2016-01-18T06:26:02.000Z</updated>
+    <updated>2016-01-18T07:04:32.000Z</updated>
     <content type="html"><![CDATA[<h3 id="[功能说明]">[功能说明]</h3>
 <p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).</p>
-<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT分区格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
 <a id="more"></a>
 
 <h2 id="[使用方法]">[使用方法]</h2>
@@ -45,14 +45,14 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 <li>启动失败时会暂停并等待按键,这时按任意键可以尝试下一个.</li>
 </ol>
 <p>一个实用的例子:</p>
-<p>磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处是WEE63.</p>
-<p>装有系统的分区是(hd0,1).</p>
+<p>磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP分区(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处有一个WEE63</p>
+<p>装有系统的分区是(hd0,1)</p>
 <p>这时就可以通过UMBR默认加载ESP分区的GRLDR或普通分区上的GRLDR,失败了再尝试WEE63,还是失败就直接启动(hd0,1)分区.</p>
 <p>进入GRUB4DOS执行以下命令就可以了</p>
 <pre><code>umbr -d=0 -p=1 (hd0,3)/boot/grub/grldr (hd0,0)/grldr (hd0)6554433+63
 </code></pre><p>也可以默认wee63,通过wee63来控制启动过程,因为本例wee63是写到分区间隙的,出问题的几率比较小</p>
 <pre><code>umbr -d=0 -p=1 (hd0)6554433+63 (hd0,3)/boot/grub/grldr (hd0,0)/grldr
-</code></pre><p>当然了也可以直接启动指定分区而不通过其它引导程序当分区,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr</p>
+</code></pre><p>当然了也可以直接启动指定分区而不通过其它引导程序,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr</p>
 <pre><code>umbr -d=0 -p=1 (hd0,1)+1 (hd0)6554433+63 (hd0,0)/grldr
 </code></pre><h2 id="[其它参考]">[其它参考]</h2>
 <p>UMBR 相关说明</p>
@@ -64,7 +64,7 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 </code></pre><p>启动区说明,目前0x10-0x4F,每一个启动项占用16个字节,为了编程方便使用的是和DiskAddressPacket一样的格式.</p>
 <pre><code>    WORD CRC;            //启动项校验
 　　WORD BlockCount;　　// 启动代码块数(以扇区为单位)
-　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
+　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也就是启动地址
 　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
 </code></pre><p>BufferAddr    的值为0x07c00000(07c0:0000)时固定为PBR引导,启动时会自动修改0x7c1c处的值.其它值直接从该位置启动.</p>
 <p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
@@ -75,7 +75,7 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 ]]></content>
     <summary type="html"><![CDATA[<h3 id="[功能说明]">[功能说明]</h3>
 <p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).</p>
-<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT分区格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
 ]]></summary>
     
       <category term="umbr" scheme="http://chenall.net/tags/umbr/"/>
@@ -2195,7 +2195,7 @@ echo zh2py::conv(&#39;Chinese 中华人民共和国&#39;);//Chinese ZHRMGHG
 <p>适用于要求不是很高的场合,因为这个没有处理多音字,只支持GB2312字符,不过优点就是足够简单,几行代码的问题.有需要的可以拿去用,欢迎报错.</p>
 ]]></summary>
     
-      <category term="PHP" scheme="http://chenall.net/tags/PHP/"/>
+      <category term="php" scheme="http://chenall.net/tags/php/"/>
     
       <category term="拼音" scheme="http://chenall.net/tags/%E6%8B%BC%E9%9F%B3/"/>
     

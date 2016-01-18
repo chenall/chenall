@@ -125,7 +125,7 @@
       
         <h3 id="[功能说明]">[功能说明]</h3>
 <p>  UMBR(Universal Master Boot Record),是一个简单的通用型的MBR引导程序,只支持LBA模式(BIOS不支持LBA的无法使用,目前除了很老的机子大部份都有支持).</p>
-<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT磁盘格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
+<p>使用创新的方案,和磁盘分区格式无关所以可以安装到MBR或GPT分区格式下,目前GPT磁盘一般都是配合EFI来启动,有了它就可以在BIOS模式下直接启动GPT磁盘上的系统(需要系统有支持)了.</p>
 <a id="more"></a>
 
 <h2 id="[使用方法]">[使用方法]</h2>
@@ -148,14 +148,14 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 <li>启动失败时会暂停并等待按键,这时按任意键可以尝试下一个.</li>
 </ol>
 <p>一个实用的例子:</p>
-<p>磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处是WEE63.</p>
-<p>装有系统的分区是(hd0,1).</p>
+<p>磁盘使用的是GPT格式,GRLDR有两个备份分别是ESP分区(hd0,0)/grldr和普通分区(hd0,3)/boot/grub/grldr,并且在分区间隙(hd0)6554433+63处有一个WEE63</p>
+<p>装有系统的分区是(hd0,1)</p>
 <p>这时就可以通过UMBR默认加载ESP分区的GRLDR或普通分区上的GRLDR,失败了再尝试WEE63,还是失败就直接启动(hd0,1)分区.</p>
 <p>进入GRUB4DOS执行以下命令就可以了</p>
 <pre><code>umbr -d=0 -p=1 (hd0,3)/boot/grub/grldr (hd0,0)/grldr (hd0)6554433+63
 </code></pre><p>也可以默认wee63,通过wee63来控制启动过程,因为本例wee63是写到分区间隙的,出问题的几率比较小</p>
 <pre><code>umbr -d=0 -p=1 (hd0)6554433+63 (hd0,3)/boot/grub/grldr (hd0,0)/grldr
-</code></pre><p>当然了也可以直接启动指定分区而不通过其它引导程序当分区,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr</p>
+</code></pre><p>当然了也可以直接启动指定分区而不通过其它引导程序,如下默认直接启动(hd0,1)上的系统,如果该分区被分区软件调整过启动失败了,会尝试启动wee,最后尝试启动grldr</p>
 <pre><code>umbr -d=0 -p=1 (hd0,1)+1 (hd0)6554433+63 (hd0,0)/grldr
 </code></pre><h2 id="[其它参考]">[其它参考]</h2>
 <p>UMBR 相关说明</p>
@@ -167,7 +167,7 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 </code></pre><p>启动区说明,目前0x10-0x4F,每一个启动项占用16个字节,为了编程方便使用的是和DiskAddressPacket一样的格式.</p>
 <pre><code>    WORD CRC;            //启动项校验
 　　WORD BlockCount;　　// 启动代码块数(以扇区为单位)
-　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也是该代码的启动地址
+　　DWORD BufferAddr;　　// 传输缓冲地址(segment:offset),也就是启动地址
 　　QWORD BlockNum;　　　// 启动代码在磁盘上的位置(LBA)
 </code></pre><p>BufferAddr    的值为0x07c00000(07c0:0000)时固定为PBR引导,启动时会自动修改0x7c1c处的值.其它值直接从该位置启动.</p>
 <p>校验方法: 使用的是简单的XOR校验,最多校验127个扇区,按4个字节依次XOR得到的最后结果,再把低16位和高16位进行一次XOR得到最后的结果作为检验值.</p>
@@ -208,7 +208,7 @@ file1是主启动文件,如果检验失败了会再尝试file2...
     
     
         <footer id="post-meta">
-        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/umbr/" class="label label-primary" itemprop="url"><span itemprop="title">umbr</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2016-01-18 14:26:02"datetime="2016-01-18 14:26:02"> 2016-01-18</time></span> | <span class="comment-link">
+        <div class="categories" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" style="display:inline">归类<span class="breadcrumb fa fa-folder"><li><a href="/categories/GRUB4DOS/" itemprop="url"><span itemprop="title" >GRUB4DOS</span></a></li><li><a href="/categories/GRUB4DOS/扩展/" itemprop="url">扩展</a></li></span></div> | <span class="tags">标签 <a href="/tags/umbr/" class="label label-primary" itemprop="url"><span itemprop="title">umbr</span></a><a href="/tags/GRUB4DOS/" class="label label-success" itemprop="url"><span itemprop="title">GRUB4DOS</span></a><a href="/tags/原创/" class="label label-info" itemprop="url"><span itemprop="title">原创</span></a></span> | <span class="time">最近更新:<time title="2016-01-18 15:04:32"datetime="2016-01-18 15:04:32"> 2016-01-18</time></span> | <span class="comment-link">
 <a href="http://chenall.net/post/grub4dos_umbr/#comments" class="ds-thread-count comment-link" data-thread-key="20160118" data-count-type="comments">暂无评论</a></span>
         </footer>
     
@@ -228,7 +228,7 @@ file1是主启动文件,如果检验失败了会再尝试file2...
 <tr><th  style='width: 50%;text-align: center'>相关文章</th><th style='width: 50%;text-align: center'>随机文章</th></tr>
 <tr>
 
-<td><ul class="list-group"><li class="list-group-item"><a href="/post/dbankdown/">[原创] 解除华为网盘下载限制[2012-09-18]</a></li><li class="list-group-item"><a href="/post/php_http_proxy/">使用PHP+CURL搭建一个简易的HTTP代理服务端[2012-12-17]</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/windows_f6/">[原创] 利用GRUB4DOS安装SRS(SCSI,RAID,SATA)驱动免按F6,免软驱.</a></li><li class="list-group-item"><a href="/post/qgho/">[原创]QGHO 快速一键恢复程序(2011-01-02更新)</a></li><li class="list-group-item"><a href="/post/netdisk-autosign/">[原创]各类网站自动签到/带源码[2012-10-10更新]</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/cmd_if_exist/">批处理检测外部命令是否存在的模块</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
+<td><ul class="list-group"><li class="list-group-item"><a href="/post/grub4dos_biosint/">可以在GRUB4DOS下调用BIOS中断的外部命令</a></li><li class="list-group-item"><a href="/post/grub4dos_snake/">[GRUB4DOS] GRUB4DOS 的第一个游戏程序</a></li><li class="list-group-item"><a href="/post/batch_email_backup/">使用批处理自动定时备份文件到邮箱</a></li><li class="list-group-item"><a href="/post/grub4dos_user/">[grub4dos] grub4dos 运行外部命令[简介]</a></li><li class="list-group-item"><a href="/post/pretty_auto/">[原创] pretty自动加载语言代码</a></li><li class="list-group-item"><a href="/post/grub4dos_replace/">[GRUB4DOS] 通用模块之字符串替换</a></li><li class="list-group-item"><a href="/post/grub4dos_read/">[grub4dos] 尝试read命令使用外部命令来实现</a></li><li class="list-group-item"><a href="/post/setupldr/">【WINPE】WinPE 1.x 启动文件SETUPLDR.BIN研究</a></li></ul></td><td><div class='hexo_random_posts' data-count=8></div></td>
 </tr></table></div></section>    
 	<div id="comments"><!-- Duoshuo Comment BEGIN -->
 
@@ -317,7 +317,7 @@ var _hmt = _hmt || [];
 _js2load.push({src:"//hm.baidu.com/hm.js?41a3a9225fc0df0d53086baea0f90d96"});
 </script>
 </span>  </div>
-  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2016-01-18 14:26:02</em></span></div>
+  <div id="copyright">Blog powered by <a href='http://hexo.io/'  title="本站由hexo V2.8.3 生成"><strong>hexo</strong></a> Theme <strong><a href='https://github.com/chenall/hexo-theme-chenall'>chenall V2.2</a></strong><span class="pull-right"> 更新时间: <em>2016-01-18 15:04:32</em></span></div>
 </div>
 <div class="clearfix"></div>
   </div>
